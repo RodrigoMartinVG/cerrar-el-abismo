@@ -11,7 +11,7 @@ test('la portada muestra el mapa de tomos y lleva al índice temático', async (
 
 test('la página de un tomo muestra sus capítulos y enlaza los escritos', async ({ page }) => {
   await page.goto('indice/i/');
-  await expect(page.locator('section.capitulo')).toHaveCount(12);
+  await expect(page.locator('section.capitulo')).toHaveCount(14);
   await page.getByRole('link', { name: 'Leer el capítulo I.1' }).click();
   await expect(page).toHaveURL(/\/capitulos\/i-1\/$/);
 });

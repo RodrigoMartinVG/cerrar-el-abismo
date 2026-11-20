@@ -1,5 +1,5 @@
 # Tomo VIII — Ecuaciones diferenciales, sistemas dinámicos y mecánica
-# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+# Fuente del índice (decisión 0002): la especificación se escribe desde aquí.
 id: VIII
 titulo: Ecuaciones diferenciales, sistemas dinámicos y mecánica
 requiere:
@@ -17,7 +17,7 @@ partes:
         titulo: Ecuaciones de primer orden
         paginas: 44
         requiere:
-          - III.11
+          - III.12
           - III.8
         tipo: nucleo
         contenidos:
@@ -68,7 +68,7 @@ partes:
           - Matriz fundamental y sistemas no homogéneos.
           - Estabilidad de los sistemas lineales según sus autovalores; retratos de fase en el plano.
           - Sistemas lineales discretos x_{n+1} = A x_n.
-        puente: 'Entrada: muelles acoplados que «explotan» al aumentar la rigidez. Los autovalores del sistema dicen qué modos oscilan y a qué frecuencia; la explosión aparece cuando el método numérico no respeta esa estructura (VIII.10).'
+        puente: 'Entrada: muelles acoplados que «explotan» al aumentar la rigidez. Los autovalores del sistema dicen qué modos oscilan y a qué frecuencia; la explosión aparece cuando el método numérico no respeta esa estructura (VIII.12).'
         aplicaciones:
           - campo: fisica
             texto: modos de vibración acoplados
@@ -119,6 +119,29 @@ partes:
             texto: dinámica de poblaciones
         lecturas: 'Strogatz, *Nonlinear Dynamics and Chaos*; Alligood, Sauer y Yorke, *Chaos: An Introduction to Dynamical Systems*.'
       - id: VIII.6
+        titulo: Fractales y dimensión
+        paginas: 36
+        requiere:
+          - VIII.5
+          - III.12
+        tipo: complementario
+        contenidos:
+          - 'Conjuntos autosimilares: el conjunto de Cantor, la curva de Koch y el triángulo de Sierpinski.'
+          - Sistemas de funciones iteradas y su atractor, por el punto fijo de Banach en la métrica de Hausdorff.
+          - Dimensión de conteo de cajas y dimensión de Hausdorff; la dimensión de los conjuntos autosimilares.
+          - Conjuntos de Julia y de Mandelbrot; atractores extraños como fractales.
+        puente: 'Entrada: `for (i = 0; i < octavas; i++) { h += amplitud * ruido(frecuencia * p); frecuencia *= 2; amplitud *= ganancia; }`, el ruido fractal de un generador de terrenos. Sumar copias del mismo ruido a escalas que se duplican produce una superficie autosimilar, y la ganancia de una octava a la siguiente fija su dimensión fractal.'
+        aplicaciones:
+          - campo: 3d
+            texto: terrenos, nubes y vegetación procedurales
+          - campo: fisica
+            texto: dimensión de atractores extraños y de frentes de crecimiento
+          - campo: senales
+            texto: compresión fractal de imágenes
+          - campo: ing
+            texto: antenas fractales
+        lecturas: 'Falconer, *Fractal Geometry: Mathematical Foundations and Applications*; Barnsley, *Fractals Everywhere*.'
+      - id: VIII.7
         titulo: 'Sistemas con entrada: control y realimentación'
         paginas: 36
         requiere:
@@ -141,7 +164,7 @@ partes:
   - letra: B
     titulo: Mecánica
     capitulos:
-      - id: VIII.7
+      - id: VIII.8
         titulo: Cálculo de variaciones y mecánica lagrangiana
         paginas: 48
         requiere:
@@ -162,11 +185,11 @@ partes:
           - campo: ing
             texto: trayectorias óptimas
         lecturas: Arnold, *Mathematical Methods of Classical Mechanics*; Goldstein, Poole y Safko, *Classical Mechanics*; Gelfand y Fomin, *Calculus of Variations*.
-      - id: VIII.8
+      - id: VIII.9
         titulo: Mecánica hamiltoniana
         paginas: 44
         requiere:
-          - VIII.7
+          - VIII.8
         tipo: nucleo
         contenidos:
           - Transformada de Legendre y ecuaciones de Hamilton.
@@ -174,7 +197,7 @@ partes:
           - Estructura simpléctica en forma matricial; transformaciones canónicas.
           - Corchetes de Poisson e integrales primeras; su relación con los conmutadores de la mecánica cuántica (aviso de XIII.7).
           - Ecuación de Hamilton–Jacobi, variables de acción–ángulo y sistemas integrables.
-        puente: 'Entrada: el gráfico de energía de una simulación que deriva lentamente. El flujo hamiltoniano conserva el volumen en el espacio de fases, y los integradores que respetan esa estructura (VIII.11) no derivan.'
+        puente: 'Entrada: el gráfico de energía de una simulación que deriva lentamente. El flujo hamiltoniano conserva el volumen en el espacio de fases, y los integradores que respetan esa estructura (VIII.13) no derivan.'
         aplicaciones:
           - campo: fisica
             texto: órbitas planetarias y dinámica molecular
@@ -183,12 +206,36 @@ partes:
           - campo: datos
             texto: Monte Carlo hamiltoniano (aviso de XI.8)
         lecturas: 'Arnold, *Mathematical Methods of Classical Mechanics*; José y Saletan, *Classical Dynamics: A Contemporary Approach*.'
-      - id: VIII.9
+      - id: VIII.10
+        titulo: Control óptimo
+        paginas: 40
+        requiere:
+          - VIII.7
+          - VIII.9
+          - IV.9
+        tipo: complementario
+        contenidos:
+          - Problemas de control óptimo; principio del máximo de Pontryagin y su relación con la mecánica hamiltoniana.
+          - Ecuación de Hamilton–Jacobi–Bellman como límite continuo de la programación dinámica.
+          - Regulador lineal cuadrático y ecuación de Riccati; el filtro de Kalman como problema dual.
+          - Control predictivo por modelo y métodos numéricos de disparo.
+        puente: 'Entrada: `K = lqr(A, B, Q, R)` y después `u = -K @ x` en el controlador de un dron. La ganancia K sale de resolver una ecuación de Riccati, y el principio de Bellman garantiza que esa realimentación lineal minimiza el costo cuadrático desde cualquier estado inicial.'
+        aplicaciones:
+          - campo: ing
+            texto: control de drones, robots y vehículos
+          - campo: 3d
+            texto: control físico de personajes animados
+          - campo: fisica
+            texto: la ecuación de Hamilton–Jacobi vista desde el control
+          - campo: bio-eco
+            texto: modelos de crecimiento óptimo en economía
+        lecturas: Liberzon, *Calculus of Variations and Optimal Control Theory*; Bertsekas, *Dynamic Programming and Optimal Control*.
+      - id: VIII.11
         titulo: Dinámica del sólido rígido
         paginas: 44
         requiere:
-          - VIII.7
-          - II.15
+          - VIII.8
+          - II.16
           - VII.4
         tipo: nucleo
         contenidos:
@@ -208,7 +255,7 @@ partes:
   - letra: C
     titulo: Métodos numéricos
     capitulos:
-      - id: VIII.10
+      - id: VIII.12
         titulo: Métodos numéricos para ecuaciones diferenciales ordinarias
         paginas: 48
         requiere:
@@ -229,12 +276,12 @@ partes:
           - campo: bio-eco
             texto: simulación de modelos epidemiológicos
         lecturas: Hairer, Nørsett y Wanner, *Solving Ordinary Differential Equations I*; Iserles, *A First Course in the Numerical Analysis of Differential Equations*.
-      - id: VIII.11
+      - id: VIII.13
         titulo: Integración geométrica y restricciones
         paginas: 40
         requiere:
-          - VIII.10
-          - VIII.8
+          - VIII.12
+          - VIII.9
           - VII.4
         tipo: nucleo
         contenidos:
@@ -251,11 +298,11 @@ partes:
           - campo: ing
             texto: mecanismos con restricciones
         lecturas: 'Hairer, Lubich y Wanner, *Geometric Numerical Integration*; Macklin, Müller y Chentanez, «XPBD: Position-Based Simulation of Compliant Constrained Dynamics».'
-      - id: VIII.12
+      - id: VIII.14
         titulo: Contacto y complementariedad
         paginas: 40
         requiere:
-          - VIII.11
+          - VIII.13
           - IV.7
           - II.12
         tipo: nucleo

@@ -1,5 +1,5 @@
 # Tomo XI — Probabilidad, estadística y métodos estocásticos
-# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+# Fuente del índice (decisión 0002): la especificación se escribe desde aquí.
 id: XI
 titulo: Probabilidad, estadística y métodos estocásticos
 requiere:
@@ -38,7 +38,7 @@ partes:
         requiere:
           - XI.1
           - IX.2
-          - IV.9
+          - IV.10
         tipo: nucleo
         contenidos:
           - Espacios de probabilidad generales; variables aleatorias como funciones medibles.
@@ -213,7 +213,7 @@ partes:
           - Proceso de Poisson temporal y tiempos de espera exponenciales.
           - Paseo aleatorio y su límite; construcción del movimiento browniano.
           - 'Propiedades del movimiento browniano: continuidad, no derivabilidad y propiedad de Markov.'
-          - 'Martingalas en tiempo discreto (introducción); conexión con la ecuación del calor. Para seguir: cálculo de Itô.'
+          - 'Martingalas en tiempo discreto (introducción, que se desarrolla en XI.11); conexión con la ecuación del calor. Para seguir: cálculo de Itô.'
         puente: 'Entrada: `nextSpawn = now - log(1.0 - random()) / rate`. Muestrear tiempos de espera exponenciales produce un proceso de Poisson: es la forma correcta de generar eventos «al azar» con una tasa dada.'
         aplicaciones:
           - campo: 3d
@@ -224,6 +224,28 @@ partes:
             texto: difusión y movimiento browniano
         lecturas: 'Durrett, *Probability: Theory and Examples*; Lawler, *Introduction to Stochastic Processes*.'
       - id: XI.11
+        titulo: Martingalas
+        paginas: 36
+        requiere:
+          - XI.3
+          - XI.4
+          - XI.10
+        tipo: complementario
+        contenidos:
+          - Filtraciones, martingalas, submartingalas y tiempos de parada.
+          - Teorema de parada opcional y la ruina del jugador.
+          - Convergencia de martingalas; desigualdades de Doob y de Azuma–Hoeffding.
+          - Paseos aleatorios y precios sin arbitraje en el modelo binomial.
+        puente: 'Entrada: un tablero de pruebas A/B que recalcula el valor p cada hora y detiene el experimento cuando baja de 0,05. Mirar los datos muchas veces y parar cuando conviene cambia la probabilidad de error; el teorema de parada opcional explica por qué, y las martingalas dan pruebas secuenciales que siguen siendo válidas.'
+        aplicaciones:
+          - campo: datos
+            texto: pruebas A/B secuenciales, válidas en cualquier momento
+          - campo: bio-eco
+            texto: valuación de opciones en el modelo binomial
+          - campo: cripto
+            texto: concentración en algoritmos aleatorizados con la desigualdad de Azuma
+        lecturas: 'Williams, *Probability with Martingales*; Durrett, *Probability: Theory and Examples*.'
+      - id: XI.12
         titulo: Ecuaciones integrales y transporte
         paginas: 48
         requiere:
@@ -247,7 +269,7 @@ partes:
   - letra: C
     titulo: Estadística e información
     capitulos:
-      - id: XI.12
+      - id: XI.13
         titulo: Inferencia estadística
         paginas: 48
         requiere:
@@ -268,11 +290,33 @@ partes:
           - campo: datos
             texto: regresión y validación de modelos
         lecturas: Casella y Berger, *Statistical Inference*; Wasserman, *All of Statistics*.
-      - id: XI.13
+      - id: XI.14
+        titulo: Aprendizaje estadístico
+        paginas: 40
+        requiere:
+          - XI.13
+          - XI.4
+          - IV.5
+        tipo: complementario
+        contenidos:
+          - Minimización del riesgo empírico; descomposición entre sesgo y varianza.
+          - 'Cotas de generalización: clases finitas, dimensión de Vapnik–Chervonenkis y complejidad de Rademacher.'
+          - Regularización y selección de modelos; validación cruzada.
+          - 'Sobreajuste e interpolación: por qué los modelos con más parámetros que datos pueden generalizar (introducción).'
+        puente: 'Entrada: `model.fit(X_train, y_train)` seguido de `model.score(X_test, y_test)`. Separar datos de prueba es estimar el riesgo verdadero con una muestra independiente, y las desigualdades de concentración dicen cuántos datos de prueba hacen falta para confiar en esa estimación.'
+        aplicaciones:
+          - campo: datos
+            texto: selección de modelos y regularización en aprendizaje automático
+          - campo: bio-eco
+            texto: modelos predictivos en medicina y su validación
+          - campo: ing
+            texto: identificación de sistemas a partir de datos
+        lecturas: Shalev-Shwartz y Ben-David, *Understanding Machine Learning*; Hastie, Tibshirani y Friedman, *The Elements of Statistical Learning*.
+      - id: XI.15
         titulo: Inferencia bayesiana y filtrado
         paginas: 44
         requiere:
-          - XI.12
+          - XI.13
           - XI.3
         tipo: nucleo
         contenidos:
@@ -289,11 +333,34 @@ partes:
           - campo: datos
             texto: modelos bayesianos
         lecturas: Särkkä, *Bayesian Filtering and Smoothing*; Gelman et al., *Bayesian Data Analysis*.
-      - id: XI.14
+      - id: XI.16
+        titulo: Series temporales
+        paginas: 40
+        requiere:
+          - XI.9
+          - XI.15
+        tipo: complementario
+        contenidos:
+          - Procesos estacionarios; función de autocovarianza y densidad espectral.
+          - 'Modelos autorregresivos y de medias móviles (ARMA): estacionariedad, invertibilidad y ecuaciones de Yule–Walker.'
+          - Estimación y pronóstico; modelos en espacio de estados y su relación con el filtro de Kalman.
+          - Tendencia, estacionalidad y diferenciación; series no estacionarias.
+        puente: 'Entrada: `pronostico = modelo.predict(pasos=24)` en un tablero de demanda eléctrica. Un modelo ARMA predice combinando valores pasados con pesos que decaen; que la predicción no explote depende de que las raíces de un polinomio queden fuera del círculo unidad.'
+        aplicaciones:
+          - campo: datos
+            texto: pronóstico de demanda y detección de anomalías
+          - campo: senales
+            texto: estimación espectral y modelos autorregresivos de la voz
+          - campo: ing
+            texto: identificación de sistemas y mantenimiento predictivo
+          - campo: bio-eco
+            texto: econometría y series epidemiológicas
+        lecturas: Brockwell y Davis, *Introduction to Time Series and Forecasting*; Shumway y Stoffer, *Time Series Analysis and Its Applications*.
+      - id: XI.17
         titulo: Entropía e información
         paginas: 40
         requiere:
-          - XI.12
+          - XI.13
           - IV.4
         tipo: nucleo
         contenidos:
@@ -310,3 +377,27 @@ partes:
           - campo: cripto
             texto: compresión sin pérdida y códigos de Huffman
         lecturas: Cover y Thomas, *Elements of Information Theory*; MacKay, *Information Theory, Inference, and Learning Algorithms*.
+      - id: XI.18
+        titulo: Transporte óptimo
+        paginas: 40
+        requiere:
+          - IV.6
+          - XI.2
+          - XI.17
+        tipo: complementario
+        contenidos:
+          - Problema de Monge y relajación de Kantorovich; el caso discreto como programa lineal.
+          - Dualidad de Kantorovich y distancias de Wasserstein; el caso de la recta y las funciones de cuantiles.
+          - Regularización entrópica y algoritmo de Sinkhorn.
+          - Teorema de Brenier (enunciado) e interpolación de McCann.
+        puente: 'Entrada: `ot.sinkhorn(a, b, M, reg)` en una biblioteca de transporte óptimo. Calcula cómo llevar una distribución sobre otra con el menor costo; la regularización entrópica convierte un programa lineal enorme en una iteración de escalados de filas y columnas que converge rápido.'
+        aplicaciones:
+          - campo: datos
+            texto: comparación de distribuciones y modelos generativos con la distancia de Wasserstein
+          - campo: 3d
+            texto: transferencia de color entre imágenes e interpolación de formas
+          - campo: bio-eco
+            texto: asignación y emparejamiento en economía
+          - campo: fisica
+            texto: la ecuación del calor como flujo de gradiente en el espacio de Wasserstein (introducción)
+        lecturas: Villani, *Topics in Optimal Transportation*; Peyré y Cuturi, *Computational Optimal Transport*.

@@ -1,5 +1,5 @@
 # Tomo VII — Geometría
-# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+# Fuente del índice (decisión 0002): la especificación se escribe desde aquí.
 id: VII
 titulo: Geometría
 requiere:
@@ -7,7 +7,7 @@ requiere:
   - III
   - IV
 interfaces: []
-presentacion: Las geometrías clásicas como estudio de grupos de transformaciones, las curvas y superficies de diseño, la geometría diferencial clásica y la geometría computacional y discreta. VII.1, VII.2, VII.3 y VII.5 solo usan los Tomos II y III, así que se pueden leer justo después del álgebra lineal.
+presentacion: Las geometrías clásicas como estudio de grupos de transformaciones, las curvas y superficies de diseño, la geometría diferencial clásica y la geometría computacional y discreta. VII.1, VII.2, VII.3 y VII.6 solo usan los Tomos II y III, así que se pueden leer justo después del álgebra lineal.
 partes:
   - letra: A
     titulo: Geometrías y grupos de transformaciones
@@ -16,8 +16,8 @@ partes:
         titulo: Isometrías y simetría
         paginas: 40
         requiere:
-          - II.15
-          - I.8
+          - II.16
+          - I.9
         tipo: nucleo
         contenidos:
           - Las isometrías de ℝⁿ son afines; clasificación en el plano y en el espacio.
@@ -37,7 +37,7 @@ partes:
         titulo: Geometría proyectiva
         paginas: 44
         requiere:
-          - II.13
+          - II.14
         tipo: nucleo
         contenidos:
           - Plano y espacio proyectivos; coordenadas homogéneas y puntos del infinito.
@@ -59,14 +59,14 @@ partes:
         requiere:
           - VII.2
           - II.10
-          - II.16
+          - II.17
         tipo: nucleo
         contenidos:
           - Cámara estenopeica; matrices de proyección en perspectiva y ortográfica; volumen de visión.
           - Coordenadas de recorte y normalizadas; distribución de la profundidad y su precisión en coma flotante.
           - 'Rasterización: funciones de arista como determinantes, coordenadas baricéntricas e interpolación con corrección de perspectiva.'
           - Homografías, geometría epipolar y matriz fundamental; calibración por DLT.
-        puente: 'Entrada: `gl_Position = proj * view * model * vec4(p, 1.0)`, seguido de la división por w. Es una cadena de cambios de marco afines (II.13) y una transformación proyectiva; Reverse-Z funciona porque la coma flotante es más densa cerca de 0, justo donde la proyección comprime la profundidad lejana.'
+        puente: 'Entrada: `gl_Position = proj * view * model * vec4(p, 1.0)`, seguido de la división por w. Es una cadena de cambios de marco afines (II.14) y una transformación proyectiva; Reverse-Z funciona porque la coma flotante es más densa cerca de 0, justo donde la proyección comprime la profundidad lejana.'
         aplicaciones:
           - campo: 3d
             texto: '*pipeline* de cámara, Reverse-Z, *frustum culling* y mapas de sombras'
@@ -79,7 +79,7 @@ partes:
         titulo: Grupos de Lie de matrices
         paginas: 48
         requiere:
-          - II.15
+          - II.16
           - III.8
           - IV.3
         tipo: nucleo
@@ -95,12 +95,36 @@ partes:
           - campo: ing
             texto: robótica y estimación de estado
           - campo: fisica
-            texto: simetrías continuas (aviso de VIII.7)
+            texto: simetrías continuas (aviso de VIII.8)
         lecturas: Stillwell, *Naive Lie Theory*; Hall, *Lie Groups, Lie Algebras, and Representations*; Lynch y Park, *Modern Robotics*.
+      - id: VII.5
+        titulo: Geometrías no euclidianas
+        paginas: 40
+        requiere:
+          - VII.1
+          - VII.2
+          - VII.4
+        tipo: complementario
+        contenidos:
+          - 'El quinto postulado y su independencia; geometría esférica: geodésicas, triángulos y trigonometría esférica.'
+          - 'El plano hiperbólico: modelos del semiplano, del disco de Poincaré y del hiperboloide; el modelo de Klein como geometría proyectiva.'
+          - Isometrías hiperbólicas como transformaciones de Möbius; el grupo PSL(2, ℝ).
+          - 'Triángulos hiperbólicos: suma de ángulos y área; teselaciones hiperbólicas.'
+        puente: 'Entrada: `d = acosh(1 + 2 * |u - v|² / ((1 - |u|²) * (1 - |v|²)))`, la distancia entre dos puntos en una biblioteca de representaciones hiperbólicas de datos. Es la distancia del disco de Poincaré: cerca del borde las distancias crecen sin límite, y por eso un árbol con muchas ramas cabe sin apretarse.'
+        aplicaciones:
+          - campo: ing
+            texto: navegación por círculos máximos y trigonometría esférica
+          - campo: fisica
+            texto: el espacio de velocidades de la relatividad especial es hiperbólico
+          - campo: datos
+            texto: representaciones hiperbólicas de jerarquías y de grafos
+          - campo: 3d
+            texto: mundos y teselaciones hiperbólicas en videojuegos
+        lecturas: Stillwell, *Geometry of Surfaces*; Anderson, *Hyperbolic Geometry*.
   - letra: B
     titulo: Curvas y superficies de diseño
     capitulos:
-      - id: VII.5
+      - id: VII.6
         titulo: Curvas y superficies de Bézier y B-splines
         paginas: 48
         requiere:
@@ -124,7 +148,7 @@ partes:
   - letra: C
     titulo: Geometría diferencial
     capitulos:
-      - id: VII.6
+      - id: VII.7
         titulo: Curvas en el espacio
         paginas: 36
         requiere:
@@ -144,12 +168,12 @@ partes:
           - campo: bio-eco
             texto: geometría del ADN
         lecturas: do Carmo, *Differential Geometry of Curves and Surfaces*; Pressley, *Elementary Differential Geometry*.
-      - id: VII.7
+      - id: VII.8
         titulo: 'Superficies: formas fundamentales y curvatura'
         paginas: 48
         requiere:
           - IV.3
-          - VII.6
+          - VII.7
         tipo: nucleo
         contenidos:
           - Superficies regulares, plano tangente y primera forma fundamental; longitudes y áreas.
@@ -165,13 +189,13 @@ partes:
           - campo: fisica
             texto: membranas y tensión superficial
         lecturas: do Carmo, *Differential Geometry of Curves and Surfaces*; Pressley, *Elementary Differential Geometry*.
-      - id: VII.8
+      - id: VII.9
         titulo: Geometría intrínseca y Gauss–Bonnet
         paginas: 44
         requiere:
-          - VII.7
-          - IV.11
-          - I.7
+          - VII.8
+          - IV.12
+          - I.8
         tipo: nucleo
         contenidos:
           - '*Theorema egregium*: la curvatura gaussiana es intrínseca.'
@@ -190,12 +214,12 @@ partes:
   - letra: D
     titulo: Geometría computacional y discreta
     capitulos:
-      - id: VII.9
+      - id: VII.10
         titulo: Predicados geométricos e intersecciones
         paginas: 40
         requiere:
           - II.4
-          - II.16
+          - II.17
           - III.10
         tipo: nucleo
         contenidos:
@@ -212,11 +236,11 @@ partes:
           - campo: datos
             texto: sistemas de información geográfica
         lecturas: Ericson, *Real-Time Collision Detection*; Shewchuk, «Adaptive Precision Floating-Point Arithmetic and Fast Robust Geometric Predicates».
-      - id: VII.10
+      - id: VII.11
         titulo: 'Convexidad computacional: envolventes, separación y distancia'
         paginas: 44
         requiere:
-          - VII.9
+          - VII.10
           - IV.5
         tipo: nucleo
         contenidos:
@@ -233,20 +257,20 @@ partes:
           - campo: datos
             texto: clasificación lineal por separación
         lecturas: de Berg, Cheong, van Kreveld y Overmars, *Computational Geometry*; van den Bergen, *Collision Detection in Interactive 3D Environments*; Gilbert, Johnson y Keerthi, «A Fast Procedure for Computing the Distance Between Complex Objects in Three-Dimensional Space».
-      - id: VII.11
+      - id: VII.12
         titulo: Triangulaciones y diagramas de Voronoi
         paginas: 40
         requiere:
-          - VII.9
-          - IV.9
-          - I.7
+          - VII.10
+          - IV.10
+          - I.8
         tipo: nucleo
         contenidos:
           - 'Triangulación de polígonos: existencia, recorte de orejas y descomposición monótona.'
           - 'Triangulación de Delaunay: círculo vacío, maximización del ángulo mínimo y volteo de aristas.'
           - Diagrama de Voronoi como dual de Delaunay.
           - Teselaciones de Voronoi centroidales y algoritmo de Lloyd.
-        puente: "Entrada: una malla de navegación generada a partir del plano de un nivel. Es una triangulación del espacio libre: Delaunay evita triángulos degenerados, y su grafo dual se recorre con A\\* (I.7)."
+        puente: "Entrada: una malla de navegación generada a partir del plano de un nivel. Es una triangulación del espacio libre: Delaunay evita triángulos degenerados, y su grafo dual se recorre con A\\* (I.8)."
         aplicaciones:
           - campo: 3d
             texto: mallas de navegación y terrenos
@@ -255,13 +279,13 @@ partes:
           - campo: bio-eco
             texto: modelos de territorio y de crecimiento celular
         lecturas: de Berg, Cheong, van Kreveld y Overmars, *Computational Geometry*; Okabe, Boots, Sugihara y Chiu, *Spatial Tessellations*.
-      - id: VII.12
+      - id: VII.13
         titulo: 'Mallas: topología y geometría discreta'
         paginas: 48
         requiere:
-          - VII.8
+          - VII.9
           - II.12
-          - I.7
+          - I.8
         tipo: nucleo
         contenidos:
           - Complejos simpliciales, variedades con borde, orientabilidad, característica de Euler y género; la estructura *half-edge*.
@@ -277,11 +301,11 @@ partes:
           - campo: bio-eco
             texto: superficies de órganos en imágenes médicas
         lecturas: 'Botsch, Kobbelt, Pauly, Alliez y Lévy, *Polygon Mesh Processing*; Crane, *Discrete Differential Geometry: An Applied Introduction*.'
-      - id: VII.13
+      - id: VII.14
         titulo: Superficies implícitas y campos de distancia
         paginas: 36
         requiere:
-          - VII.7
+          - VII.8
           - III.10
         tipo: nucleo
         contenidos:
@@ -298,12 +322,12 @@ partes:
           - campo: bio-eco
             texto: reconstrucción de órganos a partir de tomografías
         lecturas: 'Hart, «Sphere Tracing: A Geometric Method for the Antialiased Ray Tracing of Implicit Surfaces»; Osher y Fedkiw, *Level Set Methods and Dynamic Implicit Surfaces*.'
-      - id: VII.14
+      - id: VII.15
         titulo: Geometría integral y particiones del espacio
         paginas: 40
         requiere:
-          - VII.10
-          - IV.9
+          - VII.11
+          - IV.10
         tipo: complementario
         contenidos:
           - Medida invariante en el espacio de rectas; fórmula de Cauchy–Crofton.

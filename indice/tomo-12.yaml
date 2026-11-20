@@ -1,5 +1,5 @@
 # Tomo XII — Ecuaciones en derivadas parciales y medios continuos
-# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+# Fuente del índice (decisión 0002): la especificación se escribe desde aquí.
 id: XII
 titulo: Ecuaciones en derivadas parciales y medios continuos
 requiere:
@@ -17,7 +17,7 @@ partes:
         titulo: Ecuaciones en derivadas parciales clásicas
         paginas: 48
         requiere:
-          - IV.11
+          - IV.12
           - VIII.4
         tipo: nucleo
         contenidos:
@@ -126,7 +126,7 @@ partes:
         paginas: 44
         requiere:
           - XII.1
-          - VIII.10
+          - VIII.12
           - IX.7
         tipo: nucleo
         contenidos:
@@ -144,6 +144,28 @@ partes:
             texto: transferencia de calor en piezas
         lecturas: LeVeque, *Finite Difference Methods for Ordinary and Partial Differential Equations*; Strikwerda, *Finite Difference Schemes and Partial Differential Equations*.
       - id: XII.7
+        titulo: Leyes de conservación y ondas de choque
+        paginas: 40
+        requiere:
+          - XII.1
+          - XII.6
+          - IX.6
+        tipo: complementario
+        contenidos:
+          - Leyes de conservación escalares; la ecuación de Burgers y la formación de choques por el cruce de las características.
+          - Soluciones débiles, condición de Rankine–Hugoniot y condición de entropía; ondas de rarefacción.
+          - Problema de Riemann y método de Godunov; volúmenes finitos y condición CFL.
+          - 'Sistemas hiperbólicos: ecuaciones de aguas someras y de Euler compresibles (introducción).'
+        puente: 'Entrada: `u[i] -= dt / dx * (flujo[i + 1] - flujo[i])` en un simulador de tráfico o de fluidos, con `flujo[i]` calculado en la cara entre dos celdas. Es un método de volúmenes finitos: actualiza promedios por celda con los flujos de sus caras, y por eso conserva exactamente la cantidad total aunque la solución tenga choques.'
+        aplicaciones:
+          - campo: ing
+            texto: 'flujo de tráfico vehicular: los atascos como ondas de choque'
+          - campo: fisica
+            texto: dinámica de gases y ondas de choque
+          - campo: 3d
+            texto: simulación de fluidos y de aguas someras en videojuegos
+        lecturas: LeVeque, *Finite Volume Methods for Hyperbolic Problems*; Evans, *Partial Differential Equations*.
+      - id: XII.8
         titulo: Formulación débil y elementos finitos
         paginas: 52
         requiere:
@@ -157,7 +179,7 @@ partes:
           - Formulación débil y teorema de Lax–Milgram.
           - Método de Galerkin; elementos lineales en triángulos y tetraedros; matrices de rigidez y de masa.
           - Lema de Céa y estimaciones del error.
-        puente: 'Entrada: el ensamblado `K[i][j] += area * dot(grad_i, grad_j)` triángulo por triángulo. Es la formulación débil discretizada, y para elementos lineales esa matriz coincide con el laplaciano cotangente de VII.12.'
+        puente: 'Entrada: el ensamblado `K[i][j] += area * dot(grad_i, grad_j)` triángulo por triángulo. Es la formulación débil discretizada, y para elementos lineales esa matriz coincide con el laplaciano cotangente de VII.13.'
         aplicaciones:
           - campo: ing
             texto: análisis estructural
@@ -169,11 +191,11 @@ partes:
   - letra: C
     titulo: Medios continuos
     capitulos:
-      - id: XII.8
+      - id: XII.9
         titulo: Mecánica de medios continuos
         paginas: 48
         requiere:
-          - XII.7
+          - XII.8
           - II.10
         tipo: complementario
         contenidos:
@@ -190,19 +212,19 @@ partes:
           - campo: bio-eco
             texto: biomecánica de tejidos
         lecturas: Gonzalez y Stuart, *A First Course in Continuum Mechanics*; Bonet y Wood, *Nonlinear Continuum Mechanics for Finite Element Analysis*; Sifakis y Barbič, «FEM Simulation of 3D Deformable Solids».
-      - id: XII.9
+      - id: XII.10
         titulo: Mecánica de fluidos
         paginas: 48
         requiere:
           - XII.6
-          - IV.11
+          - IV.12
         tipo: nucleo
         contenidos:
           - Derivada material y leyes de conservación de la masa y del momento.
           - Ecuaciones de Euler y de Navier–Stokes incompresibles; vorticidad.
           - Descomposición de Helmholtz–Hodge y proyección de la presión.
           - Advección semilagrangiana y división de operadores.
-        puente: 'Entrada: `velocity -= gradient(pressure)` tras resolver una ecuación de Poisson. Es la proyección de Helmholtz–Hodge (IV.11): quita al campo de velocidades su parte con divergencia, que es lo que hace incompresible al humo de *Stable Fluids*.'
+        puente: 'Entrada: `velocity -= gradient(pressure)` tras resolver una ecuación de Poisson. Es la proyección de Helmholtz–Hodge (IV.12): quita al campo de velocidades su parte con divergencia, que es lo que hace incompresible al humo de *Stable Fluids*.'
         aplicaciones:
           - campo: 3d
             texto: humo y fuego con *Stable Fluids*
@@ -211,11 +233,11 @@ partes:
           - campo: fisica
             texto: meteorología
         lecturas: Chorin y Marsden, *A Mathematical Introduction to Fluid Mechanics*; Bridson, *Fluid Simulation for Computer Graphics*; Stam, «Stable Fluids».
-      - id: XII.10
+      - id: XII.11
         titulo: Ondas en el agua, aguas someras y métodos de partículas
         paginas: 44
         requiere:
-          - XII.9
+          - XII.10
           - XI.9
         tipo: complementario
         contenidos:

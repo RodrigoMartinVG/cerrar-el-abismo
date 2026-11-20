@@ -1,11 +1,12 @@
 # Tomo VI — Topología
-# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+# Fuente del índice (decisión 0002): la especificación se escribe desde aquí.
 id: VI
 titulo: Topología
 requiere:
   - II
   - III
 interfaces:
+  - IV.6
   - V.2
   - V.4
 presentacion: 'La topología general, de los espacios topológicos a la metrización y el teorema de Baire, y la topología algebraica básica: el grupo fundamental, los recubrimientos y la homología simplicial. Da el lenguaje de la convergencia que usa el análisis funcional y los invariantes que explican las mallas, los mundos periódicos y la forma de los datos. VI.1 a VI.5 solo usan los Tomos I, II y III.'
@@ -17,7 +18,7 @@ partes:
         titulo: Espacios topológicos y continuidad
         paginas: 44
         requiere:
-          - III.11
+          - III.12
           - I.2
         tipo: nucleo
         contenidos:
@@ -103,7 +104,7 @@ partes:
         paginas: 44
         requiere:
           - VI.2
-          - I.8
+          - I.9
         tipo: nucleo
         contenidos:
           - Homotopía de aplicaciones y de caminos; espacios contráctiles; equivalencia homotópica.
@@ -206,6 +207,29 @@ partes:
             texto: puntos de calma en un campo de viento sobre la superficie terrestre
         lecturas: Milnor, *Topology from the Differentiable Viewpoint*; Hatcher, *Algebraic Topology*.
       - id: VI.10
+        titulo: Teoría de juegos
+        paginas: 36
+        requiere:
+          - VI.9
+          - IV.6
+        tipo: complementario
+        contenidos:
+          - Juegos en forma normal; estrategias puras y mixtas; dominancia.
+          - Juegos de suma cero y teorema minimax de von Neumann, por dualidad lineal.
+          - 'Equilibrio de Nash: existencia por el teorema de Kakutani y cálculo en juegos de dos jugadores.'
+          - Juegos en forma extensiva e inducción hacia atrás; dinámica del replicador.
+        puente: 'Entrada: `minimax(nodo, profundidad)` en la inteligencia artificial de un juego de tablero. Recorre el árbol del juego alternando máximos y mínimos; el teorema minimax de von Neumann dice que, con estrategias mixtas, el valor de un juego de suma cero no depende de quién elige primero.'
+        aplicaciones:
+          - campo: 3d
+            texto: 'inteligencia artificial de juegos: búsqueda minimax y poda alfa-beta'
+          - campo: bio-eco
+            texto: subastas, mercados y teoría evolutiva de juegos
+          - campo: datos
+            texto: entrenamiento adversario como juego de dos jugadores
+          - campo: ing
+            texto: asignación de recursos y enrutamiento en redes
+        lecturas: Osborne y Rubinstein, *A Course in Game Theory*; Maschler, Solan y Zamir, *Game Theory*.
+      - id: VI.11
         titulo: Homología persistente y análisis topológico de datos
         paginas: 40
         requiere:

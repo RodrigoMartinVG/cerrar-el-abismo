@@ -1,5 +1,5 @@
 # Tomo II — Álgebra lineal y el espacio de la práctica
-# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+# Fuente del índice (decisión 0002): la especificación se escribe desde aquí.
 id: II
 titulo: Álgebra lineal y el espacio de la práctica
 requiere:
@@ -14,7 +14,7 @@ partes:
         titulo: Sistemas lineales y matrices
         paginas: 40
         requiere:
-          - I.9
+          - I.10
         tipo: nucleo
         contenidos:
           - Sistemas de ecuaciones lineales sobre un cuerpo; eliminación de Gauss y forma escalonada reducida.
@@ -75,7 +75,7 @@ partes:
         paginas: 36
         requiere:
           - II.3
-          - I.8
+          - I.9
         tipo: nucleo
         contenidos:
           - Formas multilineales alternadas; existencia y unicidad del determinante.
@@ -116,14 +116,14 @@ partes:
         paginas: 40
         requiere:
           - II.4
-          - I.9
+          - I.10
         tipo: nucleo
         contenidos:
           - Autovalores, autovectores y polinomio característico.
           - Diagonalización y subespacios invariantes.
           - Teorema de Cayley–Hamilton y polinomio minimal.
           - 'Autovalores de matrices 3×3: solución trigonométrica de la cúbica.'
-        puente: 'Entrada: `axis = eigenvector(R, 1)`. El eje de una rotación es el autovector de autovalor 1; el teorema de rotación de Euler (aviso de II.15) es un enunciado sobre autovalores.'
+        puente: 'Entrada: `axis = eigenvector(R, 1)`. El eje de una rotación es el autovector de autovalor 1; el teorema de rotación de Euler (aviso de II.16) es un enunciado sobre autovalores.'
         aplicaciones:
           - campo: fisica
             texto: modos normales de vibración
@@ -160,7 +160,7 @@ partes:
         paginas: 44
         requiere:
           - II.5
-          - I.10
+          - I.11
         tipo: nucleo
         contenidos:
           - Producto interno, norma y desigualdad de Cauchy–Schwarz; ángulos.
@@ -249,7 +249,7 @@ partes:
         paginas: 44
         requiere:
           - II.10
-          - I.11
+          - I.12
         tipo: nucleo
         contenidos:
           - Normas matriciales y número de condición; error hacia adelante y hacia atrás.
@@ -267,10 +267,33 @@ partes:
           - campo: fisica
             texto: discretización de problemas de potencial
         lecturas: Trefethen y Bau, *Numerical Linear Algebra*; Golub y Van Loan, *Matrix Computations*; Saad, *Iterative Methods for Sparse Linear Systems*.
+      - id: II.13
+        titulo: Teoría espectral de grafos
+        paginas: 40
+        requiere:
+          - II.9
+          - I.8
+        tipo: complementario
+        contenidos:
+          - Matrices de adyacencia y laplaciana de un grafo; el número de componentes como dimensión del núcleo del laplaciano.
+          - Valor de Fiedler, conductancia y desigualdad de Cheeger (enunciado y uso).
+          - Agrupamiento espectral e inmersiones por autovectores; paseos aleatorios y matriz de transición.
+          - Teorema de la matriz-árbol de Kirchhoff; laplacianos ponderados como discretización del laplaciano continuo.
+        puente: 'Entrada: `L = D - A` seguido de `valores, vectores = eigh(L)` en un algoritmo de agrupamiento. El autovector del segundo autovalor más chico del laplaciano, el vector de Fiedler, parte el grafo en dos cortando pocas aristas; la desigualdad de Cheeger dice cuánto se puede confiar en ese corte.'
+        aplicaciones:
+          - campo: datos
+            texto: agrupamiento espectral y redes neuronales sobre grafos
+          - campo: 3d
+            texto: 'procesamiento de mallas con el laplaciano: suavizado, parametrización y descomposición espectral'
+          - campo: fisica
+            texto: modos de vibración de redes de masas y resortes
+          - campo: ing
+            texto: robustez de redes eléctricas y de comunicaciones
+        lecturas: Chung, *Spectral Graph Theory*; Spielman, *Spectral and Algebraic Graph Theory*.
   - letra: C
     titulo: Del álgebra lineal al espacio de la práctica
     capitulos:
-      - id: II.13
+      - id: II.14
         titulo: Espacios afines y coordenadas homogéneas
         paginas: 40
         requiere:
@@ -290,12 +313,12 @@ partes:
           - campo: fisica
             texto: centro de masa como combinación afín
         lecturas: Gallier, *Geometric Methods and Applications*; Lengyel, *Foundations of Game Engine Development*, vol. 1.
-      - id: II.14
+      - id: II.15
         titulo: Convenciones como elección de isomorfismo
         paginas: 28
         requiere:
           - II.5
-          - II.13
+          - II.14
         tipo: nucleo
         contenidos:
           - 'Vectores fila y columna: la misma aplicación representada por A o por Aᵀ.'
@@ -311,13 +334,13 @@ partes:
           - campo: fisica
             texto: convenciones de signo y de orientación en electromagnetismo
         lecturas: Lengyel, *Foundations of Game Engine Development*, vol. 1; Dunn y Parberry, *3D Math Primer for Graphics and Game Development*.
-      - id: II.15
+      - id: II.16
         titulo: 'Rotaciones: SO(3) y cuaterniones'
         paginas: 48
         requiere:
           - II.9
-          - II.14
-          - I.8
+          - II.15
+          - I.9
         tipo: nucleo
         contenidos:
           - El grupo SO(3) y el teorema de rotación de Euler; eje y ángulo; fórmula de Rodrigues.
@@ -333,18 +356,18 @@ partes:
           - campo: fisica
             texto: matrices de Pauli, SU(2) y espín (aviso de XIII.2)
         lecturas: Altmann, *Rotations, Quaternions, and Double Groups*; Hanson, *Visualizing Quaternions*; Shoemake, «Animating Rotation with Quaternion Curves».
-      - id: II.16
+      - id: II.17
         titulo: Álgebra lineal en precisión finita
         paginas: 32
         requiere:
           - II.12
-          - II.15
+          - II.16
         tipo: nucleo
         contenidos:
           - Deriva de las matrices ortogonales al componerlas en coma flotante; medida de la pérdida de ortogonalidad.
           - 'Re-ortonormalización: Gram–Schmidt frente a descomposición polar; renormalización de cuaterniones.'
           - Errores en cadenas de transformaciones; la transpuesta en lugar de la inversa para rotaciones.
-          - Predicados de orientación por determinantes y por qué fallan en coma flotante (VII.9 lo resuelve).
+          - Predicados de orientación por determinantes y por qué fallan en coma flotante (VII.10 lo resuelve).
         puente: 'Entrada: `if (frame % 100 == 0) orthonormalize(cameraBasis);`. Tras miles de productos en float32, la matriz deja de ser ortogonal; re-ortonormalizar es proyectar de nuevo sobre SO(3), y la descomposición polar da la rotación más cercana.'
         aplicaciones:
           - campo: 3d

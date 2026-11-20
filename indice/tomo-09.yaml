@@ -1,5 +1,5 @@
 # Tomo IX — Medida, Fourier y variable compleja
-# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+# Fuente del índice (decisión 0002): la especificación se escribe desde aquí.
 id: IX
 titulo: Medida, Fourier y variable compleja
 requiere:
@@ -15,7 +15,7 @@ partes:
         titulo: Medida e integral de Lebesgue
         paginas: 52
         requiere:
-          - IV.9
+          - IV.10
         tipo: nucleo
         contenidos:
           - σ-álgebras, medida exterior y medida de Lebesgue; existencia de conjuntos no medibles.
@@ -186,7 +186,7 @@ partes:
         titulo: Funciones holomorfas
         paginas: 40
         requiere:
-          - IV.10
+          - IV.11
           - III.8
         tipo: nucleo
         contenidos:
@@ -254,7 +254,7 @@ partes:
           - Teorema de la aplicación de Riemann (enunciado y discusión).
           - Funciones armónicas, principio del máximo y problema de Dirichlet en el disco.
           - Transformación de Joukowski y transformación de Schwarz–Christoffel (introducción).
-        puente: 'Entrada: una parametrización UV que conserva los ángulos de la textura. Conservar ángulos es ser conforme; en dimensión 2 eso equivale a ser holomorfa, y por eso las parametrizaciones conformes de mallas (VII.12) se escriben con números complejos.'
+        puente: 'Entrada: una parametrización UV que conserva los ángulos de la textura. Conservar ángulos es ser conforme; en dimensión 2 eso equivale a ser holomorfa, y por eso las parametrizaciones conformes de mallas (VII.13) se escriben con números complejos.'
         aplicaciones:
           - campo: fisica
             texto: perfil alar de Joukowski y flujo potencial
@@ -292,8 +292,8 @@ partes:
         paginas: 44
         requiere:
           - IX.4
-          - IV.11
-          - II.15
+          - IV.12
+          - II.16
         tipo: nucleo
         contenidos:
           - Laplaciano en la esfera; polinomios armónicos homogéneos.

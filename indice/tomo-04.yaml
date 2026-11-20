@@ -1,5 +1,5 @@
 # Tomo IV — Análisis en varias variables y optimización
-# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+# Fuente del índice (decisión 0002): la especificación se escribe desde aquí.
 id: IV
 titulo: Análisis en varias variables y optimización
 requiere:
@@ -15,7 +15,7 @@ partes:
         titulo: Topología de ℝⁿ y continuidad
         paginas: 28
         requiere:
-          - III.11
+          - III.12
           - II.8
         tipo: nucleo
         contenidos:
@@ -109,7 +109,7 @@ partes:
           - Teoremas de separación y de hiperplano soporte.
           - Sumas de Minkowski y funciones de soporte.
           - Funciones convexas, desigualdad de Jensen y caracterización por la hessiana.
-        puente: 'Entrada: `support(shape, dir)` en un detector de colisiones. Una forma convexa queda determinada por su función de soporte; GJK (aviso de VII.10) trabaja solo con ella, sobre la diferencia de Minkowski.'
+        puente: 'Entrada: `support(shape, dir)` en un detector de colisiones. Una forma convexa queda determinada por su función de soporte; GJK (aviso de VII.11) trabaja solo con ella, sobre la diferencia de Minkowski.'
         aplicaciones:
           - campo: 3d
             texto: envolventes convexas para colisiones
@@ -180,10 +180,33 @@ partes:
           - campo: ing
             texto: ajuste de modelos a mediciones
         lecturas: Nocedal y Wright, *Numerical Optimization*; Griewank y Walther, *Evaluating Derivatives*; Shewchuk, «An Introduction to the Conjugate Gradient Method Without the Agonizing Pain».
+      - id: IV.9
+        titulo: Programación dinámica
+        paginas: 36
+        requiere:
+          - I.8
+          - III.12
+        tipo: complementario
+        contenidos:
+          - Principio de optimalidad de Bellman; subproblemas que se solapan y memoización.
+          - Caminos mínimos con pesos negativos (Bellman–Ford y Floyd–Warshall); alineación de secuencias.
+          - Procesos de decisión de Markov finitos; ecuación de Bellman e iteración de valores como contracción, por el punto fijo de Banach.
+          - Algoritmo de Viterbi en los modelos ocultos de Markov.
+        puente: 'Entrada: `V[s] = max(r[s][a] + γ * sum(P[s][a][t] * V[t] for t in estados) for a in acciones)`, la actualización de un agente de aprendizaje por refuerzo. Es la ecuación de Bellman, y como ese operador es una contracción de factor γ, el teorema del punto fijo de Banach garantiza que la iteración converge al valor óptimo.'
+        aplicaciones:
+          - campo: datos
+            texto: aprendizaje por refuerzo e iteración de valores
+          - campo: bio-eco
+            texto: alineación de secuencias de ADN y de proteínas
+          - campo: senales
+            texto: decodificación de Viterbi en comunicaciones y en reconocimiento de voz
+          - campo: 3d
+            texto: planificación de caminos y comportamiento de agentes en videojuegos
+        lecturas: 'Bertsekas, *Dynamic Programming and Optimal Control*; Sutton y Barto, *Reinforcement Learning: An Introduction*.'
   - letra: C
     titulo: Cálculo integral
     capitulos:
-      - id: IV.9
+      - id: IV.10
         titulo: Integral múltiple
         paginas: 48
         requiere:
@@ -204,11 +227,11 @@ partes:
           - campo: datos
             texto: densidades conjuntas (aviso de XI.2)
         lecturas: Munkres, *Analysis on Manifolds*; Marsden y Tromba, *Vector Calculus*.
-      - id: IV.10
+      - id: IV.11
         titulo: Integrales de línea y de superficie
         paginas: 40
         requiere:
-          - IV.9
+          - IV.10
         tipo: nucleo
         contenidos:
           - Curvas parametrizadas, longitud de arco e integrales de línea.
@@ -224,11 +247,11 @@ partes:
           - campo: ing
             texto: caudal a través de una sección
         lecturas: Marsden y Tromba, *Vector Calculus*; Hubbard y Hubbard, *Vector Calculus, Linear Algebra, and Differential Forms*.
-      - id: IV.11
+      - id: IV.12
         titulo: Teoremas integrales del cálculo vectorial
         paginas: 44
         requiere:
-          - IV.10
+          - IV.11
         tipo: nucleo
         contenidos:
           - Divergencia, rotacional y laplaciano.
@@ -244,11 +267,11 @@ partes:
           - campo: ing
             texto: conservación de la masa en fluidos
         lecturas: Marsden y Tromba, *Vector Calculus*; Mirtich, «Fast and Accurate Computation of Polyhedral Mass Properties».
-      - id: IV.12
+      - id: IV.13
         titulo: Coordenadas curvilíneas y cálculo tensorial en ℝⁿ
         paginas: 40
         requiere:
-          - IV.11
+          - IV.12
           - II.11
         tipo: nucleo
         contenidos:
@@ -265,11 +288,11 @@ partes:
           - campo: 3d
             texto: simulación sobre la superficie de un planeta en coordenadas esféricas
         lecturas: Marsden y Tromba, *Vector Calculus*; Arfken, Weber y Harris, *Mathematical Methods for Physicists*.
-      - id: IV.13
+      - id: IV.14
         titulo: Formas diferenciales y teorema de Stokes general
         paginas: 44
         requiere:
-          - IV.11
+          - IV.12
           - II.4
         tipo: complementario
         contenidos:

@@ -1,5 +1,5 @@
 # Tomo III — Análisis en una variable
-# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+# Fuente del índice (decisión 0002): la especificación se escribe desde aquí.
 id: III
 titulo: Análisis en una variable
 requiere:
@@ -14,7 +14,7 @@ partes:
         titulo: Sucesiones reales y completitud
         paginas: 44
         requiere:
-          - I.10
+          - I.11
         tipo: nucleo
         contenidos:
           - Límite de una sucesión; álgebra de límites; sucesiones monótonas.
@@ -104,7 +104,7 @@ partes:
           - Propiedades de la integral; teorema fundamental del cálculo.
           - Cambio de variable, integración por partes e integrales impropias.
           - Longitud de arco, áreas y valores medios.
-        puente: 'Entrada: `position += velocity * dt` acumulado en un bucle. Es una suma de Riemann: el teorema fundamental dice hacia qué converge, y VIII.10 mide el error cometido.'
+        puente: 'Entrada: `position += velocity * dt` acumulado en un bucle. Es una suma de Riemann: el teorema fundamental dice hacia qué converge, y VIII.12 mide el error cometido.'
         aplicaciones:
           - campo: fisica
             texto: trabajo, energía y distancia recorrida
@@ -203,7 +203,7 @@ partes:
         paginas: 44
         requiere:
           - III.9
-          - I.11
+          - I.12
         tipo: nucleo
         contenidos:
           - Bisección, Newton, secante y punto fijo; orden de convergencia y criterios de parada.
@@ -220,6 +220,30 @@ partes:
             texto: tasa interna de retorno
         lecturas: Burden, Faires y Burden, *Análisis numérico*; Süli y Mayers, *An Introduction to Numerical Analysis*.
       - id: III.11
+        titulo: Análisis de algoritmos
+        paginas: 36
+        requiere:
+          - III.7
+          - III.5
+          - I.6
+        tipo: complementario
+        contenidos:
+          - Modelos de costo; notaciones O, Ω y Θ; caso peor, caso promedio y costo amortizado.
+          - Recurrencias de divide y vencerás, árboles de recursión y teorema maestro.
+          - 'Sumas e integrales: cotas por comparación con integrales y la aproximación de Stirling.'
+          - 'Análisis amortizado con potenciales; cotas inferiores por árboles de decisión: ordenar requiere Ω(n log n) comparaciones.'
+        puente: 'Entrada: `merge_sort(a)`, que parte el arreglo en dos, ordena cada mitad y mezcla los resultados. Su costo cumple T(n) = 2T(n/2) + n, y el teorema maestro da T(n) = Θ(n log n); un árbol de decisión muestra que ningún algoritmo que solo compare puede hacerlo mejor.'
+        aplicaciones:
+          - campo: cripto
+            texto: costo de los algoritmos y tamaño de las claves
+          - campo: 3d
+            texto: 'estructuras espaciales frente a fuerza bruta en la detección de colisiones: de O(n²) a O(n log n)'
+          - campo: datos
+            texto: escalabilidad de los algoritmos sobre grandes volúmenes de datos
+          - campo: fisica
+            texto: la aproximación de Stirling en la mecánica estadística
+        lecturas: Cormen, Leiserson, Rivest y Stein, *Introduction to Algorithms*; Graham, Knuth y Patashnik, *Concrete Mathematics*.
+      - id: III.12
         titulo: Espacios métricos
         paginas: 48
         requiere:

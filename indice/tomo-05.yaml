@@ -1,5 +1,5 @@
 # Tomo V — Álgebra: grupos, anillos, módulos y cuerpos
-# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+# Fuente del índice (decisión 0002): la especificación se escribe desde aquí.
 id: V
 titulo: 'Álgebra: grupos, anillos, módulos y cuerpos'
 requiere:
@@ -14,7 +14,7 @@ partes:
         titulo: 'Grupos: teoremas de isomorfismo, acciones y teoremas de Sylow'
         paginas: 48
         requiere:
-          - I.8
+          - I.9
         tipo: nucleo
         contenidos:
           - Teoremas de isomorfismo y de correspondencia; productos directos y semidirectos.
@@ -57,7 +57,7 @@ partes:
         titulo: 'Anillos: ideales, factorización única y dominios de ideales principales'
         paginas: 44
         requiere:
-          - I.9
+          - I.10
           - I.4
         tipo: nucleo
         contenidos:
@@ -163,7 +163,7 @@ partes:
         paginas: 44
         requiere:
           - V.5
-          - I.9
+          - I.10
         tipo: complementario
         contenidos:
           - Curvas cúbicas en el plano proyectivo; forma de Weierstrass y discriminante.
