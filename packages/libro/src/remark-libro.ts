@@ -1,8 +1,9 @@
-import type { Paragraph, PhrasingContent, Root, RootContent, Text } from 'mdast';
+import type { Blockquote, Paragraph, PhrasingContent, Root, RootContent, Text } from 'mdast';
 import type { ContainerDirective, LeafDirective, TextDirective } from 'mdast-util-directive';
 import { SKIP, visit } from 'unist-util-visit';
 import type { VFile } from 'vfile';
 import { DIRECTIVAS_DE_STARLIGHT, ENTORNOS } from './entornos.ts';
+import { revisarSupone, type Supuesto } from './supone.ts';
 
 /**
  * LA CAPA DE LIBRO (decisión 0001), como plugin de remark. Sobre el árbol de un capítulo:
@@ -10,7 +11,9 @@ import { DIRECTIVAS_DE_STARLIGHT, ENTORNOS } from './entornos.ts';
  * - convierte los entornos (`:::teorema[Título]{#id}`) en bloques numerados «Teorema II.5.3»;
  * - convierte `::figura{pieza="…" alt="…"}` en una figura interactiva numerada, con su texto alternativo;
  * - convierte los bloques ` ```python celda ` en celdas de Python que se ejecutan en el navegador;
- * - resuelve `:ref[id]` (un entorno o figura del capítulo) y `[[II.3]]` (un capítulo de la obra).
+ * - resuelve `:ref[id]` (un entorno o figura del capítulo) y `[[II.3]]` (un capítulo de la obra);
+ * - si el frontmatter declara `supone` (supone.ts), pone después del primer párrafo del Desarrollo el recuadro «Lo que
+ *   este capítulo da por conocido», con un enlace al capítulo que trata cada noción con rigor.
  *
  * Todo lo que no reconoce hace fallar la construcción, con el lugar exacto: el conjunto de directivas es cerrado.
  */
@@ -38,11 +41,46 @@ const REFERENCIA_A_CAPITULO = /\[\[([^\][]+)\]\]/g;
 
 const texto = (value: string): Text => ({ type: 'text', value });
 
-/** El texto que precede a un capítulo en su frontmatter de Astro: `capitulo: II.5`. */
+/** El frontmatter de un capítulo, tal como Astro lo deja en el archivo. */
+function frontmatterDe(file: VFile): Record<string, unknown> {
+  return (file.data as { astro?: { frontmatter?: Record<string, unknown> } }).astro?.frontmatter ?? {};
+}
+
+/** El identificador del capítulo en su frontmatter: `capitulo: II.5`. */
 function capituloDe(file: VFile): string | undefined {
-  const astro = (file.data as { astro?: { frontmatter?: Record<string, unknown> } }).astro;
-  const valor = astro?.frontmatter?.['capitulo'];
+  const valor = frontmatterDe(file)['capitulo'];
   return typeof valor === 'string' ? valor : undefined;
+}
+
+/** El recuadro «Lo que este capítulo da por conocido». Los `[[I.11]]` se resuelven después, con las demás referencias. */
+function recuadroSupone(supone: readonly Supuesto[]): Blockquote {
+  const parrafo = (children: PhrasingContent[], className?: string): Paragraph => ({
+    type: 'paragraph',
+    ...(className ? { data: { hProperties: { className: [className] } } } : {}),
+    children,
+  });
+  return {
+    type: 'blockquote',
+    data: { hName: 'aside', hProperties: { className: ['supone'], ariaLabel: 'Lo que este capítulo da por conocido' } },
+    children: [
+      parrafo([{ type: 'strong', children: [texto('Lo que este capítulo da por conocido.')] }], 'supone-titulo'),
+      parrafo([
+        texto(
+          'Estas nociones se usan aquí como se conocen de la escuela secundaria o del lenguaje de todos los días; cada una se trata con todo rigor en el capítulo que se indica.',
+        ),
+      ]),
+      {
+        type: 'list',
+        ordered: false,
+        spread: false,
+        children: supone.map((s) => ({
+          type: 'listItem',
+          spread: false,
+          children: [parrafo([texto(`${s.nocion}: [[${s.en}]].`)])],
+        })),
+      },
+    ],
+  };
 }
 
 /** Saca el párrafo de etiqueta (`[Título]`) de una directiva de bloque, si lo tiene. */
@@ -160,6 +198,21 @@ export function remarkLibro(opciones: OpcionesLibro) {
         } as unknown as PhrasingContent,
       ];
       nodo.data = { hName: 'figure', hProperties: { className: ['figura'], id: nodo.attributes?.id ?? undefined } };
+    }
+
+    // Lo que el capítulo da por conocido: el recuadro va después del primer párrafo del Desarrollo, que lo presenta.
+    const supone = frontmatterDe(file)['supone'];
+    if (supone !== undefined) {
+      const problemas = revisarSupone(supone, capitulo ?? '', [...opciones.capitulos.keys()]);
+      if (problemas.length > 0) file.fail(`En «supone»: ${problemas.join(' ')}`);
+      const desarrollo = arbol.children.findIndex(
+        (n) =>
+          n.type === 'heading' && n.depth === 2 && n.children.map((h) => ('value' in h ? h.value : '')).join('') === 'Desarrollo',
+      );
+      if (desarrollo === -1) file.fail('El capítulo declara «supone» pero no tiene sección «## Desarrollo».');
+      const primero = arbol.children[desarrollo + 1];
+      const lugar = primero?.type === 'paragraph' ? desarrollo + 2 : desarrollo + 1;
+      arbol.children.splice(lugar, 0, recuadroSupone(supone as Supuesto[]));
     }
 
     // Segunda pasada: referencias a entornos y figuras (`:ref[id]`) y a capítulos (`[[II.3]]`).

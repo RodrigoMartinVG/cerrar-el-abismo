@@ -24,6 +24,8 @@ comprobaciones en verde.
   - Un bloque ` ```python celda ` es una celda editable, con «Ejecutar» y «Restaurar».
   - `:ref[etiqueta]` enlaza un entorno o figura del capítulo con su nombre numerado, y `[[II.3]]` enlaza un capítulo:
     el escrito o, mientras no lo esté, su entrada en el índice.
+  - El campo `supone` del frontmatter lista lo que el capítulo usa antes de que la obra lo construya; la capa de libro
+    lo muestra en un recuadro al comienzo del Desarrollo y comprueba que cada noción se trate en un capítulo posterior.
   - Una directiva desconocida, una referencia rota, una pieza inexistente o una figura sin texto alternativo hacen
     fallar la construcción, con el lugar exacto. Los recuadros de Starlight (`:::note` y los demás) se dejan pasar.
 - **Python en el navegador con Pyodide**, en un Web Worker que se carga la primera vez que el lector ejecuta una celda.

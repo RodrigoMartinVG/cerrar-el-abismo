@@ -324,6 +324,7 @@ indecidible
 insesgadez
 insesgado
 integrabilidad
+intuicionista
 Invariancia
 invariancia
 invertibilidad
@@ -415,6 +416,7 @@ Mayers
 Mazur
 MCMC
 memoización
+metamatemática
 metrización
 microestados
 microfacetas

@@ -38,6 +38,39 @@ Cada capítulo tiene dos capas, y ninguna reemplaza a la otra.
 Una explicación nunca ocupa el lugar de una demostración, y ninguna demostración queda sin explicar. Un capítulo no es
 una lista de definiciones y teoremas: entre dos entornos siempre hay prosa que los une.
 
+### Las licencias, declaradas
+
+La obra se escribe en orden, pero no puede esperar a tener todo construido para dar ejemplos: I.1 habla de √2 antes de
+que existan los números reales, y de demostraciones antes de que la lógica las estudie. Esas libertades son legítimas,
+y los buenos libros se las toman; lo que no se permite es tomarlas en silencio. El lector tiene que saber siempre en
+qué nivel está cada afirmación. Hay tres clases de licencias, y cada una se declara de una manera:
+
+- **Uso anticipado.** Una noción que la obra construye más adelante (los enteros, los conjuntos, los reales, una
+  definición por recursión) se usa como se conoce de la escuela secundaria. Se dice en el lugar, en una frase de
+  prosa, y se nombra el capítulo que la trata con rigor: «Usamos aquí los números reales como se conocen de la
+  escuela; se construyen en [[I.11]]». Además, el capítulo lo lista en su campo `supone` (guía de capítulos), y la
+  capa de libro lo muestra en un recuadro al comienzo del Desarrollo.
+- **Metamatemática.** Una afirmación *sobre* la matemática y no *dentro* de ella: qué es una proposición, qué es una
+  demostración, que una comprobación exhaustiva hecha por una computadora demuestra algo. Se dice que se habla en el
+  metalenguaje, el lenguaje de todos los días con el que se habla de la matemática, y, cuando lo hay, se nombra el
+  capítulo que convierte esa noción en objeto de estudio (casi siempre [[I.14]]). La observación «Dos niveles de
+  lenguaje» de I.1 explica la distinción una vez, y los avisos posteriores pueden remitir a ella.
+- **Ejemplo prestado por su forma.** Algo de un capítulo posterior que se usa solo por su estructura lógica, como la
+  definición de continuidad para practicar la negación de cuantificadores. Se dice que no hace falta entender su
+  contenido para seguir el argumento.
+
+Dos reglas acompañan a las tres:
+
+- **Una postura se declara como postura.** Cuando una elección podría haberse hecho de otra manera (tomar la
+  inducción como axioma, que en la teoría de conjuntos es un teorema), el texto lo dice.
+- **Nada riguroso se apoya en una licencia.** Un enunciado y su demostración pueden usar nociones informales para
+  motivar o ilustrar, pero lo que la demostración necesita de verdad tiene que estar demostrado, o anunciado con el
+  capítulo donde se demuestra. Si un argumento solo convence (el dibujo de los impares, un intercambio de sumas «porque
+  se suman los mismos términos»), se dice que convence y no se lo presenta como demostración.
+
+La forma es siempre una frase de prosa, en el lugar, y no un recuadro: llenar el texto de avisos lo vuelve ilegible.
+El único recuadro es el del campo `supone`, uno por capítulo.
+
 ## 2. Abrir bien
 
 - **El capítulo** abre con la Entrada, un fragmento real que el lector todavía no puede explicar, y la Motivación,
@@ -142,7 +175,8 @@ Automáticamente, en cada capítulo (`packages/libro/src/estilo.ts`, desde las p
 - que no aparezcan las palabras prohibidas de la sección 7;
 - que ningún párrafo empiece con una fórmula;
 - que toda sección abra con un párrafo de texto;
-- que no haya imperativos dirigidos al lector («Calcula», «Demuestre», «Probá»).
+- que no haya imperativos dirigidos al lector («Calcula», «Demuestre», «Probá»);
+- que cada noción del campo `supone` se trate con rigor en un capítulo posterior (`packages/libro/src/supone.ts`).
 
 En la lectura de estilo, a mano, con esta lista:
 
@@ -153,3 +187,5 @@ En la lectura de estilo, a mano, con esta lista:
 - ¿Cada celda y cada figura están comentadas antes y después?
 - ¿La Salida cierra con «Lo esencial»?
 - ¿Se puede leer el capítulo saltando las demostraciones y entender qué se probó y por qué importa?
+- ¿Cada noción usada antes de construirse está declarada en el lugar y en `supone`? ¿Cada afirmación metamatemática
+  o postura está dicha como tal (sección 1)?

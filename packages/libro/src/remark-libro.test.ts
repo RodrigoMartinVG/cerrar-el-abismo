@@ -16,9 +16,9 @@ const opciones: OpcionesLibro = {
   piezas: ['normal-covector'],
 };
 
-/** Procesa un capítulo como lo hace el sitio, con `capitulo: II.5` en el frontmatter. */
-function html(md: string, capitulo: string | undefined = 'II.5'): string {
-  const file = new VFile({ value: md, data: { astro: { frontmatter: capitulo ? { capitulo } : {} } } });
+/** Procesa un capítulo como lo hace el sitio, con `capitulo: II.5` (u otro frontmatter) en el frontmatter. */
+function html(md: string, capitulo: string | undefined = 'II.5', otros: Record<string, unknown> = {}): string {
+  const file = new VFile({ value: md, data: { astro: { frontmatter: { ...(capitulo ? { capitulo } : {}), ...otros } } } });
   return String(
     unified()
       .use(remarkParse)
@@ -90,6 +90,24 @@ describe('remarkLibro', () => {
     const salida = html('```python celda\nprint(1 + 1)\n```\n\n```python\nx = 1\n```');
     expect(salida).toContain('<celda-python class="celda">print(1 + 1)</celda-python>');
     expect(salida).toContain('<pre><code class="language-python">x = 1');
+  });
+
+  it('pone lo que el capítulo da por conocido después del primer párrafo del Desarrollo', () => {
+    const md = '## Desarrollo\n\nEl capítulo usa algo que viene después.\n\nSigue el texto.';
+    const salida = html(md, 'II.3', { supone: [{ nocion: 'el espacio dual', en: 'II.5' }] });
+    expect(salida).toMatch(/usa algo que viene después\.<\/p>\s*<aside class="supone"/);
+    expect(salida).toContain('Lo que este capítulo da por conocido.');
+    expect(salida).toContain('<li>el espacio dual: <a href="/capitulos/ii-5/" title="Espacio dual y covectores">II.5</a>.</li>');
+    expect(salida.indexOf('</aside>')).toBeLessThan(salida.indexOf('Sigue el texto.'));
+  });
+
+  it.each([
+    [[{ nocion: 'transformaciones', en: 'II.3' }], /no viene después de II\.5.*requiere/],
+    [[{ nocion: 'algo', en: 'II.99' }], /no es un capítulo de la obra/],
+    [[{ en: 'II.3' }], /no tiene «nocion»/],
+    ['II.3', /tiene que ser una lista/],
+  ])('rechaza un «supone» mal hecho: %j', (supone, error) => {
+    expect(() => html('## Desarrollo\n\nTexto.', 'II.5', { supone })).toThrow(error);
   });
 
   it('deja pasar los recuadros de Starlight', () => {

@@ -20,6 +20,20 @@ estado: borrador
 
 - `title` es el identificador seguido del título exacto del índice; una prueba lo comprueba.
 - `estado` es `borrador`, `revision` o `terminado` (sección 16.2 de la especificación).
+- `supone` (opcional) lista lo que el capítulo usa antes de que la obra lo construya, con el capítulo que lo trata con
+  rigor. Se escribe en el orden en que el capítulo lo usa:
+
+  ```yaml
+  supone:
+    - nocion: los números reales, la raíz cuadrada y el valor absoluto
+      en: I.11
+  ```
+
+  La capa de libro lo muestra en el recuadro «Lo que este capítulo da por conocido», después del primer párrafo del
+  Desarrollo, que lo presenta. La noción va en texto, sin fórmulas (los símbolos Unicode, como ℝ, sirven). Si `en` no
+  es un capítulo posterior en el orden de lectura, la construcción y las pruebas fallan: una noción que se trata antes
+  no es un uso anticipado sino un requisito, y va en `requiere`, en el índice. Además de figurar en la lista, la noción se
+  declara en el texto, en el lugar donde se usa (guía de estilo, sección 1).
 - Los requisitos, el tipo y las aplicaciones no se repiten: vienen del índice (`indice/tomo-NN.yaml`).
 
 ## Las secciones

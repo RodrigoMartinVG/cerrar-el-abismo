@@ -132,6 +132,35 @@
   font-variant-numeric: tabular-nums;
 }
 
+/*
+ * Lo que el capítulo da por conocido (packages/libro/src/supone.ts): una nota más chica que el texto, con borde
+ * punteado, porque lo que lista se usa de manera informal y la obra lo construye después.
+ */
+.sl-markdown-content aside.supone {
+  padding: 0.7rem 1rem 0.8rem;
+  border: 1px dashed var(--sl-color-gray-4);
+  border-radius: 0.5rem;
+  font-size: var(--obra-texto-secundario);
+  line-height: 1.6;
+  color: var(--sl-color-gray-2);
+}
+
+.sl-markdown-content aside.supone > * + * {
+  margin-top: 0.35rem;
+}
+
+.sl-markdown-content aside.supone .supone-titulo strong {
+  color: var(--sl-color-white);
+}
+
+.sl-markdown-content aside.supone ul {
+  padding-inline-start: 1.2rem;
+}
+
+.sl-markdown-content aside.supone li + li {
+  margin-top: 0.15rem;
+}
+
 /* Las celdas de Python: sin JavaScript se ve el código. */
 celda-python {
   display: block;

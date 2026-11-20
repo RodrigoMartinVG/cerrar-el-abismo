@@ -56,7 +56,7 @@ partes:
         tipo: nucleo
         contenidos:
           - Axiomas de Peano, inducción y definición por recursión; principio del buen orden.
-          - Enteros, algoritmo de la división y divisibilidad.
+          - Los enteros, construidos a partir de ℕ; algoritmo de la división y divisibilidad.
           - Máximo común divisor, algoritmo de Euclides y su versión extendida; identidad de Bézout.
           - Números primos, infinitud de los primos y teorema fundamental de la aritmética.
         puente: 'Entrada: `while (b != 0) { t = b; b = a % b; a = t; }`. Es el algoritmo de Euclides, y su terminación es el principio del buen orden.'
@@ -206,7 +206,7 @@ partes:
         contenidos:
           - Anillos, ideales y anillos cociente; dominios de integridad y dominios euclídeos.
           - 'Anillos de polinomios: división, raíces, factorización y polinomios irreducibles.'
-          - Cuerpos y extensiones simples; ℚ, ℝ, ℂ y ℤ/pℤ como cuerpos.
+          - Cuerpos y extensiones simples; ℚ construido como cuerpo de fracciones de ℤ; ℝ, ℂ y ℤ/pℤ como cuerpos.
           - 'Cuerpos finitos GF(pⁿ): existencia, construcción y aritmética. La teoría de Galois llega en V.6, y las bases de Gröbner, en V.9.'
         puente: 'Entrada: `x = (x << 1) ^ ((x & 0x80) ? 0x1B : 0)`. Es multiplicar por x en GF(2⁸) módulo un polinomio irreducible: la operación con la que se construyen AES y los códigos de los QR.'
         aplicaciones:

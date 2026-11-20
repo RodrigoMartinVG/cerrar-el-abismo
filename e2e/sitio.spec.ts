@@ -23,11 +23,23 @@ test.describe('el primer capítulo (I.1)', () => {
 
   test('muestra su tomo, numera los entornos y resuelve las referencias', async ({ page }) => {
     await expect(page.getByRole('link', { name: /Tomo I · Fundamentos/ })).toBeVisible();
-    await expect(page.locator('#teo-de-morgan .entorno-titulo strong')).toHaveText('Teorema I.1.4');
-    await expect(page.locator('#ax-induccion .entorno-titulo strong')).toHaveText('Axioma I.1.16');
-    await expect(page.getByRole('link', { name: 'Teorema I.1.7' }).first()).toHaveAttribute('href', '#teo-contrapositiva');
+    await expect(page.locator('#teo-de-morgan .entorno-titulo strong')).toHaveText('Teorema I.1.5');
+    await expect(page.locator('#ax-induccion .entorno-titulo strong')).toHaveText('Axioma I.1.17');
+    await expect(page.getByRole('link', { name: 'Teorema I.1.8' }).first()).toHaveAttribute('href', '#teo-contrapositiva');
     await expect(page.locator('details.entorno-demostracion').first()).toHaveAttribute('open', '');
     await expect(page.locator('.katex').first()).toBeVisible();
+  });
+
+  test('dice lo que da por conocido al comienzo del Desarrollo', async ({ page }) => {
+    const recuadro = page.locator('aside.supone');
+    await expect(recuadro).toContainText('Lo que este capítulo da por conocido');
+    await expect(recuadro.getByRole('link', { name: 'I.11' })).toHaveAttribute('href', /indice\/i\/#i-11$/);
+    const orden = await page.evaluate(() => {
+      const desarrollo = document.getElementById('desarrollo')!;
+      const recuadro = document.querySelector('aside.supone')!;
+      return desarrollo.compareDocumentPosition(recuadro) & Node.DOCUMENT_POSITION_FOLLOWING;
+    });
+    expect(orden).toBeTruthy();
   });
 
   test('la tabla de verdad es interactiva y clasifica la fórmula', async ({ page }) => {

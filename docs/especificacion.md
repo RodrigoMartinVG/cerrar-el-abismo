@@ -282,6 +282,7 @@ La obra se escribe con el estilo de los mejores libros de matemática: el equili
 - **Abrir bien.** Cada capítulo convierte su fragmento de entrada en una pregunta y trabaja primero el caso más chico; cada sección abre diciendo qué problema resuelve.
 - **Definiciones motivadas**, seguidas de ejemplos y contraejemplos; **teoremas** con título, enunciado completo y, cuando hace falta, una frase «en palabras».
 - **Demostraciones completas**, con la idea antes y sin «es fácil ver» ni «obviamente»; se dice dónde se usa cada hipótesis.
+- **Licencias declaradas.** Lo que se usa antes de construirse (un uso anticipado), lo que se dice *sobre* la matemática y no dentro de ella (metamatemática) y lo que se toma de un capítulo posterior solo por su forma se declaran en el lugar, en una frase, con el capítulo donde se trata con rigor; cada capítulo lista sus usos anticipados en el recuadro «Lo que este capítulo da por conocido». Ninguna demostración se apoya en una licencia.
 - **Prosa en primera persona del plural**, ejercicios en infinitivo, una idea por párrafo, ninguna frase que empiece con una fórmula.
 - **Cerrar bien.** La Salida explica el fragmento de entrada y termina con «Lo esencial».
 
@@ -549,7 +550,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 #### I.3 Naturales, enteros y divisibilidad
 *40 págs. · Requiere: I.2 · Núcleo*
 - Axiomas de Peano, inducción y definición por recursión; principio del buen orden.
-- Enteros, algoritmo de la división y divisibilidad.
+- Los enteros, construidos a partir de ℕ; algoritmo de la división y divisibilidad.
 - Máximo común divisor, algoritmo de Euclides y su versión extendida; identidad de Bézout.
 - Números primos, infinitud de los primos y teorema fundamental de la aritmética.
 
@@ -629,7 +630,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 *48 págs. · Requiere: I.9 · Núcleo*
 - Anillos, ideales y anillos cociente; dominios de integridad y dominios euclídeos.
 - Anillos de polinomios: división, raíces, factorización y polinomios irreducibles.
-- Cuerpos y extensiones simples; ℚ, ℝ, ℂ y ℤ/pℤ como cuerpos.
+- Cuerpos y extensiones simples; ℚ construido como cuerpo de fracciones de ℤ; ℝ, ℂ y ℤ/pℤ como cuerpos.
 - Cuerpos finitos GF(pⁿ): existencia, construcción y aritmética. La teoría de Galois llega en V.6, y las bases de Gröbner, en V.9.
 
 **Puente.** Entrada: `x = (x << 1) ^ ((x & 0x80) ? 0x1B : 0)`. Es multiplicar por x en GF(2⁸) módulo un polinomio irreducible: la operación con la que se construyen AES y los códigos de los QR.
