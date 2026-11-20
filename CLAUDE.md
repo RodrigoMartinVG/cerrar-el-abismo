@@ -45,8 +45,9 @@ borrar (`erasableSyntaxOnly`) y los imports relativos con su extensión `.ts`.
 - **Textos en español**, también los comentarios, los nombres del dominio (`capitulo`, `requiere`, `tomo`) y las
   decisiones. Se respetan las convenciones de la sección 12 de la especificación.
 - **Las pruebas viven junto al código** (`*.test.ts`) y todo cambio pasa `npm run verify` antes de subir.
-- **Una rama por cambio** y pull request a `main`; la integración continua verifica y, en `main`, publica el sitio
-  en GitHub Pages.
+- **Se trabaja directo sobre `main`, sin pull requests** (decisión del autor, 2026-11-20). Cada commit pasa
+  `npm run verify` antes de subir; la integración continua lo verifica otra vez y, si todo pasa, publica el sitio en
+  GitHub Pages.
 - **El contenido de los capítulos será Markdown con un conjunto cerrado de directivas**, no MDX libre (decisión
   0001), para que la misma fuente sirva a la web y al PDF.
 - Las pruebas y borradores desechables van en `scratch/`, que nunca se sube.
