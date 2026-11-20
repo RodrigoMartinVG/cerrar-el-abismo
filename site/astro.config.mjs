@@ -53,9 +53,12 @@ export default defineConfig({
       defaultLocale: 'root',
       locales: { root: { label: 'Español', lang: 'es' } },
       social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/RodrigoMartinVG/cerrar-el-abismo' }],
-      // «Papel y pizarra» (src/styles/tema.css): fuentes servidas desde el sitio, KaTeX y los estilos de la obra.
+      // «Carbón y cobre» (src/styles/tema.css): fuentes servidas desde el sitio, KaTeX y los estilos de la obra.
       logo: { light: './src/assets/logo-claro.svg', dark: './src/assets/logo-oscuro.svg', alt: '' },
       favicon: '/favicon.svg',
+      // El código con colores apagados, a tono con «carbón y cobre»: Vitesse en sus dos versiones; los marcos usan
+      // los colores de la interfaz. (Al cambiar el tema, borrar la caché de contenido: site/.astro/data-store.json.)
+      expressiveCode: { themes: ['vitesse-dark', 'vitesse-light'], useStarlightUiThemeColors: true },
       customCss: [
         '@fontsource-variable/source-serif-4/opsz.css',
         '@fontsource-variable/source-serif-4/opsz-italic.css',

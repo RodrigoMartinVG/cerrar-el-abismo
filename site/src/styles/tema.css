@@ -1,8 +1,13 @@
 /*
- * LA IDENTIDAD VISUAL DE LA OBRA: «papel y pizarra».
+ * LA IDENTIDAD VISUAL DE LA OBRA: «carbón y cobre».
  *
- * En modo claro, papel cálido y tinta azul; en modo oscuro, pizarra y tiza. Hay dos colores con significado: el
- * azul de tinta es la teoría y el ámbar es la práctica. El Puente los une, y el logo es ese puente sobre el abismo.
+ * En modo oscuro, negro carbón y cobre; en modo claro, blanco cálido, negro de tinta y siena. El cobre es un naranja
+ * apagado: conserva la calidez del negro con naranja de los sitios que mejor lo usan (la documentación de Svelte,
+ * Teenage Engineering) sin encandilar en una lectura larga. El negro es la base y el cobre se usa con economía:
+ * enlaces, estados activos, acciones y los acentos que importan, nunca en superficies grandes.
+ *
+ * Los dos colores conservan su significado: la teoría es la tinta base (tiza sobre negro, tinta sobre blanco) y la
+ * práctica es el cobre. El Puente va de un color al otro, y el logo es ese puente sobre el abismo.
  *
  * Tipografía: Fraunces para los títulos, Source Serif 4 para el texto (se lee como un libro) y JetBrains Mono
  * para el código. La interfaz (cabecera, barras laterales, etiquetas) usa la sans del sistema, para separarla del
@@ -27,46 +32,50 @@
   --obra-titulos: 'Fraunces Variable', Fraunces, Georgia, serif;
   --obra-interfaz: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
-  /* Pizarra y tiza (modo oscuro). */
-  --sl-color-white: #f2ede3;
-  --sl-color-gray-1: #e2ddd2;
-  --sl-color-gray-2: #c9c4ba;
-  --sl-color-gray-3: #928f89;
-  --sl-color-gray-4: #5d5f64;
-  --sl-color-gray-5: #363b44;
-  --sl-color-gray-6: #1f242c;
-  --sl-color-black: #161a20;
-  --sl-color-accent-low: #1e2b45;
-  --sl-color-accent: #86a8ea;
-  --sl-color-accent-high: #d6e2fa;
+  /* Carbón y cobre (modo oscuro). No es negro puro: el texto claro sobre #000 deslumbra en lecturas largas. */
+  --sl-color-white: #f4f1ec;
+  --sl-color-gray-1: #e4e1dc;
+  --sl-color-gray-2: #c8c5c0;
+  --sl-color-gray-3: #8f8c88;
+  --sl-color-gray-4: #4f4d4b;
+  --sl-color-gray-5: #2b2a29;
+  --sl-color-gray-6: #171717;
+  --sl-color-black: #0e0e0e;
+  --sl-color-accent-low: #2a1a10;
+  --sl-color-accent: #d4895a;
+  --sl-color-accent-high: #f0c9ad;
   --sl-color-text-accent: var(--sl-color-accent);
 
-  --obra-ambar: #e8a55a;
-  --obra-ambar-bajo: #3a2a17;
-  --obra-rejilla: rgba(242, 237, 227, 0.045);
+  --obra-teoria: #ebe7e1;
+  --obra-teoria-bajo: #1c1c1c;
+  --obra-practica: #d4895a;
+  --obra-practica-bajo: #2a1a10;
+  --obra-rejilla: rgba(244, 241, 236, 0.04);
   --obra-sombra-papel: none;
 }
 
 :root[data-theme='light'] {
-  /* Papel y tinta (modo claro). */
-  --sl-color-white: #1b2029;
-  --sl-color-gray-1: #2b303a;
-  --sl-color-gray-2: #3e4450;
-  --sl-color-gray-3: #646972;
-  --sl-color-gray-4: #9a9893;
-  --sl-color-gray-5: #d9d3c6;
-  --sl-color-gray-6: #ece6d9;
-  --sl-color-gray-7: #f4efe5;
-  --sl-color-black: #fbf8f1;
-  --sl-color-accent-low: #dde6f6;
-  --sl-color-accent: #2b55a0;
-  --sl-color-accent-high: #1b3466;
+  /* Papel y siena (modo claro): blanco cálido, negro de tinta y el cobre oscurecido hasta la siena. */
+  --sl-color-white: #141312;
+  --sl-color-gray-1: #23211f;
+  --sl-color-gray-2: #393633;
+  --sl-color-gray-3: #5e5a55;
+  --sl-color-gray-4: #9a958e;
+  --sl-color-gray-5: #d8d4cd;
+  --sl-color-gray-6: #ebe8e3;
+  --sl-color-gray-7: #f3f1ed;
+  --sl-color-black: #fbfaf8;
+  --sl-color-accent-low: #f6e6da;
+  --sl-color-accent: #a0522d;
+  --sl-color-accent-high: #6b3219;
   --sl-color-text-accent: var(--sl-color-accent);
 
-  --obra-ambar: #a4520f;
-  --obra-ambar-bajo: #f6e7d4;
-  --obra-rejilla: rgba(43, 85, 160, 0.07);
-  --obra-sombra-papel: 0 1px 0 rgba(27, 32, 41, 0.04), 0 8px 24px -16px rgba(27, 32, 41, 0.18);
+  --obra-teoria: #141312;
+  --obra-teoria-bajo: #ebe8e3;
+  --obra-practica: #a0522d;
+  --obra-practica-bajo: #f6e6da;
+  --obra-rejilla: rgba(20, 19, 18, 0.05);
+  --obra-sombra-papel: 0 1px 0 rgba(20, 19, 18, 0.04), 0 8px 24px -16px rgba(20, 19, 18, 0.2);
 }
 
 ::selection {
@@ -162,21 +171,21 @@ h1#_top {
   height: auto;
 }
 
-/* Las etiquetas de campo: la práctica en ámbar, la física en tinta, el resto neutro. */
+/* Las etiquetas de campo: la práctica (3D) en cobre, la física en la tinta base, el resto neutro. */
 .sl-badge.campo {
   font-weight: 600;
 }
 
 .sl-badge.campo-3d {
-  background: var(--obra-ambar-bajo);
-  border-color: var(--obra-ambar);
-  color: var(--obra-ambar);
+  background: var(--obra-practica-bajo);
+  border-color: var(--obra-practica);
+  color: var(--obra-practica);
 }
 
 .sl-badge.campo-fisica {
-  background: var(--sl-color-accent-low);
-  border-color: var(--sl-color-accent);
-  color: var(--sl-color-accent);
+  background: var(--obra-teoria-bajo);
+  border-color: var(--obra-teoria);
+  color: var(--obra-teoria);
 }
 
 .sl-badge.campo-otro {
@@ -250,7 +259,7 @@ h1#_top {
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--obra-ambar);
+  color: var(--obra-practica);
 }
 
 .capitulo-antetitulo a {

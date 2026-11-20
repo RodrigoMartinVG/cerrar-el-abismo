@@ -56,8 +56,9 @@
 .entorno-teorema,
 .entorno-lema,
 .entorno-proposicion,
-.entorno-corolario {
-  border-inline-start-color: var(--sl-color-accent);
+.entorno-corolario,
+.entorno-axioma {
+  border-inline-start-color: var(--obra-teoria);
 }
 
 .entorno-ejemplo,
@@ -84,17 +85,17 @@
   color: var(--sl-color-gray-3);
 }
 
-/* El Puente une la teoría (tinta) con la práctica (ámbar): su franja va de un color al otro. */
+/* El Puente une la teoría (la tinta base) con la práctica (el cobre): su franja va de un color al otro. */
 .entorno-puente {
   border-inline-start: 4px solid;
-  border-image: linear-gradient(to bottom, var(--sl-color-accent), var(--obra-ambar)) 1;
-  background: linear-gradient(to right, var(--sl-color-accent-low), transparent 70%);
+  border-image: linear-gradient(to bottom, var(--obra-teoria), var(--obra-practica)) 1;
+  background: linear-gradient(to right, var(--obra-teoria-bajo), transparent 70%);
   padding: 0.85rem 1.1rem;
 }
 
 .entorno-linea {
-  border-inline-start-color: var(--obra-ambar);
-  background: linear-gradient(to right, var(--obra-ambar-bajo), transparent 70%);
+  border-inline-start-color: var(--obra-practica);
+  background: linear-gradient(to right, var(--obra-practica-bajo), transparent 70%);
   padding: 0.85rem 1.1rem;
 }
 
@@ -173,6 +174,10 @@ celda-python textarea {
   border-color: var(--sl-color-red);
 }
 
+.capitulo-meta a {
+  color: var(--sl-color-text-accent);
+}
+
 .capitulo-meta {
   display: flex;
   flex-wrap: wrap;
@@ -234,8 +239,7 @@ celda-python textarea {
 }
 
 .pieza-tabla td.falso {
-  color: var(--obra-ambar);
-  font-weight: 700;
+  color: var(--sl-color-gray-3);
 }
 
 .pieza-lectura.pieza-error {
@@ -251,7 +255,7 @@ celda-python textarea {
   line-height: 1;
 }
 
-/* La pieza «cuadrado-de-impares»: capas en L de colores alternados, tinta y ámbar. */
+/* La pieza «cuadrado-de-impares»: capas en L de colores alternados, la tinta base y el cobre. */
 .pieza-impares {
   display: block;
   max-width: 100%;
@@ -259,13 +263,13 @@ celda-python textarea {
 }
 
 .pieza-impares .capa-par {
-  fill: var(--sl-color-accent-low);
-  stroke: var(--sl-color-accent);
+  fill: var(--obra-teoria-bajo);
+  stroke: var(--obra-teoria);
   stroke-width: 1.2;
 }
 
 .pieza-impares .capa-impar {
-  fill: var(--obra-ambar-bajo);
-  stroke: var(--obra-ambar);
+  fill: var(--obra-practica-bajo);
+  stroke: var(--obra-practica);
   stroke-width: 1.2;
 }
