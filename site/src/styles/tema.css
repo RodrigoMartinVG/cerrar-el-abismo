@@ -10,6 +10,18 @@
  */
 
 :root {
+  /*
+   * EL CUERPO DE LETRA. Toda la obra se mide en rem desde aquí, así que al cambiar este valor crece todo parejo:
+   * el texto, los títulos, los paneles y los márgenes. 112,5 % son 18 px en vez de los 16 px del navegador.
+   */
+  font-size: 112.5%;
+
+  /* Una escala corta para lo que no es el texto principal, en lugar de tamaños sueltos. */
+  --obra-texto-secundario: 0.9rem; /* pies de figura, metadatos, controles, celdas y código */
+  --obra-texto-menor: 0.8rem; /* antetítulos y cifras */
+  --sl-text-code: var(--obra-texto-secundario);
+  --sl-text-code-sm: 0.9em; /* el código dentro de una frase, proporcional a la frase */
+
   --sl-font: 'Source Serif 4 Variable', 'Source Serif 4', Georgia, serif;
   --sl-font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
   --obra-titulos: 'Fraunces Variable', Fraunces, Georgia, serif;
@@ -108,7 +120,7 @@ h1#_top {
 
 /* El texto: tamaño y aire de libro. */
 .sl-markdown-content {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   line-height: 1.72;
 }
 
@@ -226,7 +238,7 @@ h1#_top {
 
 .mapa-tomos .cifras {
   font-family: var(--obra-interfaz);
-  font-size: var(--sl-text-xs);
+  font-size: var(--obra-texto-menor);
   color: var(--sl-color-gray-3);
 }
 
@@ -234,7 +246,7 @@ h1#_top {
 .capitulo-antetitulo {
   margin: 0;
   font-family: var(--obra-interfaz);
-  font-size: var(--sl-text-sm);
+  font-size: var(--obra-texto-secundario);
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
