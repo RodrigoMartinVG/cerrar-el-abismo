@@ -1,0 +1,57 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { capitulosDelItinerario, paginas } from '@cerrar-el-abismo/indice';
+import { numero, obra, urlCapitulo, urlTomo } from '../lib/obra';
+
+const indice = obra();
+const itinerarios = indice.itinerarios.map((it) => ({ it, capitulos: capitulosDelItinerario(indice, it) }));
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Itinerarios',
+    description: 'Recorridos de la obra según el perfil del lector, todos cerrados bajo dependencias.',
+  }}
+>
+  <p>
+    Además del orden de los tomos, la obra ofrece itinerarios: selecciones de capítulos según el perfil del lector. Todos parten del
+    núcleo y respetan el grafo de dependencias: cada capítulo que incluyen tiene sus requisitos dentro del mismo itinerario.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Itinerario</th>
+        <th>Suma al núcleo</th>
+        <th class="num">Capítulos</th>
+        <th class="num">Páginas</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        itinerarios.map(({ it, capitulos }) => (
+          <tr>
+            <td>{it.nombre}</td>
+            <td>
+              {it.capitulos.length === 0 && it.tomos.length === 0 && '—'}
+              {it.capitulos.map((id, i) => (
+                <>
+                  {i > 0 && ', '}
+                  <a href={urlCapitulo(id)}>{id}</a>
+                </>
+              ))}
+              {it.tomos.map((t) => (
+                <>
+                  {it.capitulos.length > 0 && ' y '}
+                  <a href={urlTomo(t)}>el Tomo {t}</a>
+                </>
+              ))}
+            </td>
+            <td class="num">{capitulos.length}</td>
+            <td class="num">{numero(paginas(capitulos))}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</StarlightPage>

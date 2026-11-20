@@ -1,0 +1,321 @@
+# Tomo V — Geometría
+# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+id: V
+titulo: Geometría
+requiere:
+  - II
+  - III
+  - IV
+interfaces: []
+presentacion: Las geometrías clásicas como estudio de grupos de transformaciones, las curvas y superficies de diseño, la geometría diferencial clásica y la geometría computacional y discreta. V.1, V.2, V.3 y V.5 solo usan los Tomos II y III, así que se pueden leer justo después del álgebra lineal.
+partes:
+  - letra: A
+    titulo: Geometrías y grupos de transformaciones
+    capitulos:
+      - id: V.1
+        titulo: Isometrías y simetría
+        paginas: 40
+        requiere:
+          - II.15
+          - I.7
+        tipo: nucleo
+        contenidos:
+          - Las isometrías de ℝⁿ son afines; clasificación en el plano y en el espacio.
+          - Todo movimiento es producto de reflexiones.
+          - 'Grupos de simetría finitos: cíclicos, diédricos y de los poliedros regulares.'
+          - Grupos de friso y grupos cristalográficos del plano.
+        puente: 'Entrada: `scale(-1, 1, 1)` en un editor que «da vuelta» las normales de un modelo. Una reflexión invierte la orientación (determinante −1); la clasificación de las isometrías explica qué se puede componer y qué no.'
+        aplicaciones:
+          - campo: 3d
+            texto: teselaciones, simetrías de modelos, espejos y orientación
+          - campo: fisica
+            texto: cristalografía
+          - campo: bio-eco
+            texto: simetrías de virus y de moléculas
+        lecturas: Coxeter, *Introduction to Geometry*; Armstrong, *Groups and Symmetry*.
+      - id: V.2
+        titulo: Geometría proyectiva
+        paginas: 44
+        requiere:
+          - II.13
+        tipo: nucleo
+        contenidos:
+          - Plano y espacio proyectivos; coordenadas homogéneas y puntos del infinito.
+          - Dualidad punto–recta; transformaciones proyectivas y su teorema fundamental.
+          - Razón doble y su invariancia.
+          - Cónicas proyectivas; teoremas de Desargues y de Pappus.
+        puente: 'Entrada: `vec3 line = cross(p, q)` con puntos en coordenadas homogéneas. En el plano proyectivo, la recta por dos puntos y el punto de corte de dos rectas son el mismo producto vectorial: dualidad sin casos especiales, incluidas las rectas paralelas.'
+        aplicaciones:
+          - campo: 3d
+            texto: intersecciones robustas en coordenadas homogéneas
+          - campo: datos
+            texto: 'visión por computador: rectificación de fotografías'
+          - campo: ing
+            texto: fotogrametría y topografía
+        lecturas: Richter-Gebert, *Perspectives on Projective Geometry*; Coxeter, *Projective Geometry*.
+      - id: V.3
+        titulo: Cámaras, proyección y geometría de varias vistas
+        paginas: 44
+        requiere:
+          - V.2
+          - II.10
+          - II.16
+        tipo: nucleo
+        contenidos:
+          - Cámara estenopeica; matrices de proyección en perspectiva y ortográfica; volumen de visión.
+          - Coordenadas de recorte y normalizadas; distribución de la profundidad y su precisión en coma flotante.
+          - 'Rasterización: funciones de arista como determinantes, coordenadas baricéntricas e interpolación con corrección de perspectiva.'
+          - Homografías, geometría epipolar y matriz fundamental; calibración por DLT.
+        puente: 'Entrada: `gl_Position = proj * view * model * vec4(p, 1.0)`, seguido de la división por w. Es una cadena de cambios de marco afines (II.13) y una transformación proyectiva; Reverse-Z funciona porque la coma flotante es más densa cerca de 0, justo donde la proyección comprime la profundidad lejana.'
+        aplicaciones:
+          - campo: 3d
+            texto: '*pipeline* de cámara, Reverse-Z, *frustum culling* y mapas de sombras'
+          - campo: datos
+            texto: reconstrucción 3D a partir de fotografías
+          - campo: ing
+            texto: calibración de cámaras industriales
+        lecturas: Hartley y Zisserman, *Multiple View Geometry in Computer Vision*; Lengyel, *Foundations of Game Engine Development*, vol. 2.
+      - id: V.4
+        titulo: Grupos de Lie de matrices
+        paginas: 48
+        requiere:
+          - II.15
+          - III.8
+          - IV.3
+        tipo: nucleo
+        contenidos:
+          - 'Grupos de matrices como subvariedades: SO(n), SE(n) y SU(2); álgebras de Lie y corchete.'
+          - Exponencial y logaritmo de matrices; fórmula de Baker–Campbell–Hausdorff (enunciado).
+          - SU(2) → SO(3) como recubrimiento doble; interpolación y promedios en grupos.
+          - SE(3), teorema de Chasles en el espacio, números duales y cuaterniones duales.
+        puente: 'Entrada: `pose = exp(twist * t)` en una biblioteca de robótica. Interpolar un movimiento rígido es recorrer un subgrupo a un parámetro de SE(3); por eso interpolar matrices entrada por entrada deforma los objetos y la exponencial no.'
+        aplicaciones:
+          - campo: 3d
+            texto: '*skinning* con cuaterniones duales y cinemática directa como producto de exponenciales'
+          - campo: ing
+            texto: robótica y estimación de estado
+          - campo: fisica
+            texto: simetrías continuas (aviso de VI.7)
+        lecturas: Stillwell, *Naive Lie Theory*; Hall, *Lie Groups, Lie Algebras, and Representations*; Lynch y Park, *Modern Robotics*.
+  - letra: B
+    titulo: Curvas y superficies de diseño
+    capitulos:
+      - id: V.5
+        titulo: Curvas y superficies de Bézier y B-splines
+        paginas: 48
+        requiere:
+          - III.9
+          - V.2
+        tipo: nucleo
+        contenidos:
+          - 'Curvas de Bézier: algoritmo de De Casteljau, subdivisión, elevación de grado y propiedad de la envolvente convexa.'
+          - 'B-splines: recurrencia de Cox–de Boor, vector de nodos y soporte local; Catmull–Rom.'
+          - Continuidad paramétrica Cⁿ frente a continuidad geométrica Gⁿ.
+          - NURBS como proyección de curvas polinómicas en coordenadas homogéneas; superficies producto tensorial.
+        puente: 'Entrada: `p = deCasteljau(controlPoints, t)` en un riel de cámara que acelera solo en las curvas. El parámetro t no es la longitud de arco; reparametrizar con la cuadratura y el método de Newton de III.10 da velocidad constante.'
+        aplicaciones:
+          - campo: 3d
+            texto: rieles de cámara, trayectorias y teselación de parches
+          - campo: ing
+            texto: diseño asistido por computadora y tipografía digital
+          - campo: fisica
+            texto: trayectorias suaves de partículas en simulaciones
+        lecturas: Farin, *Curves and Surfaces for CAGD*; Piegl y Tiller, *The NURBS Book*.
+  - letra: C
+    titulo: Geometría diferencial
+    capitulos:
+      - id: V.6
+        titulo: Curvas en el espacio
+        paginas: 36
+        requiere:
+          - IV.2
+        tipo: nucleo
+        contenidos:
+          - Curvas regulares y parametrización por longitud de arco.
+          - Curvatura, torsión y triedro de Frenet–Serret; teorema fundamental de las curvas.
+          - Marcos móviles y marcos de rotación mínima.
+          - 'Curvas planas: curvatura con signo e índice de rotación.'
+        puente: 'Entrada: un tubo generado a lo largo de una curva que se retuerce en los puntos de inflexión. El triedro de Frenet no está definido donde la curvatura se anula; los marcos de rotación mínima evitan el problema.'
+        aplicaciones:
+          - campo: 3d
+            texto: tubos, cuerdas y rieles de cámara sin giros bruscos
+          - campo: ing
+            texto: trazado de carreteras y vías con clotoides
+          - campo: bio-eco
+            texto: geometría del ADN
+        lecturas: do Carmo, *Differential Geometry of Curves and Surfaces*; Pressley, *Elementary Differential Geometry*.
+      - id: V.7
+        titulo: 'Superficies: formas fundamentales y curvatura'
+        paginas: 48
+        requiere:
+          - IV.3
+          - V.6
+        tipo: nucleo
+        contenidos:
+          - Superficies regulares, plano tangente y primera forma fundamental; longitudes y áreas.
+          - Aplicación de Gauss y segunda forma fundamental.
+          - Curvaturas normal, principales, gaussiana y media; líneas de curvatura.
+          - Marcos tangentes en superficies parametrizadas.
+        puente: 'Entrada: la matriz TBN (tangente, bitangente, normal) de un *normal map*. Es un marco del plano tangente de la superficie parametrizada por sus coordenadas de textura; la convención MikkTSpace fija cómo calcularlo para que la herramienta que genera el mapa y el motor coincidan.'
+        aplicaciones:
+          - campo: 3d
+            texto: '*normal mapping* y espacio tangente'
+          - campo: ing
+            texto: curvatura de carrocerías y control de reflejos
+          - campo: fisica
+            texto: membranas y tensión superficial
+        lecturas: do Carmo, *Differential Geometry of Curves and Surfaces*; Pressley, *Elementary Differential Geometry*.
+      - id: V.8
+        titulo: Geometría intrínseca y Gauss–Bonnet
+        paginas: 44
+        requiere:
+          - V.7
+          - IV.11
+          - I.6
+        tipo: nucleo
+        contenidos:
+          - '*Theorema egregium*: la curvatura gaussiana es intrínseca.'
+          - Geodésicas y curvatura geodésica.
+          - Teorema de Gauss–Bonnet local y global; característica de Euler.
+          - Por qué no existe un mapa plano perfecto de la esfera. Las variedades y la geometría riemanniana llegan en X.4 y X.5.
+        puente: 'Entrada: una textura que se estira en los polos de una esfera. Ninguna parametrización plana de la esfera conserva distancias, porque lo prohíbe el *theorema egregium*; elegir entre la proyección equirectangular, la cúbica o la octaédrica es elegir qué distorsión aceptar.'
+        aplicaciones:
+          - campo: 3d
+            texto: parametrizaciones de la esfera para texturas y mapas de entorno
+          - campo: ing
+            texto: cartografía y proyecciones de mapas
+          - campo: fisica
+            texto: superficies curvas y relatividad (aviso)
+        lecturas: do Carmo, *Differential Geometry of Curves and Surfaces*; Needham, *Visual Differential Geometry and Forms*.
+  - letra: D
+    titulo: Geometría computacional y discreta
+    capitulos:
+      - id: V.9
+        titulo: Predicados geométricos e intersecciones
+        paginas: 40
+        requiere:
+          - II.4
+          - II.16
+          - III.10
+        tipo: nucleo
+        contenidos:
+          - Predicados de orientación y de círculo circunscrito (*incircle*) como signos de determinantes.
+          - Fallos en coma flotante; aritmética exacta y predicados adaptativos.
+          - Intersecciones rayo–plano, rayo–esfera, rayo–caja y rayo–triángulo (Möller–Trumbore como regla de Cramer); rayo contra superficies algebraicas de grado alto.
+          - 'Puntos más cercanos: punto–triángulo, segmento–segmento y punto–caja.'
+        puente: 'Entrada: `if (abs(det) < EPSILON) return NO_HIT;` en una intersección rayo–triángulo. Es la regla de Cramer con una protección contra determinantes pequeños; los predicados adaptativos sustituyen ese épsilon arbitrario por una decisión exacta cuando hace falta.'
+        aplicaciones:
+          - campo: 3d
+            texto: selección con el ratón, *raycasts* y núcleo del trazado de rayos
+          - campo: ing
+            texto: CAD robusto
+          - campo: datos
+            texto: sistemas de información geográfica
+        lecturas: Ericson, *Real-Time Collision Detection*; Shewchuk, «Adaptive Precision Floating-Point Arithmetic and Fast Robust Geometric Predicates».
+      - id: V.10
+        titulo: 'Convexidad computacional: envolventes, separación y distancia'
+        paginas: 44
+        requiere:
+          - V.9
+          - IV.5
+        tipo: nucleo
+        contenidos:
+          - 'Envolvente convexa en 2D y en 3D: algoritmos de Graham y Quickhull.'
+          - Teorema de los ejes separadores para politopos, como corolario del teorema del hiperplano separador.
+          - Distancia entre convexos como problema convexo; algoritmo GJK sobre la diferencia de Minkowski y su convergencia.
+          - Profundidad de penetración (EPA) y avance conservador para el tiempo de impacto.
+        puente: 'Entrada: el bucle principal de GJK, que solo llama a `support()`. Toda la geometría de los dos objetos entra por sus funciones de soporte; el algoritmo es un descenso sobre la diferencia de Minkowski que IV.5 justifica.'
+        aplicaciones:
+          - campo: 3d
+            texto: detección de colisiones, puntos de contacto y detección continua
+          - campo: ing
+            texto: planificación de movimientos de robots
+          - campo: datos
+            texto: clasificación lineal por separación
+        lecturas: de Berg, Cheong, van Kreveld y Overmars, *Computational Geometry*; van den Bergen, *Collision Detection in Interactive 3D Environments*; Gilbert, Johnson y Keerthi, «A Fast Procedure for Computing the Distance Between Complex Objects in Three-Dimensional Space».
+      - id: V.11
+        titulo: Triangulaciones y diagramas de Voronoi
+        paginas: 40
+        requiere:
+          - V.9
+          - IV.9
+          - I.6
+        tipo: nucleo
+        contenidos:
+          - 'Triangulación de polígonos: existencia, recorte de orejas y descomposición monótona.'
+          - 'Triangulación de Delaunay: círculo vacío, maximización del ángulo mínimo y volteo de aristas.'
+          - Diagrama de Voronoi como dual de Delaunay.
+          - Teselaciones de Voronoi centroidales y algoritmo de Lloyd.
+        puente: "Entrada: una malla de navegación generada a partir del plano de un nivel. Es una triangulación del espacio libre: Delaunay evita triángulos degenerados, y su grafo dual se recorre con A\\* (I.6)."
+        aplicaciones:
+          - campo: 3d
+            texto: mallas de navegación y terrenos
+          - campo: ing
+            texto: mallado para elementos finitos
+          - campo: bio-eco
+            texto: modelos de territorio y de crecimiento celular
+        lecturas: de Berg, Cheong, van Kreveld y Overmars, *Computational Geometry*; Okabe, Boots, Sugihara y Chiu, *Spatial Tessellations*.
+      - id: V.12
+        titulo: 'Mallas: topología y geometría discreta'
+        paginas: 48
+        requiere:
+          - V.8
+          - II.12
+          - I.6
+        tipo: nucleo
+        contenidos:
+          - Complejos simpliciales, variedades con borde, orientabilidad, característica de Euler y género; la estructura *half-edge*.
+          - Normales de vértice, curvaturas discretas y Gauss–Bonnet discreto.
+          - Laplaciano cotangente y suavizado como difusión, explícito e implícito.
+          - 'Subdivisión de Catmull–Clark y de Loop con análisis espectral de la máscara; simplificación con métricas de error cuádrico; parametrización conforme por mínimos cuadrados. Para seguir: topología algebraica.'
+        puente: 'Entrada: `w = cot(alpha) + cot(beta)` en un código de suavizado de mallas. Son los pesos del laplaciano cotangente, la discretización del laplaciano de la superficie; el defecto angular alrededor de un vértice es la curvatura gaussiana discreta.'
+        aplicaciones:
+          - campo: 3d
+            texto: validación y reparación de mallas, niveles de detalle y desplegado UV
+          - campo: ing
+            texto: mallas para simulación
+          - campo: bio-eco
+            texto: superficies de órganos en imágenes médicas
+        lecturas: 'Botsch, Kobbelt, Pauly, Alliez y Lévy, *Polygon Mesh Processing*; Crane, *Discrete Differential Geometry: An Applied Introduction*.'
+      - id: V.13
+        titulo: Superficies implícitas y campos de distancia
+        paginas: 36
+        requiere:
+          - V.7
+          - III.10
+        tipo: nucleo
+        contenidos:
+          - Conjuntos de nivel y funciones de distancia con signo; ecuación eikonal |∇d| = 1.
+          - Constante de Lipschitz y *sphere tracing* como búsqueda de raíces con paso garantizado.
+          - Operaciones booleanas suaves y operadores de dominio.
+          - 'Extracción de mallas: Marching Cubes y sus ambigüedades.'
+        puente: 'Entrada: `t += sdf(origin + t * dir)`. Es *sphere tracing*: si la función tiene constante de Lipschitz 1, avanzar exactamente su valor nunca atraviesa la superficie.'
+        aplicaciones:
+          - campo: 3d
+            texto: '*ray marching* y modelado con campos de distancia'
+          - campo: ing
+            texto: fabricación aditiva y trayectorias de herramientas
+          - campo: bio-eco
+            texto: reconstrucción de órganos a partir de tomografías
+        lecturas: 'Hart, «Sphere Tracing: A Geometric Method for the Antialiased Ray Tracing of Implicit Surfaces»; Osher y Fedkiw, *Level Set Methods and Dynamic Implicit Surfaces*.'
+      - id: V.14
+        titulo: Geometría integral y particiones del espacio
+        paginas: 40
+        requiere:
+          - V.10
+          - IV.9
+        tipo: complementario
+        contenidos:
+          - Medida invariante en el espacio de rectas; fórmula de Cauchy–Crofton.
+          - 'Probabilidad de que una recta al azar corte un convexo: proporcional a su perímetro en el plano y a su área de superficie en el espacio.'
+          - 'Particiones recursivas: árboles BSP, árboles k-d y *octrees*.'
+          - 'Curvas que llenan el espacio (Peano, Hilbert y Morton): construcción, continuidad y localidad.'
+        puente: 'Entrada: `cost = Ct + (SA(L)/SA(P)) * N(L) * Ci + (SA(R)/SA(P)) * N(R) * Ci`. La heurística de área de superficie (SAH) usa cocientes de áreas como probabilidades: es la fórmula de Cauchy–Crofton aplicada a rayos al azar.'
+        aplicaciones:
+          - campo: 3d
+            texto: jerarquías de volúmenes envolventes y *hashing* espacial
+          - campo: datos
+            texto: índices espaciales en bases de datos
+          - campo: fisica
+            texto: 'estereología: estimar áreas y volúmenes a partir de cortes'
+        lecturas: Santaló, *Integral Geometry and Geometric Probability*; Sagan, *Space-Filling Curves*.

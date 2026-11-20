@@ -1,0 +1,18 @@
+# Itinerarios por perfil (sección 9.6 de la especificación). Todo itinerario parte del núcleo (los capítulos
+# de tipo «nucleo») y suma estos capítulos complementarios y estos tomos completos.
+- id: nucleo
+  nombre: Núcleo
+  capitulos: []
+  tomos: []
+- id: fisica
+  nombre: Física
+  capitulos: [IV.13, VI.5, VII.10, VII.11, VIII.9, VIII.11, IX.5, IX.8, IX.10]
+  tomos: [X]
+- id: graficos-3d
+  nombre: Gráficos y 3D
+  capitulos: [V.14, VIII.7, VIII.9, VIII.11, IX.8, IX.10]
+  tomos: []
+- id: datos
+  nombre: Datos
+  capitulos: [VII.7, VIII.7, VIII.9, X.1]
+  tomos: []

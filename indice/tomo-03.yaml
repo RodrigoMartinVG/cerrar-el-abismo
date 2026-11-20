@@ -1,0 +1,241 @@
+# Tomo III — Análisis en una variable
+# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+id: III
+titulo: Análisis en una variable
+requiere:
+  - I
+interfaces: []
+presentacion: El análisis real riguroso, de la completitud de ℝ a las series de funciones, con la aproximación, los métodos numéricos y los espacios métricos que necesitan los tomos siguientes.
+partes:
+  - letra: A
+    titulo: Límites
+    capitulos:
+      - id: III.1
+        titulo: Sucesiones reales y completitud
+        paginas: 44
+        requiere:
+          - I.9
+        tipo: nucleo
+        contenidos:
+          - Límite de una sucesión; álgebra de límites; sucesiones monótonas.
+          - Subsucesiones y teorema de Bolzano–Weierstrass; límites superior e inferior.
+          - Sucesiones de Cauchy y completitud de ℝ.
+          - 'Iteración de punto fijo como sucesión: primeros ejemplos de convergencia.'
+        puente: 'Entrada: `x = x + (target - x) * 0.1;` en cada fotograma. Es una sucesión que converge geométricamente al objetivo, pero su velocidad depende de los fotogramas por segundo, problema que resuelve III.8.'
+        aplicaciones:
+          - campo: 3d
+            texto: suavizado de cámaras
+          - campo: bio-eco
+            texto: interés compuesto y crecimiento discreto
+          - campo: ing
+            texto: algoritmos iterativos y criterios de parada
+        lecturas: Abbott, *Understanding Analysis*; Spivak, *Calculus*.
+      - id: III.2
+        titulo: Series numéricas
+        paginas: 40
+        requiere:
+          - III.1
+        tipo: nucleo
+        contenidos:
+          - Convergencia de series; series geométricas y telescópicas.
+          - Criterios de comparación, del cociente, de la raíz y de Leibniz.
+          - Convergencia absoluta y condicional; teorema de reordenamiento de Riemann; producto de Cauchy.
+          - Series de números complejos.
+        puente: 'Entrada: sumar `1.0f / n` en float32 hasta que la suma deja de crecer. La serie armónica diverge, pero la suma en coma flotante se estanca: el orden de suma importa, y la suma compensada de Kahan lo corrige.'
+        aplicaciones:
+          - campo: datos
+            texto: suma compensada de Kahan
+          - campo: fisica
+            texto: desarrollos en serie de potenciales
+          - campo: bio-eco
+            texto: valor presente de flujos de pagos
+        lecturas: Abbott, *Understanding Analysis*; Knopp, *Theory and Application of Infinite Series*.
+      - id: III.3
+        titulo: Límites y continuidad
+        paginas: 44
+        requiere:
+          - III.1
+        tipo: nucleo
+        contenidos:
+          - 'Límite de una función: definición ε–δ y caracterización por sucesiones.'
+          - Continuidad; teoremas de Bolzano y del valor intermedio; teorema de Weierstrass sobre extremos.
+          - Continuidad uniforme y teorema de Heine.
+          - Funciones monótonas y continuidad de la inversa.
+        puente: 'Entrada: `t = clamp((x - a) / (b - a), 0.0, 1.0)`. Recortar es componer con una función continua pero no derivable: la continuidad garantiza que no haya saltos, aunque el cambio brusco de pendiente se note en una animación (III.4).'
+        aplicaciones:
+          - campo: 3d
+            texto: funciones de remapeo y recorte
+          - campo: ing
+            texto: bisección para encontrar raíces, garantizada por el teorema de Bolzano
+          - campo: senales
+            texto: cuantización y discontinuidades
+        lecturas: Abbott, *Understanding Analysis*; Spivak, *Calculus*.
+  - letra: B
+    titulo: Cálculo
+    capitulos:
+      - id: III.4
+        titulo: La derivada
+        paginas: 48
+        requiere:
+          - III.3
+        tipo: nucleo
+        contenidos:
+          - Derivada como límite y como mejor aproximación lineal; reglas, regla de la cadena y derivada de la inversa.
+          - Teoremas de Rolle y del valor medio; regla de L'Hôpital.
+          - Extremos, monotonía y convexidad.
+          - Teorema de Darboux; funciones derivables con derivada discontinua.
+        puente: 'Entrada: `t * t * (3.0 - 2.0 * t)` (*smoothstep*). Es el polinomio cúbico que vale 0 y 1 en los extremos y tiene derivada nula en ambos; esa derivada nula es lo que hace que el movimiento arranque y frene suave.'
+        aplicaciones:
+          - campo: 3d
+            texto: suavidad de las funciones de *easing*
+          - campo: fisica
+            texto: velocidad, aceleración y efecto Doppler como derivada de la distancia
+          - campo: bio-eco
+            texto: costo marginal
+        lecturas: Spivak, *Calculus*; Apostol, *Calculus*, vol. 1.
+      - id: III.5
+        titulo: La integral de Riemann
+        paginas: 48
+        requiere:
+          - III.4
+        tipo: nucleo
+        contenidos:
+          - Sumas de Darboux, integrabilidad y criterio de Riemann.
+          - Propiedades de la integral; teorema fundamental del cálculo.
+          - Cambio de variable, integración por partes e integrales impropias.
+          - Longitud de arco, áreas y valores medios.
+        puente: 'Entrada: `position += velocity * dt` acumulado en un bucle. Es una suma de Riemann: el teorema fundamental dice hacia qué converge, y VI.10 mide el error cometido.'
+        aplicaciones:
+          - campo: fisica
+            texto: trabajo, energía y distancia recorrida
+          - campo: senales
+            texto: valor medio y energía de una señal
+          - campo: 3d
+            texto: longitud de una curva de animación
+        lecturas: Spivak, *Calculus*; Apostol, *Calculus*, vol. 1.
+      - id: III.6
+        titulo: Sucesiones y series de funciones
+        paginas: 44
+        requiere:
+          - III.2
+          - III.5
+        tipo: nucleo
+        contenidos:
+          - Convergencia puntual y uniforme; criterio de Cauchy uniforme y criterio M de Weierstrass.
+          - Intercambio de límites con la continuidad, la integral y la derivada.
+          - 'Series de potencias: radio de convergencia, derivación e integración término a término.'
+          - Funciones analíticas reales; una función continua que no es derivable en ningún punto.
+        puente: 'Entrada: la serie de Fourier de una onda cuadrada en un sintetizador. Las sumas parciales convergen puntualmente pero no uniformemente; el sobreimpulso que no desaparece (fenómeno de Gibbs) es la diferencia entre las dos convergencias.'
+        aplicaciones:
+          - campo: senales
+            texto: síntesis aditiva
+          - campo: fisica
+            texto: soluciones en series de potencias
+          - campo: 3d
+            texto: aproximaciones de funciones en *shaders* como series truncadas
+        lecturas: Abbott, *Understanding Analysis*; Rudin, *Principles of Mathematical Analysis*.
+      - id: III.7
+        titulo: Fórmula de Taylor
+        paginas: 36
+        requiere:
+          - III.6
+        tipo: nucleo
+        contenidos:
+          - Polinomio de Taylor y restos de Lagrange, de Cauchy e integral.
+          - Series de Taylor y funciones que no coinciden con su serie, como e^(−1/x²).
+          - Órdenes de aproximación y notación O.
+          - Error de truncamiento frente a error de redondeo en las diferencias finitas.
+        puente: 'Entrada: `sin(x) ≈ x` para ángulos pequeños en un péndulo de juego. Es el polinomio de Taylor de grado 1, y el resto de Lagrange dice hasta qué ángulo el error es invisible.'
+        aplicaciones:
+          - campo: fisica
+            texto: péndulo y aproximaciones de ángulo pequeño
+          - campo: 3d
+            texto: aproximaciones baratas de funciones
+          - campo: ing
+            texto: linealización de modelos
+        lecturas: Spivak, *Calculus*; Apostol, *Calculus*, vol. 1.
+      - id: III.8
+        titulo: Funciones elementales
+        paginas: 40
+        requiere:
+          - III.7
+        tipo: nucleo
+        contenidos:
+          - Exponencial y logaritmo definidos por series o por la integral; potencias reales.
+          - Seno y coseno definidos por series; el número π; funciones trigonométricas inversas y `atan2`.
+          - La exponencial compleja y la fórmula de Euler e^(iθ) = cos θ + i sen θ.
+          - Funciones hiperbólicas.
+        puente: 'Entrada: `x = lerp(x, target, 1.0 - exp(-k * dt))`. A diferencia del suavizado de III.1, este no depende de los fotogramas por segundo: 1 − e^(−k·dt) es la fracción exacta que recorre la solución de x′ = k(objetivo − x) en un intervalo dt.'
+        aplicaciones:
+          - campo: 3d
+            texto: suavizado independiente del paso, `atan2` para orientar objetos y codificación gamma (sRGB) de los colores
+          - campo: senales
+            texto: decibeles y escalas logarítmicas
+          - campo: bio-eco
+            texto: crecimiento y desintegración exponenciales
+        lecturas: Spivak, *Calculus*; Rudin, *Principles of Mathematical Analysis*.
+  - letra: C
+    titulo: Aproximación, cálculo numérico y espacios métricos
+    capitulos:
+      - id: III.9
+        titulo: Aproximación e interpolación
+        paginas: 48
+        requiere:
+          - III.8
+          - I.5
+        tipo: nucleo
+        contenidos:
+          - Teorema de aproximación de Weierstrass, demostrado con polinomios de Bernstein.
+          - Interpolación de Lagrange y de Newton; error de interpolación y fenómeno de Runge.
+          - Nodos y polinomios de Chebyshev; aproximación minimax y teorema de equioscilación.
+          - Interpolación de Hermite y *splines* cúbicos.
+        puente: 'Entrada: `pow(1-t,3)*p0 + 3*pow(1-t,2)*t*p1 + 3*(1-t)*t*t*p2 + t*t*t*p3`. Es una curva de Bézier: la combinación de polinomios de Bernstein con la que se demuestra el teorema de Weierstrass. La herramienta de diseño y la demostración son la misma construcción.'
+        aplicaciones:
+          - campo: 3d
+            texto: curvas de Bézier y *easing* de Hermite
+          - campo: senales
+            texto: funciones trigonométricas rápidas por aproximación minimax
+          - campo: ing
+            texto: tablas de calibración interpoladas
+        lecturas: Trefethen, *Approximation Theory and Approximation Practice*; Davis, *Interpolation and Approximation*.
+      - id: III.10
+        titulo: Métodos numéricos en una variable
+        paginas: 44
+        requiere:
+          - III.9
+          - I.10
+        tipo: nucleo
+        contenidos:
+          - Bisección, Newton, secante y punto fijo; orden de convergencia y criterios de parada.
+          - 'Raíces de polinomios: cuadráticas estables, esquema de Horner y deflación.'
+          - 'Cuadratura: trapecio, Simpson, Gauss–Legendre y cuadratura adaptativa, con su análisis de error.'
+          - Derivación numérica y elección del paso en coma flotante.
+        puente: 'Entrada: `y = y * (1.5 - 0.5 * x * y * y)`. Es un paso de Newton para 1/√x, el corazón de la célebre raíz cuadrada inversa rápida; el análisis de convergencia de Newton dice cuántas cifras gana cada paso.'
+        aplicaciones:
+          - campo: 3d
+            texto: raíz inversa rápida e inversión de curvas de *easing*
+          - campo: ing
+            texto: ecuaciones de estado no lineales
+          - campo: bio-eco
+            texto: tasa interna de retorno
+        lecturas: Burden, Faires y Burden, *Análisis numérico*; Süli y Mayers, *An Introduction to Numerical Analysis*.
+      - id: III.11
+        titulo: Espacios métricos
+        paginas: 48
+        requiere:
+          - III.6
+        tipo: nucleo
+        contenidos:
+          - Espacios métricos y normados; abiertos, cerrados y clausura.
+          - Convergencia, completitud y espacios de Banach; C[a, b] con la norma del supremo.
+          - Compacidad, conexidad y continuidad; teorema de Arzelà–Ascoli (enunciado y uso).
+          - 'Teorema del punto fijo de Banach. Para seguir: topología general.'
+        puente: 'Entrada: un *solver* iterativo que «a veces no converge». El teorema de Banach da la condición: si la iteración es contractiva, converge desde cualquier punto y con velocidad conocida; si no lo es, no hay garantía.'
+        aplicaciones:
+          - campo: ing
+            texto: convergencia de métodos iterativos
+          - campo: datos
+            texto: distancias y medidas de similitud
+          - campo: 3d
+            texto: distancia de Hausdorff para comparar mallas
+        lecturas: Rudin, *Principles of Mathematical Analysis*; Searcóid, *Metric Spaces*.

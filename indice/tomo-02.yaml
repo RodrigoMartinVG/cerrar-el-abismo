@@ -1,0 +1,356 @@
+# Tomo II — Álgebra lineal y el espacio de la práctica
+# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+id: II
+titulo: Álgebra lineal y el espacio de la práctica
+requiere:
+  - I
+interfaces: []
+presentacion: El álgebra lineal completa de una licenciatura, primero sobre un cuerpo cualquiera y luego sobre ℝ y ℂ, con su versión numérica. La Parte C cierra el tomo justo donde el estudiante siente el abismo y lleva el álgebra lineal al espacio de la práctica.
+partes:
+  - letra: A
+    titulo: Estructura lineal
+    capitulos:
+      - id: II.1
+        titulo: Sistemas lineales y matrices
+        paginas: 40
+        requiere:
+          - I.8
+        tipo: nucleo
+        contenidos:
+          - Sistemas de ecuaciones lineales sobre un cuerpo; eliminación de Gauss y forma escalonada reducida.
+          - Matrices, producto e inversa; matrices elementales.
+          - Factorización LU y pivoteo.
+          - Existencia y unicidad de soluciones según la forma escalonada.
+        puente: 'Entrada: `solve3x3(A, b)` escrito a mano en un motor de física. Es la eliminación de Gauss desenrollada para n = 3: en dimensión fija, la práctica prefiere fórmulas cerradas a algoritmos generales.'
+        aplicaciones:
+          - campo: ing
+            texto: análisis de circuitos y de estructuras
+          - campo: bio-eco
+            texto: modelo de insumo-producto de Leontief
+          - campo: 3d
+            texto: intersección de tres planos
+        lecturas: Strang, *Introduction to Linear Algebra*; Hoffman y Kunze, *Linear Algebra*.
+      - id: II.2
+        titulo: Espacios vectoriales
+        paginas: 40
+        requiere:
+          - II.1
+        tipo: nucleo
+        contenidos:
+          - Espacios vectoriales y subespacios; combinaciones lineales y subespacio generado.
+          - Independencia lineal, bases y dimensión.
+          - Coordenadas respecto de una base.
+          - Suma directa y espacio cociente.
+        puente: 'Entrada: `struct Vec3 { float x, y, z; }`. Un `Vec3` no es un vector: son sus coordenadas en una base que el código nunca nombra. Saber en qué base está cada `Vec3` es la mitad del trabajo en un motor.'
+        aplicaciones:
+          - campo: 3d
+            texto: posiciones, velocidades y fuerzas
+          - campo: senales
+            texto: espacios de señales y de polinomios
+          - campo: datos
+            texto: vectores de características
+        lecturas: Axler, *Linear Algebra Done Right*; Hoffman y Kunze, *Linear Algebra*.
+      - id: II.3
+        titulo: Transformaciones lineales
+        paginas: 40
+        requiere:
+          - II.2
+        tipo: nucleo
+        contenidos:
+          - Transformaciones lineales, núcleo e imagen; teorema de la dimensión.
+          - Matriz de una transformación en bases dadas; lectura de una matriz por columnas.
+          - Cambio de base y matrices semejantes.
+          - Isomorfismos y espacio de las transformaciones lineales.
+        puente: 'Entrada: `worldPos = modelMatrix * localPos`. «Espacio local» y «espacio mundo» son dos bases; la matriz de modelo es una matriz de cambio de coordenadas, y sus columnas son los ejes del objeto escritos en el mundo.'
+        aplicaciones:
+          - campo: 3d
+            texto: espacios local, mundo y vista; espacios de color (RGB, XYZ) como cambios de base
+          - campo: senales
+            texto: filtros lineales
+          - campo: fisica
+            texto: cambios de sistema de referencia y análisis dimensional con el teorema π de Buckingham
+        lecturas: Axler, *Linear Algebra Done Right*; Lax, *Linear Algebra and Its Applications*.
+      - id: II.4
+        titulo: Determinantes
+        paginas: 36
+        requiere:
+          - II.3
+          - I.7
+        tipo: nucleo
+        contenidos:
+          - Formas multilineales alternadas; existencia y unicidad del determinante.
+          - Propiedades; determinante del producto; desarrollo por cofactores y regla de Cramer.
+          - El determinante como volumen orientado; orientación de una base.
+          - Producto vectorial y producto mixto en ℝ³ como determinantes.
+        puente: 'Entrada: `if (dot(cross(b - a, c - a), n) < 0) cull();`. Descartar caras traseras es calcular el signo de un determinante 3×3: la orientación de un triángulo.'
+        aplicaciones:
+          - campo: 3d
+            texto: descarte de caras traseras y detección de reflexiones en una transformación
+          - campo: fisica
+            texto: momento angular y torque
+          - campo: ing
+            texto: cambio de volumen en mecánica de materiales
+        lecturas: Axler, *Linear Algebra Done Right*; Hoffman y Kunze, *Linear Algebra*.
+      - id: II.5
+        titulo: Espacio dual y covectores
+        paginas: 32
+        requiere:
+          - II.3
+        tipo: nucleo
+        contenidos:
+          - Espacio dual, base dual y coordenadas como funcionales.
+          - 'Aplicación dual y su matriz: la transpuesta.'
+          - Anuladores, doble dual e isomorfismo canónico.
+          - Hiperplanos como núcleos de covectores; el gradiente como covector (se retoma en IV.2).
+        puente: 'Entrada: `n2 = transpose(inverse(M)) * n`. Una normal es un covector: la forma lineal que se anula en el plano tangente. Tras transformar con M, la forma que sigue anulándose es n ∘ M⁻¹, cuya matriz es (M⁻¹)ᵀ. Con rotaciones (M⁻¹)ᵀ = M, y por eso el error solo aparece con escalas no uniformes. Es el capítulo piloto de la obra (sección 16).'
+        aplicaciones:
+          - campo: 3d
+            texto: transformación de normales y de planos
+          - campo: fisica
+            texto: fuerzas y trabajo como covectores
+          - campo: datos
+            texto: los pesos de un modelo lineal como funcional
+        lecturas: Axler, *Linear Algebra Done Right*; Halmos, *Finite-Dimensional Vector Spaces*.
+      - id: II.6
+        titulo: Autovalores y autovectores
+        paginas: 40
+        requiere:
+          - II.4
+          - I.8
+        tipo: nucleo
+        contenidos:
+          - Autovalores, autovectores y polinomio característico.
+          - Diagonalización y subespacios invariantes.
+          - Teorema de Cayley–Hamilton y polinomio minimal.
+          - 'Autovalores de matrices 3×3: solución trigonométrica de la cúbica.'
+        puente: 'Entrada: `axis = eigenvector(R, 1)`. El eje de una rotación es el autovector de autovalor 1; el teorema de rotación de Euler (aviso de II.15) es un enunciado sobre autovalores.'
+        aplicaciones:
+          - campo: fisica
+            texto: modos normales de vibración
+          - campo: bio-eco
+            texto: crecimiento de poblaciones con matrices de Leslie
+          - campo: 3d
+            texto: eje de una rotación dada por su matriz
+        lecturas: Axler, *Linear Algebra Done Right*; Strang, *Introduction to Linear Algebra*.
+      - id: II.7
+        titulo: Forma canónica de Jordan
+        paginas: 36
+        requiere:
+          - II.6
+        tipo: nucleo
+        contenidos:
+          - Descomposición primaria y subespacios invariantes generalizados.
+          - Operadores nilpotentes y bloques de Jordan.
+          - Existencia y unicidad de la forma de Jordan.
+          - Potencias de matrices y recurrencias lineales.
+        puente: 'Entrada: `x[n+1] = A * x[n]` en un muelle discretizado con amortiguamiento crítico. El término n·λⁿ que aparece en la solución es un bloque de Jordan: el caso crítico es justo el que no se puede diagonalizar.'
+        aplicaciones:
+          - campo: ing
+            texto: respuesta de sistemas discretos con amortiguamiento crítico
+          - campo: cripto
+            texto: recurrencias lineales y Fibonacci por potencias de matrices
+          - campo: bio-eco
+            texto: modelos de poblaciones por edades
+        lecturas: Hoffman y Kunze, *Linear Algebra*; Axler, *Linear Algebra Done Right*.
+  - letra: B
+    titulo: Geometría métrica y descomposiciones
+    capitulos:
+      - id: II.8
+        titulo: Espacios con producto interno
+        paginas: 44
+        requiere:
+          - II.5
+          - I.9
+        tipo: nucleo
+        contenidos:
+          - Producto interno, norma y desigualdad de Cauchy–Schwarz; ángulos.
+          - Ortogonalidad, bases ortonormales y Gram–Schmidt; factorización QR.
+          - Proyección ortogonal y mínimos cuadrados; ecuaciones normales.
+          - Representación de Riesz en dimensión finita y operador adjunto.
+        puente: 'Entrada: `diffuse = max(dot(n, l), 0.0)`. La ley del coseno de Lambert es un producto interno de vectores unitarios; el `max` recorta el hemisferio al que la luz no llega. En física, la misma estructura se escribe ⟨φ|ψ⟩: el *bra* ⟨φ| es el covector que el teorema de Riesz asocia a |φ⟩, y |ψ⟩⟨ψ| es el proyector ortogonal sobre ψ.'
+        aplicaciones:
+          - campo: 3d
+            texto: iluminación difusa y proyección sobre planos
+          - campo: datos
+            texto: regresión lineal por mínimos cuadrados
+          - campo: ing
+            texto: ajuste de curvas a mediciones
+          - campo: fisica
+            texto: notación de Dirac y proyecciones en mecánica cuántica
+        lecturas: Axler, *Linear Algebra Done Right*; Strang, *Introduction to Linear Algebra*.
+      - id: II.9
+        titulo: Teorema espectral y formas cuadráticas
+        paginas: 48
+        requiere:
+          - II.6
+          - II.8
+        tipo: nucleo
+        contenidos:
+          - Operadores autoadjuntos y normales; teorema espectral real y complejo.
+          - Formas bilineales y cuadráticas; ley de inercia de Sylvester.
+          - Matrices definidas positivas, criterio de Sylvester y factorización de Cholesky.
+          - 'Cociente de Rayleigh y caracterización variacional de los autovalores; perturbación de autovalores: fórmulas de primer orden y teorema de Weyl.'
+        puente: 'Entrada: `inertiaTensor` y sus «ejes principales». El tensor de inercia es una forma cuadrática simétrica, y sus ejes principales son los autovectores que garantiza el teorema espectral.'
+        aplicaciones:
+          - campo: fisica
+            texto: ejes principales de inercia y principio variacional de Rayleigh–Ritz
+          - campo: datos
+            texto: matrices de covarianza
+          - campo: 3d
+            texto: elipsoides envolventes
+          - campo: ing
+            texto: análisis de tensiones
+        lecturas: Axler, *Linear Algebra Done Right*; Horn y Johnson, *Matrix Analysis*.
+      - id: II.10
+        titulo: Descomposición en valores singulares
+        paginas: 40
+        requiere:
+          - II.9
+        tipo: nucleo
+        contenidos:
+          - 'Existencia de la SVD e interpretación geométrica: rotación, escala, rotación.'
+          - Pseudoinversa de Moore–Penrose y mínimos cuadrados de norma mínima.
+          - 'Aproximación de rango bajo: teorema de Eckart–Young.'
+          - Descomposición polar y análisis de componentes principales.
+        puente: 'Entrada: `R = polarDecomposition(F).rotation` en un simulador de cuerpos deformables. Extraer la «parte de rotación» de una matriz cualquiera es la descomposición polar; la SVD la calcula y dice cuándo es única.'
+        aplicaciones:
+          - campo: datos
+            texto: PCA y compresión de imágenes
+          - campo: 3d
+            texto: cajas orientadas por componentes principales y *shape matching*
+          - campo: senales
+            texto: reducción de ruido
+          - campo: ing
+            texto: calibración por transformación lineal directa (DLT)
+        lecturas: Trefethen y Bau, *Numerical Linear Algebra*; Strang, *Introduction to Linear Algebra*.
+      - id: II.11
+        titulo: Producto tensorial y álgebra multilineal
+        paginas: 44
+        requiere:
+          - II.5
+          - II.8
+        tipo: nucleo
+        contenidos:
+          - Aplicaciones multilineales; producto tensorial de espacios por su propiedad universal y en coordenadas (producto de Kronecker).
+          - 'Tensores de tipo (p, q): componentes, cambio de base y la ley de transformación que los físicos usan como definición.'
+          - Notación de índices y convención de Einstein; contracción; subir y bajar índices con un producto interno o una métrica.
+          - Tensores simétricos y antisimétricos; potencias exteriores y el determinante revisitado.
+        puente: "Entrada: `C = np.einsum('ij,jk->ik', A, B)` y, en un libro de física, `T'^μ_ν = Λ^μ_α T^α_β (Λ⁻¹)^β_ν`. Las dos son contracciones de índices: la primera es un producto de matrices escrito con la convención de Einstein, y la segunda es la ley de cambio de base de un tensor de tipo (1, 1). «Se transforma como un tensor» no es una definición misteriosa: es lo que le pasa en coordenadas a una aplicación multilineal."
+        aplicaciones:
+          - campo: fisica
+            texto: tensor de inercia, tensor de tensiones y estados entrelazados como tensores no descomponibles
+          - campo: datos
+            texto: operaciones con tensores en aprendizaje automático y descomposiciones de tensores
+          - campo: 3d
+            texto: tensores de estructura y de curvatura en el procesamiento de mallas
+        lecturas: Roman, *Advanced Linear Algebra*; Jeevanjee, *An Introduction to Tensors and Group Theory for Physicists*.
+      - id: II.12
+        titulo: Álgebra lineal numérica
+        paginas: 44
+        requiere:
+          - II.10
+          - I.10
+        tipo: nucleo
+        contenidos:
+          - Normas matriciales y número de condición; error hacia adelante y hacia atrás.
+          - Estabilidad de LU con pivoteo, de QR con Householder y de Cholesky.
+          - Métodos iterativos de Jacobi y de Gauss–Seidel; convergencia por radio espectral; matrices dispersas.
+          - 'Autovalores numéricos: iteración de potencias, iteración inversa y algoritmo QR.'
+        puente: 'Entrada: `x = inverse(A) * b`. Casi nunca se invierte una matriz para resolver un sistema: es más caro y menos estable que factorizarla, y el número de condición dice cuánto se puede confiar en el resultado.'
+        aplicaciones:
+          - campo: ing
+            texto: sistemas dispersos de redes y estructuras
+          - campo: datos
+            texto: PageRank por iteración de potencias
+          - campo: 3d
+            texto: '*solvers* iterativos de física'
+          - campo: fisica
+            texto: discretización de problemas de potencial
+        lecturas: Trefethen y Bau, *Numerical Linear Algebra*; Golub y Van Loan, *Matrix Computations*; Saad, *Iterative Methods for Sparse Linear Systems*.
+  - letra: C
+    titulo: Del álgebra lineal al espacio de la práctica
+    capitulos:
+      - id: II.13
+        titulo: Espacios afines y coordenadas homogéneas
+        paginas: 40
+        requiere:
+          - II.4
+        tipo: nucleo
+        contenidos:
+          - 'Por qué un espacio vectorial no basta: puntos y vectores; espacio afín y su espacio de direcciones.'
+          - Combinaciones afines y convexas; coordenadas baricéntricas en segmentos, triángulos y tetraedros.
+          - 'Aplicaciones afines y su inmersión en ℝⁿ⁺¹ como el hiperplano w = 1: las matrices 4×4.'
+          - Composición jerárquica de transformaciones; primera mirada a la proyección en perspectiva y a la división por w (V.2 y V.3 la desarrollan).
+        puente: 'Entrada: `vec4(p, 1.0)` y `vec4(v, 0.0)`. Los puntos viven en w = 1 y las direcciones en w = 0; por eso una traslación mueve los puntos y deja quietas las direcciones. La «magia» de las matrices 4×4 es el espacio afín visto dentro de un espacio vectorial.'
+        aplicaciones:
+          - campo: 3d
+            texto: matrices 4×4 de modelo y grafos de escena
+          - campo: ing
+            texto: transformaciones entre los eslabones de un robot
+          - campo: fisica
+            texto: centro de masa como combinación afín
+        lecturas: Gallier, *Geometric Methods and Applications*; Lengyel, *Foundations of Game Engine Development*, vol. 1.
+      - id: II.14
+        titulo: Convenciones como elección de isomorfismo
+        paginas: 28
+        requiere:
+          - II.5
+          - II.13
+        tipo: nucleo
+        contenidos:
+          - 'Vectores fila y columna: la misma aplicación representada por A o por Aᵀ.'
+          - 'Orden de almacenamiento por filas o por columnas: una elección independiente de la anterior; las cuatro combinaciones y por qué dos se ven idénticas en memoria.'
+          - Orientación y mano del sistema de ejes; eje «arriba» Y o Z; transformaciones activas y pasivas.
+          - «Espacios» como marcos de referencia; la matriz de vista como inversa de la transformación de la cámara; cómo identificar una convención a partir de código o documentación, y cómo traducir.
+        puente: 'Entrada: una matriz copiada de un tutorial de DirectX que «funciona al revés» en WebGL. Hay que identificar las dos elecciones de cada lado y componer los isomorfismos que las conectan; el capítulo da un procedimiento sistemático para hacerlo.'
+        aplicaciones:
+          - campo: 3d
+            texto: traducción entre las convenciones de Three.js, glTF y WebGPU
+          - campo: ing
+            texto: marcos de referencia y convenciones de ángulos en robótica y aviación
+          - campo: fisica
+            texto: convenciones de signo y de orientación en electromagnetismo
+        lecturas: Lengyel, *Foundations of Game Engine Development*, vol. 1; Dunn y Parberry, *3D Math Primer for Graphics and Game Development*.
+      - id: II.15
+        titulo: 'Rotaciones: SO(3) y cuaterniones'
+        paginas: 48
+        requiere:
+          - II.9
+          - II.14
+          - I.7
+        tipo: nucleo
+        contenidos:
+          - El grupo SO(3) y el teorema de rotación de Euler; eje y ángulo; fórmula de Rodrigues.
+          - Ángulos de Euler y de Tait–Bryan; demostración del bloqueo del cardán (*gimbal lock*).
+          - 'Cuaterniones de Hamilton: álgebra, conjugado, norma e inversa; cuaterniones unitarios y la esfera S³.'
+          - El recubrimiento doble S³ → SO(3); interpolación SLERP, NLERP con su cota de error, y promedio de orientaciones.
+        puente: 'Entrada: `if (dot(q1, q2) < 0.0) q2 = -q2;` antes de interpolar. q y −q representan la misma rotación porque S³ recubre dos veces SO(3); sin esa línea, la interpolación toma el camino largo.'
+        aplicaciones:
+          - campo: 3d
+            texto: cámaras, animación y compresión *smallest-three*
+          - campo: ing
+            texto: actitud de satélites y drones
+          - campo: fisica
+            texto: matrices de Pauli, SU(2) y espín (aviso de X.2)
+        lecturas: Altmann, *Rotations, Quaternions, and Double Groups*; Hanson, *Visualizing Quaternions*; Shoemake, «Animating Rotation with Quaternion Curves».
+      - id: II.16
+        titulo: Álgebra lineal en precisión finita
+        paginas: 32
+        requiere:
+          - II.12
+          - II.15
+        tipo: nucleo
+        contenidos:
+          - Deriva de las matrices ortogonales al componerlas en coma flotante; medida de la pérdida de ortogonalidad.
+          - 'Re-ortonormalización: Gram–Schmidt frente a descomposición polar; renormalización de cuaterniones.'
+          - Errores en cadenas de transformaciones; la transpuesta en lugar de la inversa para rotaciones.
+          - Predicados de orientación por determinantes y por qué fallan en coma flotante (V.9 lo resuelve).
+        puente: 'Entrada: `if (frame % 100 == 0) orthonormalize(cameraBasis);`. Tras miles de productos en float32, la matriz deja de ser ortogonal; re-ortonormalizar es proyectar de nuevo sobre SO(3), y la descomposición polar da la rotación más cercana.'
+        aplicaciones:
+          - campo: 3d
+            texto: cámaras y jerarquías que «se deforman» con el tiempo
+          - campo: ing
+            texto: navegación inercial
+          - campo: datos
+            texto: reproducibilidad numérica
+        lecturas: Higham, *Accuracy and Stability of Numerical Algorithms*; Shoemake y Duff, «Matrix Animation and Polar Decomposition».

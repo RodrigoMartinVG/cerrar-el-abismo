@@ -1,0 +1,50 @@
+---
+import { Badge } from '@astrojs/starlight/components';
+import { CAMPOS, slug, type Capitulo } from '@cerrar-el-abismo/indice';
+import { enLinea, urlCapitulo } from '../lib/obra';
+
+interface Props {
+  capitulo: Capitulo;
+}
+
+const { capitulo: c } = Astro.props;
+const contenidos = await Promise.all(c.contenidos.map(enLinea));
+const puente = await enLinea(c.puente);
+const aplicaciones = await Promise.all(c.aplicaciones.map(async (a) => ({ campo: CAMPOS[a.campo], html: await enLinea(a.texto) })));
+const lecturas = await enLinea(c.lecturas);
+const nucleo = c.tipo === 'nucleo';
+---
+
+<section class="capitulo" aria-labelledby={slug(c.id)}>
+  <h3 id={slug(c.id)}>{c.id} {c.titulo}</h3>
+  <p class="meta">
+    <Badge text={nucleo ? 'Núcleo' : 'Complementario'} variant={nucleo ? 'success' : 'default'} />
+    {c.paginas} págs. · Requiere:{' '}
+    {
+      c.requiere.length === 0
+        ? '—'
+        : c.requiere.map((r, i) => (
+            <>
+              {i > 0 && ', '}
+              <a href={urlCapitulo(r)}>{r}</a>
+            </>
+          ))
+    }
+  </p>
+  <ul>
+    {contenidos.map((html) => <li set:html={html} />)}
+  </ul>
+  <p><strong>Puente.</strong> <Fragment set:html={puente} /></p>
+  <p><strong>Aplicaciones.</strong></p>
+  <ul class="aplicaciones">
+    {
+      aplicaciones.map((a) => (
+        <li>
+          <Badge text={a.campo} variant={a.campo === '3D' ? 'note' : a.campo === 'Física' ? 'tip' : 'default'} />
+          <Fragment set:html={a.html} />
+        </li>
+      ))
+    }
+  </ul>
+  <p><strong>Lecturas.</strong> <Fragment set:html={lecturas} /></p>
+</section>

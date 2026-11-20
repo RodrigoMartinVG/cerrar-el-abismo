@@ -1,0 +1,226 @@
+# Tomo I — Fundamentos: lógica, números y estructuras
+# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+id: I
+titulo: 'Fundamentos: lógica, números y estructuras'
+requiere: []
+interfaces: []
+presentacion: El lenguaje de la matemática, los sistemas numéricos y las estructuras algebraicas y discretas que usan todos los tomos, incluida la forma en que una computadora representa los números.
+partes:
+  - letra: A
+    titulo: Lenguaje y números
+    capitulos:
+      - id: I.1
+        titulo: Lógica y demostración
+        paginas: 40
+        requiere: []
+        tipo: nucleo
+        contenidos:
+          - 'Lógica proposicional: conectivos, tablas de verdad, equivalencias, implicación, contrapositiva y negación.'
+          - Cuantificadores, su negación y su orden.
+          - 'Técnicas de demostración: directa, por contradicción, por casos y por contraejemplo; inducción simple y fuerte.'
+          - Notación de sumatorias y productorias; manipulación de índices.
+        puente: 'Entrada: `assert(i <= n)` dentro de un bucle. Un invariante de bucle es un enunciado que se demuestra por inducción; una aserción es una implicación que el programa comprueba al ejecutarse.'
+        aplicaciones:
+          - campo: cripto
+            texto: invariantes y corrección de algoritmos
+          - campo: datos
+            texto: pruebas basadas en propiedades
+          - campo: 3d
+            texto: precondiciones de las funciones geométricas, como exigir un vector no nulo antes de normalizar
+        lecturas: Velleman, *How to Prove It*; Hammack, *Book of Proof*.
+      - id: I.2
+        titulo: Conjuntos, relaciones y funciones
+        paginas: 44
+        requiere:
+          - I.1
+        tipo: nucleo
+        contenidos:
+          - Conjuntos, operaciones, producto cartesiano y conjunto de partes.
+          - Relaciones de equivalencia, clases y particiones; relaciones de orden.
+          - Funciones inyectivas, sobreyectivas y biyectivas; composición, inversa, imagen y preimagen.
+          - 'Cardinalidad: conjuntos finitos, numerables y no numerables; argumento diagonal de Cantor.'
+        puente: 'Entrada: `Map<Key, Value>` y una función `hash(key)`. Un diccionario es una función parcial, y una función de dispersión no puede ser inyectiva cuando el dominio es más grande que el codominio.'
+        aplicaciones:
+          - campo: cripto
+            texto: tablas de dispersión y clases de equivalencia
+          - campo: datos
+            texto: bases de datos como relaciones
+          - campo: 3d
+            texto: soldar vértices duplicados como paso al cociente por una relación de equivalencia
+        lecturas: Halmos, *Naive Set Theory*; Velleman, *How to Prove It*.
+      - id: I.3
+        titulo: Naturales, enteros y divisibilidad
+        paginas: 40
+        requiere:
+          - I.2
+        tipo: nucleo
+        contenidos:
+          - Axiomas de Peano, inducción y definición por recursión; principio del buen orden.
+          - Enteros, algoritmo de la división y divisibilidad.
+          - Máximo común divisor, algoritmo de Euclides y su versión extendida; identidad de Bézout.
+          - Números primos, infinitud de los primos y teorema fundamental de la aritmética.
+        puente: 'Entrada: `while (b != 0) { t = b; b = a % b; a = t; }`. Es el algoritmo de Euclides, y su terminación es el principio del buen orden.'
+        aplicaciones:
+          - campo: cripto
+            texto: aritmética racional exacta
+          - campo: senales
+            texto: períodos de señales combinadas y mínimo común múltiplo
+          - campo: 3d
+            texto: repetición de texturas con períodos coprimos para evitar patrones visibles
+        lecturas: Rosen, *Elementary Number Theory and Its Applications*; Stillwell, *Elements of Number Theory*.
+      - id: I.4
+        titulo: Congruencias y aritmética modular
+        paginas: 40
+        requiere:
+          - I.3
+        tipo: nucleo
+        contenidos:
+          - Congruencias y el anillo ℤ/nℤ; inversos modulares.
+          - Teorema chino del resto.
+          - Pequeño teorema de Fermat, función φ de Euler y teorema de Euler.
+          - Exponenciación rápida y el problema del logaritmo discreto.
+        puente: 'Entrada: `state = state * 6364136223846793005 + 1442695040888963407`. Un generador congruencial lineal es una iteración en ℤ/2⁶⁴ℤ, y su período lo deciden condiciones de aritmética modular (teorema de Hull–Dobell).'
+        aplicaciones:
+          - campo: cripto
+            texto: RSA, Diffie–Hellman y dígitos de control (ISBN, IBAN)
+          - campo: 3d
+            texto: semillas reproducibles para mundos procedurales y *hashing* espacial
+          - campo: datos
+            texto: reparto de datos entre servidores por dispersión
+        lecturas: Hoffstein, Pipher y Silverman, *An Introduction to Mathematical Cryptography*; Knuth, *The Art of Computer Programming*, vol. 2.
+      - id: I.5
+        titulo: Combinatoria
+        paginas: 44
+        requiere:
+          - I.3
+        tipo: nucleo
+        contenidos:
+          - Principios de la suma y del producto; permutaciones y combinaciones.
+          - Coeficientes binomiales, teorema del binomio y triángulo de Pascal.
+          - Principio de inclusión–exclusión y principio del palomar.
+          - Recurrencias lineales y funciones generatrices.
+        puente: 'Entrada: el triángulo de Pascal dentro de un código de curvas de Bézier. Los coeficientes de los polinomios de Bernstein son binomiales, y la recurrencia de Pascal es la que hace funcionar el algoritmo de De Casteljau (aviso de III.9 y V.5).'
+        aplicaciones:
+          - campo: datos
+            texto: conteo de configuraciones y probabilidad elemental
+          - campo: cripto
+            texto: colisiones de *hash* y paradoja del cumpleaños
+          - campo: 3d
+            texto: coeficientes de las curvas de Bézier
+          - campo: fisica
+            texto: conteo de microestados y entropía de Boltzmann
+        lecturas: Graham, Knuth y Patashnik, *Concrete Mathematics*; Stanley, *Enumerative Combinatorics*, vol. 1.
+  - letra: B
+    titulo: Estructuras discretas y algebraicas
+    capitulos:
+      - id: I.6
+        titulo: Grafos
+        paginas: 44
+        requiere:
+          - I.2
+          - I.5
+        tipo: nucleo
+        contenidos:
+          - Grafos, grados, caminos, ciclos y conectividad; árboles y sus caracterizaciones.
+          - Recorridos en anchura y en profundidad; árboles generadores mínimos.
+          - "Caminos mínimos: Dijkstra y A\\*, con la demostración de optimalidad para heurísticas admisibles."
+          - Grafos planos y fórmula de Euler V − E + F = 2; coloración.
+        puente: 'Entrada: `node.children.forEach(update)` en un grafo de escena. La escena es un árbol y la actualización es un recorrido en profundidad; la fórmula de Euler es la primera comprobación de que una malla cerrada está bien formada.'
+        aplicaciones:
+          - campo: 3d
+            texto: grafos de escena, validación de mallas y búsqueda de caminos
+          - campo: ing
+            texto: rutas y redes de transporte
+          - campo: datos
+            texto: redes sociales y componentes conexas
+        lecturas: Bondy y Murty, *Graph Theory*; West, *Introduction to Graph Theory*.
+      - id: I.7
+        titulo: Grupos
+        paginas: 48
+        requiere:
+          - I.4
+        tipo: nucleo
+        contenidos:
+          - Grupos, subgrupos y teorema de Lagrange; grupos cíclicos.
+          - Homomorfismos, subgrupos normales y grupos cociente.
+          - Grupos de permutaciones y signo de una permutación.
+          - Acciones de grupo, órbitas y estabilizadores; lema de Burnside.
+        puente: 'Entrada: `cameraView = inverse(cameraTransform)`. Las transformaciones de un motor forman grupos: componer transformaciones es la operación del grupo, y la matriz de vista de una cámara es el inverso de su transformación en ese grupo.'
+        aplicaciones:
+          - campo: fisica
+            texto: simetrías de moléculas y cristales
+          - campo: cripto
+            texto: grupos en la criptografía de clave pública
+          - campo: 3d
+            texto: simetrías de patrones y teselaciones
+          - campo: datos
+            texto: contar coloraciones distintas con el lema de Burnside
+        lecturas: Dummit y Foote, *Abstract Algebra*; Artin, *Algebra*.
+      - id: I.8
+        titulo: Anillos, cuerpos y polinomios
+        paginas: 48
+        requiere:
+          - I.7
+        tipo: nucleo
+        contenidos:
+          - Anillos, ideales y anillos cociente; dominios de integridad y dominios euclídeos.
+          - 'Anillos de polinomios: división, raíces, factorización y polinomios irreducibles.'
+          - Cuerpos y extensiones simples; ℚ, ℝ, ℂ y ℤ/pℤ como cuerpos.
+          - 'Cuerpos finitos GF(pⁿ): existencia, construcción y aritmética. Para seguir: teoría de Galois; geometría algebraica.'
+        puente: 'Entrada: `x = (x << 1) ^ ((x & 0x80) ? 0x1B : 0)`. Es multiplicar por x en GF(2⁸) módulo un polinomio irreducible: la operación con la que se construyen AES y los códigos de los QR.'
+        aplicaciones:
+          - campo: cripto
+            texto: códigos Reed–Solomon, CRC y AES
+          - campo: senales
+            texto: corrección de errores en almacenamiento y transmisión
+          - campo: 3d
+            texto: evaluación de polinomios con el esquema de Horner
+        lecturas: Dummit y Foote, *Abstract Algebra*; Lidl y Niederreiter, *Introduction to Finite Fields and Their Applications*.
+  - letra: C
+    titulo: Los números reales y la máquina
+    capitulos:
+      - id: I.9
+        titulo: Números reales y complejos
+        paginas: 40
+        requiere:
+          - I.8
+        tipo: nucleo
+        contenidos:
+          - 'Cuerpos ordenados; por qué ℚ no basta: √2 y los huecos de ℚ.'
+          - Construcción de ℝ por cortaduras de Dedekind; axioma del supremo; unicidad del cuerpo ordenado completo.
+          - 'ℂ como ℝ[x]/(x² + 1): conjugado, módulo y desigualdad triangular.'
+          - Forma polar y multiplicación como rotación y escala, con la trigonometría de la secundaria (III.8 la fundamenta).
+        puente: 'Entrada: `z = z * complex(cos(a), sin(a))` en un juego 2D. Multiplicar por un número complejo de módulo 1 es rotar: es la versión plana de lo que harán los cuaterniones (aviso de II.15).'
+        aplicaciones:
+          - campo: 3d
+            texto: rotaciones 2D sin matrices
+          - campo: senales
+            texto: fasores para representar oscilaciones
+          - campo: ing
+            texto: impedancias en circuitos de corriente alterna
+          - campo: fisica
+            texto: amplitudes complejas en óptica ondulatoria
+        lecturas: Spivak, *Calculus* (construcción de ℝ); Needham, *Visual Complex Analysis*.
+      - id: I.10
+        titulo: Números en la máquina
+        paginas: 40
+        requiere:
+          - I.4
+          - I.9
+        tipo: nucleo
+        contenidos:
+          - Representación posicional y cambio de base; enteros de máquina y complemento a dos como aritmética módulo 2ⁿ.
+          - 'Coma flotante IEEE 754: mantisa, exponente, valores especiales, épsilon de máquina y ULP.'
+          - Redondeo y error relativo; cancelación catastrófica; condicionamiento frente a estabilidad.
+          - Formatos reducidos (float16, bfloat16, punto fijo y enteros normalizados) y error de cuantización.
+        puente: 'Entrada: `0.1 + 0.2 == 0.3` da falso, y `if (abs(a - b) < 1e-6)`. Ninguno de esos números es representable exactamente, y la comparación correcta depende de la magnitud (tolerancia relativa), no de un épsilon fijo.'
+        aplicaciones:
+          - campo: 3d
+            texto: pérdida de precisión lejos del origen y *origin rebasing*; compresión de vértices y normales
+          - campo: datos
+            texto: entrenamiento en bfloat16 y la resta del máximo antes de un *softmax*
+          - campo: ing
+            texto: desbordamiento de enteros en sistemas embebidos
+          - campo: cripto
+            texto: determinismo entre plataformas
+        lecturas: Goldberg, «What Every Computer Scientist Should Know About Floating-Point Arithmetic»; Overton, *Numerical Computing with IEEE Floating Point Arithmetic*; Higham, *Accuracy and Stability of Numerical Algorithms*.

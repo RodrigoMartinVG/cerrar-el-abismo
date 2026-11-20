@@ -1,0 +1,232 @@
+# Tomo IX — Ecuaciones en derivadas parciales y medios continuos
+# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+id: IX
+titulo: Ecuaciones en derivadas parciales y medios continuos
+requiere:
+  - VI
+  - VII
+interfaces:
+  - VIII.9
+presentacion: Teoría clásica y numérica de las ecuaciones en derivadas parciales, con las funciones especiales y los métodos de perturbaciones que nacen de ellas, y su aplicación a sólidos deformables y fluidos.
+partes:
+  - letra: A
+    titulo: Teoría
+    capitulos:
+      - id: IX.1
+        titulo: Ecuaciones en derivadas parciales clásicas
+        paginas: 48
+        requiere:
+          - IV.11
+          - VI.4
+        tipo: nucleo
+        contenidos:
+          - Clasificación de las ecuaciones de segundo orden.
+          - Ecuación de transporte y método de las características.
+          - "Ecuaciones del calor, de onda y de Laplace–Poisson: derivación y fórmula de d'Alembert."
+          - Principio del máximo, energía y unicidad.
+        puente: 'Entrada: `advect(field, velocity, dt)` en una simulación de humo. Transportar una magnitud con un campo de velocidades es resolver la ecuación de transporte, y sus características son las trayectorias de las partículas.'
+        aplicaciones:
+          - campo: 3d
+            texto: advección en humo y fluidos
+          - campo: fisica
+            texto: conducción del calor y acústica
+          - campo: bio-eco
+            texto: difusión de sustancias en tejidos
+        lecturas: 'Evans, *Partial Differential Equations*; Strauss, *Partial Differential Equations: An Introduction*.'
+      - id: IX.2
+        titulo: Separación de variables y problemas de Sturm–Liouville
+        paginas: 44
+        requiere:
+          - IX.1
+          - VII.3
+        tipo: nucleo
+        contenidos:
+          - Problemas de contorno y separación de variables.
+          - 'Problemas de Sturm–Liouville: autovalores, autofunciones y completitud.'
+          - Separación en coordenadas polares y esféricas; primeras funciones de Bessel y de Legendre (IX.3 las estudia en general).
+          - Desarrollos en autofunciones para las ecuaciones del calor y de onda.
+        puente: 'Entrada: el sonido de un tambor sintetizado como suma de modos. Los modos de una membrana circular son funciones de Bessel, y por eso un tambor no tiene armónicos enteros como una cuerda.'
+        aplicaciones:
+          - campo: senales
+            texto: síntesis modal de sonido
+          - campo: fisica
+            texto: vibraciones de membranas
+          - campo: 3d
+            texto: sonido procedural de impactos
+        lecturas: 'Strauss, *Partial Differential Equations: An Introduction*; Olver, *Introduction to Partial Differential Equations*.'
+      - id: IX.3
+        titulo: Funciones especiales y polinomios ortogonales
+        paginas: 48
+        requiere:
+          - IX.2
+          - VII.9
+        tipo: nucleo
+        contenidos:
+          - Funciones Gamma y Beta; prolongación analítica de la función Gamma.
+          - 'Ecuaciones con puntos singulares regulares: método de Frobenius.'
+          - 'Funciones de Bessel, polinomios y funciones asociadas de Legendre, polinomios de Hermite y de Laguerre: funciones generatrices, fórmulas de Rodrigues y recurrencias.'
+          - 'Polinomios ortogonales en general: recurrencia de tres términos y cuadratura gaussiana; la función hipergeométrica como caso unificador.'
+        puente: 'Entrada: `scipy.special.jv(n, x)` y una tabla de ceros de Bessel en un libro de física. Las funciones especiales no son una colección de fórmulas: son las autofunciones que produce la separación de variables (IX.2), y su ortogonalidad, sus recurrencias y sus ceros salen de la teoría de Sturm–Liouville.'
+        aplicaciones:
+          - campo: fisica
+            texto: oscilador armónico cuántico (Hermite) y átomo de hidrógeno (Laguerre y Legendre)
+          - campo: senales
+            texto: modulación en frecuencia y funciones de Bessel
+          - campo: ing
+            texto: vibraciones de placas circulares y conducción del calor en cilindros
+        lecturas: Andrews, Askey y Roy, *Special Functions*; Lebedev, *Special Functions and Their Applications*; Olver et al., *NIST Handbook of Mathematical Functions*.
+      - id: IX.4
+        titulo: Soluciones fundamentales y funciones de Green
+        paginas: 40
+        requiere:
+          - IX.2
+          - VII.5
+        tipo: nucleo
+        contenidos:
+          - Transformada de Fourier para ecuaciones en todo el espacio.
+          - Núcleo del calor y solución fundamental de la ecuación de Laplace.
+          - Funciones de Green y representación de las soluciones.
+          - Potencial newtoniano.
+        puente: 'Entrada: un desenfoque que «difunde» la imagen paso a paso. Aplicar la ecuación del calor durante un tiempo t es convolucionar con una gaussiana de varianza 2t: el núcleo del calor.'
+        aplicaciones:
+          - campo: 3d
+            texto: difusión en imágenes y edición de Poisson
+          - campo: fisica
+            texto: gravitación y electrostática
+          - campo: bio-eco
+            texto: modelos de dispersión
+        lecturas: Evans, *Partial Differential Equations*; Olver, *Introduction to Partial Differential Equations*.
+      - id: IX.5
+        titulo: Perturbaciones y aproximación WKB
+        paginas: 44
+        requiere:
+          - IX.1
+          - VII.10
+        tipo: complementario
+        contenidos:
+          - Perturbaciones regulares de ecuaciones algebraicas y diferenciales.
+          - Perturbaciones singulares y capas límite; desarrollos asintóticos acoplados.
+          - Método de escalas múltiples y términos seculares.
+          - Aproximación WKB y fórmulas de conexión.
+        puente: 'Entrada: un péndulo calculado con la aproximación de ángulo pequeño que, con amplitudes grandes, se adelanta respecto del real. El período depende de la amplitud; el método de escalas múltiples corrige la frecuencia y elimina el término secular que hace crecer el error con el tiempo.'
+        aplicaciones:
+          - campo: fisica
+            texto: mecánica cuántica semiclásica (WKB) y órbitas perturbadas
+          - campo: ing
+            texto: capas límite en aerodinámica
+          - campo: 3d
+            texto: péndulos y osciladores no lineales en animación
+        lecturas: Bender y Orszag, *Advanced Mathematical Methods for Scientists and Engineers*; Holmes, *Introduction to Perturbation Methods*.
+  - letra: B
+    titulo: Métodos numéricos
+    capitulos:
+      - id: IX.6
+        titulo: Diferencias finitas
+        paginas: 44
+        requiere:
+          - IX.1
+          - VI.10
+          - VII.6
+        tipo: nucleo
+        contenidos:
+          - Aproximaciones por diferencias y error de truncamiento.
+          - Consistencia, estabilidad y convergencia; teorema de equivalencia de Lax.
+          - Análisis de estabilidad de von Neumann y condición CFL.
+          - Ecuación de Poisson discreta y su resolución con gradiente conjugado y multigrid.
+        puente: 'Entrada: `hNew[i] = 2*h[i] - hOld[i] + (c*dt/dx)*(c*dt/dx) * (h[i-1] - 2*h[i] + h[i+1])` en un estanque. Si c·dt/dx supera 1, la simulación explota: es la condición CFL, que el análisis de von Neumann deduce.'
+        aplicaciones:
+          - campo: 3d
+            texto: agua sobre campos de alturas y erosión de terrenos
+          - campo: fisica
+            texto: propagación de ondas
+          - campo: ing
+            texto: transferencia de calor en piezas
+        lecturas: LeVeque, *Finite Difference Methods for Ordinary and Partial Differential Equations*; Strikwerda, *Finite Difference Schemes and Partial Differential Equations*.
+      - id: IX.7
+        titulo: Formulación débil y elementos finitos
+        paginas: 52
+        requiere:
+          - IX.4
+          - VII.2
+          - II.12
+        tipo: nucleo
+        contenidos:
+          - Espacios de Sobolev H¹ y trazas (introducción).
+          - Formulación débil y teorema de Lax–Milgram.
+          - Método de Galerkin; elementos lineales en triángulos y tetraedros; matrices de rigidez y de masa.
+          - Lema de Céa y estimaciones del error.
+        puente: 'Entrada: el ensamblado `K[i][j] += area * dot(grad_i, grad_j)` triángulo por triángulo. Es la formulación débil discretizada, y para elementos lineales esa matriz coincide con el laplaciano cotangente de V.12.'
+        aplicaciones:
+          - campo: ing
+            texto: análisis estructural
+          - campo: 3d
+            texto: sólidos deformables y relación con el laplaciano cotangente
+          - campo: fisica
+            texto: electrostática en geometrías complejas
+        lecturas: Brenner y Scott, *The Mathematical Theory of Finite Element Methods*; Johnson, *Numerical Solution of Partial Differential Equations by the Finite Element Method*.
+  - letra: C
+    titulo: Medios continuos
+    capitulos:
+      - id: IX.8
+        titulo: Mecánica de medios continuos
+        paginas: 48
+        requiere:
+          - IX.7
+          - II.10
+        tipo: complementario
+        contenidos:
+          - Gradiente de deformación; tensores de deformación de Green y de pequeñas deformaciones.
+          - 'Descomposición polar: rotación y estiramiento.'
+          - Tensiones de Cauchy y de Piola; ecuación de equilibrio.
+          - 'Elasticidad lineal e hiperelasticidad: modelos de St. Venant–Kirchhoff, neo-hookeano y corrotacional.'
+        puente: 'Entrada: `F = Ds * inverse(Dm)` en un simulador de tetraedros. Es el gradiente de deformación de un elemento, la aplicación lineal que lleva la forma en reposo a la deformada; su descomposición polar separa la rotación, que no debe generar fuerza, del estiramiento.'
+        aplicaciones:
+          - campo: 3d
+            texto: cuerpos blandos y músculos
+          - campo: ing
+            texto: resistencia de materiales
+          - campo: bio-eco
+            texto: biomecánica de tejidos
+        lecturas: Gonzalez y Stuart, *A First Course in Continuum Mechanics*; Bonet y Wood, *Nonlinear Continuum Mechanics for Finite Element Analysis*; Sifakis y Barbič, «FEM Simulation of 3D Deformable Solids».
+      - id: IX.9
+        titulo: Mecánica de fluidos
+        paginas: 48
+        requiere:
+          - IX.6
+          - IV.11
+        tipo: nucleo
+        contenidos:
+          - Derivada material y leyes de conservación de la masa y del momento.
+          - Ecuaciones de Euler y de Navier–Stokes incompresibles; vorticidad.
+          - Descomposición de Helmholtz–Hodge y proyección de la presión.
+          - Advección semilagrangiana y división de operadores.
+        puente: 'Entrada: `velocity -= gradient(pressure)` tras resolver una ecuación de Poisson. Es la proyección de Helmholtz–Hodge (IV.11): quita al campo de velocidades su parte con divergencia, que es lo que hace incompresible al humo de *Stable Fluids*.'
+        aplicaciones:
+          - campo: 3d
+            texto: humo y fuego con *Stable Fluids*
+          - campo: ing
+            texto: aerodinámica
+          - campo: fisica
+            texto: meteorología
+        lecturas: Chorin y Marsden, *A Mathematical Introduction to Fluid Mechanics*; Bridson, *Fluid Simulation for Computer Graphics*; Stam, «Stable Fluids».
+      - id: IX.10
+        titulo: Ondas en el agua, aguas someras y métodos de partículas
+        paginas: 44
+        requiere:
+          - IX.9
+          - VIII.9
+        tipo: complementario
+        contenidos:
+          - Ondas de superficie y relación de dispersión.
+          - Ecuaciones de aguas someras.
+          - Espectros de oleaje y síntesis de océanos con la FFT.
+          - 'Hidrodinámica de partículas suavizadas (SPH): aproximación por núcleos, gradiente y laplaciano; flotabilidad.'
+        puente: 'Entrada: `omega = sqrt(g * k)` en un *shader* de océano. Es la relación de dispersión de las ondas en aguas profundas: las olas largas viajan más rápido, y eso hace que el océano sintetizado con la FFT parezca real.'
+        aplicaciones:
+          - campo: 3d
+            texto: océanos, ríos y barcos que flotan
+          - campo: fisica
+            texto: maremotos y oleaje
+          - campo: ing
+            texto: ingeniería costera
+        lecturas: Tessendorf, «Simulating Ocean Water»; Monaghan, «Smoothed Particle Hydrodynamics»; Vreugdenhil, *Numerical Methods for Shallow-Water Flow*.

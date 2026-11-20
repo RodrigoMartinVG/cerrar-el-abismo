@@ -1,0 +1,32 @@
+/* Las entradas del índice temático: un capítulo por bloque, con sus metadatos en una línea discreta. */
+.capitulo {
+  border-top: 1px solid var(--sl-color-hairline);
+  padding-top: 1rem;
+}
+
+.capitulo .meta {
+  color: var(--sl-color-gray-2);
+  font-size: var(--sl-text-sm);
+}
+
+.capitulo .aplicaciones {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.capitulo .sl-badge {
+  margin-inline-end: 0.35rem;
+}
+
+/* Una fila de etiquetas, separadas. */
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+/* Columnas de números: alineadas a la derecha y con cifras del mismo ancho. */
+.num {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}

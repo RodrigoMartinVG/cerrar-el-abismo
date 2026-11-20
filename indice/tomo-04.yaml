@@ -1,0 +1,288 @@
+# Tomo IV — Análisis en varias variables y optimización
+# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+id: IV
+titulo: Análisis en varias variables y optimización
+requiere:
+  - II
+  - III
+interfaces: []
+presentacion: Derivar e integrar en ℝⁿ, optimizar con y sin restricciones, y los teoremas integrales del cálculo vectorial.
+partes:
+  - letra: A
+    titulo: Cálculo diferencial
+    capitulos:
+      - id: IV.1
+        titulo: Topología de ℝⁿ y continuidad
+        paginas: 28
+        requiere:
+          - III.11
+          - II.8
+        tipo: nucleo
+        contenidos:
+          - ℝⁿ como espacio normado; equivalencia de las normas en dimensión finita.
+          - Teorema de Heine–Borel y compacidad.
+          - Funciones continuas de varias variables; límites por caminos y sus trampas.
+          - Aplicaciones lineales continuas y norma de operador.
+        puente: 'Entrada: `length(v)`, `abs(v.x) + abs(v.y)` y `max(abs(v.x), abs(v.y))`. Son las normas L², L¹ y L∞; en dimensión finita son equivalentes, y por eso las pruebas de distancia baratas sirven de filtro antes de la exacta.'
+        aplicaciones:
+          - campo: 3d
+            texto: pruebas de distancia rápidas y cajas alineadas con los ejes
+          - campo: ing
+            texto: distancia de Manhattan en logística
+          - campo: datos
+            texto: normas en la regularización de modelos
+        lecturas: Munkres, *Analysis on Manifolds*; Hubbard y Hubbard, *Vector Calculus, Linear Algebra, and Differential Forms*.
+      - id: IV.2
+        titulo: Diferenciabilidad
+        paginas: 44
+        requiere:
+          - IV.1
+          - II.5
+          - III.7
+        tipo: nucleo
+        contenidos:
+          - Derivada como aplicación lineal; derivadas parciales y direccionales.
+          - El gradiente como covector y como vector (vía el producto interno); matriz jacobiana; regla de la cadena.
+          - Funciones de clase C¹ y teorema de Schwarz.
+          - Derivadas de orden superior, matriz hessiana y fórmula de Taylor en varias variables.
+        puente: 'Entrada: `n = normalize(vec3(f(p+ex)-f(p-ex), f(p+ey)-f(p-ey), f(p+ez)-f(p-ez)))`. La normal de una superficie implícita es su gradiente aproximado por diferencias centrales; `dFdx` y `dFdy` en la GPU son derivadas en el espacio de la pantalla.'
+        aplicaciones:
+          - campo: 3d
+            texto: normales de superficies implícitas y jacobiano de la proyección que mide la huella de un píxel sobre una textura
+          - campo: fisica
+            texto: gradientes de potencial y fuerzas
+          - campo: datos
+            texto: gradientes de funciones de pérdida
+        lecturas: Hubbard y Hubbard, *Vector Calculus, Linear Algebra, and Differential Forms*; Marsden y Tromba, *Vector Calculus*.
+      - id: IV.3
+        titulo: Funciones inversa e implícita
+        paginas: 40
+        requiere:
+          - IV.2
+        tipo: nucleo
+        contenidos:
+          - Teorema de la función inversa, demostrado con el punto fijo de Banach.
+          - Teorema de la función implícita.
+          - Superficies de nivel y subvariedades de ℝⁿ; espacio tangente.
+          - Cambios de coordenadas locales.
+        puente: 'Entrada: un *ray marcher* que trata `f(p) = 0` como una superficie. El teorema de la función implícita dice cuándo el conjunto de nivel es de verdad una superficie suave: donde el gradiente no se anula.'
+        aplicaciones:
+          - campo: 3d
+            texto: superficies implícitas y su plano tangente
+          - campo: ing
+            texto: mecanismos y cinemática de lazos cerrados
+          - campo: bio-eco
+            texto: estática comparativa en economía
+        lecturas: Spivak, *Calculus on Manifolds*; Munkres, *Analysis on Manifolds*.
+      - id: IV.4
+        titulo: Extremos y multiplicadores de Lagrange
+        paginas: 36
+        requiere:
+          - IV.3
+          - II.9
+        tipo: nucleo
+        contenidos:
+          - Puntos críticos y su clasificación con la hessiana.
+          - Extremos condicionados; multiplicadores de Lagrange y su significado geométrico.
+          - Condiciones de segundo orden con restricciones.
+          - Los multiplicadores como sensibilidad del óptimo.
+        puente: 'Entrada: `lambda` en un *solver* de restricciones de física. El multiplicador de Lagrange de una restricción es, físicamente, la fuerza que la mantiene: el «impulso de la restricción» de un motor es esa λ.'
+        aplicaciones:
+          - campo: fisica
+            texto: fuerzas de restricción
+          - campo: bio-eco
+            texto: maximización de la utilidad con un presupuesto
+          - campo: 3d
+            texto: punto más cercano sobre una superficie
+        lecturas: Hubbard y Hubbard, *Vector Calculus, Linear Algebra, and Differential Forms*; Marsden y Tromba, *Vector Calculus*.
+  - letra: B
+    titulo: Optimización
+    capitulos:
+      - id: IV.5
+        titulo: Convexidad
+        paginas: 40
+        requiere:
+          - IV.4
+        tipo: nucleo
+        contenidos:
+          - Conjuntos convexos, envolvente convexa y teorema de Carathéodory.
+          - Teoremas de separación y de hiperplano soporte.
+          - Sumas de Minkowski y funciones de soporte.
+          - Funciones convexas, desigualdad de Jensen y caracterización por la hessiana.
+        puente: 'Entrada: `support(shape, dir)` en un detector de colisiones. Una forma convexa queda determinada por su función de soporte; GJK (aviso de V.10) trabaja solo con ella, sobre la diferencia de Minkowski.'
+        aplicaciones:
+          - campo: 3d
+            texto: envolventes convexas para colisiones
+          - campo: datos
+            texto: funciones de pérdida convexas
+          - campo: bio-eco
+            texto: aversión al riesgo y desigualdad de Jensen
+        lecturas: Boyd y Vandenberghe, *Convex Optimization*; Rockafellar, *Convex Analysis*.
+      - id: IV.6
+        titulo: Programación lineal
+        paginas: 36
+        requiere:
+          - IV.5
+          - II.12
+        tipo: nucleo
+        contenidos:
+          - Poliedros, vértices y soluciones básicas.
+          - Método símplex y su terminación.
+          - Dualidad y lema de Farkas.
+          - Flujo en redes y problema de transporte.
+        puente: 'Entrada: un planificador que «elige la mezcla de recursos más barata». Es un programa lineal: el óptimo está en un vértice del poliedro, y los precios sombra son las variables duales.'
+        aplicaciones:
+          - campo: ing
+            texto: logística y transporte
+          - campo: bio-eco
+            texto: dietas y asignación de recursos
+          - campo: datos
+            texto: problemas de asignación
+        lecturas: Bertsimas y Tsitsiklis, *Introduction to Linear Optimization*; Matoušek y Gärtner, *Understanding and Using Linear Programming*.
+      - id: IV.7
+        titulo: 'Optimización con restricciones: KKT y dualidad'
+        paginas: 36
+        requiere:
+          - IV.5
+        tipo: nucleo
+        contenidos:
+          - Condiciones de Karush–Kuhn–Tucker y calificaciones de las restricciones.
+          - Dualidad lagrangiana; dualidad débil y fuerte; condición de Slater.
+          - Programación cuadrática convexa.
+          - Proyección sobre conjuntos convexos.
+        puente: 'Entrada: `lambda = max(lambda + delta, 0.0)` en un *solver* de contactos. La desigualdad λ ≥ 0 y la complementariedad son condiciones KKT: el contacto empuja, pero no tira.'
+        aplicaciones:
+          - campo: 3d
+            texto: contacto unilateral y límites articulares
+          - campo: datos
+            texto: máquinas de vectores soporte
+          - campo: ing
+            texto: diseño óptimo con restricciones
+        lecturas: Boyd y Vandenberghe, *Convex Optimization*; Nocedal y Wright, *Numerical Optimization*.
+      - id: IV.8
+        titulo: Métodos de optimización y diferenciación automática
+        paginas: 52
+        requiere:
+          - IV.7
+          - II.12
+        tipo: nucleo
+        contenidos:
+          - Descenso de gradiente, búsqueda lineal y condiciones de Wolfe; convergencia en el caso convexo.
+          - Método de Newton y métodos cuasi-Newton (BFGS).
+          - 'Mínimos cuadrados no lineales: Gauss–Newton y Levenberg–Marquardt; gradiente conjugado como minimización de una forma cuadrática.'
+          - 'Diferenciación automática: grafo de cómputo, modo directo con números duales, modo inverso (retropropagación) y su costo.'
+        puente: 'Entrada: `loss.backward()`. Es el modo inverso de la diferenciación automática: la regla de la cadena aplicada al grafo de cómputo en orden inverso, con un costo proporcional al de evaluar la función.'
+        aplicaciones:
+          - campo: datos
+            texto: entrenamiento de redes neuronales
+          - campo: 3d
+            texto: cinemática inversa por mínimos cuadrados amortiguados y calibración de cámaras
+          - campo: ing
+            texto: ajuste de modelos a mediciones
+        lecturas: Nocedal y Wright, *Numerical Optimization*; Griewank y Walther, *Evaluating Derivatives*; Shewchuk, «An Introduction to the Conjugate Gradient Method Without the Agonizing Pain».
+  - letra: C
+    titulo: Cálculo integral
+    capitulos:
+      - id: IV.9
+        titulo: Integral múltiple
+        paginas: 48
+        requiere:
+          - IV.3
+          - III.5
+        tipo: nucleo
+        contenidos:
+          - Integral de Riemann en rectángulos; conjuntos de medida nula y criterio de Lebesgue (enunciado).
+          - Teorema de Fubini.
+          - Teorema del cambio de variables, con demostración.
+          - Coordenadas polares, cilíndricas y esféricas; integración sobre la esfera y ángulo sólido.
+        puente: 'Entrada: `E += L(dir) * cos(theta) * sin(theta) * dTheta * dPhi`. La irradiancia es una integral sobre el hemisferio respecto del ángulo sólido; el factor sen θ es el jacobiano de las coordenadas esféricas, y olvidarlo es el error más común al muestrear direcciones.'
+        aplicaciones:
+          - campo: 3d
+            texto: 'radiometría: irradiancia, intensidad y radiancia como densidades respecto del área y del ángulo sólido, con sus unidades fotométricas (lux, candelas y nits)'
+          - campo: fisica
+            texto: centros de masa y momentos de inercia
+          - campo: datos
+            texto: densidades conjuntas (aviso de VIII.2)
+        lecturas: Munkres, *Analysis on Manifolds*; Marsden y Tromba, *Vector Calculus*.
+      - id: IV.10
+        titulo: Integrales de línea y de superficie
+        paginas: 40
+        requiere:
+          - IV.9
+        tipo: nucleo
+        contenidos:
+          - Curvas parametrizadas, longitud de arco e integrales de línea.
+          - Campos vectoriales, trabajo y campos conservativos; potencial.
+          - Superficies parametrizadas, área e integrales de superficie.
+          - Flujo de un campo a través de una superficie.
+        puente: 'Entrada: `area += 0.5 * length(cross(b - a, c - a))` sobre los triángulos de una malla. Es la integral de superficie de la función 1 discretizada: el producto vectorial es el elemento de área de la parametrización.'
+        aplicaciones:
+          - campo: fisica
+            texto: trabajo y circulación
+          - campo: 3d
+            texto: área de mallas y flujo a través de superficies
+          - campo: ing
+            texto: caudal a través de una sección
+        lecturas: Marsden y Tromba, *Vector Calculus*; Hubbard y Hubbard, *Vector Calculus, Linear Algebra, and Differential Forms*.
+      - id: IV.11
+        titulo: Teoremas integrales del cálculo vectorial
+        paginas: 44
+        requiere:
+          - IV.10
+        tipo: nucleo
+        contenidos:
+          - Divergencia, rotacional y laplaciano.
+          - Teoremas de Green, de Stokes y de la divergencia.
+          - Identidades vectoriales; potenciales escalares y vectoriales.
+          - Descomposición de Helmholtz–Hodge en ℝ³.
+        puente: 'Entrada: `volume += dot(a, cross(b, c)) / 6.0` sobre los triángulos de una malla cerrada. El volumen, la masa, el centroide y el tensor de inercia de un sólido se calculan solo con su borde: es el teorema de la divergencia.'
+        aplicaciones:
+          - campo: 3d
+            texto: masa, centroide e inercia exactos de mallas
+          - campo: fisica
+            texto: ecuaciones de Maxwell en forma integral
+          - campo: ing
+            texto: conservación de la masa en fluidos
+        lecturas: Marsden y Tromba, *Vector Calculus*; Mirtich, «Fast and Accurate Computation of Polyhedral Mass Properties».
+      - id: IV.12
+        titulo: Coordenadas curvilíneas y cálculo tensorial en ℝⁿ
+        paginas: 40
+        requiere:
+          - IV.11
+          - II.11
+        tipo: nucleo
+        contenidos:
+          - Coordenadas curvilíneas, base coordenada y factores de escala; coordenadas ortogonales.
+          - El tensor métrico en coordenadas; símbolos de Christoffel en el espacio euclídeo.
+          - Gradiente, divergencia, rotacional y laplaciano en coordenadas curvilíneas, deducidos de forma intrínseca.
+          - Derivada covariante de campos vectoriales y tensoriales en ℝⁿ.
+        puente: 'Entrada: el laplaciano en esféricas tal como aparece en un libro de física, (1/r²) ∂_r(r² ∂_r f) + … . No es una fórmula para memorizar: sale de la métrica en esféricas, y los factores r² y sen θ vienen de la raíz del determinante del tensor métrico. El capítulo también traduce entre la convención de la física (θ polar) y la de muchos textos de cálculo (θ azimutal).'
+        aplicaciones:
+          - campo: fisica
+            texto: electromagnetismo y potenciales en geometrías esféricas y cilíndricas
+          - campo: ing
+            texto: elasticidad en tubos y recipientes a presión
+          - campo: 3d
+            texto: simulación sobre la superficie de un planeta en coordenadas esféricas
+        lecturas: Marsden y Tromba, *Vector Calculus*; Arfken, Weber y Harris, *Mathematical Methods for Physicists*.
+      - id: IV.13
+        titulo: Formas diferenciales y teorema de Stokes general
+        paginas: 44
+        requiere:
+          - IV.11
+          - II.4
+        tipo: complementario
+        contenidos:
+          - 'Álgebra exterior: producto exterior; bivectores y trivectores como áreas y volúmenes orientados.'
+          - Formas diferenciales en ℝⁿ, derivada exterior y *pullback*.
+          - Integración de formas y teorema de Stokes general; Green, Stokes y Gauss como casos particulares.
+          - 'Formas cerradas y exactas; lema de Poincaré. Para seguir: álgebra geométrica y PGA.'
+        puente: 'Entrada: `cross(a, b)` en ℝ³ frente a `a ^ b` en una biblioteca de álgebra geométrica. El producto vectorial es un bivector disfrazado de vector, y por eso solo existe en dimensión 3; el álgebra exterior lo generaliza a cualquier dimensión.'
+        aplicaciones:
+          - campo: fisica
+            texto: electromagnetismo con formas diferenciales
+          - campo: 3d
+            texto: áreas orientadas y álgebra geométrica
+          - campo: ing
+            texto: 'termodinámica: diferenciales exactas e inexactas'
+        lecturas: Hubbard y Hubbard, *Vector Calculus, Linear Algebra, and Differential Forms*; Spivak, *Calculus on Manifolds*.

@@ -1,0 +1,72 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { paginas, slug, type Tomo } from '@cerrar-el-abismo/indice';
+import Capitulo from '../../components/Capitulo.astro';
+import { enLinea, numero, obra, urlCapitulo, urlTomo } from '../../lib/obra';
+
+export function getStaticPaths() {
+  return obra().tomos.map((tomo) => ({ params: { tomo: slug(tomo.id) }, props: { tomo } }));
+}
+
+interface Props {
+  tomo: Tomo;
+}
+
+const { tomo } = Astro.props;
+const capitulos = tomo.partes.flatMap((p) => p.capitulos);
+const nucleo = capitulos.filter((c) => c.tipo === 'nucleo');
+const presentacion = await enLinea(tomo.presentacion);
+const headings = tomo.partes.flatMap((p) => [
+  { depth: 2, slug: `parte-${p.letra.toLowerCase()}`, text: `Parte ${p.letra} — ${p.titulo}` },
+  ...p.capitulos.map((c) => ({ depth: 3, slug: slug(c.id), text: `${c.id} ${c.titulo}` })),
+]);
+---
+
+<StarlightPage frontmatter={{ title: `Tomo ${tomo.id} — ${tomo.titulo}`, description: tomo.presentacion }} headings={headings}>
+  <p set:html={presentacion} />
+  <ul>
+    <li>
+      <strong>Requiere:</strong>{' '}
+      {tomo.requiere.length === 0 && 'escuela secundaria'}
+      {
+        tomo.requiere.map((r, i) => (
+          <>
+            {i > 0 && (i === tomo.requiere.length - 1 ? ' y ' : ', ')}
+            <a href={urlTomo(r)}>Tomo {r}</a>
+          </>
+        ))
+      }
+    </li>
+    {
+      tomo.interfaces.length > 0 && (
+        <li>
+          <strong>Importa por interfaz:</strong>{' '}
+          {tomo.interfaces.map((itf, i) => (
+            <>
+              {i > 0 && ', '}
+              <a href={urlCapitulo(itf)}>{itf}</a>
+            </>
+          ))}
+        </li>
+      )
+    }
+    <li>
+      <strong>Extensión:</strong>{' '}
+      {capitulos.length} capítulos y {numero(paginas(capitulos))} páginas estimadas; de núcleo, {nucleo.length} capítulos y {
+        numero(paginas(nucleo))
+      } páginas.
+    </li>
+  </ul>
+  {
+    tomo.partes.map((p) => (
+      <>
+        <h2 id={`parte-${p.letra.toLowerCase()}`}>
+          Parte {p.letra} — {p.titulo}
+        </h2>
+        {p.capitulos.map((c) => (
+          <Capitulo capitulo={c} />
+        ))}
+      </>
+    ))
+  }
+</StarlightPage>

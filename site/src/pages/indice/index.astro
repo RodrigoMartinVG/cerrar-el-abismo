@@ -1,0 +1,71 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { Badge } from '@astrojs/starlight/components';
+import { CAMPOS, paginas, todosLosCapitulos } from '@cerrar-el-abismo/indice';
+import { numero, obra, urlTomo } from '../../lib/obra';
+
+const { tomos } = obra();
+const todos = todosLosCapitulos(obra());
+const filas = tomos.map((t) => {
+  const capitulos = t.partes.flatMap((p) => p.capitulos);
+  const nucleo = capitulos.filter((c) => c.tipo === 'nucleo');
+  return { tomo: t, capitulos: capitulos.length, paginas: paginas(capitulos), nucleo: nucleo.length, paginasNucleo: paginas(nucleo) };
+});
+const nucleo = todos.filter((c) => c.tipo === 'nucleo');
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Índice temático',
+    description: 'Los diez tomos de la obra, sus capítulos, sus requisitos y sus aplicaciones.',
+  }}
+>
+  <p>
+    La obra tiene {tomos.length} tomos y {todos.length} capítulos, con unas {numero(paginas(todos))} páginas estimadas.
+    Los {nucleo.length} capítulos de núcleo ({numero(paginas(nucleo))} páginas) forman la licenciatura aplicada mínima;
+    los complementarios amplían, y ningún capítulo de núcleo depende de uno complementario. Los requisitos usan la numeración
+    «tomo.capítulo»: II.5 es el quinto capítulo del Tomo II.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tomo</th>
+        <th>Requiere</th>
+        <th class="num">Capítulos</th>
+        <th class="num">Páginas</th>
+        <th class="num">De núcleo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        filas.map((f) => (
+          <tr>
+            <td>
+              <a href={urlTomo(f.tomo.id)}>
+                {f.tomo.id}. {f.tomo.titulo}
+              </a>
+            </td>
+            <td>{f.tomo.requiere.length === 0 ? '—' : f.tomo.requiere.join(', ')}</td>
+            <td class="num">{f.capitulos}</td>
+            <td class="num">{numero(f.paginas)}</td>
+            <td class="num">
+              {f.nucleo} ({numero(f.paginasNucleo)} págs.)
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <h2>Cómo leer cada entrada</h2>
+  <p>
+    Cada capítulo da su extensión, sus requisitos y su tipo; sus contenidos; el <strong>Puente</strong>, un fragmento real de código o de
+    física que el capítulo termina explicando; sus aplicaciones, de al menos dos campos; y las lecturas de referencia. Las aplicaciones
+    llevan la etiqueta de su campo:
+  </p>
+  <p class="etiquetas">
+    {Object.values(CAMPOS).map((campo) => <Badge text={campo} variant={campo === '3D' ? 'note' : campo === 'Física' ? 'tip' : 'default'} />)}
+  </p>
+  <p>Los motores 3D y la física son los dos hilos fijos: aparecen en todos los tomos, y ninguno ocupa más de un tercio de un tomo.</p>
+</StarlightPage>

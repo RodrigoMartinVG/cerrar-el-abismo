@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.astro/
+coverage/
+playwright-report/
+test-results/
+package-lock.json
+scratch/
+
+# Documentos escritos a mano (la especificación, las decisiones, el histórico): Prettier reescribiría sus tablas
+# y su énfasis, y la sección 13 de la especificación la genera el índice con su propio formato (decisión 0002).
+docs/
+*.md

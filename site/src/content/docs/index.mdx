@@ -1,0 +1,48 @@
+---
+title: Matemática y práctica
+description: Una obra de matemática de licenciatura en diez tomos, pensada para la web, que cierra el abismo entre la matemática que se estudia y la que se usa.
+template: splash
+hero:
+  tagline: Matemática de licenciatura, con rigor completo, y en cada capítulo el puente hacia su uso real.
+  actions:
+    - text: Índice temático
+      link: indice/
+      icon: right-arrow
+    - text: Itinerarios
+      link: itinerarios/
+      variant: minimal
+    - text: Especificación
+      link: https://github.com/RodrigoMartinVG/cerrar-el-abismo/blob/main/docs/especificacion.md
+      icon: external
+      variant: minimal
+---
+
+import { Aside, Card, CardGrid } from '@astrojs/starlight/components';
+
+<Aside type="caution" title="En construcción">
+  La obra está en su fase 0, la infraestructura. Todavía no hay capítulos escritos, pero el índice temático completo ya se puede
+  recorrer.
+</Aside>
+
+## El abismo
+
+Quien estudia matemática se encuentra a menudo con situaciones prácticas en las que parece haber un abismo entre lo que aprendió y
+cómo se usa. El caso paradigmático es el motor 3D: el estudiante llega con un curso completo de álgebra lineal y descubre que las
+matrices son de 4×4, que los puntos y los vectores se distinguen, que las normales se transforman con una receta extraña y que las
+rotaciones se guardan en cuaterniones. Lo que sabe no parece aplicable. Esta obra quiere cerrar ese abismo sin dejar de ser una obra
+de matemática.
+
+<CardGrid>
+  <Card title="Rigor de licenciatura" icon="open-book">
+    Definiciones, teoremas y demostraciones completas, en diez tomos ordenados por áreas.
+  </Card>
+  <Card title="El puente" icon="random">
+    Cada capítulo abre con un fragmento real, una línea de código o una fórmula de física, y cierra explicándolo línea por línea.
+  </Card>
+  <Card title="Código en vivo" icon="laptop">
+    Python en el navegador y figuras interactivas para ver cada teorema funcionar, y ver cuándo deja de valer.
+  </Card>
+  <Card title="Dos prácticas fijas" icon="rocket">
+    Los motores 3D y la física recorren toda la obra, junto a la ingeniería, los datos, las señales y la criptografía.
+  </Card>
+</CardGrid>

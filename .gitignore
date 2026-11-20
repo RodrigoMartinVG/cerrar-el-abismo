@@ -1,0 +1,21 @@
+# Dependencias y archivos generados
+node_modules/
+dist/
+.astro/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# Sistema y editores
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Configuración local de las herramientas de Claude; los agentes del proyecto sí se comparten.
+.claude/*
+!.claude/agents/
+
+# Borradores y pruebas desechables: nunca se suben, nunca se prueban, nunca se revisan.
+scratch/

@@ -1,0 +1,78 @@
+# Integración continua: todo cambio se verifica (tipos, lint, formato, pruebas y el sitio). Si un cambio a `main`
+# pasa, el sitio se publica en GitHub Pages. Las pruebas incluyen las reglas del índice y la concordancia entre
+# indice/ y la sección 13 de la especificación (decisión 0002), así que un cambio en docs/ también se verifica.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  # Sin estadísticas de uso de Astro desde la integración continua.
+  ASTRO_TELEMETRY_DISABLED: '1'
+
+# Una ejecución por rama a la vez. En `main` una nueva espera a la anterior en vez de cancelarla: así cada commit
+# queda verificado; en un pull request, la más nueva cancela la vieja.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  verificar:
+    name: Tipos, lint, formato y pruebas
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Tipos
+        run: npm run check
+      - name: Lint
+        run: npm run lint
+      - name: Formato
+        run: npm run format:check
+      - name: Pruebas (incluye las reglas del índice y su concordancia con la especificación)
+        run: npm test
+
+  sitio:
+    name: El sitio
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Guardar el sitio para Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: site/dist
+
+  publicar:
+    name: Publicar en GitHub Pages
+    needs: [verificar, sitio]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

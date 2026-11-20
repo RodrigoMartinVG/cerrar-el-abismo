@@ -1,0 +1,14 @@
+{
+  "name": "@cerrar-el-abismo/indice",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "El índice temático de la obra como datos: su esquema, su carga desde indice/, sus reglas y su versión en Markdown para la especificación.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "yaml": "^2.9.1",
+    "zod": "^4.6.7"
+  }
+}

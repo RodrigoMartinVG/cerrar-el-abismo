@@ -1,0 +1,275 @@
+# Tomo VI — Ecuaciones diferenciales, sistemas dinámicos y mecánica
+# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+id: VI
+titulo: Ecuaciones diferenciales, sistemas dinámicos y mecánica
+requiere:
+  - II
+  - III
+  - IV
+interfaces:
+  - V.4
+presentacion: Teoría de las ecuaciones diferenciales ordinarias y de los sistemas dinámicos, mecánica analítica y métodos numéricos. VI.1 a VI.3 solo usan los Tomos II y III.
+partes:
+  - letra: A
+    titulo: Teoría
+    capitulos:
+      - id: VI.1
+        titulo: Ecuaciones de primer orden
+        paginas: 44
+        requiere:
+          - III.11
+          - III.8
+        tipo: nucleo
+        contenidos:
+          - Modelado con ecuaciones diferenciales; campos de direcciones.
+          - Ecuaciones separables, lineales y exactas; factor integrante.
+          - Teorema de existencia y unicidad de Picard–Lindelöf, con el punto fijo de Banach.
+          - Dependencia continua de los datos y desigualdad de Grönwall.
+        puente: 'Entrada: `transmittance *= exp(-sigma * stepLength)` en un efecto de niebla volumétrica. Es la solución exacta de la ecuación lineal T′ = −σT (ley de Beer–Lambert) en cada paso.'
+        aplicaciones:
+          - campo: 3d
+            texto: niebla y atenuación de Beer–Lambert
+          - campo: bio-eco
+            texto: crecimiento logístico y farmacocinética
+          - campo: fisica
+            texto: ley de enfriamiento de Newton y desintegración radiactiva
+        lecturas: Hirsch, Smale y Devaney, *Differential Equations, Dynamical Systems, and an Introduction to Chaos*; Arnold, *Ordinary Differential Equations*.
+      - id: VI.2
+        titulo: Ecuaciones lineales de orden superior
+        paginas: 40
+        requiere:
+          - VI.1
+          - II.3
+        tipo: nucleo
+        contenidos:
+          - Ecuaciones lineales de orden n y espacio de soluciones; wronskiano.
+          - Coeficientes constantes y ecuación característica.
+          - Oscilador armónico libre, amortiguado y forzado; resonancia.
+          - Variación de parámetros.
+        puente: 'Entrada: `smoothDamp(x, target, v, smoothTime, dt)`, la función de seguimiento suave de muchos motores. Es un oscilador con amortiguamiento crítico resuelto en forma cerrada: llega al objetivo lo más rápido posible sin oscilar.'
+        aplicaciones:
+          - campo: 3d
+            texto: seguimiento de cámaras con amortiguamiento crítico
+          - campo: ing
+            texto: circuitos RLC y suspensiones
+          - campo: fisica
+            texto: resonancia en estructuras
+        lecturas: Hirsch, Smale y Devaney, *Differential Equations, Dynamical Systems, and an Introduction to Chaos*; Boyce y DiPrima, *Elementary Differential Equations and Boundary Value Problems*.
+      - id: VI.3
+        titulo: Sistemas lineales y exponencial de matrices
+        paginas: 44
+        requiere:
+          - VI.2
+          - II.7
+          - III.6
+        tipo: nucleo
+        contenidos:
+          - Sistemas x′ = Ax; exponencial de una matriz como serie y mediante la forma de Jordan.
+          - Matriz fundamental y sistemas no homogéneos.
+          - Estabilidad de los sistemas lineales según sus autovalores; retratos de fase en el plano.
+          - Sistemas lineales discretos x_{n+1} = A x_n.
+        puente: 'Entrada: muelles acoplados que «explotan» al aumentar la rigidez. Los autovalores del sistema dicen qué modos oscilan y a qué frecuencia; la explosión aparece cuando el método numérico no respeta esa estructura (VI.10).'
+        aplicaciones:
+          - campo: fisica
+            texto: modos de vibración acoplados
+          - campo: ing
+            texto: modelos en espacio de estados
+          - campo: bio-eco
+            texto: modelos compartimentales
+        lecturas: Hirsch, Smale y Devaney, *Differential Equations, Dynamical Systems, and an Introduction to Chaos*; Perko, *Differential Equations and Dynamical Systems*.
+      - id: VI.4
+        titulo: Sistemas no lineales y estabilidad
+        paginas: 48
+        requiere:
+          - VI.3
+          - IV.3
+        tipo: nucleo
+        contenidos:
+          - Puntos de equilibrio y linealización; teorema de Hartman–Grobman (enunciado).
+          - Funciones de Lyapunov y estabilidad asintótica.
+          - Plano de fase, órbitas periódicas y ciclos límite.
+          - Teorema de Poincaré–Bendixson.
+        puente: 'Entrada: un péndulo de juego que gana energía con el tiempo. El sistema continuo conserva la energía, que es una función de Lyapunov; que la simulación no la conserve es un defecto del integrador, no de la física.'
+        aplicaciones:
+          - campo: bio-eco
+            texto: modelos depredador–presa de Lotka–Volterra y epidemias SIR
+          - campo: fisica
+            texto: péndulo no lineal
+          - campo: ing
+            texto: estabilidad de sistemas realimentados
+        lecturas: Hirsch, Smale y Devaney, *Differential Equations, Dynamical Systems, and an Introduction to Chaos*; Strogatz, *Nonlinear Dynamics and Chaos*.
+      - id: VI.5
+        titulo: Bifurcaciones y caos
+        paginas: 40
+        requiere:
+          - VI.4
+        tipo: complementario
+        contenidos:
+          - Bifurcaciones silla–nodo, transcrítica, de horquilla y de Hopf.
+          - Aplicación logística, duplicación de período y constante de Feigenbaum.
+          - Sensibilidad a las condiciones iniciales; sistema de Lorenz y atractores extraños.
+          - Exponentes de Lyapunov y su cálculo numérico.
+        puente: 'Entrada: dos simulaciones con la misma semilla que divergen entre plataformas. Un sistema caótico amplifica exponencialmente las diferencias de redondeo: el determinismo exige aritmética idéntica, no solo el mismo código.'
+        aplicaciones:
+          - campo: fisica
+            texto: meteorología y el modelo de Lorenz
+          - campo: cripto
+            texto: determinismo en juegos en red
+          - campo: bio-eco
+            texto: dinámica de poblaciones
+        lecturas: 'Strogatz, *Nonlinear Dynamics and Chaos*; Alligood, Sauer y Yorke, *Chaos: An Introduction to Dynamical Systems*.'
+      - id: VI.6
+        titulo: 'Sistemas con entrada: control y realimentación'
+        paginas: 36
+        requiere:
+          - VI.4
+        tipo: complementario
+        contenidos:
+          - Sistemas de control lineales; controlabilidad y observabilidad (criterio de Kalman).
+          - Realimentación de estado y asignación de polos.
+          - Controladores PID y su análisis en el dominio del tiempo.
+          - Discretización de controladores.
+        puente: 'Entrada: `force = kp * error + ki * integral + kd * derivative`. Un PID es un sistema realimentado cuyos polos se eligen con kp, ki y kd; la estabilidad del vehículo o de la cámara se decide con los autovalores de VI.3.'
+        aplicaciones:
+          - campo: ing
+            texto: control de motores y de drones
+          - campo: 3d
+            texto: vehículos y personajes que siguen objetivos
+          - campo: bio-eco
+            texto: regulación de la glucosa
+        lecturas: Åström y Murray, *Feedback Systems*; Sontag, *Mathematical Control Theory*.
+  - letra: B
+    titulo: Mecánica
+    capitulos:
+      - id: VI.7
+        titulo: Cálculo de variaciones y mecánica lagrangiana
+        paginas: 48
+        requiere:
+          - VI.4
+          - IV.4
+        tipo: nucleo
+        contenidos:
+          - Funcionales y ecuación de Euler–Lagrange; problema de la braquistócrona.
+          - Principio de mínima acción y coordenadas generalizadas.
+          - Restricciones holónomas con multiplicadores de Lagrange.
+          - 'Simetrías y cantidades conservadas: teorema de Noether.'
+        puente: 'Entrada: un *ragdoll* modelado como cuerpos unidos por «articulaciones». Cada articulación es una restricción holónoma y su fuerza es un multiplicador de Lagrange (IV.4); las coordenadas reducidas y las maximales son dos formas de escribir el mismo lagrangiano.'
+        aplicaciones:
+          - campo: 3d
+            texto: articulaciones y *ragdolls*
+          - campo: fisica
+            texto: mecánica clásica y principio de Fermat en óptica
+          - campo: ing
+            texto: trayectorias óptimas
+        lecturas: Arnold, *Mathematical Methods of Classical Mechanics*; Goldstein, Poole y Safko, *Classical Mechanics*; Gelfand y Fomin, *Calculus of Variations*.
+      - id: VI.8
+        titulo: Mecánica hamiltoniana
+        paginas: 44
+        requiere:
+          - VI.7
+        tipo: nucleo
+        contenidos:
+          - Transformada de Legendre y ecuaciones de Hamilton.
+          - Espacio de fases y teorema de Liouville.
+          - Estructura simpléctica en forma matricial; transformaciones canónicas.
+          - Corchetes de Poisson e integrales primeras; su relación con los conmutadores de la mecánica cuántica (aviso de X.8).
+          - Ecuación de Hamilton–Jacobi, variables de acción–ángulo y sistemas integrables.
+        puente: 'Entrada: el gráfico de energía de una simulación que deriva lentamente. El flujo hamiltoniano conserva el volumen en el espacio de fases, y los integradores que respetan esa estructura (VI.11) no derivan.'
+        aplicaciones:
+          - campo: fisica
+            texto: órbitas planetarias y dinámica molecular
+          - campo: 3d
+            texto: simulación estable a largo plazo
+          - campo: datos
+            texto: Monte Carlo hamiltoniano (aviso de VIII.8)
+        lecturas: 'Arnold, *Mathematical Methods of Classical Mechanics*; José y Saletan, *Classical Dynamics: A Contemporary Approach*.'
+      - id: VI.9
+        titulo: Dinámica del sólido rígido
+        paginas: 44
+        requiere:
+          - VI.7
+          - II.15
+          - V.4
+        tipo: nucleo
+        contenidos:
+          - 'Sistemas de partículas: momento lineal y momento angular.'
+          - Tensor de inercia, teorema de Steiner y ejes principales.
+          - Ecuaciones de Euler y término giroscópico; estabilidad de la rotación en torno a los ejes principales (teorema de la raqueta de tenis).
+          - La orientación como curva en SO(3) y su descripción con cuaterniones.
+        puente: 'Entrada: `w += inverse(I) * (torque - cross(w, I * w)) * dt`. El término `cross(w, I * w)` es el término giroscópico de las ecuaciones de Euler; omitirlo hace que las peonzas y los objetos alargados giren mal.'
+        aplicaciones:
+          - campo: 3d
+            texto: núcleo de un motor de cuerpos rígidos
+          - campo: ing
+            texto: satélites y giróscopos
+          - campo: fisica
+            texto: peonzas y precesión
+        lecturas: 'Goldstein, Poole y Safko, *Classical Mechanics*; Taylor, *Classical Mechanics*; Baraff, «An Introduction to Physically Based Modeling: Rigid Body Simulation».'
+  - letra: C
+    titulo: Métodos numéricos
+    capitulos:
+      - id: VI.10
+        titulo: Métodos numéricos para ecuaciones diferenciales ordinarias
+        paginas: 48
+        requiere:
+          - VI.3
+          - III.10
+        tipo: nucleo
+        contenidos:
+          - Euler explícito; error local y global; orden de convergencia.
+          - Métodos de Runge–Kutta y métodos multipaso.
+          - Regiones de estabilidad absoluta y ecuaciones rígidas.
+          - Métodos implícitos resueltos con Newton; control del paso.
+        puente: 'Entrada: `while (accumulator >= dt) { step(dt); accumulator -= dt; }`, el bucle de paso fijo. Separar el paso de integración del de dibujo es una decisión de estabilidad: la región de estabilidad del método exige un dt acotado.'
+        aplicaciones:
+          - campo: 3d
+            texto: bucle de física con paso fijo
+          - campo: fisica
+            texto: trayectorias balísticas y orbitales
+          - campo: bio-eco
+            texto: simulación de modelos epidemiológicos
+        lecturas: Hairer, Nørsett y Wanner, *Solving Ordinary Differential Equations I*; Iserles, *A First Course in the Numerical Analysis of Differential Equations*.
+      - id: VI.11
+        titulo: Integración geométrica y restricciones
+        paginas: 40
+        requiere:
+          - VI.10
+          - VI.8
+          - V.4
+        tipo: nucleo
+        contenidos:
+          - 'Integradores simplécticos: Störmer–Verlet y Euler semi-implícito; conservación de una energía modificada (enunciado).'
+          - Integradores en grupos de Lie para las rotaciones.
+          - 'Restricciones en la integración: proyección, SHAKE y RATTLE.'
+          - Dinámica basada en posiciones (PBD y XPBD) como método de proyección.
+        puente: 'Entrada: `v += a * dt; x += v * dt;` frente a `x += v * dt; v += a * dt;`. Cambiar el orden de dos líneas convierte un método que gana energía en uno simpléctico, que la conserva en promedio.'
+        aplicaciones:
+          - campo: 3d
+            texto: tela, cuerdas y cuerpos blandos con PBD y XPBD
+          - campo: fisica
+            texto: dinámica molecular
+          - campo: ing
+            texto: mecanismos con restricciones
+        lecturas: 'Hairer, Lubich y Wanner, *Geometric Numerical Integration*; Macklin, Müller y Chentanez, «XPBD: Position-Based Simulation of Compliant Constrained Dynamics».'
+      - id: VI.12
+        titulo: Contacto y complementariedad
+        paginas: 40
+        requiere:
+          - VI.11
+          - IV.7
+          - II.12
+        tipo: nucleo
+        contenidos:
+          - El contacto unilateral como problema de complementariedad lineal (LCP); existencia y unicidad.
+          - Fricción de Coulomb, cono de fricción y su aproximación poliédrica; coeficiente de restitución.
+          - Métodos de Gauss–Seidel y de Jacobi proyectados; convergencia.
+          - Los impulsos secuenciales como método iterativo proyectado.
+        puente: 'Entrada: el bucle de iteraciones de un *solver* de contactos que acumula y recorta impulsos. Es Gauss–Seidel proyectado sobre un LCP, y el número de iteraciones decide si una pila de cajas se sostiene.'
+        aplicaciones:
+          - campo: 3d
+            texto: pilas de cajas estables y fricción
+          - campo: ing
+            texto: robótica de manipulación
+          - campo: bio-eco
+            texto: modelos de equilibrio de mercado
+        lecturas: Cottle, Pang y Stone, *The Linear Complementarity Problem*; Stewart, «Rigid-Body Dynamics with Friction and Impact»; Erleben, Sporring, Henriksen y Dohlmann, *Physics-Based Animation*.
