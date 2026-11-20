@@ -1,0 +1,10 @@
+{
+  "name": "@cerrar-el-abismo/piezas",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Las piezas interactivas de los capítulos (::figura): cada una se monta sobre un elemento y tiene su matemática probada aparte.",
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

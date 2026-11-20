@@ -10,8 +10,9 @@ entre la matemática que se estudia y la que se usa.
 ## Estado
 
 Fase 0, infraestructura (especificación, sección 16). El sitio ya publica el índice temático completo: 13 tomos,
-150 capítulos, sus requisitos, sus aplicaciones y los itinerarios por perfil. Todavía no hay capítulos escritos; el
-primero será el piloto, II.5 *Espacio dual y covectores*.
+150 capítulos, sus requisitos, sus aplicaciones y los itinerarios por perfil. Ya está el capítulo de prueba de la
+fase 0, un borrador de II.5 *Espacio dual y covectores*, que ejercita toda la capa de libro: entornos numerados,
+referencias, una figura interactiva y una celda de Python que corre en el navegador.
 
 ## Dónde está cada cosa
 
@@ -22,6 +23,9 @@ primero será el piloto, II.5 *Espacio dual y covectores*.
 | [`indice/`](indice/) | El índice temático como datos: un YAML por tomo y los itinerarios (decisión 0002) |
 | `libros/` | Los libros de referencia, para consulta interna; no se suben nunca |
 | [`packages/indice/`](packages/indice/) | Esquema, carga y reglas del índice, y su versión en Markdown para la especificación |
+| [`packages/libro/`](packages/libro/) | La capa de libro: directivas, numeración y referencias (decisión 0003) |
+| [`packages/piezas/`](packages/piezas/) | Las piezas interactivas de las figuras |
+| [`site/src/content/docs/capitulos/`](site/src/content/docs/capitulos/) | Los capítulos escritos ([cómo se escriben](docs/guia-de-capitulos.md)) |
 | [`site/`](site/) | El sitio: Astro con Starlight (decisión 0001) |
 | [`docs/historico/`](docs/historico/) | El diseño anterior: el índice con un motor 3D en paralelo |
 
@@ -48,7 +52,9 @@ npm run dev
 | `npm test` | Las pruebas, incluidas las reglas del índice y su concordancia con la especificación |
 | `npm run check` · `npm run lint` · `npm run format:check` | Tipos · lint · formato |
 | `npm run indice:spec` | Reescribe desde `indice/` los bloques generados de la especificación (secciones 6, 9.6, 13 y 14) |
-| `npm run verify` | Todo lo anterior salvo el sitio: lo que corre la integración continua |
+| `npm run ortografia` | El corrector ortográfico en español |
+| `npm run e2e` | Las pruebas en el navegador, sobre el sitio construido |
+| `npm run verify` | Tipos, lint, formato, ortografía y pruebas |
 
 ## Licencia
 

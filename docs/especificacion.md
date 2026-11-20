@@ -449,7 +449,7 @@ Con ellos se generan el grafo de dependencias navegable, las páginas de tomo, d
 
 ### 11.5 Comprobaciones automáticas
 
-En cada cambio, la integración continua comprueba lo siguiente. Las reglas del índice (los puntos 1 y 2, los hilos de 9.2, los itinerarios de 9.6 y las referencias entre capítulos) ya se comprueban en `packages/indice`; el resto llega con los capítulos.
+En cada cambio, la integración continua comprueba lo siguiente. Ya se comprueban: las reglas del índice (los puntos 1 y 2, los hilos de 9.2, los itinerarios de 9.6 y las referencias entre capítulos, en `packages/indice`); en los capítulos escritos, la plantilla, el Puente, las referencias internas, la ejecución de todas las celdas y el texto alternativo de las figuras (decisión 0003). Faltan la verificación automática de las respuestas de los ejercicios y la de los enlaces externos.
 
 1. Que cada requisito existe y es anterior dentro del mismo tomo, o pertenece a un tomo requerido o a una interfaz declarada.
 2. Que ningún capítulo de núcleo depende de uno complementario.

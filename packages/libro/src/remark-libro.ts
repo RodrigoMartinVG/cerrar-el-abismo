@@ -1,0 +1,187 @@
+import type { Paragraph, PhrasingContent, Root, RootContent, Text } from 'mdast';
+import type { ContainerDirective, LeafDirective, TextDirective } from 'mdast-util-directive';
+import { SKIP, visit } from 'unist-util-visit';
+import type { VFile } from 'vfile';
+import { DIRECTIVAS_DE_STARLIGHT, ENTORNOS } from './entornos.ts';
+
+/**
+ * LA CAPA DE LIBRO (decisión 0001), como plugin de remark. Sobre el árbol de un capítulo:
+ *
+ * - convierte los entornos (`:::teorema[Título]{#id}`) en bloques numerados «Teorema II.5.3»;
+ * - convierte `::figura{pieza="…" alt="…"}` en una figura interactiva numerada, con su texto alternativo;
+ * - convierte los bloques ` ```python celda ` en celdas de Python que se ejecutan en el navegador;
+ * - resuelve `:ref[id]` (un entorno o figura del capítulo) y `[[II.3]]` (un capítulo de la obra).
+ *
+ * Todo lo que no reconoce hace fallar la construcción, con el lugar exacto: el conjunto de directivas es cerrado.
+ */
+
+export interface CapituloEnlazable {
+  url: string;
+  titulo: string;
+}
+
+export interface OpcionesLibro {
+  /** Para resolver `[[II.3]]`: la dirección y el título de cada capítulo de la obra. */
+  capitulos: ReadonlyMap<string, CapituloEnlazable>;
+  /** Las piezas interactivas que existen, para validar `::figura{pieza="…"}`. */
+  piezas: readonly string[];
+}
+
+/** Una celda de Python en el árbol: remark-rehype la convierte en `<celda-python>` con el código como texto. */
+interface CeldaPython {
+  type: 'celdaPython';
+  value: string;
+  data: { hName: string; hProperties: Record<string, unknown>; hChildren: { type: 'text'; value: string }[] };
+}
+
+const REFERENCIA_A_CAPITULO = /\[\[([^\][]+)\]\]/g;
+
+const texto = (value: string): Text => ({ type: 'text', value });
+
+/** El texto que precede a un capítulo en su frontmatter de Astro: `capitulo: II.5`. */
+function capituloDe(file: VFile): string | undefined {
+  const astro = (file.data as { astro?: { frontmatter?: Record<string, unknown> } }).astro;
+  const valor = astro?.frontmatter?.['capitulo'];
+  return typeof valor === 'string' ? valor : undefined;
+}
+
+/** Saca el párrafo de etiqueta (`[Título]`) de una directiva de bloque, si lo tiene. */
+function sacarEtiqueta(nodo: ContainerDirective): PhrasingContent[] | undefined {
+  const primero = nodo.children[0];
+  if (primero?.type === 'paragraph' && (primero.data as { directiveLabel?: boolean } | undefined)?.directiveLabel) {
+    nodo.children.shift();
+    return primero.children;
+  }
+  return undefined;
+}
+
+export function remarkLibro(opciones: OpcionesLibro) {
+  return function transformar(arbol: Root, file: VFile) {
+    const capitulo = capituloDe(file);
+    const prefijo = capitulo ? `${capitulo}.` : '';
+    const contadores = { resultados: 0, ejercicios: 0, figuras: 0 };
+    const etiquetas = new Map<string, string>();
+    const fallar = (mensaje: string, nodo: RootContent): never => file.fail(mensaje, nodo);
+
+    const registrar = (id: string | null | undefined, nombre: string, nodo: RootContent) => {
+      if (!id) return;
+      if (etiquetas.has(id)) fallar(`La etiqueta «${id}» está repetida en el capítulo.`, nodo);
+      etiquetas.set(id, nombre);
+    };
+
+    // Primera pasada: entornos, figuras y celdas. Numera y registra las etiquetas.
+    visit(arbol, (nodo, indice, padre) => {
+      if (nodo.type === 'containerDirective') {
+        if (DIRECTIVAS_DE_STARLIGHT.has(nodo.name)) return;
+        const entorno = ENTORNOS[nodo.name];
+        if (!entorno) {
+          return fallar(
+            `«:::${nodo.name}» no es una directiva de la obra. Las permitidas son: ${Object.keys(ENTORNOS).join(', ')} (decisión 0001).`,
+            nodo,
+          );
+        }
+        const etiqueta = sacarEtiqueta(nodo);
+        const numero = entorno.contador ? ++contadores[entorno.contador] : undefined;
+        const nombre = numero === undefined ? entorno.nombre : `${entorno.nombre} ${prefijo}${numero}`;
+        registrar(nodo.attributes?.id, nombre, nodo);
+        const encabezado: Paragraph = {
+          type: 'paragraph',
+          data: { hName: entorno.htmlTitulo ?? 'p', hProperties: { className: ['entorno-titulo'] } },
+          children: [
+            { type: 'strong', children: [texto(nombre)] },
+            ...(etiqueta ? [texto(' ('), ...etiqueta, texto(')')] : []),
+            ...(entorno.htmlTitulo ? [] : [texto('.')]),
+          ],
+        };
+        nodo.children.unshift(encabezado);
+        if (entorno.cierre) {
+          nodo.children.push({
+            type: 'paragraph',
+            data: { hName: 'p', hProperties: { className: ['qed'], ariaLabel: 'Fin de la demostración' } },
+            children: [texto('∎')],
+          });
+        }
+        nodo.data = {
+          hName: entorno.html ?? 'section',
+          hProperties: {
+            className: ['entorno', `entorno-${nodo.name}`],
+            id: nodo.attributes?.id ?? undefined,
+            open: entorno.abierto || undefined,
+          },
+        };
+        return;
+      }
+
+      if (nodo.type === 'leafDirective') {
+        if (nodo.name !== 'figura')
+          return fallar(`«::${nodo.name}» no es una directiva de la obra; la única de una línea es «::figura».`, nodo);
+        figura(nodo);
+        return SKIP;
+      }
+
+      if (nodo.type === 'code' && nodo.lang === 'python' && /\bcelda\b/.test(nodo.meta ?? '') && padre && indice !== undefined) {
+        const celda: CeldaPython = {
+          type: 'celdaPython',
+          value: nodo.value,
+          data: { hName: 'celda-python', hProperties: { className: ['celda'] }, hChildren: [texto(nodo.value)] },
+        };
+        padre.children[indice] = celda as unknown as RootContent;
+        return SKIP;
+      }
+      return undefined;
+    });
+
+    function figura(nodo: LeafDirective) {
+      const pieza = nodo.attributes?.pieza;
+      const alt = nodo.attributes?.alt;
+      if (!pieza || !opciones.piezas.includes(pieza)) {
+        fallar(`La figura pide la pieza «${pieza ?? ''}», que no existe. Las piezas son: ${opciones.piezas.join(', ')}.`, nodo);
+      }
+      if (!alt) fallar('Toda figura necesita texto alternativo: ::figura{pieza="…" alt="…"} (sección 11.5).', nodo);
+      const nombre = `Figura ${prefijo}${++contadores.figuras}`;
+      registrar(nodo.attributes?.id, nombre, nodo);
+      const pie = nodo.children;
+      nodo.children = [
+        {
+          type: 'paragraph',
+          data: { hName: 'figura-interactiva', hProperties: { dataPieza: pieza, dataAlt: alt } },
+          children: [texto(alt!)],
+        } as unknown as PhrasingContent,
+        {
+          type: 'paragraph',
+          data: { hName: 'figcaption' },
+          children: [{ type: 'strong', children: [texto(`${nombre}.`)] }, ...(pie.length > 0 ? [texto(' '), ...pie] : [])],
+        } as unknown as PhrasingContent,
+      ];
+      nodo.data = { hName: 'figure', hProperties: { className: ['figura'], id: nodo.attributes?.id ?? undefined } };
+    }
+
+    // Segunda pasada: referencias a entornos y figuras (`:ref[id]`) y a capítulos (`[[II.3]]`).
+    visit(arbol, (nodo, indice, padre) => {
+      if (nodo.type === 'textDirective' && nodo.name === 'ref' && padre && indice !== undefined) {
+        const id = (nodo as TextDirective).children.map((h) => ('value' in h ? h.value : '')).join('');
+        const nombre = etiquetas.get(id);
+        if (!nombre) return fallar(`:ref[${id}] no apunta a ningún entorno ni figura de este capítulo.`, nodo);
+        padre.children[indice] = { type: 'link', url: `#${id}`, children: [texto(nombre)] };
+        return SKIP;
+      }
+      if (nodo.type === 'text' && padre && indice !== undefined && REFERENCIA_A_CAPITULO.test(nodo.value)) {
+        REFERENCIA_A_CAPITULO.lastIndex = 0;
+        const partes: PhrasingContent[] = [];
+        let desde = 0;
+        for (const m of nodo.value.matchAll(REFERENCIA_A_CAPITULO)) {
+          const id = m[1]!;
+          const destino = opciones.capitulos.get(id);
+          if (!destino) return fallar(`[[${id}]] no es un capítulo de la obra.`, nodo);
+          if (m.index > desde) partes.push(texto(nodo.value.slice(desde, m.index)));
+          partes.push({ type: 'link', url: destino.url, title: destino.titulo, children: [texto(id)] });
+          desde = m.index + m[0].length;
+        }
+        if (desde < nodo.value.length) partes.push(texto(nodo.value.slice(desde)));
+        (padre.children as PhrasingContent[]).splice(indice, 1, ...partes);
+        return [SKIP, indice + partes.length];
+      }
+      return undefined;
+    });
+  };
+}

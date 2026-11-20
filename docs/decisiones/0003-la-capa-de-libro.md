@@ -1,0 +1,48 @@
+# 0003. La capa de libro: directivas cerradas, celdas de Python y figuras
+
+*Fecha: 2026-11-20 · Estado: aceptada*
+
+## Contexto
+
+La decisión 0001 eligió Astro con Starlight y dejó como trabajo propio la capa de libro: entornos numerados,
+referencias, código en vivo y figuras interactivas, con un conjunto cerrado de directivas para que la misma fuente
+sirva a la web y al PDF. La fase 0 (especificación, sección 16) exige un capítulo de prueba publicado con todas las
+comprobaciones en verde.
+
+## Decisión
+
+- **Dónde viven los capítulos.** Un archivo Markdown por capítulo en `site/src/content/docs/capitulos/`, con el
+  nombre de su identificador (`ii-5.md`). El frontmatter declara `title`, `capitulo` y `estado`. Los requisitos, el
+  tipo y las aplicaciones siguen en el índice (decisión 0002), y la página los muestra bajo el título.
+- **La capa de libro es un plugin de remark**, `packages/libro`, que corre en el procesador `unified` de Astro:
+  - Doce entornos: `definicion`, `teorema`, `lema`, `proposicion`, `corolario`, `ejemplo`, `observacion`,
+    `demostracion`, `ejercicio`, `solucion`, `puente` y `linea`, escritos como `:::teorema[Título]{#etiqueta}`. Los
+    resultados comparten un contador por capítulo («Teorema II.5.3») y los ejercicios llevan uno propio. Las
+    demostraciones se pueden plegar y cierran con ∎; las soluciones empiezan plegadas.
+  - `::figura[Pie]{#etiqueta pieza="…" alt="…"}` monta una pieza interactiva de `packages/piezas`. El texto
+    alternativo es obligatorio: sin JavaScript, es lo que se lee.
+  - Un bloque ` ```python celda ` es una celda editable, con «Ejecutar» y «Restaurar».
+  - `:ref[etiqueta]` enlaza un entorno o figura del capítulo con su nombre numerado, y `[[II.3]]` enlaza un capítulo:
+    el escrito o, mientras no lo esté, su entrada en el índice.
+  - Una directiva desconocida, una referencia rota, una pieza inexistente o una figura sin texto alternativo hacen
+    fallar la construcción, con el lugar exacto. Los recuadros de Starlight (`:::note` y los demás) se dejan pasar.
+- **Python en el navegador con Pyodide**, en un Web Worker que se carga la primera vez que el lector ejecuta una celda.
+  La versión es la del paquete `pyodide` del repositorio, y el navegador la descarga de su CDN. Todas las celdas de una
+  página comparten intérprete, como un cuaderno.
+- **Comprobaciones.** Las pruebas unitarias cubren la capa de libro y la matemática de las piezas. Para cada capítulo
+  escrito, se comprueba que está en el índice con su título, que sigue la plantilla de la sección 7 y que sus celdas se
+  ejecutan con el mismo Pyodide, en Node. Playwright recorre el sitio construido, y cspell revisa la ortografía.
+
+## Consecuencias
+
+- Escribir un capítulo es escribir Markdown con doce entornos y tres formas de referencia; la guía está en
+  [docs/guia-de-capitulos.md](../guia-de-capitulos.md).
+- Las referencias a entornos de otros capítulos («el Teorema II.3.4») todavía no existen: se resolverán con un
+  registro global de etiquetas cuando haya un segundo capítulo escrito.
+- El PDF podrá generarse recorriendo el mismo árbol de Markdown, porque las directivas son pocas y cerradas.
+
+## Alternativas descartadas
+
+- **MDX con componentes libres.** Es más flexible, pero cada componente nuevo sería un caso más para el PDF.
+- **Pyodide empaquetado en el sitio.** Pesa más de 10 MB por despliegue; la CDN con la versión fijada da el mismo
+  resultado.

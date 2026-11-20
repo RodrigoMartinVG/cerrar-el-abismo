@@ -1,6 +1,7 @@
-# Integración continua: todo cambio se verifica (tipos, lint, formato, pruebas y el sitio). Si un cambio a `main`
-# pasa, el sitio se publica en GitHub Pages. Las pruebas incluyen las reglas del índice y la concordancia entre
-# indice/ y la sección 13 de la especificación (decisión 0002), así que un cambio en docs/ también se verifica.
+# Integración continua: todo cambio se verifica (tipos, lint, formato, ortografía, pruebas, navegador y el sitio). Si
+# un cambio a `main` pasa, el sitio se publica en GitHub Pages. Las pruebas incluyen las reglas del índice y la
+# concordancia entre indice/ y los bloques generados de la especificación (decisión 0002), así que un cambio en docs/
+# también se verifica.
 name: CI
 
 on:
@@ -40,8 +41,37 @@ jobs:
         run: npm run lint
       - name: Formato
         run: npm run format:check
-      - name: Pruebas (incluye las reglas del índice y su concordancia con la especificación)
+      - name: Ortografía
+        run: npm run ortografia
+      # Incluye las reglas del índice, su concordancia con la especificación, la capa de libro y la ejecución de
+      # todas las celdas de Python de los capítulos con Pyodide (descarga sus paquetes de la CDN).
+      - name: Pruebas
         run: npm test
+
+  navegador:
+    name: Pruebas en el navegador
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    # La imagen de Playwright de la misma versión que package-lock.json: el navegador y sus bibliotecas ya instalados.
+    container:
+      image: mcr.microsoft.com/playwright:v1.65.1-noble
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+      - run: npm ci
+      - run: npm run build
+      - name: Pruebas en el navegador (sirve site/dist con vite preview)
+        run: npx playwright test
+      - name: Informe de Playwright (si algo falló)
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: playwright-report
+          retention-days: 7
 
   sitio:
     name: El sitio
@@ -63,7 +93,7 @@ jobs:
 
   publicar:
     name: Publicar en GitHub Pages
-    needs: [verificar, sitio]
+    needs: [verificar, navegador, sitio]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 10

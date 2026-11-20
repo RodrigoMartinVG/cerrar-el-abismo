@@ -13,6 +13,9 @@ repite.
 - **El índice temático:** los datos están en `indice/` (13 tomos, 150 capítulos) y su código en `packages/indice`
   (decisión 0002).
 - **El sitio:** `site/`, con Astro y Starlight (decisión 0001).
+- **Los capítulos escritos:** `site/src/content/docs/capitulos/` (uno por archivo, `ii-5.md`). Cómo se escriben:
+  [docs/guia-de-capitulos.md](docs/guia-de-capitulos.md); la capa de libro está en `packages/libro` y las piezas
+  interactivas en `packages/piezas` (decisión 0003).
 - **El diseño anterior** (índice con un motor 3D en paralelo): `docs/historico/`. Ya no es el plan.
 
 ## Comandos
@@ -20,11 +23,13 @@ repite.
 | Comando | Qué hace |
 | --- | --- |
 | `npm run dev` · `npm run build` | El sitio en desarrollo · construido en `site/dist` |
-| `npm test` | Vitest: reglas del índice, concordancia con la especificación y el resto de las pruebas |
-| `npm run check` | Tipos: `tsc` del paquete del índice y `astro check` del sitio |
+| `npm test` | Vitest: el índice y su concordancia con la especificación, la capa de libro, las piezas y los capítulos (ejecuta sus celdas con Pyodide) |
+| `npm run check` | Tipos: `tsc` de cada paquete y `astro check` del sitio |
 | `npm run lint` · `npm run format:check` | ESLint · Prettier |
 | `npm run indice:spec` | Reescribe los bloques generados de la especificación (secciones 6, 9.6, 13 y 14) desde `indice/`; valida antes |
-| `npm run verify` | check, lint, formato y pruebas: lo mismo que la integración continua |
+| `npm run ortografia` | cspell con el diccionario español y el del proyecto (`ortografia/palabras.txt`) |
+| `npm run e2e` | Playwright sobre el sitio construido (hacer `npm run build` antes); `E2E_SIN_RED=1` salta la celda de Python |
+| `npm run verify` | check, lint, formato, ortografía y pruebas: lo mismo que el primer trabajo de la integración continua |
 
 Node 26, fijado con mise (`mise.toml`) y `.nvmrc`. Node ejecuta el TypeScript directamente: solo sintaxis que se pueda
 borrar (`erasableSyntaxOnly`) y los imports relativos con su extensión `.ts`.
@@ -45,3 +50,5 @@ borrar (`erasableSyntaxOnly`) y los imports relativos con su extensión `.ts`.
 - **El contenido de los capítulos será Markdown con un conjunto cerrado de directivas**, no MDX libre (decisión
   0001), para que la misma fuente sirva a la web y al PDF.
 - Las pruebas y borradores desechables van en `scratch/`, que nunca se sube.
+- Para ver el sitio, servir `site/dist` con `vite preview` (como `.claude/launch.json` y Playwright): en este entorno
+  `astro preview` pasa a segundo plano y el comando termina enseguida.

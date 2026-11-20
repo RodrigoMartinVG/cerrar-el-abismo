@@ -1,7 +1,7 @@
 ---
 import { Badge } from '@astrojs/starlight/components';
 import { CAMPOS, slug, type Capitulo } from '@cerrar-el-abismo/indice';
-import { enLinea, urlCapitulo } from '../lib/obra';
+import { enLinea, estaEscrito, urlCapitulo, urlEnIndice } from '../lib/obra';
 
 interface Props {
   capitulo: Capitulo;
@@ -26,7 +26,7 @@ const nucleo = c.tipo === 'nucleo';
         : c.requiere.map((r, i) => (
             <>
               {i > 0 && ', '}
-              <a href={urlCapitulo(r)}>{r}</a>
+              <a href={urlEnIndice(r)}>{r}</a>
             </>
           ))
     }
@@ -47,4 +47,13 @@ const nucleo = c.tipo === 'nucleo';
     }
   </ul>
   <p><strong>Lecturas.</strong> <Fragment set:html={lecturas} /></p>
+  {
+    estaEscrito(c.id) && (
+      <p>
+        <a class="leer-capitulo" href={urlCapitulo(c.id)}>
+          Leer el capítulo {c.id} →
+        </a>
+      </p>
+    )
+  }
 </section>

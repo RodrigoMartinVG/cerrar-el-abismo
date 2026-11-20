@@ -13,8 +13,23 @@ export function urlTomo(tomo: string): string {
   return `${raiz}indice/${slug(tomo)}/`;
 }
 
-export function urlCapitulo(id: string): string {
+/** Los capítulos ya escritos: un archivo por capítulo en src/content/docs/capitulos/, con el nombre «ii-5.md». */
+const escritos = new Set(
+  Object.keys(import.meta.glob('/src/content/docs/capitulos/*.md')).map((ruta) => ruta.replace(/^.*\/([^/]+)\.md$/, '$1')),
+);
+
+export function estaEscrito(id: string): boolean {
+  return escritos.has(slug(id));
+}
+
+/** La entrada de un capítulo en la página de su tomo. */
+export function urlEnIndice(id: string): string {
   return `${urlTomo(tomoDe(id))}#${slug(id)}`;
+}
+
+/** El capítulo escrito, o su entrada en el índice mientras no lo esté. */
+export function urlCapitulo(id: string): string {
+  return estaEscrito(id) ? `${raiz}capitulos/${slug(id)}/` : urlEnIndice(id);
 }
 
 let procesador: Promise<MarkdownRenderer> | undefined;
@@ -28,7 +43,7 @@ export async function enLinea(md: string): Promise<string> {
   const conEnlaces = md
     .split(/(`[^`]*`)/)
     .map((trozo, i) =>
-      i % 2 === 1 ? trozo : trozo.replace(referenciasA(), (id) => (existentes.has(id) ? `[${id}](${urlCapitulo(id)})` : id)),
+      i % 2 === 1 ? trozo : trozo.replace(referenciasA(), (id) => (existentes.has(id) ? `[${id}](${urlEnIndice(id)})` : id)),
     )
     .join('');
   procesador ??= createMarkdownProcessor({ syntaxHighlight: false });

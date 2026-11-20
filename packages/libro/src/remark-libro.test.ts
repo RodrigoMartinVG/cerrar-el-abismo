@@ -1,0 +1,99 @@
+import rehypeStringify from 'rehype-stringify';
+import remarkDirective from 'remark-directive';
+import remarkMath from 'remark-math';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import { unified } from 'unified';
+import { VFile } from 'vfile';
+import { describe, expect, it } from 'vitest';
+import { remarkLibro, type OpcionesLibro } from './remark-libro.ts';
+
+const opciones: OpcionesLibro = {
+  capitulos: new Map([
+    ['II.3', { url: '/indice/ii/#ii-3', titulo: 'Transformaciones lineales' }],
+    ['II.5', { url: '/capitulos/ii-5/', titulo: 'Espacio dual y covectores' }],
+  ]),
+  piezas: ['normal-covector'],
+};
+
+/** Procesa un capítulo como lo hace el sitio, con `capitulo: II.5` en el frontmatter. */
+function html(md: string, capitulo: string | undefined = 'II.5'): string {
+  const file = new VFile({ value: md, data: { astro: { frontmatter: capitulo ? { capitulo } : {} } } });
+  return String(
+    unified()
+      .use(remarkParse)
+      .use(remarkMath)
+      .use(remarkDirective)
+      .use(remarkLibro, opciones)
+      .use(remarkRehype)
+      .use(rehypeStringify)
+      .processSync(file),
+  );
+}
+
+describe('remarkLibro', () => {
+  it('numera los entornos con un contador común por capítulo', () => {
+    const salida = html(':::definicion\nUn funcional.\n:::\n\n:::teorema[Dimensión del dual]{#dim}\nSi $\\dim V = n$…\n:::');
+    expect(salida).toContain('<strong>Definición II.5.1</strong>');
+    expect(salida).toContain('<section class="entorno entorno-teorema" id="dim">');
+    expect(salida).toContain('<strong>Teorema II.5.2</strong> (Dimensión del dual).');
+  });
+
+  it('cierra las demostraciones con ∎, las deja plegables y no las numera', () => {
+    const salida = html(':::demostracion\nTrivial.\n:::');
+    expect(salida).toContain(
+      '<details class="entorno entorno-demostracion" open><summary class="entorno-titulo"><strong>Demostración</strong></summary>',
+    );
+    expect(salida).toContain('<p class="qed" aria-label="Fin de la demostración">∎</p>');
+  });
+
+  it('lleva un contador aparte para los ejercicios y pliega las soluciones', () => {
+    const salida = html(':::teorema\nA.\n:::\n\n:::ejercicio\nB.\n:::\n\n:::solucion\nC.\n:::');
+    expect(salida).toContain('<strong>Ejercicio II.5.1</strong>');
+    expect(salida).toContain(
+      '<details class="entorno entorno-solucion"><summary class="entorno-titulo"><strong>Solución</strong></summary>',
+    );
+  });
+
+  it('resuelve :ref[id] con el nombre numerado del entorno', () => {
+    const salida = html(':::lema{#clave}\nX.\n:::\n\nPor el :ref[clave], listo.');
+    expect(salida).toContain('Por el <a href="#clave">Lema II.5.1</a>, listo.');
+  });
+
+  it('enlaza [[II.3]] a su capítulo', () => {
+    const salida = html('Como vimos en [[II.3]] y en [[II.5]].');
+    expect(salida).toContain('<a href="/indice/ii/#ii-3" title="Transformaciones lineales">II.3</a>');
+    expect(salida).toContain('<a href="/capitulos/ii-5/" title="Espacio dual y covectores">II.5</a>.');
+  });
+
+  it('convierte una figura en una pieza interactiva numerada con su texto alternativo', () => {
+    const salida = html('::figura[La normal tras escalar.]{#fig pieza="normal-covector" alt="Una recta y su normal."}');
+    expect(salida).toContain('<figure class="figura" id="fig">');
+    expect(salida).toContain(
+      '<figura-interactiva data-pieza="normal-covector" data-alt="Una recta y su normal.">Una recta y su normal.</figura-interactiva>',
+    );
+    expect(salida).toContain('<figcaption><strong>Figura II.5.1.</strong> La normal tras escalar.</figcaption>');
+  });
+
+  it('convierte los bloques python celda en celdas ejecutables y deja el resto como código', () => {
+    const salida = html('```python celda\nprint(1 + 1)\n```\n\n```python\nx = 1\n```');
+    expect(salida).toContain('<celda-python class="celda">print(1 + 1)</celda-python>');
+    expect(salida).toContain('<pre><code class="language-python">x = 1');
+  });
+
+  it('deja pasar los recuadros de Starlight', () => {
+    expect(() => html(':::note\nOjo.\n:::')).not.toThrow();
+  });
+
+  it.each([
+    [':::teorma\nX.\n:::', /no es una directiva de la obra/],
+    ['::video{src="x"}', /no es una directiva de la obra/],
+    ['::figura{pieza="otra" alt="x"}', /no existe/],
+    ['::figura{pieza="normal-covector"}', /texto alternativo/],
+    ['Ver :ref[nada].', /no apunta a ningún entorno/],
+    ['Ver [[II.99]].', /no es un capítulo de la obra/],
+    [':::teorema{#a}\nX.\n:::\n\n:::lema{#a}\nY.\n:::', /repetida/],
+  ])('hace fallar la construcción ante %j', (md, error) => {
+    expect(() => html(md)).toThrow(error);
+  });
+});
