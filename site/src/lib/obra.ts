@@ -1,5 +1,5 @@
 import { createMarkdownProcessor, type MarkdownRenderer } from '@astrojs/markdown-remark';
-import { cargarIndice, slug, todosLosCapitulos, tomoDe, type Indice } from '@cerrar-el-abismo/indice';
+import { cargarIndice, referenciasA, slug, todosLosCapitulos, tomoDe, type Indice } from '@cerrar-el-abismo/indice';
 
 /** El índice de la obra, leído una sola vez por construcción del sitio. */
 let indice: Indice | undefined;
@@ -17,8 +17,6 @@ export function urlCapitulo(id: string): string {
   return `${urlTomo(tomoDe(id))}#${slug(id)}`;
 }
 
-const REFERENCIA = /\b(?:VIII|VII|VI|IV|IX|X|V|III|II|I)\.\d+\b/g;
-
 let procesador: Promise<MarkdownRenderer> | undefined;
 
 /**
@@ -30,7 +28,7 @@ export async function enLinea(md: string): Promise<string> {
   const conEnlaces = md
     .split(/(`[^`]*`)/)
     .map((trozo, i) =>
-      i % 2 === 1 ? trozo : trozo.replace(REFERENCIA, (id) => (existentes.has(id) ? `[${id}](${urlCapitulo(id)})` : id)),
+      i % 2 === 1 ? trozo : trozo.replace(referenciasA(), (id) => (existentes.has(id) ? `[${id}](${urlCapitulo(id)})` : id)),
     )
     .join('');
   procesador ??= createMarkdownProcessor({ syntaxHighlight: false });

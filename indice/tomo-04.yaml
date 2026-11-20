@@ -109,7 +109,7 @@ partes:
           - Teoremas de separación y de hiperplano soporte.
           - Sumas de Minkowski y funciones de soporte.
           - Funciones convexas, desigualdad de Jensen y caracterización por la hessiana.
-        puente: 'Entrada: `support(shape, dir)` en un detector de colisiones. Una forma convexa queda determinada por su función de soporte; GJK (aviso de V.10) trabaja solo con ella, sobre la diferencia de Minkowski.'
+        puente: 'Entrada: `support(shape, dir)` en un detector de colisiones. Una forma convexa queda determinada por su función de soporte; GJK (aviso de VII.10) trabaja solo con ella, sobre la diferencia de Minkowski.'
         aplicaciones:
           - campo: 3d
             texto: envolventes convexas para colisiones
@@ -202,7 +202,7 @@ partes:
           - campo: fisica
             texto: centros de masa y momentos de inercia
           - campo: datos
-            texto: densidades conjuntas (aviso de VIII.2)
+            texto: densidades conjuntas (aviso de XI.2)
         lecturas: Munkres, *Analysis on Manifolds*; Marsden y Tromba, *Vector Calculus*.
       - id: IV.10
         titulo: Integrales de línea y de superficie

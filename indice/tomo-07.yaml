@@ -1,291 +1,321 @@
-# Tomo VII — Medida, Fourier y variable compleja
+# Tomo VII — Geometría
 # Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
 id: VII
-titulo: Medida, Fourier y variable compleja
+titulo: Geometría
 requiere:
+  - II
   - III
   - IV
 interfaces: []
-presentacion: La integral de Lebesgue y los espacios de funciones, el análisis de Fourier continuo y discreto, las distribuciones, la variable compleja con sus métodos asintóticos, y el análisis en la esfera.
+presentacion: Las geometrías clásicas como estudio de grupos de transformaciones, las curvas y superficies de diseño, la geometría diferencial clásica y la geometría computacional y discreta. VII.1, VII.2, VII.3 y VII.5 solo usan los Tomos II y III, así que se pueden leer justo después del álgebra lineal.
 partes:
   - letra: A
-    titulo: Medida y espacios de funciones
+    titulo: Geometrías y grupos de transformaciones
     capitulos:
       - id: VII.1
-        titulo: Medida e integral de Lebesgue
-        paginas: 52
+        titulo: Isometrías y simetría
+        paginas: 40
         requiere:
-          - IV.9
+          - II.15
+          - I.8
         tipo: nucleo
         contenidos:
-          - σ-álgebras, medida exterior y medida de Lebesgue; existencia de conjuntos no medibles.
-          - Funciones medibles e integral de Lebesgue.
-          - Teoremas de la convergencia monótona y de la convergencia dominada; lema de Fatou.
-          - Medida producto y teorema de Fubini–Tonelli; comparación con la integral de Riemann.
-        puente: 'Entrada: un estimador que promedia los valores de una función con infinitos saltos. La integral de Lebesgue es la que se puede intercambiar con límites sin sorpresas, y es el marco en el que la probabilidad (VIII.2) y Monte Carlo están bien definidos.'
+          - Las isometrías de ℝⁿ son afines; clasificación en el plano y en el espacio.
+          - Todo movimiento es producto de reflexiones.
+          - 'Grupos de simetría finitos: cíclicos, diédricos y de los poliedros regulares.'
+          - Grupos de friso y grupos cristalográficos del plano.
+        puente: 'Entrada: `scale(-1, 1, 1)` en un editor que «da vuelta» las normales de un modelo. Una reflexión invierte la orientación (determinante −1); la clasificación de las isometrías explica qué se puede componer y qué no.'
         aplicaciones:
-          - campo: datos
-            texto: esperanza de variables aleatorias (aviso de VIII.2)
-          - campo: fisica
-            texto: distribuciones de masa y de carga
-          - campo: senales
-            texto: energía de señales con discontinuidades
-        lecturas: Stein y Shakarchi, *Real Analysis*; Folland, *Real Analysis*.
-      - id: VII.2
-        titulo: Espacios Lᵖ y espacios de Hilbert
-        paginas: 48
-        requiere:
-          - VII.1
-          - II.9
-        tipo: nucleo
-        contenidos:
-          - Espacios Lᵖ, desigualdades de Hölder y de Minkowski; completitud (teorema de Riesz–Fischer).
-          - 'Espacios de Hilbert: proyección ortogonal, bases ortonormales e identidad de Parseval.'
-          - Teorema de representación de Riesz.
-          - Operadores compactos autoadjuntos y su teorema espectral; operadores integrales y alternativa de Fredholm. Los operadores no acotados llegan en X.7.
-        puente: 'Entrada: «proyectar» una señal sobre unas pocas funciones base para comprimirla. Es la proyección ortogonal de II.8 en un espacio de dimensión infinita, y la identidad de Parseval dice cuánta energía se pierde.'
-        aplicaciones:
-          - campo: senales
-            texto: compresión por truncamiento en una base
-          - campo: fisica
-            texto: 'mecánica cuántica: estados como vectores de un espacio de Hilbert'
           - campo: 3d
-            texto: iluminación con funciones base (aviso de VII.13)
-        lecturas: Stein y Shakarchi, *Real Analysis*; Kreyszig, *Introductory Functional Analysis with Applications*.
-  - letra: B
-    titulo: Análisis de Fourier
-    capitulos:
+            texto: teselaciones, simetrías de modelos, espejos y orientación
+          - campo: fisica
+            texto: cristalografía
+          - campo: bio-eco
+            texto: simetrías de virus y de moléculas
+        lecturas: Coxeter, *Introduction to Geometry*; Armstrong, *Groups and Symmetry*.
+      - id: VII.2
+        titulo: Geometría proyectiva
+        paginas: 44
+        requiere:
+          - II.13
+        tipo: nucleo
+        contenidos:
+          - Plano y espacio proyectivos; coordenadas homogéneas y puntos del infinito.
+          - Dualidad punto–recta; transformaciones proyectivas y su teorema fundamental.
+          - Razón doble y su invariancia.
+          - Cónicas proyectivas; teoremas de Desargues y de Pappus.
+        puente: 'Entrada: `vec3 line = cross(p, q)` con puntos en coordenadas homogéneas. En el plano proyectivo, la recta por dos puntos y el punto de corte de dos rectas son el mismo producto vectorial: dualidad sin casos especiales, incluidas las rectas paralelas.'
+        aplicaciones:
+          - campo: 3d
+            texto: intersecciones robustas en coordenadas homogéneas
+          - campo: datos
+            texto: 'visión por computador: rectificación de fotografías'
+          - campo: ing
+            texto: fotogrametría y topografía
+        lecturas: Richter-Gebert, *Perspectives on Projective Geometry*; Coxeter, *Projective Geometry*.
       - id: VII.3
-        titulo: Series de Fourier
+        titulo: Cámaras, proyección y geometría de varias vistas
         paginas: 44
         requiere:
           - VII.2
-          - III.8
+          - II.10
+          - II.16
         tipo: nucleo
         contenidos:
-          - Coeficientes de Fourier; núcleos de Dirichlet y de Fejér.
-          - Convergencia puntual (teorema de Dirichlet), sumabilidad de Cesàro y fenómeno de Gibbs.
-          - Convergencia en L² y completitud del sistema trigonométrico.
-          - Suavidad de una función y decaimiento de sus coeficientes.
-        puente: 'Entrada: un ecualizador gráfico de audio. Cada barra multiplica un rango de coeficientes de Fourier, y la suavidad de esa ganancia controla los artefactos (Gibbs) que aparecen en el tiempo.'
-        aplicaciones:
-          - campo: senales
-            texto: síntesis y análisis de audio
-          - campo: fisica
-            texto: cuerdas vibrantes y conducción del calor
-          - campo: 3d
-            texto: formas de onda para animación procedural
-        lecturas: Stein y Shakarchi, *Fourier Analysis*; Körner, *Fourier Analysis*.
-      - id: VII.4
-        titulo: Transformada de Fourier
-        paginas: 48
-        requiere:
-          - VII.3
-        tipo: nucleo
-        contenidos:
-          - Transformada en L¹; lema de Riemann–Lebesgue; fórmula de inversión.
-          - Teorema de Plancherel en L².
-          - Convolución y teorema de convolución; aproximaciones de la identidad.
-          - Principio de incertidumbre y gaussianas; la delta de Dirac como límite de gaussianas (VII.5 la formaliza).
-        puente: 'Entrada: un desenfoque gaussiano separable, `blurX(blurY(image))`. Convolucionar con una gaussiana 2D equivale a convolucionar dos veces con gaussianas 1D porque la gaussiana es un producto de funciones de cada coordenada; en frecuencia es un filtro pasabajos.'
+          - Cámara estenopeica; matrices de proyección en perspectiva y ortográfica; volumen de visión.
+          - Coordenadas de recorte y normalizadas; distribución de la profundidad y su precisión en coma flotante.
+          - 'Rasterización: funciones de arista como determinantes, coordenadas baricéntricas e interpolación con corrección de perspectiva.'
+          - Homografías, geometría epipolar y matriz fundamental; calibración por DLT.
+        puente: 'Entrada: `gl_Position = proj * view * model * vec4(p, 1.0)`, seguido de la división por w. Es una cadena de cambios de marco afines (II.13) y una transformación proyectiva; Reverse-Z funciona porque la coma flotante es más densa cerca de 0, justo donde la proyección comprime la profundidad lejana.'
         aplicaciones:
           - campo: 3d
-            texto: desenfoque y *bloom*
-          - campo: senales
-            texto: filtros y respuesta en frecuencia
-          - campo: fisica
-            texto: óptica de Fourier y difracción
-          - campo: bio-eco
-            texto: resonancia magnética
-        lecturas: Stein y Shakarchi, *Fourier Analysis*; Folland, *Fourier Analysis and Its Applications*.
-      - id: VII.5
-        titulo: Distribuciones
-        paginas: 40
-        requiere:
-          - VII.4
-        tipo: nucleo
-        contenidos:
-          - Funciones de prueba y distribuciones; la delta de Dirac y sus derivadas.
-          - Derivada distribucional, producto por funciones suaves y convergencia de distribuciones.
-          - Distribuciones temperadas y su transformada de Fourier.
-          - Valor principal, fórmula de Sokhotski–Plemelj y soluciones fundamentales.
-        puente: 'Entrada: `∫ δ(x) f(x) dx = f(0)` y `1/(x − iε) → P(1/x) + iπ δ(x)` en un libro de física. Ninguna función cumple la primera igualdad; las distribuciones la convierten en una definición rigurosa y dicen cuándo es legítimo manipular la delta como si fuera una función y cuándo no: su cuadrado, por ejemplo, no tiene sentido.'
-        aplicaciones:
-          - campo: fisica
-            texto: cargas puntuales, densidades singulares y propagadores
-          - campo: senales
-            texto: el impulso unitario y la respuesta al impulso de un sistema lineal
-          - campo: ing
-            texto: fuerzas concentradas en vigas
-        lecturas: Strichartz, *A Guide to Distribution Theory and Fourier Transforms*; Friedlander y Joshi, *Introduction to the Theory of Distributions*.
-      - id: VII.6
-        titulo: Muestreo y transformada discreta
-        paginas: 48
-        requiere:
-          - VII.4
-          - II.12
-        tipo: nucleo
-        contenidos:
-          - Teorema de Nyquist–Shannon y origen del *aliasing*.
-          - 'Filtros de reconstrucción: caja, tienda, Mitchell–Netravali y Lanczos.'
-          - Transformada discreta de Fourier, FFT de Cooley–Tukey y convolución circular; transformada del coseno.
-          - Muestreo en 2D, huella anisotrópica de un píxel y muestreo temporal.
-        puente: 'Entrada: `textureSampleLevel(tex, samp, uv, lod)` con `lod = log2(footprint)`. Los *mipmaps* son versiones prefiltradas de la textura para no muestrear por debajo de la frecuencia de Nyquist, y el nivel se elige con el tamaño de la huella del píxel (IV.2).'
-        aplicaciones:
-          - campo: 3d
-            texto: '*mipmapping*, filtrado anisotrópico, *supersampling* y TAA'
-          - campo: senales
-            texto: audio digital y JPEG
-          - campo: ing
-            texto: adquisición de datos
-        lecturas: Oppenheim y Schafer, *Discrete-Time Signal Processing*; Heckbert, *Fundamentals of Texture Mapping and Image Warping*.
-      - id: VII.7
-        titulo: Ondículas y análisis tiempo–frecuencia
-        paginas: 40
-        requiere:
-          - VII.6
-        tipo: complementario
-        contenidos:
-          - Transformada de Fourier de tiempo corto y espectrogramas.
-          - Análisis de multirresolución; ondícula de Haar.
-          - Ondículas de soporte compacto de Daubechies.
-          - Transformada rápida de ondículas.
-        puente: 'Entrada: el tamaño de ventana de un espectrograma en una herramienta de audio. Elegirlo es elegir entre resolución en el tiempo y resolución en frecuencia: el principio de incertidumbre (VII.4) en acción.'
-        aplicaciones:
-          - campo: senales
-            texto: JPEG 2000 y eliminación de ruido
-          - campo: bio-eco
-            texto: análisis de electrocardiogramas
-          - campo: 3d
-            texto: compresión de texturas y de geometría por niveles
-        lecturas: Mallat, *A Wavelet Tour of Signal Processing*; Daubechies, *Ten Lectures on Wavelets*.
-  - letra: C
-    titulo: Variable compleja
-    capitulos:
-      - id: VII.8
-        titulo: Funciones holomorfas
-        paginas: 40
-        requiere:
-          - IV.10
-          - III.8
-        tipo: nucleo
-        contenidos:
-          - Derivada compleja y ecuaciones de Cauchy–Riemann.
-          - Funciones elementales complejas; ramas del logaritmo.
-          - Series de potencias complejas.
-          - Integrales de contorno.
-        puente: 'Entrada: `atan2(y, x)` y su salto en ±π. Es el argumento de un número complejo: el salto es un corte de rama del logaritmo, y «desenrollar» ángulos en una animación es cambiar de rama.'
-        aplicaciones:
-          - campo: 3d
-            texto: desenrollado de ángulos y conjunto de Mandelbrot
-          - campo: ing
-            texto: diagramas de Bode
-          - campo: fisica
-            texto: flujo potencial en el plano
-        lecturas: Ahlfors, *Complex Analysis*; Needham, *Visual Complex Analysis*.
-      - id: VII.9
-        titulo: Teoría de Cauchy y residuos
-        paginas: 52
-        requiere:
-          - VII.8
-        tipo: nucleo
-        contenidos:
-          - Teorema y fórmula integral de Cauchy; analiticidad de las funciones holomorfas.
-          - Teorema de Liouville y teorema fundamental del álgebra; principio del módulo máximo.
-          - Series de Laurent y clasificación de las singularidades.
-          - Teorema de los residuos y cálculo de integrales reales; principio del argumento.
-        puente: 'Entrada: un buscador de raíces de polinomios que cuenta cuántas hay dentro de un círculo. El principio del argumento cuenta ceros con una integral de contorno y es la base de los métodos robustos para localizar raíces.'
-        aplicaciones:
-          - campo: ing
-            texto: criterio de estabilidad de Nyquist
-          - campo: fisica
-            texto: relaciones de Kramers–Kronig entre causalidad y analiticidad; integrales en óptica
-          - campo: senales
-            texto: diseño de filtros
-        lecturas: Ahlfors, *Complex Analysis*; Stein y Shakarchi, *Complex Analysis*.
-      - id: VII.10
-        titulo: Métodos asintóticos
-        paginas: 40
-        requiere:
-          - VII.9
-        tipo: complementario
-        contenidos:
-          - Series asintóticas y su diferencia con las series convergentes; lema de Watson.
-          - Método de Laplace y fórmula de Stirling.
-          - Fase estacionaria y método del punto de silla (descenso más rápido).
-          - Comportamiento asintótico de integrales y de funciones especiales.
-        puente: 'Entrada: `log(n!) ≈ n * log(n) - n` en un cálculo de entropía. Es la aproximación de Stirling truncada; el método de Laplace la deduce, da el término siguiente, ½·log(2πn), y dice cuánto error se comete para cada n.'
-        aplicaciones:
-          - campo: fisica
-            texto: funciones de partición en mecánica estadística y óptica de la difracción
+            texto: '*pipeline* de cámara, Reverse-Z, *frustum culling* y mapas de sombras'
           - campo: datos
-            texto: aproximación de Laplace en inferencia bayesiana
-          - campo: senales
-            texto: análisis de señales moduladas en frecuencia por fase estacionaria
-        lecturas: Bender y Orszag, *Advanced Mathematical Methods for Scientists and Engineers*; de Bruijn, *Asymptotic Methods in Analysis*.
-      - id: VII.11
-        titulo: Aplicaciones conformes y funciones armónicas
-        paginas: 40
-        requiere:
-          - VII.9
-        tipo: complementario
-        contenidos:
-          - Conformidad y transformaciones de Möbius.
-          - Teorema de la aplicación de Riemann (enunciado y discusión).
-          - Funciones armónicas, principio del máximo y problema de Dirichlet en el disco.
-          - Transformación de Joukowski y transformación de Schwarz–Christoffel (introducción).
-        puente: 'Entrada: una parametrización UV que conserva los ángulos de la textura. Conservar ángulos es ser conforme; en dimensión 2 eso equivale a ser holomorfa, y por eso las parametrizaciones conformes de mallas (V.12) se escriben con números complejos.'
-        aplicaciones:
-          - campo: fisica
-            texto: perfil alar de Joukowski y flujo potencial
-          - campo: 3d
-            texto: parametrizaciones conformes
+            texto: reconstrucción 3D a partir de fotografías
           - campo: ing
-            texto: campos electrostáticos en el plano
-        lecturas: Needham, *Visual Complex Analysis*; Ahlfors, *Complex Analysis*.
-      - id: VII.12
-        titulo: Transformadas de Laplace y z
-        paginas: 40
+            texto: calibración de cámaras industriales
+        lecturas: Hartley y Zisserman, *Multiple View Geometry in Computer Vision*; Lengyel, *Foundations of Game Engine Development*, vol. 2.
+      - id: VII.4
+        titulo: Grupos de Lie de matrices
+        paginas: 48
         requiere:
-          - VII.9
-          - VII.4
+          - II.15
+          - III.8
+          - IV.3
         tipo: nucleo
         contenidos:
-          - Transformada de Laplace, propiedades e inversión por residuos.
-          - Resolución de ecuaciones diferenciales lineales; función de transferencia y estabilidad.
-          - Transformada z y sistemas discretos.
-          - Filtros digitales FIR e IIR.
-        puente: 'Entrada: `y = a * y + (1.0 - a) * x` como filtro de suavizado. Es un filtro IIR de un polo: su transformada z dice cómo atenúa cada frecuencia y por qué introduce retardo.'
+          - 'Grupos de matrices como subvariedades: SO(n), SE(n) y SU(2); álgebras de Lie y corchete.'
+          - Exponencial y logaritmo de matrices; fórmula de Baker–Campbell–Hausdorff (enunciado).
+          - SU(2) → SO(3) como recubrimiento doble; interpolación y promedios en grupos.
+          - SE(3), teorema de Chasles en el espacio, números duales y cuaterniones duales.
+        puente: 'Entrada: `pose = exp(twist * t)` en una biblioteca de robótica. Interpolar un movimiento rígido es recorrer un subgrupo a un parámetro de SE(3); por eso interpolar matrices entrada por entrada deforma los objetos y la exponencial no.'
         aplicaciones:
-          - campo: senales
-            texto: filtros de audio
-          - campo: ing
-            texto: análisis de sistemas de control
           - campo: 3d
-            texto: filtrado de las entradas del ratón y del mando
-        lecturas: Oppenheim y Willsky, *Signals and Systems*; Oppenheim y Schafer, *Discrete-Time Signal Processing*.
-  - letra: D
-    titulo: Análisis en la esfera
+            texto: '*skinning* con cuaterniones duales y cinemática directa como producto de exponenciales'
+          - campo: ing
+            texto: robótica y estimación de estado
+          - campo: fisica
+            texto: simetrías continuas (aviso de VIII.7)
+        lecturas: Stillwell, *Naive Lie Theory*; Hall, *Lie Groups, Lie Algebras, and Representations*; Lynch y Park, *Modern Robotics*.
+  - letra: B
+    titulo: Curvas y superficies de diseño
     capitulos:
-      - id: VII.13
-        titulo: Armónicos esféricos
+      - id: VII.5
+        titulo: Curvas y superficies de Bézier y B-splines
+        paginas: 48
+        requiere:
+          - III.9
+          - VII.2
+        tipo: nucleo
+        contenidos:
+          - 'Curvas de Bézier: algoritmo de De Casteljau, subdivisión, elevación de grado y propiedad de la envolvente convexa.'
+          - 'B-splines: recurrencia de Cox–de Boor, vector de nodos y soporte local; Catmull–Rom.'
+          - Continuidad paramétrica Cⁿ frente a continuidad geométrica Gⁿ.
+          - NURBS como proyección de curvas polinómicas en coordenadas homogéneas; superficies producto tensorial.
+        puente: 'Entrada: `p = deCasteljau(controlPoints, t)` en un riel de cámara que acelera solo en las curvas. El parámetro t no es la longitud de arco; reparametrizar con la cuadratura y el método de Newton de III.10 da velocidad constante.'
+        aplicaciones:
+          - campo: 3d
+            texto: rieles de cámara, trayectorias y teselación de parches
+          - campo: ing
+            texto: diseño asistido por computadora y tipografía digital
+          - campo: fisica
+            texto: trayectorias suaves de partículas en simulaciones
+        lecturas: Farin, *Curves and Surfaces for CAGD*; Piegl y Tiller, *The NURBS Book*.
+  - letra: C
+    titulo: Geometría diferencial
+    capitulos:
+      - id: VII.6
+        titulo: Curvas en el espacio
+        paginas: 36
+        requiere:
+          - IV.2
+        tipo: nucleo
+        contenidos:
+          - Curvas regulares y parametrización por longitud de arco.
+          - Curvatura, torsión y triedro de Frenet–Serret; teorema fundamental de las curvas.
+          - Marcos móviles y marcos de rotación mínima.
+          - 'Curvas planas: curvatura con signo e índice de rotación.'
+        puente: 'Entrada: un tubo generado a lo largo de una curva que se retuerce en los puntos de inflexión. El triedro de Frenet no está definido donde la curvatura se anula; los marcos de rotación mínima evitan el problema.'
+        aplicaciones:
+          - campo: 3d
+            texto: tubos, cuerdas y rieles de cámara sin giros bruscos
+          - campo: ing
+            texto: trazado de carreteras y vías con clotoides
+          - campo: bio-eco
+            texto: geometría del ADN
+        lecturas: do Carmo, *Differential Geometry of Curves and Surfaces*; Pressley, *Elementary Differential Geometry*.
+      - id: VII.7
+        titulo: 'Superficies: formas fundamentales y curvatura'
+        paginas: 48
+        requiere:
+          - IV.3
+          - VII.6
+        tipo: nucleo
+        contenidos:
+          - Superficies regulares, plano tangente y primera forma fundamental; longitudes y áreas.
+          - Aplicación de Gauss y segunda forma fundamental.
+          - Curvaturas normal, principales, gaussiana y media; líneas de curvatura.
+          - Marcos tangentes en superficies parametrizadas.
+        puente: 'Entrada: la matriz TBN (tangente, bitangente, normal) de un *normal map*. Es un marco del plano tangente de la superficie parametrizada por sus coordenadas de textura; la convención MikkTSpace fija cómo calcularlo para que la herramienta que genera el mapa y el motor coincidan.'
+        aplicaciones:
+          - campo: 3d
+            texto: '*normal mapping* y espacio tangente'
+          - campo: ing
+            texto: curvatura de carrocerías y control de reflejos
+          - campo: fisica
+            texto: membranas y tensión superficial
+        lecturas: do Carmo, *Differential Geometry of Curves and Surfaces*; Pressley, *Elementary Differential Geometry*.
+      - id: VII.8
+        titulo: Geometría intrínseca y Gauss–Bonnet
         paginas: 44
         requiere:
-          - VII.3
+          - VII.7
           - IV.11
-          - II.15
+          - I.7
         tipo: nucleo
         contenidos:
-          - Laplaciano en la esfera; polinomios armónicos homogéneos.
-          - Polinomios de Legendre y armónicos esféricos como base ortonormal de L²(S²).
-          - 'Rotación de coeficientes: la acción de SO(3) sobre cada banda.'
-          - Teorema de Funk–Hecke y convolución sobre la esfera. X.2 los estudia como representaciones de SO(3).
-        puente: 'Entrada: `irradiance = dot(shCoeffs, shBasis(normal))` con nueve coeficientes. Tres bandas de armónicos esféricos bastan para la iluminación difusa porque la convolución con el coseno truncado (Funk–Hecke) atenúa casi a cero las bandas altas.'
+          - '*Theorema egregium*: la curvatura gaussiana es intrínseca.'
+          - Geodésicas y curvatura geodésica.
+          - Teorema de Gauss–Bonnet local y global; característica de Euler.
+          - Por qué no existe un mapa plano perfecto de la esfera. Las variedades y la geometría riemanniana llegan en XIII.4 y XIII.5.
+        puente: 'Entrada: una textura que se estira en los polos de una esfera. Ninguna parametrización plana de la esfera conserva distancias, porque lo prohíbe el *theorema egregium*; elegir entre la proyección equirectangular, la cúbica o la octaédrica es elegir qué distorsión aceptar.'
         aplicaciones:
           - campo: 3d
-            texto: iluminación difusa basada en imagen y sondas de luz
+            texto: parametrizaciones de la esfera para texturas y mapas de entorno
+          - campo: ing
+            texto: cartografía y proyecciones de mapas
           - campo: fisica
-            texto: gravedad, geodesia y orbitales atómicos
-          - campo: senales
-            texto: audio ambisónico
-        lecturas: Atkinson y Han, *Spherical Harmonics and Approximations on the Unit Sphere*; Ramamoorthi y Hanrahan, «An Efficient Representation for Irradiance Environment Maps».
+            texto: superficies curvas y relatividad (aviso)
+        lecturas: do Carmo, *Differential Geometry of Curves and Surfaces*; Needham, *Visual Differential Geometry and Forms*.
+  - letra: D
+    titulo: Geometría computacional y discreta
+    capitulos:
+      - id: VII.9
+        titulo: Predicados geométricos e intersecciones
+        paginas: 40
+        requiere:
+          - II.4
+          - II.16
+          - III.10
+        tipo: nucleo
+        contenidos:
+          - Predicados de orientación y de círculo circunscrito (*incircle*) como signos de determinantes.
+          - Fallos en coma flotante; aritmética exacta y predicados adaptativos.
+          - Intersecciones rayo–plano, rayo–esfera, rayo–caja y rayo–triángulo (Möller–Trumbore como regla de Cramer); rayo contra superficies algebraicas de grado alto.
+          - 'Puntos más cercanos: punto–triángulo, segmento–segmento y punto–caja.'
+        puente: 'Entrada: `if (abs(det) < EPSILON) return NO_HIT;` en una intersección rayo–triángulo. Es la regla de Cramer con una protección contra determinantes pequeños; los predicados adaptativos sustituyen ese épsilon arbitrario por una decisión exacta cuando hace falta.'
+        aplicaciones:
+          - campo: 3d
+            texto: selección con el ratón, *raycasts* y núcleo del trazado de rayos
+          - campo: ing
+            texto: CAD robusto
+          - campo: datos
+            texto: sistemas de información geográfica
+        lecturas: Ericson, *Real-Time Collision Detection*; Shewchuk, «Adaptive Precision Floating-Point Arithmetic and Fast Robust Geometric Predicates».
+      - id: VII.10
+        titulo: 'Convexidad computacional: envolventes, separación y distancia'
+        paginas: 44
+        requiere:
+          - VII.9
+          - IV.5
+        tipo: nucleo
+        contenidos:
+          - 'Envolvente convexa en 2D y en 3D: algoritmos de Graham y Quickhull.'
+          - Teorema de los ejes separadores para politopos, como corolario del teorema del hiperplano separador.
+          - Distancia entre convexos como problema convexo; algoritmo GJK sobre la diferencia de Minkowski y su convergencia.
+          - Profundidad de penetración (EPA) y avance conservador para el tiempo de impacto.
+        puente: 'Entrada: el bucle principal de GJK, que solo llama a `support()`. Toda la geometría de los dos objetos entra por sus funciones de soporte; el algoritmo es un descenso sobre la diferencia de Minkowski que IV.5 justifica.'
+        aplicaciones:
+          - campo: 3d
+            texto: detección de colisiones, puntos de contacto y detección continua
+          - campo: ing
+            texto: planificación de movimientos de robots
+          - campo: datos
+            texto: clasificación lineal por separación
+        lecturas: de Berg, Cheong, van Kreveld y Overmars, *Computational Geometry*; van den Bergen, *Collision Detection in Interactive 3D Environments*; Gilbert, Johnson y Keerthi, «A Fast Procedure for Computing the Distance Between Complex Objects in Three-Dimensional Space».
+      - id: VII.11
+        titulo: Triangulaciones y diagramas de Voronoi
+        paginas: 40
+        requiere:
+          - VII.9
+          - IV.9
+          - I.7
+        tipo: nucleo
+        contenidos:
+          - 'Triangulación de polígonos: existencia, recorte de orejas y descomposición monótona.'
+          - 'Triangulación de Delaunay: círculo vacío, maximización del ángulo mínimo y volteo de aristas.'
+          - Diagrama de Voronoi como dual de Delaunay.
+          - Teselaciones de Voronoi centroidales y algoritmo de Lloyd.
+        puente: "Entrada: una malla de navegación generada a partir del plano de un nivel. Es una triangulación del espacio libre: Delaunay evita triángulos degenerados, y su grafo dual se recorre con A\\* (I.7)."
+        aplicaciones:
+          - campo: 3d
+            texto: mallas de navegación y terrenos
+          - campo: ing
+            texto: mallado para elementos finitos
+          - campo: bio-eco
+            texto: modelos de territorio y de crecimiento celular
+        lecturas: de Berg, Cheong, van Kreveld y Overmars, *Computational Geometry*; Okabe, Boots, Sugihara y Chiu, *Spatial Tessellations*.
+      - id: VII.12
+        titulo: 'Mallas: topología y geometría discreta'
+        paginas: 48
+        requiere:
+          - VII.8
+          - II.12
+          - I.7
+        tipo: nucleo
+        contenidos:
+          - Complejos simpliciales, variedades con borde, orientabilidad, característica de Euler y género; la estructura *half-edge*.
+          - Normales de vértice, curvaturas discretas y Gauss–Bonnet discreto.
+          - Laplaciano cotangente y suavizado como difusión, explícito e implícito.
+          - Subdivisión de Catmull–Clark y de Loop con análisis espectral de la máscara; simplificación con métricas de error cuádrico; parametrización conforme por mínimos cuadrados. La teoría detrás, la homología y la clasificación de superficies, está en VI.7 y VI.8.
+        puente: 'Entrada: `w = cot(alpha) + cot(beta)` en un código de suavizado de mallas. Son los pesos del laplaciano cotangente, la discretización del laplaciano de la superficie; el defecto angular alrededor de un vértice es la curvatura gaussiana discreta.'
+        aplicaciones:
+          - campo: 3d
+            texto: validación y reparación de mallas, niveles de detalle y desplegado UV
+          - campo: ing
+            texto: mallas para simulación
+          - campo: bio-eco
+            texto: superficies de órganos en imágenes médicas
+        lecturas: 'Botsch, Kobbelt, Pauly, Alliez y Lévy, *Polygon Mesh Processing*; Crane, *Discrete Differential Geometry: An Applied Introduction*.'
+      - id: VII.13
+        titulo: Superficies implícitas y campos de distancia
+        paginas: 36
+        requiere:
+          - VII.7
+          - III.10
+        tipo: nucleo
+        contenidos:
+          - Conjuntos de nivel y funciones de distancia con signo; ecuación eikonal |∇d| = 1.
+          - Constante de Lipschitz y *sphere tracing* como búsqueda de raíces con paso garantizado.
+          - Operaciones booleanas suaves y operadores de dominio.
+          - 'Extracción de mallas: Marching Cubes y sus ambigüedades.'
+        puente: 'Entrada: `t += sdf(origin + t * dir)`. Es *sphere tracing*: si la función tiene constante de Lipschitz 1, avanzar exactamente su valor nunca atraviesa la superficie.'
+        aplicaciones:
+          - campo: 3d
+            texto: '*ray marching* y modelado con campos de distancia'
+          - campo: ing
+            texto: fabricación aditiva y trayectorias de herramientas
+          - campo: bio-eco
+            texto: reconstrucción de órganos a partir de tomografías
+        lecturas: 'Hart, «Sphere Tracing: A Geometric Method for the Antialiased Ray Tracing of Implicit Surfaces»; Osher y Fedkiw, *Level Set Methods and Dynamic Implicit Surfaces*.'
+      - id: VII.14
+        titulo: Geometría integral y particiones del espacio
+        paginas: 40
+        requiere:
+          - VII.10
+          - IV.9
+        tipo: complementario
+        contenidos:
+          - Medida invariante en el espacio de rectas; fórmula de Cauchy–Crofton.
+          - 'Probabilidad de que una recta al azar corte un convexo: proporcional a su perímetro en el plano y a su área de superficie en el espacio.'
+          - 'Particiones recursivas: árboles BSP, árboles k-d y *octrees*.'
+          - 'Curvas que llenan el espacio (Peano, Hilbert y Morton): construcción, continuidad y localidad.'
+        puente: 'Entrada: `cost = Ct + (SA(L)/SA(P)) * N(L) * Ci + (SA(R)/SA(P)) * N(R) * Ci`. La heurística de área de superficie (SAH) usa cocientes de áreas como probabilidades: es la fórmula de Cauchy–Crofton aplicada a rayos al azar.'
+        aplicaciones:
+          - campo: 3d
+            texto: jerarquías de volúmenes envolventes y *hashing* espacial
+          - campo: datos
+            texto: índices espaciales en bases de datos
+          - campo: fisica
+            texto: 'estereología: estimar áreas y volúmenes a partir de cortes'
+        lecturas: Santaló, *Integral Geometry and Geometric Probability*; Sagan, *Space-Filling Curves*.

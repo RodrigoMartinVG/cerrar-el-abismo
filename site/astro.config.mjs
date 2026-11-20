@@ -22,7 +22,7 @@ export default defineConfig({
     starlight({
       title: 'Matemática y práctica',
       description:
-        'Una obra de matemática de licenciatura en diez tomos que cierra el abismo entre la matemática que se estudia y la que se usa.',
+        'Una obra de matemática de licenciatura en trece tomos que cierra el abismo entre la matemática que se estudia y la que se usa.',
       defaultLocale: 'root',
       locales: { root: { label: 'Español', lang: 'es' } },
       social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/RodrigoMartinVG/cerrar-el-abismo' }],

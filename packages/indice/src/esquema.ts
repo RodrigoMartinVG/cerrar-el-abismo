@@ -22,16 +22,25 @@ export type Campo = keyof typeof CAMPOS;
 /** Los dos hilos fijos (sección 9.2): presentes en todos los tomos y nunca más de un tercio de un tomo. */
 export const HILOS_FIJOS: readonly Campo[] = ['3d', 'fisica'];
 
-export const ROMANOS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'] as const;
+export const ROMANOS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII'] as const;
 
 export type Romano = (typeof ROMANOS)[number];
 
 const romano = z.enum(ROMANOS);
 
+/**
+ * El número romano de un tomo, como patrón: los más largos primero, para que «XIII.2» no se lea como «X» seguido
+ * de otra cosa.
+ */
+const ROMANO = '(?:XIII|XII|XI|X|IX|VIII|VII|VI|V|IV|III|II|I)';
+
+/** Cualquier mención de un capítulo dentro de un texto: «II.5», «XIII.7». */
+export function referenciasA(): RegExp {
+  return new RegExp(`\\b${ROMANO}\\.\\d+\\b`, 'g');
+}
+
 /** Un capítulo se nombra «tomo.capítulo»: II.5 es el quinto capítulo del Tomo II. */
-export const idCapitulo = z
-  .string()
-  .regex(/^(?:I|II|III|IV|V|VI|VII|VIII|IX|X)\.[1-9]\d*$/, 'se espera «tomo.capítulo», como II.5');
+export const idCapitulo = z.string().regex(new RegExp(`^${ROMANO}\\.[1-9]\\d*$`), 'se espera «tomo.capítulo», como II.5');
 
 export const aplicacion = z.strictObject({
   campo: z.enum(Object.keys(CAMPOS) as [Campo, ...Campo[]]),

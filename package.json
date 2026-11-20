@@ -2,7 +2,7 @@
   "name": "cerrar-el-abismo",
   "private": true,
   "type": "module",
-  "description": "Matemática y práctica: una obra de matemática de licenciatura en diez tomos, pensada para la web, que cierra el abismo entre la matemática que se estudia y la que se usa.",
+  "description": "Matemática y práctica: una obra de matemática de licenciatura en trece tomos, pensada para la web, que cierra el abismo entre la matemática que se estudia y la que se usa.",
   "engines": {
     "node": ">=26"
   },

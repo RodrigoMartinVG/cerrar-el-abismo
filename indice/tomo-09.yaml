@@ -1,232 +1,311 @@
-# Tomo IX — Ecuaciones en derivadas parciales y medios continuos
+# Tomo IX — Medida, Fourier y variable compleja
 # Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
 id: IX
-titulo: Ecuaciones en derivadas parciales y medios continuos
+titulo: Medida, Fourier y variable compleja
 requiere:
-  - VI
-  - VII
-interfaces:
-  - VIII.9
-presentacion: Teoría clásica y numérica de las ecuaciones en derivadas parciales, con las funciones especiales y los métodos de perturbaciones que nacen de ellas, y su aplicación a sólidos deformables y fluidos.
+  - III
+  - IV
+interfaces: []
+presentacion: La integral de Lebesgue y los espacios de funciones, el análisis de Fourier continuo y discreto, las distribuciones, la variable compleja con sus métodos asintóticos, y el análisis en la esfera.
 partes:
   - letra: A
-    titulo: Teoría
+    titulo: Medida y espacios de funciones
     capitulos:
       - id: IX.1
-        titulo: Ecuaciones en derivadas parciales clásicas
-        paginas: 48
-        requiere:
-          - IV.11
-          - VI.4
-        tipo: nucleo
-        contenidos:
-          - Clasificación de las ecuaciones de segundo orden.
-          - Ecuación de transporte y método de las características.
-          - "Ecuaciones del calor, de onda y de Laplace–Poisson: derivación y fórmula de d'Alembert."
-          - Principio del máximo, energía y unicidad.
-        puente: 'Entrada: `advect(field, velocity, dt)` en una simulación de humo. Transportar una magnitud con un campo de velocidades es resolver la ecuación de transporte, y sus características son las trayectorias de las partículas.'
-        aplicaciones:
-          - campo: 3d
-            texto: advección en humo y fluidos
-          - campo: fisica
-            texto: conducción del calor y acústica
-          - campo: bio-eco
-            texto: difusión de sustancias en tejidos
-        lecturas: 'Evans, *Partial Differential Equations*; Strauss, *Partial Differential Equations: An Introduction*.'
-      - id: IX.2
-        titulo: Separación de variables y problemas de Sturm–Liouville
-        paginas: 44
-        requiere:
-          - IX.1
-          - VII.3
-        tipo: nucleo
-        contenidos:
-          - Problemas de contorno y separación de variables.
-          - 'Problemas de Sturm–Liouville: autovalores, autofunciones y completitud.'
-          - Separación en coordenadas polares y esféricas; primeras funciones de Bessel y de Legendre (IX.3 las estudia en general).
-          - Desarrollos en autofunciones para las ecuaciones del calor y de onda.
-        puente: 'Entrada: el sonido de un tambor sintetizado como suma de modos. Los modos de una membrana circular son funciones de Bessel, y por eso un tambor no tiene armónicos enteros como una cuerda.'
-        aplicaciones:
-          - campo: senales
-            texto: síntesis modal de sonido
-          - campo: fisica
-            texto: vibraciones de membranas
-          - campo: 3d
-            texto: sonido procedural de impactos
-        lecturas: 'Strauss, *Partial Differential Equations: An Introduction*; Olver, *Introduction to Partial Differential Equations*.'
-      - id: IX.3
-        titulo: Funciones especiales y polinomios ortogonales
-        paginas: 48
-        requiere:
-          - IX.2
-          - VII.9
-        tipo: nucleo
-        contenidos:
-          - Funciones Gamma y Beta; prolongación analítica de la función Gamma.
-          - 'Ecuaciones con puntos singulares regulares: método de Frobenius.'
-          - 'Funciones de Bessel, polinomios y funciones asociadas de Legendre, polinomios de Hermite y de Laguerre: funciones generatrices, fórmulas de Rodrigues y recurrencias.'
-          - 'Polinomios ortogonales en general: recurrencia de tres términos y cuadratura gaussiana; la función hipergeométrica como caso unificador.'
-        puente: 'Entrada: `scipy.special.jv(n, x)` y una tabla de ceros de Bessel en un libro de física. Las funciones especiales no son una colección de fórmulas: son las autofunciones que produce la separación de variables (IX.2), y su ortogonalidad, sus recurrencias y sus ceros salen de la teoría de Sturm–Liouville.'
-        aplicaciones:
-          - campo: fisica
-            texto: oscilador armónico cuántico (Hermite) y átomo de hidrógeno (Laguerre y Legendre)
-          - campo: senales
-            texto: modulación en frecuencia y funciones de Bessel
-          - campo: ing
-            texto: vibraciones de placas circulares y conducción del calor en cilindros
-        lecturas: Andrews, Askey y Roy, *Special Functions*; Lebedev, *Special Functions and Their Applications*; Olver et al., *NIST Handbook of Mathematical Functions*.
-      - id: IX.4
-        titulo: Soluciones fundamentales y funciones de Green
-        paginas: 40
-        requiere:
-          - IX.2
-          - VII.5
-        tipo: nucleo
-        contenidos:
-          - Transformada de Fourier para ecuaciones en todo el espacio.
-          - Núcleo del calor y solución fundamental de la ecuación de Laplace.
-          - Funciones de Green y representación de las soluciones.
-          - Potencial newtoniano.
-        puente: 'Entrada: un desenfoque que «difunde» la imagen paso a paso. Aplicar la ecuación del calor durante un tiempo t es convolucionar con una gaussiana de varianza 2t: el núcleo del calor.'
-        aplicaciones:
-          - campo: 3d
-            texto: difusión en imágenes y edición de Poisson
-          - campo: fisica
-            texto: gravitación y electrostática
-          - campo: bio-eco
-            texto: modelos de dispersión
-        lecturas: Evans, *Partial Differential Equations*; Olver, *Introduction to Partial Differential Equations*.
-      - id: IX.5
-        titulo: Perturbaciones y aproximación WKB
-        paginas: 44
-        requiere:
-          - IX.1
-          - VII.10
-        tipo: complementario
-        contenidos:
-          - Perturbaciones regulares de ecuaciones algebraicas y diferenciales.
-          - Perturbaciones singulares y capas límite; desarrollos asintóticos acoplados.
-          - Método de escalas múltiples y términos seculares.
-          - Aproximación WKB y fórmulas de conexión.
-        puente: 'Entrada: un péndulo calculado con la aproximación de ángulo pequeño que, con amplitudes grandes, se adelanta respecto del real. El período depende de la amplitud; el método de escalas múltiples corrige la frecuencia y elimina el término secular que hace crecer el error con el tiempo.'
-        aplicaciones:
-          - campo: fisica
-            texto: mecánica cuántica semiclásica (WKB) y órbitas perturbadas
-          - campo: ing
-            texto: capas límite en aerodinámica
-          - campo: 3d
-            texto: péndulos y osciladores no lineales en animación
-        lecturas: Bender y Orszag, *Advanced Mathematical Methods for Scientists and Engineers*; Holmes, *Introduction to Perturbation Methods*.
-  - letra: B
-    titulo: Métodos numéricos
-    capitulos:
-      - id: IX.6
-        titulo: Diferencias finitas
-        paginas: 44
-        requiere:
-          - IX.1
-          - VI.10
-          - VII.6
-        tipo: nucleo
-        contenidos:
-          - Aproximaciones por diferencias y error de truncamiento.
-          - Consistencia, estabilidad y convergencia; teorema de equivalencia de Lax.
-          - Análisis de estabilidad de von Neumann y condición CFL.
-          - Ecuación de Poisson discreta y su resolución con gradiente conjugado y multigrid.
-        puente: 'Entrada: `hNew[i] = 2*h[i] - hOld[i] + (c*dt/dx)*(c*dt/dx) * (h[i-1] - 2*h[i] + h[i+1])` en un estanque. Si c·dt/dx supera 1, la simulación explota: es la condición CFL, que el análisis de von Neumann deduce.'
-        aplicaciones:
-          - campo: 3d
-            texto: agua sobre campos de alturas y erosión de terrenos
-          - campo: fisica
-            texto: propagación de ondas
-          - campo: ing
-            texto: transferencia de calor en piezas
-        lecturas: LeVeque, *Finite Difference Methods for Ordinary and Partial Differential Equations*; Strikwerda, *Finite Difference Schemes and Partial Differential Equations*.
-      - id: IX.7
-        titulo: Formulación débil y elementos finitos
+        titulo: Medida e integral de Lebesgue
         paginas: 52
         requiere:
+          - IV.9
+        tipo: nucleo
+        contenidos:
+          - σ-álgebras, medida exterior y medida de Lebesgue; existencia de conjuntos no medibles.
+          - Funciones medibles e integral de Lebesgue.
+          - Teoremas de la convergencia monótona y de la convergencia dominada; lema de Fatou.
+          - Medida producto y teorema de Fubini–Tonelli; comparación con la integral de Riemann.
+        puente: 'Entrada: un estimador que promedia los valores de una función con infinitos saltos. La integral de Lebesgue es la que se puede intercambiar con límites sin sorpresas, y es el marco en el que la probabilidad (XI.2) y Monte Carlo están bien definidos.'
+        aplicaciones:
+          - campo: datos
+            texto: esperanza de variables aleatorias (aviso de XI.2)
+          - campo: fisica
+            texto: distribuciones de masa y de carga
+          - campo: senales
+            texto: energía de señales con discontinuidades
+        lecturas: Stein y Shakarchi, *Real Analysis*; Folland, *Real Analysis*.
+      - id: IX.2
+        titulo: Medidas con signo, Radon–Nikodym y diferenciación
+        paginas: 44
+        requiere:
+          - IX.1
+        tipo: nucleo
+        contenidos:
+          - Espacios de medida abstractos y teorema de extensión de Carathéodory; medidas de Lebesgue–Stieltjes.
+          - Medidas con signo; descomposiciones de Hahn y de Jordan.
+          - Continuidad absoluta, teorema de Radon–Nikodym y descomposición de Lebesgue.
+          - Teorema de diferenciación de Lebesgue; funciones de variación acotada y absolutamente continuas; el teorema fundamental del cálculo para la integral de Lebesgue.
+        puente: 'Entrada: `pdf = np.gradient(cdf, x)`, una densidad obtenida derivando una función de distribución empírica. Una densidad es una derivada de Radon–Nikodym y existe solo si la distribución es absolutamente continua: por eso la derivada numérica de una distribución con átomos produce picos que no convergen.'
+        aplicaciones:
+          - campo: datos
+            texto: razones de verosimilitud y cambio de medida en estadística
+          - campo: fisica
+            texto: densidades de carga y de masa frente a cargas puntuales
+          - campo: 3d
+            texto: los pesos del muestreo por importancia en el trazado de caminos como cocientes de densidades
+        lecturas: Folland, *Real Analysis*; Royden y Fitzpatrick, *Real Analysis*.
+      - id: IX.3
+        titulo: Espacios Lᵖ y espacios de Hilbert
+        paginas: 48
+        requiere:
+          - IX.1
+          - II.9
+        tipo: nucleo
+        contenidos:
+          - Espacios Lᵖ, desigualdades de Hölder y de Minkowski; completitud (teorema de Riesz–Fischer).
+          - 'Espacios de Hilbert: proyección ortogonal, bases ortonormales e identidad de Parseval.'
+          - Teorema de representación de Riesz.
+          - Operadores compactos autoadjuntos y su teorema espectral; operadores integrales y alternativa de Fredholm. La teoría en espacios de Banach llega en X.4, y los operadores no acotados, en X.6.
+        puente: 'Entrada: «proyectar» una señal sobre unas pocas funciones base para comprimirla. Es la proyección ortogonal de II.8 en un espacio de dimensión infinita, y la identidad de Parseval dice cuánta energía se pierde.'
+        aplicaciones:
+          - campo: senales
+            texto: compresión por truncamiento en una base
+          - campo: fisica
+            texto: 'mecánica cuántica: estados como vectores de un espacio de Hilbert'
+          - campo: 3d
+            texto: iluminación con funciones base (aviso de IX.14)
+        lecturas: Stein y Shakarchi, *Real Analysis*; Kreyszig, *Introductory Functional Analysis with Applications*.
+  - letra: B
+    titulo: Análisis de Fourier
+    capitulos:
+      - id: IX.4
+        titulo: Series de Fourier
+        paginas: 44
+        requiere:
+          - IX.3
+          - III.8
+        tipo: nucleo
+        contenidos:
+          - Coeficientes de Fourier; núcleos de Dirichlet y de Fejér.
+          - Convergencia puntual (teorema de Dirichlet), sumabilidad de Cesàro y fenómeno de Gibbs.
+          - Convergencia en L² y completitud del sistema trigonométrico.
+          - Suavidad de una función y decaimiento de sus coeficientes.
+        puente: 'Entrada: un ecualizador gráfico de audio. Cada barra multiplica un rango de coeficientes de Fourier, y la suavidad de esa ganancia controla los artefactos (Gibbs) que aparecen en el tiempo.'
+        aplicaciones:
+          - campo: senales
+            texto: síntesis y análisis de audio
+          - campo: fisica
+            texto: cuerdas vibrantes y conducción del calor
+          - campo: 3d
+            texto: formas de onda para animación procedural
+        lecturas: Stein y Shakarchi, *Fourier Analysis*; Körner, *Fourier Analysis*.
+      - id: IX.5
+        titulo: Transformada de Fourier
+        paginas: 48
+        requiere:
           - IX.4
-          - VII.2
+        tipo: nucleo
+        contenidos:
+          - Transformada en L¹; lema de Riemann–Lebesgue; fórmula de inversión.
+          - Teorema de Plancherel en L².
+          - Convolución y teorema de convolución; aproximaciones de la identidad.
+          - Principio de incertidumbre y gaussianas; la delta de Dirac como límite de gaussianas (IX.6 la formaliza).
+        puente: 'Entrada: un desenfoque gaussiano separable, `blurX(blurY(image))`. Convolucionar con una gaussiana 2D equivale a convolucionar dos veces con gaussianas 1D porque la gaussiana es un producto de funciones de cada coordenada; en frecuencia es un filtro pasabajos.'
+        aplicaciones:
+          - campo: 3d
+            texto: desenfoque y *bloom*
+          - campo: senales
+            texto: filtros y respuesta en frecuencia
+          - campo: fisica
+            texto: óptica de Fourier y difracción
+          - campo: bio-eco
+            texto: resonancia magnética
+        lecturas: Stein y Shakarchi, *Fourier Analysis*; Folland, *Fourier Analysis and Its Applications*.
+      - id: IX.6
+        titulo: Distribuciones
+        paginas: 40
+        requiere:
+          - IX.5
+        tipo: nucleo
+        contenidos:
+          - Funciones de prueba y distribuciones; la delta de Dirac y sus derivadas.
+          - Derivada distribucional, producto por funciones suaves y convergencia de distribuciones.
+          - Distribuciones temperadas y su transformada de Fourier.
+          - Valor principal, fórmula de Sokhotski–Plemelj y soluciones fundamentales.
+        puente: 'Entrada: `∫ δ(x) f(x) dx = f(0)` y `1/(x − iε) → P(1/x) + iπ δ(x)` en un libro de física. Ninguna función cumple la primera igualdad; las distribuciones la convierten en una definición rigurosa y dicen cuándo es legítimo manipular la delta como si fuera una función y cuándo no: su cuadrado, por ejemplo, no tiene sentido.'
+        aplicaciones:
+          - campo: fisica
+            texto: cargas puntuales, densidades singulares y propagadores
+          - campo: senales
+            texto: el impulso unitario y la respuesta al impulso de un sistema lineal
+          - campo: ing
+            texto: fuerzas concentradas en vigas
+        lecturas: Strichartz, *A Guide to Distribution Theory and Fourier Transforms*; Friedlander y Joshi, *Introduction to the Theory of Distributions*.
+      - id: IX.7
+        titulo: Muestreo y transformada discreta
+        paginas: 48
+        requiere:
+          - IX.5
           - II.12
         tipo: nucleo
         contenidos:
-          - Espacios de Sobolev H¹ y trazas (introducción).
-          - Formulación débil y teorema de Lax–Milgram.
-          - Método de Galerkin; elementos lineales en triángulos y tetraedros; matrices de rigidez y de masa.
-          - Lema de Céa y estimaciones del error.
-        puente: 'Entrada: el ensamblado `K[i][j] += area * dot(grad_i, grad_j)` triángulo por triángulo. Es la formulación débil discretizada, y para elementos lineales esa matriz coincide con el laplaciano cotangente de V.12.'
+          - Teorema de Nyquist–Shannon y origen del *aliasing*.
+          - 'Filtros de reconstrucción: caja, tienda, Mitchell–Netravali y Lanczos.'
+          - Transformada discreta de Fourier, FFT de Cooley–Tukey y convolución circular; transformada del coseno.
+          - Muestreo en 2D, huella anisotrópica de un píxel y muestreo temporal.
+        puente: 'Entrada: `textureSampleLevel(tex, samp, uv, lod)` con `lod = log2(footprint)`. Los *mipmaps* son versiones prefiltradas de la textura para no muestrear por debajo de la frecuencia de Nyquist, y el nivel se elige con el tamaño de la huella del píxel (IV.2).'
         aplicaciones:
-          - campo: ing
-            texto: análisis estructural
           - campo: 3d
-            texto: sólidos deformables y relación con el laplaciano cotangente
-          - campo: fisica
-            texto: electrostática en geometrías complejas
-        lecturas: Brenner y Scott, *The Mathematical Theory of Finite Element Methods*; Johnson, *Numerical Solution of Partial Differential Equations by the Finite Element Method*.
-  - letra: C
-    titulo: Medios continuos
-    capitulos:
+            texto: '*mipmapping*, filtrado anisotrópico, *supersampling* y TAA'
+          - campo: senales
+            texto: audio digital y JPEG
+          - campo: ing
+            texto: adquisición de datos
+        lecturas: Oppenheim y Schafer, *Discrete-Time Signal Processing*; Heckbert, *Fundamentals of Texture Mapping and Image Warping*.
       - id: IX.8
-        titulo: Mecánica de medios continuos
-        paginas: 48
+        titulo: Ondículas y análisis tiempo–frecuencia
+        paginas: 40
         requiere:
           - IX.7
-          - II.10
         tipo: complementario
         contenidos:
-          - Gradiente de deformación; tensores de deformación de Green y de pequeñas deformaciones.
-          - 'Descomposición polar: rotación y estiramiento.'
-          - Tensiones de Cauchy y de Piola; ecuación de equilibrio.
-          - 'Elasticidad lineal e hiperelasticidad: modelos de St. Venant–Kirchhoff, neo-hookeano y corrotacional.'
-        puente: 'Entrada: `F = Ds * inverse(Dm)` en un simulador de tetraedros. Es el gradiente de deformación de un elemento, la aplicación lineal que lleva la forma en reposo a la deformada; su descomposición polar separa la rotación, que no debe generar fuerza, del estiramiento.'
+          - Transformada de Fourier de tiempo corto y espectrogramas.
+          - Análisis de multirresolución; ondícula de Haar.
+          - Ondículas de soporte compacto de Daubechies.
+          - Transformada rápida de ondículas.
+        puente: 'Entrada: el tamaño de ventana de un espectrograma en una herramienta de audio. Elegirlo es elegir entre resolución en el tiempo y resolución en frecuencia: el principio de incertidumbre (IX.5) en acción.'
         aplicaciones:
-          - campo: 3d
-            texto: cuerpos blandos y músculos
-          - campo: ing
-            texto: resistencia de materiales
+          - campo: senales
+            texto: JPEG 2000 y eliminación de ruido
           - campo: bio-eco
-            texto: biomecánica de tejidos
-        lecturas: Gonzalez y Stuart, *A First Course in Continuum Mechanics*; Bonet y Wood, *Nonlinear Continuum Mechanics for Finite Element Analysis*; Sifakis y Barbič, «FEM Simulation of 3D Deformable Solids».
+            texto: análisis de electrocardiogramas
+          - campo: 3d
+            texto: compresión de texturas y de geometría por niveles
+        lecturas: Mallat, *A Wavelet Tour of Signal Processing*; Daubechies, *Ten Lectures on Wavelets*.
+  - letra: C
+    titulo: Variable compleja
+    capitulos:
       - id: IX.9
-        titulo: Mecánica de fluidos
-        paginas: 48
+        titulo: Funciones holomorfas
+        paginas: 40
         requiere:
-          - IX.6
-          - IV.11
+          - IV.10
+          - III.8
         tipo: nucleo
         contenidos:
-          - Derivada material y leyes de conservación de la masa y del momento.
-          - Ecuaciones de Euler y de Navier–Stokes incompresibles; vorticidad.
-          - Descomposición de Helmholtz–Hodge y proyección de la presión.
-          - Advección semilagrangiana y división de operadores.
-        puente: 'Entrada: `velocity -= gradient(pressure)` tras resolver una ecuación de Poisson. Es la proyección de Helmholtz–Hodge (IV.11): quita al campo de velocidades su parte con divergencia, que es lo que hace incompresible al humo de *Stable Fluids*.'
+          - Derivada compleja y ecuaciones de Cauchy–Riemann.
+          - Funciones elementales complejas; ramas del logaritmo.
+          - Series de potencias complejas.
+          - Integrales de contorno.
+        puente: 'Entrada: `atan2(y, x)` y su salto en ±π. Es el argumento de un número complejo: el salto es un corte de rama del logaritmo, y «desenrollar» ángulos en una animación es cambiar de rama.'
         aplicaciones:
           - campo: 3d
-            texto: humo y fuego con *Stable Fluids*
+            texto: desenrollado de ángulos y conjunto de Mandelbrot
           - campo: ing
-            texto: aerodinámica
+            texto: diagramas de Bode
           - campo: fisica
-            texto: meteorología
-        lecturas: Chorin y Marsden, *A Mathematical Introduction to Fluid Mechanics*; Bridson, *Fluid Simulation for Computer Graphics*; Stam, «Stable Fluids».
+            texto: flujo potencial en el plano
+        lecturas: Ahlfors, *Complex Analysis*; Needham, *Visual Complex Analysis*.
       - id: IX.10
-        titulo: Ondas en el agua, aguas someras y métodos de partículas
-        paginas: 44
+        titulo: Teoría de Cauchy y residuos
+        paginas: 52
         requiere:
           - IX.9
-          - VIII.9
+        tipo: nucleo
+        contenidos:
+          - Teorema y fórmula integral de Cauchy; analiticidad de las funciones holomorfas.
+          - Teorema de Liouville y teorema fundamental del álgebra; principio del módulo máximo.
+          - Series de Laurent y clasificación de las singularidades.
+          - Teorema de los residuos y cálculo de integrales reales; principio del argumento.
+        puente: 'Entrada: un buscador de raíces de polinomios que cuenta cuántas hay dentro de un círculo. El principio del argumento cuenta ceros con una integral de contorno y es la base de los métodos robustos para localizar raíces.'
+        aplicaciones:
+          - campo: ing
+            texto: criterio de estabilidad de Nyquist
+          - campo: fisica
+            texto: relaciones de Kramers–Kronig entre causalidad y analiticidad; integrales en óptica
+          - campo: senales
+            texto: diseño de filtros
+        lecturas: Ahlfors, *Complex Analysis*; Stein y Shakarchi, *Complex Analysis*.
+      - id: IX.11
+        titulo: Métodos asintóticos
+        paginas: 40
+        requiere:
+          - IX.10
         tipo: complementario
         contenidos:
-          - Ondas de superficie y relación de dispersión.
-          - Ecuaciones de aguas someras.
-          - Espectros de oleaje y síntesis de océanos con la FFT.
-          - 'Hidrodinámica de partículas suavizadas (SPH): aproximación por núcleos, gradiente y laplaciano; flotabilidad.'
-        puente: 'Entrada: `omega = sqrt(g * k)` en un *shader* de océano. Es la relación de dispersión de las ondas en aguas profundas: las olas largas viajan más rápido, y eso hace que el océano sintetizado con la FFT parezca real.'
+          - Series asintóticas y su diferencia con las series convergentes; lema de Watson.
+          - Método de Laplace y fórmula de Stirling.
+          - Fase estacionaria y método del punto de silla (descenso más rápido).
+          - Comportamiento asintótico de integrales y de funciones especiales.
+        puente: 'Entrada: `log(n!) ≈ n * log(n) - n` en un cálculo de entropía. Es la aproximación de Stirling truncada; el método de Laplace la deduce, da el término siguiente, ½·log(2πn), y dice cuánto error se comete para cada n.'
+        aplicaciones:
+          - campo: fisica
+            texto: funciones de partición en mecánica estadística y óptica de la difracción
+          - campo: datos
+            texto: aproximación de Laplace en inferencia bayesiana
+          - campo: senales
+            texto: análisis de señales moduladas en frecuencia por fase estacionaria
+        lecturas: Bender y Orszag, *Advanced Mathematical Methods for Scientists and Engineers*; de Bruijn, *Asymptotic Methods in Analysis*.
+      - id: IX.12
+        titulo: Aplicaciones conformes y funciones armónicas
+        paginas: 40
+        requiere:
+          - IX.10
+        tipo: complementario
+        contenidos:
+          - Conformidad y transformaciones de Möbius.
+          - Teorema de la aplicación de Riemann (enunciado y discusión).
+          - Funciones armónicas, principio del máximo y problema de Dirichlet en el disco.
+          - Transformación de Joukowski y transformación de Schwarz–Christoffel (introducción).
+        puente: 'Entrada: una parametrización UV que conserva los ángulos de la textura. Conservar ángulos es ser conforme; en dimensión 2 eso equivale a ser holomorfa, y por eso las parametrizaciones conformes de mallas (VII.12) se escriben con números complejos.'
+        aplicaciones:
+          - campo: fisica
+            texto: perfil alar de Joukowski y flujo potencial
+          - campo: 3d
+            texto: parametrizaciones conformes
+          - campo: ing
+            texto: campos electrostáticos en el plano
+        lecturas: Needham, *Visual Complex Analysis*; Ahlfors, *Complex Analysis*.
+      - id: IX.13
+        titulo: Transformadas de Laplace y z
+        paginas: 40
+        requiere:
+          - IX.10
+          - IX.5
+        tipo: nucleo
+        contenidos:
+          - Transformada de Laplace, propiedades e inversión por residuos.
+          - Resolución de ecuaciones diferenciales lineales; función de transferencia y estabilidad.
+          - Transformada z y sistemas discretos.
+          - Filtros digitales FIR e IIR.
+        puente: 'Entrada: `y = a * y + (1.0 - a) * x` como filtro de suavizado. Es un filtro IIR de un polo: su transformada z dice cómo atenúa cada frecuencia y por qué introduce retardo.'
+        aplicaciones:
+          - campo: senales
+            texto: filtros de audio
+          - campo: ing
+            texto: análisis de sistemas de control
+          - campo: 3d
+            texto: filtrado de las entradas del ratón y del mando
+        lecturas: Oppenheim y Willsky, *Signals and Systems*; Oppenheim y Schafer, *Discrete-Time Signal Processing*.
+  - letra: D
+    titulo: Análisis en la esfera
+    capitulos:
+      - id: IX.14
+        titulo: Armónicos esféricos
+        paginas: 44
+        requiere:
+          - IX.4
+          - IV.11
+          - II.15
+        tipo: nucleo
+        contenidos:
+          - Laplaciano en la esfera; polinomios armónicos homogéneos.
+          - Polinomios de Legendre y armónicos esféricos como base ortonormal de L²(S²).
+          - 'Rotación de coeficientes: la acción de SO(3) sobre cada banda.'
+          - Teorema de Funk–Hecke y convolución sobre la esfera. XIII.2 los estudia como representaciones de SO(3).
+        puente: 'Entrada: `irradiance = dot(shCoeffs, shBasis(normal))` con nueve coeficientes. Tres bandas de armónicos esféricos bastan para la iluminación difusa porque la convolución con el coseno truncado (Funk–Hecke) atenúa casi a cero las bandas altas.'
         aplicaciones:
           - campo: 3d
-            texto: océanos, ríos y barcos que flotan
+            texto: iluminación difusa basada en imagen y sondas de luz
           - campo: fisica
-            texto: maremotos y oleaje
-          - campo: ing
-            texto: ingeniería costera
-        lecturas: Tessendorf, «Simulating Ocean Water»; Monaghan, «Smoothed Particle Hydrodynamics»; Vreugdenhil, *Numerical Methods for Shallow-Water Flow*.
+            texto: gravedad, geodesia y orbitales atómicos
+          - campo: senales
+            texto: audio ambisónico
+        lecturas: Atkinson y Han, *Spherical Harmonics and Approximations on the Unit Sphere*; Ramamoorthi y Hanrahan, «An Efficient Representation for Irradiance Environment Maps».

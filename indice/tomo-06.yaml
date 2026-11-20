@@ -1,275 +1,227 @@
-# Tomo VI — Ecuaciones diferenciales, sistemas dinámicos y mecánica
+# Tomo VI — Topología
 # Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
 id: VI
-titulo: Ecuaciones diferenciales, sistemas dinámicos y mecánica
+titulo: Topología
 requiere:
   - II
   - III
-  - IV
 interfaces:
+  - V.2
   - V.4
-presentacion: Teoría de las ecuaciones diferenciales ordinarias y de los sistemas dinámicos, mecánica analítica y métodos numéricos. VI.1 a VI.3 solo usan los Tomos II y III.
+presentacion: 'La topología general, de los espacios topológicos a la metrización y el teorema de Baire, y la topología algebraica básica: el grupo fundamental, los recubrimientos y la homología simplicial. Da el lenguaje de la convergencia que usa el análisis funcional y los invariantes que explican las mallas, los mundos periódicos y la forma de los datos. VI.1 a VI.5 solo usan los Tomos I, II y III.'
 partes:
   - letra: A
-    titulo: Teoría
+    titulo: Topología general
     capitulos:
       - id: VI.1
-        titulo: Ecuaciones de primer orden
+        titulo: Espacios topológicos y continuidad
         paginas: 44
         requiere:
           - III.11
-          - III.8
+          - I.2
         tipo: nucleo
         contenidos:
-          - Modelado con ecuaciones diferenciales; campos de direcciones.
-          - Ecuaciones separables, lineales y exactas; factor integrante.
-          - Teorema de existencia y unicidad de Picard–Lindelöf, con el punto fijo de Banach.
-          - Dependencia continua de los datos y desigualdad de Grönwall.
-        puente: 'Entrada: `transmittance *= exp(-sigma * stepLength)` en un efecto de niebla volumétrica. Es la solución exacta de la ecuación lineal T′ = −σT (ley de Beer–Lambert) en cada paso.'
+          - Topologías, bases y subbases; interior, clausura y frontera; sucesiones y redes.
+          - Funciones continuas y homeomorfismos; topologías inicial y final.
+          - Subespacios, productos y cocientes; pegado de espacios.
+          - 'Ejemplos: la recta de Sorgenfrey, la topología de Zariski y el toro como cociente del cuadrado.'
+        puente: 'Entrada: `pos = (pos + vel * dt) % worldSize`, el mundo que se cierra sobre sí mismo en un videojuego. Ese mundo es un toro, el cociente del rectángulo que identifica los bordes opuestos, y la continuidad en el cociente es lo que hace que un objeto cruce el borde sin saltar.'
         aplicaciones:
           - campo: 3d
-            texto: niebla y atenuación de Beer–Lambert
-          - campo: bio-eco
-            texto: crecimiento logístico y farmacocinética
+            texto: mundos periódicos y mapas que se cierran sobre sí mismos
           - campo: fisica
-            texto: ley de enfriamiento de Newton y desintegración radiactiva
-        lecturas: Hirsch, Smale y Devaney, *Differential Equations, Dynamical Systems, and an Introduction to Chaos*; Arnold, *Ordinary Differential Equations*.
+            texto: condiciones de contorno periódicas en simulaciones de materiales
+          - campo: datos
+            texto: topologías en espacios de modelos y de funciones
+        lecturas: Munkres, *Topology*; Willard, *General Topology*.
       - id: VI.2
-        titulo: Ecuaciones lineales de orden superior
-        paginas: 40
+        titulo: Conexión y compacidad
+        paginas: 44
         requiere:
           - VI.1
-          - II.3
+          - I.4
         tipo: nucleo
         contenidos:
-          - Ecuaciones lineales de orden n y espacio de soluciones; wronskiano.
-          - Coeficientes constantes y ecuación característica.
-          - Oscilador armónico libre, amortiguado y forzado; resonancia.
-          - Variación de parámetros.
-        puente: 'Entrada: `smoothDamp(x, target, v, smoothTime, dt)`, la función de seguimiento suave de muchos motores. Es un oscilador con amortiguamiento crítico resuelto en forma cerrada: llega al objetivo lo más rápido posible sin oscilar.'
+          - Espacios conexos y arcoconexos; componentes.
+          - Compacidad, compacidad por sucesiones y propiedad de la intersección finita.
+          - Teorema de Tychonoff, con el lema de Zorn.
+          - Compacidad local y compactificación de Alexandroff; la esfera de Riemann.
+        puente: 'Entrada: `assert(isConnected(navmesh))` antes de buscar un camino. Que dos puntos se puedan unir por un camino es la arcoconexión; las componentes de la malla de navegación son las regiones a las que un agente nunca podrá llegar desde las otras.'
         aplicaciones:
           - campo: 3d
-            texto: seguimiento de cámaras con amortiguamiento crítico
-          - campo: ing
-            texto: circuitos RLC y suspensiones
-          - campo: fisica
-            texto: resonancia en estructuras
-        lecturas: Hirsch, Smale y Devaney, *Differential Equations, Dynamical Systems, and an Introduction to Chaos*; Boyce y DiPrima, *Elementary Differential Equations and Boundary Value Problems*.
+            texto: componentes conexas de mallas y de mallas de navegación
+          - campo: bio-eco
+            texto: existencia de equilibrios por compacidad en economía
+          - campo: datos
+            texto: agrupamiento por componentes conexas de un grafo de vecindad
+        lecturas: Munkres, *Topology*; Willard, *General Topology*.
       - id: VI.3
-        titulo: Sistemas lineales y exponencial de matrices
+        titulo: Separación, numerabilidad y metrización
+        paginas: 40
+        requiere:
+          - VI.2
+        tipo: nucleo
+        contenidos:
+          - 'Axiomas de numerabilidad: primero y segundo; separabilidad.'
+          - 'Axiomas de separación: espacios de Hausdorff, regulares y normales.'
+          - Lema de Urysohn y teorema de extensión de Tietze; particiones de la unidad.
+          - Teorema de metrización de Urysohn.
+        puente: 'Entrada: `blend = sum(w[i](x) * f[i](x))` con pesos que suman 1, la mezcla suave de aproximaciones locales. Es una partición de la unidad, y su existencia en los espacios normales sale del lema de Urysohn: la misma herramienta que pega las cartas locales de una variedad.'
+        aplicaciones:
+          - campo: 3d
+            texto: mezcla suave de deformaciones y *skinning* con particiones de la unidad
+          - campo: ing
+            texto: interpolación con funciones de base radial y métodos sin malla en simulación
+          - campo: fisica
+            texto: la condición de Hausdorff en la definición de espacio-tiempo
+        lecturas: Munkres, *Topology*; Willard, *General Topology*.
+      - id: VI.4
+        titulo: 'Espacios métricos completos: Baire, completación y Arzelà–Ascoli'
+        paginas: 36
+        requiere:
+          - VI.1
+        tipo: nucleo
+        contenidos:
+          - Completación de un espacio métrico; ℝ como completación de ℚ, revisitada.
+          - 'Teorema de Baire y sus consecuencias: las funciones continuas que no son derivables en ningún punto son genéricas.'
+          - Teorema de Arzelà–Ascoli, con demostración.
+          - Compacidad en espacios de funciones y teorema de Stone–Weierstrass.
+        puente: 'Entrada: una prueba que compara dos curvas por su distancia máxima, `max(abs(f(t) - g(t)))`. Es la métrica del supremo en C[a, b]: Arzelà–Ascoli dice cuándo una familia de curvas tiene subsucesiones convergentes, y Stone–Weierstrass, por qué los polinomios bastan para aproximarlas.'
+        aplicaciones:
+          - campo: senales
+            texto: aproximación de señales por polinomios trigonométricos
+          - campo: fisica
+            texto: funciones continuas sin derivada y el movimiento browniano
+          - campo: datos
+            texto: aproximación universal de las redes neuronales vía Stone–Weierstrass
+        lecturas: Munkres, *Topology*; Rudin, *Principles of Mathematical Analysis*.
+  - letra: B
+    titulo: Topología algebraica
+    capitulos:
+      - id: VI.5
+        titulo: Homotopía y grupo fundamental
         paginas: 44
         requiere:
           - VI.2
-          - II.7
-          - III.6
+          - I.8
         tipo: nucleo
         contenidos:
-          - Sistemas x′ = Ax; exponencial de una matriz como serie y mediante la forma de Jordan.
-          - Matriz fundamental y sistemas no homogéneos.
-          - Estabilidad de los sistemas lineales según sus autovalores; retratos de fase en el plano.
-          - Sistemas lineales discretos x_{n+1} = A x_n.
-        puente: 'Entrada: muelles acoplados que «explotan» al aumentar la rigidez. Los autovalores del sistema dicen qué modos oscilan y a qué frecuencia; la explosión aparece cuando el método numérico no respeta esa estructura (VI.10).'
+          - Homotopía de aplicaciones y de caminos; espacios contráctiles; equivalencia homotópica.
+          - Grupo fundamental e invariancia por homotopía.
+          - 'Grupo fundamental del círculo: grado de un lazo y número de vueltas.'
+          - Retractos y retractos por deformación; teorema de Brouwer en dimensión 2.
+        puente: 'Entrada: `angle += wrapToPi(newAngle - angle)`, el truco para acumular un ángulo sin saltos de 2π. El ángulo acumulado es el levantamiento del lazo por el recubrimiento ℝ → S¹, y su total dividido por 2π es el número de vueltas: un elemento del grupo fundamental del círculo.'
         aplicaciones:
+          - campo: 3d
+            texto: ángulos acumulados y desenrollado de fase en animación
           - campo: fisica
-            texto: modos de vibración acoplados
+            texto: el efecto Aharonov–Bohm y el grupo fundamental del plano sin un punto
           - campo: ing
-            texto: modelos en espacio de estados
-          - campo: bio-eco
-            texto: modelos compartimentales
-        lecturas: Hirsch, Smale y Devaney, *Differential Equations, Dynamical Systems, and an Introduction to Chaos*; Perko, *Differential Equations and Dynamical Systems*.
-      - id: VI.4
-        titulo: Sistemas no lineales y estabilidad
+            texto: número de vueltas y criterio de estabilidad de Nyquist
+        lecturas: Hatcher, *Algebraic Topology*; Massey, *A Basic Course in Algebraic Topology*.
+      - id: VI.6
+        titulo: Recubrimientos y teorema de Seifert–van Kampen
+        paginas: 44
+        requiere:
+          - VI.5
+          - V.2
+        tipo: nucleo
+        contenidos:
+          - Espacios recubridores; levantamiento de caminos y de homotopías.
+          - Recubrimiento universal y clasificación de los recubrimientos por subgrupos del grupo fundamental.
+          - Teorema de Seifert–van Kampen; grupos fundamentales de grafos, del toro y de las superficies.
+          - Acciones de grupos propiamente discontinuas y espacios de órbitas.
+        puente: 'Entrada: un nivel de videojuego con portales, o un mapa que se repite al infinito. El mundo infinito que se repite es el recubrimiento universal del nivel, y el grupo de traslaciones que lo repite es su grupo fundamental, que actúa por transformaciones de recubrimiento.'
+        aplicaciones:
+          - campo: 3d
+            texto: portales, mundos que se repiten y espacios de órbitas en videojuegos
+          - campo: fisica
+            texto: el espín y el recubrimiento SU(2) → SO(3)
+          - campo: ing
+            texto: planificación de trayectorias por clases de homotopía
+        lecturas: Hatcher, *Algebraic Topology*; Massey, *A Basic Course in Algebraic Topology*.
+      - id: VI.7
+        titulo: Complejos simpliciales y homología
         paginas: 48
         requiere:
-          - VI.3
-          - IV.3
+          - VI.5
+          - V.4
         tipo: nucleo
         contenidos:
-          - Puntos de equilibrio y linealización; teorema de Hartman–Grobman (enunciado).
-          - Funciones de Lyapunov y estabilidad asintótica.
-          - Plano de fase, órbitas periódicas y ciclos límite.
-          - Teorema de Poincaré–Bendixson.
-        puente: 'Entrada: un péndulo de juego que gana energía con el tiempo. El sistema continuo conserva la energía, que es una función de Lyapunov; que la simulación no la conserve es un defecto del integrador, no de la física.'
+          - Complejos simpliciales, triangulaciones y realización geométrica.
+          - Complejos de cadenas, homología simplicial y números de Betti.
+          - Invariancia topológica (enunciada) y homología singular como idea; sucesión de Mayer–Vietoris.
+          - 'Característica de Euler–Poincaré; cálculo de la homología con la forma normal de Smith. Para seguir: álgebra homológica y teoría de categorías.'
+        puente: 'Entrada: `rank(boundary_matrix)` en una biblioteca de geometría discreta. Los números de Betti, que cuentan componentes, túneles y cavidades, son dimensiones de núcleos módulo imágenes de matrices de borde: la homología es álgebra lineal sobre un complejo.'
         aplicaciones:
-          - campo: bio-eco
-            texto: modelos depredador–presa de Lotka–Volterra y epidemias SIR
-          - campo: fisica
-            texto: péndulo no lineal
+          - campo: 3d
+            texto: detección de agujeros y túneles en mallas y en vóxeles
           - campo: ing
-            texto: estabilidad de sistemas realimentados
-        lecturas: Hirsch, Smale y Devaney, *Differential Equations, Dynamical Systems, and an Introduction to Chaos*; Strogatz, *Nonlinear Dynamics and Chaos*.
-      - id: VI.5
-        titulo: Bifurcaciones y caos
-        paginas: 40
-        requiere:
-          - VI.4
-        tipo: complementario
-        contenidos:
-          - Bifurcaciones silla–nodo, transcrítica, de horquilla y de Hopf.
-          - Aplicación logística, duplicación de período y constante de Feigenbaum.
-          - Sensibilidad a las condiciones iniciales; sistema de Lorenz y atractores extraños.
-          - Exponentes de Lyapunov y su cálculo numérico.
-        puente: 'Entrada: dos simulaciones con la misma semilla que divergen entre plataformas. Un sistema caótico amplifica exponencialmente las diferencias de redondeo: el determinismo exige aritmética idéntica, no solo el mismo código.'
-        aplicaciones:
+            texto: cobertura de redes de sensores sin conocer sus posiciones
           - campo: fisica
-            texto: meteorología y el modelo de Lorenz
-          - campo: cripto
-            texto: determinismo en juegos en red
-          - campo: bio-eco
-            texto: dinámica de poblaciones
-        lecturas: 'Strogatz, *Nonlinear Dynamics and Chaos*; Alligood, Sauer y Yorke, *Chaos: An Introduction to Dynamical Systems*.'
-      - id: VI.6
-        titulo: 'Sistemas con entrada: control y realimentación'
+            texto: campos irrotacionales sin potencial en dominios con agujeros
+        lecturas: Hatcher, *Algebraic Topology*; Munkres, *Elements of Algebraic Topology*.
+      - id: VI.8
+        titulo: Clasificación de superficies
         paginas: 36
         requiere:
-          - VI.4
+          - VI.7
+          - VI.6
         tipo: complementario
         contenidos:
-          - Sistemas de control lineales; controlabilidad y observabilidad (criterio de Kalman).
-          - Realimentación de estado y asignación de polos.
-          - Controladores PID y su análisis en el dominio del tiempo.
-          - Discretización de controladores.
-        puente: 'Entrada: `force = kp * error + ki * integral + kd * derivative`. Un PID es un sistema realimentado cuyos polos se eligen con kp, ki y kd; la estabilidad del vehículo o de la cámara se decide con los autovalores de VI.3.'
+          - Superficies como cocientes de polígonos; orientabilidad.
+          - Teorema de clasificación de las superficies compactas.
+          - Característica de Euler, orientabilidad y género como invariantes completos.
+          - Superficies con borde y suma conexa.
+        puente: 'Entrada: `genus = (2 - V + E - F) / 2` en un procesador de mallas. La fórmula vale porque toda superficie cerrada orientable es una esfera con g asas, y la característica de Euler V − E + F = 2 − 2g las distingue: el capítulo demuestra ese teorema de clasificación.'
         aplicaciones:
-          - campo: ing
-            texto: control de motores y de drones
           - campo: 3d
-            texto: vehículos y personajes que siguen objetivos
+            texto: género, asas y cortes para parametrizar mallas
           - campo: bio-eco
-            texto: regulación de la glucosa
-        lecturas: Åström y Murray, *Feedback Systems*; Sontag, *Mathematical Control Theory*.
-  - letra: B
-    titulo: Mecánica
-    capitulos:
-      - id: VI.7
-        titulo: Cálculo de variaciones y mecánica lagrangiana
-        paginas: 48
-        requiere:
-          - VI.4
-          - IV.4
-        tipo: nucleo
-        contenidos:
-          - Funcionales y ecuación de Euler–Lagrange; problema de la braquistócrona.
-          - Principio de mínima acción y coordenadas generalizadas.
-          - Restricciones holónomas con multiplicadores de Lagrange.
-          - 'Simetrías y cantidades conservadas: teorema de Noether.'
-        puente: 'Entrada: un *ragdoll* modelado como cuerpos unidos por «articulaciones». Cada articulación es una restricción holónoma y su fuerza es un multiplicador de Lagrange (IV.4); las coordenadas reducidas y las maximales son dos formas de escribir el mismo lagrangiano.'
-        aplicaciones:
-          - campo: 3d
-            texto: articulaciones y *ragdolls*
-          - campo: fisica
-            texto: mecánica clásica y principio de Fermat en óptica
+            texto: topología de las superficies corticales en neuroimagen
           - campo: ing
-            texto: trayectorias óptimas
-        lecturas: Arnold, *Mathematical Methods of Classical Mechanics*; Goldstein, Poole y Safko, *Classical Mechanics*; Gelfand y Fomin, *Calculus of Variations*.
-      - id: VI.8
-        titulo: Mecánica hamiltoniana
-        paginas: 44
-        requiere:
-          - VI.7
-        tipo: nucleo
-        contenidos:
-          - Transformada de Legendre y ecuaciones de Hamilton.
-          - Espacio de fases y teorema de Liouville.
-          - Estructura simpléctica en forma matricial; transformaciones canónicas.
-          - Corchetes de Poisson e integrales primeras; su relación con los conmutadores de la mecánica cuántica (aviso de X.8).
-          - Ecuación de Hamilton–Jacobi, variables de acción–ángulo y sistemas integrables.
-        puente: 'Entrada: el gráfico de energía de una simulación que deriva lentamente. El flujo hamiltoniano conserva el volumen en el espacio de fases, y los integradores que respetan esa estructura (VI.11) no derivan.'
-        aplicaciones:
-          - campo: fisica
-            texto: órbitas planetarias y dinámica molecular
-          - campo: 3d
-            texto: simulación estable a largo plazo
-          - campo: datos
-            texto: Monte Carlo hamiltoniano (aviso de VIII.8)
-        lecturas: 'Arnold, *Mathematical Methods of Classical Mechanics*; José y Saletan, *Classical Dynamics: A Contemporary Approach*.'
-      - id: VI.9
-        titulo: Dinámica del sólido rígido
-        paginas: 44
-        requiere:
-          - VI.7
-          - II.15
-          - V.4
-        tipo: nucleo
-        contenidos:
-          - 'Sistemas de partículas: momento lineal y momento angular.'
-          - Tensor de inercia, teorema de Steiner y ejes principales.
-          - Ecuaciones de Euler y término giroscópico; estabilidad de la rotación en torno a los ejes principales (teorema de la raqueta de tenis).
-          - La orientación como curva en SO(3) y su descripción con cuaterniones.
-        puente: 'Entrada: `w += inverse(I) * (torque - cross(w, I * w)) * dt`. El término `cross(w, I * w)` es el término giroscópico de las ecuaciones de Euler; omitirlo hace que las peonzas y los objetos alargados giren mal.'
-        aplicaciones:
-          - campo: 3d
-            texto: núcleo de un motor de cuerpos rígidos
-          - campo: ing
-            texto: satélites y giróscopos
-          - campo: fisica
-            texto: peonzas y precesión
-        lecturas: 'Goldstein, Poole y Safko, *Classical Mechanics*; Taylor, *Classical Mechanics*; Baraff, «An Introduction to Physically Based Modeling: Rigid Body Simulation».'
+            texto: mallado de superficies para la fabricación
+        lecturas: Massey, *A Basic Course in Algebraic Topology*; Kinsey, *Topology of Surfaces*.
   - letra: C
-    titulo: Métodos numéricos
+    titulo: Topología aplicada
     capitulos:
+      - id: VI.9
+        titulo: Grado y teoremas de punto fijo
+        paginas: 40
+        requiere:
+          - VI.7
+        tipo: complementario
+        contenidos:
+          - Grado de una aplicación entre esferas; teorema de la bola peluda.
+          - Teorema del punto fijo de Brouwer en dimensión n y teorema de Borsuk–Ulam.
+          - Lema de Sperner y su demostración combinatoria del teorema de Brouwer.
+          - Número de Lefschetz (enunciado) y teorema de Kakutani.
+        puente: 'Entrada: `lookAt(eye, target, up)`, que falla cuando la cámara mira justo hacia arriba. No es un error del código: el teorema de la bola peluda dice que no hay un campo continuo de vectores tangentes no nulos sobre la esfera, así que toda regla para elegir el «arriba» de la cámara tiene una singularidad.'
+        aplicaciones:
+          - campo: 3d
+            texto: cámaras, marcos de referencia y la singularidad inevitable del vector «arriba»
+          - campo: bio-eco
+            texto: existencia del equilibrio de Nash y del equilibrio general en economía
+          - campo: fisica
+            texto: puntos de calma en un campo de viento sobre la superficie terrestre
+        lecturas: Milnor, *Topology from the Differentiable Viewpoint*; Hatcher, *Algebraic Topology*.
       - id: VI.10
-        titulo: Métodos numéricos para ecuaciones diferenciales ordinarias
-        paginas: 48
-        requiere:
-          - VI.3
-          - III.10
-        tipo: nucleo
-        contenidos:
-          - Euler explícito; error local y global; orden de convergencia.
-          - Métodos de Runge–Kutta y métodos multipaso.
-          - Regiones de estabilidad absoluta y ecuaciones rígidas.
-          - Métodos implícitos resueltos con Newton; control del paso.
-        puente: 'Entrada: `while (accumulator >= dt) { step(dt); accumulator -= dt; }`, el bucle de paso fijo. Separar el paso de integración del de dibujo es una decisión de estabilidad: la región de estabilidad del método exige un dt acotado.'
-        aplicaciones:
-          - campo: 3d
-            texto: bucle de física con paso fijo
-          - campo: fisica
-            texto: trayectorias balísticas y orbitales
-          - campo: bio-eco
-            texto: simulación de modelos epidemiológicos
-        lecturas: Hairer, Nørsett y Wanner, *Solving Ordinary Differential Equations I*; Iserles, *A First Course in the Numerical Analysis of Differential Equations*.
-      - id: VI.11
-        titulo: Integración geométrica y restricciones
+        titulo: Homología persistente y análisis topológico de datos
         paginas: 40
         requiere:
-          - VI.10
-          - VI.8
-          - V.4
-        tipo: nucleo
+          - VI.7
+        tipo: complementario
         contenidos:
-          - 'Integradores simplécticos: Störmer–Verlet y Euler semi-implícito; conservación de una energía modificada (enunciado).'
-          - Integradores en grupos de Lie para las rotaciones.
-          - 'Restricciones en la integración: proyección, SHAKE y RATTLE.'
-          - Dinámica basada en posiciones (PBD y XPBD) como método de proyección.
-        puente: 'Entrada: `v += a * dt; x += v * dt;` frente a `x += v * dt; v += a * dt;`. Cambiar el orden de dos líneas convierte un método que gana energía en uno simpléctico, que la conserva en promedio.'
+          - 'Filtraciones de complejos: complejos de Čech y de Vietoris–Rips.'
+          - Homología persistente, diagramas de persistencia y códigos de barras.
+          - Teorema de estabilidad (enunciado) y distancia de cuello de botella.
+          - El algoritmo de reducción matricial y su costo; el método Mapper.
+        puente: 'Entrada: `ripser(points)`, que devuelve pares (nacimiento, muerte). Cada par es un agujero que aparece y desaparece al engordar los puntos; los que viven mucho son la forma de los datos, y el teorema de estabilidad garantiza que el ruido solo produce pares cortos.'
         aplicaciones:
-          - campo: 3d
-            texto: tela, cuerdas y cuerpos blandos con PBD y XPBD
-          - campo: fisica
-            texto: dinámica molecular
-          - campo: ing
-            texto: mecanismos con restricciones
-        lecturas: 'Hairer, Lubich y Wanner, *Geometric Numerical Integration*; Macklin, Müller y Chentanez, «XPBD: Position-Based Simulation of Compliant Constrained Dynamics».'
-      - id: VI.12
-        titulo: Contacto y complementariedad
-        paginas: 40
-        requiere:
-          - VI.11
-          - IV.7
-          - II.12
-        tipo: nucleo
-        contenidos:
-          - El contacto unilateral como problema de complementariedad lineal (LCP); existencia y unicidad.
-          - Fricción de Coulomb, cono de fricción y su aproximación poliédrica; coeficiente de restitución.
-          - Métodos de Gauss–Seidel y de Jacobi proyectados; convergencia.
-          - Los impulsos secuenciales como método iterativo proyectado.
-        puente: 'Entrada: el bucle de iteraciones de un *solver* de contactos que acumula y recorta impulsos. Es Gauss–Seidel proyectado sobre un LCP, y el número de iteraciones decide si una pila de cajas se sostiene.'
-        aplicaciones:
-          - campo: 3d
-            texto: pilas de cajas estables y fricción
-          - campo: ing
-            texto: robótica de manipulación
+          - campo: datos
+            texto: la forma de las nubes de puntos y la detección de ciclos en los datos
           - campo: bio-eco
-            texto: modelos de equilibrio de mercado
-        lecturas: Cottle, Pang y Stone, *The Linear Complementarity Problem*; Stewart, «Rigid-Body Dynamics with Friction and Impact»; Erleben, Sporring, Henriksen y Dohlmann, *Physics-Based Animation*.
+            texto: estructura de proteínas y de redes neuronales biológicas
+          - campo: 3d
+            texto: reconstrucción robusta de superficies a partir de escaneos
+        lecturas: Edelsbrunner y Harer, *Computational Topology*; Carlsson, «Topology and Data».

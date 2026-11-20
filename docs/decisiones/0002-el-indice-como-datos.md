@@ -30,8 +30,8 @@ lugares escritos a mano los haría divergir.
   regenera la especificación. Editar la sección 13 a mano hace fallar las pruebas.
 - La migración se verificó con una ida y vuelta: los datos extraídos regeneran la sección 13 idéntica, carácter por
   carácter, y cumplen todas las reglas.
-- Las secciones 6 (tabla de tomos), 9.6 (itinerarios) y 14 (extensión) todavía repiten datos a mano. Si divergen, se
-  generan también.
+- Las secciones 6 (tabla de tomos), 9.6 (itinerarios) y 14 (extensión) todavía repetían datos a mano; desde la
+  enmienda de abajo se generan también.
 
 ## Alternativas descartadas
 
@@ -39,3 +39,10 @@ lugares escritos a mano los haría divergir.
   prosa, una fuente frágil.
 - **Metadatos solo en la cabecera de cada capítulo** (como proponía la sección 11.4). No sirve mientras la mayoría de
   los capítulos no existe, y repartiría el grafo entre 121 archivos.
+
+## Enmienda del 2026-11-20 (versión 0.5)
+
+Con la reestructuración a trece tomos, también se generan desde los datos la tabla de tomos (sección 6), la tabla de
+itinerarios (sección 9.6) y las cifras de extensión (sección 14), cada una en su bloque entre marcas. Así ninguna
+cifra derivada del índice se escribe a mano. La renumeración de la prosa se hizo una sola vez con un mapa de
+identificadores viejos a nuevos, y el validador comprobó el resultado.

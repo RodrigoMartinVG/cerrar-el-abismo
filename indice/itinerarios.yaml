@@ -6,13 +6,13 @@
   tomos: []
 - id: fisica
   nombre: Física
-  capitulos: [IV.13, VI.5, VII.10, VII.11, VIII.9, VIII.11, IX.5, IX.8, IX.10]
-  tomos: [X]
+  capitulos: [IV.13, VIII.5, IX.11, IX.12, X.6, X.8, XI.9, XI.11, XII.5, XII.8, XII.10]
+  tomos: [XIII]
 - id: graficos-3d
   nombre: Gráficos y 3D
-  capitulos: [V.14, VIII.7, VIII.9, VIII.11, IX.8, IX.10]
+  capitulos: [VI.8, VI.9, VII.14, XI.7, XI.9, XI.11, XII.8, XII.10]
   tomos: []
 - id: datos
   nombre: Datos
-  capitulos: [VII.7, VIII.7, VIII.9, X.1]
+  capitulos: [VI.10, IX.8, XI.7, XI.9, XIII.1]
   tomos: []

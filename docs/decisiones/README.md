@@ -7,4 +7,4 @@ alternativas que se descartaron. Si se revisa, se enmienda con fecha o se reempl
 | N.º | Decisión | Estado |
 | --- | --- | --- |
 | [0001](0001-astro-y-starlight.md) | El sitio se construye con Astro y Starlight, con la capa de libro propia | Aceptada (2026-11-20) |
-| [0002](0002-el-indice-como-datos.md) | El índice temático es datos; la sección 13 de la especificación se genera desde ellos | Aceptada (2026-11-20) |
+| [0002](0002-el-indice-como-datos.md) | El índice temático es datos; las tablas e índice de la especificación se generan desde ellos | Aceptada (2026-11-20), enmendada el mismo día |

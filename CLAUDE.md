@@ -10,7 +10,8 @@ repite.
   convenciones (12) y plan de trabajo (16).
 - **Por qué está hecho así:** [docs/decisiones](docs/decisiones/README.md). Una decisión va antes que el código
   cuando sus consecuencias son largas.
-- **El índice temático:** los datos están en `indice/` y su código en `packages/indice` (decisión 0002).
+- **El índice temático:** los datos están en `indice/` (13 tomos, 150 capítulos) y su código en `packages/indice`
+  (decisión 0002).
 - **El sitio:** `site/`, con Astro y Starlight (decisión 0001).
 - **El diseño anterior** (índice con un motor 3D en paralelo): `docs/historico/`. Ya no es el plan.
 
@@ -22,7 +23,7 @@ repite.
 | `npm test` | Vitest: reglas del índice, concordancia con la especificación y el resto de las pruebas |
 | `npm run check` | Tipos: `tsc` del paquete del índice y `astro check` del sitio |
 | `npm run lint` · `npm run format:check` | ESLint · Prettier |
-| `npm run indice:spec` | Reescribe la sección 13 de la especificación desde `indice/` (valida antes) |
+| `npm run indice:spec` | Reescribe los bloques generados de la especificación (secciones 6, 9.6, 13 y 14) desde `indice/`; valida antes |
 | `npm run verify` | check, lint, formato y pruebas: lo mismo que la integración continua |
 
 Node 26, fijado con mise (`mise.toml`) y `.nvmrc`. Node ejecuta el TypeScript directamente: solo sintaxis que se pueda
@@ -30,8 +31,12 @@ borrar (`erasableSyntaxOnly`) y los imports relativos con su extensión `.ts`.
 
 ## Reglas que valen en todo el proyecto
 
-- **El índice se cambia en `indice/`, nunca en la especificación.** La sección 13 se genera entre sus dos marcas con
-  `npm run indice:spec`; si se edita a mano, las pruebas fallan.
+- **El índice se cambia en `indice/`, nunca en la especificación.** La tabla de tomos (6), los itinerarios (9.6), el
+  índice (13) y la extensión (14) se generan entre sus marcas con `npm run indice:spec`; si se editan a mano, las
+  pruebas fallan.
+- **Los libros de referencia viven en `libros/`, que git ignora.** Se consultan para verificar demostraciones,
+  enunciados y notación, y se citan en «Lecturas»; nunca se copian pasajes ni se suben al repositorio, que es público.
+  La redacción de la obra es siempre propia.
 - **Textos en español**, también los comentarios, los nombres del dominio (`capitulo`, `requiere`, `tomo`) y las
   decisiones. Se respetan las convenciones de la sección 12 de la especificación.
 - **Las pruebas viven junto al código** (`*.test.ts`) y todo cambio pasa `npm run verify` antes de subir.

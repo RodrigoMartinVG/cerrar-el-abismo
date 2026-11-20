@@ -1,8 +1,8 @@
 # Especificación del proyecto — Matemática y práctica
 
-*Título provisional · Versión 0.4 · 20 de noviembre de 2026*
+*Título provisional · Versión 0.5 · 20 de noviembre de 2026*
 
-Este documento sustituye como plan vigente al «Índice temático revisado» de *Métodos Matemáticos para Ingeniería de Motores 3D* (76 capítulos y un motor didáctico en paralelo). Recoge las decisiones del 20 de noviembre de 2026: una obra de matemática de nivel licenciatura, sin motor, con aplicaciones variadas, pensada para la web y con una misión central: cerrar el abismo entre la matemática que se estudia y la que se usa. La sección 15 indica dónde quedó cada capítulo del índice anterior. La versión 0.2 suma la arista de la física: la matemática que necesitan los físicos, con su propio hilo, su propio puente y un décimo tomo. La versión 0.3 añade el perfil de egreso (2.1): qué puede hacer el lector fuera de la matemática al terminar la obra. La versión 0.4 registra las primeras decisiones de infraestructura (sección 11): el sitio se construye con Astro y Starlight, y el índice temático pasa a ser datos, desde los que se genera la sección 13. El documento vive en el repositorio `cerrar-el-abismo`, en `docs/especificacion.md`; el índice anterior está en `docs/historico/`.
+Este documento sustituye como plan vigente al «Índice temático revisado» de *Métodos Matemáticos para Ingeniería de Motores 3D* (76 capítulos y un motor didáctico en paralelo). Recoge las decisiones del 20 de noviembre de 2026: una obra de matemática de nivel licenciatura, sin motor, con aplicaciones variadas, pensada para la web y con una misión central: cerrar el abismo entre la matemática que se estudia y la que se usa. La sección 15 indica dónde quedó cada capítulo del índice anterior. La versión 0.2 suma la arista de la física: la matemática que necesitan los físicos, con su propio hilo, su propio puente y un décimo tomo. La versión 0.3 añade el perfil de egreso (2.1): qué puede hacer el lector fuera de la matemática al terminar la obra. La versión 0.4 registra las primeras decisiones de infraestructura (sección 11): el sitio se construye con Astro y Starlight, y el índice temático pasa a ser datos, desde los que se genera la sección 13. El documento vive en el repositorio `cerrar-el-abismo`, en `docs/especificacion.md`; el índice anterior está en `docs/historico/`. La versión 0.5 completa las materias clásicas de una licenciatura en matemática: el álgebra hasta la teoría de Galois, la topología general y algebraica, el análisis funcional y los fundamentos. Suma tres tomos (V, VI y X) y tres capítulos; la colección pasa a trece tomos y se renumera.
 
 ## 0. Organización de este documento
 
@@ -10,7 +10,7 @@ Este documento sustituye como plan vigente al «Índice temático revisado» de 
 | --- | --- |
 | 1–5 | Qué es la obra y por qué: visión, contrato y perfil de egreso, diagnóstico del abismo, principios y alcance |
 | 6–12 | Cómo está hecha: tomos, plantilla de capítulo, el puente, aplicaciones, ejercicios, plataforma web y convenciones |
-| 13 | Índice temático completo de los diez tomos |
+| 13 | Índice temático completo de los trece tomos |
 | 14–17 | Extensión, correspondencia con el índice anterior, plan de trabajo y decisiones abiertas |
 
 ## 1. Visión
@@ -23,7 +23,7 @@ La física merece un lugar propio en esa lista: es la segunda práctica de la ob
 
 ## 2. Contrato de la obra
 
-- **Qué es.** Una obra de matemática de nivel licenciatura en diez tomos ordenados por áreas, con definiciones, teoremas y demostraciones completas, y con aplicaciones de varios campos en cada capítulo. Se publica primero en la web, con código en vivo y figuras interactivas.
+- **Qué es.** Una obra de matemática de nivel licenciatura en trece tomos ordenados por áreas, con definiciones, teoremas y demostraciones completas, y con aplicaciones de varios campos en cada capítulo. Se publica primero en la web, con código en vivo y figuras interactivas.
 - **Qué no es.** No es un manual de programación, de un motor ni de una herramienta. Ningún capítulo trata de ingeniería o de informática por sí mismas, y no hay un motor que crezca en paralelo.
 - **Lector.** Estudiantes de matemática, física, ingeniería e informática; profesionales que quieren entender la matemática de lo que usan; autodidactas dispuestos a leer demostraciones. A los físicos, la obra les da el rigor; a los matemáticos, la traducción a la notación de la física.
 - **Punto de partida.** La matemática de la escuela secundaria. El Tomo I empieza por la lógica y la demostración.
@@ -36,33 +36,35 @@ El contrato dice qué es la obra; el perfil de egreso dice qué puede hacer, fue
 
 El perfil es un compromiso que se puede comprobar, no una declaración de intenciones. Cada capacidad se apoya en los fragmentos de salida (8.1) y en los ejercicios de traducción (8.4) de los capítulos citados entre paréntesis, y cada bloque corresponde al itinerario que indica su título (9.6).
 
+**Formación matemática (itinerario de núcleo).** El núcleo cubre las materias de una licenciatura en matemática: lógica y teoría de conjuntos (Tomo I), álgebra lineal y álgebra hasta la teoría de Galois (Tomos II y V), análisis real, topología y análisis funcional hasta los espacios de Sobolev (Tomos III, IV, VI, IX y X), geometría, ecuaciones diferenciales y probabilidad. Quien lo termina puede seguir un posgrado en matemática pura o aplicada sin lagunas de base, y reconoce cada una de esas materias en la práctica.
+
 **Capacidades comunes (itinerario de núcleo).**
 
 - **Reconocer el teorema detrás de la práctica, y al revés.** Ver `transpose(inverse(M))` y pensar en la aplicación dual (II.5); ver `|ψ⟩` y pensar en un vector de un espacio con producto interno (II.8).
-- **Preguntar qué se da por supuesto y cuándo falla.** En el código, la aritmética exacta (I.10, II.16); en la física, intercambiar límites o tratar la delta como una función (III.6, VII.5).
+- **Preguntar qué se da por supuesto y cuándo falla.** En el código, la aritmética exacta (I.11, II.16); en la física, intercambiar límites o tratar la delta como una función (III.6, IX.6).
 - **Tratar las convenciones como elecciones.** Vectores fila o columna, mano derecha o izquierda, el signo de la transformada de Fourier: quien entiende que una convención es la elección de un isomorfismo (II.14) pasa de un libro o de un motor a otro sin perderse (sección 12).
 - **Pasar de la demostración al programa** que la usa y leer el resultado numérico con un criterio de error (II.12, III.10).
 - **Leer literatura técnica de otro campo** (artículos, documentación, textos de física o de ingeniería) sin que la notación sea un obstáculo, con el diccionario academia–práctica como apoyo (8.5).
 
 **Física (itinerario de física).** El lector puede seguir los cursos de física de grado distinguiendo lo riguroso de la heurística útil.
 
-- **Mecánica clásica:** las formulaciones lagrangiana y hamiltoniana como cálculo de variaciones, con corchetes de Poisson y Hamilton–Jacobi, y el sólido rígido como dinámica en SO(3) (VI.7–VI.9).
-- **Electromagnetismo:** las ecuaciones de Maxwell en forma integral y diferencial, con el teorema que pasa de una a otra (IV.11), y después en el lenguaje de las formas diferenciales (IV.13); la carga puntual como distribución (VII.5).
-- **Mecánica cuántica:** estados en espacios de Hilbert y operadores autoadjuntos; por qué ningún par de matrices finitas cumple `[x, p] = iħ`; el espín como representación de SU(2); los orbitales como armónicos esféricos; funciones especiales, perturbaciones y WKB (II.8, VII.13, IX.3, IX.5, X.2, X.7, X.8).
-- **Mecánica estadística:** la entropía de Boltzmann y la de Shannon como una misma idea, el modelo de Ising con MCMC, el movimiento browniano y las funciones de partición por métodos asintóticos (VII.10, VIII.8, VIII.10, VIII.14).
-- **Relatividad especial y general:** Minkowski y Lorentz, variedades, curvatura, geodésicas y gravitación, con la corrección de los relojes del GPS como prueba de que importa (X.3–X.6).
-- **Medios continuos:** calor, ondas, acústica, fluidos y elasticidad, con funciones de Green y elementos finitos (Tomo IX).
+- **Mecánica clásica:** las formulaciones lagrangiana y hamiltoniana como cálculo de variaciones, con corchetes de Poisson y Hamilton–Jacobi, y el sólido rígido como dinámica en SO(3) (VIII.7–VIII.9).
+- **Electromagnetismo:** las ecuaciones de Maxwell en forma integral y diferencial, con el teorema que pasa de una a otra (IV.11), y después en el lenguaje de las formas diferenciales (IV.13); la carga puntual como distribución (IX.6).
+- **Mecánica cuántica:** estados en espacios de Hilbert y operadores autoadjuntos; por qué ningún par de matrices finitas cumple `[x, p] = iħ`; el espín como representación de SU(2); los orbitales como armónicos esféricos; funciones especiales, perturbaciones y WKB (II.8, IX.14, XII.3, XII.5, XIII.2, X.6, XIII.7).
+- **Mecánica estadística:** la entropía de Boltzmann y la de Shannon como una misma idea, el modelo de Ising con MCMC, el movimiento browniano y las funciones de partición por métodos asintóticos (IX.11, XI.8, XI.10, XI.14).
+- **Relatividad especial y general:** Minkowski y Lorentz, variedades, curvatura, geodésicas y gravitación, con la corrección de los relojes del GPS como prueba de que importa (XIII.3–XIII.6).
+- **Medios continuos:** calor, ondas, acústica, fluidos y elasticidad, con funciones de Green y elementos finitos (Tomo XII).
 
 Límite: la teoría cuántica de campos, las teorías gauge y los fibrados quedan fuera (5.4). El lector llega a su puerta con lo necesario para empezarlas.
 
 **Gráficos y 3D (itinerario de gráficos y 3D).** El lector puede leer el código de un motor o un artículo de gráficos reconociendo la estructura que hay debajo de cada truco y, cuando algo falla (una rotación que se degenera, una sombra que parpadea), saber qué hipótesis se rompió.
 
-- **Del vértice al píxel:** marcos de referencia, matrices 4×4, cámara, proyección y Reverse-Z; las normales como covectores (II.3, II.5, II.13, V.3).
-- **Rotaciones y animación:** cuaterniones y SLERP, *skinning* con grupos de Lie y curvas para cámaras (II.15, V.4–V.6).
-- **Simulación:** paso fijo, integradores que conservan la estructura, sólido rígido, contactos, tela y cuerdas (VI.9–VI.12).
-- **Render:** trazado de caminos como ecuación integral, muestreo por importancia, microfacetas, iluminación con armónicos esféricos y *Gaussian Splatting* (VII.13, VIII.2, VIII.3, VIII.5, VIII.6, VIII.11).
-- **Geometría computacional:** selección con el ratón, colisiones, mallas de navegación, *ray marching* y BVH (V.9–V.11, V.13, V.14).
-- **Números en la máquina:** por qué un mundo grande tiembla lejos del origen y por qué una simulación diverge entre plataformas (I.10, II.16).
+- **Del vértice al píxel:** marcos de referencia, matrices 4×4, cámara, proyección y Reverse-Z; las normales como covectores (II.3, II.5, II.13, VII.3).
+- **Rotaciones y animación:** cuaterniones y SLERP, *skinning* con grupos de Lie y curvas para cámaras (II.15, VII.4–VII.6).
+- **Simulación:** paso fijo, integradores que conservan la estructura, sólido rígido, contactos, tela y cuerdas (VIII.9–VIII.12).
+- **Render:** trazado de caminos como ecuación integral, muestreo por importancia, microfacetas, iluminación con armónicos esféricos y *Gaussian Splatting* (IX.14, XI.2, XI.3, XI.5, XI.6, XI.11).
+- **Geometría computacional:** selección con el ratón, colisiones, mallas de navegación, *ray marching* y BVH (VII.9–VII.11, VII.13, VII.14).
+- **Números en la máquina:** por qué un mundo grande tiembla lejos del origen y por qué una simulación diverge entre plataformas (I.11, II.16).
 
 Límite: las APIs gráficas, los *shaders*, la arquitectura de un motor y la optimización en GPU son oficio, no matemática. La obra hace que se aprendan más rápido, pero no los enseña.
 
@@ -70,13 +72,13 @@ Límite: las APIs gráficas, los *shaders*, la arquitectura de un motor y la opt
 
 | Campo | Aplicaciones | Qué puede hacer el lector |
 | --- | --- | --- |
-| Ingeniería [Ing] | 73 | Robótica: cinemática de eslabones y planificación de movimientos (II.13, V.10). Control: espacio de estados, estabilidad, Bode y Nyquist (VI.3, VI.4, VII.8, VII.9). Estructuras con elementos finitos y aerodinámica (IX.7, IX.9). Navegación inercial y filtrado (II.16, VIII.13). CAD y fabricación aditiva (V.5, V.9, V.13) |
-| Datos [Datos] | 43 | Entender por qué funciona lo que se usa como caja negra: regresión, PCA y SVD, optimización convexa y vectores soporte, entrenamiento con diferenciación automática, inferencia bayesiana y MCMC, entropía cruzada (II.8, II.10, IV.5, IV.7, IV.8, VIII.8, VIII.13, VIII.14). Con el itinerario de datos, redes equivariantes (X.1) |
-| Biología, medicina, economía y finanzas [Bio/Eco] | 35 | Poblaciones y epidemias, farmacocinética, imagen médica, ensayos clínicos y pruebas diagnósticas (II.6, VI.1, VI.4, VII.4, V.13, VIII.1, VIII.12). Insumo-producto, utilidad con presupuesto y equilibrio de mercado (II.1, IV.4, VI.12). Valoración de opciones por Monte Carlo (VIII.6) |
-| Señales [Señales] | 25 | Fourier, muestreo, filtros, audio digital y JPEG (VII.3, VII.4, VII.6, VII.12). Con un complementario, ondículas y JPEG 2000 (VII.7) |
-| Criptografía y computación [Cripto] | 13 | RSA y Diffie–Hellman, Reed–Solomon, CRC y AES, colisiones de *hash*, compresión de Huffman y determinismo entre plataformas (I.4, I.5, I.8, I.10, VIII.14) |
+| Ingeniería [Ing] | 89 | Robótica: cinemática de eslabones y planificación de movimientos (II.13, VII.10). Control: espacio de estados, estabilidad, Bode y Nyquist (VIII.3, VIII.4, IX.9, IX.10). Estructuras con elementos finitos y aerodinámica (XII.7, XII.9). Navegación inercial y filtrado (II.16, XI.13). CAD y fabricación aditiva (VII.5, VII.9, VII.13) |
+| Datos [Datos] | 51 | Entender por qué funciona lo que se usa como caja negra: regresión, PCA y SVD, optimización convexa y vectores soporte, entrenamiento con diferenciación automática, inferencia bayesiana y MCMC, entropía cruzada (II.8, II.10, IV.5, IV.7, IV.8, XI.8, XI.13, XI.14). Con el itinerario de datos, redes equivariantes (XIII.1) |
+| Biología, medicina, economía y finanzas [Bio/Eco] | 40 | Poblaciones y epidemias, farmacocinética, imagen médica, ensayos clínicos y pruebas diagnósticas (II.6, VIII.1, VIII.4, IX.5, VII.13, XI.1, XI.12). Insumo-producto, utilidad con presupuesto y equilibrio de mercado (II.1, IV.4, VIII.12). Valoración de opciones por Monte Carlo (XI.6) |
+| Señales [Señales] | 29 | Fourier, muestreo, filtros, audio digital y JPEG (IX.4, IX.5, IX.7, IX.13). Con un complementario, ondículas y JPEG 2000 (IX.8) |
+| Criptografía y computación [Cripto] | 22 | RSA y Diffie–Hellman, Reed–Solomon, CRC y AES, colisiones de *hash*, compresión de Huffman y determinismo entre plataformas (I.5, I.6, I.9, I.11, XI.14). Criptografía de retículos con la forma normal de Hermite (V.4) |
 
-Los dos hilos fijos tienen 106 aplicaciones ([3D]) y 77 ([Física]). La ingeniería no es hilo fijo ni tiene itinerario, pero tiene casi tantas aplicaciones como la física; si merece un itinerario propio es una decisión abierta (17).
+Los dos hilos fijos tienen 129 aplicaciones ([3D]) y 94 ([Física]). La ingeniería no es hilo fijo ni tiene itinerario, pero tiene casi tantas aplicaciones como la física; si merece un itinerario propio es una decisión abierta (17).
 
 **En suma.** Quien termina la obra puede sentarse con un físico, un programador de gráficos, un ingeniero de control o un científico de datos, entender sus cuentas, aportar rigor y aprender su oficio rápido. Eso abre caminos como la física matemática, la investigación en gráficos, la simulación, la robótica, el aprendizaje automático o las finanzas cuantitativas.
 
@@ -131,32 +133,32 @@ Dentro del alcance no se recorta: las construcciones se muestran completas y en 
 
 | Tema | Capítulo |
 | --- | --- |
-| Representación de números en la máquina y coma flotante | I.10 |
+| Representación de números en la máquina y coma flotante | I.11 |
 | Producto tensorial y notación de índices | II.11 |
 | Espacios afines y coordenadas homogéneas | II.13 |
 | Convenciones como elección de isomorfismo | II.14 |
 | SO(3) y cuaterniones | II.15 |
 | Álgebra lineal en precisión finita | II.16 |
-| Polinomios de Bernstein, interpolación y *splines* | III.9, V.5 |
+| Polinomios de Bernstein, interpolación y *splines* | III.9, VII.5 |
 | Métodos numéricos con análisis de error en coma flotante | II.12, III.10 |
 | Diferenciación automática | IV.8 |
 | Coordenadas curvilíneas y cálculo tensorial | IV.12 |
-| Geometría de cámaras y de varias vistas | V.3 |
-| Predicados geométricos robustos | V.9 |
-| Convexidad computacional (sumas de Minkowski, GJK) | V.10 |
-| Geometría discreta de mallas | V.12 |
-| Integración geométrica (simpléctica y en grupos de Lie) | VI.11 |
-| Contacto y complementariedad | VI.12 |
-| Distribuciones | VII.5 |
-| Muestreo y transformada discreta | VII.6 |
-| Métodos asintóticos | VII.10 |
-| Generación de muestras, Monte Carlo y cuasi-Monte Carlo | VIII.5, VIII.6, VIII.7 |
-| Ecuaciones integrales resueltas por caminos aleatorios | VIII.11 |
-| Funciones especiales y polinomios ortogonales | IX.3 |
-| Perturbaciones y WKB | IX.5 |
-| Representaciones de grupos | X.1, X.2 |
-| Espacio de Minkowski y grupo de Lorentz | X.3 |
-| Operadores no acotados | X.7 |
+| Geometría de cámaras y de varias vistas | VII.3 |
+| Predicados geométricos robustos | VII.9 |
+| Convexidad computacional (sumas de Minkowski, GJK) | VII.10 |
+| Geometría discreta de mallas | VII.12 |
+| Integración geométrica (simpléctica y en grupos de Lie) | VIII.11 |
+| Contacto y complementariedad | VIII.12 |
+| Distribuciones | IX.6 |
+| Muestreo y transformada discreta | IX.7 |
+| Métodos asintóticos | IX.11 |
+| Generación de muestras, Monte Carlo y cuasi-Monte Carlo | XI.5, XI.6, XI.7 |
+| Ecuaciones integrales resueltas por caminos aleatorios | XI.11 |
+| Funciones especiales y polinomios ortogonales | XII.3 |
+| Perturbaciones y WKB | XII.5 |
+| Representaciones de grupos | XIII.1, XIII.2 |
+| Espacio de Minkowski y grupo de Lorentz | XIII.3 |
+| Operadores no acotados | X.6 |
 
 ### 5.3 Capítulos de núcleo y complementarios
 
@@ -164,23 +166,21 @@ Cada capítulo se marca como **núcleo** o **complementario**. Un capítulo comp
 
 ### 5.4 Fuera de alcance
 
-Quedan fuera las ramas puras sin aplicaciones al alcance de la obra. Cuando conviene señalarlas, aparecen en el recuadro «Para seguir» del capítulo más cercano.
+Quedan fuera las ramas propias de un posgrado o de una orientación específica. Cuando conviene señalarlas, aparecen en el recuadro «Para seguir» del capítulo más cercano. Desde la versión 0.5, la teoría de Galois, la teoría axiomática de conjuntos, la topología general y algebraica y el análisis funcional están dentro de la obra.
 
 | Tema | Dónde se señala |
 | --- | --- |
-| Teoría de Galois (se quedan los cuerpos finitos) | I.8 |
-| Teoría de conjuntos axiomática y cardinales infinitos más allá de lo numerable | I.2 |
-| Lenguajes formales, gramáticas y satisfacción de restricciones | I.6 |
-| Teoría analítica de números | I.4 |
-| Geometría algebraica | I.8 |
-| Topología general más allá de los espacios métricos | III.11 |
-| Topología algebraica | V.12 |
-| Fibrados y teorías gauge | X.5 |
+| Teoría de Galois infinita y teoría algebraica de números | V.6 |
+| Geometría algebraica más allá de las bases de Gröbner | V.9 |
+| Lenguajes formales, gramáticas y teoría de la complejidad | I.12 |
+| Teoría analítica de números | I.5 |
+| Álgebra homológica y teoría de categorías | VI.7 |
+| Topología diferencial: transversalidad y teoría de Morse | XIII.4 |
+| Fibrados y teorías gauge | XIII.5 |
 | Álgebra geométrica y álgebra geométrica proyectiva (PGA) | IV.13 |
-| Análisis funcional más allá de los operadores en espacios de Hilbert | X.7 |
-| Cálculo estocástico de Itô | VIII.10 |
-| Representaciones de grupos no compactos más allá del grupo de Lorentz | X.3 |
-| Teoría cuántica de campos | X.8 |
+| Cálculo estocástico de Itô | XI.10 |
+| Representaciones de grupos no compactos más allá del grupo de Lorentz | XIII.3 |
+| Teoría cuántica de campos | XIII.7 |
 
 ### 5.5 Algoritmos de ingeniería: de capítulo a aplicación
 
@@ -192,49 +192,59 @@ En el índice anterior varios algoritmos de motores eran capítulos. Ahora apare
 | SLERP y el cambio de signo del cuaternión | Recubrimiento doble S³ → SO(3) | II.15 |
 | Re-ortonormalización de cámaras | Descomposición polar y Gram–Schmidt en precisión finita | II.16 |
 | Cinemática inversa | Gauss–Newton y Levenberg–Marquardt | IV.8 |
-| Reverse-Z | Distribución de la coma flotante y proyección | V.3 |
-| Rasterización con funciones de arista | Determinante como área orientada; coordenadas baricéntricas | V.3 |
-| *Skinning* con cuaterniones duales | Grupos de Lie, SE(3) y números duales | V.4 |
-| Möller–Trumbore | Regla de Cramer | V.9 |
-| GJK y EPA | Convexidad, sumas de Minkowski y funciones de soporte | V.10 |
-| BVH con SAH | Fórmula de Cauchy–Crofton | V.14 |
-| Euler semi-implícito y Verlet | Integradores simplécticos | VI.11 |
-| Impulsos secuenciales | Gauss–Seidel proyectado para complementariedad | VI.12 |
-| *Mipmaps* y TAA | Teorema del muestreo y filtros de reconstrucción | VII.6 |
-| Iluminación con armónicos esféricos | Base de L²(S²) y teorema de Funk–Hecke | VII.13 |
-| Microfacetas GGX | Distribución de normales como densidad de probabilidad | VIII.2 |
-| Trazado de caminos | Serie de Neumann y Monte Carlo | VIII.11 |
-| *Stable Fluids* | Descomposición de Helmholtz–Hodge | IX.9 |
+| Reverse-Z | Distribución de la coma flotante y proyección | VII.3 |
+| Rasterización con funciones de arista | Determinante como área orientada; coordenadas baricéntricas | VII.3 |
+| *Skinning* con cuaterniones duales | Grupos de Lie, SE(3) y números duales | VII.4 |
+| Möller–Trumbore | Regla de Cramer | VII.9 |
+| GJK y EPA | Convexidad, sumas de Minkowski y funciones de soporte | VII.10 |
+| BVH con SAH | Fórmula de Cauchy–Crofton | VII.14 |
+| Euler semi-implícito y Verlet | Integradores simplécticos | VIII.11 |
+| Impulsos secuenciales | Gauss–Seidel proyectado para complementariedad | VIII.12 |
+| *Mipmaps* y TAA | Teorema del muestreo y filtros de reconstrucción | IX.7 |
+| Iluminación con armónicos esféricos | Base de L²(S²) y teorema de Funk–Hecke | IX.14 |
+| Microfacetas GGX | Distribución de normales como densidad de probabilidad | XI.2 |
+| Trazado de caminos | Serie de Neumann y Monte Carlo | XI.11 |
+| *Stable Fluids* | Descomposición de Helmholtz–Hodge | XII.9 |
 
 ## 6. Estructura de la colección
 
-La obra tiene diez tomos. Los Tomos I, II y III forman la base; los demás son tomos de área, y las dependencias entre ellos aparecen en las partes avanzadas.
+La obra tiene trece tomos. Los Tomos I, II y III forman la base; los demás son tomos de área, y las dependencias entre ellos aparecen en las partes avanzadas. La tabla sale de los datos del índice (11.4).
+
+<!-- tomos: generado desde indice/ con `npm run indice:spec`; no editar a mano -->
 
 | Tomo | Título | Requiere | Interfaces | Caps. |
 | --- | --- | --- | --- | --- |
-| I | Fundamentos: lógica, números y estructuras | — | — | 10 |
+| I | Fundamentos: lógica, números y estructuras | — | — | 12 |
 | II | Álgebra lineal y el espacio de la práctica | I | — | 16 |
 | III | Análisis en una variable | I | — | 11 |
 | IV | Análisis en varias variables y optimización | II, III | — | 13 |
-| V | Geometría | II, III, IV | — | 14 |
-| VI | Ecuaciones diferenciales, sistemas dinámicos y mecánica | II, III, IV | V.4 | 12 |
-| VII | Medida, Fourier y variable compleja | III, IV | — | 13 |
-| VIII | Probabilidad, estadística y métodos estocásticos | IV, VII | — | 14 |
-| IX | Ecuaciones en derivadas parciales y medios continuos | VI, VII | VIII.9 | 10 |
-| X | Simetría, variedades y operadores | V, VII, VIII | IX.3 | 8 |
-| **Total** | | | | **121** |
+| V | Álgebra: grupos, anillos, módulos y cuerpos | II | — | 9 |
+| VI | Topología | II, III | V.2, V.4 | 10 |
+| VII | Geometría | II, III, IV | — | 14 |
+| VIII | Ecuaciones diferenciales, sistemas dinámicos y mecánica | II, III, IV | VII.4 | 12 |
+| IX | Medida, Fourier y variable compleja | III, IV | — | 14 |
+| X | Análisis funcional | VI, IX | VII.4 | 8 |
+| XI | Probabilidad, estadística y métodos estocásticos | IV, IX | — | 14 |
+| XII | Ecuaciones en derivadas parciales y medios continuos | VIII, IX, X | XI.9 | 10 |
+| XIII | Simetría, variedades y teoría cuántica | VII, IX, X, XI | XII.3 | 7 |
+| **Total** | | | | **150** |
+
+<!-- /tomos -->
 
 ```
-                 ┌─► II  Álgebra lineal ───┐
-I  Fundamentos ──┤                         ├─► IV  Varias variables
-                 └─► III Análisis 1 var. ──┘
+                   ┌─► II  Álgebra lineal ───┐
+I  Fundamentos ────┤                         ├─► IV  Varias variables
+                   └─► III Análisis 1 var. ──┘
 
-            IV ──► V    Geometría
-            IV ──► VI   Ecuaciones diferenciales (+ interfaz V.4)
-            IV ──► VII  Medida, Fourier y variable compleja
-      IV + VII ──► VIII Probabilidad y estadística
-      VI + VII ──► IX   EDP y medios continuos (+ interfaz VIII.9)
-V + VII + VIII ──► X    Simetría, variedades y operadores (+ interfaz IX.3)
+               II ──► V    Álgebra
+         II + III ──► VI   Topología (+ interfaz V.2 y V.4)
+    II + III + IV ──► VII  Geometría
+    II + III + IV ──► VIII Ecuaciones diferenciales (+ interfaz VII.4)
+         III + IV ──► IX   Medida, Fourier y variable compleja
+          VI + IX ──► X    Análisis funcional (+ interfaz VII.4)
+          IV + IX ──► XI   Probabilidad y estadística
+    VIII + IX + X ──► XII  EDP y medios continuos (+ interfaz XI.9)
+VII + IX + X + XI ──► XIII Simetría, variedades y teoría cuántica (+ interfaz XII.3)
 ```
 
 **Reglas de interdependencia**
@@ -242,7 +252,7 @@ V + VII + VIII ──► X    Simetría, variedades y operadores (+ interfaz IX.
 - Un tomo depende de otros completos (columna «Requiere») o importa capítulos concretos (columna «Interfaces»).
 - Cada tomo abre con **«Lo que este tomo importa»**: para cada tomo o capítulo del que depende, de 4 a 8 páginas con los enunciados, las garantías y la notación que usa, y los capítulos que hay que leer para entenderlos a fondo. Quien no leyó un tomo previo puede avanzar usando ese resumen como contrato.
 - Cada tomo cierra con **«Lo que este tomo exporta»**: los resultados que otros tomos importan.
-- Atajos que respetan el grafo: V.1, V.2, V.3 y V.5 solo usan los Tomos II y III, así que la geometría afín, proyectiva y de cámaras se puede leer justo después del álgebra lineal. VI.1 a VI.3 también usan solo los Tomos II y III.
+- Atajos que respetan el grafo: VII.1, VII.2, VII.3 y VII.5 solo usan los Tomos II y III, así que la geometría afín, proyectiva y de cámaras se puede leer justo después del álgebra lineal. VIII.1 a VIII.3 también usan solo los Tomos II y III. El álgebra del Tomo V solo necesita el álgebra lineal, y la topología general (VI.1 a VI.4), los Tomos I a III.
 - Las dependencias se verifican automáticamente (11.5).
 
 ## 7. Plantilla de capítulo
@@ -290,14 +300,14 @@ Recuadro recurrente: una línea de código o una fórmula de la práctica que co
 | `if (dot(q1, q2) < 0.0) q2 = -q2;` | Recubrimiento doble S³ → SO(3) | II.15 |
 | `x = lerp(x, target, 1 - exp(-k * dt))` | Solución exacta de una EDO lineal | III.8 |
 | `y = y * (1.5 - 0.5 * x * y * y)` | Un paso de Newton para 1/√x | III.10 |
-| `t += sdf(origin + t * dir)` | Constante de Lipschitz y *sphere tracing* | V.13 |
-| `v += a * dt; x += v * dt;` | Integrador simpléctico | VI.11 |
-| `color += f(x) / pdf(x)` | Estimador insesgado de Monte Carlo | VIII.6 |
-| `x - max(x)` antes de un *softmax* | Estabilidad numérica en coma flotante | I.10 |
+| `t += sdf(origin + t * dir)` | Constante de Lipschitz y *sphere tracing* | VII.13 |
+| `v += a * dt; x += v * dt;` | Integrador simpléctico | VIII.11 |
+| `color += f(x) / pdf(x)` | Estimador insesgado de Monte Carlo | XI.6 |
+| `x - max(x)` antes de un *softmax* | Estabilidad numérica en coma flotante | I.11 |
 | `np.einsum('ij,jk->ik', A, B)` | Contracción de tensores y convención de Einstein | II.11 |
-| `∫ δ(x) f(x) dx = f(0)` | La delta como distribución | VII.5 |
-| `[x, p] = iħ` | Imposible con matrices finitas, porque la traza de un conmutador es 0: exige operadores no acotados | X.7 |
-| `state = kron(q0, q1)` | Producto tensorial y entrelazamiento | X.8 |
+| `∫ δ(x) f(x) dx = f(0)` | La delta como distribución | IX.6 |
+| `[x, p] = iħ` | Imposible con matrices finitas, porque la traza de un conmutador es 0: exige operadores no acotados | X.6 |
+| `state = kron(q0, q1)` | Producto tensorial y entrelazamiento | XIII.7 |
 
 ### 8.4 Ejercicios de traducción
 
@@ -313,7 +323,7 @@ Recuadro recurrente: una línea de código o una fórmula de la práctica que co
 
 ### 8.6 Partes puente
 
-Además de la sección Puente de cada capítulo, hay partes enteras donde la carrera omite temas completos: Tomo I, Parte C; Tomo II, Parte C; Tomo III, Parte C; Tomo V, Partes A y D; Tomo VI, Parte C; Tomo VII, Partes B y C (distribuciones y métodos asintóticos); Tomo VIII, Parte B; Tomo IX, Parte A; y el Tomo X entero.
+Además de la sección Puente de cada capítulo, hay partes enteras donde la carrera omite temas completos: Tomo I, Parte C; Tomo II, Parte C; Tomo III, Parte C; Tomo VII, Partes A y D; Tomo VIII, Parte C; Tomo IX, Partes B y C (distribuciones y métodos asintóticos); Tomo XI, Parte B; Tomo XII, Parte A; y el Tomo XIII entero.
 
 ## 9. Aplicaciones e hilos
 
@@ -343,42 +353,52 @@ En la web, cada hilo tiene una página que encadena sus aplicaciones en orden de
 
 | Tomo | Aplicaciones del hilo 3D |
 | --- | --- |
-| I | Coma flotante, determinismo y *origin rebasing* (I.10); grafos de escena (I.6) |
+| I | Coma flotante, determinismo y *origin rebasing* (I.11); grafos de escena (I.7); jerarquías de escena sin ciclos (I.4) |
 | II | Cambio de marco (II.3), normales (II.5), matrices 4×4 (II.13), convenciones (II.14), cuaterniones y SLERP (II.15), re-ortonormalización (II.16) |
 | III | *Smoothstep* y *easing* (III.4), suavizado independiente del paso (III.8), curvas de Bézier (III.9), raíz inversa rápida (III.10) |
 | IV | Normales por gradiente y huella de un píxel (IV.2), cinemática inversa (IV.8), ángulo sólido e irradiancia (IV.9), masa e inercia de mallas (IV.11) |
-| V | Cámara, rasterización y Reverse-Z (V.3), *skinning* (V.4), rieles de cámara (V.5 y V.6), *normal mapping* (V.7), selección con el ratón (V.9), colisiones (V.10), mallas de navegación (V.11), niveles de detalle (V.12), *ray marching* (V.13), BVH (V.14) |
-| VI | Paso fijo (VI.10), tela y cuerdas (VI.11), pilas de cajas (VI.12), sólido rígido (VI.9) |
-| VII | Desenfoque y *bloom* (VII.4), *mipmaps* y TAA (VII.6), iluminación con armónicos esféricos (VII.13) |
-| VIII | Microfacetas (VIII.2), *Gaussian Splatting* (VIII.3), sombras por varianza (VIII.4), muestreo de BRDF (VIII.5), Monte Carlo y ReSTIR (VIII.6), terreno procedural (VIII.9), trazado de caminos (VIII.11) |
-| IX | Humo con *Stable Fluids* (IX.9), océanos y agua (IX.10), cuerpos blandos (IX.8) |
-| X | Rotación de armónicos esféricos (X.2), visualización relativista (X.3), optimización sobre SO(3) (X.4), geodésicas sobre mallas (X.5), agujeros negros (X.6) |
+| V | Simetrías de mosaicos (V.1), el cubo de Rubik (V.2), intersecciones exactas (V.3), texturas periódicas (V.4), núcleos geométricos exactos (V.5), intersección de un rayo con un toro (V.7), implicitación de superficies (V.9) |
+| VI | Mundos periódicos (VI.1), mallas de navegación (VI.2), *skinning* con particiones de la unidad (VI.3), ángulos acumulados (VI.5), portales (VI.6), agujeros en mallas (VI.7), género y cortes (VI.8), el vector «arriba» de la cámara (VI.9), reconstrucción de superficies (VI.10) |
+| VII | Cámara, rasterización y Reverse-Z (VII.3), *skinning* (VII.4), rieles de cámara (VII.5 y VII.6), *normal mapping* (VII.7), selección con el ratón (VII.9), colisiones (VII.10), mallas de navegación (VII.11), niveles de detalle (VII.12), *ray marching* (VII.13), BVH (VII.14) |
+| VIII | Paso fijo (VIII.10), tela y cuerdas (VIII.11), pilas de cajas (VIII.12), sólido rígido (VIII.9) |
+| IX | Desenfoque y *bloom* (IX.5), *mipmaps* y TAA (IX.7), iluminación con armónicos esféricos (IX.14), pesos del muestreo por importancia (IX.2) |
+| X | Separación de convexos (X.1), superficies de energía mínima (X.3), radiosidad (X.4), energía de Dirichlet en mallas (X.5), humo por división de operadores (X.8) |
+| XI | Microfacetas (XI.2), *Gaussian Splatting* (XI.3), sombras por varianza (XI.4), muestreo de BRDF (XI.5), Monte Carlo y ReSTIR (XI.6), terreno procedural (XI.9), trazado de caminos (XI.11) |
+| XII | Humo con *Stable Fluids* (XII.9), océanos y agua (XII.10), cuerpos blandos (XII.8) |
+| XIII | Rotación de armónicos esféricos (XIII.2), visualización relativista (XIII.3), optimización sobre SO(3) (XIII.4), geodésicas sobre mallas (XIII.5), agujeros negros (XIII.6) |
 
 ### 9.5 Recorrido del hilo de física
 
 | Tomo | Aplicaciones del hilo de física |
 | --- | --- |
-| I | Simetrías de moléculas y cristales (I.7) |
+| I | Simetrías de moléculas y cristales (I.8), la paradoja de Banach–Tarski (I.4) |
 | II | Análisis dimensional (II.3), torque (II.4), modos normales (II.6), notación de Dirac (II.8), principio de Rayleigh–Ritz (II.9), tensores (II.11), matrices de Pauli y espín (II.15) |
 | III | Doppler (III.4), trabajo y energía (III.5), péndulo y ángulo pequeño (III.7) |
 | IV | Fuerzas de restricción (IV.4), ecuaciones de Maxwell (IV.11), coordenadas curvilíneas (IV.12), electromagnetismo con formas (IV.13) |
-| V | Cristalografía (V.1), simetrías continuas (V.4), membranas (V.7) |
-| VI | Oscilador y resonancia (VI.2), sistema de Lorenz (VI.5), mecánica lagrangiana y hamiltoniana (VI.7 y VI.8), sólido rígido (VI.9), dinámica molecular (VI.11) |
-| VII | Estados cuánticos en un espacio de Hilbert (VII.2), difracción (VII.4), distribuciones y cargas puntuales (VII.5), Kramers–Kronig (VII.9), funciones de partición (VII.10), orbitales atómicos (VII.13) |
-| VIII | Maxwell–Boltzmann (VIII.2), modelo de Ising (VIII.8), movimiento browniano (VIII.10), transporte de radiación (VIII.11), mecánica estadística (VIII.14) |
-| IX | Calor y acústica (IX.1), funciones especiales en cuántica (IX.3), gravitación (IX.4), WKB (IX.5), fluidos (IX.9), oleaje (IX.10) |
-| X | El tomo entero: espín, relatividad especial y general, mecánica cuántica |
+| V | Grupos espaciales en cristalografía (V.1), grupos de trenzas (V.2), redes recíprocas (V.4) |
+| VI | Condiciones de contorno periódicas (VI.1), funciones sin derivada y movimiento browniano (VI.4), efecto Aharonov–Bohm (VI.5), espín y el recubrimiento SU(2) → SO(3) (VI.6), campos irrotacionales sin potencial (VI.7) |
+| VII | Cristalografía (VII.1), simetrías continuas (VII.4), membranas (VII.7) |
+| VIII | Oscilador y resonancia (VIII.2), sistema de Lorenz (VIII.5), mecánica lagrangiana y hamiltoniana (VIII.7 y VIII.8), sólido rígido (VIII.9), dinámica molecular (VIII.11) |
+| IX | Estados cuánticos en un espacio de Hilbert (IX.3), difracción (IX.5), distribuciones y cargas puntuales (IX.6), Kramers–Kronig (IX.10), funciones de partición (IX.11), orbitales atómicos (IX.14), densidades de carga y de masa (IX.2) |
+| X | Métodos variacionales (X.3), dispersión de ondas (X.4), energía y regularidad de los campos (X.5), operadores no acotados y teorema de Stone (X.6), evolución cuántica (X.8) |
+| XI | Maxwell–Boltzmann (XI.2), modelo de Ising (XI.8), movimiento browniano (XI.10), transporte de radiación (XI.11), mecánica estadística (XI.14) |
+| XII | Calor y acústica (XII.1), funciones especiales en cuántica (XII.3), gravitación (XII.4), WKB (XII.5), fluidos (XII.9), oleaje (XII.10) |
+| XIII | El tomo entero: espín, relatividad especial y general, mecánica cuántica |
 
 ### 9.6 Itinerarios por perfil
 
 Además del orden de los tomos, la web ofrece itinerarios: selecciones de capítulos según el perfil del lector. Todos respetan el grafo de dependencias, y la sección 14 da su extensión.
 
+<!-- itinerarios: generado desde indice/ con `npm run indice:spec`; no editar a mano -->
+
 | Itinerario | Capítulos |
 | --- | --- |
 | Núcleo | Todos los capítulos de núcleo: la licenciatura aplicada mínima (5.3) |
-| Física | Núcleo, más IV.13, VI.5, VII.10, VII.11, VIII.9, VIII.11, IX.5, IX.8, IX.10 y el Tomo X |
-| Gráficos y 3D | Núcleo, más V.14, VIII.7, VIII.9, VIII.11, IX.8 e IX.10 |
-| Datos | Núcleo, más VII.7, VIII.7, VIII.9 y X.1 |
+| Física | Núcleo, más IV.13, VIII.5, IX.11, IX.12, X.6, X.8, XI.9, XI.11, XII.5, XII.8, XII.10 y el Tomo XIII |
+| Gráficos y 3D | Núcleo, más VI.8, VI.9, VII.14, XI.7, XI.9, XI.11, XII.8 y XII.10 |
+| Datos | Núcleo, más VI.10, IX.8, XI.7, XI.9 y XIII.1 |
+
+<!-- /itinerarios -->
 
 ## 10. Ejercicios
 
@@ -484,7 +504,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 ### Tomo I — Fundamentos: lógica, números y estructuras
 
-*Requiere: escuela secundaria · 10 capítulos.* El lenguaje de la matemática, los sistemas numéricos y las estructuras algebraicas y discretas que usan todos los tomos, incluida la forma en que una computadora representa los números.
+*Requiere: escuela secundaria · 12 capítulos.* El lenguaje de la matemática, los sistemas numéricos y las estructuras algebraicas y discretas que usan todos los tomos, incluida la forma en que una computadora representa los números.
 
 **Parte A — Lenguaje y números**
 
@@ -504,7 +524,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Conjuntos, operaciones, producto cartesiano y conjunto de partes.
 - Relaciones de equivalencia, clases y particiones; relaciones de orden.
 - Funciones inyectivas, sobreyectivas y biyectivas; composición, inversa, imagen y preimagen.
-- Cardinalidad: conjuntos finitos, numerables y no numerables; argumento diagonal de Cantor.
+- Cardinalidad: conjuntos finitos, numerables y no numerables; argumento diagonal de Cantor. Los cardinales infinitos en general llegan en I.4.
 
 **Puente.** Entrada: `Map<Key, Value>` y una función `hash(key)`. Un diccionario es una función parcial, y una función de dispersión no puede ser inyectiva cuando el dominio es más grande que el codominio.
 **Aplicaciones.** [Cripto] tablas de dispersión y clases de equivalencia · [Datos] bases de datos como relaciones · [3D] soldar vértices duplicados como paso al cociente por una relación de equivalencia.
@@ -521,32 +541,43 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [Cripto] aritmética racional exacta · [Señales] períodos de señales combinadas y mínimo común múltiplo · [3D] repetición de texturas con períodos coprimos para evitar patrones visibles.
 **Lecturas.** Rosen, *Elementary Number Theory and Its Applications*; Stillwell, *Elements of Number Theory*.
 
-#### I.4 Congruencias y aritmética modular
+#### I.4 Teoría axiomática de conjuntos: ZFC, elección y ordinales
+*40 págs. · Requiere: I.3 · Núcleo*
+- La paradoja de Russell y los axiomas de Zermelo–Fraenkel; los naturales como ordinales de von Neumann.
+- Axioma de elección y sus equivalentes: lema de Zorn y principio del buen orden; existencia de bases en todo espacio vectorial.
+- Ordinales, inducción transfinita y recursión transfinita.
+- Cardinales: teorema de Cantor–Schröder–Bernstein, aritmética cardinal e hipótesis del continuo (su independencia, enunciada).
+
+**Puente.** Entrada: `def ack : Nat → Nat → Nat` en Lean, que el asistente solo acepta si se demuestra que termina. La función de Ackermann termina porque el par (m, n) decrece en el orden lexicográfico, un buen orden de tipo ω²: toda demostración de terminación es una inducción sobre un buen orden.
+**Aplicaciones.** [Cripto] demostraciones de terminación de programas con órdenes bien fundados · [Física] la paradoja de Banach–Tarski y por qué la masa solo se define sobre conjuntos medibles · [3D] jerarquías de escena sin ciclos: relaciones bien fundadas y recorridos que terminan.
+**Lecturas.** Halmos, *Naive Set Theory*; Hrbacek y Jech, *Introduction to Set Theory*.
+
+#### I.5 Congruencias y aritmética modular
 *40 págs. · Requiere: I.3 · Núcleo*
 - Congruencias y el anillo ℤ/nℤ; inversos modulares.
 - Teorema chino del resto.
 - Pequeño teorema de Fermat, función φ de Euler y teorema de Euler.
-- Exponenciación rápida y el problema del logaritmo discreto.
+- Exponenciación rápida y el problema del logaritmo discreto. Para seguir: teoría analítica de números.
 
 **Puente.** Entrada: `state = state * 6364136223846793005 + 1442695040888963407`. Un generador congruencial lineal es una iteración en ℤ/2⁶⁴ℤ, y su período lo deciden condiciones de aritmética modular (teorema de Hull–Dobell).
 **Aplicaciones.** [Cripto] RSA, Diffie–Hellman y dígitos de control (ISBN, IBAN) · [3D] semillas reproducibles para mundos procedurales y *hashing* espacial · [Datos] reparto de datos entre servidores por dispersión.
 **Lecturas.** Hoffstein, Pipher y Silverman, *An Introduction to Mathematical Cryptography*; Knuth, *The Art of Computer Programming*, vol. 2.
 
-#### I.5 Combinatoria
+#### I.6 Combinatoria
 *44 págs. · Requiere: I.3 · Núcleo*
 - Principios de la suma y del producto; permutaciones y combinaciones.
 - Coeficientes binomiales, teorema del binomio y triángulo de Pascal.
 - Principio de inclusión–exclusión y principio del palomar.
 - Recurrencias lineales y funciones generatrices.
 
-**Puente.** Entrada: el triángulo de Pascal dentro de un código de curvas de Bézier. Los coeficientes de los polinomios de Bernstein son binomiales, y la recurrencia de Pascal es la que hace funcionar el algoritmo de De Casteljau (aviso de III.9 y V.5).
+**Puente.** Entrada: el triángulo de Pascal dentro de un código de curvas de Bézier. Los coeficientes de los polinomios de Bernstein son binomiales, y la recurrencia de Pascal es la que hace funcionar el algoritmo de De Casteljau (aviso de III.9 y VII.5).
 **Aplicaciones.** [Datos] conteo de configuraciones y probabilidad elemental · [Cripto] colisiones de *hash* y paradoja del cumpleaños · [3D] coeficientes de las curvas de Bézier · [Física] conteo de microestados y entropía de Boltzmann.
 **Lecturas.** Graham, Knuth y Patashnik, *Concrete Mathematics*; Stanley, *Enumerative Combinatorics*, vol. 1.
 
 **Parte B — Estructuras discretas y algebraicas**
 
-#### I.6 Grafos
-*44 págs. · Requiere: I.2, I.5 · Núcleo*
+#### I.7 Grafos
+*44 págs. · Requiere: I.2, I.6 · Núcleo*
 - Grafos, grados, caminos, ciclos y conectividad; árboles y sus caracterizaciones.
 - Recorridos en anchura y en profundidad; árboles generadores mínimos.
 - Caminos mínimos: Dijkstra y A\*, con la demostración de optimalidad para heurísticas admisibles.
@@ -556,8 +587,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] grafos de escena, validación de mallas y búsqueda de caminos · [Ing] rutas y redes de transporte · [Datos] redes sociales y componentes conexas.
 **Lecturas.** Bondy y Murty, *Graph Theory*; West, *Introduction to Graph Theory*.
 
-#### I.7 Grupos
-*48 págs. · Requiere: I.4 · Núcleo*
+#### I.8 Grupos
+*48 págs. · Requiere: I.5 · Núcleo*
 - Grupos, subgrupos y teorema de Lagrange; grupos cíclicos.
 - Homomorfismos, subgrupos normales y grupos cociente.
 - Grupos de permutaciones y signo de una permutación.
@@ -567,12 +598,12 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [Física] simetrías de moléculas y cristales · [Cripto] grupos en la criptografía de clave pública · [3D] simetrías de patrones y teselaciones · [Datos] contar coloraciones distintas con el lema de Burnside.
 **Lecturas.** Dummit y Foote, *Abstract Algebra*; Artin, *Algebra*.
 
-#### I.8 Anillos, cuerpos y polinomios
-*48 págs. · Requiere: I.7 · Núcleo*
+#### I.9 Anillos, cuerpos y polinomios
+*48 págs. · Requiere: I.8 · Núcleo*
 - Anillos, ideales y anillos cociente; dominios de integridad y dominios euclídeos.
 - Anillos de polinomios: división, raíces, factorización y polinomios irreducibles.
 - Cuerpos y extensiones simples; ℚ, ℝ, ℂ y ℤ/pℤ como cuerpos.
-- Cuerpos finitos GF(pⁿ): existencia, construcción y aritmética. Para seguir: teoría de Galois; geometría algebraica.
+- Cuerpos finitos GF(pⁿ): existencia, construcción y aritmética. La teoría de Galois llega en V.6, y las bases de Gröbner, en V.9.
 
 **Puente.** Entrada: `x = (x << 1) ^ ((x & 0x80) ? 0x1B : 0)`. Es multiplicar por x en GF(2⁸) módulo un polinomio irreducible: la operación con la que se construyen AES y los códigos de los QR.
 **Aplicaciones.** [Cripto] códigos Reed–Solomon, CRC y AES · [Señales] corrección de errores en almacenamiento y transmisión · [3D] evaluación de polinomios con el esquema de Horner.
@@ -580,8 +611,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Parte C — Los números reales y la máquina**
 
-#### I.9 Números reales y complejos
-*40 págs. · Requiere: I.8 · Núcleo*
+#### I.10 Números reales y complejos
+*40 págs. · Requiere: I.9 · Núcleo*
 - Cuerpos ordenados; por qué ℚ no basta: √2 y los huecos de ℚ.
 - Construcción de ℝ por cortaduras de Dedekind; axioma del supremo; unicidad del cuerpo ordenado completo.
 - ℂ como ℝ[x]/(x² + 1): conjugado, módulo y desigualdad triangular.
@@ -591,8 +622,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] rotaciones 2D sin matrices · [Señales] fasores para representar oscilaciones · [Ing] impedancias en circuitos de corriente alterna · [Física] amplitudes complejas en óptica ondulatoria.
 **Lecturas.** Spivak, *Calculus* (construcción de ℝ); Needham, *Visual Complex Analysis*.
 
-#### I.10 Números en la máquina
-*40 págs. · Requiere: I.4, I.9 · Núcleo*
+#### I.11 Números en la máquina
+*40 págs. · Requiere: I.5, I.10 · Núcleo*
 - Representación posicional y cambio de base; enteros de máquina y complemento a dos como aritmética módulo 2ⁿ.
 - Coma flotante IEEE 754: mantisa, exponente, valores especiales, épsilon de máquina y ULP.
 - Redondeo y error relativo; cancelación catastrófica; condicionamiento frente a estabilidad.
@@ -602,6 +633,17 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] pérdida de precisión lejos del origen y *origin rebasing*; compresión de vértices y normales · [Datos] entrenamiento en bfloat16 y la resta del máximo antes de un *softmax* · [Ing] desbordamiento de enteros en sistemas embebidos · [Cripto] determinismo entre plataformas.
 **Lecturas.** Goldberg, «What Every Computer Scientist Should Know About Floating-Point Arithmetic»; Overton, *Numerical Computing with IEEE Floating Point Arithmetic*; Higham, *Accuracy and Stability of Numerical Algorithms*.
 
+#### I.12 Lógica de primer orden y computabilidad
+*48 págs. · Requiere: I.1, I.3 · Complementario*
+- Lenguajes de primer orden, estructuras y satisfacción; consecuencia lógica y deducción formal.
+- Teorema de completitud de Gödel y teorema de compacidad; modelos no estándar.
+- Funciones recursivas, máquinas de Turing y tesis de Church–Turing; indecidibilidad del problema de la parada, teorema de Rice y décimo problema de Hilbert (enunciado).
+- Teoremas de incompletitud de Gödel: idea de la demostración. Para seguir: lenguajes formales y teoría de la complejidad.
+
+**Puente.** Entrada: `solver.check()` devuelve `unknown` en un resolvedor SMT. Sobre la aritmética entera con multiplicación la satisfacibilidad es indecidible (décimo problema de Hilbert), así que ningún resolvedor puede responder siempre: el `unknown` es un teorema, no un defecto.
+**Aplicaciones.** [Cripto] análisis estático de programas y los límites que impone el teorema de Rice · [Datos] SQL como lógica de primer orden y resolvedores SAT y SMT · [Ing] verificación formal de sistemas críticos con asistentes de demostración.
+**Lecturas.** Enderton, *A Mathematical Introduction to Logic*; Sipser, *Introduction to the Theory of Computation*.
+
 ### Tomo II — Álgebra lineal y el espacio de la práctica
 
 *Requiere: Tomo I · 16 capítulos.* El álgebra lineal completa de una licenciatura, primero sobre un cuerpo cualquiera y luego sobre ℝ y ℂ, con su versión numérica. La Parte C cierra el tomo justo donde el estudiante siente el abismo y lleva el álgebra lineal al espacio de la práctica.
@@ -609,7 +651,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Parte A — Estructura lineal**
 
 #### II.1 Sistemas lineales y matrices
-*40 págs. · Requiere: I.8 · Núcleo*
+*40 págs. · Requiere: I.9 · Núcleo*
 - Sistemas de ecuaciones lineales sobre un cuerpo; eliminación de Gauss y forma escalonada reducida.
 - Matrices, producto e inversa; matrices elementales.
 - Factorización LU y pivoteo.
@@ -642,7 +684,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Lecturas.** Axler, *Linear Algebra Done Right*; Lax, *Linear Algebra and Its Applications*.
 
 #### II.4 Determinantes
-*36 págs. · Requiere: II.3, I.7 · Núcleo*
+*36 págs. · Requiere: II.3, I.8 · Núcleo*
 - Formas multilineales alternadas; existencia y unicidad del determinante.
 - Propiedades; determinante del producto; desarrollo por cofactores y regla de Cramer.
 - El determinante como volumen orientado; orientación de una base.
@@ -664,7 +706,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Lecturas.** Axler, *Linear Algebra Done Right*; Halmos, *Finite-Dimensional Vector Spaces*.
 
 #### II.6 Autovalores y autovectores
-*40 págs. · Requiere: II.4, I.8 · Núcleo*
+*40 págs. · Requiere: II.4, I.9 · Núcleo*
 - Autovalores, autovectores y polinomio característico.
 - Diagonalización y subespacios invariantes.
 - Teorema de Cayley–Hamilton y polinomio minimal.
@@ -688,7 +730,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Parte B — Geometría métrica y descomposiciones**
 
 #### II.8 Espacios con producto interno
-*44 págs. · Requiere: II.5, I.9 · Núcleo*
+*44 págs. · Requiere: II.5, I.10 · Núcleo*
 - Producto interno, norma y desigualdad de Cauchy–Schwarz; ángulos.
 - Ortogonalidad, bases ortonormales y Gram–Schmidt; factorización QR.
 - Proyección ortogonal y mínimos cuadrados; ecuaciones normales.
@@ -732,7 +774,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Lecturas.** Roman, *Advanced Linear Algebra*; Jeevanjee, *An Introduction to Tensors and Group Theory for Physicists*.
 
 #### II.12 Álgebra lineal numérica
-*44 págs. · Requiere: II.10, I.10 · Núcleo*
+*44 págs. · Requiere: II.10, I.11 · Núcleo*
 - Normas matriciales y número de condición; error hacia adelante y hacia atrás.
 - Estabilidad de LU con pivoteo, de QR con Householder y de Cholesky.
 - Métodos iterativos de Jacobi y de Gauss–Seidel; convergencia por radio espectral; matrices dispersas.
@@ -749,7 +791,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Por qué un espacio vectorial no basta: puntos y vectores; espacio afín y su espacio de direcciones.
 - Combinaciones afines y convexas; coordenadas baricéntricas en segmentos, triángulos y tetraedros.
 - Aplicaciones afines y su inmersión en ℝⁿ⁺¹ como el hiperplano w = 1: las matrices 4×4.
-- Composición jerárquica de transformaciones; primera mirada a la proyección en perspectiva y a la división por w (V.2 y V.3 la desarrollan).
+- Composición jerárquica de transformaciones; primera mirada a la proyección en perspectiva y a la división por w (VII.2 y VII.3 la desarrollan).
 
 **Puente.** Entrada: `vec4(p, 1.0)` y `vec4(v, 0.0)`. Los puntos viven en w = 1 y las direcciones en w = 0; por eso una traslación mueve los puntos y deja quietas las direcciones. La «magia» de las matrices 4×4 es el espacio afín visto dentro de un espacio vectorial.
 **Aplicaciones.** [3D] matrices 4×4 de modelo y grafos de escena · [Ing] transformaciones entre los eslabones de un robot · [Física] centro de masa como combinación afín.
@@ -767,14 +809,14 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Lecturas.** Lengyel, *Foundations of Game Engine Development*, vol. 1; Dunn y Parberry, *3D Math Primer for Graphics and Game Development*.
 
 #### II.15 Rotaciones: SO(3) y cuaterniones
-*48 págs. · Requiere: II.9, II.14, I.7 · Núcleo*
+*48 págs. · Requiere: II.9, II.14, I.8 · Núcleo*
 - El grupo SO(3) y el teorema de rotación de Euler; eje y ángulo; fórmula de Rodrigues.
 - Ángulos de Euler y de Tait–Bryan; demostración del bloqueo del cardán (*gimbal lock*).
 - Cuaterniones de Hamilton: álgebra, conjugado, norma e inversa; cuaterniones unitarios y la esfera S³.
 - El recubrimiento doble S³ → SO(3); interpolación SLERP, NLERP con su cota de error, y promedio de orientaciones.
 
 **Puente.** Entrada: `if (dot(q1, q2) < 0.0) q2 = -q2;` antes de interpolar. q y −q representan la misma rotación porque S³ recubre dos veces SO(3); sin esa línea, la interpolación toma el camino largo.
-**Aplicaciones.** [3D] cámaras, animación y compresión *smallest-three* · [Ing] actitud de satélites y drones · [Física] matrices de Pauli, SU(2) y espín (aviso de X.2).
+**Aplicaciones.** [3D] cámaras, animación y compresión *smallest-three* · [Ing] actitud de satélites y drones · [Física] matrices de Pauli, SU(2) y espín (aviso de XIII.2).
 **Lecturas.** Altmann, *Rotations, Quaternions, and Double Groups*; Hanson, *Visualizing Quaternions*; Shoemake, «Animating Rotation with Quaternion Curves».
 
 #### II.16 Álgebra lineal en precisión finita
@@ -782,7 +824,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Deriva de las matrices ortogonales al componerlas en coma flotante; medida de la pérdida de ortogonalidad.
 - Re-ortonormalización: Gram–Schmidt frente a descomposición polar; renormalización de cuaterniones.
 - Errores en cadenas de transformaciones; la transpuesta en lugar de la inversa para rotaciones.
-- Predicados de orientación por determinantes y por qué fallan en coma flotante (V.9 lo resuelve).
+- Predicados de orientación por determinantes y por qué fallan en coma flotante (VII.9 lo resuelve).
 
 **Puente.** Entrada: `if (frame % 100 == 0) orthonormalize(cameraBasis);`. Tras miles de productos en float32, la matriz deja de ser ortogonal; re-ortonormalizar es proyectar de nuevo sobre SO(3), y la descomposición polar da la rotación más cercana.
 **Aplicaciones.** [3D] cámaras y jerarquías que «se deforman» con el tiempo · [Ing] navegación inercial · [Datos] reproducibilidad numérica.
@@ -795,7 +837,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Parte A — Límites**
 
 #### III.1 Sucesiones reales y completitud
-*44 págs. · Requiere: I.9 · Núcleo*
+*44 págs. · Requiere: I.10 · Núcleo*
 - Límite de una sucesión; álgebra de límites; sucesiones monótonas.
 - Subsucesiones y teorema de Bolzano–Weierstrass; límites superior e inferior.
 - Sucesiones de Cauchy y completitud de ℝ.
@@ -847,7 +889,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Cambio de variable, integración por partes e integrales impropias.
 - Longitud de arco, áreas y valores medios.
 
-**Puente.** Entrada: `position += velocity * dt` acumulado en un bucle. Es una suma de Riemann: el teorema fundamental dice hacia qué converge, y VI.10 mide el error cometido.
+**Puente.** Entrada: `position += velocity * dt` acumulado en un bucle. Es una suma de Riemann: el teorema fundamental dice hacia qué converge, y VIII.10 mide el error cometido.
 **Aplicaciones.** [Física] trabajo, energía y distancia recorrida · [Señales] valor medio y energía de una señal · [3D] longitud de una curva de animación.
 **Lecturas.** Spivak, *Calculus*; Apostol, *Calculus*, vol. 1.
 
@@ -887,7 +929,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Parte C — Aproximación, cálculo numérico y espacios métricos**
 
 #### III.9 Aproximación e interpolación
-*48 págs. · Requiere: III.8, I.5 · Núcleo*
+*48 págs. · Requiere: III.8, I.6 · Núcleo*
 - Teorema de aproximación de Weierstrass, demostrado con polinomios de Bernstein.
 - Interpolación de Lagrange y de Newton; error de interpolación y fenómeno de Runge.
 - Nodos y polinomios de Chebyshev; aproximación minimax y teorema de equioscilación.
@@ -898,7 +940,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Lecturas.** Trefethen, *Approximation Theory and Approximation Practice*; Davis, *Interpolation and Approximation*.
 
 #### III.10 Métodos numéricos en una variable
-*44 págs. · Requiere: III.9, I.10 · Núcleo*
+*44 págs. · Requiere: III.9, I.11 · Núcleo*
 - Bisección, Newton, secante y punto fijo; orden de convergencia y criterios de parada.
 - Raíces de polinomios: cuadráticas estables, esquema de Horner y deflación.
 - Cuadratura: trapecio, Simpson, Gauss–Legendre y cuadratura adaptativa, con su análisis de error.
@@ -912,8 +954,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 *48 págs. · Requiere: III.6 · Núcleo*
 - Espacios métricos y normados; abiertos, cerrados y clausura.
 - Convergencia, completitud y espacios de Banach; C[a, b] con la norma del supremo.
-- Compacidad, conexidad y continuidad; teorema de Arzelà–Ascoli (enunciado y uso).
-- Teorema del punto fijo de Banach. Para seguir: topología general.
+- Compacidad, conexidad y continuidad; teorema de Arzelà–Ascoli (enunciado y uso; se demuestra en VI.4).
+- Teorema del punto fijo de Banach. La topología general llega en el Tomo VI.
 
 **Puente.** Entrada: un *solver* iterativo que «a veces no converge». El teorema de Banach da la condición: si la iteración es contractiva, converge desde cualquier punto y con velocidad conocida; si no lo es, no hay garantía.
 **Aplicaciones.** [Ing] convergencia de métodos iterativos · [Datos] distancias y medidas de similitud · [3D] distancia de Hausdorff para comparar mallas.
@@ -978,7 +1020,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Sumas de Minkowski y funciones de soporte.
 - Funciones convexas, desigualdad de Jensen y caracterización por la hessiana.
 
-**Puente.** Entrada: `support(shape, dir)` en un detector de colisiones. Una forma convexa queda determinada por su función de soporte; GJK (aviso de V.10) trabaja solo con ella, sobre la diferencia de Minkowski.
+**Puente.** Entrada: `support(shape, dir)` en un detector de colisiones. Una forma convexa queda determinada por su función de soporte; GJK (aviso de VII.10) trabaja solo con ella, sobre la diferencia de Minkowski.
 **Aplicaciones.** [3D] envolventes convexas para colisiones · [Datos] funciones de pérdida convexas · [Bio/Eco] aversión al riesgo y desigualdad de Jensen.
 **Lecturas.** Boyd y Vandenberghe, *Convex Optimization*; Rockafellar, *Convex Analysis*.
 
@@ -1025,7 +1067,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Coordenadas polares, cilíndricas y esféricas; integración sobre la esfera y ángulo sólido.
 
 **Puente.** Entrada: `E += L(dir) * cos(theta) * sin(theta) * dTheta * dPhi`. La irradiancia es una integral sobre el hemisferio respecto del ángulo sólido; el factor sen θ es el jacobiano de las coordenadas esféricas, y olvidarlo es el error más común al muestrear direcciones.
-**Aplicaciones.** [3D] radiometría: irradiancia, intensidad y radiancia como densidades respecto del área y del ángulo sólido, con sus unidades fotométricas (lux, candelas y nits) · [Física] centros de masa y momentos de inercia · [Datos] densidades conjuntas (aviso de VIII.2).
+**Aplicaciones.** [3D] radiometría: irradiancia, intensidad y radiancia como densidades respecto del área y del ángulo sólido, con sus unidades fotométricas (lux, candelas y nits) · [Física] centros de masa y momentos de inercia · [Datos] densidades conjuntas (aviso de XI.2).
 **Lecturas.** Munkres, *Analysis on Manifolds*; Marsden y Tromba, *Vector Calculus*.
 
 #### IV.10 Integrales de línea y de superficie
@@ -1072,14 +1114,245 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [Física] electromagnetismo con formas diferenciales · [3D] áreas orientadas y álgebra geométrica · [Ing] termodinámica: diferenciales exactas e inexactas.
 **Lecturas.** Hubbard y Hubbard, *Vector Calculus, Linear Algebra, and Differential Forms*; Spivak, *Calculus on Manifolds*.
 
-### Tomo V — Geometría
+### Tomo V — Álgebra: grupos, anillos, módulos y cuerpos
 
-*Requiere: Tomos II, III y IV · 14 capítulos.* Las geometrías clásicas como estudio de grupos de transformaciones, las curvas y superficies de diseño, la geometría diferencial clásica y la geometría computacional y discreta. V.1, V.2, V.3 y V.5 solo usan los Tomos II y III, así que se pueden leer justo después del álgebra lineal.
+*Requiere: Tomo II · 9 capítulos.* El álgebra abstracta de una licenciatura, de la estructura de los grupos finitos a la teoría de Galois, con los módulos sobre un dominio de ideales principales como puente con el álgebra lineal. Explica por qué no hay fórmula para la quíntica y sostiene la criptografía de curvas elípticas y el cálculo simbólico.
+
+**Parte A — Grupos**
+
+#### V.1 Grupos: teoremas de isomorfismo, acciones y teoremas de Sylow
+*48 págs. · Requiere: I.8 · Núcleo*
+- Teoremas de isomorfismo y de correspondencia; productos directos y semidirectos.
+- Acción por conjugación, ecuación de clases y centro de un p-grupo.
+- Teoremas de Sylow y clasificación de los grupos de orden pequeño.
+- Grupos simples; simplicidad de Aₙ para n ≥ 5.
+
+**Puente.** Entrada: `SpaceGroup(225)` en una biblioteca de cristalografía. Un grupo espacial es una extensión de un retículo de traslaciones por un grupo puntual finito, muchas veces un producto semidirecto; el capítulo da las herramientas para clasificarlos.
+**Aplicaciones.** [Física] grupos espaciales y puntuales en cristalografía · [3D] simetrías de mosaicos y teselaciones para la generación procedural · [Cripto] el ataque de Pohlig–Hellman y por qué se trabaja en subgrupos de orden primo.
+**Lecturas.** Dummit y Foote, *Abstract Algebra*; Artin, *Algebra*.
+
+#### V.2 Grupos resolubles, series de composición y presentaciones
+*40 págs. · Requiere: V.1 · Núcleo*
+- Series de composición y teorema de Jordan–Hölder.
+- Conmutadores; grupos resolubles y nilpotentes.
+- Grupos libres, generadores y relaciones; presentaciones de grupos.
+- El problema de la palabra; grupos de trenzas y grupos de rompecabezas.
+
+**Puente.** Entrada: `R U R' U'`, una secuencia del cubo de Rubik. Es un conmutador en el grupo del cubo; los conmutadores mueven pocas piezas, y por eso los métodos de resolución se construyen con ellos.
+**Aplicaciones.** [3D] el cubo de Rubik y los rompecabezas como grupos de permutaciones · [Física] grupos de trenzas y estadística de partículas en el plano · [Cripto] criptografía basada en grupos no conmutativos.
+**Lecturas.** Dummit y Foote, *Abstract Algebra*; Rotman, *An Introduction to the Theory of Groups*.
+
+**Parte B — Anillos y módulos**
+
+#### V.3 Anillos: ideales, factorización única y dominios de ideales principales
+*44 págs. · Requiere: I.9, I.4 · Núcleo*
+- Ideales primos y maximales; existencia de ideales maximales por el lema de Zorn.
+- Dominios de factorización única, de ideales principales y euclídeos; enteros de Gauss.
+- Lema de Gauss y criterio de Eisenstein; factorización en ℤ[x] y en k[x, y].
+- Localización y cuerpo de fracciones; teorema chino del resto para anillos.
+
+**Puente.** Entrada: `factor(x**4 + 1)` en un sistema de álgebra computacional, que responde distinto sobre ℚ, sobre ℤ/2ℤ y sobre ℂ. La factorización depende del anillo, y el capítulo dice cuándo es única y cómo decidir la irreducibilidad.
+**Aplicaciones.** [Cripto] códigos cíclicos y BCH como ideales de 𝔽_q[x]/(xⁿ − 1) · [3D] cálculo exacto de intersecciones de curvas implícitas mediante factorización.
+**Lecturas.** Dummit y Foote, *Abstract Algebra*; Atiyah y Macdonald, *Introduction to Commutative Algebra*.
+
+#### V.4 Módulos y teorema de estructura sobre un dominio de ideales principales
+*48 págs. · Requiere: V.3, II.7 · Núcleo*
+- Módulos, submódulos, cocientes y sucesiones exactas; módulos libres.
+- Forma normal de Smith para matrices sobre un dominio de ideales principales.
+- Teorema de estructura de los módulos finitamente generados; clasificación de los grupos abelianos finitamente generados.
+- Formas canónicas racional y de Jordan como corolario: un operador lineal es un k[x]-módulo.
+
+**Puente.** Entrada: `smith_normal_form(A)` aplicado a la matriz de un retículo. La forma de Smith diagonaliza una matriz entera con cambios de base enteros, y de ella se leen el grupo cociente ℤⁿ/Aℤⁿ y los invariantes del retículo: es el mismo teorema que da la forma de Jordan.
+**Aplicaciones.** [Física] retículos cristalinos y redes recíprocas · [Cripto] la forma normal de Hermite en la criptografía de retículos postcuántica · [3D] texturas periódicas y dominios fundamentales de un retículo.
+**Lecturas.** Dummit y Foote, *Abstract Algebra*; Hungerford, *Algebra*.
+
+**Parte C — Cuerpos y teoría de Galois**
+
+#### V.5 Extensiones de cuerpos y construcciones con regla y compás
+*44 págs. · Requiere: V.3, II.2 · Núcleo*
+- Extensiones algebraicas y trascendentes; grado y ley de la torre.
+- Cuerpo de descomposición de un polinomio y clausura algebraica, que existe por el lema de Zorn.
+- Números construibles con regla y compás; imposibilidad de duplicar el cubo, trisecar el ángulo y cuadrar el círculo (la trascendencia de π, enunciada).
+- Polígonos regulares construibles y primos de Fermat.
+
+**Puente.** Entrada: `sqrt` es la única raíz que ofrece un núcleo geométrico exacto. Con sumas, productos, cocientes y raíces cuadradas solo se alcanzan números de grado 2ᵏ sobre ℚ: por eso ese núcleo no puede trisecar un ángulo sin salir de esas operaciones.
+**Aplicaciones.** [3D] aritmética exacta con raíces cuadradas en núcleos geométricos robustos · [Cripto] cuerpos finitos como extensiones de ℤ/pℤ en AES y en los códigos correctores · [Ing] plegado de papel y estructuras desplegables: construcciones que resuelven cúbicas.
+**Lecturas.** Stewart, *Galois Theory*; Artin, *Algebra*.
+
+#### V.6 Teoría de Galois
+*48 págs. · Requiere: V.5, V.1 · Núcleo*
+- Extensiones normales y separables; grupo de Galois de una extensión.
+- Teorema fundamental de la teoría de Galois: correspondencia entre subgrupos y cuerpos intermedios.
+- Grupos de Galois de los cuerpos finitos y automorfismo de Frobenius; extensiones ciclotómicas.
+- Grupos de Galois de polinomios de grado bajo; discriminante. Para seguir: teoría de Galois infinita y teoría algebraica de números.
+
+**Puente.** Entrada: `y = x ** p` en la aritmética de 𝔽_{pⁿ}, que deja fijos los elementos del subcuerpo primo. Es el automorfismo de Frobenius, que genera el grupo de Galois de un cuerpo finito: los subcuerpos de 𝔽_{pⁿ} corresponden a los divisores de n.
+**Aplicaciones.** [Cripto] el Frobenius en la aritmética rápida de cuerpos finitos y de curvas · [Señales] raíces de la unidad, polinomios ciclotómicos y algoritmos de FFT para longitudes primas.
+**Lecturas.** Stewart, *Galois Theory*; Dummit y Foote, *Abstract Algebra*.
+
+#### V.7 Solubilidad por radicales y ecuaciones polinomiales
+*36 págs. · Requiere: V.6, V.2 · Núcleo*
+- Extensiones radicales y grupos de Galois resolubles.
+- Las fórmulas de la cúbica y de la cuártica, deducidas de su grupo de Galois.
+- Teorema de Abel–Ruffini: la quíntica general no es resoluble por radicales; un ejemplo explícito con grupo S₅.
+- Consecuencias para el cálculo: por qué las raíces de grado mayor o igual que 5 se calculan con métodos iterativos.
+
+**Puente.** Entrada: `roots = np.roots(coeffs)`, que calcula los autovalores de la matriz compañera en lugar de aplicar una fórmula. Para grado 5 o más no hay fórmula con radicales, por el teorema de Abel–Ruffini, así que toda biblioteca itera; para grado 3 y 4 la fórmula existe, pero es numéricamente inestable.
+**Aplicaciones.** [3D] intersección de un rayo con un toro: una cuártica, y cuándo conviene la fórmula o la iteración · [Ing] polinomios característicos en control y criterios de estabilidad que evitan calcular raíces.
+**Lecturas.** Stewart, *Galois Theory*; Tignol, *Galois’ Theory of Algebraic Equations*.
+
+**Parte D — Álgebra computacional**
+
+#### V.8 Curvas elípticas y criptografía
+*44 págs. · Requiere: V.5, I.9 · Complementario*
+- Curvas cúbicas en el plano proyectivo; forma de Weierstrass y discriminante.
+- Ley de grupo por cuerdas y tangentes; asociatividad.
+- Curvas sobre cuerpos finitos: teorema de Hasse (enunciado) y conteo de puntos.
+- El logaritmo discreto elíptico: intercambio de claves y firmas (ECDH y ECDSA); por qué ciertas curvas son débiles.
+
+**Puente.** Entrada: `X25519(private_key, public_key)`, el intercambio de claves de casi toda conexión segura de la web. Es multiplicar un punto de una curva elíptica sobre 𝔽_p por un entero, y su seguridad es la dificultad del logaritmo discreto en ese grupo.
+**Aplicaciones.** [Cripto] TLS, firmas digitales y criptomonedas · [Ing] firmas digitales en sistemas embebidos y actualizaciones seguras de *firmware*.
+**Lecturas.** Silverman y Tate, *Rational Points on Elliptic Curves*; Washington, *Elliptic Curves: Number Theory and Cryptography*.
+
+#### V.9 Bases de Gröbner y geometría algebraica computacional
+*44 págs. · Requiere: V.3 · Complementario*
+- Órdenes monomiales, división multivariable y bases de Gröbner; algoritmo de Buchberger.
+- Eliminación de variables e implicitación de curvas y superficies paramétricas.
+- Variedades afines e ideales; Nullstellensatz de Hilbert (enunciado y uso).
+- Resolución de sistemas polinomiales y su costo. Para seguir: geometría algebraica.
+
+**Puente.** Entrada: `groebner([x**2 + y**2 - 1, x - y], x, y)`. Una base de Gröbner es al sistema polinomial lo que la forma escalonada es al sistema lineal: triangula, y de ella se leen las soluciones.
+**Aplicaciones.** [3D] implicitación de superficies paramétricas para el trazado de rayos · [Ing] cinemática inversa de robots resuelta en forma exacta.
+**Lecturas.** Cox, Little y O’Shea, *Ideals, Varieties, and Algorithms*; Sturmfels, *Solving Systems of Polynomial Equations*.
+
+### Tomo VI — Topología
+
+*Requiere: Tomos II y III; importa V.2 y V.4 por interfaz · 10 capítulos.* La topología general, de los espacios topológicos a la metrización y el teorema de Baire, y la topología algebraica básica: el grupo fundamental, los recubrimientos y la homología simplicial. Da el lenguaje de la convergencia que usa el análisis funcional y los invariantes que explican las mallas, los mundos periódicos y la forma de los datos. VI.1 a VI.5 solo usan los Tomos I, II y III.
+
+**Parte A — Topología general**
+
+#### VI.1 Espacios topológicos y continuidad
+*44 págs. · Requiere: III.11, I.2 · Núcleo*
+- Topologías, bases y subbases; interior, clausura y frontera; sucesiones y redes.
+- Funciones continuas y homeomorfismos; topologías inicial y final.
+- Subespacios, productos y cocientes; pegado de espacios.
+- Ejemplos: la recta de Sorgenfrey, la topología de Zariski y el toro como cociente del cuadrado.
+
+**Puente.** Entrada: `pos = (pos + vel * dt) % worldSize`, el mundo que se cierra sobre sí mismo en un videojuego. Ese mundo es un toro, el cociente del rectángulo que identifica los bordes opuestos, y la continuidad en el cociente es lo que hace que un objeto cruce el borde sin saltar.
+**Aplicaciones.** [3D] mundos periódicos y mapas que se cierran sobre sí mismos · [Física] condiciones de contorno periódicas en simulaciones de materiales · [Datos] topologías en espacios de modelos y de funciones.
+**Lecturas.** Munkres, *Topology*; Willard, *General Topology*.
+
+#### VI.2 Conexión y compacidad
+*44 págs. · Requiere: VI.1, I.4 · Núcleo*
+- Espacios conexos y arcoconexos; componentes.
+- Compacidad, compacidad por sucesiones y propiedad de la intersección finita.
+- Teorema de Tychonoff, con el lema de Zorn.
+- Compacidad local y compactificación de Alexandroff; la esfera de Riemann.
+
+**Puente.** Entrada: `assert(isConnected(navmesh))` antes de buscar un camino. Que dos puntos se puedan unir por un camino es la arcoconexión; las componentes de la malla de navegación son las regiones a las que un agente nunca podrá llegar desde las otras.
+**Aplicaciones.** [3D] componentes conexas de mallas y de mallas de navegación · [Bio/Eco] existencia de equilibrios por compacidad en economía · [Datos] agrupamiento por componentes conexas de un grafo de vecindad.
+**Lecturas.** Munkres, *Topology*; Willard, *General Topology*.
+
+#### VI.3 Separación, numerabilidad y metrización
+*40 págs. · Requiere: VI.2 · Núcleo*
+- Axiomas de numerabilidad: primero y segundo; separabilidad.
+- Axiomas de separación: espacios de Hausdorff, regulares y normales.
+- Lema de Urysohn y teorema de extensión de Tietze; particiones de la unidad.
+- Teorema de metrización de Urysohn.
+
+**Puente.** Entrada: `blend = sum(w[i](x) * f[i](x))` con pesos que suman 1, la mezcla suave de aproximaciones locales. Es una partición de la unidad, y su existencia en los espacios normales sale del lema de Urysohn: la misma herramienta que pega las cartas locales de una variedad.
+**Aplicaciones.** [3D] mezcla suave de deformaciones y *skinning* con particiones de la unidad · [Ing] interpolación con funciones de base radial y métodos sin malla en simulación · [Física] la condición de Hausdorff en la definición de espacio-tiempo.
+**Lecturas.** Munkres, *Topology*; Willard, *General Topology*.
+
+#### VI.4 Espacios métricos completos: Baire, completación y Arzelà–Ascoli
+*36 págs. · Requiere: VI.1 · Núcleo*
+- Completación de un espacio métrico; ℝ como completación de ℚ, revisitada.
+- Teorema de Baire y sus consecuencias: las funciones continuas que no son derivables en ningún punto son genéricas.
+- Teorema de Arzelà–Ascoli, con demostración.
+- Compacidad en espacios de funciones y teorema de Stone–Weierstrass.
+
+**Puente.** Entrada: una prueba que compara dos curvas por su distancia máxima, `max(abs(f(t) - g(t)))`. Es la métrica del supremo en C[a, b]: Arzelà–Ascoli dice cuándo una familia de curvas tiene subsucesiones convergentes, y Stone–Weierstrass, por qué los polinomios bastan para aproximarlas.
+**Aplicaciones.** [Señales] aproximación de señales por polinomios trigonométricos · [Física] funciones continuas sin derivada y el movimiento browniano · [Datos] aproximación universal de las redes neuronales vía Stone–Weierstrass.
+**Lecturas.** Munkres, *Topology*; Rudin, *Principles of Mathematical Analysis*.
+
+**Parte B — Topología algebraica**
+
+#### VI.5 Homotopía y grupo fundamental
+*44 págs. · Requiere: VI.2, I.8 · Núcleo*
+- Homotopía de aplicaciones y de caminos; espacios contráctiles; equivalencia homotópica.
+- Grupo fundamental e invariancia por homotopía.
+- Grupo fundamental del círculo: grado de un lazo y número de vueltas.
+- Retractos y retractos por deformación; teorema de Brouwer en dimensión 2.
+
+**Puente.** Entrada: `angle += wrapToPi(newAngle - angle)`, el truco para acumular un ángulo sin saltos de 2π. El ángulo acumulado es el levantamiento del lazo por el recubrimiento ℝ → S¹, y su total dividido por 2π es el número de vueltas: un elemento del grupo fundamental del círculo.
+**Aplicaciones.** [3D] ángulos acumulados y desenrollado de fase en animación · [Física] el efecto Aharonov–Bohm y el grupo fundamental del plano sin un punto · [Ing] número de vueltas y criterio de estabilidad de Nyquist.
+**Lecturas.** Hatcher, *Algebraic Topology*; Massey, *A Basic Course in Algebraic Topology*.
+
+#### VI.6 Recubrimientos y teorema de Seifert–van Kampen
+*44 págs. · Requiere: VI.5, V.2 · Núcleo*
+- Espacios recubridores; levantamiento de caminos y de homotopías.
+- Recubrimiento universal y clasificación de los recubrimientos por subgrupos del grupo fundamental.
+- Teorema de Seifert–van Kampen; grupos fundamentales de grafos, del toro y de las superficies.
+- Acciones de grupos propiamente discontinuas y espacios de órbitas.
+
+**Puente.** Entrada: un nivel de videojuego con portales, o un mapa que se repite al infinito. El mundo infinito que se repite es el recubrimiento universal del nivel, y el grupo de traslaciones que lo repite es su grupo fundamental, que actúa por transformaciones de recubrimiento.
+**Aplicaciones.** [3D] portales, mundos que se repiten y espacios de órbitas en videojuegos · [Física] el espín y el recubrimiento SU(2) → SO(3) · [Ing] planificación de trayectorias por clases de homotopía.
+**Lecturas.** Hatcher, *Algebraic Topology*; Massey, *A Basic Course in Algebraic Topology*.
+
+#### VI.7 Complejos simpliciales y homología
+*48 págs. · Requiere: VI.5, V.4 · Núcleo*
+- Complejos simpliciales, triangulaciones y realización geométrica.
+- Complejos de cadenas, homología simplicial y números de Betti.
+- Invariancia topológica (enunciada) y homología singular como idea; sucesión de Mayer–Vietoris.
+- Característica de Euler–Poincaré; cálculo de la homología con la forma normal de Smith. Para seguir: álgebra homológica y teoría de categorías.
+
+**Puente.** Entrada: `rank(boundary_matrix)` en una biblioteca de geometría discreta. Los números de Betti, que cuentan componentes, túneles y cavidades, son dimensiones de núcleos módulo imágenes de matrices de borde: la homología es álgebra lineal sobre un complejo.
+**Aplicaciones.** [3D] detección de agujeros y túneles en mallas y en vóxeles · [Ing] cobertura de redes de sensores sin conocer sus posiciones · [Física] campos irrotacionales sin potencial en dominios con agujeros.
+**Lecturas.** Hatcher, *Algebraic Topology*; Munkres, *Elements of Algebraic Topology*.
+
+#### VI.8 Clasificación de superficies
+*36 págs. · Requiere: VI.7, VI.6 · Complementario*
+- Superficies como cocientes de polígonos; orientabilidad.
+- Teorema de clasificación de las superficies compactas.
+- Característica de Euler, orientabilidad y género como invariantes completos.
+- Superficies con borde y suma conexa.
+
+**Puente.** Entrada: `genus = (2 - V + E - F) / 2` en un procesador de mallas. La fórmula vale porque toda superficie cerrada orientable es una esfera con g asas, y la característica de Euler V − E + F = 2 − 2g las distingue: el capítulo demuestra ese teorema de clasificación.
+**Aplicaciones.** [3D] género, asas y cortes para parametrizar mallas · [Bio/Eco] topología de las superficies corticales en neuroimagen · [Ing] mallado de superficies para la fabricación.
+**Lecturas.** Massey, *A Basic Course in Algebraic Topology*; Kinsey, *Topology of Surfaces*.
+
+**Parte C — Topología aplicada**
+
+#### VI.9 Grado y teoremas de punto fijo
+*40 págs. · Requiere: VI.7 · Complementario*
+- Grado de una aplicación entre esferas; teorema de la bola peluda.
+- Teorema del punto fijo de Brouwer en dimensión n y teorema de Borsuk–Ulam.
+- Lema de Sperner y su demostración combinatoria del teorema de Brouwer.
+- Número de Lefschetz (enunciado) y teorema de Kakutani.
+
+**Puente.** Entrada: `lookAt(eye, target, up)`, que falla cuando la cámara mira justo hacia arriba. No es un error del código: el teorema de la bola peluda dice que no hay un campo continuo de vectores tangentes no nulos sobre la esfera, así que toda regla para elegir el «arriba» de la cámara tiene una singularidad.
+**Aplicaciones.** [3D] cámaras, marcos de referencia y la singularidad inevitable del vector «arriba» · [Bio/Eco] existencia del equilibrio de Nash y del equilibrio general en economía · [Física] puntos de calma en un campo de viento sobre la superficie terrestre.
+**Lecturas.** Milnor, *Topology from the Differentiable Viewpoint*; Hatcher, *Algebraic Topology*.
+
+#### VI.10 Homología persistente y análisis topológico de datos
+*40 págs. · Requiere: VI.7 · Complementario*
+- Filtraciones de complejos: complejos de Čech y de Vietoris–Rips.
+- Homología persistente, diagramas de persistencia y códigos de barras.
+- Teorema de estabilidad (enunciado) y distancia de cuello de botella.
+- El algoritmo de reducción matricial y su costo; el método Mapper.
+
+**Puente.** Entrada: `ripser(points)`, que devuelve pares (nacimiento, muerte). Cada par es un agujero que aparece y desaparece al engordar los puntos; los que viven mucho son la forma de los datos, y el teorema de estabilidad garantiza que el ruido solo produce pares cortos.
+**Aplicaciones.** [Datos] la forma de las nubes de puntos y la detección de ciclos en los datos · [Bio/Eco] estructura de proteínas y de redes neuronales biológicas · [3D] reconstrucción robusta de superficies a partir de escaneos.
+**Lecturas.** Edelsbrunner y Harer, *Computational Topology*; Carlsson, «Topology and Data».
+
+### Tomo VII — Geometría
+
+*Requiere: Tomos II, III y IV · 14 capítulos.* Las geometrías clásicas como estudio de grupos de transformaciones, las curvas y superficies de diseño, la geometría diferencial clásica y la geometría computacional y discreta. VII.1, VII.2, VII.3 y VII.5 solo usan los Tomos II y III, así que se pueden leer justo después del álgebra lineal.
 
 **Parte A — Geometrías y grupos de transformaciones**
 
-#### V.1 Isometrías y simetría
-*40 págs. · Requiere: II.15, I.7 · Núcleo*
+#### VII.1 Isometrías y simetría
+*40 págs. · Requiere: II.15, I.8 · Núcleo*
 - Las isometrías de ℝⁿ son afines; clasificación en el plano y en el espacio.
 - Todo movimiento es producto de reflexiones.
 - Grupos de simetría finitos: cíclicos, diédricos y de los poliedros regulares.
@@ -1089,7 +1362,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] teselaciones, simetrías de modelos, espejos y orientación · [Física] cristalografía · [Bio/Eco] simetrías de virus y de moléculas.
 **Lecturas.** Coxeter, *Introduction to Geometry*; Armstrong, *Groups and Symmetry*.
 
-#### V.2 Geometría proyectiva
+#### VII.2 Geometría proyectiva
 *44 págs. · Requiere: II.13 · Núcleo*
 - Plano y espacio proyectivos; coordenadas homogéneas y puntos del infinito.
 - Dualidad punto–recta; transformaciones proyectivas y su teorema fundamental.
@@ -1100,8 +1373,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] intersecciones robustas en coordenadas homogéneas · [Datos] visión por computador: rectificación de fotografías · [Ing] fotogrametría y topografía.
 **Lecturas.** Richter-Gebert, *Perspectives on Projective Geometry*; Coxeter, *Projective Geometry*.
 
-#### V.3 Cámaras, proyección y geometría de varias vistas
-*44 págs. · Requiere: V.2, II.10, II.16 · Núcleo*
+#### VII.3 Cámaras, proyección y geometría de varias vistas
+*44 págs. · Requiere: VII.2, II.10, II.16 · Núcleo*
 - Cámara estenopeica; matrices de proyección en perspectiva y ortográfica; volumen de visión.
 - Coordenadas de recorte y normalizadas; distribución de la profundidad y su precisión en coma flotante.
 - Rasterización: funciones de arista como determinantes, coordenadas baricéntricas e interpolación con corrección de perspectiva.
@@ -1111,7 +1384,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] *pipeline* de cámara, Reverse-Z, *frustum culling* y mapas de sombras · [Datos] reconstrucción 3D a partir de fotografías · [Ing] calibración de cámaras industriales.
 **Lecturas.** Hartley y Zisserman, *Multiple View Geometry in Computer Vision*; Lengyel, *Foundations of Game Engine Development*, vol. 2.
 
-#### V.4 Grupos de Lie de matrices
+#### VII.4 Grupos de Lie de matrices
 *48 págs. · Requiere: II.15, III.8, IV.3 · Núcleo*
 - Grupos de matrices como subvariedades: SO(n), SE(n) y SU(2); álgebras de Lie y corchete.
 - Exponencial y logaritmo de matrices; fórmula de Baker–Campbell–Hausdorff (enunciado).
@@ -1119,13 +1392,13 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - SE(3), teorema de Chasles en el espacio, números duales y cuaterniones duales.
 
 **Puente.** Entrada: `pose = exp(twist * t)` en una biblioteca de robótica. Interpolar un movimiento rígido es recorrer un subgrupo a un parámetro de SE(3); por eso interpolar matrices entrada por entrada deforma los objetos y la exponencial no.
-**Aplicaciones.** [3D] *skinning* con cuaterniones duales y cinemática directa como producto de exponenciales · [Ing] robótica y estimación de estado · [Física] simetrías continuas (aviso de VI.7).
+**Aplicaciones.** [3D] *skinning* con cuaterniones duales y cinemática directa como producto de exponenciales · [Ing] robótica y estimación de estado · [Física] simetrías continuas (aviso de VIII.7).
 **Lecturas.** Stillwell, *Naive Lie Theory*; Hall, *Lie Groups, Lie Algebras, and Representations*; Lynch y Park, *Modern Robotics*.
 
 **Parte B — Curvas y superficies de diseño**
 
-#### V.5 Curvas y superficies de Bézier y B-splines
-*48 págs. · Requiere: III.9, V.2 · Núcleo*
+#### VII.5 Curvas y superficies de Bézier y B-splines
+*48 págs. · Requiere: III.9, VII.2 · Núcleo*
 - Curvas de Bézier: algoritmo de De Casteljau, subdivisión, elevación de grado y propiedad de la envolvente convexa.
 - B-splines: recurrencia de Cox–de Boor, vector de nodos y soporte local; Catmull–Rom.
 - Continuidad paramétrica Cⁿ frente a continuidad geométrica Gⁿ.
@@ -1137,7 +1410,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Parte C — Geometría diferencial**
 
-#### V.6 Curvas en el espacio
+#### VII.6 Curvas en el espacio
 *36 págs. · Requiere: IV.2 · Núcleo*
 - Curvas regulares y parametrización por longitud de arco.
 - Curvatura, torsión y triedro de Frenet–Serret; teorema fundamental de las curvas.
@@ -1148,8 +1421,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] tubos, cuerdas y rieles de cámara sin giros bruscos · [Ing] trazado de carreteras y vías con clotoides · [Bio/Eco] geometría del ADN.
 **Lecturas.** do Carmo, *Differential Geometry of Curves and Surfaces*; Pressley, *Elementary Differential Geometry*.
 
-#### V.7 Superficies: formas fundamentales y curvatura
-*48 págs. · Requiere: IV.3, V.6 · Núcleo*
+#### VII.7 Superficies: formas fundamentales y curvatura
+*48 págs. · Requiere: IV.3, VII.6 · Núcleo*
 - Superficies regulares, plano tangente y primera forma fundamental; longitudes y áreas.
 - Aplicación de Gauss y segunda forma fundamental.
 - Curvaturas normal, principales, gaussiana y media; líneas de curvatura.
@@ -1159,12 +1432,12 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] *normal mapping* y espacio tangente · [Ing] curvatura de carrocerías y control de reflejos · [Física] membranas y tensión superficial.
 **Lecturas.** do Carmo, *Differential Geometry of Curves and Surfaces*; Pressley, *Elementary Differential Geometry*.
 
-#### V.8 Geometría intrínseca y Gauss–Bonnet
-*44 págs. · Requiere: V.7, IV.11, I.6 · Núcleo*
+#### VII.8 Geometría intrínseca y Gauss–Bonnet
+*44 págs. · Requiere: VII.7, IV.11, I.7 · Núcleo*
 - *Theorema egregium*: la curvatura gaussiana es intrínseca.
 - Geodésicas y curvatura geodésica.
 - Teorema de Gauss–Bonnet local y global; característica de Euler.
-- Por qué no existe un mapa plano perfecto de la esfera. Las variedades y la geometría riemanniana llegan en X.4 y X.5.
+- Por qué no existe un mapa plano perfecto de la esfera. Las variedades y la geometría riemanniana llegan en XIII.4 y XIII.5.
 
 **Puente.** Entrada: una textura que se estira en los polos de una esfera. Ninguna parametrización plana de la esfera conserva distancias, porque lo prohíbe el *theorema egregium*; elegir entre la proyección equirectangular, la cúbica o la octaédrica es elegir qué distorsión aceptar.
 **Aplicaciones.** [3D] parametrizaciones de la esfera para texturas y mapas de entorno · [Ing] cartografía y proyecciones de mapas · [Física] superficies curvas y relatividad (aviso).
@@ -1172,7 +1445,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Parte D — Geometría computacional y discreta**
 
-#### V.9 Predicados geométricos e intersecciones
+#### VII.9 Predicados geométricos e intersecciones
 *40 págs. · Requiere: II.4, II.16, III.10 · Núcleo*
 - Predicados de orientación y de círculo circunscrito (*incircle*) como signos de determinantes.
 - Fallos en coma flotante; aritmética exacta y predicados adaptativos.
@@ -1183,8 +1456,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] selección con el ratón, *raycasts* y núcleo del trazado de rayos · [Ing] CAD robusto · [Datos] sistemas de información geográfica.
 **Lecturas.** Ericson, *Real-Time Collision Detection*; Shewchuk, «Adaptive Precision Floating-Point Arithmetic and Fast Robust Geometric Predicates».
 
-#### V.10 Convexidad computacional: envolventes, separación y distancia
-*44 págs. · Requiere: V.9, IV.5 · Núcleo*
+#### VII.10 Convexidad computacional: envolventes, separación y distancia
+*44 págs. · Requiere: VII.9, IV.5 · Núcleo*
 - Envolvente convexa en 2D y en 3D: algoritmos de Graham y Quickhull.
 - Teorema de los ejes separadores para politopos, como corolario del teorema del hiperplano separador.
 - Distancia entre convexos como problema convexo; algoritmo GJK sobre la diferencia de Minkowski y su convergencia.
@@ -1194,30 +1467,30 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] detección de colisiones, puntos de contacto y detección continua · [Ing] planificación de movimientos de robots · [Datos] clasificación lineal por separación.
 **Lecturas.** de Berg, Cheong, van Kreveld y Overmars, *Computational Geometry*; van den Bergen, *Collision Detection in Interactive 3D Environments*; Gilbert, Johnson y Keerthi, «A Fast Procedure for Computing the Distance Between Complex Objects in Three-Dimensional Space».
 
-#### V.11 Triangulaciones y diagramas de Voronoi
-*40 págs. · Requiere: V.9, IV.9, I.6 · Núcleo*
+#### VII.11 Triangulaciones y diagramas de Voronoi
+*40 págs. · Requiere: VII.9, IV.9, I.7 · Núcleo*
 - Triangulación de polígonos: existencia, recorte de orejas y descomposición monótona.
 - Triangulación de Delaunay: círculo vacío, maximización del ángulo mínimo y volteo de aristas.
 - Diagrama de Voronoi como dual de Delaunay.
 - Teselaciones de Voronoi centroidales y algoritmo de Lloyd.
 
-**Puente.** Entrada: una malla de navegación generada a partir del plano de un nivel. Es una triangulación del espacio libre: Delaunay evita triángulos degenerados, y su grafo dual se recorre con A\* (I.6).
+**Puente.** Entrada: una malla de navegación generada a partir del plano de un nivel. Es una triangulación del espacio libre: Delaunay evita triángulos degenerados, y su grafo dual se recorre con A\* (I.7).
 **Aplicaciones.** [3D] mallas de navegación y terrenos · [Ing] mallado para elementos finitos · [Bio/Eco] modelos de territorio y de crecimiento celular.
 **Lecturas.** de Berg, Cheong, van Kreveld y Overmars, *Computational Geometry*; Okabe, Boots, Sugihara y Chiu, *Spatial Tessellations*.
 
-#### V.12 Mallas: topología y geometría discreta
-*48 págs. · Requiere: V.8, II.12, I.6 · Núcleo*
+#### VII.12 Mallas: topología y geometría discreta
+*48 págs. · Requiere: VII.8, II.12, I.7 · Núcleo*
 - Complejos simpliciales, variedades con borde, orientabilidad, característica de Euler y género; la estructura *half-edge*.
 - Normales de vértice, curvaturas discretas y Gauss–Bonnet discreto.
 - Laplaciano cotangente y suavizado como difusión, explícito e implícito.
-- Subdivisión de Catmull–Clark y de Loop con análisis espectral de la máscara; simplificación con métricas de error cuádrico; parametrización conforme por mínimos cuadrados. Para seguir: topología algebraica.
+- Subdivisión de Catmull–Clark y de Loop con análisis espectral de la máscara; simplificación con métricas de error cuádrico; parametrización conforme por mínimos cuadrados. La teoría detrás, la homología y la clasificación de superficies, está en VI.7 y VI.8.
 
 **Puente.** Entrada: `w = cot(alpha) + cot(beta)` en un código de suavizado de mallas. Son los pesos del laplaciano cotangente, la discretización del laplaciano de la superficie; el defecto angular alrededor de un vértice es la curvatura gaussiana discreta.
 **Aplicaciones.** [3D] validación y reparación de mallas, niveles de detalle y desplegado UV · [Ing] mallas para simulación · [Bio/Eco] superficies de órganos en imágenes médicas.
 **Lecturas.** Botsch, Kobbelt, Pauly, Alliez y Lévy, *Polygon Mesh Processing*; Crane, *Discrete Differential Geometry: An Applied Introduction*.
 
-#### V.13 Superficies implícitas y campos de distancia
-*36 págs. · Requiere: V.7, III.10 · Núcleo*
+#### VII.13 Superficies implícitas y campos de distancia
+*36 págs. · Requiere: VII.7, III.10 · Núcleo*
 - Conjuntos de nivel y funciones de distancia con signo; ecuación eikonal |∇d| = 1.
 - Constante de Lipschitz y *sphere tracing* como búsqueda de raíces con paso garantizado.
 - Operaciones booleanas suaves y operadores de dominio.
@@ -1227,8 +1500,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] *ray marching* y modelado con campos de distancia · [Ing] fabricación aditiva y trayectorias de herramientas · [Bio/Eco] reconstrucción de órganos a partir de tomografías.
 **Lecturas.** Hart, «Sphere Tracing: A Geometric Method for the Antialiased Ray Tracing of Implicit Surfaces»; Osher y Fedkiw, *Level Set Methods and Dynamic Implicit Surfaces*.
 
-#### V.14 Geometría integral y particiones del espacio
-*40 págs. · Requiere: V.10, IV.9 · Complementario*
+#### VII.14 Geometría integral y particiones del espacio
+*40 págs. · Requiere: VII.10, IV.9 · Complementario*
 - Medida invariante en el espacio de rectas; fórmula de Cauchy–Crofton.
 - Probabilidad de que una recta al azar corte un convexo: proporcional a su perímetro en el plano y a su área de superficie en el espacio.
 - Particiones recursivas: árboles BSP, árboles k-d y *octrees*.
@@ -1238,13 +1511,13 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] jerarquías de volúmenes envolventes y *hashing* espacial · [Datos] índices espaciales en bases de datos · [Física] estereología: estimar áreas y volúmenes a partir de cortes.
 **Lecturas.** Santaló, *Integral Geometry and Geometric Probability*; Sagan, *Space-Filling Curves*.
 
-### Tomo VI — Ecuaciones diferenciales, sistemas dinámicos y mecánica
+### Tomo VIII — Ecuaciones diferenciales, sistemas dinámicos y mecánica
 
-*Requiere: Tomos II, III y IV; importa V.4 por interfaz · 12 capítulos.* Teoría de las ecuaciones diferenciales ordinarias y de los sistemas dinámicos, mecánica analítica y métodos numéricos. VI.1 a VI.3 solo usan los Tomos II y III.
+*Requiere: Tomos II, III y IV; importa VII.4 por interfaz · 12 capítulos.* Teoría de las ecuaciones diferenciales ordinarias y de los sistemas dinámicos, mecánica analítica y métodos numéricos. VIII.1 a VIII.3 solo usan los Tomos II y III.
 
 **Parte A — Teoría**
 
-#### VI.1 Ecuaciones de primer orden
+#### VIII.1 Ecuaciones de primer orden
 *44 págs. · Requiere: III.11, III.8 · Núcleo*
 - Modelado con ecuaciones diferenciales; campos de direcciones.
 - Ecuaciones separables, lineales y exactas; factor integrante.
@@ -1255,8 +1528,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] niebla y atenuación de Beer–Lambert · [Bio/Eco] crecimiento logístico y farmacocinética · [Física] ley de enfriamiento de Newton y desintegración radiactiva.
 **Lecturas.** Hirsch, Smale y Devaney, *Differential Equations, Dynamical Systems, and an Introduction to Chaos*; Arnold, *Ordinary Differential Equations*.
 
-#### VI.2 Ecuaciones lineales de orden superior
-*40 págs. · Requiere: VI.1, II.3 · Núcleo*
+#### VIII.2 Ecuaciones lineales de orden superior
+*40 págs. · Requiere: VIII.1, II.3 · Núcleo*
 - Ecuaciones lineales de orden n y espacio de soluciones; wronskiano.
 - Coeficientes constantes y ecuación característica.
 - Oscilador armónico libre, amortiguado y forzado; resonancia.
@@ -1266,19 +1539,19 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] seguimiento de cámaras con amortiguamiento crítico · [Ing] circuitos RLC y suspensiones · [Física] resonancia en estructuras.
 **Lecturas.** Hirsch, Smale y Devaney, *Differential Equations, Dynamical Systems, and an Introduction to Chaos*; Boyce y DiPrima, *Elementary Differential Equations and Boundary Value Problems*.
 
-#### VI.3 Sistemas lineales y exponencial de matrices
-*44 págs. · Requiere: VI.2, II.7, III.6 · Núcleo*
+#### VIII.3 Sistemas lineales y exponencial de matrices
+*44 págs. · Requiere: VIII.2, II.7, III.6 · Núcleo*
 - Sistemas x′ = Ax; exponencial de una matriz como serie y mediante la forma de Jordan.
 - Matriz fundamental y sistemas no homogéneos.
 - Estabilidad de los sistemas lineales según sus autovalores; retratos de fase en el plano.
 - Sistemas lineales discretos x_{n+1} = A x_n.
 
-**Puente.** Entrada: muelles acoplados que «explotan» al aumentar la rigidez. Los autovalores del sistema dicen qué modos oscilan y a qué frecuencia; la explosión aparece cuando el método numérico no respeta esa estructura (VI.10).
+**Puente.** Entrada: muelles acoplados que «explotan» al aumentar la rigidez. Los autovalores del sistema dicen qué modos oscilan y a qué frecuencia; la explosión aparece cuando el método numérico no respeta esa estructura (VIII.10).
 **Aplicaciones.** [Física] modos de vibración acoplados · [Ing] modelos en espacio de estados · [Bio/Eco] modelos compartimentales.
 **Lecturas.** Hirsch, Smale y Devaney, *Differential Equations, Dynamical Systems, and an Introduction to Chaos*; Perko, *Differential Equations and Dynamical Systems*.
 
-#### VI.4 Sistemas no lineales y estabilidad
-*48 págs. · Requiere: VI.3, IV.3 · Núcleo*
+#### VIII.4 Sistemas no lineales y estabilidad
+*48 págs. · Requiere: VIII.3, IV.3 · Núcleo*
 - Puntos de equilibrio y linealización; teorema de Hartman–Grobman (enunciado).
 - Funciones de Lyapunov y estabilidad asintótica.
 - Plano de fase, órbitas periódicas y ciclos límite.
@@ -1288,8 +1561,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [Bio/Eco] modelos depredador–presa de Lotka–Volterra y epidemias SIR · [Física] péndulo no lineal · [Ing] estabilidad de sistemas realimentados.
 **Lecturas.** Hirsch, Smale y Devaney, *Differential Equations, Dynamical Systems, and an Introduction to Chaos*; Strogatz, *Nonlinear Dynamics and Chaos*.
 
-#### VI.5 Bifurcaciones y caos
-*40 págs. · Requiere: VI.4 · Complementario*
+#### VIII.5 Bifurcaciones y caos
+*40 págs. · Requiere: VIII.4 · Complementario*
 - Bifurcaciones silla–nodo, transcrítica, de horquilla y de Hopf.
 - Aplicación logística, duplicación de período y constante de Feigenbaum.
 - Sensibilidad a las condiciones iniciales; sistema de Lorenz y atractores extraños.
@@ -1299,21 +1572,21 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [Física] meteorología y el modelo de Lorenz · [Cripto] determinismo en juegos en red · [Bio/Eco] dinámica de poblaciones.
 **Lecturas.** Strogatz, *Nonlinear Dynamics and Chaos*; Alligood, Sauer y Yorke, *Chaos: An Introduction to Dynamical Systems*.
 
-#### VI.6 Sistemas con entrada: control y realimentación
-*36 págs. · Requiere: VI.4 · Complementario*
+#### VIII.6 Sistemas con entrada: control y realimentación
+*36 págs. · Requiere: VIII.4 · Complementario*
 - Sistemas de control lineales; controlabilidad y observabilidad (criterio de Kalman).
 - Realimentación de estado y asignación de polos.
 - Controladores PID y su análisis en el dominio del tiempo.
 - Discretización de controladores.
 
-**Puente.** Entrada: `force = kp * error + ki * integral + kd * derivative`. Un PID es un sistema realimentado cuyos polos se eligen con kp, ki y kd; la estabilidad del vehículo o de la cámara se decide con los autovalores de VI.3.
+**Puente.** Entrada: `force = kp * error + ki * integral + kd * derivative`. Un PID es un sistema realimentado cuyos polos se eligen con kp, ki y kd; la estabilidad del vehículo o de la cámara se decide con los autovalores de VIII.3.
 **Aplicaciones.** [Ing] control de motores y de drones · [3D] vehículos y personajes que siguen objetivos · [Bio/Eco] regulación de la glucosa.
 **Lecturas.** Åström y Murray, *Feedback Systems*; Sontag, *Mathematical Control Theory*.
 
 **Parte B — Mecánica**
 
-#### VI.7 Cálculo de variaciones y mecánica lagrangiana
-*48 págs. · Requiere: VI.4, IV.4 · Núcleo*
+#### VIII.7 Cálculo de variaciones y mecánica lagrangiana
+*48 págs. · Requiere: VIII.4, IV.4 · Núcleo*
 - Funcionales y ecuación de Euler–Lagrange; problema de la braquistócrona.
 - Principio de mínima acción y coordenadas generalizadas.
 - Restricciones holónomas con multiplicadores de Lagrange.
@@ -1323,20 +1596,20 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] articulaciones y *ragdolls* · [Física] mecánica clásica y principio de Fermat en óptica · [Ing] trayectorias óptimas.
 **Lecturas.** Arnold, *Mathematical Methods of Classical Mechanics*; Goldstein, Poole y Safko, *Classical Mechanics*; Gelfand y Fomin, *Calculus of Variations*.
 
-#### VI.8 Mecánica hamiltoniana
-*44 págs. · Requiere: VI.7 · Núcleo*
+#### VIII.8 Mecánica hamiltoniana
+*44 págs. · Requiere: VIII.7 · Núcleo*
 - Transformada de Legendre y ecuaciones de Hamilton.
 - Espacio de fases y teorema de Liouville.
 - Estructura simpléctica en forma matricial; transformaciones canónicas.
-- Corchetes de Poisson e integrales primeras; su relación con los conmutadores de la mecánica cuántica (aviso de X.8).
+- Corchetes de Poisson e integrales primeras; su relación con los conmutadores de la mecánica cuántica (aviso de XIII.7).
 - Ecuación de Hamilton–Jacobi, variables de acción–ángulo y sistemas integrables.
 
-**Puente.** Entrada: el gráfico de energía de una simulación que deriva lentamente. El flujo hamiltoniano conserva el volumen en el espacio de fases, y los integradores que respetan esa estructura (VI.11) no derivan.
-**Aplicaciones.** [Física] órbitas planetarias y dinámica molecular · [3D] simulación estable a largo plazo · [Datos] Monte Carlo hamiltoniano (aviso de VIII.8).
+**Puente.** Entrada: el gráfico de energía de una simulación que deriva lentamente. El flujo hamiltoniano conserva el volumen en el espacio de fases, y los integradores que respetan esa estructura (VIII.11) no derivan.
+**Aplicaciones.** [Física] órbitas planetarias y dinámica molecular · [3D] simulación estable a largo plazo · [Datos] Monte Carlo hamiltoniano (aviso de XI.8).
 **Lecturas.** Arnold, *Mathematical Methods of Classical Mechanics*; José y Saletan, *Classical Dynamics: A Contemporary Approach*.
 
-#### VI.9 Dinámica del sólido rígido
-*44 págs. · Requiere: VI.7, II.15, V.4 · Núcleo*
+#### VIII.9 Dinámica del sólido rígido
+*44 págs. · Requiere: VIII.7, II.15, VII.4 · Núcleo*
 - Sistemas de partículas: momento lineal y momento angular.
 - Tensor de inercia, teorema de Steiner y ejes principales.
 - Ecuaciones de Euler y término giroscópico; estabilidad de la rotación en torno a los ejes principales (teorema de la raqueta de tenis).
@@ -1348,8 +1621,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Parte C — Métodos numéricos**
 
-#### VI.10 Métodos numéricos para ecuaciones diferenciales ordinarias
-*48 págs. · Requiere: VI.3, III.10 · Núcleo*
+#### VIII.10 Métodos numéricos para ecuaciones diferenciales ordinarias
+*48 págs. · Requiere: VIII.3, III.10 · Núcleo*
 - Euler explícito; error local y global; orden de convergencia.
 - Métodos de Runge–Kutta y métodos multipaso.
 - Regiones de estabilidad absoluta y ecuaciones rígidas.
@@ -1359,8 +1632,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] bucle de física con paso fijo · [Física] trayectorias balísticas y orbitales · [Bio/Eco] simulación de modelos epidemiológicos.
 **Lecturas.** Hairer, Nørsett y Wanner, *Solving Ordinary Differential Equations I*; Iserles, *A First Course in the Numerical Analysis of Differential Equations*.
 
-#### VI.11 Integración geométrica y restricciones
-*40 págs. · Requiere: VI.10, VI.8, V.4 · Núcleo*
+#### VIII.11 Integración geométrica y restricciones
+*40 págs. · Requiere: VIII.10, VIII.8, VII.4 · Núcleo*
 - Integradores simplécticos: Störmer–Verlet y Euler semi-implícito; conservación de una energía modificada (enunciado).
 - Integradores en grupos de Lie para las rotaciones.
 - Restricciones en la integración: proyección, SHAKE y RATTLE.
@@ -1370,8 +1643,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] tela, cuerdas y cuerpos blandos con PBD y XPBD · [Física] dinámica molecular · [Ing] mecanismos con restricciones.
 **Lecturas.** Hairer, Lubich y Wanner, *Geometric Numerical Integration*; Macklin, Müller y Chentanez, «XPBD: Position-Based Simulation of Compliant Constrained Dynamics».
 
-#### VI.12 Contacto y complementariedad
-*40 págs. · Requiere: VI.11, IV.7, II.12 · Núcleo*
+#### VIII.12 Contacto y complementariedad
+*40 págs. · Requiere: VIII.11, IV.7, II.12 · Núcleo*
 - El contacto unilateral como problema de complementariedad lineal (LCP); existencia y unicidad.
 - Fricción de Coulomb, cono de fricción y su aproximación poliédrica; coeficiente de restitución.
 - Métodos de Gauss–Seidel y de Jacobi proyectados; convergencia.
@@ -1381,38 +1654,49 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] pilas de cajas estables y fricción · [Ing] robótica de manipulación · [Bio/Eco] modelos de equilibrio de mercado.
 **Lecturas.** Cottle, Pang y Stone, *The Linear Complementarity Problem*; Stewart, «Rigid-Body Dynamics with Friction and Impact»; Erleben, Sporring, Henriksen y Dohlmann, *Physics-Based Animation*.
 
-### Tomo VII — Medida, Fourier y variable compleja
+### Tomo IX — Medida, Fourier y variable compleja
 
-*Requiere: Tomos III y IV · 13 capítulos.* La integral de Lebesgue y los espacios de funciones, el análisis de Fourier continuo y discreto, las distribuciones, la variable compleja con sus métodos asintóticos, y el análisis en la esfera.
+*Requiere: Tomos III y IV · 14 capítulos.* La integral de Lebesgue y los espacios de funciones, el análisis de Fourier continuo y discreto, las distribuciones, la variable compleja con sus métodos asintóticos, y el análisis en la esfera.
 
 **Parte A — Medida y espacios de funciones**
 
-#### VII.1 Medida e integral de Lebesgue
+#### IX.1 Medida e integral de Lebesgue
 *52 págs. · Requiere: IV.9 · Núcleo*
 - σ-álgebras, medida exterior y medida de Lebesgue; existencia de conjuntos no medibles.
 - Funciones medibles e integral de Lebesgue.
 - Teoremas de la convergencia monótona y de la convergencia dominada; lema de Fatou.
 - Medida producto y teorema de Fubini–Tonelli; comparación con la integral de Riemann.
 
-**Puente.** Entrada: un estimador que promedia los valores de una función con infinitos saltos. La integral de Lebesgue es la que se puede intercambiar con límites sin sorpresas, y es el marco en el que la probabilidad (VIII.2) y Monte Carlo están bien definidos.
-**Aplicaciones.** [Datos] esperanza de variables aleatorias (aviso de VIII.2) · [Física] distribuciones de masa y de carga · [Señales] energía de señales con discontinuidades.
+**Puente.** Entrada: un estimador que promedia los valores de una función con infinitos saltos. La integral de Lebesgue es la que se puede intercambiar con límites sin sorpresas, y es el marco en el que la probabilidad (XI.2) y Monte Carlo están bien definidos.
+**Aplicaciones.** [Datos] esperanza de variables aleatorias (aviso de XI.2) · [Física] distribuciones de masa y de carga · [Señales] energía de señales con discontinuidades.
 **Lecturas.** Stein y Shakarchi, *Real Analysis*; Folland, *Real Analysis*.
 
-#### VII.2 Espacios Lᵖ y espacios de Hilbert
-*48 págs. · Requiere: VII.1, II.9 · Núcleo*
+#### IX.2 Medidas con signo, Radon–Nikodym y diferenciación
+*44 págs. · Requiere: IX.1 · Núcleo*
+- Espacios de medida abstractos y teorema de extensión de Carathéodory; medidas de Lebesgue–Stieltjes.
+- Medidas con signo; descomposiciones de Hahn y de Jordan.
+- Continuidad absoluta, teorema de Radon–Nikodym y descomposición de Lebesgue.
+- Teorema de diferenciación de Lebesgue; funciones de variación acotada y absolutamente continuas; el teorema fundamental del cálculo para la integral de Lebesgue.
+
+**Puente.** Entrada: `pdf = np.gradient(cdf, x)`, una densidad obtenida derivando una función de distribución empírica. Una densidad es una derivada de Radon–Nikodym y existe solo si la distribución es absolutamente continua: por eso la derivada numérica de una distribución con átomos produce picos que no convergen.
+**Aplicaciones.** [Datos] razones de verosimilitud y cambio de medida en estadística · [Física] densidades de carga y de masa frente a cargas puntuales · [3D] los pesos del muestreo por importancia en el trazado de caminos como cocientes de densidades.
+**Lecturas.** Folland, *Real Analysis*; Royden y Fitzpatrick, *Real Analysis*.
+
+#### IX.3 Espacios Lᵖ y espacios de Hilbert
+*48 págs. · Requiere: IX.1, II.9 · Núcleo*
 - Espacios Lᵖ, desigualdades de Hölder y de Minkowski; completitud (teorema de Riesz–Fischer).
 - Espacios de Hilbert: proyección ortogonal, bases ortonormales e identidad de Parseval.
 - Teorema de representación de Riesz.
-- Operadores compactos autoadjuntos y su teorema espectral; operadores integrales y alternativa de Fredholm. Los operadores no acotados llegan en X.7.
+- Operadores compactos autoadjuntos y su teorema espectral; operadores integrales y alternativa de Fredholm. La teoría en espacios de Banach llega en X.4, y los operadores no acotados, en X.6.
 
 **Puente.** Entrada: «proyectar» una señal sobre unas pocas funciones base para comprimirla. Es la proyección ortogonal de II.8 en un espacio de dimensión infinita, y la identidad de Parseval dice cuánta energía se pierde.
-**Aplicaciones.** [Señales] compresión por truncamiento en una base · [Física] mecánica cuántica: estados como vectores de un espacio de Hilbert · [3D] iluminación con funciones base (aviso de VII.13).
+**Aplicaciones.** [Señales] compresión por truncamiento en una base · [Física] mecánica cuántica: estados como vectores de un espacio de Hilbert · [3D] iluminación con funciones base (aviso de IX.14).
 **Lecturas.** Stein y Shakarchi, *Real Analysis*; Kreyszig, *Introductory Functional Analysis with Applications*.
 
 **Parte B — Análisis de Fourier**
 
-#### VII.3 Series de Fourier
-*44 págs. · Requiere: VII.2, III.8 · Núcleo*
+#### IX.4 Series de Fourier
+*44 págs. · Requiere: IX.3, III.8 · Núcleo*
 - Coeficientes de Fourier; núcleos de Dirichlet y de Fejér.
 - Convergencia puntual (teorema de Dirichlet), sumabilidad de Cesàro y fenómeno de Gibbs.
 - Convergencia en L² y completitud del sistema trigonométrico.
@@ -1422,19 +1706,19 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [Señales] síntesis y análisis de audio · [Física] cuerdas vibrantes y conducción del calor · [3D] formas de onda para animación procedural.
 **Lecturas.** Stein y Shakarchi, *Fourier Analysis*; Körner, *Fourier Analysis*.
 
-#### VII.4 Transformada de Fourier
-*48 págs. · Requiere: VII.3 · Núcleo*
+#### IX.5 Transformada de Fourier
+*48 págs. · Requiere: IX.4 · Núcleo*
 - Transformada en L¹; lema de Riemann–Lebesgue; fórmula de inversión.
 - Teorema de Plancherel en L².
 - Convolución y teorema de convolución; aproximaciones de la identidad.
-- Principio de incertidumbre y gaussianas; la delta de Dirac como límite de gaussianas (VII.5 la formaliza).
+- Principio de incertidumbre y gaussianas; la delta de Dirac como límite de gaussianas (IX.6 la formaliza).
 
 **Puente.** Entrada: un desenfoque gaussiano separable, `blurX(blurY(image))`. Convolucionar con una gaussiana 2D equivale a convolucionar dos veces con gaussianas 1D porque la gaussiana es un producto de funciones de cada coordenada; en frecuencia es un filtro pasabajos.
 **Aplicaciones.** [3D] desenfoque y *bloom* · [Señales] filtros y respuesta en frecuencia · [Física] óptica de Fourier y difracción · [Bio/Eco] resonancia magnética.
 **Lecturas.** Stein y Shakarchi, *Fourier Analysis*; Folland, *Fourier Analysis and Its Applications*.
 
-#### VII.5 Distribuciones
-*40 págs. · Requiere: VII.4 · Núcleo*
+#### IX.6 Distribuciones
+*40 págs. · Requiere: IX.5 · Núcleo*
 - Funciones de prueba y distribuciones; la delta de Dirac y sus derivadas.
 - Derivada distribucional, producto por funciones suaves y convergencia de distribuciones.
 - Distribuciones temperadas y su transformada de Fourier.
@@ -1444,8 +1728,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [Física] cargas puntuales, densidades singulares y propagadores · [Señales] el impulso unitario y la respuesta al impulso de un sistema lineal · [Ing] fuerzas concentradas en vigas.
 **Lecturas.** Strichartz, *A Guide to Distribution Theory and Fourier Transforms*; Friedlander y Joshi, *Introduction to the Theory of Distributions*.
 
-#### VII.6 Muestreo y transformada discreta
-*48 págs. · Requiere: VII.4, II.12 · Núcleo*
+#### IX.7 Muestreo y transformada discreta
+*48 págs. · Requiere: IX.5, II.12 · Núcleo*
 - Teorema de Nyquist–Shannon y origen del *aliasing*.
 - Filtros de reconstrucción: caja, tienda, Mitchell–Netravali y Lanczos.
 - Transformada discreta de Fourier, FFT de Cooley–Tukey y convolución circular; transformada del coseno.
@@ -1455,20 +1739,20 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] *mipmapping*, filtrado anisotrópico, *supersampling* y TAA · [Señales] audio digital y JPEG · [Ing] adquisición de datos.
 **Lecturas.** Oppenheim y Schafer, *Discrete-Time Signal Processing*; Heckbert, *Fundamentals of Texture Mapping and Image Warping*.
 
-#### VII.7 Ondículas y análisis tiempo–frecuencia
-*40 págs. · Requiere: VII.6 · Complementario*
+#### IX.8 Ondículas y análisis tiempo–frecuencia
+*40 págs. · Requiere: IX.7 · Complementario*
 - Transformada de Fourier de tiempo corto y espectrogramas.
 - Análisis de multirresolución; ondícula de Haar.
 - Ondículas de soporte compacto de Daubechies.
 - Transformada rápida de ondículas.
 
-**Puente.** Entrada: el tamaño de ventana de un espectrograma en una herramienta de audio. Elegirlo es elegir entre resolución en el tiempo y resolución en frecuencia: el principio de incertidumbre (VII.4) en acción.
+**Puente.** Entrada: el tamaño de ventana de un espectrograma en una herramienta de audio. Elegirlo es elegir entre resolución en el tiempo y resolución en frecuencia: el principio de incertidumbre (IX.5) en acción.
 **Aplicaciones.** [Señales] JPEG 2000 y eliminación de ruido · [Bio/Eco] análisis de electrocardiogramas · [3D] compresión de texturas y de geometría por niveles.
 **Lecturas.** Mallat, *A Wavelet Tour of Signal Processing*; Daubechies, *Ten Lectures on Wavelets*.
 
 **Parte C — Variable compleja**
 
-#### VII.8 Funciones holomorfas
+#### IX.9 Funciones holomorfas
 *40 págs. · Requiere: IV.10, III.8 · Núcleo*
 - Derivada compleja y ecuaciones de Cauchy–Riemann.
 - Funciones elementales complejas; ramas del logaritmo.
@@ -1479,8 +1763,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] desenrollado de ángulos y conjunto de Mandelbrot · [Ing] diagramas de Bode · [Física] flujo potencial en el plano.
 **Lecturas.** Ahlfors, *Complex Analysis*; Needham, *Visual Complex Analysis*.
 
-#### VII.9 Teoría de Cauchy y residuos
-*52 págs. · Requiere: VII.8 · Núcleo*
+#### IX.10 Teoría de Cauchy y residuos
+*52 págs. · Requiere: IX.9 · Núcleo*
 - Teorema y fórmula integral de Cauchy; analiticidad de las funciones holomorfas.
 - Teorema de Liouville y teorema fundamental del álgebra; principio del módulo máximo.
 - Series de Laurent y clasificación de las singularidades.
@@ -1490,8 +1774,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [Ing] criterio de estabilidad de Nyquist · [Física] relaciones de Kramers–Kronig entre causalidad y analiticidad; integrales en óptica · [Señales] diseño de filtros.
 **Lecturas.** Ahlfors, *Complex Analysis*; Stein y Shakarchi, *Complex Analysis*.
 
-#### VII.10 Métodos asintóticos
-*40 págs. · Requiere: VII.9 · Complementario*
+#### IX.11 Métodos asintóticos
+*40 págs. · Requiere: IX.10 · Complementario*
 - Series asintóticas y su diferencia con las series convergentes; lema de Watson.
 - Método de Laplace y fórmula de Stirling.
 - Fase estacionaria y método del punto de silla (descenso más rápido).
@@ -1501,19 +1785,19 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [Física] funciones de partición en mecánica estadística y óptica de la difracción · [Datos] aproximación de Laplace en inferencia bayesiana · [Señales] análisis de señales moduladas en frecuencia por fase estacionaria.
 **Lecturas.** Bender y Orszag, *Advanced Mathematical Methods for Scientists and Engineers*; de Bruijn, *Asymptotic Methods in Analysis*.
 
-#### VII.11 Aplicaciones conformes y funciones armónicas
-*40 págs. · Requiere: VII.9 · Complementario*
+#### IX.12 Aplicaciones conformes y funciones armónicas
+*40 págs. · Requiere: IX.10 · Complementario*
 - Conformidad y transformaciones de Möbius.
 - Teorema de la aplicación de Riemann (enunciado y discusión).
 - Funciones armónicas, principio del máximo y problema de Dirichlet en el disco.
 - Transformación de Joukowski y transformación de Schwarz–Christoffel (introducción).
 
-**Puente.** Entrada: una parametrización UV que conserva los ángulos de la textura. Conservar ángulos es ser conforme; en dimensión 2 eso equivale a ser holomorfa, y por eso las parametrizaciones conformes de mallas (V.12) se escriben con números complejos.
+**Puente.** Entrada: una parametrización UV que conserva los ángulos de la textura. Conservar ángulos es ser conforme; en dimensión 2 eso equivale a ser holomorfa, y por eso las parametrizaciones conformes de mallas (VII.12) se escriben con números complejos.
 **Aplicaciones.** [Física] perfil alar de Joukowski y flujo potencial · [3D] parametrizaciones conformes · [Ing] campos electrostáticos en el plano.
 **Lecturas.** Needham, *Visual Complex Analysis*; Ahlfors, *Complex Analysis*.
 
-#### VII.12 Transformadas de Laplace y z
-*40 págs. · Requiere: VII.9, VII.4 · Núcleo*
+#### IX.13 Transformadas de Laplace y z
+*40 págs. · Requiere: IX.10, IX.5 · Núcleo*
 - Transformada de Laplace, propiedades e inversión por residuos.
 - Resolución de ecuaciones diferenciales lineales; función de transferencia y estabilidad.
 - Transformada z y sistemas discretos.
@@ -1525,25 +1809,123 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Parte D — Análisis en la esfera**
 
-#### VII.13 Armónicos esféricos
-*44 págs. · Requiere: VII.3, IV.11, II.15 · Núcleo*
+#### IX.14 Armónicos esféricos
+*44 págs. · Requiere: IX.4, IV.11, II.15 · Núcleo*
 - Laplaciano en la esfera; polinomios armónicos homogéneos.
 - Polinomios de Legendre y armónicos esféricos como base ortonormal de L²(S²).
 - Rotación de coeficientes: la acción de SO(3) sobre cada banda.
-- Teorema de Funk–Hecke y convolución sobre la esfera. X.2 los estudia como representaciones de SO(3).
+- Teorema de Funk–Hecke y convolución sobre la esfera. XIII.2 los estudia como representaciones de SO(3).
 
 **Puente.** Entrada: `irradiance = dot(shCoeffs, shBasis(normal))` con nueve coeficientes. Tres bandas de armónicos esféricos bastan para la iluminación difusa porque la convolución con el coseno truncado (Funk–Hecke) atenúa casi a cero las bandas altas.
 **Aplicaciones.** [3D] iluminación difusa basada en imagen y sondas de luz · [Física] gravedad, geodesia y orbitales atómicos · [Señales] audio ambisónico.
 **Lecturas.** Atkinson y Han, *Spherical Harmonics and Approximations on the Unit Sphere*; Ramamoorthi y Hanrahan, «An Efficient Representation for Irradiance Environment Maps».
 
-### Tomo VIII — Probabilidad, estadística y métodos estocásticos
+### Tomo X — Análisis funcional
 
-*Requiere: Tomos IV y VII · 14 capítulos.* Probabilidad con teoría de la medida, métodos de Monte Carlo, procesos estocásticos, estadística y teoría de la información.
+*Requiere: Tomos VI y IX; importa VII.4 por interfaz · 8 capítulos.* Los espacios de Banach y sus grandes teoremas, la dualidad y las topologías débiles, los operadores compactos y los espacios de Sobolev, y los operadores no acotados de la mecánica cuántica. Es el marco donde las ecuaciones en derivadas parciales tienen solución, donde los elementos finitos convergen y donde los observables cuánticos tienen sentido.
+
+**Parte A — Espacios de Banach y dualidad**
+
+#### X.1 Espacios de Banach y teorema de Hahn–Banach
+*44 págs. · Requiere: IX.3, I.4 · Núcleo*
+- Espacios normados y de Banach; operadores acotados y espacio de operadores; cocientes.
+- Ejemplos: ℓᵖ, Lᵖ, c₀ y C(K).
+- Teorema de Hahn–Banach, analítico y geométrico (separación de convexos), con el lema de Zorn.
+- Consecuencias: extensión de funcionales, norma por dualidad y doble dual.
+
+**Puente.** Entrada: `w·x + b ≥ 0`, el clasificador lineal que separa dos clases. Que dos convexos disjuntos se puedan separar con un hiperplano es la forma geométrica de Hahn–Banach; en dimensión infinita, la misma afirmación sostiene los métodos de núcleos y la dualidad en optimización.
+**Aplicaciones.** [Datos] separación por hiperplanos y máquinas de vectores soporte en espacios de funciones · [3D] separación de convexos en la detección de colisiones · [Ing] dualidad y certificados de optimalidad en control óptimo.
+**Lecturas.** Brezis, *Functional Analysis, Sobolev Spaces and Partial Differential Equations*; Kreyszig, *Introductory Functional Analysis with Applications*.
+
+#### X.2 Acotación uniforme, aplicación abierta y gráfico cerrado
+*40 págs. · Requiere: X.1, VI.4 · Núcleo*
+- Principio de acotación uniforme (Banach–Steinhaus), por el teorema de Baire.
+- Teorema de la aplicación abierta y teorema de la inversa acotada.
+- Teorema del gráfico cerrado.
+- Aplicaciones: series de Fourier de funciones continuas que divergen en un punto; teorema de equivalencia de Lax.
+
+**Puente.** Entrada: un esquema numérico consistente que igual explota al refinar la malla. El teorema de equivalencia de Lax dice que, para un problema lineal bien planteado, convergencia equivale a consistencia más estabilidad, y su demostración es el principio de acotación uniforme.
+**Aplicaciones.** [Ing] estabilidad de esquemas numéricos y teorema de Lax · [Señales] divergencia de series de Fourier e inestabilidad en la reconstrucción de señales · [Bio/Eco] problemas inversos mal planteados en tomografía.
+**Lecturas.** Brezis, *Functional Analysis, Sobolev Spaces and Partial Differential Equations*; Kreyszig, *Introductory Functional Analysis with Applications*.
+
+#### X.3 Dualidad, topologías débiles y teorema de Banach–Alaoglu
+*44 págs. · Requiere: X.2, VI.2, IX.2 · Núcleo*
+- Duales de los Lᵖ por el teorema de Radon–Nikodym; dual de C(K) y teorema de representación de Riesz–Markov (enunciado).
+- Topologías débil y débil-*; convergencia débil.
+- Teorema de Banach–Alaoglu, con Tychonoff; espacios reflexivos.
+- Minimización en espacios reflexivos: los funcionales convexos y semicontinuos alcanzan su mínimo.
+
+**Puente.** Entrada: una sucesión de oscilaciones cada vez más rápidas, `sin(n * x)`, que «tiende a cero» en promedio pero no en norma. Converge débilmente a 0: la topología débil es la que conserva la compacidad en dimensión infinita, y con ella el método directo garantiza que los problemas variacionales tienen solución.
+**Aplicaciones.** [Física] métodos variacionales y existencia de estados de mínima energía · [3D] existencia de superficies de energía mínima en modelado y animación · [Datos] convergencia débil de medidas y distancias entre distribuciones.
+**Lecturas.** Brezis, *Functional Analysis, Sobolev Spaces and Partial Differential Equations*; Rudin, *Functional Analysis*.
+
+**Parte B — Operadores compactos y espacios de Sobolev**
+
+#### X.4 Operadores compactos y teoría de Fredholm
+*40 págs. · Requiere: X.3 · Complementario*
+- Operadores compactos en espacios de Banach; límites de operadores de rango finito.
+- Teoría de Riesz–Schauder: el espectro de un operador compacto.
+- Alternativa de Fredholm y operadores de Fredholm; índice.
+- Ecuaciones integrales de segunda especie y su resolución numérica por el método de Nyström.
+
+**Puente.** Entrada: `solve(I - K, f)`, con K una matriz que discretiza un núcleo integral. La alternativa de Fredholm dice que la ecuación tiene solución única salvo para una cantidad numerable de valores del parámetro, y eso explica por qué el sistema discreto está bien condicionado lejos de ellos.
+**Aplicaciones.** [3D] radiosidad: el transporte de la luz como ecuación integral de segunda especie · [Ing] métodos de elementos de contorno en acústica y electromagnetismo · [Física] dispersión de ondas y ecuación de Lippmann–Schwinger.
+**Lecturas.** Kress, *Linear Integral Equations*; Brezis, *Functional Analysis, Sobolev Spaces and Partial Differential Equations*.
+
+#### X.5 Espacios de Sobolev
+*48 págs. · Requiere: X.3, IX.6 · Núcleo*
+- Derivadas débiles y espacios Wᵏ·ᵖ; densidad de las funciones suaves.
+- El espacio H¹₀ y la desigualdad de Poincaré; trazas en el borde.
+- Teoremas de inmersión de Sobolev (enunciados) y teorema de compacidad de Rellich–Kondrachov.
+- Espacios Hˢ por la transformada de Fourier; regularidad.
+
+**Puente.** Entrada: la energía `sum(|grad u|^2) * area` que minimiza un suavizado de mallas o un programa de elementos finitos. Esa energía es la norma de H¹; las funciones con energía finita forman un espacio de Sobolev, y en él el problema discreto converge al continuo.
+**Aplicaciones.** [3D] energía de Dirichlet en el suavizado y la deformación de mallas · [Ing] espacios de elementos finitos y estimaciones del error · [Física] energía de los campos y regularidad de las soluciones.
+**Lecturas.** Evans, *Partial Differential Equations*; Brezis, *Functional Analysis, Sobolev Spaces and Partial Differential Equations*.
+
+**Parte C — Teoría espectral y evolución**
+
+#### X.6 Operadores en espacios de Hilbert
+*48 págs. · Requiere: IX.3, IX.6, VII.4, X.2 · Complementario*
+- Operadores acotados y no acotados; dominio, clausura y adjunto.
+- Operadores simétricos frente a autoadjuntos, y por qué la diferencia importa.
+- Espectro puntual, continuo y residual; teorema espectral para operadores autoadjuntos (enunciado, con medidas espectrales).
+- Grupos unitarios a un parámetro y teorema de Stone: los generadores autoadjuntos.
+
+**Puente.** Entrada: `[x, p] = iħ`. Ningún par de matrices finitas lo cumple, porque la traza de un conmutador es 0 y la de iħ·I no lo es; la relación canónica exige operadores no acotados en dimensión infinita, y por eso los físicos necesitan algo más que el álgebra lineal del Tomo II.
+**Aplicaciones.** [Física] observables de la mecánica cuántica · [Ing] operador de Koopman para analizar sistemas dinámicos no lineales · [Datos] operadores integrales y métodos de núcleos.
+**Lecturas.** Hall, *Quantum Theory for Mathematicians*; Reed y Simon, *Methods of Modern Mathematical Physics*, vol. 1.
+
+#### X.7 Álgebras de Banach y teoría espectral
+*44 págs. · Requiere: X.4, IX.9 · Complementario*
+- Álgebras de Banach; espectro, resolvente y radio espectral (fórmula de Gelfand).
+- Teorema de Gelfand–Mazur y transformada de Gelfand en las álgebras conmutativas.
+- Cálculo funcional holomorfo y continuo; álgebras C* (teorema de Gelfand–Naimark, enunciado).
+- Teorema espectral para operadores normales acotados.
+
+**Puente.** Entrada: `rho = max(abs(eigvals(A)))` para decidir si una iteración converge. El radio espectral es lím ‖Aⁿ‖^{1/n}, la fórmula de Gelfand, y vale en cualquier álgebra de Banach: por eso decide la convergencia de un método iterativo aunque la norma de A sea mayor que 1.
+**Aplicaciones.** [Ing] convergencia de métodos iterativos y estabilidad de sistemas discretos · [Física] observables acotados y álgebras de operadores en mecánica cuántica · [Señales] cálculo funcional y filtros espectrales sobre grafos.
+**Lecturas.** Conway, *A Course in Functional Analysis*; Rudin, *Functional Analysis*.
+
+#### X.8 Semigrupos de operadores y ecuaciones de evolución
+*40 págs. · Requiere: X.6, X.5 · Complementario*
+- Semigrupos fuertemente continuos y su generador.
+- Teoremas de Hille–Yosida y de Lumer–Phillips.
+- Las ecuaciones del calor, de ondas y de Schrödinger como semigrupos.
+- Fórmulas de Trotter y división de operadores.
+
+**Puente.** Entrada: `u = expm(dt * L) @ u` en un integrador exponencial. Para un operador diferencial L, `exp(tL)` no es una serie de potencias sino un semigrupo, y Hille–Yosida dice cuándo existe; la fórmula de Trotter justifica integrar por separado cada término de la ecuación.
+**Aplicaciones.** [3D] división de operadores en la simulación de fluidos y de humo · [Física] evolución cuántica y división de Trotter en simulación · [Ing] sistemas de control en dimensión infinita.
+**Lecturas.** Engel y Nagel, *A Short Course on Operator Semigroups*; Pazy, *Semigroups of Linear Operators and Applications to Partial Differential Equations*.
+
+### Tomo XI — Probabilidad, estadística y métodos estocásticos
+
+*Requiere: Tomos IV y IX · 14 capítulos.* Probabilidad con teoría de la medida, métodos de Monte Carlo, procesos estocásticos, estadística y teoría de la información.
 
 **Parte A — Probabilidad**
 
-#### VIII.1 Probabilidad discreta
-*44 págs. · Requiere: I.5, III.2 · Núcleo*
+#### XI.1 Probabilidad discreta
+*44 págs. · Requiere: I.6, III.2 · Núcleo*
 - Espacios de probabilidad finitos y numerables; probabilidad condicional y teorema de Bayes.
 - Independencia.
 - Variables aleatorias discretas, esperanza y varianza.
@@ -1553,10 +1935,10 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] tablas de botín y diseño de juegos · [Bio/Eco] pruebas diagnósticas y teorema de Bayes · [Cripto] probabilidad de colisión en tablas de dispersión.
 **Lecturas.** Blitzstein y Hwang, *Introduction to Probability*; Ross, *A First Course in Probability*.
 
-#### VIII.2 Probabilidad con medida
-*44 págs. · Requiere: VIII.1, VII.1, IV.9 · Núcleo*
+#### XI.2 Probabilidad con medida
+*44 págs. · Requiere: XI.1, IX.2, IV.9 · Núcleo*
 - Espacios de probabilidad generales; variables aleatorias como funciones medibles.
-- Distribuciones, funciones de distribución y densidades.
+- Distribuciones, funciones de distribución y densidades como derivadas de Radon–Nikodym.
 - Esperanza como integral de Lebesgue.
 - Cambio de variables en densidades con el jacobiano.
 
@@ -1564,19 +1946,19 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] distribuciones de microfacetas en materiales PBR · [Física] distribución de velocidades de Maxwell–Boltzmann · [Datos] modelos de densidad.
 **Lecturas.** Grimmett y Stirzaker, *Probability and Random Processes*; Williams, *Probability with Martingales*.
 
-#### VIII.3 Vectores aleatorios
-*44 págs. · Requiere: VIII.2, II.9 · Núcleo*
+#### XI.3 Vectores aleatorios
+*44 págs. · Requiere: XI.2, II.9 · Núcleo*
 - Distribuciones conjuntas, marginales y condicionales; independencia.
 - Covarianza y matriz de covarianza.
 - Gaussiana multivariante y su factorización por Cholesky o por autovalores.
-- Esperanza condicional.
+- Esperanza condicional, cuya existencia da el teorema de Radon–Nikodym.
 
 **Puente.** Entrada: `sample = mean + L * randn3()` con `L = cholesky(Sigma)`. Transformar una gaussiana estándar con el factor de Cholesky da la covarianza deseada: es la forma cuadrática de II.9 aplicada al azar.
 **Aplicaciones.** [3D] *Gaussian Splatting*: gaussianas anisótropas y su proyección en pantalla · [Datos] modelos gaussianos · [Ing] errores de medición correlacionados.
 **Lecturas.** Grimmett y Stirzaker, *Probability and Random Processes*; Blitzstein y Hwang, *Introduction to Probability*.
 
-#### VIII.4 Desigualdades y teoremas límite
-*52 págs. · Requiere: VIII.3, VII.4 · Núcleo*
+#### XI.4 Desigualdades y teoremas límite
+*52 págs. · Requiere: XI.3, IX.5 · Núcleo*
 - Desigualdades de Markov, de Chebyshev, de Cantelli y de Chernoff.
 - Modos de convergencia; leyes débil y fuerte de los grandes números.
 - La función característica como transformada de Fourier; teorema de continuidad de Lévy.
@@ -1588,8 +1970,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Parte B — Métodos estocásticos**
 
-#### VIII.5 Generación de muestras
-*36 págs. · Requiere: VIII.3, I.4 · Núcleo*
+#### XI.5 Generación de muestras
+*36 págs. · Requiere: XI.3, I.5 · Núcleo*
 - Generadores pseudoaleatorios: período, calidad y pruebas estadísticas.
 - Método de inversión y método de rechazo.
 - Método alias de Walker y transformación de Box–Muller.
@@ -1599,8 +1981,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] muestreo de direcciones y de BRDF · [Física] simulación de partículas · [Datos] simulación y *bootstrap*.
 **Lecturas.** Devroye, *Non-Uniform Random Variate Generation*; Owen, *Monte Carlo Theory, Methods and Examples*.
 
-#### VIII.6 Integración de Monte Carlo
-*44 págs. · Requiere: VIII.4, VIII.5 · Núcleo*
+#### XI.6 Integración de Monte Carlo
+*44 págs. · Requiere: XI.4, XI.5 · Núcleo*
 - Estimador de Monte Carlo: insesgadez, varianza y convergencia de orden 1/√N.
 - Muestreo por importancia y muestreo múltiple por importancia (MIS).
 - Estratificación, variables de control y ruleta rusa.
@@ -1610,8 +1992,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] oclusión ambiental, luces de área y remuestreo espaciotemporal (ReSTIR) · [Bio/Eco] valoración de opciones financieras · [Física] integrales en dimensión alta.
 **Lecturas.** Owen, *Monte Carlo Theory, Methods and Examples*; Veach, *Robust Monte Carlo Methods for Light Transport Simulation*.
 
-#### VIII.7 Cuasi-Monte Carlo
-*36 págs. · Requiere: VIII.6 · Complementario*
+#### XI.7 Cuasi-Monte Carlo
+*36 págs. · Requiere: XI.6 · Complementario*
 - Discrepancia y desigualdad de Koksma–Hlawka.
 - Inverso radical; secuencias de Halton y de Sobol; redes digitales.
 - Cuasi-Monte Carlo aleatorizado: desplazamientos y mezclas de Owen.
@@ -1621,8 +2003,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] desplazamientos del TAA y muestreo de píxeles · [Bio/Eco] finanzas computacionales · [Ing] diseño de experimentos.
 **Lecturas.** Niederreiter, *Random Number Generation and Quasi-Monte Carlo Methods*; Dick y Pillichshammer, *Digital Nets and Sequences*.
 
-#### VIII.8 Cadenas de Markov y MCMC
-*48 págs. · Requiere: VIII.4, II.9 · Núcleo*
+#### XI.8 Cadenas de Markov y MCMC
+*48 págs. · Requiere: XI.4, II.9 · Núcleo*
 - Cadenas de Markov finitas: matrices estocásticas y clasificación de estados.
 - Distribución estacionaria y teorema de Perron–Frobenius.
 - Convergencia y tiempos de mezcla.
@@ -1632,8 +2014,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [Datos] PageRank e inferencia bayesiana por MCMC · [3D] generación procedural con cadenas de Markov · [Física] modelo de Ising.
 **Lecturas.** Levin y Peres, *Markov Chains and Mixing Times*; Norris, *Markov Chains*.
 
-#### VIII.9 Procesos puntuales y campos aleatorios
-*48 págs. · Requiere: VIII.6, VII.6 · Complementario*
+#### XI.9 Procesos puntuales y campos aleatorios
+*48 págs. · Requiere: XI.6, IX.7 · Complementario*
 - Procesos de Poisson espaciales y procesos con distancia mínima.
 - Espectro de potencia de un conjunto de puntos; ruido azul.
 - Campos aleatorios estacionarios y teorema de Wiener–Khinchin.
@@ -1643,8 +2025,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] terreno procedural, vegetación con disco de Poisson y *dithering* · [Física] superficies rugosas · [Bio/Eco] distribución espacial de árboles y de células.
 **Lecturas.** Illian, Penttinen, Stoyan y Stoyan, *Statistical Analysis and Modelling of Spatial Point Patterns*; Lagae et al., «A Survey of Procedural Noise Functions».
 
-#### VIII.10 Procesos en tiempo continuo: Poisson y browniano
-*44 págs. · Requiere: VIII.4 · Núcleo*
+#### XI.10 Procesos en tiempo continuo: Poisson y browniano
+*44 págs. · Requiere: XI.4 · Núcleo*
 - Proceso de Poisson temporal y tiempos de espera exponenciales.
 - Paseo aleatorio y su límite; construcción del movimiento browniano.
 - Propiedades del movimiento browniano: continuidad, no derivabilidad y propiedad de Markov.
@@ -1654,8 +2036,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] aparición de eventos y partículas · [Ing] colas y tráfico en redes · [Física] difusión y movimiento browniano.
 **Lecturas.** Durrett, *Probability: Theory and Examples*; Lawler, *Introduction to Stochastic Processes*.
 
-#### VIII.11 Ecuaciones integrales y transporte
-*48 págs. · Requiere: VIII.6, VII.2 · Complementario*
+#### XI.11 Ecuaciones integrales y transporte
+*48 págs. · Requiere: XI.6, IX.3 · Complementario*
 - Ecuaciones integrales de Fredholm de segunda especie; serie de Neumann y su convergencia.
 - Solución por caminos aleatorios: estimadores de von Neumann–Ulam.
 - La ecuación de renderizado: radiancia, BRDF (reciprocidad y conservación de la energía) y término geométrico; trazado de caminos con estimación de eventos siguientes.
@@ -1667,8 +2049,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Parte C — Estadística e información**
 
-#### VIII.12 Inferencia estadística
-*48 págs. · Requiere: VIII.4, II.8 · Núcleo*
+#### XI.12 Inferencia estadística
+*48 págs. · Requiere: XI.4, II.8 · Núcleo*
 - Estimadores: sesgo, varianza, consistencia y error cuadrático medio.
 - Máxima verosimilitud y su comportamiento asintótico.
 - Intervalos de confianza y contrastes de hipótesis.
@@ -1678,8 +2060,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] medición de rendimiento y pruebas A/B en juegos · [Bio/Eco] ensayos clínicos · [Datos] regresión y validación de modelos.
 **Lecturas.** Casella y Berger, *Statistical Inference*; Wasserman, *All of Statistics*.
 
-#### VIII.13 Inferencia bayesiana y filtrado
-*44 págs. · Requiere: VIII.12, VIII.3 · Núcleo*
+#### XI.13 Inferencia bayesiana y filtrado
+*44 págs. · Requiere: XI.12, XI.3 · Núcleo*
 - Distribuciones *a priori* y *a posteriori*; familias conjugadas.
 - Estimación bayesiana y estimador MAP.
 - Filtro de Kalman como inferencia gaussiana recursiva.
@@ -1689,8 +2071,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] predicción en juegos en red y seguimiento de controles de realidad virtual · [Ing] navegación y robótica · [Datos] modelos bayesianos.
 **Lecturas.** Särkkä, *Bayesian Filtering and Smoothing*; Gelman et al., *Bayesian Data Analysis*.
 
-#### VIII.14 Entropía e información
-*40 págs. · Requiere: VIII.12, IV.4 · Núcleo*
+#### XI.14 Entropía e información
+*40 págs. · Requiere: XI.12, IV.4 · Núcleo*
 - Entropía de Shannon, entropías conjunta y condicional, información mutua.
 - Divergencia de Kullback–Leibler; la máxima verosimilitud como minimización de esa divergencia.
 - Principio de máxima entropía con multiplicadores de Lagrange: la distribución de Gibbs.
@@ -1700,14 +2082,14 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [Física] mecánica estadística: ensambles, función de partición y segunda ley · [Datos] entropía cruzada y selección de modelos · [Cripto] compresión sin pérdida y códigos de Huffman.
 **Lecturas.** Cover y Thomas, *Elements of Information Theory*; MacKay, *Information Theory, Inference, and Learning Algorithms*.
 
-### Tomo IX — Ecuaciones en derivadas parciales y medios continuos
+### Tomo XII — Ecuaciones en derivadas parciales y medios continuos
 
-*Requiere: Tomos VI y VII; importa VIII.9 por interfaz · 10 capítulos.* Teoría clásica y numérica de las ecuaciones en derivadas parciales, con las funciones especiales y los métodos de perturbaciones que nacen de ellas, y su aplicación a sólidos deformables y fluidos.
+*Requiere: Tomos VIII, IX y X; importa XI.9 por interfaz · 10 capítulos.* Teoría clásica y numérica de las ecuaciones en derivadas parciales, con las funciones especiales y los métodos de perturbaciones que nacen de ellas, y su aplicación a sólidos deformables y fluidos.
 
 **Parte A — Teoría**
 
-#### IX.1 Ecuaciones en derivadas parciales clásicas
-*48 págs. · Requiere: IV.11, VI.4 · Núcleo*
+#### XII.1 Ecuaciones en derivadas parciales clásicas
+*48 págs. · Requiere: IV.11, VIII.4 · Núcleo*
 - Clasificación de las ecuaciones de segundo orden.
 - Ecuación de transporte y método de las características.
 - Ecuaciones del calor, de onda y de Laplace–Poisson: derivación y fórmula de d'Alembert.
@@ -1717,30 +2099,30 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] advección en humo y fluidos · [Física] conducción del calor y acústica · [Bio/Eco] difusión de sustancias en tejidos.
 **Lecturas.** Evans, *Partial Differential Equations*; Strauss, *Partial Differential Equations: An Introduction*.
 
-#### IX.2 Separación de variables y problemas de Sturm–Liouville
-*44 págs. · Requiere: IX.1, VII.3 · Núcleo*
+#### XII.2 Separación de variables y problemas de Sturm–Liouville
+*44 págs. · Requiere: XII.1, IX.4 · Núcleo*
 - Problemas de contorno y separación de variables.
 - Problemas de Sturm–Liouville: autovalores, autofunciones y completitud.
-- Separación en coordenadas polares y esféricas; primeras funciones de Bessel y de Legendre (IX.3 las estudia en general).
+- Separación en coordenadas polares y esféricas; primeras funciones de Bessel y de Legendre (XII.3 las estudia en general).
 - Desarrollos en autofunciones para las ecuaciones del calor y de onda.
 
 **Puente.** Entrada: el sonido de un tambor sintetizado como suma de modos. Los modos de una membrana circular son funciones de Bessel, y por eso un tambor no tiene armónicos enteros como una cuerda.
 **Aplicaciones.** [Señales] síntesis modal de sonido · [Física] vibraciones de membranas · [3D] sonido procedural de impactos.
 **Lecturas.** Strauss, *Partial Differential Equations: An Introduction*; Olver, *Introduction to Partial Differential Equations*.
 
-#### IX.3 Funciones especiales y polinomios ortogonales
-*48 págs. · Requiere: IX.2, VII.9 · Núcleo*
+#### XII.3 Funciones especiales y polinomios ortogonales
+*48 págs. · Requiere: XII.2, IX.10 · Núcleo*
 - Funciones Gamma y Beta; prolongación analítica de la función Gamma.
 - Ecuaciones con puntos singulares regulares: método de Frobenius.
 - Funciones de Bessel, polinomios y funciones asociadas de Legendre, polinomios de Hermite y de Laguerre: funciones generatrices, fórmulas de Rodrigues y recurrencias.
 - Polinomios ortogonales en general: recurrencia de tres términos y cuadratura gaussiana; la función hipergeométrica como caso unificador.
 
-**Puente.** Entrada: `scipy.special.jv(n, x)` y una tabla de ceros de Bessel en un libro de física. Las funciones especiales no son una colección de fórmulas: son las autofunciones que produce la separación de variables (IX.2), y su ortogonalidad, sus recurrencias y sus ceros salen de la teoría de Sturm–Liouville.
+**Puente.** Entrada: `scipy.special.jv(n, x)` y una tabla de ceros de Bessel en un libro de física. Las funciones especiales no son una colección de fórmulas: son las autofunciones que produce la separación de variables (XII.2), y su ortogonalidad, sus recurrencias y sus ceros salen de la teoría de Sturm–Liouville.
 **Aplicaciones.** [Física] oscilador armónico cuántico (Hermite) y átomo de hidrógeno (Laguerre y Legendre) · [Señales] modulación en frecuencia y funciones de Bessel · [Ing] vibraciones de placas circulares y conducción del calor en cilindros.
 **Lecturas.** Andrews, Askey y Roy, *Special Functions*; Lebedev, *Special Functions and Their Applications*; Olver et al., *NIST Handbook of Mathematical Functions*.
 
-#### IX.4 Soluciones fundamentales y funciones de Green
-*40 págs. · Requiere: IX.2, VII.5 · Núcleo*
+#### XII.4 Soluciones fundamentales y funciones de Green
+*40 págs. · Requiere: XII.2, IX.6 · Núcleo*
 - Transformada de Fourier para ecuaciones en todo el espacio.
 - Núcleo del calor y solución fundamental de la ecuación de Laplace.
 - Funciones de Green y representación de las soluciones.
@@ -1750,8 +2132,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] difusión en imágenes y edición de Poisson · [Física] gravitación y electrostática · [Bio/Eco] modelos de dispersión.
 **Lecturas.** Evans, *Partial Differential Equations*; Olver, *Introduction to Partial Differential Equations*.
 
-#### IX.5 Perturbaciones y aproximación WKB
-*44 págs. · Requiere: IX.1, VII.10 · Complementario*
+#### XII.5 Perturbaciones y aproximación WKB
+*44 págs. · Requiere: XII.1, IX.11 · Complementario*
 - Perturbaciones regulares de ecuaciones algebraicas y diferenciales.
 - Perturbaciones singulares y capas límite; desarrollos asintóticos acoplados.
 - Método de escalas múltiples y términos seculares.
@@ -1763,8 +2145,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Parte B — Métodos numéricos**
 
-#### IX.6 Diferencias finitas
-*44 págs. · Requiere: IX.1, VI.10, VII.6 · Núcleo*
+#### XII.6 Diferencias finitas
+*44 págs. · Requiere: XII.1, VIII.10, IX.7 · Núcleo*
 - Aproximaciones por diferencias y error de truncamiento.
 - Consistencia, estabilidad y convergencia; teorema de equivalencia de Lax.
 - Análisis de estabilidad de von Neumann y condición CFL.
@@ -1774,21 +2156,21 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] agua sobre campos de alturas y erosión de terrenos · [Física] propagación de ondas · [Ing] transferencia de calor en piezas.
 **Lecturas.** LeVeque, *Finite Difference Methods for Ordinary and Partial Differential Equations*; Strikwerda, *Finite Difference Schemes and Partial Differential Equations*.
 
-#### IX.7 Formulación débil y elementos finitos
-*52 págs. · Requiere: IX.4, VII.2, II.12 · Núcleo*
-- Espacios de Sobolev H¹ y trazas (introducción).
+#### XII.7 Formulación débil y elementos finitos
+*52 págs. · Requiere: XII.4, IX.3, II.12, X.5 · Núcleo*
+- Planteo en H¹₀ con los espacios de Sobolev de X.5; condiciones de borde esenciales y naturales.
 - Formulación débil y teorema de Lax–Milgram.
 - Método de Galerkin; elementos lineales en triángulos y tetraedros; matrices de rigidez y de masa.
 - Lema de Céa y estimaciones del error.
 
-**Puente.** Entrada: el ensamblado `K[i][j] += area * dot(grad_i, grad_j)` triángulo por triángulo. Es la formulación débil discretizada, y para elementos lineales esa matriz coincide con el laplaciano cotangente de V.12.
+**Puente.** Entrada: el ensamblado `K[i][j] += area * dot(grad_i, grad_j)` triángulo por triángulo. Es la formulación débil discretizada, y para elementos lineales esa matriz coincide con el laplaciano cotangente de VII.12.
 **Aplicaciones.** [Ing] análisis estructural · [3D] sólidos deformables y relación con el laplaciano cotangente · [Física] electrostática en geometrías complejas.
 **Lecturas.** Brenner y Scott, *The Mathematical Theory of Finite Element Methods*; Johnson, *Numerical Solution of Partial Differential Equations by the Finite Element Method*.
 
 **Parte C — Medios continuos**
 
-#### IX.8 Mecánica de medios continuos
-*48 págs. · Requiere: IX.7, II.10 · Complementario*
+#### XII.8 Mecánica de medios continuos
+*48 págs. · Requiere: XII.7, II.10 · Complementario*
 - Gradiente de deformación; tensores de deformación de Green y de pequeñas deformaciones.
 - Descomposición polar: rotación y estiramiento.
 - Tensiones de Cauchy y de Piola; ecuación de equilibrio.
@@ -1798,8 +2180,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] cuerpos blandos y músculos · [Ing] resistencia de materiales · [Bio/Eco] biomecánica de tejidos.
 **Lecturas.** Gonzalez y Stuart, *A First Course in Continuum Mechanics*; Bonet y Wood, *Nonlinear Continuum Mechanics for Finite Element Analysis*; Sifakis y Barbič, «FEM Simulation of 3D Deformable Solids».
 
-#### IX.9 Mecánica de fluidos
-*48 págs. · Requiere: IX.6, IV.11 · Núcleo*
+#### XII.9 Mecánica de fluidos
+*48 págs. · Requiere: XII.6, IV.11 · Núcleo*
 - Derivada material y leyes de conservación de la masa y del momento.
 - Ecuaciones de Euler y de Navier–Stokes incompresibles; vorticidad.
 - Descomposición de Helmholtz–Hodge y proyección de la presión.
@@ -1809,8 +2191,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] humo y fuego con *Stable Fluids* · [Ing] aerodinámica · [Física] meteorología.
 **Lecturas.** Chorin y Marsden, *A Mathematical Introduction to Fluid Mechanics*; Bridson, *Fluid Simulation for Computer Graphics*; Stam, «Stable Fluids».
 
-#### IX.10 Ondas en el agua, aguas someras y métodos de partículas
-*44 págs. · Requiere: IX.9, VIII.9 · Complementario*
+#### XII.10 Ondas en el agua, aguas someras y métodos de partículas
+*44 págs. · Requiere: XII.9, XI.9 · Complementario*
 - Ondas de superficie y relación de dispersión.
 - Ecuaciones de aguas someras.
 - Espectros de oleaje y síntesis de océanos con la FFT.
@@ -1820,14 +2202,14 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] océanos, ríos y barcos que flotan · [Física] maremotos y oleaje · [Ing] ingeniería costera.
 **Lecturas.** Tessendorf, «Simulating Ocean Water»; Monaghan, «Smoothed Particle Hydrodynamics»; Vreugdenhil, *Numerical Methods for Shallow-Water Flow*.
 
-### Tomo X — Simetría, variedades y operadores
+### Tomo XIII — Simetría, variedades y teoría cuántica
 
-*Requiere: Tomos V, VII y VIII; importa IX.3 por interfaz · 8 capítulos.* La matemática de la física moderna: representaciones de grupos, variedades y geometría del espacio-tiempo, y operadores en espacios de Hilbert. Es el cierre del itinerario de física, como el Tomo IX lo es del medio continuo. Sus capítulos son complementarios en el sentido de 5.3, porque nada del núcleo depende de ellos, pero son el centro del itinerario de física (9.6).
+*Requiere: Tomos VII, IX, X y XI; importa XII.3 por interfaz · 7 capítulos.* La matemática de la física moderna: representaciones de grupos, variedades y geometría del espacio-tiempo, y la estructura matemática de la mecánica cuántica, sobre los operadores del Tomo X. Es el cierre del itinerario de física, como el Tomo XII lo es del medio continuo. Sus capítulos son complementarios en el sentido de 5.3, porque nada del núcleo depende de ellos, pero son el centro del itinerario de física (9.6).
 
 **Parte A — Simetría y representaciones**
 
-#### X.1 Representaciones de grupos finitos
-*44 págs. · Requiere: I.7, II.11, VII.6 · Complementario*
+#### XIII.1 Representaciones de grupos finitos
+*44 págs. · Requiere: I.8, II.11, IX.7 · Complementario*
 - Representaciones, subrepresentaciones, teorema de Maschke y lema de Schur.
 - Caracteres y relaciones de ortogonalidad; tabla de caracteres.
 - Descomposición de la representación regular; análisis de Fourier en un grupo finito, con la DFT como el caso del grupo cíclico.
@@ -1837,8 +2219,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [Física] modos de vibración de moléculas y reglas de selección en espectroscopía · [Señales] la DFT como análisis armónico en ℤ/nℤ · [Datos] redes neuronales equivariantes respecto de grupos de simetría.
 **Lecturas.** Serre, *Linear Representations of Finite Groups*; Sternberg, *Group Theory and Physics*.
 
-#### X.2 SU(2), SO(3) y momento angular
-*48 págs. · Requiere: X.1, V.4, VII.13 · Complementario*
+#### XIII.2 SU(2), SO(3) y momento angular
+*48 págs. · Requiere: XIII.1, VII.4, IX.14 · Complementario*
 - Representaciones de grupos de Lie compactos y de sus álgebras; medida de Haar (enunciado) y ortogonalidad.
 - Representaciones irreducibles de su(2) mediante operadores escalera; pesos y espín.
 - Producto tensorial de representaciones y coeficientes de Clebsch–Gordan.
@@ -1848,8 +2230,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [Física] espín, acoplamiento de momentos angulares y estructura atómica · [3D] rotación de coeficientes de armónicos esféricos para iluminación · [Datos] redes equivariantes respecto de rotaciones en química computacional.
 **Lecturas.** Hall, *Lie Groups, Lie Algebras, and Representations*; Sakurai y Napolitano, *Modern Quantum Mechanics*.
 
-#### X.3 Espacio de Minkowski y grupo de Lorentz
-*40 págs. · Requiere: II.9, V.4, X.2 · Complementario*
+#### XIII.3 Espacio de Minkowski y grupo de Lorentz
+*40 págs. · Requiere: II.9, VII.4, XIII.2 · Complementario*
 - Formas bilineales de signatura (1, 3) y espacio de Minkowski; vectores temporales, espaciales y nulos; cono de luz.
 - Transformaciones de Lorentz, rapidez como ángulo hiperbólico y composición de velocidades.
 - Tiempo propio, cuadrivectores y cinemática relativista.
@@ -1861,30 +2243,30 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Parte B — Variedades y espacio-tiempo**
 
-#### X.4 Variedades diferenciables
-*48 págs. · Requiere: IV.3, IV.13, II.11 · Complementario*
-- Variedades, cartas y atlas; aplicaciones diferenciables; subvariedades y teorema del valor regular.
+#### XIII.4 Variedades diferenciables
+*48 págs. · Requiere: IV.3, IV.13, II.11, VI.3 · Complementario*
+- Variedades como espacios de Hausdorff con base numerable (VI.3), cartas y atlas; aplicaciones diferenciables; subvariedades y teorema del valor regular.
 - Espacio tangente y fibrado tangente; campos vectoriales, flujos y corchete de Lie.
 - Campos tensoriales y formas diferenciales en variedades; derivada de Lie.
-- Integración en variedades orientadas y teorema de Stokes.
+- Integración en variedades orientadas y teorema de Stokes. Para seguir: topología diferencial (transversalidad y teoría de Morse).
 
 **Puente.** Entrada: un optimizador de orientaciones que actualiza `q = normalize(q + dq)`. Sumar en ℝ⁴ y renormalizar es una retracción: la forma práctica de moverse por la variedad S³ sin salirse de ella. El capítulo da el marco general, espacios tangentes y retracciones, del que esa línea es un caso.
 **Aplicaciones.** [Ing] espacios de configuración en robótica · [3D] optimización sobre SO(3) para cámaras y personajes · [Física] espacios de fases como variedades.
 **Lecturas.** Lee, *Introduction to Smooth Manifolds*; Tu, *An Introduction to Manifolds*.
 
-#### X.5 Geometría riemanniana
-*48 págs. · Requiere: X.4, V.8, IV.12 · Complementario*
+#### XIII.5 Geometría riemanniana
+*48 págs. · Requiere: XIII.4, VII.8, IV.12 · Complementario*
 - Métricas riemannianas; longitud, distancia y volumen.
 - Conexión de Levi-Civita, derivada covariante y transporte paralelo.
 - Geodésicas y aplicación exponencial.
 - Tensor de curvatura de Riemann, curvatura seccional, tensor de Ricci y curvatura escalar; el *theorema egregium* revisitado. Para seguir: fibrados y teorías gauge.
 
 **Puente.** Entrada: `Γ^k_ij = ½ g^kl (∂_i g_jl + ∂_j g_il − ∂_l g_ij)` en un libro de relatividad. Los símbolos de Christoffel son los coeficientes de la conexión de Levi-Civita en coordenadas, y la fórmula se deduce de dos exigencias geométricas: que la conexión no tenga torsión y que conserve la métrica.
-**Aplicaciones.** [3D] geodésicas y distancias sobre mallas con el método del calor · [Ing] navegación por círculos máximos · [Física] relatividad general (aviso de X.6).
+**Aplicaciones.** [3D] geodésicas y distancias sobre mallas con el método del calor · [Ing] navegación por círculos máximos · [Física] relatividad general (aviso de XIII.6).
 **Lecturas.** do Carmo, *Riemannian Geometry*; Lee, *Introduction to Riemannian Manifolds*.
 
-#### X.6 Geometría lorentziana y gravitación
-*44 págs. · Requiere: X.5, X.3 · Complementario*
+#### XIII.6 Geometría lorentziana y gravitación
+*44 págs. · Requiere: XIII.5, XIII.3 · Complementario*
 - Variedades lorentzianas; estructura causal; geodésicas temporales y nulas.
 - Las ecuaciones de Einstein como ecuación geométrica; tensor de energía-impulso.
 - Solución de Schwarzschild: órbitas, desviación de la luz y corrimiento al rojo gravitacional.
@@ -1894,21 +2276,10 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Aplicaciones.** [3D] imágenes de agujeros negros y lentes gravitacionales con rayos curvos · [Ing] corrección gravitacional de los relojes del GPS · [Física] precesión del perihelio de Mercurio y ondas gravitacionales.
 **Lecturas.** Carroll, *Spacetime and Geometry*; Wald, *General Relativity*.
 
-**Parte C — Operadores y teoría cuántica**
+**Parte C — Teoría cuántica**
 
-#### X.7 Operadores en espacios de Hilbert
-*48 págs. · Requiere: VII.2, VII.5, V.4 · Complementario*
-- Operadores acotados y no acotados; dominio, clausura y adjunto.
-- Operadores simétricos frente a autoadjuntos, y por qué la diferencia importa.
-- Espectro puntual, continuo y residual; teorema espectral para operadores autoadjuntos (enunciado, con medidas espectrales).
-- Grupos unitarios a un parámetro y teorema de Stone: los generadores autoadjuntos. Para seguir: análisis funcional general.
-
-**Puente.** Entrada: `[x, p] = iħ`. Ningún par de matrices finitas lo cumple, porque la traza de un conmutador es 0 y la de iħ·I no lo es; la relación canónica exige operadores no acotados en dimensión infinita, y por eso los físicos necesitan algo más que el álgebra lineal del Tomo II.
-**Aplicaciones.** [Física] observables de la mecánica cuántica · [Ing] operador de Koopman para analizar sistemas dinámicos no lineales · [Datos] operadores integrales y métodos de núcleos.
-**Lecturas.** Hall, *Quantum Theory for Mathematicians*; Reed y Simon, *Methods of Modern Mathematical Physics*, vol. 1.
-
-#### X.8 Estructura matemática de la mecánica cuántica
-*52 págs. · Requiere: X.7, X.2, II.11, VIII.3, IX.3 · Complementario*
+#### XIII.7 Estructura matemática de la mecánica cuántica
+*52 págs. · Requiere: X.6, XIII.2, II.11, XI.3, XII.3 · Complementario*
 - Estados como rayos de un espacio de Hilbert, observables autoadjuntos y regla de Born como medida de probabilidad.
 - Evolución unitaria y ecuación de Schrödinger; imágenes de Schrödinger y de Heisenberg; de los corchetes de Poisson a los conmutadores.
 - Oscilador armónico con operadores escalera (funciones de Hermite) y átomo de hidrógeno (armónicos esféricos y polinomios de Laguerre).
@@ -1922,50 +2293,57 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 ## 14. Extensión
 
-Calculada a partir de los metadatos del índice (sección 13) con el script de comprobación de la sección 11.5. Coincide con los números de capítulos de la sección 6.
+Generada desde los datos del índice con `npm run indice:spec` (decisión 0002), como las tablas de las secciones 6 y 9.6 y el índice de la sección 13.
+
+<!-- extension: generado desde indice/ con `npm run indice:spec`; no editar a mano -->
 
 | Tomo | Caps. | Págs. | Caps. de núcleo | Págs. de núcleo | Aplicaciones [3D] | Aplicaciones [Física] |
 | --- | --- | --- | --- | --- | --- | --- |
-| I | 10 | 428 | 10 | 428 | 10 de 34 (29 %) | 3 de 34 (9 %) |
+| I | 12 | 516 | 11 | 468 | 11 de 40 (28 %) | 4 de 40 (10 %) |
 | II | 16 | 632 | 16 | 632 | 15 de 52 (29 %) | 11 de 52 (21 %) |
 | III | 11 | 484 | 11 | 484 | 10 de 33 (30 %) | 5 de 33 (15 %) |
 | IV | 13 | 528 | 12 | 484 | 12 de 39 (31 %) | 7 de 39 (18 %) |
-| V | 14 | 600 | 13 | 560 | 14 de 42 (33 %) | 6 de 42 (14 %) |
-| VI | 12 | 516 | 10 | 440 | 9 de 36 (25 %) | 10 de 36 (28 %) |
-| VII | 13 | 576 | 10 | 456 | 9 de 40 (22 %) | 10 de 40 (25 %) |
-| VIII | 14 | 620 | 11 | 488 | 13 de 42 (31 %) | 8 de 42 (19 %) |
-| IX | 10 | 460 | 7 | 324 | 9 de 30 (30 %) | 9 de 30 (30 %) |
-| X | 8 | 372 | 0 | 0 | 5 de 24 (21 %) | 8 de 24 (33 %) |
-| **Total** | **121** | **5.216** | **100** | **4.296** | **106 de 372 (28 %)** | **77 de 372 (21 %)** |
+| V | 9 | 396 | 7 | 308 | 7 de 22 (32 %) | 3 de 22 (14 %) |
+| VI | 10 | 416 | 7 | 300 | 9 de 30 (30 %) | 7 de 30 (23 %) |
+| VII | 14 | 600 | 13 | 560 | 14 de 42 (33 %) | 6 de 42 (14 %) |
+| VIII | 12 | 516 | 10 | 440 | 9 de 36 (25 %) | 10 de 36 (28 %) |
+| IX | 14 | 620 | 11 | 500 | 10 de 43 (23 %) | 11 de 43 (26 %) |
+| X | 8 | 348 | 4 | 176 | 5 de 24 (21 %) | 6 de 24 (25 %) |
+| XI | 14 | 620 | 11 | 488 | 13 de 42 (31 %) | 8 de 42 (19 %) |
+| XII | 10 | 460 | 7 | 324 | 9 de 30 (30 %) | 9 de 30 (30 %) |
+| XIII | 7 | 324 | 0 | 0 | 5 de 21 (24 %) | 7 de 21 (33 %) |
+| **Total** | **150** | **6.460** | **120** | **5.164** | **129 de 454 (28 %)** | **94 de 454 (21 %)** |
 
 - Los capítulos tienen entre 28 y 52 páginas, con una media de 43,1.
-- Cada tomo suma además unas 50 páginas de material propio: «Lo que este tomo importa», «Lo que este tomo exporta», notación y convenciones, diccionario academia–práctica del tomo, soluciones de los ejercicios impares e índice analítico. En total, unas 500 páginas, para unas 5.720 en toda la obra.
-- El hilo 3D ocupa entre el 21 % y el 33 % de las aplicaciones de cada tomo, y el de física entre el 9 % y el 33 %: ninguno supera el límite de un tercio (9.2).
-- El Tomo X no tiene capítulos de núcleo: todo él es complementario en el sentido de 5.3.
+- Cada tomo suma además unas 50 páginas de material propio: «Lo que este tomo importa», «Lo que este tomo exporta», notación y convenciones, diccionario academia–práctica del tomo, soluciones de los ejercicios impares e índice analítico. En total, unas 650 páginas, para unas 7.110 en toda la obra.
+- El hilo 3D ocupa entre el 21 % y el 33 % de las aplicaciones de cada tomo, y el de física entre el 10 % y el 33 %: ninguno supera el límite de un tercio (9.2).
+- El Tomo XIII no tiene capítulos de núcleo: todo él es complementario en el sentido de 5.3.
 
 | Campo (9.1) | Aplicaciones | Proporción |
 | --- | --- | --- |
-| [3D] | 106 | 28 % |
-| [Física] | 77 | 21 % |
-| [Ing] | 73 | 20 % |
-| [Datos] | 43 | 12 % |
-| [Bio/Eco] | 35 | 9 % |
-| [Señales] | 25 | 7 % |
-| [Cripto] | 13 | 3 % |
-| **Total** | **372** | **100 %** |
-
-La ingeniería tiene casi tantas aplicaciones como la física sin ser un hilo fijo (2.1 y 17).
+| [3D] | 129 | 28 % |
+| [Física] | 94 | 21 % |
+| [Ing] | 89 | 20 % |
+| [Datos] | 51 | 11 % |
+| [Bio/Eco] | 40 | 9 % |
+| [Señales] | 29 | 6 % |
+| [Cripto] | 22 | 5 % |
+| **Total** | **454** | **100 %** |
 
 | Itinerario (9.6) | Caps. | Págs. de capítulos |
 | --- | --- | --- |
-| Núcleo | 100 | 4.296 |
-| Física | 117 | 5.064 |
-| Gráficos y 3D | 106 | 4.560 |
-| Datos | 104 | 4.464 |
+| Núcleo | 120 | 5.164 |
+| Física | 138 | 5.972 |
+| Gráficos y 3D | 128 | 5.504 |
+| Datos | 125 | 5.372 |
 
-Los cuatro itinerarios están cerrados bajo dependencias: cada capítulo que incluyen tiene todos sus requisitos dentro del mismo itinerario. El de física abarca casi toda la obra, porque la física usa casi toda la matemática del índice; solo deja fuera V.14, VI.6, VII.7 y VIII.7.
+Los cuatro itinerarios están cerrados bajo dependencias: cada capítulo que incluyen tiene todos sus requisitos dentro del mismo itinerario. El de física deja fuera 12 capítulos: I.12, V.8, V.9, VI.8, VI.9, VI.10, VII.14, VIII.6, IX.8, X.4, X.7 y XI.7.
 
-El índice del motor sumaba 3.384 páginas, y la versión 0.1 de esta especificación, 4.536. La arista de la física añade 680 páginas: 224 entran en el núcleo, que pasa de 4.072 a 4.296, y el resto son complementarias, sobre todo el Tomo X.
+<!-- /extension -->
+
+La ingeniería tiene casi tantas aplicaciones como la física sin ser un hilo fijo (2.1 y 17).
+
+El índice del motor sumaba 3.384 páginas, y la versión 0.1 de esta especificación, 4.536. La arista de la física añade 680 páginas: 224 entran en el núcleo, que pasa de 4.072 a 4.296, y el resto son complementarias, sobre todo el Tomo XIII. Las materias clásicas de la versión 0.5 (álgebra, topología, análisis funcional y fundamentos) añaden 1.244 páginas: 868 entran en el núcleo, que pasa de 4.296 a 5.164.
 
 ## 15. Correspondencia con el índice anterior
 
@@ -1975,12 +2353,12 @@ Ningún tema del índice anterior se pierde sin decisión explícita. Esta tabla
 | --- | --- | --- |
 | 1 | Lógica, conjuntos y demostración | I.1, I.2 |
 | 2 | Álgebra elemental y funciones | Funciones en I.2; iteración y convergencia en III.1; exponenciales y logaritmos en III.8; el resto del precálculo se supone de la secundaria |
-| 3 | Aritmética de punto flotante | I.10, II.16 |
-| 4 | Geometría analítica cartesiana | Normas y distancias en II.8; rectas y planos en II.13; lateralidad como predicado en V.9 |
-| 5 | Trigonometría y coordenadas curvilíneas | Trigonometría rigurosa y `atan2` en III.8; coordenadas curvilíneas en IV.9; cúbica trigonométrica en II.6; parametrizaciones de la esfera en V.8 |
-| 6 | Números complejos | I.9, III.8, VII.8 |
-| 7 | Aritmética modular, combinatoria y pseudoaleatorios | I.4, I.5, VIII.5 |
-| 8 | Grafos, caminos mínimos y lenguajes formales | I.6; lenguajes formales y satisfacción de restricciones quedan fuera («Para seguir» en I.6) |
+| 3 | Aritmética de punto flotante | I.11, II.16 |
+| 4 | Geometría analítica cartesiana | Normas y distancias en II.8; rectas y planos en II.13; lateralidad como predicado en VII.9 |
+| 5 | Trigonometría y coordenadas curvilíneas | Trigonometría rigurosa y `atan2` en III.8; coordenadas curvilíneas en IV.9; cúbica trigonométrica en II.6; parametrizaciones de la esfera en VII.8 |
+| 6 | Números complejos | I.10, III.8, IX.9 |
+| 7 | Aritmética modular, combinatoria y pseudoaleatorios | I.5, I.6, XI.5 |
+| 8 | Grafos, caminos mínimos y lenguajes formales | I.7; lenguajes formales y satisfacción de restricciones quedan fuera («Para seguir» en I.7) |
 | 9 | Vectores, combinaciones lineales y bases | II.2 |
 | 10 | Producto escalar, producto vectorial y geometría métrica | II.8; producto vectorial en II.4 |
 | 11 | Matrices y transformaciones lineales | II.1, II.3; orden en memoria en II.14 |
@@ -1990,14 +2368,14 @@ Ningún tema del índice anterior se pierde sin decisión explícita. Esta tabla
 | 15 | SVD, mínimos cuadrados y descomposición polar | II.8, II.10 |
 | 16 | Límites y derivadas | III.3, III.4; derivación numérica en III.10 |
 | 17 | Integrales | III.5 |
-| 18 | Series, Taylor y exponencial compleja | III.2, III.6, III.7, III.8; exponencial de matrices en VI.3 |
+| 18 | Series, Taylor y exponencial compleja | III.2, III.6, III.7, III.8; exponencial de matrices en VIII.3 |
 | 19 | Ecuaciones no lineales y raíces de polinomios | III.10; aplicación contractiva en III.11 |
 | 20 | Cuadratura y aproximación de funciones | III.9, III.10 |
 | 21 | Espacios afines y coordenadas homogéneas | II.13 |
-| 22 | Geometría proyectiva y rasterización | V.2, V.3 |
+| 22 | Geometría proyectiva y rasterización | VII.2, VII.3 |
 | 23 | Rotaciones: matrices, eje y ángulo, ángulos de Euler | II.15 |
 | 24 | Cuaterniones e interpolación de orientaciones | II.15 |
-| 25 | Grupos de Lie y movimientos rígidos | V.4 |
+| 25 | Grupos de Lie y movimientos rígidos | VII.4 |
 | 26 | Álgebra exterior y PGA | Álgebra exterior en IV.13; PGA en «Para seguir» de IV.13 |
 | 27 | Cálculo diferencial multivariable | IV.2 |
 | 28 | Integración múltiple | IV.9 |
@@ -2005,57 +2383,58 @@ Ningún tema del índice anterior se pierde sin decisión explícita. Esta tabla
 | 30 | Optimización sin restricciones | IV.5, IV.8 |
 | 31 | Diferenciación automática | IV.8 |
 | 32 | Multiplicadores de Lagrange, KKT y dualidad | IV.4, IV.7 |
-| 33 | Complementariedad y métodos iterativos proyectados | VI.12 |
-| 34 | Álgebra lineal dispersa y métodos iterativos | II.12; gradiente conjugado en IV.8; multigrid en IX.6 |
-| 35 | Series de Fourier y funciones ortogonales | VII.2, VII.3 |
-| 36 | Transformada de Fourier, convolución y FFT | VII.4, VII.6 |
-| 37 | Teoría del muestreo y reconstrucción | VII.6 |
-| 38 | Armónicos esféricos | VII.13 |
-| 39 | Curvas paramétricas: interpolación, Bézier y B-splines | III.9, V.5 |
-| 40 | Superficies paramétricas y NURBS | V.5 |
-| 41 | Geometría diferencial de curvas y superficies | V.6, V.7 |
-| 42 | Topología y estructura de mallas | V.12 |
-| 43 | Geometría diferencial discreta | V.12 |
-| 44 | Procesamiento de mallas | V.12 |
-| 45 | Superficies implícitas y campos de distancia | V.13 |
-| 46 | Predicados robustos, consultas e intersecciones | V.9 |
-| 47 | Conjuntos convexos y separación | IV.5, V.10 |
-| 48 | Distancia entre convexos y tiempo de impacto | V.10 |
-| 49 | Triangulaciones y diagramas de Voronoi | V.11 |
-| 50 | Particiones del espacio, curvas de llenado y geometría integral | V.14 |
-| 51 | EDO de primer y segundo orden | VI.1, VI.2 |
-| 52 | Sistemas de EDO, estabilidad y control | VI.3, VI.4, VI.6 |
-| 53 | Integradores explícitos y estabilidad | VI.10 |
-| 54 | Integradores implícitos, simplécticos y en grupos de Lie | VI.10, VI.11 |
-| 55 | Mecánica del sólido rígido | VI.9 |
-| 56 | Cinemática de cadenas articuladas | Aplicaciones: cinemática directa y *skinning* en V.4; cinemática inversa en IV.8 |
-| 57 | Mecánica lagrangiana y restricciones | VI.7, VI.11 |
-| 58 | Contacto, fricción y métodos por posiciones | VI.11, VI.12 |
-| 59 | EDP clásicas y separación de variables | IX.1, IX.2 |
-| 60 | Diferencias finitas y estabilidad | IX.6 |
-| 61 | Mecánica de medios continuos | IX.8 |
-| 62 | Método de elementos finitos | IX.7 |
-| 63 | Navier–Stokes y Helmholtz–Hodge | IV.11, IX.9 |
-| 64 | Métodos de partículas y aguas someras | IX.10 |
-| 65 | Probabilidad: variables aleatorias y distribuciones | VIII.1, VIII.2, VIII.4 |
-| 66 | Distribuciones multivariantes y generación de muestras | VIII.3, VIII.5 |
-| 67 | Monte Carlo y muestreo por importancia | VIII.6 |
-| 68 | Cuasi-Monte Carlo y remuestreo | VIII.7; remuestreo en VIII.6 |
-| 69 | Procesos puntuales y ruido azul | VIII.9 |
-| 70 | Campos aleatorios, ruido procedural y fractales | VIII.9 |
-| 71 | Radiometría y fotometría | Aplicaciones en IV.9 y VIII.11 |
+| 33 | Complementariedad y métodos iterativos proyectados | VIII.12 |
+| 34 | Álgebra lineal dispersa y métodos iterativos | II.12; gradiente conjugado en IV.8; multigrid en XII.6 |
+| 35 | Series de Fourier y funciones ortogonales | IX.3, IX.4 |
+| 36 | Transformada de Fourier, convolución y FFT | IX.5, IX.7 |
+| 37 | Teoría del muestreo y reconstrucción | IX.7 |
+| 38 | Armónicos esféricos | IX.14 |
+| 39 | Curvas paramétricas: interpolación, Bézier y B-splines | III.9, VII.5 |
+| 40 | Superficies paramétricas y NURBS | VII.5 |
+| 41 | Geometría diferencial de curvas y superficies | VII.6, VII.7 |
+| 42 | Topología y estructura de mallas | VII.12 |
+| 43 | Geometría diferencial discreta | VII.12 |
+| 44 | Procesamiento de mallas | VII.12 |
+| 45 | Superficies implícitas y campos de distancia | VII.13 |
+| 46 | Predicados robustos, consultas e intersecciones | VII.9 |
+| 47 | Conjuntos convexos y separación | IV.5, VII.10 |
+| 48 | Distancia entre convexos y tiempo de impacto | VII.10 |
+| 49 | Triangulaciones y diagramas de Voronoi | VII.11 |
+| 50 | Particiones del espacio, curvas de llenado y geometría integral | VII.14 |
+| 51 | EDO de primer y segundo orden | VIII.1, VIII.2 |
+| 52 | Sistemas de EDO, estabilidad y control | VIII.3, VIII.4, VIII.6 |
+| 53 | Integradores explícitos y estabilidad | VIII.10 |
+| 54 | Integradores implícitos, simplécticos y en grupos de Lie | VIII.10, VIII.11 |
+| 55 | Mecánica del sólido rígido | VIII.9 |
+| 56 | Cinemática de cadenas articuladas | Aplicaciones: cinemática directa y *skinning* en VII.4; cinemática inversa en IV.8 |
+| 57 | Mecánica lagrangiana y restricciones | VIII.7, VIII.11 |
+| 58 | Contacto, fricción y métodos por posiciones | VIII.11, VIII.12 |
+| 59 | EDP clásicas y separación de variables | XII.1, XII.2 |
+| 60 | Diferencias finitas y estabilidad | XII.6 |
+| 61 | Mecánica de medios continuos | XII.8 |
+| 62 | Método de elementos finitos | XII.7 |
+| 63 | Navier–Stokes y Helmholtz–Hodge | IV.11, XII.9 |
+| 64 | Métodos de partículas y aguas someras | XII.10 |
+| 65 | Probabilidad: variables aleatorias y distribuciones | XI.1, XI.2, XI.4 |
+| 66 | Distribuciones multivariantes y generación de muestras | XI.3, XI.5 |
+| 67 | Monte Carlo y muestreo por importancia | XI.6 |
+| 68 | Cuasi-Monte Carlo y remuestreo | XI.7; remuestreo en XI.6 |
+| 69 | Procesos puntuales y ruido azul | XI.9 |
+| 70 | Campos aleatorios, ruido procedural y fractales | XI.9 |
+| 71 | Radiometría y fotometría | Aplicaciones en IV.9 y XI.11 |
 | 72 | Colorimetría | Aplicaciones: espacios de color en II.3; codificación gamma en III.8 |
-| 73 | La ecuación de renderizado | VIII.11 |
-| 74 | BRDF y microfacetas | Aplicaciones en VIII.2, VIII.5 y VIII.11 |
-| 75 | Serie de Neumann y trazado de caminos | VIII.11 |
-| 76 | Ecuación de transferencia radiativa | VIII.11; Beer–Lambert en VI.1 |
+| 73 | La ecuación de renderizado | XI.11 |
+| 74 | BRDF y microfacetas | Aplicaciones en XI.2, XI.5 y XI.11 |
+| 75 | Serie de Neumann y trazado de caminos | XI.11 |
+| 76 | Ecuación de transferencia radiativa | XI.11; Beer–Lambert en VIII.1 |
 
 Además:
 
 - **Motor del libro (hitos H0 a H22):** se elimina. Lo sustituyen las demos de cada aplicación y las páginas de hilo (9.3 y 9.4).
 - **Material preliminar:** «El motor 3D como mapa de problemas» pasa a ser la página del hilo 3D; el grafo de dependencias se genera desde los metadatos (11.4).
 - **Apéndices:** pasan a cada tomo (sección 14).
-- **Capítulos sin equivalente en el índice anterior,** añadidos en la versión 0.2 con la arista de la física: II.11, IV.12, VII.5, VII.10, VIII.14, IX.3, IX.5 y el Tomo X entero.
+- **Capítulos sin equivalente en el índice anterior,** añadidos en la versión 0.2 con la arista de la física: II.11, IV.12, IX.6, IX.11, XI.14, XII.3, XII.5 y el Tomo XIII entero.
+- **Capítulos añadidos en la versión 0.5** con las materias clásicas: I.4, I.12, IX.2 y los Tomos V, VI y X enteros (el capítulo X.6 es el antiguo capítulo de operadores en espacios de Hilbert).
 
 ## 16. Plan de trabajo
 
@@ -2068,7 +2447,7 @@ Además:
 | 2. Tomo II | Capítulos en orden, publicados uno a uno en la web | Tomo completo, con sus páginas de importación y exportación |
 | 3. Tomos I y III | Se pueden escribir en paralelo | Base de la obra completa |
 | 4. Tomo IV | En orden | Puerta de los tomos de área abierta |
-| 5. Tomos de área | Orden propuesto: V, VII, VI, VIII, IX y X | Cada tomo, completo y verificado |
+| 5. Tomos de área | Orden propuesto: VII, V, VI, IX, X, VIII, XI, XII y XIII | Cada tomo, completo y verificado |
 
 El Tomo II va primero porque es donde el abismo es paradigmático y donde está el lector que motiva la obra: quien ya cursó álgebra lineal. Ese lector puede leerlo con lo que sabe del Tomo I.
 
@@ -2091,8 +2470,8 @@ El Tomo II va primero porque es donde el abismo es paradigmático y donde está 
 | Lenguajes del código | Python (Pyodide) para el cálculo en vivo y TypeScript para el sitio y las figuras |
 | Soluciones de los ejercicios pares | Espacio para docentes |
 | Capítulos complementarios en la primera edición | Publicar primero el recorrido de núcleo y después los complementarios |
-| Itinerario de ingeniería | La ingeniería tiene 73 aplicaciones, casi tantas como la física, pero no tiene itinerario (2.1). Propuesta: núcleo, más IV.13, VI.6, VIII.7, IX.8 y X.4 (termodinámica, control, diseño de experimentos, estructuras y espacios de configuración); son 105 capítulos y 4.508 páginas, cerrado bajo dependencias |
-| Extensión | Unas 5.216 páginas de capítulos; si se quiere reducir, la primera palanca es el recorrido de núcleo (4.296) y la segunda, bajar la media de páginas por capítulo |
+| Itinerario de ingeniería | La ingeniería tiene 89 aplicaciones, casi tantas como la física (94), pero no tiene itinerario (2.1). Propuesta: núcleo, más IV.13, VIII.6, XI.7, XII.8 y XIII.4 (termodinámica, control, diseño de experimentos, estructuras y espacios de configuración); son 125 capítulos y 5.376 páginas, cerrado bajo dependencias |
+| Extensión | Unas 6.460 páginas de capítulos, 5.164 de núcleo. Si se quiere reducir el núcleo, la primera palanca son los capítulos clásicos que ningún otro capítulo de núcleo necesita (V.7, VI.3 y VI.6: unas 120 páginas); la segunda, bajar la media de páginas por capítulo |
 | Signatura de la métrica | (−, +, +, +), con traducción explícita a (+, −, −, −) |
 | Idioma | Español; traducción al inglés por decidir |
 | Revisión externa | Definir quiénes revisan las demostraciones y con qué estudiantes se prueba el piloto |

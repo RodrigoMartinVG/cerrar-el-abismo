@@ -1,0 +1,312 @@
+# Tomo XI — Probabilidad, estadística y métodos estocásticos
+# Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
+id: XI
+titulo: Probabilidad, estadística y métodos estocásticos
+requiere:
+  - IV
+  - IX
+interfaces: []
+presentacion: Probabilidad con teoría de la medida, métodos de Monte Carlo, procesos estocásticos, estadística y teoría de la información.
+partes:
+  - letra: A
+    titulo: Probabilidad
+    capitulos:
+      - id: XI.1
+        titulo: Probabilidad discreta
+        paginas: 44
+        requiere:
+          - I.6
+          - III.2
+        tipo: nucleo
+        contenidos:
+          - Espacios de probabilidad finitos y numerables; probabilidad condicional y teorema de Bayes.
+          - Independencia.
+          - Variables aleatorias discretas, esperanza y varianza.
+          - Distribuciones binomial, geométrica y de Poisson.
+        puente: 'Entrada: `if (random() < dropChance) giveItem();` en una tabla de botín. Es una variable de Bernoulli; el número de intentos hasta conseguir el objeto sigue una distribución geométrica, que explica por qué los jugadores perciben «rachas».'
+        aplicaciones:
+          - campo: 3d
+            texto: tablas de botín y diseño de juegos
+          - campo: bio-eco
+            texto: pruebas diagnósticas y teorema de Bayes
+          - campo: cripto
+            texto: probabilidad de colisión en tablas de dispersión
+        lecturas: Blitzstein y Hwang, *Introduction to Probability*; Ross, *A First Course in Probability*.
+      - id: XI.2
+        titulo: Probabilidad con medida
+        paginas: 44
+        requiere:
+          - XI.1
+          - IX.2
+          - IV.9
+        tipo: nucleo
+        contenidos:
+          - Espacios de probabilidad generales; variables aleatorias como funciones medibles.
+          - Distribuciones, funciones de distribución y densidades como derivadas de Radon–Nikodym.
+          - Esperanza como integral de Lebesgue.
+          - Cambio de variables en densidades con el jacobiano.
+        puente: 'Entrada: `D = a2 / (PI * pow(NdotH * NdotH * (a2 - 1.0) + 1.0, 2.0))`, la distribución GGX de un material PBR. Es una densidad de probabilidad de las normales de las microfacetas, normalizada respecto del área proyectada; verla como densidad explica sus condiciones de normalización.'
+        aplicaciones:
+          - campo: 3d
+            texto: distribuciones de microfacetas en materiales PBR
+          - campo: fisica
+            texto: distribución de velocidades de Maxwell–Boltzmann
+          - campo: datos
+            texto: modelos de densidad
+        lecturas: Grimmett y Stirzaker, *Probability and Random Processes*; Williams, *Probability with Martingales*.
+      - id: XI.3
+        titulo: Vectores aleatorios
+        paginas: 44
+        requiere:
+          - XI.2
+          - II.9
+        tipo: nucleo
+        contenidos:
+          - Distribuciones conjuntas, marginales y condicionales; independencia.
+          - Covarianza y matriz de covarianza.
+          - Gaussiana multivariante y su factorización por Cholesky o por autovalores.
+          - Esperanza condicional, cuya existencia da el teorema de Radon–Nikodym.
+        puente: 'Entrada: `sample = mean + L * randn3()` con `L = cholesky(Sigma)`. Transformar una gaussiana estándar con el factor de Cholesky da la covarianza deseada: es la forma cuadrática de II.9 aplicada al azar.'
+        aplicaciones:
+          - campo: 3d
+            texto: '*Gaussian Splatting*: gaussianas anisótropas y su proyección en pantalla'
+          - campo: datos
+            texto: modelos gaussianos
+          - campo: ing
+            texto: errores de medición correlacionados
+        lecturas: Grimmett y Stirzaker, *Probability and Random Processes*; Blitzstein y Hwang, *Introduction to Probability*.
+      - id: XI.4
+        titulo: Desigualdades y teoremas límite
+        paginas: 52
+        requiere:
+          - XI.3
+          - IX.5
+        tipo: nucleo
+        contenidos:
+          - Desigualdades de Markov, de Chebyshev, de Cantelli y de Chernoff.
+          - Modos de convergencia; leyes débil y fuerte de los grandes números.
+          - La función característica como transformada de Fourier; teorema de continuidad de Lévy.
+          - Teorema central del límite; cota de Berry–Esseen (enunciado).
+        puente: 'Entrada: `pMax = variance / (variance + (t - mean) * (t - mean))` en las sombras por varianza. Es la desigualdad de Cantelli: una cota superior de la probabilidad de que la profundidad supere t, usada como visibilidad aproximada.'
+        aplicaciones:
+          - campo: 3d
+            texto: sombras por varianza (VSM)
+          - campo: datos
+            texto: intervalos de confianza y tamaño de muestra
+          - campo: ing
+            texto: control de calidad
+        lecturas: 'Durrett, *Probability: Theory and Examples*; Grimmett y Stirzaker, *Probability and Random Processes*.'
+  - letra: B
+    titulo: Métodos estocásticos
+    capitulos:
+      - id: XI.5
+        titulo: Generación de muestras
+        paginas: 36
+        requiere:
+          - XI.3
+          - I.5
+        tipo: nucleo
+        contenidos:
+          - 'Generadores pseudoaleatorios: período, calidad y pruebas estadísticas.'
+          - Método de inversión y método de rechazo.
+          - Método alias de Walker y transformación de Box–Muller.
+          - Muestreo uniforme en el disco, la esfera y el hemisferio; muestreo proporcional al coseno.
+        puente: 'Entrada: `d = vec3(sqrt(u1) * cos(2*PI*u2), sqrt(u1) * sin(2*PI*u2), sqrt(1.0 - u1))`. Es muestreo proporcional al coseno por el método de inversión; la raíz cuadrada aparece al invertir la distribución acumulada, y sin ella las muestras se amontonan.'
+        aplicaciones:
+          - campo: 3d
+            texto: muestreo de direcciones y de BRDF
+          - campo: fisica
+            texto: simulación de partículas
+          - campo: datos
+            texto: simulación y *bootstrap*
+        lecturas: Devroye, *Non-Uniform Random Variate Generation*; Owen, *Monte Carlo Theory, Methods and Examples*.
+      - id: XI.6
+        titulo: Integración de Monte Carlo
+        paginas: 44
+        requiere:
+          - XI.4
+          - XI.5
+        tipo: nucleo
+        contenidos:
+          - 'Estimador de Monte Carlo: insesgadez, varianza y convergencia de orden 1/√N.'
+          - Muestreo por importancia y muestreo múltiple por importancia (MIS).
+          - Estratificación, variables de control y ruleta rusa.
+          - Remuestreo por importancia y muestreo de reservorio.
+        puente: 'Entrada: `color += f(x) / pdf(x)` en un bucle de muestras. Dividir por la densidad es lo que hace insesgado al estimador; elegir una densidad parecida a f reduce la varianza, y en eso consiste todo el muestreo por importancia.'
+        aplicaciones:
+          - campo: 3d
+            texto: oclusión ambiental, luces de área y remuestreo espaciotemporal (ReSTIR)
+          - campo: bio-eco
+            texto: valoración de opciones financieras
+          - campo: fisica
+            texto: integrales en dimensión alta
+        lecturas: Owen, *Monte Carlo Theory, Methods and Examples*; Veach, *Robust Monte Carlo Methods for Light Transport Simulation*.
+      - id: XI.7
+        titulo: Cuasi-Monte Carlo
+        paginas: 36
+        requiere:
+          - XI.6
+        tipo: complementario
+        contenidos:
+          - Discrepancia y desigualdad de Koksma–Hlawka.
+          - Inverso radical; secuencias de Halton y de Sobol; redes digitales.
+          - 'Cuasi-Monte Carlo aleatorizado: desplazamientos y mezclas de Owen.'
+          - Cuándo y por qué supera a Monte Carlo.
+        puente: 'Entrada: `jitter = vec2(halton(i % 8, 2), halton(i % 8, 3))` en el antialiasing temporal. Las secuencias de baja discrepancia cubren el píxel de forma pareja en pocos fotogramas, y Koksma–Hlawka cuantifica la ventaja.'
+        aplicaciones:
+          - campo: 3d
+            texto: desplazamientos del TAA y muestreo de píxeles
+          - campo: bio-eco
+            texto: finanzas computacionales
+          - campo: ing
+            texto: diseño de experimentos
+        lecturas: Niederreiter, *Random Number Generation and Quasi-Monte Carlo Methods*; Dick y Pillichshammer, *Digital Nets and Sequences*.
+      - id: XI.8
+        titulo: Cadenas de Markov y MCMC
+        paginas: 48
+        requiere:
+          - XI.4
+          - II.9
+        tipo: nucleo
+        contenidos:
+          - 'Cadenas de Markov finitas: matrices estocásticas y clasificación de estados.'
+          - Distribución estacionaria y teorema de Perron–Frobenius.
+          - Convergencia y tiempos de mezcla.
+          - Algoritmo de Metropolis–Hastings y muestreo de Gibbs.
+        puente: 'Entrada: el vector de PageRank calculado por iteración de potencias. Es la distribución estacionaria de un paseo aleatorio por la web, y Perron–Frobenius garantiza que existe y es única gracias al factor de amortiguamiento.'
+        aplicaciones:
+          - campo: datos
+            texto: PageRank e inferencia bayesiana por MCMC
+          - campo: 3d
+            texto: generación procedural con cadenas de Markov
+          - campo: fisica
+            texto: modelo de Ising
+        lecturas: Levin y Peres, *Markov Chains and Mixing Times*; Norris, *Markov Chains*.
+      - id: XI.9
+        titulo: Procesos puntuales y campos aleatorios
+        paginas: 48
+        requiere:
+          - XI.6
+          - IX.7
+        tipo: complementario
+        contenidos:
+          - Procesos de Poisson espaciales y procesos con distancia mínima.
+          - Espectro de potencia de un conjunto de puntos; ruido azul.
+          - Campos aleatorios estacionarios y teorema de Wiener–Khinchin.
+          - Ruido de gradiente, movimiento browniano fraccionario y sumas fBm; exponente de Hurst.
+        puente: 'Entrada: `h += amp * noise(p * freq); amp *= gain; freq *= 2.0;` repetido por octavas. Una suma fBm construye un campo con espectro de potencia en ley de potencias; la ganancia entre octavas fija el exponente de Hurst y, con él, la rugosidad del terreno.'
+        aplicaciones:
+          - campo: 3d
+            texto: terreno procedural, vegetación con disco de Poisson y *dithering*
+          - campo: fisica
+            texto: superficies rugosas
+          - campo: bio-eco
+            texto: distribución espacial de árboles y de células
+        lecturas: Illian, Penttinen, Stoyan y Stoyan, *Statistical Analysis and Modelling of Spatial Point Patterns*; Lagae et al., «A Survey of Procedural Noise Functions».
+      - id: XI.10
+        titulo: 'Procesos en tiempo continuo: Poisson y browniano'
+        paginas: 44
+        requiere:
+          - XI.4
+        tipo: nucleo
+        contenidos:
+          - Proceso de Poisson temporal y tiempos de espera exponenciales.
+          - Paseo aleatorio y su límite; construcción del movimiento browniano.
+          - 'Propiedades del movimiento browniano: continuidad, no derivabilidad y propiedad de Markov.'
+          - 'Martingalas en tiempo discreto (introducción); conexión con la ecuación del calor. Para seguir: cálculo de Itô.'
+        puente: 'Entrada: `nextSpawn = now - log(1.0 - random()) / rate`. Muestrear tiempos de espera exponenciales produce un proceso de Poisson: es la forma correcta de generar eventos «al azar» con una tasa dada.'
+        aplicaciones:
+          - campo: 3d
+            texto: aparición de eventos y partículas
+          - campo: ing
+            texto: colas y tráfico en redes
+          - campo: fisica
+            texto: difusión y movimiento browniano
+        lecturas: 'Durrett, *Probability: Theory and Examples*; Lawler, *Introduction to Stochastic Processes*.'
+      - id: XI.11
+        titulo: Ecuaciones integrales y transporte
+        paginas: 48
+        requiere:
+          - XI.6
+          - IX.3
+        tipo: complementario
+        contenidos:
+          - Ecuaciones integrales de Fredholm de segunda especie; serie de Neumann y su convergencia.
+          - 'Solución por caminos aleatorios: estimadores de von Neumann–Ulam.'
+          - 'La ecuación de renderizado: radiancia, BRDF (reciprocidad y conservación de la energía) y término geométrico; trazado de caminos con estimación de eventos siguientes.'
+          - 'Medios participantes: ecuación de transferencia radiativa, funciones de fase y muestreo de distancias.'
+        puente: 'Entrada: `for (int b = 0; b < maxBounces; ++b) { ...; throughput *= brdf * cosTheta / pdf; }`. Cada rebote es un término de la serie de Neumann de la ecuación de renderizado, y la ruleta rusa permite cortar la serie sin introducir sesgo.'
+        aplicaciones:
+          - campo: 3d
+            texto: trazado de caminos, niebla volumétrica y atmósfera
+          - campo: fisica
+            texto: transporte de neutrones y de radiación
+          - campo: ing
+            texto: transferencia de calor por radiación
+        lecturas: Kress, *Linear Integral Equations*; Veach, *Robust Monte Carlo Methods for Light Transport Simulation*; Pharr, Jakob y Humphreys, *Physically Based Rendering*.
+  - letra: C
+    titulo: Estadística e información
+    capitulos:
+      - id: XI.12
+        titulo: Inferencia estadística
+        paginas: 48
+        requiere:
+          - XI.4
+          - II.8
+        tipo: nucleo
+        contenidos:
+          - 'Estimadores: sesgo, varianza, consistencia y error cuadrático medio.'
+          - Máxima verosimilitud y su comportamiento asintótico.
+          - Intervalos de confianza y contrastes de hipótesis.
+          - La regresión lineal como problema estadístico; *bootstrap*.
+        puente: 'Entrada: el «milisegundos por fotograma» medido una sola vez antes y después de una optimización. Sin un intervalo de confianza no se puede afirmar que mejoró; la estadística convierte la medición de rendimiento en una afirmación con garantías.'
+        aplicaciones:
+          - campo: 3d
+            texto: medición de rendimiento y pruebas A/B en juegos
+          - campo: bio-eco
+            texto: ensayos clínicos
+          - campo: datos
+            texto: regresión y validación de modelos
+        lecturas: Casella y Berger, *Statistical Inference*; Wasserman, *All of Statistics*.
+      - id: XI.13
+        titulo: Inferencia bayesiana y filtrado
+        paginas: 44
+        requiere:
+          - XI.12
+          - XI.3
+        tipo: nucleo
+        contenidos:
+          - Distribuciones *a priori* y *a posteriori*; familias conjugadas.
+          - Estimación bayesiana y estimador MAP.
+          - Filtro de Kalman como inferencia gaussiana recursiva.
+          - Filtros de partículas.
+        puente: 'Entrada: la posición de un jugador remoto estimada a partir de paquetes que llegan tarde o se pierden. Predecir y corregir con mediciones ruidosas es un filtro de Kalman: la mezcla óptima de predicción y medición según sus covarianzas.'
+        aplicaciones:
+          - campo: 3d
+            texto: predicción en juegos en red y seguimiento de controles de realidad virtual
+          - campo: ing
+            texto: navegación y robótica
+          - campo: datos
+            texto: modelos bayesianos
+        lecturas: Särkkä, *Bayesian Filtering and Smoothing*; Gelman et al., *Bayesian Data Analysis*.
+      - id: XI.14
+        titulo: Entropía e información
+        paginas: 40
+        requiere:
+          - XI.12
+          - IV.4
+        tipo: nucleo
+        contenidos:
+          - Entropía de Shannon, entropías conjunta y condicional, información mutua.
+          - Divergencia de Kullback–Leibler; la máxima verosimilitud como minimización de esa divergencia.
+          - 'Principio de máxima entropía con multiplicadores de Lagrange: la distribución de Gibbs.'
+          - Teorema de codificación de la fuente; grandes desviaciones y teorema de Cramér.
+        puente: 'Entrada: `loss = -sum(y * log(p))`, la entropía cruzada con la que se entrenan los clasificadores. Minimizarla es minimizar la divergencia de Kullback–Leibler entre los datos y el modelo; maximizar la entropía con las mismas herramientas da la distribución de Boltzmann de la física.'
+        aplicaciones:
+          - campo: fisica
+            texto: 'mecánica estadística: ensambles, función de partición y segunda ley'
+          - campo: datos
+            texto: entropía cruzada y selección de modelos
+          - campo: cripto
+            texto: compresión sin pérdida y códigos de Huffman
+        lecturas: Cover y Thomas, *Elements of Information Theory*; MacKay, *Information Theory, Inference, and Learning Algorithms*.

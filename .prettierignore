@@ -6,6 +6,7 @@ playwright-report/
 test-results/
 package-lock.json
 scratch/
+libros/
 
 # Documentos escritos a mano (la especificación, las decisiones, el histórico): Prettier reescribiría sus tablas
 # y su énfasis, y la sección 13 de la especificación la genera el índice con su propio formato (decisión 0002).

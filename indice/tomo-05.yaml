@@ -1,321 +1,197 @@
-# Tomo V — Geometría
+# Tomo V — Álgebra: grupos, anillos, módulos y cuerpos
 # Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
 id: V
-titulo: Geometría
+titulo: 'Álgebra: grupos, anillos, módulos y cuerpos'
 requiere:
   - II
-  - III
-  - IV
 interfaces: []
-presentacion: Las geometrías clásicas como estudio de grupos de transformaciones, las curvas y superficies de diseño, la geometría diferencial clásica y la geometría computacional y discreta. V.1, V.2, V.3 y V.5 solo usan los Tomos II y III, así que se pueden leer justo después del álgebra lineal.
+presentacion: El álgebra abstracta de una licenciatura, de la estructura de los grupos finitos a la teoría de Galois, con los módulos sobre un dominio de ideales principales como puente con el álgebra lineal. Explica por qué no hay fórmula para la quíntica y sostiene la criptografía de curvas elípticas y el cálculo simbólico.
 partes:
   - letra: A
-    titulo: Geometrías y grupos de transformaciones
+    titulo: Grupos
     capitulos:
       - id: V.1
-        titulo: Isometrías y simetría
-        paginas: 40
-        requiere:
-          - II.15
-          - I.7
-        tipo: nucleo
-        contenidos:
-          - Las isometrías de ℝⁿ son afines; clasificación en el plano y en el espacio.
-          - Todo movimiento es producto de reflexiones.
-          - 'Grupos de simetría finitos: cíclicos, diédricos y de los poliedros regulares.'
-          - Grupos de friso y grupos cristalográficos del plano.
-        puente: 'Entrada: `scale(-1, 1, 1)` en un editor que «da vuelta» las normales de un modelo. Una reflexión invierte la orientación (determinante −1); la clasificación de las isometrías explica qué se puede componer y qué no.'
-        aplicaciones:
-          - campo: 3d
-            texto: teselaciones, simetrías de modelos, espejos y orientación
-          - campo: fisica
-            texto: cristalografía
-          - campo: bio-eco
-            texto: simetrías de virus y de moléculas
-        lecturas: Coxeter, *Introduction to Geometry*; Armstrong, *Groups and Symmetry*.
-      - id: V.2
-        titulo: Geometría proyectiva
-        paginas: 44
-        requiere:
-          - II.13
-        tipo: nucleo
-        contenidos:
-          - Plano y espacio proyectivos; coordenadas homogéneas y puntos del infinito.
-          - Dualidad punto–recta; transformaciones proyectivas y su teorema fundamental.
-          - Razón doble y su invariancia.
-          - Cónicas proyectivas; teoremas de Desargues y de Pappus.
-        puente: 'Entrada: `vec3 line = cross(p, q)` con puntos en coordenadas homogéneas. En el plano proyectivo, la recta por dos puntos y el punto de corte de dos rectas son el mismo producto vectorial: dualidad sin casos especiales, incluidas las rectas paralelas.'
-        aplicaciones:
-          - campo: 3d
-            texto: intersecciones robustas en coordenadas homogéneas
-          - campo: datos
-            texto: 'visión por computador: rectificación de fotografías'
-          - campo: ing
-            texto: fotogrametría y topografía
-        lecturas: Richter-Gebert, *Perspectives on Projective Geometry*; Coxeter, *Projective Geometry*.
-      - id: V.3
-        titulo: Cámaras, proyección y geometría de varias vistas
-        paginas: 44
-        requiere:
-          - V.2
-          - II.10
-          - II.16
-        tipo: nucleo
-        contenidos:
-          - Cámara estenopeica; matrices de proyección en perspectiva y ortográfica; volumen de visión.
-          - Coordenadas de recorte y normalizadas; distribución de la profundidad y su precisión en coma flotante.
-          - 'Rasterización: funciones de arista como determinantes, coordenadas baricéntricas e interpolación con corrección de perspectiva.'
-          - Homografías, geometría epipolar y matriz fundamental; calibración por DLT.
-        puente: 'Entrada: `gl_Position = proj * view * model * vec4(p, 1.0)`, seguido de la división por w. Es una cadena de cambios de marco afines (II.13) y una transformación proyectiva; Reverse-Z funciona porque la coma flotante es más densa cerca de 0, justo donde la proyección comprime la profundidad lejana.'
-        aplicaciones:
-          - campo: 3d
-            texto: '*pipeline* de cámara, Reverse-Z, *frustum culling* y mapas de sombras'
-          - campo: datos
-            texto: reconstrucción 3D a partir de fotografías
-          - campo: ing
-            texto: calibración de cámaras industriales
-        lecturas: Hartley y Zisserman, *Multiple View Geometry in Computer Vision*; Lengyel, *Foundations of Game Engine Development*, vol. 2.
-      - id: V.4
-        titulo: Grupos de Lie de matrices
+        titulo: 'Grupos: teoremas de isomorfismo, acciones y teoremas de Sylow'
         paginas: 48
         requiere:
-          - II.15
-          - III.8
-          - IV.3
+          - I.8
         tipo: nucleo
         contenidos:
-          - 'Grupos de matrices como subvariedades: SO(n), SE(n) y SU(2); álgebras de Lie y corchete.'
-          - Exponencial y logaritmo de matrices; fórmula de Baker–Campbell–Hausdorff (enunciado).
-          - SU(2) → SO(3) como recubrimiento doble; interpolación y promedios en grupos.
-          - SE(3), teorema de Chasles en el espacio, números duales y cuaterniones duales.
-        puente: 'Entrada: `pose = exp(twist * t)` en una biblioteca de robótica. Interpolar un movimiento rígido es recorrer un subgrupo a un parámetro de SE(3); por eso interpolar matrices entrada por entrada deforma los objetos y la exponencial no.'
+          - Teoremas de isomorfismo y de correspondencia; productos directos y semidirectos.
+          - Acción por conjugación, ecuación de clases y centro de un p-grupo.
+          - Teoremas de Sylow y clasificación de los grupos de orden pequeño.
+          - Grupos simples; simplicidad de Aₙ para n ≥ 5.
+        puente: 'Entrada: `SpaceGroup(225)` en una biblioteca de cristalografía. Un grupo espacial es una extensión de un retículo de traslaciones por un grupo puntual finito, muchas veces un producto semidirecto; el capítulo da las herramientas para clasificarlos.'
+        aplicaciones:
+          - campo: fisica
+            texto: grupos espaciales y puntuales en cristalografía
+          - campo: 3d
+            texto: simetrías de mosaicos y teselaciones para la generación procedural
+          - campo: cripto
+            texto: el ataque de Pohlig–Hellman y por qué se trabaja en subgrupos de orden primo
+        lecturas: Dummit y Foote, *Abstract Algebra*; Artin, *Algebra*.
+      - id: V.2
+        titulo: Grupos resolubles, series de composición y presentaciones
+        paginas: 40
+        requiere:
+          - V.1
+        tipo: nucleo
+        contenidos:
+          - Series de composición y teorema de Jordan–Hölder.
+          - Conmutadores; grupos resolubles y nilpotentes.
+          - Grupos libres, generadores y relaciones; presentaciones de grupos.
+          - El problema de la palabra; grupos de trenzas y grupos de rompecabezas.
+        puente: "Entrada: `R U R' U'`, una secuencia del cubo de Rubik. Es un conmutador en el grupo del cubo; los conmutadores mueven pocas piezas, y por eso los métodos de resolución se construyen con ellos."
         aplicaciones:
           - campo: 3d
-            texto: '*skinning* con cuaterniones duales y cinemática directa como producto de exponenciales'
-          - campo: ing
-            texto: robótica y estimación de estado
+            texto: el cubo de Rubik y los rompecabezas como grupos de permutaciones
           - campo: fisica
-            texto: simetrías continuas (aviso de VI.7)
-        lecturas: Stillwell, *Naive Lie Theory*; Hall, *Lie Groups, Lie Algebras, and Representations*; Lynch y Park, *Modern Robotics*.
+            texto: grupos de trenzas y estadística de partículas en el plano
+          - campo: cripto
+            texto: criptografía basada en grupos no conmutativos
+        lecturas: Dummit y Foote, *Abstract Algebra*; Rotman, *An Introduction to the Theory of Groups*.
   - letra: B
-    titulo: Curvas y superficies de diseño
+    titulo: Anillos y módulos
+    capitulos:
+      - id: V.3
+        titulo: 'Anillos: ideales, factorización única y dominios de ideales principales'
+        paginas: 44
+        requiere:
+          - I.9
+          - I.4
+        tipo: nucleo
+        contenidos:
+          - Ideales primos y maximales; existencia de ideales maximales por el lema de Zorn.
+          - Dominios de factorización única, de ideales principales y euclídeos; enteros de Gauss.
+          - Lema de Gauss y criterio de Eisenstein; factorización en ℤ[x] y en k[x, y].
+          - Localización y cuerpo de fracciones; teorema chino del resto para anillos.
+        puente: 'Entrada: `factor(x**4 + 1)` en un sistema de álgebra computacional, que responde distinto sobre ℚ, sobre ℤ/2ℤ y sobre ℂ. La factorización depende del anillo, y el capítulo dice cuándo es única y cómo decidir la irreducibilidad.'
+        aplicaciones:
+          - campo: cripto
+            texto: códigos cíclicos y BCH como ideales de 𝔽_q[x]/(xⁿ − 1)
+          - campo: 3d
+            texto: cálculo exacto de intersecciones de curvas implícitas mediante factorización
+        lecturas: Dummit y Foote, *Abstract Algebra*; Atiyah y Macdonald, *Introduction to Commutative Algebra*.
+      - id: V.4
+        titulo: Módulos y teorema de estructura sobre un dominio de ideales principales
+        paginas: 48
+        requiere:
+          - V.3
+          - II.7
+        tipo: nucleo
+        contenidos:
+          - Módulos, submódulos, cocientes y sucesiones exactas; módulos libres.
+          - Forma normal de Smith para matrices sobre un dominio de ideales principales.
+          - Teorema de estructura de los módulos finitamente generados; clasificación de los grupos abelianos finitamente generados.
+          - 'Formas canónicas racional y de Jordan como corolario: un operador lineal es un k[x]-módulo.'
+        puente: 'Entrada: `smith_normal_form(A)` aplicado a la matriz de un retículo. La forma de Smith diagonaliza una matriz entera con cambios de base enteros, y de ella se leen el grupo cociente ℤⁿ/Aℤⁿ y los invariantes del retículo: es el mismo teorema que da la forma de Jordan.'
+        aplicaciones:
+          - campo: fisica
+            texto: retículos cristalinos y redes recíprocas
+          - campo: cripto
+            texto: la forma normal de Hermite en la criptografía de retículos postcuántica
+          - campo: 3d
+            texto: texturas periódicas y dominios fundamentales de un retículo
+        lecturas: Dummit y Foote, *Abstract Algebra*; Hungerford, *Algebra*.
+  - letra: C
+    titulo: Cuerpos y teoría de Galois
     capitulos:
       - id: V.5
-        titulo: Curvas y superficies de Bézier y B-splines
+        titulo: Extensiones de cuerpos y construcciones con regla y compás
+        paginas: 44
+        requiere:
+          - V.3
+          - II.2
+        tipo: nucleo
+        contenidos:
+          - Extensiones algebraicas y trascendentes; grado y ley de la torre.
+          - Cuerpo de descomposición de un polinomio y clausura algebraica, que existe por el lema de Zorn.
+          - Números construibles con regla y compás; imposibilidad de duplicar el cubo, trisecar el ángulo y cuadrar el círculo (la trascendencia de π, enunciada).
+          - Polígonos regulares construibles y primos de Fermat.
+        puente: 'Entrada: `sqrt` es la única raíz que ofrece un núcleo geométrico exacto. Con sumas, productos, cocientes y raíces cuadradas solo se alcanzan números de grado 2ᵏ sobre ℚ: por eso ese núcleo no puede trisecar un ángulo sin salir de esas operaciones.'
+        aplicaciones:
+          - campo: 3d
+            texto: aritmética exacta con raíces cuadradas en núcleos geométricos robustos
+          - campo: cripto
+            texto: cuerpos finitos como extensiones de ℤ/pℤ en AES y en los códigos correctores
+          - campo: ing
+            texto: 'plegado de papel y estructuras desplegables: construcciones que resuelven cúbicas'
+        lecturas: Stewart, *Galois Theory*; Artin, *Algebra*.
+      - id: V.6
+        titulo: Teoría de Galois
         paginas: 48
         requiere:
-          - III.9
+          - V.5
+          - V.1
+        tipo: nucleo
+        contenidos:
+          - Extensiones normales y separables; grupo de Galois de una extensión.
+          - 'Teorema fundamental de la teoría de Galois: correspondencia entre subgrupos y cuerpos intermedios.'
+          - Grupos de Galois de los cuerpos finitos y automorfismo de Frobenius; extensiones ciclotómicas.
+          - 'Grupos de Galois de polinomios de grado bajo; discriminante. Para seguir: teoría de Galois infinita y teoría algebraica de números.'
+        puente: 'Entrada: `y = x ** p` en la aritmética de 𝔽_{pⁿ}, que deja fijos los elementos del subcuerpo primo. Es el automorfismo de Frobenius, que genera el grupo de Galois de un cuerpo finito: los subcuerpos de 𝔽_{pⁿ} corresponden a los divisores de n.'
+        aplicaciones:
+          - campo: cripto
+            texto: el Frobenius en la aritmética rápida de cuerpos finitos y de curvas
+          - campo: senales
+            texto: raíces de la unidad, polinomios ciclotómicos y algoritmos de FFT para longitudes primas
+        lecturas: Stewart, *Galois Theory*; Dummit y Foote, *Abstract Algebra*.
+      - id: V.7
+        titulo: Solubilidad por radicales y ecuaciones polinomiales
+        paginas: 36
+        requiere:
+          - V.6
           - V.2
         tipo: nucleo
         contenidos:
-          - 'Curvas de Bézier: algoritmo de De Casteljau, subdivisión, elevación de grado y propiedad de la envolvente convexa.'
-          - 'B-splines: recurrencia de Cox–de Boor, vector de nodos y soporte local; Catmull–Rom.'
-          - Continuidad paramétrica Cⁿ frente a continuidad geométrica Gⁿ.
-          - NURBS como proyección de curvas polinómicas en coordenadas homogéneas; superficies producto tensorial.
-        puente: 'Entrada: `p = deCasteljau(controlPoints, t)` en un riel de cámara que acelera solo en las curvas. El parámetro t no es la longitud de arco; reparametrizar con la cuadratura y el método de Newton de III.10 da velocidad constante.'
+          - Extensiones radicales y grupos de Galois resolubles.
+          - Las fórmulas de la cúbica y de la cuártica, deducidas de su grupo de Galois.
+          - 'Teorema de Abel–Ruffini: la quíntica general no es resoluble por radicales; un ejemplo explícito con grupo S₅.'
+          - 'Consecuencias para el cálculo: por qué las raíces de grado mayor o igual que 5 se calculan con métodos iterativos.'
+        puente: 'Entrada: `roots = np.roots(coeffs)`, que calcula los autovalores de la matriz compañera en lugar de aplicar una fórmula. Para grado 5 o más no hay fórmula con radicales, por el teorema de Abel–Ruffini, así que toda biblioteca itera; para grado 3 y 4 la fórmula existe, pero es numéricamente inestable.'
         aplicaciones:
           - campo: 3d
-            texto: rieles de cámara, trayectorias y teselación de parches
+            texto: 'intersección de un rayo con un toro: una cuártica, y cuándo conviene la fórmula o la iteración'
           - campo: ing
-            texto: diseño asistido por computadora y tipografía digital
-          - campo: fisica
-            texto: trayectorias suaves de partículas en simulaciones
-        lecturas: Farin, *Curves and Surfaces for CAGD*; Piegl y Tiller, *The NURBS Book*.
-  - letra: C
-    titulo: Geometría diferencial
-    capitulos:
-      - id: V.6
-        titulo: Curvas en el espacio
-        paginas: 36
-        requiere:
-          - IV.2
-        tipo: nucleo
-        contenidos:
-          - Curvas regulares y parametrización por longitud de arco.
-          - Curvatura, torsión y triedro de Frenet–Serret; teorema fundamental de las curvas.
-          - Marcos móviles y marcos de rotación mínima.
-          - 'Curvas planas: curvatura con signo e índice de rotación.'
-        puente: 'Entrada: un tubo generado a lo largo de una curva que se retuerce en los puntos de inflexión. El triedro de Frenet no está definido donde la curvatura se anula; los marcos de rotación mínima evitan el problema.'
-        aplicaciones:
-          - campo: 3d
-            texto: tubos, cuerdas y rieles de cámara sin giros bruscos
-          - campo: ing
-            texto: trazado de carreteras y vías con clotoides
-          - campo: bio-eco
-            texto: geometría del ADN
-        lecturas: do Carmo, *Differential Geometry of Curves and Surfaces*; Pressley, *Elementary Differential Geometry*.
-      - id: V.7
-        titulo: 'Superficies: formas fundamentales y curvatura'
-        paginas: 48
-        requiere:
-          - IV.3
-          - V.6
-        tipo: nucleo
-        contenidos:
-          - Superficies regulares, plano tangente y primera forma fundamental; longitudes y áreas.
-          - Aplicación de Gauss y segunda forma fundamental.
-          - Curvaturas normal, principales, gaussiana y media; líneas de curvatura.
-          - Marcos tangentes en superficies parametrizadas.
-        puente: 'Entrada: la matriz TBN (tangente, bitangente, normal) de un *normal map*. Es un marco del plano tangente de la superficie parametrizada por sus coordenadas de textura; la convención MikkTSpace fija cómo calcularlo para que la herramienta que genera el mapa y el motor coincidan.'
-        aplicaciones:
-          - campo: 3d
-            texto: '*normal mapping* y espacio tangente'
-          - campo: ing
-            texto: curvatura de carrocerías y control de reflejos
-          - campo: fisica
-            texto: membranas y tensión superficial
-        lecturas: do Carmo, *Differential Geometry of Curves and Surfaces*; Pressley, *Elementary Differential Geometry*.
-      - id: V.8
-        titulo: Geometría intrínseca y Gauss–Bonnet
-        paginas: 44
-        requiere:
-          - V.7
-          - IV.11
-          - I.6
-        tipo: nucleo
-        contenidos:
-          - '*Theorema egregium*: la curvatura gaussiana es intrínseca.'
-          - Geodésicas y curvatura geodésica.
-          - Teorema de Gauss–Bonnet local y global; característica de Euler.
-          - Por qué no existe un mapa plano perfecto de la esfera. Las variedades y la geometría riemanniana llegan en X.4 y X.5.
-        puente: 'Entrada: una textura que se estira en los polos de una esfera. Ninguna parametrización plana de la esfera conserva distancias, porque lo prohíbe el *theorema egregium*; elegir entre la proyección equirectangular, la cúbica o la octaédrica es elegir qué distorsión aceptar.'
-        aplicaciones:
-          - campo: 3d
-            texto: parametrizaciones de la esfera para texturas y mapas de entorno
-          - campo: ing
-            texto: cartografía y proyecciones de mapas
-          - campo: fisica
-            texto: superficies curvas y relatividad (aviso)
-        lecturas: do Carmo, *Differential Geometry of Curves and Surfaces*; Needham, *Visual Differential Geometry and Forms*.
+            texto: polinomios característicos en control y criterios de estabilidad que evitan calcular raíces
+        lecturas: Stewart, *Galois Theory*; Tignol, *Galois’ Theory of Algebraic Equations*.
   - letra: D
-    titulo: Geometría computacional y discreta
+    titulo: Álgebra computacional
     capitulos:
-      - id: V.9
-        titulo: Predicados geométricos e intersecciones
-        paginas: 40
-        requiere:
-          - II.4
-          - II.16
-          - III.10
-        tipo: nucleo
-        contenidos:
-          - Predicados de orientación y de círculo circunscrito (*incircle*) como signos de determinantes.
-          - Fallos en coma flotante; aritmética exacta y predicados adaptativos.
-          - Intersecciones rayo–plano, rayo–esfera, rayo–caja y rayo–triángulo (Möller–Trumbore como regla de Cramer); rayo contra superficies algebraicas de grado alto.
-          - 'Puntos más cercanos: punto–triángulo, segmento–segmento y punto–caja.'
-        puente: 'Entrada: `if (abs(det) < EPSILON) return NO_HIT;` en una intersección rayo–triángulo. Es la regla de Cramer con una protección contra determinantes pequeños; los predicados adaptativos sustituyen ese épsilon arbitrario por una decisión exacta cuando hace falta.'
-        aplicaciones:
-          - campo: 3d
-            texto: selección con el ratón, *raycasts* y núcleo del trazado de rayos
-          - campo: ing
-            texto: CAD robusto
-          - campo: datos
-            texto: sistemas de información geográfica
-        lecturas: Ericson, *Real-Time Collision Detection*; Shewchuk, «Adaptive Precision Floating-Point Arithmetic and Fast Robust Geometric Predicates».
-      - id: V.10
-        titulo: 'Convexidad computacional: envolventes, separación y distancia'
+      - id: V.8
+        titulo: Curvas elípticas y criptografía
         paginas: 44
         requiere:
-          - V.9
-          - IV.5
-        tipo: nucleo
-        contenidos:
-          - 'Envolvente convexa en 2D y en 3D: algoritmos de Graham y Quickhull.'
-          - Teorema de los ejes separadores para politopos, como corolario del teorema del hiperplano separador.
-          - Distancia entre convexos como problema convexo; algoritmo GJK sobre la diferencia de Minkowski y su convergencia.
-          - Profundidad de penetración (EPA) y avance conservador para el tiempo de impacto.
-        puente: 'Entrada: el bucle principal de GJK, que solo llama a `support()`. Toda la geometría de los dos objetos entra por sus funciones de soporte; el algoritmo es un descenso sobre la diferencia de Minkowski que IV.5 justifica.'
-        aplicaciones:
-          - campo: 3d
-            texto: detección de colisiones, puntos de contacto y detección continua
-          - campo: ing
-            texto: planificación de movimientos de robots
-          - campo: datos
-            texto: clasificación lineal por separación
-        lecturas: de Berg, Cheong, van Kreveld y Overmars, *Computational Geometry*; van den Bergen, *Collision Detection in Interactive 3D Environments*; Gilbert, Johnson y Keerthi, «A Fast Procedure for Computing the Distance Between Complex Objects in Three-Dimensional Space».
-      - id: V.11
-        titulo: Triangulaciones y diagramas de Voronoi
-        paginas: 40
-        requiere:
-          - V.9
-          - IV.9
-          - I.6
-        tipo: nucleo
-        contenidos:
-          - 'Triangulación de polígonos: existencia, recorte de orejas y descomposición monótona.'
-          - 'Triangulación de Delaunay: círculo vacío, maximización del ángulo mínimo y volteo de aristas.'
-          - Diagrama de Voronoi como dual de Delaunay.
-          - Teselaciones de Voronoi centroidales y algoritmo de Lloyd.
-        puente: "Entrada: una malla de navegación generada a partir del plano de un nivel. Es una triangulación del espacio libre: Delaunay evita triángulos degenerados, y su grafo dual se recorre con A\\* (I.6)."
-        aplicaciones:
-          - campo: 3d
-            texto: mallas de navegación y terrenos
-          - campo: ing
-            texto: mallado para elementos finitos
-          - campo: bio-eco
-            texto: modelos de territorio y de crecimiento celular
-        lecturas: de Berg, Cheong, van Kreveld y Overmars, *Computational Geometry*; Okabe, Boots, Sugihara y Chiu, *Spatial Tessellations*.
-      - id: V.12
-        titulo: 'Mallas: topología y geometría discreta'
-        paginas: 48
-        requiere:
-          - V.8
-          - II.12
-          - I.6
-        tipo: nucleo
-        contenidos:
-          - Complejos simpliciales, variedades con borde, orientabilidad, característica de Euler y género; la estructura *half-edge*.
-          - Normales de vértice, curvaturas discretas y Gauss–Bonnet discreto.
-          - Laplaciano cotangente y suavizado como difusión, explícito e implícito.
-          - 'Subdivisión de Catmull–Clark y de Loop con análisis espectral de la máscara; simplificación con métricas de error cuádrico; parametrización conforme por mínimos cuadrados. Para seguir: topología algebraica.'
-        puente: 'Entrada: `w = cot(alpha) + cot(beta)` en un código de suavizado de mallas. Son los pesos del laplaciano cotangente, la discretización del laplaciano de la superficie; el defecto angular alrededor de un vértice es la curvatura gaussiana discreta.'
-        aplicaciones:
-          - campo: 3d
-            texto: validación y reparación de mallas, niveles de detalle y desplegado UV
-          - campo: ing
-            texto: mallas para simulación
-          - campo: bio-eco
-            texto: superficies de órganos en imágenes médicas
-        lecturas: 'Botsch, Kobbelt, Pauly, Alliez y Lévy, *Polygon Mesh Processing*; Crane, *Discrete Differential Geometry: An Applied Introduction*.'
-      - id: V.13
-        titulo: Superficies implícitas y campos de distancia
-        paginas: 36
-        requiere:
-          - V.7
-          - III.10
-        tipo: nucleo
-        contenidos:
-          - Conjuntos de nivel y funciones de distancia con signo; ecuación eikonal |∇d| = 1.
-          - Constante de Lipschitz y *sphere tracing* como búsqueda de raíces con paso garantizado.
-          - Operaciones booleanas suaves y operadores de dominio.
-          - 'Extracción de mallas: Marching Cubes y sus ambigüedades.'
-        puente: 'Entrada: `t += sdf(origin + t * dir)`. Es *sphere tracing*: si la función tiene constante de Lipschitz 1, avanzar exactamente su valor nunca atraviesa la superficie.'
-        aplicaciones:
-          - campo: 3d
-            texto: '*ray marching* y modelado con campos de distancia'
-          - campo: ing
-            texto: fabricación aditiva y trayectorias de herramientas
-          - campo: bio-eco
-            texto: reconstrucción de órganos a partir de tomografías
-        lecturas: 'Hart, «Sphere Tracing: A Geometric Method for the Antialiased Ray Tracing of Implicit Surfaces»; Osher y Fedkiw, *Level Set Methods and Dynamic Implicit Surfaces*.'
-      - id: V.14
-        titulo: Geometría integral y particiones del espacio
-        paginas: 40
-        requiere:
-          - V.10
-          - IV.9
+          - V.5
+          - I.9
         tipo: complementario
         contenidos:
-          - Medida invariante en el espacio de rectas; fórmula de Cauchy–Crofton.
-          - 'Probabilidad de que una recta al azar corte un convexo: proporcional a su perímetro en el plano y a su área de superficie en el espacio.'
-          - 'Particiones recursivas: árboles BSP, árboles k-d y *octrees*.'
-          - 'Curvas que llenan el espacio (Peano, Hilbert y Morton): construcción, continuidad y localidad.'
-        puente: 'Entrada: `cost = Ct + (SA(L)/SA(P)) * N(L) * Ci + (SA(R)/SA(P)) * N(R) * Ci`. La heurística de área de superficie (SAH) usa cocientes de áreas como probabilidades: es la fórmula de Cauchy–Crofton aplicada a rayos al azar.'
+          - Curvas cúbicas en el plano proyectivo; forma de Weierstrass y discriminante.
+          - Ley de grupo por cuerdas y tangentes; asociatividad.
+          - 'Curvas sobre cuerpos finitos: teorema de Hasse (enunciado) y conteo de puntos.'
+          - 'El logaritmo discreto elíptico: intercambio de claves y firmas (ECDH y ECDSA); por qué ciertas curvas son débiles.'
+        puente: 'Entrada: `X25519(private_key, public_key)`, el intercambio de claves de casi toda conexión segura de la web. Es multiplicar un punto de una curva elíptica sobre 𝔽_p por un entero, y su seguridad es la dificultad del logaritmo discreto en ese grupo.'
+        aplicaciones:
+          - campo: cripto
+            texto: TLS, firmas digitales y criptomonedas
+          - campo: ing
+            texto: firmas digitales en sistemas embebidos y actualizaciones seguras de *firmware*
+        lecturas: 'Silverman y Tate, *Rational Points on Elliptic Curves*; Washington, *Elliptic Curves: Number Theory and Cryptography*.'
+      - id: V.9
+        titulo: Bases de Gröbner y geometría algebraica computacional
+        paginas: 44
+        requiere:
+          - V.3
+        tipo: complementario
+        contenidos:
+          - Órdenes monomiales, división multivariable y bases de Gröbner; algoritmo de Buchberger.
+          - Eliminación de variables e implicitación de curvas y superficies paramétricas.
+          - Variedades afines e ideales; Nullstellensatz de Hilbert (enunciado y uso).
+          - 'Resolución de sistemas polinomiales y su costo. Para seguir: geometría algebraica.'
+        puente: 'Entrada: `groebner([x**2 + y**2 - 1, x - y], x, y)`. Una base de Gröbner es al sistema polinomial lo que la forma escalonada es al sistema lineal: triangula, y de ella se leen las soluciones.'
         aplicaciones:
           - campo: 3d
-            texto: jerarquías de volúmenes envolventes y *hashing* espacial
-          - campo: datos
-            texto: índices espaciales en bases de datos
-          - campo: fisica
-            texto: 'estereología: estimar áreas y volúmenes a partir de cortes'
-        lecturas: Santaló, *Integral Geometry and Geometric Probability*; Sagan, *Space-Filling Curves*.
+            texto: implicitación de superficies paramétricas para el trazado de rayos
+          - campo: ing
+            texto: cinemática inversa de robots resuelta en forma exacta
+        lecturas: Cox, Little y O’Shea, *Ideals, Varieties, and Algorithms*; Sturmfels, *Solving Systems of Polynomial Equations*.

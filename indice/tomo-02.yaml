@@ -14,7 +14,7 @@ partes:
         titulo: Sistemas lineales y matrices
         paginas: 40
         requiere:
-          - I.8
+          - I.9
         tipo: nucleo
         contenidos:
           - Sistemas de ecuaciones lineales sobre un cuerpo; eliminación de Gauss y forma escalonada reducida.
@@ -75,7 +75,7 @@ partes:
         paginas: 36
         requiere:
           - II.3
-          - I.7
+          - I.8
         tipo: nucleo
         contenidos:
           - Formas multilineales alternadas; existencia y unicidad del determinante.
@@ -116,7 +116,7 @@ partes:
         paginas: 40
         requiere:
           - II.4
-          - I.8
+          - I.9
         tipo: nucleo
         contenidos:
           - Autovalores, autovectores y polinomio característico.
@@ -160,7 +160,7 @@ partes:
         paginas: 44
         requiere:
           - II.5
-          - I.9
+          - I.10
         tipo: nucleo
         contenidos:
           - Producto interno, norma y desigualdad de Cauchy–Schwarz; ángulos.
@@ -249,7 +249,7 @@ partes:
         paginas: 44
         requiere:
           - II.10
-          - I.10
+          - I.11
         tipo: nucleo
         contenidos:
           - Normas matriciales y número de condición; error hacia adelante y hacia atrás.
@@ -280,7 +280,7 @@ partes:
           - 'Por qué un espacio vectorial no basta: puntos y vectores; espacio afín y su espacio de direcciones.'
           - Combinaciones afines y convexas; coordenadas baricéntricas en segmentos, triángulos y tetraedros.
           - 'Aplicaciones afines y su inmersión en ℝⁿ⁺¹ como el hiperplano w = 1: las matrices 4×4.'
-          - Composición jerárquica de transformaciones; primera mirada a la proyección en perspectiva y a la división por w (V.2 y V.3 la desarrollan).
+          - Composición jerárquica de transformaciones; primera mirada a la proyección en perspectiva y a la división por w (VII.2 y VII.3 la desarrollan).
         puente: 'Entrada: `vec4(p, 1.0)` y `vec4(v, 0.0)`. Los puntos viven en w = 1 y las direcciones en w = 0; por eso una traslación mueve los puntos y deja quietas las direcciones. La «magia» de las matrices 4×4 es el espacio afín visto dentro de un espacio vectorial.'
         aplicaciones:
           - campo: 3d
@@ -317,7 +317,7 @@ partes:
         requiere:
           - II.9
           - II.14
-          - I.7
+          - I.8
         tipo: nucleo
         contenidos:
           - El grupo SO(3) y el teorema de rotación de Euler; eje y ángulo; fórmula de Rodrigues.
@@ -331,7 +331,7 @@ partes:
           - campo: ing
             texto: actitud de satélites y drones
           - campo: fisica
-            texto: matrices de Pauli, SU(2) y espín (aviso de X.2)
+            texto: matrices de Pauli, SU(2) y espín (aviso de XIII.2)
         lecturas: Altmann, *Rotations, Quaternions, and Double Groups*; Hanson, *Visualizing Quaternions*; Shoemake, «Animating Rotation with Quaternion Curves».
       - id: II.16
         titulo: Álgebra lineal en precisión finita
@@ -344,7 +344,7 @@ partes:
           - Deriva de las matrices ortogonales al componerlas en coma flotante; medida de la pérdida de ortogonalidad.
           - 'Re-ortonormalización: Gram–Schmidt frente a descomposición polar; renormalización de cuaterniones.'
           - Errores en cadenas de transformaciones; la transpuesta en lugar de la inversa para rotaciones.
-          - Predicados de orientación por determinantes y por qué fallan en coma flotante (V.9 lo resuelve).
+          - Predicados de orientación por determinantes y por qué fallan en coma flotante (VII.9 lo resuelve).
         puente: 'Entrada: `if (frame % 100 == 0) orthonormalize(cameraBasis);`. Tras miles de productos en float32, la matriz deja de ser ortogonal; re-ortonormalizar es proyectar de nuevo sobre SO(3), y la descomposición polar da la rotación más cercana.'
         aplicaciones:
           - campo: 3d

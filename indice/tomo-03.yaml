@@ -14,7 +14,7 @@ partes:
         titulo: Sucesiones reales y completitud
         paginas: 44
         requiere:
-          - I.9
+          - I.10
         tipo: nucleo
         contenidos:
           - Límite de una sucesión; álgebra de límites; sucesiones monótonas.
@@ -104,7 +104,7 @@ partes:
           - Propiedades de la integral; teorema fundamental del cálculo.
           - Cambio de variable, integración por partes e integrales impropias.
           - Longitud de arco, áreas y valores medios.
-        puente: 'Entrada: `position += velocity * dt` acumulado en un bucle. Es una suma de Riemann: el teorema fundamental dice hacia qué converge, y VI.10 mide el error cometido.'
+        puente: 'Entrada: `position += velocity * dt` acumulado en un bucle. Es una suma de Riemann: el teorema fundamental dice hacia qué converge, y VIII.10 mide el error cometido.'
         aplicaciones:
           - campo: fisica
             texto: trabajo, energía y distancia recorrida
@@ -182,7 +182,7 @@ partes:
         paginas: 48
         requiere:
           - III.8
-          - I.5
+          - I.6
         tipo: nucleo
         contenidos:
           - Teorema de aproximación de Weierstrass, demostrado con polinomios de Bernstein.
@@ -203,7 +203,7 @@ partes:
         paginas: 44
         requiere:
           - III.9
-          - I.10
+          - I.11
         tipo: nucleo
         contenidos:
           - Bisección, Newton, secante y punto fijo; orden de convergencia y criterios de parada.
@@ -228,8 +228,8 @@ partes:
         contenidos:
           - Espacios métricos y normados; abiertos, cerrados y clausura.
           - Convergencia, completitud y espacios de Banach; C[a, b] con la norma del supremo.
-          - Compacidad, conexidad y continuidad; teorema de Arzelà–Ascoli (enunciado y uso).
-          - 'Teorema del punto fijo de Banach. Para seguir: topología general.'
+          - Compacidad, conexidad y continuidad; teorema de Arzelà–Ascoli (enunciado y uso; se demuestra en VI.4).
+          - Teorema del punto fijo de Banach. La topología general llega en el Tomo VI.
         puente: 'Entrada: un *solver* iterativo que «a veces no converge». El teorema de Banach da la condición: si la iteración es contractiva, converge desde cualquier punto y con velocidad conocida; si no lo es, no hay garantía.'
         aplicaciones:
           - campo: ing

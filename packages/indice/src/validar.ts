@@ -1,4 +1,4 @@
-import { HILOS_FIJOS, ROMANOS, type Indice } from './esquema.ts';
+import { HILOS_FIJOS, ROMANOS, referenciasA, type Indice } from './esquema.ts';
 import { capitulosDelItinerario, todosLosCapitulos, tomoDe, tomosRequeridos } from './consultas.ts';
 
 /**
@@ -11,8 +11,6 @@ export interface Problema {
   regla: string;
   mensaje: string;
 }
-
-const REFERENCIA = /\b(?:VIII|VII|VI|IV|IX|X|V|III|II|I)\.\d+\b/g;
 
 export function validarIndice(indice: Indice): Problema[] {
   const problemas: Problema[] = [];
@@ -100,7 +98,7 @@ export function validarIndice(indice: Indice): Problema[] {
   // Referencias en el texto: todo capítulo que se nombra existe.
   for (const c of capitulos) {
     const texto = [...c.contenidos, c.puente, ...c.aplicaciones.map((a) => a.texto), c.lecturas].join(' ');
-    for (const r of texto.match(REFERENCIA) ?? [])
+    for (const r of texto.match(referenciasA()) ?? [])
       if (!porId.has(r)) problema('referencia', `${c.id} nombra ${r}, que no existe.`);
   }
 

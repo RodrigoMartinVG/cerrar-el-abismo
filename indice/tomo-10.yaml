@@ -1,168 +1,142 @@
-# Tomo X — Simetría, variedades y operadores
+# Tomo X — Análisis funcional
 # Fuente del índice (decisión 0002): la sección 13 de la especificación se escribe desde aquí.
 id: X
-titulo: Simetría, variedades y operadores
+titulo: Análisis funcional
 requiere:
-  - V
-  - VII
-  - VIII
+  - VI
+  - IX
 interfaces:
-  - IX.3
-presentacion: 'La matemática de la física moderna: representaciones de grupos, variedades y geometría del espacio-tiempo, y operadores en espacios de Hilbert. Es el cierre del itinerario de física, como el Tomo IX lo es del medio continuo. Sus capítulos son complementarios en el sentido de 5.3, porque nada del núcleo depende de ellos, pero son el centro del itinerario de física (9.6).'
+  - VII.4
+presentacion: Los espacios de Banach y sus grandes teoremas, la dualidad y las topologías débiles, los operadores compactos y los espacios de Sobolev, y los operadores no acotados de la mecánica cuántica. Es el marco donde las ecuaciones en derivadas parciales tienen solución, donde los elementos finitos convergen y donde los observables cuánticos tienen sentido.
 partes:
   - letra: A
-    titulo: Simetría y representaciones
+    titulo: Espacios de Banach y dualidad
     capitulos:
       - id: X.1
-        titulo: Representaciones de grupos finitos
+        titulo: Espacios de Banach y teorema de Hahn–Banach
         paginas: 44
         requiere:
-          - I.7
-          - II.11
-          - VII.6
-        tipo: complementario
+          - IX.3
+          - I.4
+        tipo: nucleo
         contenidos:
-          - Representaciones, subrepresentaciones, teorema de Maschke y lema de Schur.
-          - Caracteres y relaciones de ortogonalidad; tabla de caracteres.
-          - Descomposición de la representación regular; análisis de Fourier en un grupo finito, con la DFT como el caso del grupo cíclico.
-          - Producto tensorial de representaciones y reglas de selección.
-        puente: 'Entrada: `X = np.fft.fft(x)`. La DFT descompone una señal en las representaciones irreducibles del grupo cíclico ℤ/nℤ; el capítulo hace lo mismo para cualquier grupo finito, que es lo que usa la química para clasificar las vibraciones de una molécula.'
+          - Espacios normados y de Banach; operadores acotados y espacio de operadores; cocientes.
+          - 'Ejemplos: ℓᵖ, Lᵖ, c₀ y C(K).'
+          - Teorema de Hahn–Banach, analítico y geométrico (separación de convexos), con el lema de Zorn.
+          - 'Consecuencias: extensión de funcionales, norma por dualidad y doble dual.'
+        puente: 'Entrada: `w·x + b ≥ 0`, el clasificador lineal que separa dos clases. Que dos convexos disjuntos se puedan separar con un hiperplano es la forma geométrica de Hahn–Banach; en dimensión infinita, la misma afirmación sostiene los métodos de núcleos y la dualidad en optimización.'
         aplicaciones:
-          - campo: fisica
-            texto: modos de vibración de moléculas y reglas de selección en espectroscopía
-          - campo: senales
-            texto: la DFT como análisis armónico en ℤ/nℤ
           - campo: datos
-            texto: redes neuronales equivariantes respecto de grupos de simetría
-        lecturas: Serre, *Linear Representations of Finite Groups*; Sternberg, *Group Theory and Physics*.
-      - id: X.2
-        titulo: SU(2), SO(3) y momento angular
-        paginas: 48
-        requiere:
-          - X.1
-          - V.4
-          - VII.13
-        tipo: complementario
-        contenidos:
-          - Representaciones de grupos de Lie compactos y de sus álgebras; medida de Haar (enunciado) y ortogonalidad.
-          - Representaciones irreducibles de su(2) mediante operadores escalera; pesos y espín.
-          - Producto tensorial de representaciones y coeficientes de Clebsch–Gordan.
-          - 'Los armónicos esféricos como representaciones irreducibles de SO(3); matrices D de Wigner. Para seguir: teorema de Peter–Weyl.'
-        puente: 'Entrada: `J± |j, m⟩ = ħ √(j(j+1) − m(m±1)) |j, m±1⟩` en un libro de mecánica cuántica. Es la construcción de las representaciones irreducibles de su(2) con operadores escalera: el «momento angular» de la física es teoría de representaciones, y el espín ½ es la representación de SU(2) que no baja a SO(3).'
-        aplicaciones:
-          - campo: fisica
-            texto: espín, acoplamiento de momentos angulares y estructura atómica
+            texto: separación por hiperplanos y máquinas de vectores soporte en espacios de funciones
           - campo: 3d
-            texto: rotación de coeficientes de armónicos esféricos para iluminación
-          - campo: datos
-            texto: redes equivariantes respecto de rotaciones en química computacional
-        lecturas: Hall, *Lie Groups, Lie Algebras, and Representations*; Sakurai y Napolitano, *Modern Quantum Mechanics*.
-      - id: X.3
-        titulo: Espacio de Minkowski y grupo de Lorentz
+            texto: separación de convexos en la detección de colisiones
+          - campo: ing
+            texto: dualidad y certificados de optimalidad en control óptimo
+        lecturas: Brezis, *Functional Analysis, Sobolev Spaces and Partial Differential Equations*; Kreyszig, *Introductory Functional Analysis with Applications*.
+      - id: X.2
+        titulo: Acotación uniforme, aplicación abierta y gráfico cerrado
         paginas: 40
         requiere:
-          - II.9
-          - V.4
-          - X.2
-        tipo: complementario
+          - X.1
+          - VI.4
+        tipo: nucleo
         contenidos:
-          - Formas bilineales de signatura (1, 3) y espacio de Minkowski; vectores temporales, espaciales y nulos; cono de luz.
-          - Transformaciones de Lorentz, rapidez como ángulo hiperbólico y composición de velocidades.
-          - Tiempo propio, cuadrivectores y cinemática relativista.
-          - 'El grupo de Lorentz SO⁺(1, 3), su álgebra de Lie y el recubrimiento doble SL(2, ℂ) → SO⁺(1, 3); espinores (introducción). Para seguir: representaciones de grupos no compactos.'
-        puente: "Entrada: `x' = gamma * (x - v * t)`, y una métrica escrita diag(−1, 1, 1, 1) en un texto y diag(1, −1, −1, −1) en otro. Una transformación de Lorentz es una isometría de una forma bilineal indefinida (ley de inercia de Sylvester, II.9), y las dos signaturas describen la misma geometría con el signo opuesto: el capítulo enseña a traducir entre ellas."
-        aplicaciones:
-          - campo: fisica
-            texto: relatividad especial y cinemática de partículas
-          - campo: ing
-            texto: corrección relativista de los relojes del GPS
-          - campo: 3d
-            texto: 'visualización relativista: aberración de la luz y efecto Doppler'
-        lecturas: Naber, *The Geometry of Minkowski Spacetime*; Taylor y Wheeler, *Spacetime Physics*.
-  - letra: B
-    titulo: Variedades y espacio-tiempo
-    capitulos:
-      - id: X.4
-        titulo: Variedades diferenciables
-        paginas: 48
-        requiere:
-          - IV.3
-          - IV.13
-          - II.11
-        tipo: complementario
-        contenidos:
-          - Variedades, cartas y atlas; aplicaciones diferenciables; subvariedades y teorema del valor regular.
-          - Espacio tangente y fibrado tangente; campos vectoriales, flujos y corchete de Lie.
-          - Campos tensoriales y formas diferenciales en variedades; derivada de Lie.
-          - Integración en variedades orientadas y teorema de Stokes.
-        puente: 'Entrada: un optimizador de orientaciones que actualiza `q = normalize(q + dq)`. Sumar en ℝ⁴ y renormalizar es una retracción: la forma práctica de moverse por la variedad S³ sin salirse de ella. El capítulo da el marco general, espacios tangentes y retracciones, del que esa línea es un caso.'
+          - Principio de acotación uniforme (Banach–Steinhaus), por el teorema de Baire.
+          - Teorema de la aplicación abierta y teorema de la inversa acotada.
+          - Teorema del gráfico cerrado.
+          - 'Aplicaciones: series de Fourier de funciones continuas que divergen en un punto; teorema de equivalencia de Lax.'
+        puente: 'Entrada: un esquema numérico consistente que igual explota al refinar la malla. El teorema de equivalencia de Lax dice que, para un problema lineal bien planteado, convergencia equivale a consistencia más estabilidad, y su demostración es el principio de acotación uniforme.'
         aplicaciones:
           - campo: ing
-            texto: espacios de configuración en robótica
-          - campo: 3d
-            texto: optimización sobre SO(3) para cámaras y personajes
-          - campo: fisica
-            texto: espacios de fases como variedades
-        lecturas: Lee, *Introduction to Smooth Manifolds*; Tu, *An Introduction to Manifolds*.
-      - id: X.5
-        titulo: Geometría riemanniana
-        paginas: 48
-        requiere:
-          - X.4
-          - V.8
-          - IV.12
-        tipo: complementario
-        contenidos:
-          - Métricas riemannianas; longitud, distancia y volumen.
-          - Conexión de Levi-Civita, derivada covariante y transporte paralelo.
-          - Geodésicas y aplicación exponencial.
-          - 'Tensor de curvatura de Riemann, curvatura seccional, tensor de Ricci y curvatura escalar; el *theorema egregium* revisitado. Para seguir: fibrados y teorías gauge.'
-        puente: 'Entrada: `Γ^k_ij = ½ g^kl (∂_i g_jl + ∂_j g_il − ∂_l g_ij)` en un libro de relatividad. Los símbolos de Christoffel son los coeficientes de la conexión de Levi-Civita en coordenadas, y la fórmula se deduce de dos exigencias geométricas: que la conexión no tenga torsión y que conserve la métrica.'
-        aplicaciones:
-          - campo: 3d
-            texto: geodésicas y distancias sobre mallas con el método del calor
-          - campo: ing
-            texto: navegación por círculos máximos
-          - campo: fisica
-            texto: relatividad general (aviso de X.6)
-        lecturas: do Carmo, *Riemannian Geometry*; Lee, *Introduction to Riemannian Manifolds*.
-      - id: X.6
-        titulo: Geometría lorentziana y gravitación
+            texto: estabilidad de esquemas numéricos y teorema de Lax
+          - campo: senales
+            texto: divergencia de series de Fourier e inestabilidad en la reconstrucción de señales
+          - campo: bio-eco
+            texto: problemas inversos mal planteados en tomografía
+        lecturas: Brezis, *Functional Analysis, Sobolev Spaces and Partial Differential Equations*; Kreyszig, *Introductory Functional Analysis with Applications*.
+      - id: X.3
+        titulo: Dualidad, topologías débiles y teorema de Banach–Alaoglu
         paginas: 44
         requiere:
-          - X.5
+          - X.2
+          - VI.2
+          - IX.2
+        tipo: nucleo
+        contenidos:
+          - Duales de los Lᵖ por el teorema de Radon–Nikodym; dual de C(K) y teorema de representación de Riesz–Markov (enunciado).
+          - Topologías débil y débil-*; convergencia débil.
+          - Teorema de Banach–Alaoglu, con Tychonoff; espacios reflexivos.
+          - 'Minimización en espacios reflexivos: los funcionales convexos y semicontinuos alcanzan su mínimo.'
+        puente: 'Entrada: una sucesión de oscilaciones cada vez más rápidas, `sin(n * x)`, que «tiende a cero» en promedio pero no en norma. Converge débilmente a 0: la topología débil es la que conserva la compacidad en dimensión infinita, y con ella el método directo garantiza que los problemas variacionales tienen solución.'
+        aplicaciones:
+          - campo: fisica
+            texto: métodos variacionales y existencia de estados de mínima energía
+          - campo: 3d
+            texto: existencia de superficies de energía mínima en modelado y animación
+          - campo: datos
+            texto: convergencia débil de medidas y distancias entre distribuciones
+        lecturas: Brezis, *Functional Analysis, Sobolev Spaces and Partial Differential Equations*; Rudin, *Functional Analysis*.
+  - letra: B
+    titulo: Operadores compactos y espacios de Sobolev
+    capitulos:
+      - id: X.4
+        titulo: Operadores compactos y teoría de Fredholm
+        paginas: 40
+        requiere:
           - X.3
         tipo: complementario
         contenidos:
-          - Variedades lorentzianas; estructura causal; geodésicas temporales y nulas.
-          - Las ecuaciones de Einstein como ecuación geométrica; tensor de energía-impulso.
-          - 'Solución de Schwarzschild: órbitas, desviación de la luz y corrimiento al rojo gravitacional.'
-          - Ondas gravitacionales linealizadas (introducción).
-        puente: 'Entrada: un trazador de rayos que integra `d²x^μ/dλ² + Γ^μ_αβ (dx^α/dλ)(dx^β/dλ) = 0` para dibujar un agujero negro. Cada rayo es una geodésica nula de la métrica de Schwarzschild, y los anillos de luz alrededor del horizonte salen de resolver esa ecuación diferencial.'
+          - Operadores compactos en espacios de Banach; límites de operadores de rango finito.
+          - 'Teoría de Riesz–Schauder: el espectro de un operador compacto.'
+          - Alternativa de Fredholm y operadores de Fredholm; índice.
+          - Ecuaciones integrales de segunda especie y su resolución numérica por el método de Nyström.
+        puente: 'Entrada: `solve(I - K, f)`, con K una matriz que discretiza un núcleo integral. La alternativa de Fredholm dice que la ecuación tiene solución única salvo para una cantidad numerable de valores del parámetro, y eso explica por qué el sistema discreto está bien condicionado lejos de ellos.'
         aplicaciones:
           - campo: 3d
-            texto: imágenes de agujeros negros y lentes gravitacionales con rayos curvos
+            texto: 'radiosidad: el transporte de la luz como ecuación integral de segunda especie'
           - campo: ing
-            texto: corrección gravitacional de los relojes del GPS
+            texto: métodos de elementos de contorno en acústica y electromagnetismo
           - campo: fisica
-            texto: precesión del perihelio de Mercurio y ondas gravitacionales
-        lecturas: Carroll, *Spacetime and Geometry*; Wald, *General Relativity*.
+            texto: dispersión de ondas y ecuación de Lippmann–Schwinger
+        lecturas: Kress, *Linear Integral Equations*; Brezis, *Functional Analysis, Sobolev Spaces and Partial Differential Equations*.
+      - id: X.5
+        titulo: Espacios de Sobolev
+        paginas: 48
+        requiere:
+          - X.3
+          - IX.6
+        tipo: nucleo
+        contenidos:
+          - Derivadas débiles y espacios Wᵏ·ᵖ; densidad de las funciones suaves.
+          - El espacio H¹₀ y la desigualdad de Poincaré; trazas en el borde.
+          - Teoremas de inmersión de Sobolev (enunciados) y teorema de compacidad de Rellich–Kondrachov.
+          - Espacios Hˢ por la transformada de Fourier; regularidad.
+        puente: 'Entrada: la energía `sum(|grad u|^2) * area` que minimiza un suavizado de mallas o un programa de elementos finitos. Esa energía es la norma de H¹; las funciones con energía finita forman un espacio de Sobolev, y en él el problema discreto converge al continuo.'
+        aplicaciones:
+          - campo: 3d
+            texto: energía de Dirichlet en el suavizado y la deformación de mallas
+          - campo: ing
+            texto: espacios de elementos finitos y estimaciones del error
+          - campo: fisica
+            texto: energía de los campos y regularidad de las soluciones
+        lecturas: Evans, *Partial Differential Equations*; Brezis, *Functional Analysis, Sobolev Spaces and Partial Differential Equations*.
   - letra: C
-    titulo: Operadores y teoría cuántica
+    titulo: Teoría espectral y evolución
     capitulos:
-      - id: X.7
+      - id: X.6
         titulo: Operadores en espacios de Hilbert
         paginas: 48
         requiere:
-          - VII.2
-          - VII.5
-          - V.4
+          - IX.3
+          - IX.6
+          - VII.4
+          - X.2
         tipo: complementario
         contenidos:
           - Operadores acotados y no acotados; dominio, clausura y adjunto.
           - Operadores simétricos frente a autoadjuntos, y por qué la diferencia importa.
           - Espectro puntual, continuo y residual; teorema espectral para operadores autoadjuntos (enunciado, con medidas espectrales).
-          - 'Grupos unitarios a un parámetro y teorema de Stone: los generadores autoadjuntos. Para seguir: análisis funcional general.'
+          - 'Grupos unitarios a un parámetro y teorema de Stone: los generadores autoadjuntos.'
         puente: 'Entrada: `[x, p] = iħ`. Ningún par de matrices finitas lo cumple, porque la traza de un conmutador es 0 y la de iħ·I no lo es; la relación canónica exige operadores no acotados en dimensión infinita, y por eso los físicos necesitan algo más que el álgebra lineal del Tomo II.'
         aplicaciones:
           - campo: fisica
@@ -172,27 +146,45 @@ partes:
           - campo: datos
             texto: operadores integrales y métodos de núcleos
         lecturas: Hall, *Quantum Theory for Mathematicians*; Reed y Simon, *Methods of Modern Mathematical Physics*, vol. 1.
-      - id: X.8
-        titulo: Estructura matemática de la mecánica cuántica
-        paginas: 52
+      - id: X.7
+        titulo: Álgebras de Banach y teoría espectral
+        paginas: 44
         requiere:
-          - X.7
-          - X.2
-          - II.11
-          - VIII.3
-          - IX.3
+          - X.4
+          - IX.9
         tipo: complementario
         contenidos:
-          - Estados como rayos de un espacio de Hilbert, observables autoadjuntos y regla de Born como medida de probabilidad.
-          - Evolución unitaria y ecuación de Schrödinger; imágenes de Schrödinger y de Heisenberg; de los corchetes de Poisson a los conmutadores.
-          - Oscilador armónico con operadores escalera (funciones de Hermite) y átomo de hidrógeno (armónicos esféricos y polinomios de Laguerre).
-          - 'Sistemas compuestos: producto tensorial, entrelazamiento y matrices densidad. Para seguir: teoría cuántica de campos.'
-        puente: 'Entrada: `state = kron(q0, q1)` en un simulador de computación cuántica, y |ψ⟩ = (|00⟩ + |11⟩)/√2 en un libro. Un sistema de dos cúbits vive en el producto tensorial (II.11); un estado está entrelazado exactamente cuando no es un tensor descomponible, y esa es la propiedad que aprovecha la computación cuántica.'
+          - Álgebras de Banach; espectro, resolvente y radio espectral (fórmula de Gelfand).
+          - Teorema de Gelfand–Mazur y transformada de Gelfand en las álgebras conmutativas.
+          - Cálculo funcional holomorfo y continuo; álgebras C* (teorema de Gelfand–Naimark, enunciado).
+          - Teorema espectral para operadores normales acotados.
+        puente: 'Entrada: `rho = max(abs(eigvals(A)))` para decidir si una iteración converge. El radio espectral es lím ‖Aⁿ‖^{1/n}, la fórmula de Gelfand, y vale en cualquier álgebra de Banach: por eso decide la convergencia de un método iterativo aunque la norma de A sea mayor que 1.'
         aplicaciones:
-          - campo: cripto
-            texto: computación cuántica y distribución cuántica de claves
+          - campo: ing
+            texto: convergencia de métodos iterativos y estabilidad de sistemas discretos
           - campo: fisica
-            texto: espectroscopía y estructura del átomo
-          - campo: bio-eco
-            texto: química cuántica de moléculas
-        lecturas: Hall, *Quantum Theory for Mathematicians*; Nielsen y Chuang, *Quantum Computation and Quantum Information*; Sakurai y Napolitano, *Modern Quantum Mechanics*.
+            texto: observables acotados y álgebras de operadores en mecánica cuántica
+          - campo: senales
+            texto: cálculo funcional y filtros espectrales sobre grafos
+        lecturas: Conway, *A Course in Functional Analysis*; Rudin, *Functional Analysis*.
+      - id: X.8
+        titulo: Semigrupos de operadores y ecuaciones de evolución
+        paginas: 40
+        requiere:
+          - X.6
+          - X.5
+        tipo: complementario
+        contenidos:
+          - Semigrupos fuertemente continuos y su generador.
+          - Teoremas de Hille–Yosida y de Lumer–Phillips.
+          - Las ecuaciones del calor, de ondas y de Schrödinger como semigrupos.
+          - Fórmulas de Trotter y división de operadores.
+        puente: 'Entrada: `u = expm(dt * L) @ u` en un integrador exponencial. Para un operador diferencial L, `exp(tL)` no es una serie de potencias sino un semigrupo, y Hille–Yosida dice cuándo existe; la fórmula de Trotter justifica integrar por separado cada término de la ecuación.'
+        aplicaciones:
+          - campo: 3d
+            texto: división de operadores en la simulación de fluidos y de humo
+          - campo: fisica
+            texto: evolución cuántica y división de Trotter en simulación
+          - campo: ing
+            texto: sistemas de control en dimensión infinita
+        lecturas: Engel y Nagel, *A Short Course on Operator Semigroups*; Pazy, *Semigroups of Linear Operators and Applications to Partial Differential Equations*.

@@ -17,5 +17,8 @@ test-results/
 .claude/*
 !.claude/agents/
 
+# Los libros de referencia, para consulta interna: tienen derechos de autor y nunca se suben (CLAUDE.md).
+libros/
+
 # Borradores y pruebas desechables: nunca se suben, nunca se prueban, nunca se revisan.
 scratch/
