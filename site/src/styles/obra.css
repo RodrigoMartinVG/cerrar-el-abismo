@@ -140,16 +140,13 @@ celda-python {
   margin-block: 1.25rem;
 }
 
-celda-python textarea {
-  width: 100%;
-  font-family: var(--sl-font-mono, var(--sl-font-system-mono, ui-monospace, monospace));
-  font-size: var(--obra-texto-secundario);
-  background: var(--sl-color-gray-6);
-  color: var(--sl-color-white);
-  border: 1px solid var(--sl-color-hairline);
-  border-radius: 0.5rem;
-  padding: 0.75rem;
-  white-space: pre;
+/* El editor (CodeMirror) trae su propio aspecto: src/scripts/editor.ts. Aquí, solo su lugar en la celda. */
+celda-python:has(.celda-editor) {
+  white-space: normal;
+}
+
+.celda-editor {
+  margin-block-end: 0.6rem;
 }
 
 .celda-barra {

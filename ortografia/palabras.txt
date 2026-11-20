@@ -117,6 +117,7 @@ ciclotómicos
 Civita
 Clebsch
 clotoides
+CodeMirror
 codominio
 cofactores
 Colorimetría
@@ -714,6 +715,7 @@ Verlet
 Vietoris
 Villani
 Viterbi
+Vitesse
 Volterra
 Voronoi
 vorticidad

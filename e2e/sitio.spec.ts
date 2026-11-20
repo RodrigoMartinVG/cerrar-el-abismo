@@ -56,12 +56,30 @@ test.describe('el primer capítulo (I.1)', () => {
     expect(posiciones.fig).toBeLessThan(posiciones.codigo);
   });
 
+  test('la celda es un editor con resaltado, y «Restaurar» devuelve el código de referencia', async ({ page }) => {
+    const celda = page.locator('celda-python').first();
+    const contenido = celda.locator('.cm-content');
+    await expect(contenido).toHaveAttribute('aria-label', 'Código Python de la celda, editable');
+    await expect(celda.locator('.cm-line').first()).toHaveText('from itertools import product');
+    // El resaltado de Python: las palabras clave van en su propio elemento.
+    expect(await contenido.locator('.cm-line span').count()).toBeGreaterThan(5);
+    await contenido.fill('print(2 + 2)');
+    await expect(contenido).toHaveText('print(2 + 2)');
+    await celda.getByRole('button', { name: 'Restaurar' }).click();
+    await expect(celda.locator('.cm-line').first()).toHaveText('from itertools import product');
+  });
+
   test('la celda de Python se ejecuta en el navegador', async ({ page }) => {
     test.skip(process.env['E2E_SIN_RED'] === '1', 'Pyodide se descarga de su CDN');
     test.setTimeout(180_000);
     await page.getByRole('button', { name: 'Ejecutar' }).first().click();
     const salida = page.locator('.celda-salida').first();
     await expect(salida).toHaveText('True\nTrue\nTrue\nFalse', { timeout: 150_000 });
+    // Con el código editado y Ctrl+Enter desde el editor.
+    const contenido = page.locator('celda-python .cm-content').first();
+    await contenido.fill('print(sum(k * k for k in range(5)))');
+    await contenido.press('ControlOrMeta+Enter');
+    await expect(salida).toHaveText('30', { timeout: 30_000 });
   });
 });
 

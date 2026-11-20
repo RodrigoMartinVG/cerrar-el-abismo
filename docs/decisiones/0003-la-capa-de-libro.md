@@ -29,6 +29,11 @@ comprobaciones en verde.
 - **Python en el navegador con Pyodide**, en un Web Worker que se carga la primera vez que el lector ejecuta una celda.
   La versión es la del paquete `pyodide` del repositorio, y el navegador la descarga de su CDN. Todas las celdas de una
   página comparten intérprete, como un cuaderno.
+- **Las celdas se editan con CodeMirror 6**, con el resaltado de Python, números de línea, deshacer y Ctrl+Enter para
+  ejecutar. Se carga aparte, solo en las páginas con celdas, y mientras llega el código se ve como texto. Sus colores
+  son variables de `tema.css` que repiten los de los bloques de solo lectura (Expressive Code con Vitesse), para que
+  una celda y un bloque se vean iguales. Los bloques que no se ejecutan siguen con Expressive Code, que da el marco y
+  el botón de copiar sin cargar un editor.
 - **Comprobaciones.** Las pruebas unitarias cubren la capa de libro y la matemática de las piezas. Para cada capítulo
   escrito, se comprueba que está en el índice con su título, que sigue la plantilla de la sección 7 y que sus celdas se
   ejecutan con el mismo Pyodide, en Node. Playwright recorre el sitio construido, y cspell revisa la ortografía.

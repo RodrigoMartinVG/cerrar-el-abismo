@@ -433,7 +433,7 @@ Decidido (decisión 0001 del repositorio): **Astro con Starlight**, en TypeScrip
 
 - **Python en el navegador** (Pyodide, con NumPy, SciPy y SymPy) para el cálculo y la verificación de ejercicios.
 - **TypeScript** para las figuras interactivas y las demos 3D.
-- El código de las celdas se puede editar y volver a ejecutar; cada celda tiene una versión de referencia que se puede restaurar.
+- El código de las celdas se puede editar y volver a ejecutar; cada celda tiene una versión de referencia que se puede restaurar. El editor es CodeMirror, con el resaltado de Python y los mismos colores que los bloques de código de solo lectura, y Ctrl+Enter ejecuta la celda.
 
 ### 11.3 Figuras
 

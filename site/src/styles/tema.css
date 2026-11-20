@@ -52,6 +52,23 @@
   --obra-practica-bajo: #2a1a10;
   --obra-rejilla: rgba(244, 241, 236, 0.04);
   --obra-sombra-papel: none;
+
+  /*
+   * El código editable (las celdas, con CodeMirror) con los mismos colores que los bloques estáticos: Vitesse, en
+   * los tonos que Expressive Code ajusta para el contraste (todos pasan AA sobre el fondo del código).
+   */
+  --obra-codigo-fondo: var(--sl-color-gray-6);
+  --obra-codigo-linea: rgba(244, 241, 236, 0.035);
+  --obra-codigo-texto: #dbd7ca;
+  --obra-codigo-puntuacion: #9c9c9c;
+  --obra-codigo-clave: #70a890;
+  --obra-codigo-operador: #d28989;
+  --obra-codigo-numero: #65a8a0;
+  --obra-codigo-cadena: #c98a7d;
+  --obra-codigo-comentario: #93a093;
+  --obra-codigo-funcion: #80a665;
+  --obra-codigo-integrado: #b8a965;
+  --obra-codigo-tipo: #5da994;
 }
 
 :root[data-theme='light'] {
@@ -76,6 +93,19 @@
   --obra-practica-bajo: #f6e6da;
   --obra-rejilla: rgba(20, 19, 18, 0.05);
   --obra-sombra-papel: 0 1px 0 rgba(20, 19, 18, 0.04), 0 8px 24px -16px rgba(20, 19, 18, 0.2);
+
+  --obra-codigo-fondo: var(--sl-color-gray-7);
+  --obra-codigo-linea: rgba(20, 19, 18, 0.035);
+  --obra-codigo-texto: #393a34;
+  --obra-codigo-puntuacion: #646464;
+  --obra-codigo-clave: #1d714d;
+  --obra-codigo-operador: #964e4e;
+  --obra-codigo-numero: #2a6c7b;
+  --obra-codigo-cadena: #9c5446;
+  --obra-codigo-comentario: #5e655e;
+  --obra-codigo-funcion: #4a7330;
+  --obra-codigo-integrado: #736312;
+  --obra-codigo-tipo: #23756b;
 }
 
 ::selection {
@@ -274,7 +304,7 @@ kbd,
 samp,
 .expressive-code pre,
 celda-python,
-celda-python textarea {
+.cm-editor {
   font-variant-ligatures: none;
   font-feature-settings:
     'liga' 0,

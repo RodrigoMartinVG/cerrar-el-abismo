@@ -3,8 +3,8 @@ import { PIEZAS, type NombreDePieza } from '@cerrar-el-abismo/piezas';
 /**
  * Los elementos que la capa de libro deja en el HTML de un capítulo (packages/libro):
  *
- * - `<celda-python>`: el código como texto; se vuelve editable, con «Ejecutar» y «Restaurar» (sección 11.2).
- *   Todas las celdas de una página comparten un mismo intérprete, como un cuaderno.
+ * - `<celda-python>`: el código como texto; se vuelve un editor (CodeMirror, src/scripts/editor.ts), con «Ejecutar»
+ *   y «Restaurar» (sección 11.2). Todas las celdas de una página comparten un mismo intérprete, como un cuaderno.
  * - `<figura-interactiva data-pieza="…">`: el texto alternativo como contenido; se reemplaza por la pieza.
  *
  * Sin JavaScript, los dos quedan legibles: el código y la descripción de la figura.
@@ -32,21 +32,21 @@ function ejecutarPython(codigo: string): Promise<{ salida: string; error?: strin
 let primeraVez = true;
 
 class CeldaPython extends HTMLElement {
-  connectedCallback() {
+  async connectedCallback() {
     if (this.dataset['montada']) return;
     this.dataset['montada'] = 'si';
     const referencia = (this.textContent ?? '').replace(/\n+$/, '');
-    this.textContent = '';
 
-    const editor = document.createElement('textarea');
-    editor.value = referencia;
-    editor.spellcheck = false;
-    editor.rows = Math.max(3, referencia.split('\n').length);
-    editor.setAttribute('aria-label', 'Código Python de la celda, editable');
+    // Mientras llega el editor, el código sigue a la vista como texto.
+    const { crearEditor } = await import('./editor.ts');
+    this.textContent = '';
+    const marco = document.createElement('div');
+    marco.className = 'celda-editor not-content';
 
     const barra = document.createElement('div');
     barra.className = 'celda-barra not-content';
     const ejecutar = boton('Ejecutar');
+    ejecutar.title = 'Ctrl+Enter o ⌘+Enter desde el editor';
     const restaurar = boton('Restaurar');
     barra.append(ejecutar, restaurar);
 
@@ -55,23 +55,26 @@ class CeldaPython extends HTMLElement {
     salida.setAttribute('aria-live', 'polite');
     salida.hidden = true;
 
-    ejecutar.addEventListener('click', async () => {
+    const correr = async () => {
+      if (ejecutar.disabled) return;
       ejecutar.disabled = true;
       salida.hidden = false;
       salida.classList.remove('celda-error');
       salida.textContent = primeraVez ? 'Cargando Python en el navegador (solo la primera vez)…' : 'Ejecutando…';
       primeraVez = false;
-      const r = await ejecutarPython(editor.value);
+      const r = await ejecutarPython(editor.valor());
       salida.textContent = (r.salida + (r.error ? `\n${r.error}` : '')).trim() || '(sin salida)';
       salida.classList.toggle('celda-error', Boolean(r.error));
       ejecutar.disabled = false;
-    });
+    };
+
+    this.append(marco, barra, salida);
+    const editor = crearEditor(marco, referencia, 'Código Python de la celda, editable', () => void correr());
+    ejecutar.addEventListener('click', () => void correr());
     restaurar.addEventListener('click', () => {
-      editor.value = referencia;
+      editor.reemplazar(referencia);
       salida.hidden = true;
     });
-
-    this.append(editor, barra, salida);
   }
 }
 
