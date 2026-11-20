@@ -49,3 +49,29 @@ test.describe('el primer capítulo (I.1)', () => {
     await expect(salida).toHaveText('True\nTrue\nTrue\nFalse', { timeout: 150_000 });
   });
 });
+
+test('los paneles laterales se ocultan y la preferencia se recuerda', async ({ page }) => {
+  await page.goto('capitulos/i-1/');
+  const indice = page.locator('.sidebar-pane');
+  const toc = page.locator('.right-sidebar-container');
+  await expect(indice).toBeVisible();
+  await expect(toc).toBeVisible();
+  await page.getByRole('button', { name: 'Ocultar el índice de la obra' }).click();
+  await page.getByRole('button', { name: 'Ocultar el índice de la página' }).click();
+  await expect(indice).toBeHidden();
+  await expect(toc).toBeHidden();
+  await page.goto('indice/i/');
+  await expect(page.locator('.sidebar-pane')).toBeHidden();
+  await page.getByRole('button', { name: 'Ocultar el índice de la obra' }).click();
+  await expect(page.locator('.sidebar-pane')).toBeVisible();
+});
+
+test('los botones de las piezas y de las celdas quedan alineados', async ({ page }) => {
+  await page.goto('capitulos/i-1/');
+  const botones = page.locator('figura-interactiva .pieza-botones button');
+  const alturas = await botones.evaluateAll((bs) => bs.map((b) => Math.round(b.getBoundingClientRect().top)));
+  expect(new Set(alturas).size).toBe(1);
+  const celda = page.locator('celda-python .celda-barra button');
+  const filas = await celda.evaluateAll((bs) => bs.slice(0, 2).map((b) => Math.round(b.getBoundingClientRect().top)));
+  expect(filas[0]).toBe(filas[1]);
+});

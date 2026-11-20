@@ -259,3 +259,29 @@ celda-python textarea {
     'liga' 0,
     'calt' 0;
 }
+
+/* Los paneles laterales que el lector oculta (src/components/SelectorDeTema.astro). */
+@media (min-width: 50em) {
+  :root[data-has-sidebar][data-sin-indice] {
+    --sl-content-inline-start: 0rem;
+  }
+
+  :root[data-sin-indice] .sidebar-pane {
+    display: none;
+  }
+}
+
+@media (min-width: 72em) {
+  :root[data-sin-toc] {
+    --__toc-width: 0rem;
+  }
+
+  :root[data-sin-toc] .right-sidebar-container {
+    display: none;
+  }
+
+  :root[data-sin-toc] .main-pane {
+    width: 100%;
+    --sl-content-margin-inline: auto;
+  }
+}

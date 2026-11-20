@@ -13,7 +13,7 @@ export function montar(raiz: HTMLElement): () => void {
   lienzo.setAttribute('role', 'img');
   lienzo.setAttribute('aria-label', alt);
   const controles = document.createElement('div');
-  controles.className = 'pieza-controles';
+  controles.className = 'pieza-controles not-content';
   const escala = deslizador('Escala horizontal s', 0.25, 3, 0.05, 2.5);
   const angulo = deslizador('Ángulo de la recta (grados)', 0, 180, 1, 35);
   const lectura = document.createElement('output');

@@ -70,7 +70,17 @@ export default defineConfig({
         PageTitle: './src/components/TituloDePagina.astro',
         // El contenido, con los elementos de la capa de libro (celdas de Python y figuras).
         MarkdownContent: './src/components/ContenidoMarkdown.astro',
+        // Junto al selector de tema, los botones que ocultan los paneles laterales.
+        ThemeSelect: './src/components/SelectorDeTema.astro',
       },
+      // Los paneles que el lector ocultó en otra página, aplicados antes de dibujar para que no parpadeen.
+      head: [
+        {
+          tag: 'script',
+          content:
+            "try{var d=document.documentElement;if(localStorage.getItem('obra:sin-indice')==='1')d.setAttribute('data-sin-indice','');if(localStorage.getItem('obra:sin-toc')==='1')d.setAttribute('data-sin-toc','')}catch(e){}",
+        },
+      ],
       sidebar: [
         { label: 'Inicio', link: '/' },
         {

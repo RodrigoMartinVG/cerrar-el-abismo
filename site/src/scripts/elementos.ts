@@ -45,7 +45,7 @@ class CeldaPython extends HTMLElement {
     editor.setAttribute('aria-label', 'Código Python de la celda, editable');
 
     const barra = document.createElement('div');
-    barra.className = 'celda-barra';
+    barra.className = 'celda-barra not-content';
     const ejecutar = boton('Ejecutar');
     const restaurar = boton('Restaurar');
     barra.append(ejecutar, restaurar);

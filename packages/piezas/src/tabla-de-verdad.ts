@@ -10,7 +10,7 @@ export function montar(raiz: HTMLElement): () => void {
   raiz.textContent = '';
 
   const etiqueta = document.createElement('label');
-  etiqueta.className = 'pieza-campo';
+  etiqueta.className = 'pieza-campo not-content';
   etiqueta.textContent = 'Fórmula ';
   const campo = document.createElement('input');
   campo.type = 'text';
@@ -20,7 +20,7 @@ export function montar(raiz: HTMLElement): () => void {
   etiqueta.append(campo);
 
   const botones = document.createElement('div');
-  botones.className = 'pieza-controles pieza-botones';
+  botones.className = 'pieza-controles pieza-botones not-content';
   for (const simbolo of ['¬', '∧', '∨', '→', '↔', '(', ')']) {
     const b = document.createElement('button');
     b.type = 'button';
