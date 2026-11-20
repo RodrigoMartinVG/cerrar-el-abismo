@@ -250,3 +250,22 @@ celda-python textarea {
   height: 2.1rem;
   line-height: 1;
 }
+
+/* La pieza «cuadrado-de-impares»: capas en L de colores alternados, tinta y ámbar. */
+.pieza-impares {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.pieza-impares .capa-par {
+  fill: var(--sl-color-accent-low);
+  stroke: var(--sl-color-accent);
+  stroke-width: 1.2;
+}
+
+.pieza-impares .capa-impar {
+  fill: var(--obra-ambar-bajo);
+  stroke: var(--obra-ambar);
+  stroke-width: 1.2;
+}

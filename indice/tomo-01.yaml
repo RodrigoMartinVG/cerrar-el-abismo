@@ -19,7 +19,7 @@ partes:
           - Cuantificadores, su negación y su orden.
           - 'Técnicas de demostración: directa, por contradicción, por casos y por contraejemplo; inducción simple y fuerte.'
           - Notación de sumatorias y productorias; manipulación de índices.
-        puente: 'Entrada: `assert(i <= n)` dentro de un bucle. Un invariante de bucle es un enunciado que se demuestra por inducción; una aserción es una implicación que el programa comprueba al ejecutarse.'
+        puente: 'Entrada: la regularidad 1 + 3 + ⋯ + (2n − 1) = n², y la misma afirmación dentro de un bucle, como `assert i <= n and s == i * i`. Un invariante de bucle es un enunciado que se demuestra por inducción; una aserción es una implicación que el programa comprueba al ejecutarse.'
         aplicaciones:
           - campo: cripto
             texto: invariantes y corrección de algoritmos

@@ -31,7 +31,7 @@ test.describe('el primer capítulo (I.1)', () => {
   });
 
   test('la tabla de verdad es interactiva y clasifica la fórmula', async ({ page }) => {
-    const figura = page.locator('figura-interactiva');
+    const figura = page.locator('figura-interactiva[data-pieza="tabla-de-verdad"]');
     const veredicto = figura.locator('output');
     await expect(veredicto).toContainText('Tautología');
     await expect(figura.locator('tbody tr')).toHaveCount(4);
@@ -39,6 +39,21 @@ test.describe('el primer capítulo (I.1)', () => {
     await expect(veredicto).toContainText('Contingencia');
     await figura.getByLabel('Fórmula').fill('p ∧');
     await expect(veredicto).toContainText('termina antes de tiempo');
+  });
+
+  test('abre con la matemática: el cuadrado de impares responde al deslizador', async ({ page }) => {
+    const figura = page.locator('figura-interactiva[data-pieza="cuadrado-de-impares"]');
+    await expect(figura.locator('output')).toHaveText('1 + 3 + 5 + 7 + 9 = 25 = 5²');
+    await expect(figura.locator('rect')).toHaveCount(25);
+    await figura.getByLabel('Cantidad de impares n').fill('3');
+    await expect(figura.locator('output')).toHaveText('1 + 3 + 5 = 9 = 3²');
+    // La figura llega antes que el código.
+    const posiciones = await page.evaluate(() => {
+      const fig = document.querySelector('figura-interactiva')!.getBoundingClientRect().top;
+      const codigo = document.querySelector('.sl-markdown-content pre')!.getBoundingClientRect().top;
+      return { fig, codigo };
+    });
+    expect(posiciones.fig).toBeLessThan(posiciones.codigo);
   });
 
   test('la celda de Python se ejecuta en el navegador', async ({ page }) => {

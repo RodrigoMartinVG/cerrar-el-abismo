@@ -26,7 +26,7 @@ La física merece un lugar propio en esa lista: es la segunda práctica de la ob
 - **Qué es.** Una obra de matemática de nivel licenciatura en trece tomos ordenados por áreas, con definiciones, teoremas y demostraciones completas, y con aplicaciones de varios campos en cada capítulo. Se publica primero en la web, con código en vivo y figuras interactivas.
 - **Qué no es.** No es un manual de programación, de un motor ni de una herramienta. Ningún capítulo trata de ingeniería o de informática por sí mismas, y no hay un motor que crezca en paralelo.
 - **Lector.** Estudiantes de matemática, física, ingeniería e informática; profesionales que quieren entender la matemática de lo que usan; autodidactas dispuestos a leer demostraciones. A los físicos, la obra les da el rigor; a los matemáticos, la traducción a la notación de la física.
-- **Punto de partida.** La matemática de la escuela secundaria. El Tomo I empieza por la lógica y la demostración.
+- **Punto de partida.** La matemática de la escuela secundaria. El Tomo I empieza por la lógica y la demostración. No se supone saber programar ni haber estudiado física: el código y las fórmulas de la práctica se leen con las explicaciones que los acompañan.
 - **Nivel.** El de una licenciatura en matemática con orientación aplicada. Todo resultado que se usa se demuestra. Cuando una prueba excede la obra, el resultado se enuncia con una referencia exacta y se dice qué se pierde al no demostrarlo.
 - **Misión transversal.** Cerrar el abismo entre teoría y práctica (secciones 3 y 8).
 
@@ -293,6 +293,8 @@ Las reglas mecánicas se comprueban automáticamente en cada capítulo (11.5).
 
 Cada capítulo abre con un fragmento real que el lector todavía no puede explicar y cierra explicándolo línea por línea. Así el abismo es el hilo narrativo del capítulo y, a la vez, un objetivo que se puede comprobar: al terminar, el lector puede leer ese fragmento. Los fragmentos son código o fórmulas y notación de física. Salen de código abierto con licencia permisiva, de especificaciones públicas o de la notación estándar de los textos de física, siempre citados; cuando no hay uno adecuado, se escribe uno propio en el estilo real.
 
+La Entrada no supone que el lector programe. Si el fragmento es código, se elige la forma más legible que conserve lo esencial (Python, cuando el lenguaje no importa) y una frase dice qué hace cada instrucción. En los primeros capítulos de la obra, sobre todo en el Tomo I, el fragmento llega después de una pregunta matemática concreta, y el código aparece como la misma pregunta escrita en otro idioma.
+
 ### 8.2 Las cinco preguntas del Puente
 
 1. ¿Cómo se llama esto en la práctica?
@@ -529,7 +531,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Técnicas de demostración: directa, por contradicción, por casos y por contraejemplo; inducción simple y fuerte.
 - Notación de sumatorias y productorias; manipulación de índices.
 
-**Puente.** Entrada: `assert(i <= n)` dentro de un bucle. Un invariante de bucle es un enunciado que se demuestra por inducción; una aserción es una implicación que el programa comprueba al ejecutarse.
+**Puente.** Entrada: la regularidad 1 + 3 + ⋯ + (2n − 1) = n², y la misma afirmación dentro de un bucle, como `assert i <= n and s == i * i`. Un invariante de bucle es un enunciado que se demuestra por inducción; una aserción es una implicación que el programa comprueba al ejecutarse.
 **Aplicaciones.** [Cripto] invariantes y corrección de algoritmos · [Datos] pruebas basadas en propiedades · [3D] precondiciones de las funciones geométricas, como exigir un vector no nulo antes de normalizar.
 **Lecturas.** Velleman, *How to Prove It*; Hammack, *Book of Proof*.
 

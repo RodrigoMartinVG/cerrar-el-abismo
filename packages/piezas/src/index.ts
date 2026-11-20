@@ -3,6 +3,7 @@
  * con NOMBRES_DE_PIEZAS que toda `::figura{pieza="…"}` exista.
  */
 export const PIEZAS = {
+  'cuadrado-de-impares': () => import('./cuadrado-de-impares.ts'),
   'normal-covector': () => import('./normal-covector.ts'),
   'tabla-de-verdad': () => import('./tabla-de-verdad.ts'),
 } satisfies Record<string, () => Promise<{ montar: (raiz: HTMLElement) => () => void }>>;
@@ -13,3 +14,4 @@ export const NOMBRES_DE_PIEZAS = Object.keys(PIEZAS) as NombreDePieza[];
 
 export * from './algebra.ts';
 export * from './logica.ts';
+export * from './impares.ts';

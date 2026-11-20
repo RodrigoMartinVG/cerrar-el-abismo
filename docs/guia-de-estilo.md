@@ -46,6 +46,9 @@ una lista de definiciones y teoremas: entre dos entornos siempre hay prosa que l
 - **Cada sección** abre con una o dos frases que dicen qué problema resuelve y cómo sigue a la anterior. Ninguna
   sección empieza con una definición, una fórmula o un bloque de código.
 - **Lo concreto va antes que lo general**: el ejemplo pequeño, hecho a mano, prepara la definición o el teorema.
+- **La Entrada no supone saber programar.** Si el fragmento es código, se elige la forma más legible (Python, cuando el
+  lenguaje no importa) y una frase dice qué hace cada instrucción. En los primeros capítulos, la Entrada abre con una
+  pregunta matemática, y el código llega como esa misma pregunta escrita en otro idioma (especificación, 8.1).
 
 ## 3. Definiciones
 
