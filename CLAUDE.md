@@ -13,8 +13,8 @@ repite.
 - **El índice temático:** los datos están en `indice/` (13 tomos, 150 capítulos) y su código en `packages/indice`
   (decisión 0002).
 - **El sitio:** `site/`, con Astro y Starlight (decisión 0001).
-- **Los capítulos escritos:** `site/src/content/docs/capitulos/` (uno por archivo, `ii-5.md`). Cómo se escriben:
-  [docs/guia-de-capitulos.md](docs/guia-de-capitulos.md); la capa de libro está en `packages/libro` y las piezas
+- **Los capítulos escritos:** `site/src/content/docs/capitulos/` (uno por archivo, `i-1.md`). Cómo se escriben:
+  [docs/guia-de-capitulos.md](docs/guia-de-capitulos.md); con qué estilo: [docs/guia-de-estilo.md](docs/guia-de-estilo.md); la capa de libro está en `packages/libro` y las piezas
   interactivas en `packages/piezas` (decisión 0003).
 - **El diseño anterior** (índice con un motor 3D en paralelo): `docs/historico/`. Ya no es el plan.
 
@@ -42,6 +42,9 @@ borrar (`erasableSyntaxOnly`) y los imports relativos con su extensión `.ts`.
 - **Los libros de referencia viven en `libros/`, que git ignora.** Se consultan para verificar demostraciones,
   enunciados y notación, y se citan en «Lecturas»; nunca se copian pasajes ni se suben al repositorio, que es público.
   La redacción de la obra es siempre propia.
+- **La redacción sigue la guía de estilo** ([docs/guia-de-estilo.md](docs/guia-de-estilo.md)): el equilibrio de los
+  mejores libros de matemática entre explicar y ser preciso. Es una prioridad del autor, no un detalle.
+- **La obra se escribe desde el principio**, en orden de lectura, empezando por I.1 (especificación, 16.1).
 - **Textos en español**, también los comentarios, los nombres del dominio (`capitulo`, `requiere`, `tomo`) y las
   decisiones. Se respetan las convenciones de la sección 12 de la especificación.
 - **Las pruebas viven junto al código** (`*.test.ts`) y todo cambio pasa `npm run verify` antes de subir.

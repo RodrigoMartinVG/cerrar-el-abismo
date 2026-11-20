@@ -139,12 +139,18 @@ export function remarkLibro(opciones: OpcionesLibro) {
       }
       if (!alt) fallar('Toda figura necesita texto alternativo: ::figura{pieza="…" alt="…"} (sección 11.5).', nodo);
       const nombre = `Figura ${prefijo}${++contadores.figuras}`;
+      // Los demás atributos configuran la pieza: `formula="…"` llega como `data-formula`.
+      const configuracion = Object.fromEntries(
+        Object.entries(nodo.attributes ?? {})
+          .filter(([clave]) => !['pieza', 'alt', 'id', 'class'].includes(clave))
+          .map(([clave, valor]) => [`data${clave[0]!.toUpperCase()}${clave.slice(1)}`, valor]),
+      );
       registrar(nodo.attributes?.id, nombre, nodo);
       const pie = nodo.children;
       nodo.children = [
         {
           type: 'paragraph',
-          data: { hName: 'figura-interactiva', hProperties: { dataPieza: pieza, dataAlt: alt } },
+          data: { hName: 'figura-interactiva', hProperties: { dataPieza: pieza, dataAlt: alt, ...configuracion } },
           children: [texto(alt!)],
         } as unknown as PhrasingContent,
         {

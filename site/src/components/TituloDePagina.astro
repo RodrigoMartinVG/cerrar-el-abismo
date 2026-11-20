@@ -1,15 +1,25 @@
 ---
 import Default from '@astrojs/starlight/components/PageTitle.astro';
 import { Badge } from '@astrojs/starlight/components';
-import { todosLosCapitulos } from '@cerrar-el-abismo/indice';
-import { obra, urlCapitulo, urlEnIndice } from '../lib/obra';
+import { todosLosCapitulos, tomoDe } from '@cerrar-el-abismo/indice';
+import { obra, urlCapitulo, urlEnIndice, urlTomo } from '../lib/obra';
 
 /** Bajo el título de un capítulo escrito, sus metadatos del índice: tipo, extensión, requisitos y estado. */
 const datos = Astro.locals.starlightRoute.entry.data as { capitulo?: string; estado?: string };
 const c = datos.capitulo ? todosLosCapitulos(obra()).find((x) => x.id === datos.capitulo) : undefined;
+const tomo = c ? obra().tomos.find((t) => t.id === tomoDe(c.id)) : undefined;
 const ESTADOS: Record<string, string> = { borrador: 'Borrador', revision: 'En revisión', terminado: 'Terminado' };
 ---
 
+{
+  tomo && (
+    <p class="capitulo-antetitulo">
+      <a href={urlTomo(tomo.id)}>
+        Tomo {tomo.id} · {tomo.titulo}
+      </a>
+    </p>
+  )
+}
 <Default />
 {
   c && (

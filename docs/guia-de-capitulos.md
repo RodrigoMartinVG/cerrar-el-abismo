@@ -1,18 +1,19 @@
 # Cómo se escribe un capítulo
 
-Guía práctica de la capa de libro (decisión 0003). El modelo completo es el capítulo de prueba,
-[`site/src/content/docs/capitulos/ii-5.md`](../site/src/content/docs/capitulos/ii-5.md).
+Guía práctica de la capa de libro (decisión 0003). El modelo completo es el primer capítulo,
+[`site/src/content/docs/capitulos/i-1.md`](../site/src/content/docs/capitulos/i-1.md). El estilo de la redacción está en
+[la guía de estilo](guia-de-estilo.md).
 
 ## El archivo
 
 Un archivo por capítulo en `site/src/content/docs/capitulos/`, con el nombre de su identificador en minúsculas y con
-guion: II.5 es `ii-5.md`.
+guion: I.1 es `i-1.md`, y II.5 será `ii-5.md`.
 
 ```markdown
 ---
-title: II.5 Espacio dual y covectores
+title: I.1 Lógica y demostración
 description: Una frase para buscadores y tarjetas.
-capitulo: II.5
+capitulo: I.1
 estado: borrador
 ---
 ```
@@ -40,7 +41,7 @@ La familia dual de una base de $V$ es una base de $V^*$.
 
 | Directiva | Se muestra como | Numeración |
 | --- | --- | --- |
-| `definicion`, `teorema`, `lema`, `proposicion`, `corolario`, `ejemplo`, `observacion` | «Teorema II.5.3 (Título).» | Un contador común por capítulo |
+| `axioma`, `definicion`, `teorema`, `lema`, `proposicion`, `corolario`, `ejemplo`, `observacion` | «Teorema II.5.3 (Título).» | Un contador común por capítulo |
 | `ejercicio` | «Ejercicio II.5.1.» | Un contador propio |
 | `demostracion` | Plegable, abierta, cerrada con ∎ | Sin número |
 | `solucion` | Plegable, cerrada | Sin número |
@@ -80,6 +81,8 @@ hace fallar la integración continua. Un bloque ` ```python ` sin `celda` es có
 ::figura[Pie de la figura, con $matemática$ si hace falta.]{#fig-normal pieza="normal-covector" alt="Descripción completa para quien no ve la figura."}
 ```
 
+- Los demás atributos configuran la pieza y le llegan como `data-…`: por ejemplo,
+  `::figura{pieza="tabla-de-verdad" formula="p → q" alt="…"}`.
 - `pieza` es una de `packages/piezas/src/index.ts`; una pieza nueva va allí, con su matemática en un módulo con pruebas.
 - `alt` es obligatorio y describe lo que la figura muestra; sin JavaScript, es lo que se lee.
 - La figura se numera («Figura II.5.1») y se cita con `:ref[fig-normal]`.

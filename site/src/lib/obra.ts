@@ -13,7 +13,7 @@ export function urlTomo(tomo: string): string {
   return `${raiz}indice/${slug(tomo)}/`;
 }
 
-/** Los capítulos ya escritos: un archivo por capítulo en src/content/docs/capitulos/, con el nombre «ii-5.md». */
+/** Los capítulos ya escritos: un archivo por capítulo en src/content/docs/capitulos/, con el nombre «i-1.md». */
 const escritos = new Set(
   Object.keys(import.meta.glob('/src/content/docs/capitulos/*.md')).map((ruta) => ruta.replace(/^.*\/([^/]+)\.md$/, '$1')),
 );
@@ -54,4 +54,9 @@ export async function enLinea(md: string): Promise<string> {
 /** «1.234»: los números grandes con punto de miles, como en la especificación. */
 export function numero(n: number): string {
   return n.toLocaleString('es-ES', { useGrouping: 'always' });
+}
+
+/** La clase de la etiqueta de un campo: la práctica (3D) en ámbar, la física en tinta, el resto neutro. */
+export function claseDeCampo(etiqueta: string): string {
+  return etiqueta === '3D' ? 'campo campo-3d' : etiqueta === 'Física' ? 'campo campo-fisica' : 'campo campo-otro';
 }

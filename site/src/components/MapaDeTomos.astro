@@ -1,0 +1,26 @@
+---
+import { paginas } from '@cerrar-el-abismo/indice';
+import { numero, obra, urlTomo } from '../lib/obra';
+
+/** Los trece tomos como un mapa: numeral, título y extensión, cada uno con su página. */
+const tomos = obra().tomos.map((t) => {
+  const capitulos = t.partes.flatMap((p) => p.capitulos);
+  return { t, capitulos: capitulos.length, paginas: paginas(capitulos) };
+});
+---
+
+<ul class="mapa-tomos not-content">
+  {
+    tomos.map(({ t, capitulos, paginas }) => (
+      <li>
+        <a href={urlTomo(t.id)}>
+          <span class="numeral">{t.id}</span>
+          <span class="titulo">{t.titulo}</span>
+          <span class="cifras">
+            {capitulos} capítulos · {numero(paginas)} págs.
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

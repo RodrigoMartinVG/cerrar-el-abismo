@@ -53,7 +53,18 @@ export default defineConfig({
       defaultLocale: 'root',
       locales: { root: { label: 'Español', lang: 'es' } },
       social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/RodrigoMartinVG/cerrar-el-abismo' }],
-      customCss: ['katex/dist/katex.min.css', './src/styles/obra.css'],
+      // «Papel y pizarra» (src/styles/tema.css): fuentes servidas desde el sitio, KaTeX y los estilos de la obra.
+      logo: { light: './src/assets/logo-claro.svg', dark: './src/assets/logo-oscuro.svg', alt: '' },
+      favicon: '/favicon.svg',
+      customCss: [
+        '@fontsource-variable/source-serif-4/opsz.css',
+        '@fontsource-variable/source-serif-4/opsz-italic.css',
+        '@fontsource-variable/fraunces/index.css',
+        '@fontsource-variable/jetbrains-mono/index.css',
+        'katex/dist/katex.min.css',
+        './src/styles/tema.css',
+        './src/styles/obra.css',
+      ],
       components: {
         // Bajo el título de un capítulo, sus metadatos del índice.
         PageTitle: './src/components/TituloDePagina.astro',

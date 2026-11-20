@@ -4,6 +4,36 @@ description: Una obra de matemática de licenciatura en trece tomos, pensada par
 template: splash
 hero:
   tagline: Matemática de licenciatura, con rigor completo, y en cada capítulo el puente hacia su uso real.
+  image:
+    html: |
+      <svg viewBox="0 0 560 300" role="img" aria-label="Un puente en arco une dos orillas sobre un abismo: a la izquierda, la teoría, con un enunciado matemático; a la derecha, la práctica, con una línea de código." xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="arco" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" style="stop-color: var(--sl-color-accent)" />
+            <stop offset="1" style="stop-color: var(--obra-ambar)" />
+          </linearGradient>
+        </defs>
+        <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M150 200 C 170 240, 200 270, 230 296 M410 200 C 390 240, 360 270, 330 296" stroke="var(--sl-color-gray-4)" stroke-width="1" stroke-dasharray="3 6" />
+          <path d="M0 200 H150 L170 300 H0 Z" style="fill: var(--sl-color-accent-low); stroke: var(--sl-color-accent)" stroke-width="2" />
+          <path d="M410 200 H560 V300 H390 Z" style="fill: var(--obra-ambar-bajo); stroke: var(--obra-ambar)" stroke-width="2" />
+          <path d="M150 200 C 205 110, 355 110, 410 200" stroke="url(#arco)" stroke-width="4" />
+          <path d="M150 200 H410" style="stroke: var(--sl-color-white)" stroke-width="2.5" />
+          <path d="M196 158 V200 M238 140 V200 M280 133 V200 M322 140 V200 M364 158 V200" style="stroke: var(--sl-color-gray-3)" stroke-width="1.2" />
+          <circle cx="280" cy="200" r="122" style="stroke: var(--sl-color-gray-4)" stroke-width="0.8" stroke-dasharray="2 5" />
+        </g>
+        <g style="font-family: var(--obra-titulos); fill: var(--sl-color-accent)" font-size="24" font-style="italic">
+          <text x="14" y="238">∀ε &gt; 0 ∃δ &gt; 0</text>
+        </g>
+        <g style="font-family: var(--sl-font-mono); fill: var(--obra-ambar)" font-size="17">
+          <text x="418" y="238">assert(i &lt;= n)</text>
+        </g>
+        <g style="font-family: var(--obra-interfaz); fill: var(--sl-color-gray-3)" font-size="13" letter-spacing="2.5">
+          <text x="18" y="274">TEORÍA</text>
+          <text x="476" y="274">PRÁCTICA</text>
+          <text x="236" y="98">EL PUENTE</text>
+        </g>
+      </svg>
   actions:
     - text: Índice temático
       link: indice/
@@ -17,32 +47,25 @@ hero:
       variant: minimal
 ---
 
-import { Aside, Card, CardGrid } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+import MapaDeTomos from '../../components/MapaDeTomos.astro';
 
 <Aside type="caution" title="En construcción">
-  La obra está en su fase 0, la infraestructura. Todavía no hay capítulos escritos, pero el índice temático completo ya se puede
-  recorrer.
+  La obra se escribe desde el principio, capítulo a capítulo. El índice temático completo ya se puede recorrer.
 </Aside>
 
 ## El abismo
 
-Quien estudia matemática se encuentra a menudo con situaciones prácticas en las que parece haber un abismo entre lo que aprendió y
-cómo se usa. El caso paradigmático es el motor 3D: el estudiante llega con un curso completo de álgebra lineal y descubre que las
-matrices son de 4×4, que los puntos y los vectores se distinguen, que las normales se transforman con una receta extraña y que las
-rotaciones se guardan en cuaterniones. Lo que sabe no parece aplicable. Esta obra quiere cerrar ese abismo sin dejar de ser una obra
-de matemática.
+Quien estudia matemática se encuentra a menudo con situaciones prácticas en las que parece haber un abismo entre lo
+que aprendió y cómo se usa. El caso paradigmático es el motor 3D: el estudiante llega con un curso completo de álgebra
+lineal y descubre que las matrices son de 4×4, que los puntos y los vectores se distinguen, que las normales se
+transforman con una receta extraña y que las rotaciones se guardan en cuaterniones. Lo que sabe no parece aplicable.
 
-<CardGrid>
-  <Card title="Rigor de licenciatura" icon="open-book">
-    Definiciones, teoremas y demostraciones completas, en trece tomos ordenados por áreas: de los fundamentos y el álgebra lineal a la topología, el análisis funcional y la teoría cuántica.
-  </Card>
-  <Card title="El puente" icon="random">
-    Cada capítulo abre con un fragmento real, una línea de código o una fórmula de física, y cierra explicándolo línea por línea.
-  </Card>
-  <Card title="Código en vivo" icon="laptop">
-    Python en el navegador y figuras interactivas para ver cada teorema funcionar, y ver cuándo deja de valer.
-  </Card>
-  <Card title="Dos prácticas fijas" icon="rocket">
-    Los motores 3D y la física recorren toda la obra, junto a la ingeniería, los datos, las señales y la criptografía.
-  </Card>
-</CardGrid>
+Esta obra quiere cerrar ese abismo sin dejar de ser una obra de matemática. Cada tema se construye con el rigor de una
+licenciatura y, en el mismo capítulo, se enseña a reconocerlo en la práctica: en un motor 3D, en un libro de física, en
+un sistema de control o en un modelo de datos. Cada capítulo abre con un fragmento real que todavía no se puede explicar
+y cierra explicándolo línea por línea.
+
+## Los trece tomos
+
+<MapaDeTomos />

@@ -12,10 +12,10 @@ comprobaciones en verde.
 ## Decisión
 
 - **Dónde viven los capítulos.** Un archivo Markdown por capítulo en `site/src/content/docs/capitulos/`, con el
-  nombre de su identificador (`ii-5.md`). El frontmatter declara `title`, `capitulo` y `estado`. Los requisitos, el
+  nombre de su identificador (`i-1.md`). El frontmatter declara `title`, `capitulo` y `estado`. Los requisitos, el
   tipo y las aplicaciones siguen en el índice (decisión 0002), y la página los muestra bajo el título.
 - **La capa de libro es un plugin de remark**, `packages/libro`, que corre en el procesador `unified` de Astro:
-  - Doce entornos: `definicion`, `teorema`, `lema`, `proposicion`, `corolario`, `ejemplo`, `observacion`,
+  - Trece entornos: `axioma`, `definicion`, `teorema`, `lema`, `proposicion`, `corolario`, `ejemplo`, `observacion`,
     `demostracion`, `ejercicio`, `solucion`, `puente` y `linea`, escritos como `:::teorema[Título]{#etiqueta}`. Los
     resultados comparten un contador por capítulo («Teorema II.5.3») y los ejercicios llevan uno propio. Las
     demostraciones se pueden plegar y cierran con ∎; las soluciones empiezan plegadas.
@@ -35,7 +35,7 @@ comprobaciones en verde.
 
 ## Consecuencias
 
-- Escribir un capítulo es escribir Markdown con doce entornos y tres formas de referencia; la guía está en
+- Escribir un capítulo es escribir Markdown con trece entornos y tres formas de referencia; la guía está en
   [docs/guia-de-capitulos.md](../guia-de-capitulos.md).
 - Las referencias a entornos de otros capítulos («el Teorema II.3.4») todavía no existen: se resolverán con un
   registro global de etiquetas cuando haya un segundo capítulo escrito.

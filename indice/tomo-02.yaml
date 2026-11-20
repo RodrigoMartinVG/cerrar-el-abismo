@@ -102,7 +102,7 @@ partes:
           - 'Aplicación dual y su matriz: la transpuesta.'
           - Anuladores, doble dual e isomorfismo canónico.
           - Hiperplanos como núcleos de covectores; el gradiente como covector (se retoma en IV.2).
-        puente: 'Entrada: `n2 = transpose(inverse(M)) * n`. Una normal es un covector: la forma lineal que se anula en el plano tangente. Tras transformar con M, la forma que sigue anulándose es n ∘ M⁻¹, cuya matriz es (M⁻¹)ᵀ. Con rotaciones (M⁻¹)ᵀ = M, y por eso el error solo aparece con escalas no uniformes. Es el capítulo piloto de la obra (sección 16).'
+        puente: 'Entrada: `n2 = transpose(inverse(M)) * n`. Una normal es un covector: la forma lineal que se anula en el plano tangente. Tras transformar con M, la forma que sigue anulándose es n ∘ M⁻¹, cuya matriz es (M⁻¹)ᵀ. Con rotaciones (M⁻¹)ᵀ = M, y por eso el error solo aparece con escalas no uniformes.'
         aplicaciones:
           - campo: 3d
             texto: transformación de normales y de planos

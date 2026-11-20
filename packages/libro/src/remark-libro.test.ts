@@ -39,6 +39,12 @@ describe('remarkLibro', () => {
     expect(salida).toContain('<strong>Teorema II.5.2</strong> (Dimensión del dual).');
   });
 
+  it('numera los axiomas con los demás resultados', () => {
+    const salida = html(':::axioma[Principio de inducción]{#ax}\nP.\n:::\n\n:::teorema\nQ.\n:::');
+    expect(salida).toContain('<strong>Axioma II.5.1</strong> (Principio de inducción).');
+    expect(salida).toContain('<strong>Teorema II.5.2</strong>');
+  });
+
   it('cierra las demostraciones con ∎, las deja plegables y no las numera', () => {
     const salida = html(':::demostracion\nTrivial.\n:::');
     expect(salida).toContain(
@@ -73,6 +79,11 @@ describe('remarkLibro', () => {
       '<figura-interactiva data-pieza="normal-covector" data-alt="Una recta y su normal.">Una recta y su normal.</figura-interactiva>',
     );
     expect(salida).toContain('<figcaption><strong>Figura II.5.1.</strong> La normal tras escalar.</figcaption>');
+  });
+
+  it('pasa a la pieza los atributos que la configuran', () => {
+    const salida = html('::figura{pieza="normal-covector" alt="x" formula="p → q"}');
+    expect(salida).toContain('data-formula="p → q"');
   });
 
   it('convierte los bloques python celda en celdas ejecutables y deja el resto como código', () => {

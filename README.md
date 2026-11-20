@@ -9,10 +9,10 @@ entre la matemática que se estudia y la que se usa.
 
 ## Estado
 
-Fase 0, infraestructura (especificación, sección 16). El sitio ya publica el índice temático completo: 13 tomos,
-150 capítulos, sus requisitos, sus aplicaciones y los itinerarios por perfil. Ya está el capítulo de prueba de la
-fase 0, un borrador de II.5 *Espacio dual y covectores*, que ejercita toda la capa de libro: entornos numerados,
-referencias, una figura interactiva y una celda de Python que corre en el navegador.
+Fase 1 (especificación, sección 16): terminada la infraestructura, empieza la escritura. El sitio publica el índice temático completo: 13 tomos,
+150 capítulos, sus requisitos, sus aplicaciones y los itinerarios por perfil. La obra se escribe desde el principio: el
+primer capítulo, I.1 *Lógica y demostración*, ya está en borrador, con su tabla de verdad interactiva y sus celdas de
+Python. La redacción sigue la [guía de estilo](docs/guia-de-estilo.md).
 
 ## Dónde está cada cosa
 

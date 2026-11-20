@@ -22,6 +22,7 @@ export interface Entorno {
 }
 
 export const ENTORNOS: Readonly<Record<string, Entorno>> = {
+  axioma: { nombre: 'Axioma', contador: 'resultados' },
   definicion: { nombre: 'Definición', contador: 'resultados' },
   teorema: { nombre: 'Teorema', contador: 'resultados' },
   lema: { nombre: 'Lema', contador: 'resultados' },

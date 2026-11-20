@@ -13,6 +13,8 @@
   "files": ["docs/**/*.md", "indice/**/*.yaml", "site/src/**/*.{md,mdx}", "README.md", "CLAUDE.md"],
   "ignorePaths": ["docs/historico/**", "node_modules/**", "**/dist/**"],
   "ignoreRegExpList": [
+    "var\\(--[\\w-]+\\)",
+    "```[\\s\\S]*?```",
     "`[^`\\n]*`",
     "\\$\\$[\\s\\S]*?\\$\\$",
     "\\$[^$\\n]*\\$",

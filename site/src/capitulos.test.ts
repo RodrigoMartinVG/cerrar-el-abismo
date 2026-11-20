@@ -4,10 +4,12 @@ import { loadPyodide } from 'pyodide';
 import { describe, expect, it } from 'vitest';
 import { parse } from 'yaml';
 import { carpetaDelIndice, cargarIndice, slug, todosLosCapitulos } from '@cerrar-el-abismo/indice';
+import { revisarEstilo } from '@cerrar-el-abismo/libro';
 
 /**
  * LOS CAPÍTULOS ESCRITOS (sección 11.5): cada uno está en el índice con su título, sigue la plantilla de la
- * sección 7 y todas sus celdas de Python se ejecutan, con el mismo Pyodide que usa el navegador.
+ * sección 7 y las reglas mecánicas de la guía de estilo, y todas sus celdas de Python se ejecutan, con el mismo Pyodide
+ * que usa el navegador.
  */
 
 const carpeta = join(carpetaDelIndice(), '..', 'site', 'src', 'content', 'docs', 'capitulos');
@@ -44,6 +46,11 @@ describe.each(archivos)('el capítulo %s', (archivo) => {
 
   it('tiene las secciones de la plantilla, en orden (sección 7)', () => {
     expect([...cuerpo.matchAll(/^## (.+)$/gm)].map((m) => m[1])).toEqual(PLANTILLA);
+  });
+
+  it('cumple las reglas mecánicas de la guía de estilo', () => {
+    const texto = readFileSync(join(carpeta, archivo), 'utf8');
+    expect(revisarEstilo(texto).map((p) => `línea ${p.linea}: ${p.mensaje}`)).toEqual([]);
   });
 
   it('tiene el recuadro del Puente', () => {

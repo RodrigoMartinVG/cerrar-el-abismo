@@ -1,8 +1,8 @@
 # Especificación del proyecto — Matemática y práctica
 
-*Título provisional · Versión 0.5 · 20 de noviembre de 2026*
+*Título provisional · Versión 0.6 · 20 de noviembre de 2026*
 
-Este documento sustituye como plan vigente al «Índice temático revisado» de *Métodos Matemáticos para Ingeniería de Motores 3D* (76 capítulos y un motor didáctico en paralelo). Recoge las decisiones del 20 de noviembre de 2026: una obra de matemática de nivel licenciatura, sin motor, con aplicaciones variadas, pensada para la web y con una misión central: cerrar el abismo entre la matemática que se estudia y la que se usa. La sección 15 indica dónde quedó cada capítulo del índice anterior. La versión 0.2 suma la arista de la física: la matemática que necesitan los físicos, con su propio hilo, su propio puente y un décimo tomo. La versión 0.3 añade el perfil de egreso (2.1): qué puede hacer el lector fuera de la matemática al terminar la obra. La versión 0.4 registra las primeras decisiones de infraestructura (sección 11): el sitio se construye con Astro y Starlight, y el índice temático pasa a ser datos, desde los que se genera la sección 13. El documento vive en el repositorio `cerrar-el-abismo`, en `docs/especificacion.md`; el índice anterior está en `docs/historico/`. La versión 0.5 completa las materias clásicas de una licenciatura en matemática: el álgebra hasta la teoría de Galois, la topología general y algebraica, el análisis funcional y los fundamentos. Suma tres tomos (V, VI y X) y tres capítulos; la colección pasa a trece tomos y se renumera.
+Este documento sustituye como plan vigente al «Índice temático revisado» de *Métodos Matemáticos para Ingeniería de Motores 3D* (76 capítulos y un motor didáctico en paralelo). Recoge las decisiones del 20 de noviembre de 2026: una obra de matemática de nivel licenciatura, sin motor, con aplicaciones variadas, pensada para la web y con una misión central: cerrar el abismo entre la matemática que se estudia y la que se usa. La sección 15 indica dónde quedó cada capítulo del índice anterior. La versión 0.2 suma la arista de la física: la matemática que necesitan los físicos, con su propio hilo, su propio puente y un décimo tomo. La versión 0.3 añade el perfil de egreso (2.1): qué puede hacer el lector fuera de la matemática al terminar la obra. La versión 0.4 registra las primeras decisiones de infraestructura (sección 11): el sitio se construye con Astro y Starlight, y el índice temático pasa a ser datos, desde los que se genera la sección 13. El documento vive en el repositorio `cerrar-el-abismo`, en `docs/especificacion.md`; el índice anterior está en `docs/historico/`. La versión 0.5 completa las materias clásicas de una licenciatura en matemática: el álgebra hasta la teoría de Galois, la topología general y algebraica, el análisis funcional y los fundamentos. Suma tres tomos (V, VI y X) y tres capítulos; la colección pasa a trece tomos y se renumera. La versión 0.6 fija el estilo de redacción (7.1) y el orden de escritura: la obra se escribe desde el principio, empezando por I.1 (16).
 
 ## 0. Organización de este documento
 
@@ -273,6 +273,19 @@ Cada capítulo empieza con su línea de metadatos: extensión, requisitos, tipo 
 
 Los capítulos tienen entre 28 y 52 páginas.
 
+### 7.1 Estilo de redacción
+
+La obra se escribe con el estilo de los mejores libros de matemática: el equilibrio entre explicar y ser preciso, buenas introducciones y la claridad de quien quiere que el lector entienda. La guía completa está en `docs/guia-de-estilo.md`; sus reglas centrales son estas:
+
+- **Dos capas que no se reemplazan.** Definiciones, enunciados y demostraciones con precisión total; alrededor, la prosa que dice de dónde sale cada idea, qué significa y para qué sirve.
+- **Abrir bien.** Cada capítulo convierte su fragmento de entrada en una pregunta y trabaja primero el caso más chico; cada sección abre diciendo qué problema resuelve.
+- **Definiciones motivadas**, seguidas de ejemplos y contraejemplos; **teoremas** con título, enunciado completo y, cuando hace falta, una frase «en palabras».
+- **Demostraciones completas**, con la idea antes y sin «es fácil ver» ni «obviamente»; se dice dónde se usa cada hipótesis.
+- **Prosa en primera persona del plural**, ejercicios en infinitivo, una idea por párrafo, ninguna frase que empiece con una fórmula.
+- **Cerrar bien.** La Salida explica el fragmento de entrada y termina con «Lo esencial».
+
+Las reglas mecánicas se comprueban automáticamente en cada capítulo (11.5).
+
 ## 8. El puente
 
 ### 8.1 Fragmento de entrada y de salida
@@ -449,7 +462,7 @@ Con ellos se generan el grafo de dependencias navegable, las páginas de tomo, d
 
 ### 11.5 Comprobaciones automáticas
 
-En cada cambio, la integración continua comprueba lo siguiente. Ya se comprueban: las reglas del índice (los puntos 1 y 2, los hilos de 9.2, los itinerarios de 9.6 y las referencias entre capítulos, en `packages/indice`); en los capítulos escritos, la plantilla, el Puente, las referencias internas, la ejecución de todas las celdas y el texto alternativo de las figuras (decisión 0003). Faltan la verificación automática de las respuestas de los ejercicios y la de los enlaces externos.
+En cada cambio, la integración continua comprueba lo siguiente. Ya se comprueban: las reglas del índice (los puntos 1 y 2, los hilos de 9.2, los itinerarios de 9.6 y las referencias entre capítulos, en `packages/indice`); en los capítulos escritos, la plantilla, el Puente, las referencias internas, la ejecución de todas las celdas, el texto alternativo de las figuras (decisión 0003) y las reglas mecánicas de la guía de estilo (7.1). Faltan la verificación automática de las respuestas de los ejercicios y la de los enlaces externos.
 
 1. Que cada requisito existe y es anterior dentro del mismo tomo, o pertenece a un tomo requerido o a una interfaz declarada.
 2. Que ningún capítulo de núcleo depende de uno complementario.
@@ -701,7 +714,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Anuladores, doble dual e isomorfismo canónico.
 - Hiperplanos como núcleos de covectores; el gradiente como covector (se retoma en IV.2).
 
-**Puente.** Entrada: `n2 = transpose(inverse(M)) * n`. Una normal es un covector: la forma lineal que se anula en el plano tangente. Tras transformar con M, la forma que sigue anulándose es n ∘ M⁻¹, cuya matriz es (M⁻¹)ᵀ. Con rotaciones (M⁻¹)ᵀ = M, y por eso el error solo aparece con escalas no uniformes. Es el capítulo piloto de la obra (sección 16).
+**Puente.** Entrada: `n2 = transpose(inverse(M)) * n`. Una normal es un covector: la forma lineal que se anula en el plano tangente. Tras transformar con M, la forma que sigue anulándose es n ∘ M⁻¹, cuya matriz es (M⁻¹)ᵀ. Con rotaciones (M⁻¹)ᵀ = M, y por eso el error solo aparece con escalas no uniformes.
 **Aplicaciones.** [3D] transformación de normales y de planos · [Física] fuerzas y trabajo como covectores · [Datos] los pesos de un modelo lineal como funcional.
 **Lecturas.** Axler, *Linear Algebra Done Right*; Halmos, *Finite-Dimensional Vector Spaces*.
 
@@ -2443,13 +2456,13 @@ Además:
 | Fase | Trabajo | Criterio para pasar a la siguiente |
 | --- | --- | --- |
 | 0. Infraestructura | Repositorio, sitio (Astro y Starlight), plantilla de capítulo, metadatos, comprobaciones automáticas (el script que verificó este documento es la base), biblioteca común de las demos, primera versión del diccionario y del conversor de convenciones | Un capítulo de prueba se publica con todas las comprobaciones en verde |
-| 1. Capítulo piloto | II.5, *Espacio dual y covectores*, con todos los elementos de la plantilla | Se prueba con 5 a 10 estudiantes que ya cursaron álgebra lineal: al terminar, explican el fragmento de salida; la plantilla se ajusta con lo aprendido |
-| 2. Tomo II | Capítulos en orden, publicados uno a uno en la web | Tomo completo, con sus páginas de importación y exportación |
-| 3. Tomos I y III | Se pueden escribir en paralelo | Base de la obra completa |
+| 1. Primer capítulo | I.1, *Lógica y demostración*, con todos los elementos de la plantilla y de la guía de estilo (7.1) | Se prueba con 5 a 10 estudiantes que terminaron la escuela secundaria: al terminar, explican el fragmento de salida; la plantilla y la guía se ajustan con lo aprendido |
+| 2. Tomo I | Capítulos en orden, publicados uno a uno en la web | Tomo completo, con sus páginas de importación y exportación |
+| 3. Tomos II y III | En orden; se pueden escribir en paralelo | Base de la obra completa |
 | 4. Tomo IV | En orden | Puerta de los tomos de área abierta |
 | 5. Tomos de área | Orden propuesto: VII, V, VI, IX, X, VIII, XI, XII y XIII | Cada tomo, completo y verificado |
 
-El Tomo II va primero porque es donde el abismo es paradigmático y donde está el lector que motiva la obra: quien ya cursó álgebra lineal. Ese lector puede leerlo con lo que sabe del Tomo I.
+La obra se escribe desde el principio, en el orden de lectura. Así cada capítulo se apoya en capítulos ya escritos, las referencias apuntan a texto real y la voz de la obra se forma desde el primer capítulo. El Tomo II sigue siendo el lugar donde el abismo es paradigmático; llega tercero en el plan, pero el diseño de sus capítulos ya está en el índice.
 
 ### 16.2 Cuándo un capítulo está terminado
 
@@ -2459,6 +2472,7 @@ El Tomo II va primero porque es donde el abismo es paradigmático y donde está 
 - De 2 a 4 aplicaciones de al menos dos campos, con al menos una interactiva y todas con texto alternativo.
 - Celdas de código ejecutadas, ejercicios verificados y soluciones de los impares escritas.
 - Términos nuevos añadidos al diccionario academia–práctica.
+- Redacción conforme a la guía de estilo (7.1): las comprobaciones automáticas pasan y una lectura de estilo, con la lista de la guía, la aprueba.
 
 ## 17. Decisiones abiertas
 
@@ -2474,4 +2488,4 @@ El Tomo II va primero porque es donde el abismo es paradigmático y donde está 
 | Extensión | Unas 6.460 páginas de capítulos, 5.164 de núcleo. Si se quiere reducir el núcleo, la primera palanca son los capítulos clásicos que ningún otro capítulo de núcleo necesita (V.7, VI.3 y VI.6: unas 120 páginas); la segunda, bajar la media de páginas por capítulo |
 | Signatura de la métrica | (−, +, +, +), con traducción explícita a (+, −, −, −) |
 | Idioma | Español; traducción al inglés por decidir |
-| Revisión externa | Definir quiénes revisan las demostraciones y con qué estudiantes se prueba el piloto |
+| Revisión externa | Definir quiénes revisan las demostraciones y con qué estudiantes se prueba el primer capítulo |

@@ -1,0 +1,261 @@
+/*
+ * LA IDENTIDAD VISUAL DE LA OBRA: «papel y pizarra».
+ *
+ * En modo claro, papel cálido y tinta azul; en modo oscuro, pizarra y tiza. Hay dos colores con significado: el
+ * azul de tinta es la teoría y el ámbar es la práctica. El Puente los une, y el logo es ese puente sobre el abismo.
+ *
+ * Tipografía: Fraunces para los títulos, Source Serif 4 para el texto (se lee como un libro) y JetBrains Mono
+ * para el código. La interfaz (cabecera, barras laterales, etiquetas) usa la sans del sistema, para separarla del
+ * libro. Todas las fuentes se sirven desde el sitio.
+ */
+
+:root {
+  --sl-font: 'Source Serif 4 Variable', 'Source Serif 4', Georgia, serif;
+  --sl-font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+  --obra-titulos: 'Fraunces Variable', Fraunces, Georgia, serif;
+  --obra-interfaz: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Pizarra y tiza (modo oscuro). */
+  --sl-color-white: #f2ede3;
+  --sl-color-gray-1: #e2ddd2;
+  --sl-color-gray-2: #c9c4ba;
+  --sl-color-gray-3: #928f89;
+  --sl-color-gray-4: #5d5f64;
+  --sl-color-gray-5: #363b44;
+  --sl-color-gray-6: #1f242c;
+  --sl-color-black: #161a20;
+  --sl-color-accent-low: #1e2b45;
+  --sl-color-accent: #86a8ea;
+  --sl-color-accent-high: #d6e2fa;
+  --sl-color-text-accent: var(--sl-color-accent);
+
+  --obra-ambar: #e8a55a;
+  --obra-ambar-bajo: #3a2a17;
+  --obra-rejilla: rgba(242, 237, 227, 0.045);
+  --obra-sombra-papel: none;
+}
+
+:root[data-theme='light'] {
+  /* Papel y tinta (modo claro). */
+  --sl-color-white: #1b2029;
+  --sl-color-gray-1: #2b303a;
+  --sl-color-gray-2: #3e4450;
+  --sl-color-gray-3: #646972;
+  --sl-color-gray-4: #9a9893;
+  --sl-color-gray-5: #d9d3c6;
+  --sl-color-gray-6: #ece6d9;
+  --sl-color-gray-7: #f4efe5;
+  --sl-color-black: #fbf8f1;
+  --sl-color-accent-low: #dde6f6;
+  --sl-color-accent: #2b55a0;
+  --sl-color-accent-high: #1b3466;
+  --sl-color-text-accent: var(--sl-color-accent);
+
+  --obra-ambar: #a4520f;
+  --obra-ambar-bajo: #f6e7d4;
+  --obra-rejilla: rgba(43, 85, 160, 0.07);
+  --obra-sombra-papel: 0 1px 0 rgba(27, 32, 41, 0.04), 0 8px 24px -16px rgba(27, 32, 41, 0.18);
+}
+
+::selection {
+  background: var(--sl-color-accent-low);
+  color: var(--sl-color-white);
+}
+
+/* La interfaz, en sans; el libro, en serif. */
+.header,
+.sidebar-content,
+.right-sidebar,
+.pagination-links,
+.sl-badge,
+.search-container,
+starlight-theme-select,
+.capitulo-meta,
+.pieza-controles,
+.celda-barra {
+  font-family: var(--obra-interfaz);
+}
+
+.site-title {
+  font-family: var(--obra-titulos);
+  font-weight: 650;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+/* Los títulos. */
+h1#_top,
+.hero h1,
+.sl-markdown-content :is(h2, h3) {
+  font-family: var(--obra-titulos);
+  letter-spacing: -0.012em;
+  font-optical-sizing: auto;
+}
+
+h1#_top {
+  font-weight: 600;
+}
+
+.sl-markdown-content h2 {
+  font-weight: 560;
+  padding-block-end: 0.3rem;
+  border-block-end: 1px solid var(--sl-color-hairline-light);
+}
+
+.sl-markdown-content h3 {
+  font-weight: 560;
+}
+
+/* El texto: tamaño y aire de libro. */
+.sl-markdown-content {
+  font-size: 1.0625rem;
+  line-height: 1.72;
+}
+
+.sl-markdown-content a:not(.sl-link-button, .sl-link-card) {
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+.sl-markdown-content .katex {
+  font-size: 1.04em;
+}
+
+/* La portada: papel cuadriculado detrás del puente. */
+.hero {
+  background-image:
+    linear-gradient(var(--obra-rejilla) 1px, transparent 1px), linear-gradient(90deg, var(--obra-rejilla) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border-radius: 1rem;
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
+}
+
+.hero h1 {
+  font-weight: 620;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+}
+
+.hero .tagline {
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  color: var(--sl-color-gray-2);
+}
+
+/* Starlight limita la imagen de la portada a 20rem; el puente pide más lugar. */
+.hero > .hero-html {
+  width: min(100%, 34rem);
+}
+
+.hero-html svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Las etiquetas de campo: la práctica en ámbar, la física en tinta, el resto neutro. */
+.sl-badge.campo {
+  font-weight: 600;
+}
+
+.sl-badge.campo-3d {
+  background: var(--obra-ambar-bajo);
+  border-color: var(--obra-ambar);
+  color: var(--obra-ambar);
+}
+
+.sl-badge.campo-fisica {
+  background: var(--sl-color-accent-low);
+  border-color: var(--sl-color-accent);
+  color: var(--sl-color-accent);
+}
+
+.sl-badge.campo-otro {
+  background: transparent;
+  border-color: var(--sl-color-gray-4);
+  color: var(--sl-color-gray-2);
+}
+
+/* El mapa de tomos de la portada. */
+.mapa-tomos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.mapa-tomos li {
+  margin: 0;
+}
+
+.mapa-tomos a {
+  display: grid;
+  grid-template-columns: 3.4rem 1fr;
+  gap: 0.15rem 0.75rem;
+  height: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--sl-color-hairline-light);
+  border-radius: 0.75rem;
+  background: var(--sl-color-gray-7, var(--sl-color-gray-6));
+  box-shadow: var(--obra-sombra-papel);
+  color: var(--sl-color-white);
+  text-decoration: none;
+  transition:
+    border-color 0.15s,
+    transform 0.15s;
+}
+
+.mapa-tomos a:hover,
+.mapa-tomos a:focus-visible {
+  border-color: var(--sl-color-accent);
+  transform: translateY(-1px);
+}
+
+.mapa-tomos .numeral {
+  grid-row: span 2;
+  font-family: var(--obra-titulos);
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--sl-color-accent);
+}
+
+.mapa-tomos .titulo {
+  font-family: var(--obra-titulos);
+  font-weight: 560;
+  line-height: 1.25;
+}
+
+.mapa-tomos .cifras {
+  font-family: var(--obra-interfaz);
+  font-size: var(--sl-text-xs);
+  color: var(--sl-color-gray-3);
+}
+
+/* El antetítulo de un capítulo: su tomo. */
+.capitulo-antetitulo {
+  margin: 0;
+  font-family: var(--obra-interfaz);
+  font-size: var(--sl-text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--obra-ambar);
+}
+
+.capitulo-antetitulo a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* El código se muestra tal como se escribe: sin ligaduras que conviertan «<=» en «≤» o «!=» en «≠». */
+code,
+pre,
+kbd,
+samp,
+.expressive-code pre,
+celda-python,
+celda-python textarea {
+  font-variant-ligatures: none;
+  font-feature-settings:
+    'liga' 0,
+    'calt' 0;
+}

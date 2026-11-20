@@ -33,11 +33,24 @@
 
 /* --- La capa de libro (packages/libro) --- */
 
-/* Los entornos numerados: una franja a la izquierda; los resultados, con la franja del color de acento. */
+/* Los entornos: el nombre en versalitas, como en los libros; una franja a la izquierda los separa del texto. */
 .entorno {
-  border-inline-start: 3px solid var(--sl-color-gray-4);
-  padding: 0.25rem 0 0.25rem 1rem;
-  margin-block: 1.25rem;
+  border-inline-start: 3px solid var(--sl-color-gray-5);
+  padding: 0.35rem 0 0.35rem 1.1rem;
+  margin-block: 1.4rem;
+}
+
+.entorno-titulo > strong {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.03em;
+}
+
+/* Las definiciones, sobre papel un poco más oscuro; los resultados, con la franja de tinta. */
+.entorno-definicion {
+  background: var(--sl-color-gray-7, var(--sl-color-gray-6));
+  border-inline-start-color: var(--sl-color-gray-4);
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding-inline-end: 1rem;
 }
 
 .entorno-teorema,
@@ -47,8 +60,18 @@
   border-inline-start-color: var(--sl-color-accent);
 }
 
+.entorno-ejemplo,
+.entorno-observacion {
+  border-inline-start-style: dashed;
+}
+
 .entorno-demostracion {
-  border-inline-start-style: dotted;
+  border-inline-start: 1px dotted var(--sl-color-gray-4);
+}
+
+.entorno-demostracion > summary,
+.entorno-solucion > summary {
+  list-style-position: outside;
 }
 
 .entorno-titulo {
@@ -58,15 +81,21 @@
 .qed {
   text-align: end;
   margin-block-start: 0;
+  color: var(--sl-color-gray-3);
 }
 
-/* El Puente y «Una línea, un teorema»: recuadros con fondo. */
-.entorno-puente,
+/* El Puente une la teoría (tinta) con la práctica (ámbar): su franja va de un color al otro. */
+.entorno-puente {
+  border-inline-start: 4px solid;
+  border-image: linear-gradient(to bottom, var(--sl-color-accent), var(--obra-ambar)) 1;
+  background: linear-gradient(to right, var(--sl-color-accent-low), transparent 70%);
+  padding: 0.85rem 1.1rem;
+}
+
 .entorno-linea {
-  background: var(--sl-color-accent-low);
-  border-inline-start-color: var(--sl-color-accent);
-  border-radius: 0 0.5rem 0.5rem 0;
-  padding: 0.75rem 1rem;
+  border-inline-start-color: var(--obra-ambar);
+  background: linear-gradient(to right, var(--obra-ambar-bajo), transparent 70%);
+  padding: 0.85rem 1.1rem;
 }
 
 .entorno-solucion > summary {
@@ -155,4 +184,69 @@ celda-python textarea {
 
 .leer-capitulo {
   font-weight: 600;
+}
+
+/* La pieza «tabla-de-verdad». */
+.pieza-campo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--obra-interfaz);
+  font-size: var(--sl-text-sm);
+}
+
+.pieza-campo input {
+  flex: 1;
+  font-family: var(--sl-font-mono, monospace);
+  font-size: 1rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--sl-color-gray-4);
+  border-radius: 0.375rem;
+  background: var(--sl-color-black);
+  color: var(--sl-color-white);
+}
+
+.pieza-controles button {
+  min-width: 2.2rem;
+  font-size: 1rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--sl-color-gray-4);
+  border-radius: 0.375rem;
+  background: transparent;
+  color: var(--sl-color-white);
+  cursor: pointer;
+}
+
+.pieza-controles {
+  margin-block: 0.5rem;
+}
+
+.pieza-tabla table {
+  width: auto;
+  font-family: var(--sl-font-mono, monospace);
+  font-size: var(--sl-text-sm);
+  text-align: center;
+}
+
+.pieza-tabla td.verdadero {
+  color: var(--sl-color-accent);
+  font-weight: 700;
+}
+
+.pieza-tabla td.falso {
+  color: var(--obra-ambar);
+  font-weight: 700;
+}
+
+.pieza-lectura.pieza-error {
+  color: var(--sl-color-red);
+}
+
+.pieza-botones {
+  gap: 0.35rem;
+}
+
+.pieza-botones button {
+  height: 2.1rem;
+  line-height: 1;
 }

@@ -1,7 +1,7 @@
 ---
 import { Badge } from '@astrojs/starlight/components';
 import { CAMPOS, slug, type Capitulo } from '@cerrar-el-abismo/indice';
-import { enLinea, estaEscrito, urlCapitulo, urlEnIndice } from '../lib/obra';
+import { claseDeCampo, enLinea, estaEscrito, urlCapitulo, urlEnIndice } from '../lib/obra';
 
 interface Props {
   capitulo: Capitulo;
@@ -40,7 +40,7 @@ const nucleo = c.tipo === 'nucleo';
     {
       aplicaciones.map((a) => (
         <li>
-          <Badge text={a.campo} variant={a.campo === '3D' ? 'note' : a.campo === 'Física' ? 'tip' : 'default'} />
+          <Badge text={a.campo} class={claseDeCampo(a.campo)} />
           <Fragment set:html={a.html} />
         </li>
       ))

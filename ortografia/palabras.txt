@@ -28,8 +28,8 @@ Askey
 asociatividad
 Atiyah
 atractores
-autoadjunto
 Autoadjunto
+autoadjunto
 autoadjuntos
 autofunciones
 automorfismo
@@ -49,6 +49,7 @@ Bendixson
 Bertsimas
 BFGS
 bfloat
+bicondicional
 bilineal
 bilineales
 binomiales
@@ -113,10 +114,11 @@ Condon
 congruencial
 construibles
 contraejemplo
+contraejemplos
 contrapositiva
 controlabilidad
-Conversor
 conversor
+Conversor
 convolucionar
 Convolucionar
 coprimos
@@ -144,6 +146,7 @@ cúbits
 Darboux
 Daubechies
 decibeles
+definirla
 derivabilidad
 derivables
 Desargues
@@ -209,6 +212,7 @@ fotogrametría
 fotometría
 Fraenkel
 Fredholm
+Frege
 Friedlander
 Frobenius
 frontmatter
@@ -225,6 +229,7 @@ glsl
 Goldstein
 Golub
 Gordan
+Gottlob
 Griewank
 Grimmett
 Grobman
@@ -257,6 +262,7 @@ Hiperplanos
 hiperplanos
 Hirsch
 Hlawka
+Hoare
 Hoffstein
 holomorfa
 holomorfas
@@ -285,8 +291,8 @@ indecidible
 insesgadez
 insesgado
 integrabilidad
-Invariancia
 invariancia
+Invariancia
 irradiancia
 irreducibilidad
 irrotacionales
@@ -329,8 +335,9 @@ lagrangiana
 lagrangiano
 Laguerre
 Lanczos
-Laplaciano
 laplaciano
+Laplaciano
+Larrabee
 lateralidad
 Lawler
 Lebedev
@@ -345,6 +352,7 @@ Lindelöf
 linealizadas
 Liouville
 Lipschitz
+llamémosla
 lorentziana
 lorentzianas
 Lotka
@@ -372,11 +380,12 @@ Mikk
 Milgram
 milisegundos
 Milnor
-minimización
 Minimización
+minimización
 Minkowski
 Mirtich
 monomiales
+muestrean
 muestrear
 Muestrear
 multigrid
@@ -423,6 +432,7 @@ Olver
 ondícula
 ondículas
 Ondículas
+operandos
 Oppenheim
 optimalidad
 optimizador
@@ -460,10 +470,12 @@ Pohlig
 polinomial
 polinomiales
 politopos
+poscondiciones
 postcuántica
 prefiltradas
 preimagen
 Pressley
+Probá
 procedurales
 pseudoaleatorios
 Pseudoinversa
@@ -480,13 +492,14 @@ ragdolls
 Ramamoorthi
 rasterización
 Rasterización
+recalcularlos
 recubridores
 recursión
 reescalan
 Rellich
 remapeo
-Remuestreo
 remuestreo
+Remuestreo
 renderizado
 renderizados
 renormaliza
@@ -602,6 +615,8 @@ símplex
 Süli
 Tait
 Tarski
+tautología
+Tautología
 teselaciones
 Teselaciones
 teselación

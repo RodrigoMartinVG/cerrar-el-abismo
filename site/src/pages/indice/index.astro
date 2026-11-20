@@ -2,7 +2,7 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { Badge } from '@astrojs/starlight/components';
 import { CAMPOS, paginas, todosLosCapitulos } from '@cerrar-el-abismo/indice';
-import { numero, obra, urlTomo } from '../../lib/obra';
+import { claseDeCampo, numero, obra, urlTomo } from '../../lib/obra';
 
 const { tomos } = obra();
 const todos = todosLosCapitulos(obra());
@@ -65,7 +65,7 @@ const nucleo = todos.filter((c) => c.tipo === 'nucleo');
     llevan la etiqueta de su campo:
   </p>
   <p class="etiquetas">
-    {Object.values(CAMPOS).map((campo) => <Badge text={campo} variant={campo === '3D' ? 'note' : campo === 'Física' ? 'tip' : 'default'} />)}
+    {Object.values(CAMPOS).map((campo) => <Badge text={campo} class={claseDeCampo(campo)} />)}
   </p>
   <p>Los motores 3D y la física son los dos hilos fijos: aparecen en todos los tomos, y ninguno ocupa más de un tercio de un tomo.</p>
 </StarlightPage>
