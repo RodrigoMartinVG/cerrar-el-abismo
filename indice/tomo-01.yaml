@@ -312,3 +312,25 @@ partes:
           - campo: ing
             texto: verificación formal de sistemas críticos con asistentes de demostración
         lecturas: Enderton, *A Mathematical Introduction to Logic*; Sipser, *Introduction to the Theory of Computation*.
+      - id: I.15
+        titulo: Demostraciones como programas
+        paginas: 40
+        requiere:
+          - I.1
+          - I.4
+          - I.14
+        tipo: complementario
+        contenidos:
+          - 'Deducción natural para la lógica proposicional y de primer orden; la lógica intuicionista: qué se pierde sin el tercero excluido y sin la doble negación, y qué se gana.'
+          - 'Cálculo λ simplemente tipado y correspondencia de Curry–Howard: las proposiciones son tipos y las demostraciones son programas; la conjunción es el par, la implicación es la función y la disyunción es la suma, y simplificar una demostración es ejecutar un programa.'
+          - 'Tipos dependientes: el cuantificador universal como función y el existencial como par; la igualdad como tipo y la inducción como recursión. La teoría de tipos como fundamento, frente a la teoría de conjuntos de I.4.'
+          - 'Asistentes de demostración: el núcleo que verifica, las tácticas que construyen términos y qué garantiza que una computadora acepte una demostración. Para seguir: teoría homotópica de tipos y bibliotecas de matemática formalizada.'
+        puente: 'Entrada: `theorem intercambio (p q : Prop) : p ∧ q → q ∧ p := fun ⟨hp, hq⟩ => ⟨hq, hp⟩` en Lean. La demostración es un programa: la función que recibe un par y lo devuelve invertido, la misma que en Python es `lambda par: (par[1], par[0])`. Que Lean la acepte quiere decir que el tipo de ese programa es el enunciado.'
+        aplicaciones:
+          - campo: cripto
+            texto: código criptográfico verificado, generado junto con su demostración de corrección y usado en navegadores
+          - campo: ing
+            texto: compiladores y núcleos de sistemas operativos verificados para sistemas críticos
+          - campo: fisica
+            texto: las dimensiones físicas como tipos, que impiden sumar metros con segundos, y la formalización de la física en asistentes de demostración
+        lecturas: Sørensen y Urzyczyn, *Lectures on the Curry–Howard Isomorphism*; Avigad, de Moura, Kong y Ullrich, *Theorem Proving in Lean 4*.

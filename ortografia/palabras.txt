@@ -49,6 +49,7 @@ Autovalores
 autovalores
 autovector
 autovectores
+Avigad
 Axler
 Azuma
 Baire
@@ -458,6 +459,7 @@ Mirtich
 Monge
 monomiales
 Motwani
+Moura
 muestrean
 muestrear
 Muestrear
@@ -712,6 +714,7 @@ Sylow
 Särkkä
 símplex
 Süli
+Sørensen
 Tait
 Tarski
 Tautología
@@ -725,6 +728,7 @@ theorema
 Tibshirani
 Tietze
 Tignol
+tipado
 tipados
 Tonelli
 transcrítica
@@ -739,9 +743,11 @@ Tychonoff
 Typst
 Ulam
 Ullman
+Ullrich
 upla
 uplas
 Urysohn
+Urzyczyn
 Vandenberghe
 Vapnik
 variacional

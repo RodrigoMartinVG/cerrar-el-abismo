@@ -72,13 +72,13 @@ Límite: las APIs gráficas, los *shaders*, la arquitectura de un motor y la opt
 
 | Campo | Aplicaciones | Qué puede hacer el lector |
 | --- | --- | --- |
-| Ingeniería [Ing] | 98 | Robótica: cinemática de eslabones y planificación de movimientos (II.14, VII.11). Control: espacio de estados, estabilidad, Bode y Nyquist (VIII.3, VIII.4, IX.9, IX.10). Estructuras con elementos finitos y aerodinámica (XII.8, XII.10). Navegación inercial y filtrado (II.17, XI.15). CAD y fabricación aditiva (VII.6, VII.10, VII.14) |
+| Ingeniería [Ing] | 99 | Robótica: cinemática de eslabones y planificación de movimientos (II.14, VII.11). Control: espacio de estados, estabilidad, Bode y Nyquist (VIII.3, VIII.4, IX.9, IX.10). Estructuras con elementos finitos y aerodinámica (XII.8, XII.10). Navegación inercial y filtrado (II.17, XI.15). CAD y fabricación aditiva (VII.6, VII.10, VII.14) |
 | Datos [Datos] | 61 | Entender por qué funciona lo que se usa como caja negra: regresión, PCA y SVD, optimización convexa y vectores soporte, entrenamiento con diferenciación automática, inferencia bayesiana y MCMC, entropía cruzada (II.8, II.10, IV.5, IV.7, IV.8, XI.8, XI.15, XI.17). Con el itinerario de datos, redes equivariantes (XIII.1) |
 | Biología, medicina, economía y finanzas [Bio/Eco] | 48 | Poblaciones y epidemias, farmacocinética, imagen médica, ensayos clínicos y pruebas diagnósticas (II.6, VIII.1, VIII.4, IX.5, VII.14, XI.1, XI.13). Insumo-producto, utilidad con presupuesto y equilibrio de mercado (II.1, IV.4, VIII.14). Valoración de opciones por Monte Carlo (XI.6) |
 | Señales [Señales] | 32 | Fourier, muestreo, filtros, audio digital y JPEG (IX.4, IX.5, IX.7, IX.13). Con un complementario, ondículas y JPEG 2000 (IX.8) |
-| Criptografía y computación [Cripto] | 26 | RSA y Diffie–Hellman, Reed–Solomon, CRC y AES, colisiones de *hash*, compresión de Huffman y determinismo entre plataformas (I.5, I.6, I.10, I.12, XI.17). Criptografía de retículos con la forma normal de Hermite (V.4) |
+| Criptografía y computación [Cripto] | 27 | RSA y Diffie–Hellman, Reed–Solomon, CRC y AES, colisiones de *hash*, compresión de Huffman y determinismo entre plataformas (I.5, I.6, I.10, I.12, XI.17). Criptografía de retículos con la forma normal de Hermite (V.4) |
 
-Los dos hilos fijos tienen 140 aplicaciones ([3D]) y 101 ([Física]). La ingeniería no es hilo fijo ni tiene itinerario, pero tiene casi tantas aplicaciones como la física; si merece un itinerario propio es una decisión abierta (17).
+Los dos hilos fijos tienen 140 aplicaciones ([3D]) y 102 ([Física]). La ingeniería no es hilo fijo ni tiene itinerario, pero tiene casi tantas aplicaciones como la física; si merece un itinerario propio es una decisión abierta (17).
 
 **En suma.** Quien termina la obra puede sentarse con un físico, un programador de gráficos, un ingeniero de control o un científico de datos, entender sus cuentas, aportar rigor y aprender su oficio rápido. Eso abre caminos como la física matemática, la investigación en gráficos, la simulación, la robótica, el aprendizaje automático o las finanzas cuantitativas.
 
@@ -215,7 +215,7 @@ La obra tiene trece tomos. Los Tomos I, II y III forman la base; los demás son 
 
 | Tomo | Título | Requiere | Interfaces | Caps. |
 | --- | --- | --- | --- | --- |
-| I | Fundamentos: lógica, números y estructuras | — | — | 14 |
+| I | Fundamentos: lógica, números y estructuras | — | — | 15 |
 | II | Álgebra lineal y el espacio de la práctica | I | — | 17 |
 | III | Análisis en una variable | I | — | 12 |
 | IV | Análisis en varias variables y optimización | II, III | — | 14 |
@@ -228,7 +228,7 @@ La obra tiene trece tomos. Los Tomos I, II y III forman la base; los demás son 
 | XI | Probabilidad, estadística y métodos estocásticos | IV, IX | — | 18 |
 | XII | Ecuaciones en derivadas parciales y medios continuos | VIII, IX, X | XI.9 | 11 |
 | XIII | Simetría, variedades y teoría cuántica | VII, IX, X, XI | XII.3 | 7 |
-| **Total** | | | | **164** |
+| **Total** | | | | **165** |
 
 <!-- /tomos -->
 
@@ -521,7 +521,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 ### Tomo I — Fundamentos: lógica, números y estructuras
 
-*Requiere: escuela secundaria · 14 capítulos.* El lenguaje de la matemática, los sistemas numéricos y las estructuras algebraicas y discretas que usan todos los tomos, incluida la forma en que una computadora representa los números.
+*Requiere: escuela secundaria · 15 capítulos.* El lenguaje de la matemática, los sistemas numéricos y las estructuras algebraicas y discretas que usan todos los tomos, incluida la forma en que una computadora representa los números.
 
 **Parte A — Lenguaje y números**
 
@@ -684,6 +684,17 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Puente.** Entrada: `solver.check()` devuelve `unknown` en un resolvedor SMT. Sobre la aritmética entera con multiplicación la satisfacibilidad es indecidible (décimo problema de Hilbert), así que ningún resolvedor puede responder siempre: el `unknown` es un teorema, no un defecto.
 **Aplicaciones.** [Cripto] análisis estático de programas y los límites que impone el teorema de Rice · [Datos] SQL como lógica de primer orden y resolvedores SAT y SMT · [Ing] verificación formal de sistemas críticos con asistentes de demostración.
 **Lecturas.** Enderton, *A Mathematical Introduction to Logic*; Sipser, *Introduction to the Theory of Computation*.
+
+#### I.15 Demostraciones como programas
+*40 págs. · Requiere: I.1, I.4, I.14 · Complementario*
+- Deducción natural para la lógica proposicional y de primer orden; la lógica intuicionista: qué se pierde sin el tercero excluido y sin la doble negación, y qué se gana.
+- Cálculo λ simplemente tipado y correspondencia de Curry–Howard: las proposiciones son tipos y las demostraciones son programas; la conjunción es el par, la implicación es la función y la disyunción es la suma, y simplificar una demostración es ejecutar un programa.
+- Tipos dependientes: el cuantificador universal como función y el existencial como par; la igualdad como tipo y la inducción como recursión. La teoría de tipos como fundamento, frente a la teoría de conjuntos de I.4.
+- Asistentes de demostración: el núcleo que verifica, las tácticas que construyen términos y qué garantiza que una computadora acepte una demostración. Para seguir: teoría homotópica de tipos y bibliotecas de matemática formalizada.
+
+**Puente.** Entrada: `theorem intercambio (p q : Prop) : p ∧ q → q ∧ p := fun ⟨hp, hq⟩ => ⟨hq, hp⟩` en Lean. La demostración es un programa: la función que recibe un par y lo devuelve invertido, la misma que en Python es `lambda par: (par[1], par[0])`. Que Lean la acepte quiere decir que el tipo de ese programa es el enunciado.
+**Aplicaciones.** [Cripto] código criptográfico verificado, generado junto con su demostración de corrección y usado en navegadores · [Ing] compiladores y núcleos de sistemas operativos verificados para sistemas críticos · [Física] las dimensiones físicas como tipos, que impiden sumar metros con segundos, y la formalización de la física en asistentes de demostración.
+**Lecturas.** Sørensen y Urzyczyn, *Lectures on the Curry–Howard Isomorphism*; Avigad, de Moura, Kong y Ullrich, *Theorem Proving in Lean 4*.
 
 ### Tomo II — Álgebra lineal y el espacio de la práctica
 
@@ -2474,7 +2485,7 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 
 | Tomo | Caps. | Págs. | Caps. de núcleo | Págs. de núcleo | Aplicaciones [3D] | Aplicaciones [Física] |
 | --- | --- | --- | --- | --- | --- | --- |
-| I | 14 | 592 | 12 | 508 | 13 de 47 (28 %) | 4 de 47 (9 %) |
+| I | 15 | 632 | 12 | 508 | 13 de 50 (26 %) | 5 de 50 (10 %) |
 | II | 17 | 672 | 16 | 632 | 16 de 56 (29 %) | 12 de 56 (21 %) |
 | III | 12 | 520 | 11 | 484 | 11 de 37 (30 %) | 6 de 37 (16 %) |
 | IV | 14 | 564 | 12 | 484 | 13 de 43 (30 %) | 7 de 43 (16 %) |
@@ -2487,23 +2498,23 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 | XI | 18 | 776 | 11 | 488 | 14 de 56 (25 %) | 9 de 56 (16 %) |
 | XII | 11 | 500 | 7 | 324 | 10 de 33 (30 %) | 10 de 33 (30 %) |
 | XIII | 7 | 324 | 0 | 0 | 5 de 21 (24 %) | 7 de 21 (33 %) |
-| **Total** | **164** | **6.996** | **121** | **5.204** | **140 de 506 (28 %)** | **101 de 506 (20 %)** |
+| **Total** | **165** | **7.036** | **121** | **5.204** | **140 de 509 (28 %)** | **102 de 509 (20 %)** |
 
-- Los capítulos tienen entre 28 y 52 páginas, con una media de 42,7.
-- Cada tomo suma además unas 50 páginas de material propio: «Lo que este tomo importa», «Lo que este tomo exporta», notación y convenciones, diccionario academia–práctica del tomo, soluciones de los ejercicios impares e índice analítico. En total, unas 650 páginas, para unas 7.646 en toda la obra.
-- El hilo 3D ocupa entre el 21 % y el 33 % de las aplicaciones de cada tomo, y el de física entre el 9 % y el 33 %: ninguno supera el límite de un tercio (9.2).
+- Los capítulos tienen entre 28 y 52 páginas, con una media de 42,6.
+- Cada tomo suma además unas 50 páginas de material propio: «Lo que este tomo importa», «Lo que este tomo exporta», notación y convenciones, diccionario academia–práctica del tomo, soluciones de los ejercicios impares e índice analítico. En total, unas 650 páginas, para unas 7.686 en toda la obra.
+- El hilo 3D ocupa entre el 21 % y el 33 % de las aplicaciones de cada tomo, y el de física entre el 10 % y el 33 %: ninguno supera el límite de un tercio (9.2).
 - El Tomo XIII no tiene capítulos de núcleo: todo él es complementario en el sentido de 5.3.
 
 | Campo (9.1) | Aplicaciones | Proporción |
 | --- | --- | --- |
 | [3D] | 140 | 28 % |
-| [Física] | 101 | 20 % |
-| [Ing] | 98 | 19 % |
+| [Física] | 102 | 20 % |
+| [Ing] | 99 | 19 % |
 | [Datos] | 61 | 12 % |
 | [Bio/Eco] | 48 | 9 % |
 | [Señales] | 32 | 6 % |
-| [Cripto] | 26 | 5 % |
-| **Total** | **506** | **100 %** |
+| [Cripto] | 27 | 5 % |
+| **Total** | **509** | **100 %** |
 
 | Itinerario (9.6) | Caps. | Págs. de capítulos |
 | --- | --- | --- |
@@ -2512,13 +2523,13 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 | Gráficos y 3D | 135 | 5.776 |
 | Datos | 132 | 5.644 |
 
-Los cuatro itinerarios están cerrados bajo dependencias: cada capítulo que incluyen tiene todos sus requisitos dentro del mismo itinerario. El de física deja fuera 23 capítulos: I.13, I.14, II.13, III.11, IV.9, V.8, V.9, VI.8, VI.9, VI.10, VI.11, VII.15, VIII.6, VIII.7, VIII.10, IX.8, X.4, X.7, XI.7, XI.11, XI.14, XI.16 y XI.18.
+Los cuatro itinerarios están cerrados bajo dependencias: cada capítulo que incluyen tiene todos sus requisitos dentro del mismo itinerario. El de física deja fuera 24 capítulos: I.13, I.14, I.15, II.13, III.11, IV.9, V.8, V.9, VI.8, VI.9, VI.10, VI.11, VII.15, VIII.6, VIII.7, VIII.10, IX.8, X.4, X.7, XI.7, XI.11, XI.14, XI.16 y XI.18.
 
 <!-- /extension -->
 
 La ingeniería tiene casi tantas aplicaciones como la física sin ser un hilo fijo (2.1 y 17).
 
-El índice del motor sumaba 3.384 páginas, y la versión 0.1 de esta especificación, 4.536. La arista de la física añade 680 páginas: 224 entran en el núcleo, que pasa de 4.072 a 4.296, y el resto son complementarias, sobre todo el Tomo XIII. Las materias clásicas de la versión 0.5 (álgebra, topología, análisis funcional y fundamentos) añaden 1.244 páginas: 868 entran en el núcleo, que pasa de 4.296 a 5.164. Los catorce capítulos de alto impacto de la versión 0.7 añaden 536 páginas, de las cuales 40 entran en el núcleo, que llega a 5.204.
+El índice del motor sumaba 3.384 páginas, y la versión 0.1 de esta especificación, 4.536. La arista de la física añade 680 páginas: 224 entran en el núcleo, que pasa de 4.072 a 4.296, y el resto son complementarias, sobre todo el Tomo XIII. Las materias clásicas de la versión 0.5 (álgebra, topología, análisis funcional y fundamentos) añaden 1.244 páginas: 868 entran en el núcleo, que pasa de 4.296 a 5.164. Los catorce capítulos de alto impacto de la versión 0.7 añaden 536 páginas, de las cuales 40 entran en el núcleo, que llega a 5.204. El capítulo I.15, complementario, añade 40 más.
 
 ## 15. Correspondencia con el índice anterior
 
@@ -2647,8 +2658,8 @@ La obra se escribe desde el principio, en el orden de lectura. Así cada capítu
 | Lenguajes del código | Python (Pyodide) para el cálculo en vivo y TypeScript para el sitio y las figuras |
 | Soluciones de los ejercicios pares | Espacio para docentes |
 | Capítulos complementarios en la primera edición | Publicar primero el recorrido de núcleo y después los complementarios |
-| Itinerario de ingeniería | La ingeniería tiene 98 aplicaciones, casi tantas como la física (101), pero no tiene itinerario (2.1). Propuesta: núcleo, más IV.14, VIII.7, XI.7, XII.9 y XIII.4 (termodinámica, control, diseño de experimentos, estructuras y espacios de configuración); son 126 capítulos y 5.416 páginas, cerrado bajo dependencias |
-| Extensión | Unas 6.996 páginas de capítulos, 5.204 de núcleo. Si se quiere reducir el núcleo, la primera palanca son los capítulos clásicos que ningún otro capítulo de núcleo necesita (V.7, VI.3 y VI.6: unas 120 páginas); la segunda, bajar la media de páginas por capítulo |
+| Itinerario de ingeniería | La ingeniería tiene 99 aplicaciones, casi tantas como la física (102), pero no tiene itinerario (2.1). Propuesta: núcleo, más IV.14, VIII.7, XI.7, XII.9 y XIII.4 (termodinámica, control, diseño de experimentos, estructuras y espacios de configuración); son 126 capítulos y 5.416 páginas, cerrado bajo dependencias |
+| Extensión | Unas 7.036 páginas de capítulos, 5.204 de núcleo. Si se quiere reducir el núcleo, la primera palanca son los capítulos clásicos que ningún otro capítulo de núcleo necesita (V.7, VI.3 y VI.6: unas 120 páginas); la segunda, bajar la media de páginas por capítulo |
 | Signatura de la métrica | (−, +, +, +), con traducción explícita a (+, −, −, −) |
 | Idioma | Español; traducción al inglés por decidir |
 | Revisión externa | Definir quiénes revisan las demostraciones y con qué estudiantes se prueba el primer capítulo |
