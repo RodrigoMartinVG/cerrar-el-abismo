@@ -1,10 +1,16 @@
 import { createMarkdownProcessor, type MarkdownRenderer } from '@astrojs/markdown-remark';
-import { cargarIndice, referenciasA, slug, todosLosCapitulos, tomoDe, type Indice } from '@cerrar-el-abismo/indice';
+import { cargarIndice, Grafo, referenciasA, slug, todosLosCapitulos, tomoDe, type Indice } from '@cerrar-el-abismo/indice';
 
 /** El índice de la obra, leído una sola vez por construcción del sitio. */
 let indice: Indice | undefined;
 export function obra(): Indice {
   return (indice ??= cargarIndice());
+}
+
+/** El grafo de dependencias de la obra (packages/indice/src/grafo.ts), armado una sola vez. */
+let grafoDeLaObra: Grafo | undefined;
+export function grafo(): Grafo {
+  return (grafoDeLaObra ??= new Grafo(obra()));
 }
 
 const raiz = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
@@ -20,6 +26,11 @@ const escritos = new Set(
 
 export function estaEscrito(id: string): boolean {
   return escritos.has(slug(id));
+}
+
+/** El mapa de dependencias, o la página del recorrido hasta un capítulo. */
+export function urlMapa(id?: string): string {
+  return id ? `${raiz}mapa/${slug(id)}/` : `${raiz}mapa/`;
 }
 
 /** La entrada de un capítulo en la página de su tomo. */

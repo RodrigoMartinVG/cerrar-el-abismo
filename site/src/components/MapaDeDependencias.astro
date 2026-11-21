@@ -1,0 +1,79 @@
+---
+import { caminoSuave, disponer } from '@cerrar-el-abismo/indice';
+import { estaEscrito, grafo, urlMapa } from '../lib/obra';
+
+/**
+ * EL DIBUJO DE UN GRAFO DE DEPENDENCIAS, en SVG y sin JavaScript. Cada capítulo queda debajo de los que necesita; las
+ * flechas son los requisitos esenciales (sin los implícitos, que ya vienen con otro requisito). Cada nodo enlaza con la
+ * página de su recorrido, y su título dice el nombre del capítulo. La disposición está en packages/indice.
+ */
+interface Props {
+  /** Los capítulos que se dibujan, en orden de lectura. */
+  ids: string[];
+  /** El capítulo destino, que se marca. */
+  destino?: string;
+  /** La descripción para quien no ve el dibujo. */
+  descripcion: string;
+  /** El grafo entero: el dibujo se desplaza dentro de una caja de altura limitada. */
+  completo?: boolean;
+}
+
+const { ids, destino, descripcion, completo = false } = Astro.props;
+const g = grafo();
+const dentro = new Set(ids);
+const aristas = ids.flatMap((id) => g.requisitosEsenciales(id).filter((r) => dentro.has(r)).map((de) => ({ de, a: id })));
+const ANCHO = 64;
+const ALTO = 26;
+const d = disponer(ids, aristas, { anchoNodo: ANCHO, altoNodo: ALTO, altoDeNivel: 56 });
+---
+
+<div class:list={["mapa-dibujo", "not-content", { completo }]}>
+  <svg viewBox={`0 0 ${d.ancho} ${d.alto}`} width={d.ancho} height={d.alto} role="group" aria-label={descripcion}>
+    <defs>
+      <marker id="punta" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L8,4 L0,8 z" class="mapa-punta"></path>
+      </marker>
+    </defs>
+    <g class="mapa-aristas">
+      {
+        d.aristas.map((a) => (
+          <path d={caminoSuave(a.puntos)} class={a.a === destino ? 'hacia-destino' : undefined} marker-end="url(#punta)" />
+        ))
+      }
+    </g>
+    {
+      d.nodos.map((n) => {
+        const c = g.capitulo(n.id);
+        const clases = [
+          'mapa-nodo',
+          c.tipo === 'complementario' ? 'complementario' : 'nucleo',
+          estaEscrito(n.id) ? 'escrito' : '',
+          n.id === destino ? 'destino' : '',
+        ].join(' ');
+        return (
+          <a href={urlMapa(n.id)} class={clases}>
+            <title>
+              {c.id} {c.titulo} · {c.paginas} págs.{c.tipo === 'complementario' ? ' · complementario' : ''}
+              {estaEscrito(n.id) ? ' · escrito' : ''}
+            </title>
+            <rect x={n.x - ANCHO / 2} y={n.y - ALTO / 2} width={ANCHO} height={ALTO} rx="6" />
+            <text x={n.x} y={n.y} dominant-baseline="central" text-anchor="middle">
+              {n.id}
+            </text>
+          </a>
+        );
+      })
+    }
+  </svg>
+</div>
+<p class="mapa-leyenda not-content">
+  <span class="muestra nucleo"></span> núcleo · <span class="muestra complementario"></span> complementario ·
+  <span class="muestra escrito"></span> ya escrito{destino && ' · '}{destino && <span class="muestra destino" />}{destino && ' el capítulo elegido'}.
+  Cada flecha va de un requisito al capítulo que lo usa.
+</p>
+
+<script>
+  // El grafo entero es más ancho que la columna: empieza centrado, donde están los primeros capítulos.
+  for (const caja of document.querySelectorAll<HTMLElement>('.mapa-dibujo.completo'))
+    caja.scrollLeft = (caja.scrollWidth - caja.clientWidth) / 2;
+</script>

@@ -1,0 +1,142 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { Badge } from '@astrojs/starlight/components';
+import { paginas, slug, tomoDe, type Capitulo } from '@cerrar-el-abismo/indice';
+import MapaDeDependencias from '../../components/MapaDeDependencias.astro';
+import { estaEscrito, grafo, numero, obra, urlCapitulo, urlEnIndice, urlMapa, urlTomo } from '../../lib/obra';
+
+/**
+ * EL RECORRIDO HASTA UN CAPÍTULO: todo lo que hay que leer antes, dibujado y listado por tomo, y lo que el capítulo
+ * abre después. Una página por capítulo, para que el recorrido se pueda enlazar: /mapa/ix-15/.
+ */
+export function getStaticPaths() {
+  return grafo().capitulos.map((c) => ({ params: { capitulo: slug(c.id) }, props: { id: c.id } }));
+}
+
+interface Props {
+  id: string;
+}
+
+const g = grafo();
+const c = g.capitulo(Astro.props.id);
+const recorrido = g.recorrido(c.id);
+const complementarios = recorrido.filter((x) => x.tipo === 'complementario').map((x) => x.id);
+const escritos = recorrido.filter((x) => estaEscrito(x.id)).length;
+const porTomo = obra()
+  .tomos.map((t) => ({ tomo: t, capitulos: recorrido.filter((x) => tomoDe(x.id) === t.id) }))
+  .filter((x) => x.capitulos.length > 0);
+const directos = g.dependientesDirectos(c.id);
+const todos = g.dependientes(c.id);
+const implicitos = new Set(c.requiere.filter((r) => !g.requisitosEsenciales(c.id).includes(r)));
+const cantidad = (n: number, uno: string, varios: string) => `${numero(n)} ${n === 1 ? uno : varios}`;
+const headings = [
+  ...(recorrido.length > 0
+    ? [
+        { depth: 2, slug: 'el-dibujo', text: 'El dibujo' },
+        { depth: 2, slug: 'el-recorrido', text: 'El recorrido, en orden de lectura' },
+      ]
+    : []),
+  { depth: 2, slug: 'lo-que-abre', text: 'Lo que abre' },
+];
+const enlace = (x: Capitulo) => (estaEscrito(x.id) ? urlCapitulo(x.id) : urlEnIndice(x.id));
+---
+
+<StarlightPage
+  frontmatter={{
+    title: `Recorrido hasta ${c.id}`,
+    description: `Todo lo que hay que leer antes de ${c.id} ${c.titulo}, y lo que ese capítulo abre después.`,
+  }}
+  headings={headings}
+>
+  <p class="mapa-capitulo">
+    <a href={enlace(c)}>{c.id} {c.titulo}</a> · {c.paginas} págs. ·
+    <Badge text={c.tipo === 'nucleo' ? 'Núcleo' : 'Complementario'} variant={c.tipo === 'nucleo' ? 'success' : 'default'} />
+  </p>
+  {
+    recorrido.length === 0 ? (
+      <p>
+        {c.id} no requiere ningún capítulo: es el punto de partida de la obra, y se lee con lo que se sabe de la escuela
+        secundaria.
+      </p>
+    ) : (
+      <p>
+        Para leer {c.id} hace falta pasar antes por {cantidad(recorrido.length, 'capítulo', 'capítulos')}, unas{' '}
+        {numero(paginas(recorrido))} páginas.
+        {complementarios.length === 1 && <> Uno de ellos es complementario: {complementarios[0]}.</>}
+        {complementarios.length > 1 && <> {complementarios.length} de ellos son complementarios: {complementarios.join(', ')}.</>}
+        {escritos > 0 && <> Ya {escritos === 1 ? 'está escrito' : 'están escritos'} {cantidad(escritos, 'capítulo', 'capítulos')} del recorrido.</>}{' '}
+        El recorrido es la lista completa de los requisitos, directos o indirectos, y se puede leer en el orden de abajo,
+        que es el de la obra.
+      </p>
+    )
+  }
+
+  {
+    recorrido.length > 0 && (
+      <>
+        <h2 id="el-dibujo">El dibujo</h2>
+        <p>
+          Cada capítulo queda debajo de los que necesita. Las flechas son los requisitos directos, salvo los que ya vienen
+          con otro requisito; cada recuadro lleva al recorrido de ese capítulo.
+        </p>
+        <MapaDeDependencias
+          ids={[...recorrido.map((x) => x.id), c.id]}
+          destino={c.id}
+          descripcion={`El grafo de dependencias de ${c.id}: ${recorrido.length} capítulos dispuestos por niveles, con flechas de cada requisito al capítulo que lo usa.`}
+        />
+
+        <h2 id="el-recorrido">El recorrido, en orden de lectura</h2>
+        {porTomo.map(({ tomo, capitulos }) => (
+          <>
+            <h3>
+              <a href={urlTomo(tomo.id)}>
+                Tomo {tomo.id} · {tomo.titulo}
+              </a>
+            </h3>
+            <ol class="mapa-lista">
+              {capitulos.map((x) => (
+                <li>
+                  <a href={enlace(x)}>
+                    {x.id} {x.titulo}
+                  </a>{' '}
+                  <span class="mapa-datos">
+                    {x.paginas} págs.
+                    {x.tipo === 'complementario' && ' · complementario'}
+                    {estaEscrito(x.id) && ' · escrito'}
+                    {c.requiere.includes(x.id) && (implicitos.has(x.id) ? ' · requisito directo, implícito' : ' · requisito directo')}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </>
+        ))}
+      </>
+    )
+  }
+
+  <h2 id="lo-que-abre">Lo que abre</h2>
+  {
+    todos.length === 0 ? (
+      <p>Ningún capítulo depende de {c.id}.</p>
+    ) : (
+      <>
+        <p>
+          {cantidad(todos.length, 'capítulo depende', 'capítulos dependen')} de {c.id}, directa o indirectamente.
+          {directos.length > 0 && <> Lo {directos.length === 1 ? 'pide' : 'piden'} directamente:</>}
+        </p>
+        {directos.length > 0 && (
+          <ul class="mapa-lista">
+            {directos.map((x) => (
+              <li>
+                <a href={urlMapa(x.id)}>
+                  {x.id} {x.titulo}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </>
+    )
+  }
+  <p><a href={urlMapa()}>← El mapa completo</a></p>
+</StarlightPage>

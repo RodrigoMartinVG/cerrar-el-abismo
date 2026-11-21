@@ -14,3 +14,12 @@ export {
   miles,
   tomosEnMarkdown,
 } from './markdown.ts';
+export { Grafo } from './grafo.ts';
+export {
+  caminoSuave,
+  disponer,
+  type Arista,
+  type Disposicion,
+  type NodoDispuesto,
+  type OpcionesDeDisposicion,
+} from './disposicion.ts';

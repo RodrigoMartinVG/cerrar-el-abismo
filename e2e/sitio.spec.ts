@@ -136,6 +136,37 @@ test('el diccionario reúne los términos de los capítulos y busca en los dos i
   await expect(page.locator('#cuenta-terminos')).toHaveText('Ningún término coincide');
 });
 
+test.describe('el mapa de dependencias', () => {
+  test('el recorrido hasta un capítulo lo dibuja, lo lista por tomo y dice lo que abre', async ({ page }) => {
+    await page.goto('mapa/i-5/');
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Recorrido hasta I.5');
+    await expect(page.locator('main')).toContainText('hace falta pasar antes por 3 capítulos');
+    await expect(page.locator('.mapa-dibujo .mapa-nodo')).toHaveCount(4);
+    await expect(page.locator('.mapa-dibujo .mapa-nodo.destino')).toHaveCount(1);
+    await expect(page.locator('.mapa-lista').first().locator('li')).toHaveCount(3);
+    await page.locator('.mapa-nodo', { hasText: 'I.3' }).click();
+    await expect(page).toHaveURL(/\/mapa\/i-3\/$/);
+  });
+
+  test('el mapa completo lleva al recorrido del capítulo elegido', async ({ page }) => {
+    await page.goto('mapa/');
+    await expect(page.locator('.mapa-dibujo .mapa-nodo')).toHaveCount(167);
+    await page.locator('#mapa-destino').selectOption({ label: 'IX.15 La función zeta y los números primos' });
+    await page.getByRole('button', { name: 'Ver el recorrido' }).click();
+    await expect(page).toHaveURL(/\/mapa\/ix-15\/$/);
+  });
+
+  test('cada entrada del índice enlaza su recorrido', async ({ page }) => {
+    await page.goto('indice/i/');
+    await page
+      .locator('#i-5')
+      .locator('..')
+      .getByRole('link', { name: /^Recorrido:/ })
+      .click();
+    await expect(page).toHaveURL(/\/mapa\/i-5\/$/);
+  });
+});
+
 test('los paneles laterales se ocultan y la preferencia se recuerda', async ({ page }) => {
   await page.goto('capitulos/i-1/');
   const indice = page.locator('.sidebar-pane');

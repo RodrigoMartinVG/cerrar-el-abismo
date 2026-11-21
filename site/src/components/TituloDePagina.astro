@@ -2,7 +2,7 @@
 import Default from '@astrojs/starlight/components/PageTitle.astro';
 import { Badge } from '@astrojs/starlight/components';
 import { todosLosCapitulos, tomoDe } from '@cerrar-el-abismo/indice';
-import { obra, urlCapitulo, urlEnIndice, urlTomo } from '../lib/obra';
+import { obra, urlCapitulo, urlEnIndice, urlMapa, urlTomo } from '../lib/obra';
 
 /** Bajo el título de un capítulo escrito, sus metadatos del índice: tipo, extensión, requisitos y estado. */
 const datos = Astro.locals.starlightRoute.entry.data as { capitulo?: string; estado?: string };
@@ -36,7 +36,7 @@ const ESTADOS: Record<string, string> = { borrador: 'Borrador', revision: 'En re
                 <a href={urlCapitulo(r)}>{r}</a>
               </>
             ))}{' '}
-        · <a href={urlEnIndice(c.id)}>Su entrada en el índice</a>
+        · <a href={urlEnIndice(c.id)}>Su entrada en el índice</a> · <a href={urlMapa(c.id)}>Su recorrido</a>
       </span>
     </p>
   )

@@ -102,6 +102,7 @@ export default defineConfig({
           items: [
             { label: 'Índice temático', link: '/indice/' },
             { label: 'Itinerarios', link: '/itinerarios/' },
+            { label: 'Mapa de dependencias', link: '/mapa/' },
             { label: 'Diccionario academia–práctica', link: '/diccionario/' },
           ],
         },

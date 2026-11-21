@@ -10,9 +10,9 @@ entre la matemática que se estudia y la que se usa.
 ## Estado
 
 Fase 1 (especificación, sección 16): terminada la infraestructura, empieza la escritura. El sitio publica el índice temático completo: 13 tomos,
-167 capítulos, sus requisitos, sus aplicaciones y los itinerarios por perfil. La obra se escribe desde el principio: el
-primer capítulo, I.1 *Lógica y demostración*, ya está en borrador, con su tabla de verdad interactiva y sus celdas de
-Python. La redacción sigue la [guía de estilo](docs/guia-de-estilo.md).
+167 capítulos, sus requisitos, sus aplicaciones y los itinerarios por perfil, y un mapa de dependencias con el
+recorrido completo hasta cada capítulo. La obra se escribe desde el principio: I.1 *Lógica y demostración* e I.2
+*Conjuntos, relaciones y funciones* ya están en borrador, con sus figuras interactivas y sus celdas de Python. La redacción sigue la [guía de estilo](docs/guia-de-estilo.md).
 
 ## Dónde está cada cosa
 
@@ -22,7 +22,7 @@ Python. La redacción sigue la [guía de estilo](docs/guia-de-estilo.md).
 | [`docs/decisiones/`](docs/decisiones/README.md) | Las decisiones de arquitectura |
 | [`indice/`](indice/) | El índice temático como datos: un YAML por tomo y los itinerarios (decisión 0002) |
 | `libros/` | Los libros de referencia, para consulta interna; no se suben nunca |
-| [`packages/indice/`](packages/indice/) | Esquema, carga y reglas del índice, y su versión en Markdown para la especificación |
+| [`packages/indice/`](packages/indice/) | Esquema, carga y reglas del índice, el grafo de dependencias y su dibujo, y la versión en Markdown para la especificación |
 | [`packages/libro/`](packages/libro/) | La capa de libro: directivas, numeración y referencias (decisión 0003) |
 | [`packages/piezas/`](packages/piezas/) | Las piezas interactivas de las figuras |
 | [`site/src/content/docs/capitulos/`](site/src/content/docs/capitulos/) | Los capítulos escritos ([cómo se escriben](docs/guia-de-capitulos.md)) |

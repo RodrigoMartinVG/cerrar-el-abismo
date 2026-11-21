@@ -1,0 +1,170 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { paginas, tomoDe } from '@cerrar-el-abismo/indice';
+import MapaDeDependencias from '../../components/MapaDeDependencias.astro';
+import { grafo, numero, obra, urlMapa } from '../../lib/obra';
+
+/**
+ * EL MAPA DE DEPENDENCIAS (especificación, 11.4): el grafo entero de la obra, un buscador que lleva al recorrido de
+ * cualquier capítulo, y lo que conviene revisar del grafo: los recorridos más largos y los requisitos implícitos.
+ */
+const g = grafo();
+const capitulos = g.capitulos;
+const declarados = capitulos.reduce((s, c) => s + c.requiere.length, 0);
+const implicitos = g.requisitosImplicitos();
+const profundidadMaxima = Math.max(...capitulos.map((c) => g.profundidad(c.id)));
+const largos = capitulos
+  .map((c) => ({ c, recorrido: g.recorrido(c.id) }))
+  .sort((a, b) => b.recorrido.length - a.recorrido.length || paginas(b.recorrido) - paginas(a.recorrido))
+  .slice(0, 10);
+const porTomo = obra().tomos.map((t) => ({ tomo: t, capitulos: capitulos.filter((c) => tomoDe(c.id) === t.id) }));
+const headings = [
+  { depth: 2, slug: 'buscar', text: 'El recorrido hasta un capítulo' },
+  { depth: 2, slug: 'el-grafo', text: 'El grafo completo' },
+  { depth: 2, slug: 'revisar', text: 'Lo que conviene revisar' },
+];
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Mapa de dependencias',
+    description: 'Qué capítulos necesita cada capítulo, y el recorrido completo para llegar a cualquier tema de la obra.',
+  }}
+  headings={headings}
+>
+  <p>
+    Cada capítulo declara los capítulos que usa directamente, y de esas declaraciones sale un grafo:{' '}
+    {capitulos.length} capítulos y {declarados} requisitos, con caminos de hasta {profundidadMaxima} capítulos encadenados. El grafo sirve para
+    dos cosas. Para quien quiere llegar a un tema, dice exactamente qué leer antes y en qué orden. Para quien escribe la obra,
+    muestra si las dependencias son las que tienen que ser.
+  </p>
+
+  <h2 id="buscar">El recorrido hasta un capítulo</h2>
+  <p>
+    El recorrido hasta un capítulo es la lista de todos sus requisitos, directos o indirectos, en el orden de lectura de la
+    obra, con su extensión.
+  </p>
+  <form class="mapa-buscador not-content" hidden>
+    <label for="mapa-destino">Capítulo</label>
+    <select id="mapa-destino">
+      {
+        porTomo.map(({ tomo, capitulos }) => (
+          <optgroup label={`Tomo ${tomo.id} · ${tomo.titulo}`}>
+            {capitulos.map((c) => (
+              <option value={urlMapa(c.id)}>
+                {c.id} {c.titulo}
+              </option>
+            ))}
+          </optgroup>
+        ))
+      }
+    </select>
+    <button type="submit">Ver el recorrido</button>
+  </form>
+  {
+    porTomo.map(({ tomo, capitulos }) => (
+      <details class="mapa-tomo">
+        <summary>
+          Tomo {tomo.id} · {tomo.titulo}
+        </summary>
+        <ul class="mapa-lista">
+          {capitulos.map((c) => (
+            <li>
+              <a href={urlMapa(c.id)}>
+                {c.id} {c.titulo}
+              </a>{' '}
+              <span class="mapa-datos">
+                {g.recorrido(c.id).length} antes · {numero(paginas(g.recorrido(c.id)))} págs.
+              </span>
+            </li>
+          ))}
+        </ul>
+      </details>
+    ))
+  }
+
+  <h2 id="el-grafo">El grafo completo</h2>
+  <p>
+    Cada capítulo queda debajo de los que necesita, y cada recuadro lleva a su recorrido. Las flechas son los requisitos
+    esenciales: los implícitos, que ya vienen con otro requisito, no se dibujan.
+  </p>
+  <MapaDeDependencias
+    completo
+    ids={capitulos.map((c) => c.id)}
+    descripcion={`El grafo de dependencias de la obra: ${capitulos.length} capítulos dispuestos por niveles, con flechas de cada requisito al capítulo que lo usa.`}
+  />
+
+  <h2 id="revisar">Lo que conviene revisar</h2>
+  <p>
+    Las reglas del grafo se comprueban automáticamente: todo requisito existe y es anterior, ningún capítulo de núcleo depende
+    de uno complementario, los itinerarios están cerrados, y un capítulo escrito solo cita resultados de capítulos de su
+    recorrido. Lo que sigue no son errores, sino datos para decidir.
+  </p>
+  <h3>Los recorridos más largos</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Capítulo</th>
+        <th class="num">Capítulos antes</th>
+        <th class="num">Páginas antes</th>
+        <th class="num">Profundidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        largos.map(({ c, recorrido }) => (
+          <tr>
+            <td>
+              <a href={urlMapa(c.id)}>
+                {c.id} {c.titulo}
+              </a>
+            </td>
+            <td class="num">{recorrido.length}</td>
+            <td class="num">{numero(paginas(recorrido))}</td>
+            <td class="num">{g.profundidad(c.id)}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+  <h3>Requisitos implícitos</h3>
+  <p>
+    Son {implicitos.length} requisitos declarados que ya vienen con otro requisito del mismo capítulo. Declararlos no es un
+    error: dicen que el capítulo usa ese tema directamente. Pero conviene revisarlos, porque a veces delatan un requisito que
+    sobra o uno que falta en otro lado.
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Capítulo</th>
+        <th>Requisito implícito</th>
+        <th>Ya viene con</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        implicitos.map((x) => (
+          <tr>
+            <td>
+              <a href={urlMapa(x.capitulo)}>{x.capitulo}</a>
+            </td>
+            <td>{x.requisito}</td>
+            <td>{x.via}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</StarlightPage>
+
+<script>
+  const formulario = document.querySelector<HTMLFormElement>('.mapa-buscador');
+  const destino = document.querySelector<HTMLSelectElement>('#mapa-destino');
+  if (formulario && destino) {
+    formulario.hidden = false;
+    formulario.addEventListener('submit', (e) => {
+      e.preventDefault();
+      window.location.href = destino.value;
+    });
+  }
+</script>

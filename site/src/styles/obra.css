@@ -129,6 +129,152 @@
   color: var(--sl-color-gray-2);
 }
 
+/*
+ * El mapa de dependencias (src/components/MapaDeDependencias.astro). Los capítulos de núcleo, con la tinta base; los
+ * complementarios, con borde punteado; los escritos, en negrita, y el capítulo elegido, en cobre.
+ */
+.mapa-dibujo {
+  overflow-x: auto;
+  margin-block: 1rem 0.5rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 0.5rem;
+  background: var(--sl-color-gray-7, var(--sl-color-gray-6));
+}
+
+.mapa-dibujo.completo {
+  overflow: auto;
+  max-height: 80vh;
+}
+
+.mapa-dibujo svg {
+  display: block;
+  margin-inline: auto;
+  max-width: none;
+}
+
+.mapa-aristas path {
+  fill: none;
+  stroke: var(--sl-color-gray-4);
+  stroke-width: 1.2;
+}
+
+.mapa-aristas path.hacia-destino {
+  stroke: var(--obra-practica);
+  stroke-width: 1.6;
+}
+
+.mapa-punta {
+  fill: var(--sl-color-gray-4);
+}
+
+.mapa-nodo rect {
+  fill: var(--obra-teoria-bajo);
+  stroke: var(--sl-color-gray-3);
+  stroke-width: 1.2;
+}
+
+.mapa-nodo text {
+  fill: var(--sl-color-white);
+  font-family: var(--sl-font-mono);
+  font-size: 12px;
+}
+
+.mapa-nodo.complementario rect {
+  stroke-dasharray: 4 3;
+}
+
+.mapa-nodo.escrito text {
+  font-weight: 700;
+}
+
+.mapa-nodo.destino rect {
+  fill: var(--obra-practica-bajo);
+  stroke: var(--obra-practica);
+  stroke-width: 2;
+}
+
+.mapa-nodo:hover rect,
+.mapa-nodo:focus-visible rect {
+  stroke: var(--sl-color-accent);
+  stroke-width: 2;
+}
+
+.mapa-leyenda,
+.mapa-datos,
+.mapa-capitulo {
+  font-family: var(--obra-interfaz);
+  font-size: var(--obra-texto-secundario);
+  color: var(--sl-color-gray-2);
+}
+
+.mapa-leyenda .muestra {
+  display: inline-block;
+  width: 1.4em;
+  height: 0.9em;
+  vertical-align: -0.1em;
+  border: 1.2px solid var(--sl-color-gray-3);
+  border-radius: 3px;
+  background: var(--obra-teoria-bajo);
+}
+
+.mapa-leyenda .muestra.complementario {
+  border-style: dashed;
+}
+
+.mapa-leyenda .muestra.escrito {
+  border-width: 2px;
+  border-color: var(--sl-color-white);
+}
+
+.mapa-leyenda .muestra.destino {
+  border-color: var(--obra-practica);
+  background: var(--obra-practica-bajo);
+}
+
+.sl-markdown-content .mapa-lista {
+  padding-inline-start: 1.4rem;
+}
+
+.mapa-buscador {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-block: 1rem;
+  font-family: var(--obra-interfaz);
+  font-size: var(--obra-texto-secundario);
+}
+
+.mapa-buscador[hidden] {
+  display: none;
+}
+
+.mapa-buscador select {
+  flex: 1 1 18rem;
+  max-width: 100%;
+  padding: 0.4rem 0.5rem;
+  font: inherit;
+  color: var(--sl-color-white);
+  background: var(--sl-color-gray-6);
+  border: 1px solid var(--sl-color-gray-4);
+  border-radius: 0.5rem;
+}
+
+.mapa-buscador button {
+  padding: 0.4rem 0.9rem;
+  font: inherit;
+  color: var(--sl-color-black);
+  background: var(--sl-color-accent);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.sl-markdown-content .mapa-tomo summary {
+  cursor: pointer;
+  font-family: var(--obra-interfaz);
+}
+
 /* Una fila de etiquetas, separadas. */
 .etiquetas {
   display: flex;

@@ -86,8 +86,9 @@ fallar la construcción.
 ## Referencias
 
 - `:ref[teo-dim]` escribe «Teorema II.5.3» con un enlace a un entorno o figura del mismo capítulo.
-- `:ref[I.1#teo-de-morgan]` escribe «Teorema I.1.5» con un enlace a un entorno o figura de otro capítulo escrito. La
-  numeración se calcula leyendo ese capítulo; en desarrollo, una etiqueta nueva en otro capítulo pide reiniciar el
+- `:ref[I.1#teo-de-morgan]` escribe «Teorema I.1.5» con un enlace a un entorno o figura de otro capítulo escrito. Solo
+  vale para capítulos del recorrido, es decir, requisitos directos o indirectos (una prueba lo comprueba): un resultado
+  que el capítulo usa tiene que estar en lo que el lector ya leyó. La numeración se calcula leyendo ese capítulo; en desarrollo, una etiqueta nueva en otro capítulo pide reiniciar el
   servidor.
 - `[[II.3]]` escribe «II.3» con un enlace al capítulo escrito, o a su entrada en el índice si todavía no lo está.
 

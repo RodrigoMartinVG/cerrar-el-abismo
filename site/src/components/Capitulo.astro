@@ -1,7 +1,7 @@
 ---
 import { Badge } from '@astrojs/starlight/components';
 import { CAMPOS, slug, type Capitulo } from '@cerrar-el-abismo/indice';
-import { claseDeCampo, enLinea, estaEscrito, urlCapitulo, urlEnIndice } from '../lib/obra';
+import { claseDeCampo, enLinea, estaEscrito, grafo, numero, urlCapitulo, urlEnIndice, urlMapa } from '../lib/obra';
 
 interface Props {
   capitulo: Capitulo;
@@ -13,6 +13,7 @@ const puente = await enLinea(c.puente);
 const aplicaciones = await Promise.all(c.aplicaciones.map(async (a) => ({ campo: CAMPOS[a.campo], html: await enLinea(a.texto) })));
 const lecturas = await enLinea(c.lecturas);
 const nucleo = c.tipo === 'nucleo';
+const recorrido = grafo().recorrido(c.id);
 ---
 
 <section class="capitulo" aria-labelledby={slug(c.id)}>
@@ -30,6 +31,7 @@ const nucleo = c.tipo === 'nucleo';
             </>
           ))
     }
+    · <a href={urlMapa(c.id)}>Recorrido: {recorrido.length === 0 ? 'ninguno' : `${recorrido.length} capítulos, ${numero(recorrido.reduce((s, x) => s + x.paginas, 0))} págs.`}</a>
   </p>
   <ul>
     {contenidos.map((html) => <li set:html={html} />)}

@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { loadPyodide } from 'pyodide';
 import { describe, expect, it } from 'vitest';
 import { parse } from 'yaml';
-import { CAMPOS, carpetaDelIndice, cargarIndice, slug, todosLosCapitulos } from '@cerrar-el-abismo/indice';
+import { CAMPOS, carpetaDelIndice, cargarIndice, Grafo, slug, todosLosCapitulos } from '@cerrar-el-abismo/indice';
 import { claveDeTermino, etiquetasDelCapitulo, revisarDiccionario, revisarEstilo, revisarSupone } from '@cerrar-el-abismo/libro';
 
 /**
@@ -16,6 +16,7 @@ const carpeta = join(carpetaDelIndice(), '..', 'site', 'src', 'content', 'docs',
 const archivos = readdirSync(carpeta).filter((f) => f.endsWith('.md'));
 const indice = new Map(todosLosCapitulos(cargarIndice()).map((c) => [c.id, c]));
 const ORDEN_DE_LECTURA = [...indice.keys()];
+const GRAFO = new Grafo(cargarIndice());
 const PLANTILLA = [
   'Entrada',
   'Motivación',
@@ -78,6 +79,13 @@ describe.each(archivos)('el capítulo %s', (archivo) => {
       .filter(([, otro, id]) => !ETIQUETAS.get(otro!)?.has(id!))
       .map(([ref]) => ref);
     expect(rotas).toEqual([]);
+  });
+
+  it('solo cita resultados de capítulos de su recorrido: los que requiere, directa o indirectamente', () => {
+    const fuera = [...cuerpo.matchAll(/:ref\[([^\]#]+)#[^\]]+\]/g)]
+      .filter(([, otro]) => otro !== datos.capitulo && !GRAFO.depende(datos.capitulo, otro!))
+      .map(([ref]) => ref);
+    expect(fuera, 'un resultado de otro capítulo solo se usa si ese capítulo es un requisito').toEqual([]);
   });
 
   it('tiene el recuadro del Puente', () => {
