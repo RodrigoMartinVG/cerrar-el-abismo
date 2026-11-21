@@ -39,6 +39,7 @@ arcoconexión
 arcoconexos
 Arfken
 Argand
+Ariane
 Arithmeticae
 arquimediano
 arquimedianos
@@ -303,6 +304,7 @@ Euclides
 Eudoxo
 Exponenciación
 exponenciación
+exponenciar
 expresable
 expresables
 extensionalidad
@@ -823,6 +825,7 @@ SLERP
 Smale
 Smoothstep
 smoothstep
+SNORM
 Sobol
 Sobolev
 Sobreajuste
@@ -842,6 +845,7 @@ Spivak
 Sporring
 Stam
 Steinhaus
+Sterbenz
 Sternberg
 Stieltjes
 Stillwell
@@ -921,6 +925,7 @@ Ullman
 Ullrich
 ultrafiltro
 ultrafiltros
+UNORM
 upla
 uplas
 Urysohn
@@ -964,3 +969,4 @@ Zariski
 Zermelo
 Zhang
 Zisserman
+Zuse
