@@ -2662,17 +2662,17 @@ Además:
 | --- | --- | --- |
 | 0. Infraestructura | Repositorio, sitio (Astro y Starlight), plantilla de capítulo, metadatos, comprobaciones automáticas (el script que verificó este documento es la base), biblioteca común de las demos, primera versión del diccionario y del conversor de convenciones | Un capítulo de prueba se publica con todas las comprobaciones en verde |
 | 1. Primer capítulo | I.1, *Lógica y demostración*, con todos los elementos de la plantilla y de la guía de estilo (7.1) | Se prueba con 5 a 10 estudiantes que terminaron la escuela secundaria: al terminar, explican el fragmento de salida; la plantilla y la guía se ajustan con lo aprendido |
-| 2. Tomo I | Capítulos en orden, publicados uno a uno en la web | Tomo completo, con sus páginas de importación y exportación |
+| 2. Tomo I | Capítulos en orden, publicados uno a uno en la web; al terminar el tomo, repaso de todo el tomo con los libros de sus lecturas | Tomo completo y repasado, con sus páginas de importación y exportación |
 | 3. Tomos II y III | En orden; se pueden escribir en paralelo | Base de la obra completa |
 | 4. Tomo IV | En orden | Puerta de los tomos de área abierta |
 | 5. Tomos de área | Orden propuesto: VII, V, VI, IX, X, VIII, XI, XII y XIII | Cada tomo, completo y verificado |
 
-La obra se escribe desde el principio, en el orden de lectura. Así cada capítulo se apoya en capítulos ya escritos, las referencias apuntan a texto real y la voz de la obra se forma desde el primer capítulo. El Tomo II sigue siendo el lugar donde el abismo es paradigmático; llega tercero en el plan, pero el diseño de sus capítulos ya está en el índice.
+Cada tomo sigue el mismo ciclo: se escriben todos sus capítulos, después se consiguen los libros de sus lecturas y se repasa el tomo entero con ellos, contrastando enunciados, demostraciones y notación. La obra se escribe desde el principio, en el orden de lectura. Así cada capítulo se apoya en capítulos ya escritos, las referencias apuntan a texto real y la voz de la obra se forma desde el primer capítulo. El Tomo II sigue siendo el lugar donde el abismo es paradigmático; llega tercero en el plan, pero el diseño de sus capítulos ya está en el índice.
 
 ### 16.2 Cuándo un capítulo está terminado
 
-- Requisitos, tipo y metadatos verificados automáticamente.
-- Demostraciones revisadas por un segundo matemático.
+- Requisitos, tipo y metadatos verificados automáticamente, y el mapa de dependencias revisado hacia atrás: lo que usa está en su recorrido y lo que otros capítulos dejaron para él está cumplido.
+- Demostraciones revisadas por un segundo matemático y contrastadas con las lecturas en el repaso del tomo.
 - Fragmento de entrada explicado en la salida; las cinco preguntas del Puente respondidas o declaradas no aplicables.
 - De 2 a 4 aplicaciones de al menos dos campos, con al menos una interactiva y todas con texto alternativo.
 - Celdas de código ejecutadas, ejercicios verificados y soluciones de los impares escritas.

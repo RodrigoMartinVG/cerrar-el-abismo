@@ -4,7 +4,15 @@ import { loadPyodide } from 'pyodide';
 import { describe, expect, it } from 'vitest';
 import { parse } from 'yaml';
 import { CAMPOS, carpetaDelIndice, cargarIndice, Grafo, slug, todosLosCapitulos } from '@cerrar-el-abismo/indice';
-import { claveDeTermino, etiquetasDelCapitulo, revisarDiccionario, revisarEstilo, revisarSupone } from '@cerrar-el-abismo/libro';
+import {
+  claveDeTermino,
+  etiquetasDelCapitulo,
+  revisarCumple,
+  revisarDiccionario,
+  revisarEstilo,
+  revisarSupone,
+  type Promesa,
+} from '@cerrar-el-abismo/libro';
 
 /**
  * LOS CAPÍTULOS ESCRITOS (sección 11.5): cada uno está en el índice con su título, sigue la plantilla de la
@@ -34,7 +42,7 @@ function leer(archivo: string) {
   const m = /^---\n([\s\S]*?)\n---\n/.exec(texto);
   if (!m) throw new Error(`${archivo} no tiene frontmatter.`);
   return {
-    datos: parse(m[1]!) as { title: string; capitulo: string; supone?: unknown; diccionario?: unknown },
+    datos: parse(m[1]!) as { title: string; capitulo: string; supone?: unknown; diccionario?: unknown; cumple?: unknown },
     texto,
     cuerpo: texto.slice(m[0].length),
   };
@@ -47,6 +55,14 @@ const ETIQUETAS = new Map(
     return [datos.capitulo, etiquetasDelCapitulo(texto, datos.capitulo)];
   }),
 );
+
+/** Las promesas: lo que cada capítulo escrito deja para otro en su campo `supone`. */
+const PROMESAS = new Map<string, Promesa[]>();
+for (const archivo of archivos) {
+  const { datos } = leer(archivo);
+  for (const { nocion, en } of (datos.supone ?? []) as { nocion: string; en: string }[])
+    PROMESAS.set(en, [...(PROMESAS.get(en) ?? []), { de: datos.capitulo, nocion }]);
+}
 
 describe.each(archivos)('el capítulo %s', (archivo) => {
   const { datos, texto, cuerpo } = leer(archivo);
@@ -86,6 +102,10 @@ describe.each(archivos)('el capítulo %s', (archivo) => {
       .filter(([, otro]) => otro !== datos.capitulo && !GRAFO.depende(datos.capitulo, otro!))
       .map(([ref]) => ref);
     expect(fuera, 'un resultado de otro capítulo solo se usa si ese capítulo es un requisito').toEqual([]);
+  });
+
+  it('cumple lo que los capítulos anteriores dejaron para él, en entornos que existen (el mapa hacia atrás)', () => {
+    expect(revisarCumple(datos.cumple, texto, PROMESAS.get(datos.capitulo) ?? [])).toEqual([]);
   });
 
   it('tiene el recuadro del Puente', () => {

@@ -29,6 +29,7 @@ arcoconexión
 arcoconexos
 Arfken
 Argand
+Arithmeticae
 Artin
 Arzelà
 Ascoli
@@ -55,6 +56,7 @@ autovectores
 Avigad
 Axler
 Azuma
+Bachet
 Baire
 Baraff
 Barbič
@@ -156,6 +158,7 @@ Conversor
 conversor
 convolucionar
 Convolucionar
+coprime
 coprimos
 Cormen
 correlacionados
@@ -205,6 +208,7 @@ Diffie
 discriminante
 disjunta
 disjuntas
+Disquisitiones
 distribucional
 distributividad
 Dobell
@@ -234,6 +238,7 @@ equipotente
 equipotentes
 equirectangular
 equivariantes
+Eratóstenes
 ergódica
 ergódico
 Erleben
@@ -244,6 +249,7 @@ Esseen
 estacionariedad
 estenopeica
 estereología
+Étienne
 Euclides
 euclídeo
 euclídeos
@@ -414,6 +420,7 @@ Lagae
 lagrangiana
 lagrangiano
 Laguerre
+Lamé
 Lanczos
 laplaciana
 Laplaciano
@@ -462,6 +469,7 @@ memoización
 Mertens
 metamatemática
 metrización
+Méziriac
 microestados
 microfacetas
 Microfacetas
@@ -800,12 +808,14 @@ WGSL
 Willsky
 wronskiano
 XPBD
+Yitang
 Yorke
 Yosida
 Zagier
 Zamir
 Zariski
 Zermelo
+Zhang
 Zisserman
 Åström
 épsilon

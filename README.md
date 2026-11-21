@@ -11,8 +11,8 @@ entre la matemática que se estudia y la que se usa.
 
 Fase 1 (especificación, sección 16): terminada la infraestructura, empieza la escritura. El sitio publica el índice temático completo: 13 tomos,
 167 capítulos, sus requisitos, sus aplicaciones y los itinerarios por perfil, y un mapa de dependencias con el
-recorrido completo hasta cada capítulo. La obra se escribe desde el principio: I.1 *Lógica y demostración* e I.2
-*Conjuntos, relaciones y funciones* ya están en borrador, con sus figuras interactivas y sus celdas de Python. La redacción sigue la [guía de estilo](docs/guia-de-estilo.md).
+recorrido completo hasta cada capítulo. La obra se escribe desde el principio: I.1 *Lógica y demostración*, I.2
+*Conjuntos, relaciones y funciones* e I.3 *Naturales, enteros y divisibilidad* ya están en borrador, con sus figuras interactivas y sus celdas de Python. La redacción sigue la [guía de estilo](docs/guia-de-estilo.md).
 
 ## Dónde está cada cosa
 

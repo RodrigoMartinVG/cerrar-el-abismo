@@ -23,6 +23,7 @@
     "^\\s*(?:- )?[a-z_]+:(?=\\s|$)",
     "\\b(?:campo|tipo|id|capitulo|estado|pieza|ancla):\\s*[\\w.-]+",
     "\\bcampos:\\s*\\[[^\\]]*\\]",
+    "\\banclas:\\s*\\[[^\\]]*\\]",
     ":{2,3}[a-z-]+",
     ":ref\\[[^\\]]*\\]",
     "[\\w./-]+\\.(?:md|ts|mjs|json|yaml|astro)\\b",

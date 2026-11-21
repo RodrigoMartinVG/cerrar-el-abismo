@@ -4,6 +4,7 @@ import { Badge } from '@astrojs/starlight/components';
 import { paginas, slug, tomoDe, type Capitulo } from '@cerrar-el-abismo/indice';
 import MapaDeDependencias from '../../components/MapaDeDependencias.astro';
 import { estaEscrito, grafo, numero, obra, urlCapitulo, urlEnIndice, urlMapa, urlTomo } from '../../lib/obra';
+import { mencionesFueraDelRecorrido, promesas } from '../../lib/promesas';
 
 /**
  * EL RECORRIDO HASTA UN CAPÍTULO: todo lo que hay que leer antes, dibujado y listado por tomo, y lo que el capítulo
@@ -29,6 +30,12 @@ const directos = g.dependientesDirectos(c.id);
 const todos = g.dependientes(c.id);
 const implicitos = new Set(c.requiere.filter((r) => !g.requisitosEsenciales(c.id).includes(r)));
 const cantidad = (n: number, uno: string, varios: string) => `${numero(n)} ${n === 1 ? uno : varios}`;
+const todas = await promesas();
+const recibidas = todas.filter((p) => p.a === c.id);
+const dejadas = todas.filter((p) => p.de === c.id);
+const fuera = await mencionesFueraDelRecorrido(c.id);
+const escritoEste = estaEscrito(c.id);
+const hayHaciaAtras = escritoEste || recibidas.length > 0;
 const headings = [
   ...(recorrido.length > 0
     ? [
@@ -36,6 +43,7 @@ const headings = [
         { depth: 2, slug: 'el-recorrido', text: 'El recorrido, en orden de lectura' },
       ]
     : []),
+  ...(hayHaciaAtras ? [{ depth: 2, slug: 'hacia-atras', text: 'El mapa hacia atrás' }] : []),
   { depth: 2, slug: 'lo-que-abre', text: 'Lo que abre' },
 ];
 const enlace = (x: Capitulo) => (estaEscrito(x.id) ? urlCapitulo(x.id) : urlEnIndice(x.id));
@@ -110,6 +118,74 @@ const enlace = (x: Capitulo) => (estaEscrito(x.id) ? urlCapitulo(x.id) : urlEnIn
             </ol>
           </>
         ))}
+      </>
+    )
+  }
+
+  {
+    hayHaciaAtras && (
+      <>
+        <h2 id="hacia-atras">El mapa hacia atrás</h2>
+        <p>
+          Lo que los capítulos escritos dejaron para {c.id} en su campo «supone», nociones que usaron antes de tiempo, y
+          dónde las trata {c.id} con rigor.
+          {escritoEste &&
+            ' Además, lo que este capítulo deja para más adelante y si menciona capítulos anteriores que no están en su recorrido.'}
+        </p>
+        <h3>Lo que le dejaron</h3>
+        {recibidas.length === 0 ? (
+          <p>Ningún capítulo escrito dejó nociones para {c.id}.</p>
+        ) : (
+          <ul class="mapa-lista">
+            {recibidas.map((p) => (
+              <li>
+                {p.nocion} <span class="mapa-datos">· de <a href={urlCapitulo(p.de)}>{p.de}</a> ·{' '}
+                {p.cumplida ? (
+                  <>
+                    se cumple en{' '}
+                    {p.cumplida.map((x, i) => (
+                      <>
+                        {i > 0 && ', '}
+                        <a href={`${urlCapitulo(c.id)}#${x.ancla}`}>{x.nombre}</a>
+                      </>
+                    ))}
+                  </>
+                ) : escritoEste ? (
+                  'falta declarar dónde se cumple'
+                ) : (
+                  'pendiente: el capítulo todavía no está escrito'
+                )}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+        {escritoEste && (
+          <>
+            <h3>Lo que deja para más adelante</h3>
+            {dejadas.length === 0 ? (
+              <p>{c.id} no usa nada antes de tiempo.</p>
+            ) : (
+              <ul class="mapa-lista">
+                {dejadas.map((p) => (
+                  <li>
+                    {p.nocion} <span class="mapa-datos">· para <a href={urlMapa(p.a)}>{p.a}</a>
+                    {p.cumplida ? ' · cumplido' : ''}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <h3>Menciones fuera del recorrido</h3>
+            {fuera.length === 0 ? (
+              <p>Ninguna: todos los capítulos anteriores que {c.id} menciona están en su recorrido.</p>
+            ) : (
+              <p>
+                {c.id} menciona {fuera.join(', ')}, que {fuera.length === 1 ? 'es anterior y no está' : 'son anteriores y no están'} en su recorrido. Una
+                mención así puede ser un aviso legítimo, pero si el capítulo usa algo de ahí, falta un requisito en el índice.
+              </p>
+            )}
+          </>
+        )}
       </>
     )
   }

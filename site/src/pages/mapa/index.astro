@@ -2,7 +2,8 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { paginas, tomoDe } from '@cerrar-el-abismo/indice';
 import MapaDeDependencias from '../../components/MapaDeDependencias.astro';
-import { grafo, numero, obra, urlMapa } from '../../lib/obra';
+import { grafo, numero, obra, urlCapitulo, urlMapa } from '../../lib/obra';
+import { promesas } from '../../lib/promesas';
 
 /**
  * EL MAPA DE DEPENDENCIAS (especificación, 11.4): el grafo entero de la obra, un buscador que lleva al recorrido de
@@ -17,6 +18,7 @@ const largos = capitulos
   .map((c) => ({ c, recorrido: g.recorrido(c.id) }))
   .sort((a, b) => b.recorrido.length - a.recorrido.length || paginas(b.recorrido) - paginas(a.recorrido))
   .slice(0, 10);
+const todasLasPromesas = await promesas();
 const porTomo = obra().tomos.map((t) => ({ tomo: t, capitulos: capitulos.filter((c) => tomoDe(c.id) === t.id) }));
 const headings = [
   { depth: 2, slug: 'buscar', text: 'El recorrido hasta un capítulo' },
@@ -100,6 +102,38 @@ const headings = [
     de uno complementario, los itinerarios están cerrados, y un capítulo escrito solo cita resultados de capítulos de su
     recorrido. Lo que sigue no son errores, sino datos para decidir.
   </p>
+  <h3>Lo que los capítulos escritos dejaron para más adelante</h3>
+  <p>
+    Cada capítulo declara en su campo «supone» lo que usa antes de tiempo, con el capítulo que lo trata con rigor; cuando
+    ese capítulo se escribe, dice en su campo «cumple» dónde lo hace, y las pruebas fallan si falta. Es el mapa verificado
+    hacia atrás.
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Lo deja</th>
+        <th>Noción</th>
+        <th>Para</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        todasLasPromesas.map((p) => (
+          <tr>
+            <td>
+              <a href={urlCapitulo(p.de)}>{p.de}</a>
+            </td>
+            <td>{p.nocion}</td>
+            <td>
+              <a href={urlMapa(p.a)}>{p.a}</a>
+            </td>
+            <td>{p.cumplida ? 'cumplida' : 'pendiente'}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
   <h3>Los recorridos más largos</h3>
   <table>
     <thead>

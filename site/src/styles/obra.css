@@ -587,6 +587,36 @@ celda-python:has(.celda-editor) {
   color: var(--sl-color-white);
 }
 
+/* La pieza «rectangulo-de-euclides»: los cuadrados de cada paso, alternando la tinta base y el cobre. */
+.pieza-euclides {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.pieza-euclides .paso-par {
+  fill: var(--obra-teoria-bajo);
+  stroke: var(--obra-teoria);
+  stroke-width: 1;
+}
+
+.pieza-euclides .paso-impar {
+  fill: var(--obra-practica-bajo);
+  stroke: var(--obra-practica);
+  stroke-width: 1;
+}
+
+.pieza-euclides text {
+  fill: var(--sl-color-white);
+  font-family: var(--sl-font-mono);
+  font-size: 11px;
+}
+
+.pieza-euclides-pasos {
+  font-family: var(--sl-font-mono);
+  white-space: pre-wrap;
+}
+
 /* La pieza «cuadrado-de-impares»: capas en L de colores alternados, la tinta base y el cobre. */
 .pieza-impares {
   display: block;

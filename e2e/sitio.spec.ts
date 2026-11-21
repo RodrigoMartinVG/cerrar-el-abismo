@@ -136,7 +136,29 @@ test('el diccionario reúne los términos de los capítulos y busca en los dos i
   await expect(page.locator('#cuenta-terminos')).toHaveText('Ningún término coincide');
 });
 
+test.describe('el capítulo I.3', () => {
+  test('el rectángulo de Euclides se corta en cuadrados y da el máximo común divisor', async ({ page }) => {
+    await page.goto('capitulos/i-3/');
+    const figura = page.locator('#fig-euclides');
+    await expect(figura.locator('.pieza-euclides rect')).toHaveCount(5);
+    await expect(figura.locator('output')).toContainText('mcd(84, 60) = 12');
+    const [ancho, alto] = await figura.locator('input[type=range]').all();
+    await ancho!.fill('21');
+    await alto!.fill('13');
+    await expect(figura.locator('output')).toContainText('mcd(21, 13) = 1');
+    await expect(figura.locator('.pieza-euclides rect')).toHaveCount(7);
+  });
+});
+
 test.describe('el mapa de dependencias', () => {
+  test('el mapa hacia atrás dice dónde cumple un capítulo lo que le dejaron los anteriores', async ({ page }) => {
+    await page.goto('mapa/i-3/');
+    const recibidas = page.locator('#hacia-atras ~ ul').first().locator('li');
+    await expect(recibidas).toHaveCount(3);
+    await expect(recibidas.filter({ hasText: 'se cumple en' })).toHaveCount(3);
+    await expect(page.locator('main')).toContainText('Ninguna: todos los capítulos anteriores');
+  });
+
   test('el recorrido hasta un capítulo lo dibuja, lo lista por tomo y dice lo que abre', async ({ page }) => {
     await page.goto('mapa/i-5/');
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Recorrido hasta I.5');

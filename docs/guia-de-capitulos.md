@@ -34,6 +34,20 @@ estado: borrador
   es un capítulo posterior en el orden de lectura, la construcción y las pruebas fallan: una noción que se trata antes
   no es un uso anticipado sino un requisito, y va en `requiere`, en el índice. Además de figurar en la lista, la noción se
   declara en el texto, en el lugar donde se usa (guía de estilo, sección 1).
+- `cumple` dice dónde trata el capítulo, con rigor, lo que otros capítulos escritos dejaron para él en su `supone`: es
+  el mapa de dependencias verificado hacia atrás. La noción se copia tal cual, y las anclas son las etiquetas de los
+  entornos donde se cumple:
+
+  ```yaml
+  cumple:
+    - de: I.1
+      nocion: los conjuntos, sus elementos, el conjunto vacío y las funciones
+      anclas: [ax-extensionalidad, prop-inclusiones, def-funcion]
+  ```
+
+  Si falta una promesa, si una entrada ya no corresponde a ninguna (porque la noción cambió en el otro capítulo) o si
+  un ancla no existe, las pruebas fallan. La página del recorrido de cada capítulo (`/mapa/i-3/`) muestra lo que le
+  dejaron, lo que deja y dónde se cumple.
 - `diccionario` lista los términos que el capítulo define, con lo que la práctica dice en su lugar (decisión 0004). Todo
   capítulo agrega al menos uno, y la página del diccionario los reúne:
 
@@ -121,6 +135,17 @@ hace fallar la integración continua. Un bloque ` ```python ` sin `celda` es có
 - `pieza` es una de `packages/piezas/src/index.ts`; una pieza nueva va allí, con su matemática en un módulo con pruebas.
 - `alt` es obligatorio y describe lo que la figura muestra; sin JavaScript, es lo que se lee.
 - La figura se numera («Figura II.5.1») y se cita con `:ref[fig-normal]`.
+
+## El mapa hacia atrás
+
+Antes de dar por escrito un capítulo, se revisa su página de recorrido (`/mapa/<capítulo>/`):
+
+- **Lo que usa** tiene que estar en su recorrido. Las citas a resultados de otros capítulos (`:ref[I.1#…]`) solo pueden
+  ir a capítulos del recorrido, y una prueba lo comprueba. Si el capítulo necesita algo que no está, se agrega el
+  requisito en el índice o, si es un uso anticipado, se declara en `supone`.
+- **Lo que le dejaron** los capítulos anteriores en su `supone` se cumple y se declara en `cumple`.
+- **Las menciones de capítulos anteriores que no son requisitos** se revisan una por una: pueden ser un aviso legítimo
+  o delatar un requisito que falta.
 
 ## Antes de subir
 

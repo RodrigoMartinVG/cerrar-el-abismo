@@ -19,6 +19,11 @@ export const collections = {
          */
         supone: z.array(z.object({ nocion: z.string(), en: z.string() })).optional(),
         /**
+         * Lo que el capítulo cumple de lo que otros dejaron para él en su `supone`, y en qué entornos
+         * (packages/libro/src/cumple.ts): el mapa de dependencias, verificado hacia atrás.
+         */
+        cumple: z.array(z.strictObject({ de: z.string(), nocion: z.string(), anclas: z.array(z.string()).min(1) })).optional(),
+        /**
          * Los términos que el capítulo define, con lo que la práctica dice en su lugar (decisión 0004). La página
          * /diccionario/ los reúne; packages/libro/src/diccionario.ts los comprueba.
          */
