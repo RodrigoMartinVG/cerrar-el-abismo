@@ -1594,6 +1594,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 #### VII.12 Triangulaciones y diagramas de Voronoi
 *40 págs. · Requiere: VII.10, IV.10, I.8 · Núcleo*
+- Teorema de la curva de Jordan para poligonales, con la prueba de paridad que decide si un punto está dentro de un polígono.
 - Triangulación de polígonos: existencia, recorte de orejas y descomposición monótona.
 - Triangulación de Delaunay: círculo vacío, maximización del ángulo mínimo y volteo de aristas.
 - Diagrama de Voronoi como dual de Delaunay.

@@ -266,6 +266,7 @@ partes:
           - I.8
         tipo: nucleo
         contenidos:
+          - Teorema de la curva de Jordan para poligonales, con la prueba de paridad que decide si un punto está dentro de un polígono.
           - 'Triangulación de polígonos: existencia, recorte de orejas y descomposición monótona.'
           - 'Triangulación de Delaunay: círculo vacío, maximización del ángulo mínimo y volteo de aristas.'
           - Diagrama de Voronoi como dual de Delaunay.

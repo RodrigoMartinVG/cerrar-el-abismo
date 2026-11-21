@@ -11,6 +11,7 @@ Adleman
 Advección
 advección
 adyacencia
+adyacencias
 Agda
 Agrawal
 Aharonov
@@ -101,6 +102,7 @@ Bondy
 Bonet
 Borel
 Borsuk
+Borůvka
 Botsch
 Boyce
 braquistócrona
@@ -229,6 +231,9 @@ Diagonalización
 diagonalizar
 Diferenciabilidad
 Diffie
+Digrafo
+digrafo
+digrafos
 discriminante
 disjunta
 disjuntas
@@ -327,6 +332,7 @@ glsl
 Goldbach
 Goldstein
 Golub
+Gonthier
 Goodstein
 Gordan
 Gottlob
@@ -336,6 +342,7 @@ Grobman
 Gröbner
 Grönwall
 Hairer
+Haken
 Halmos
 Halton
 hamiltoniana
@@ -346,6 +353,7 @@ Harer
 Hartogs
 Hasse
 Hastie
+Heawood
 Heckbert
 Hecke
 Henriksen
@@ -437,6 +445,7 @@ Karush
 Kayal
 Kazimierz
 Keerthi
+Kempe
 Khinchin
 Kildall
 Kirkwood
@@ -446,6 +455,7 @@ Knopp
 Kobbelt
 Koksma
 Kondrachov
+Königsberg
 Koopman
 Körner
 Kramers
@@ -453,6 +463,7 @@ Kress
 Kreveld
 Kreyszig
 Kronig
+Kruskal
 Kullback
 Kunze
 Kuratowski
@@ -547,6 +558,8 @@ muestrean
 Muestrear
 muestrear
 Müller
+multigrafo
+multigrafos
 multigrid
 multilineales
 multipaso
@@ -668,6 +681,7 @@ RANDU
 Rasterización
 rasterización
 recalcula
+recalcular
 recalcularlos
 recubridores
 recursión
@@ -769,6 +783,8 @@ smoothstep
 Sobol
 Sobolev
 Sobreajuste
+sobreestima
+sobreestimar
 sobreimpulso
 sobreyectiva
 sobreyectivas
@@ -803,6 +819,8 @@ subcuerpos
 subespacio
 Subespacios
 subespacios
+subgrafo
+subgrafos
 submartingalas
 submódulos
 subproblemas
@@ -814,6 +832,7 @@ Sugihara
 Süli
 sumabilidad
 sumación
+sumandos
 Sunzi
 superíndices
 supersampling
