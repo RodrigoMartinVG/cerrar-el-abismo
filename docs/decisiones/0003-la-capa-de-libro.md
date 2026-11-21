@@ -1,6 +1,6 @@
 # 0003. La capa de libro: directivas cerradas, celdas de Python y figuras
 
-*Fecha: 2026-11-20 · Estado: aceptada*
+*Fecha: 2026-11-20 · Estado: aceptada, enmendada el 2026-11-21*
 
 ## Contexto
 
@@ -46,6 +46,10 @@ comprobaciones en verde.
   [docs/guia-de-capitulos.md](../guia-de-capitulos.md).
 - Las referencias a entornos de otros capítulos («el Teorema II.3.4») todavía no existen: se resolverán con un
   registro global de etiquetas cuando haya un segundo capítulo escrito.
+
+  *Enmienda (2026-11-21), con el segundo capítulo:* existen. `:ref[I.1#teo-de-morgan]` escribe «Teorema I.1.5» con un
+  enlace. El registro se arma al construir el sitio, leyendo cada capítulo escrito con las mismas reglas de numeración
+  que el plugin (`packages/libro/src/etiquetas.ts`); una prueba comprueba que los dos cálculos coinciden.
 - El PDF podrá generarse recorriendo el mismo árbol de Markdown, porque las directivas son pocas y cerradas.
 
 ## Alternativas descartadas

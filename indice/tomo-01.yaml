@@ -229,8 +229,10 @@ partes:
         contenidos:
           - 'Cuerpos ordenados; por qué ℚ no basta: √2 y los huecos de ℚ.'
           - Construcción de ℝ por cortaduras de Dedekind; axioma del supremo; unicidad del cuerpo ordenado completo.
+          - ℝ no es numerable, con la diagonal de Cantor de I.2 aplicada a los desarrollos binarios.
           - 'ℂ como ℝ[x]/(x² + 1): conjugado, módulo y desigualdad triangular.'
           - Forma polar y multiplicación como rotación y escala, con la trigonometría de la secundaria (III.8 la fundamenta).
+          - 'Teorema fundamental del álgebra: enunciado y factorización en ℂ[x] y en ℝ[x]; se demuestra en III.8.'
         puente: 'Entrada: `z = z * complex(cos(a), sin(a))` en un juego 2D. Multiplicar por un número complejo de módulo 1 es rotar: es la versión plana de lo que harán los cuaterniones (aviso de II.16).'
         aplicaciones:
           - campo: 3d

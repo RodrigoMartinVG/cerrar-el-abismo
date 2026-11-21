@@ -1,0 +1,116 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { Badge } from '@astrojs/starlight/components';
+import { getCollection } from 'astro:content';
+import { CAMPOS } from '@cerrar-el-abismo/indice';
+import { claveDeTermino } from '@cerrar-el-abismo/libro';
+import { claseDeCampo, enLinea, urlCapitulo } from '../lib/obra';
+
+/**
+ * EL DICCIONARIO ACADEMIA–PRÁCTICA (especificación, 8.5; decisión 0004): las entradas que declaran los capítulos
+ * escritos, en orden alfabético. El buscador filtra por cualquiera de los lados, desde el comienzo de una palabra y sin
+ * mayúsculas ni tildes; sin JavaScript se ve la lista completa.
+ */
+const capitulos = await getCollection('docs', (e) => Boolean(e.data.capitulo && e.data.diccionario));
+const entradas = await Promise.all(
+  capitulos
+    .flatMap((c) => (c.data.diccionario ?? []).map((d) => ({ ...d, capitulo: c.data.capitulo as string })))
+    .sort((a, b) => a.termino.localeCompare(b.termino, 'es'))
+    .map(async (d) => ({
+      ...d,
+      id: claveDeTermino(d.termino).replace(/[^a-z0-9]+/g, '-'),
+      href: `${urlCapitulo(d.capitulo)}${d.ancla ? `#${d.ancla}` : ''}`,
+      practicaHtml: await Promise.all(d.practica.map(enLinea)),
+      notaHtml: await enLinea(d.nota),
+      busqueda: claveDeTermino([d.termino, d.ingles, ...d.practica, d.nota].join(' | ').replace(/[`*]/g, '')),
+    })),
+);
+const total = `${entradas.length} ${entradas.length === 1 ? 'término' : 'términos'}`;
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Diccionario academia–práctica',
+    description: 'Lo que la matemática nombra y cómo lo llama la práctica, en español y en inglés, con dónde deja de coincidir.',
+  }}
+>
+  <p>
+    La práctica suele llamar de otra manera a lo que la matemática ya nombró: quien programa dice «invariante de bucle» donde la obra
+    dice «inducción», y un motor 3D dice «<em>lerp</em>» donde la obra dice «combinación afín». Este diccionario reúne esas
+    equivalencias, término por término, con el nombre en inglés, que es el idioma de casi toda la documentación técnica. Cada entrada
+    dice además dónde dejan de coincidir los dos lados, que es lo que más cuesta aprender fuera de un libro.
+  </p>
+  <p>
+    Cada capítulo agrega los términos que define, así que el diccionario crece con la obra. El buscador encuentra cualquiera de los
+    lados, con tildes o sin ellas: <code>all</code>, «<em lang="en">implication</em>» e «implicacion» llevan a sus entradas.
+  </p>
+
+  <div class="buscador-diccionario not-content" hidden>
+    <label for="buscar-termino">Buscar</label>
+    <input id="buscar-termino" type="search" autocomplete="off" spellcheck="false" placeholder="Un término de la obra, de la práctica o en inglés" />
+    <output id="cuenta-terminos" for="buscar-termino" aria-live="polite">{total}</output>
+  </div>
+
+  <dl class="diccionario" data-total={total}>
+    {
+      entradas.map((e) => (
+        <div class="entrada" id={e.id} data-busqueda={e.busqueda}>
+          <dt>
+            <a class="termino" href={e.href}>
+              {e.termino}
+            </a>
+            <span class="ingles" lang="en">
+              {e.ingles}
+            </span>
+            <span class="origen-del-termino">
+              {(e.campos ?? []).map((c) => (
+                <Badge text={CAMPOS[c]} class={claseDeCampo(CAMPOS[c])} />
+              ))}
+              <a href={e.href}>{e.capitulo}</a>
+            </span>
+          </dt>
+          <dd>
+            <ul class="practica" aria-label="En la práctica">
+              {e.practicaHtml.map((h) => (
+                <li set:html={h} />
+              ))}
+            </ul>
+            <p class="nota" set:html={e.notaHtml} />
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+</StarlightPage>
+
+<script>
+  const normalizar = (s: string) =>
+    s
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '')
+      .toLocaleLowerCase('es')
+      .trim();
+
+  const buscador = document.querySelector<HTMLElement>('.buscador-diccionario');
+  const campo = document.querySelector<HTMLInputElement>('#buscar-termino');
+  const cuenta = document.querySelector<HTMLOutputElement>('#cuenta-terminos');
+  const lista = document.querySelector<HTMLElement>('.diccionario');
+  const entradas = [...document.querySelectorAll<HTMLElement>('.diccionario .entrada')];
+
+  if (buscador && campo && cuenta && lista) {
+    buscador.hidden = false;
+    campo.addEventListener('input', () => {
+      const q = normalizar(campo.value).replace(/[`*]/g, '');
+      // Al comienzo de una palabra: «all» encuentra `all(...)` y no «falla».
+      const escapado = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const patron = new RegExp('(?:^|[^\\p{L}\\p{N}])' + escapado, 'u');
+      let visibles = 0;
+      for (const e of entradas) {
+        e.hidden = !patron.test(e.dataset.busqueda ?? '');
+        if (!e.hidden) visibles++;
+      }
+      cuenta.value =
+        q === '' ? (lista.dataset.total ?? '') : visibles === 0 ? 'Ningún término coincide' : `${visibles} de ${entradas.length}`;
+    });
+  }
+</script>

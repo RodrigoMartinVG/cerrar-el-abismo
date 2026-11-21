@@ -164,6 +164,7 @@ partes:
           - Exponencial y logaritmo definidos por series o por la integral; potencias reales.
           - Seno y coseno definidos por series; el número π; funciones trigonométricas inversas y `atan2`.
           - La exponencial compleja y la fórmula de Euler e^(iθ) = cos θ + i sen θ.
+          - 'Teorema fundamental del álgebra, con la demostración de Argand: el módulo de un polinomio alcanza su mínimo, y donde no se anula todavía puede bajar.'
           - Funciones hiperbólicas.
         puente: 'Entrada: `x = lerp(x, target, 1.0 - exp(-k * dt))`. A diferencia del suavizado de III.1, este no depende de los fotogramas por segundo: 1 − e^(−k·dt) es la fracción exacta que recorre la solución de x′ = k(objetivo − x) en un intervalo dt.'
         aplicaciones:

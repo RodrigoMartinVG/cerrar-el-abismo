@@ -8,4 +8,5 @@ alternativas que se descartaron. Si se revisa, se enmienda con fecha o se reempl
 | --- | --- | --- |
 | [0001](0001-astro-y-starlight.md) | El sitio se construye con Astro y Starlight, con la capa de libro propia | Aceptada (2026-11-20) |
 | [0002](0002-el-indice-como-datos.md) | El índice temático es datos; las tablas e índice de la especificación se generan desde ellos | Aceptada (2026-11-20), enmendada el mismo día |
-| [0003](0003-la-capa-de-libro.md) | La capa de libro: directivas cerradas, celdas de Python con Pyodide y figuras interactivas | Aceptada (2026-11-20) |
+| [0003](0003-la-capa-de-libro.md) | La capa de libro: directivas cerradas, celdas de Python con Pyodide y figuras interactivas | Aceptada (2026-11-20), enmendada el 2026-11-21 |
+| [0004](0004-el-diccionario-en-los-capitulos.md) | El diccionario academia–práctica se escribe en los capítulos | Aceptada (2026-11-21) |

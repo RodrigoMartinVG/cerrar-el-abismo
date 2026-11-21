@@ -11,9 +11,11 @@ import { remarkLibro, type OpcionesLibro } from './remark-libro.ts';
 const opciones: OpcionesLibro = {
   capitulos: new Map([
     ['II.3', { url: '/indice/ii/#ii-3', titulo: 'Transformaciones lineales' }],
+    ['II.4', { url: '/capitulos/ii-4/', titulo: 'Matrices' }],
     ['II.5', { url: '/capitulos/ii-5/', titulo: 'Espacio dual y covectores' }],
   ]),
   piezas: ['normal-covector'],
+  etiquetas: new Map([['II.4', new Map([['teo-nucleo', 'Teorema II.4.4']])]]),
 };
 
 /** Procesa un capítulo como lo hace el sitio, con `capitulo: II.5` (u otro frontmatter) en el frontmatter. */
@@ -110,6 +112,11 @@ describe('remarkLibro', () => {
     expect(() => html('## Desarrollo\n\nTexto.', 'II.5', { supone })).toThrow(error);
   });
 
+  it('resuelve :ref[] a un entorno de otro capítulo escrito, y al propio con su identificador', () => {
+    expect(html('Por el :ref[II.4#teo-nucleo].')).toContain('<a href="/capitulos/ii-4/#teo-nucleo">Teorema II.4.4</a>');
+    expect(html(':::lema{#l}\nX.\n:::\n\nVer :ref[II.5#l].')).toContain('<a href="#l">Lema II.5.1</a>');
+  });
+
   it('deja pasar los recuadros de Starlight', () => {
     expect(() => html(':::note\nOjo.\n:::')).not.toThrow();
   });
@@ -120,6 +127,8 @@ describe('remarkLibro', () => {
     ['::figura{pieza="otra" alt="x"}', /no existe/],
     ['::figura{pieza="normal-covector"}', /texto alternativo/],
     ['Ver :ref[nada].', /no apunta a ningún entorno/],
+    ['Ver :ref[II.4#otra].', /no apunta a ningún entorno ni figura de un capítulo escrito/],
+    ['Ver :ref[II.3#teo-nucleo].', /de un capítulo escrito/],
     ['Ver [[II.99]].', /no es un capítulo de la obra/],
     [':::teorema{#a}\nX.\n:::\n\n:::lema{#a}\nY.\n:::', /repetida/],
   ])('hace fallar la construcción ante %j', (md, error) => {

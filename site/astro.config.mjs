@@ -6,7 +6,7 @@ import { unified } from '@astrojs/markdown-remark';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { cargarIndice, slug, todosLosCapitulos, tomoDe } from '@cerrar-el-abismo/indice';
-import { remarkLibro } from '@cerrar-el-abismo/libro';
+import { etiquetasDelCapitulo, remarkLibro } from '@cerrar-el-abismo/libro';
 import { NOMBRES_DE_PIEZAS } from '@cerrar-el-abismo/piezas';
 
 /**
@@ -17,7 +17,8 @@ import { NOMBRES_DE_PIEZAS } from '@cerrar-el-abismo/piezas';
  */
 const BASE = '/cerrar-el-abismo';
 const indice = cargarIndice();
-const escrito = (/** @type {string} */ id) => existsSync(new URL(`./src/content/docs/capitulos/${slug(id)}.md`, import.meta.url));
+const archivo = (/** @type {string} */ id) => new URL(`./src/content/docs/capitulos/${slug(id)}.md`, import.meta.url);
+const escrito = (/** @type {string} */ id) => existsSync(archivo(id));
 
 /** Para resolver [[II.3]]: el capítulo escrito, o su entrada en el índice mientras no lo esté. */
 const capitulos = new Map(
@@ -30,6 +31,16 @@ const capitulos = new Map(
   ]),
 );
 
+/**
+ * Para resolver :ref[I.1#teo-de-morgan]: las etiquetas de cada capítulo escrito, con su nombre numerado. Se leen al
+ * arrancar; en desarrollo, una etiqueta nueva en otro capítulo pide reiniciar el servidor.
+ */
+const etiquetas = new Map(
+  todosLosCapitulos(indice)
+    .filter((c) => escrito(c.id))
+    .map((c) => [c.id, etiquetasDelCapitulo(readFileSync(archivo(c.id), 'utf8'), c.id)]),
+);
+
 /** La versión de Pyodide del repositorio: la misma en el navegador (CDN) y en las pruebas (Node). */
 const PYODIDE = JSON.parse(readFileSync(new URL('../node_modules/pyodide/package.json', import.meta.url), 'utf8')).version;
 
@@ -40,7 +51,7 @@ export default defineConfig({
   markdown: {
     // La capa de libro (directivas, numeración y referencias) y la matemática, compuesta con KaTeX al construir.
     processor: unified({
-      remarkPlugins: [remarkMath, [remarkLibro, { capitulos, piezas: NOMBRES_DE_PIEZAS }]],
+      remarkPlugins: [remarkMath, [remarkLibro, { capitulos, piezas: NOMBRES_DE_PIEZAS, etiquetas }]],
       rehypePlugins: [rehypeKatex],
     }),
   },
@@ -91,6 +102,7 @@ export default defineConfig({
           items: [
             { label: 'Índice temático', link: '/indice/' },
             { label: 'Itinerarios', link: '/itinerarios/' },
+            { label: 'Diccionario academia–práctica', link: '/diccionario/' },
           ],
         },
         { label: 'Capítulos escritos', items: [{ autogenerate: { directory: 'capitulos' } }] },

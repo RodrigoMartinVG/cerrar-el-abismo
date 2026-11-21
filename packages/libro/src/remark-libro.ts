@@ -11,7 +11,8 @@ import { revisarSupone, type Supuesto } from './supone.ts';
  * - convierte los entornos (`:::teorema[Título]{#id}`) en bloques numerados «Teorema II.5.3»;
  * - convierte `::figura{pieza="…" alt="…"}` en una figura interactiva numerada, con su texto alternativo;
  * - convierte los bloques ` ```python celda ` en celdas de Python que se ejecutan en el navegador;
- * - resuelve `:ref[id]` (un entorno o figura del capítulo) y `[[II.3]]` (un capítulo de la obra);
+ * - resuelve `:ref[id]` (un entorno o figura del capítulo), `:ref[I.1#id]` (uno de otro capítulo escrito) y `[[II.3]]`
+ *   (un capítulo de la obra);
  * - si el frontmatter declara `supone` (supone.ts), pone después del primer párrafo del Desarrollo el recuadro «Lo que
  *   este capítulo da por conocido», con un enlace al capítulo que trata cada noción con rigor.
  *
@@ -28,6 +29,11 @@ export interface OpcionesLibro {
   capitulos: ReadonlyMap<string, CapituloEnlazable>;
   /** Las piezas interactivas que existen, para validar `::figura{pieza="…"}`. */
   piezas: readonly string[];
+  /**
+   * Para resolver `:ref[I.1#teo-de-morgan]`: las etiquetas de cada capítulo escrito con su nombre numerado
+   * («Teorema I.1.5»), calculadas con `etiquetasDelCapitulo`.
+   */
+  etiquetas?: ReadonlyMap<string, ReadonlyMap<string, string>>;
 }
 
 /** Una celda de Python en el árbol: remark-rehype la convierte en `<celda-python>` con el código como texto. */
@@ -218,10 +224,18 @@ export function remarkLibro(opciones: OpcionesLibro) {
     // Segunda pasada: referencias a entornos y figuras (`:ref[id]`) y a capítulos (`[[II.3]]`).
     visit(arbol, (nodo, indice, padre) => {
       if (nodo.type === 'textDirective' && nodo.name === 'ref' && padre && indice !== undefined) {
-        const id = (nodo as TextDirective).children.map((h) => ('value' in h ? h.value : '')).join('');
-        const nombre = etiquetas.get(id);
-        if (!nombre) return fallar(`:ref[${id}] no apunta a ningún entorno ni figura de este capítulo.`, nodo);
-        padre.children[indice] = { type: 'link', url: `#${id}`, children: [texto(nombre)] };
+        const ref = (nodo as TextDirective).children.map((h) => ('value' in h ? h.value : '')).join('');
+        const [otro, id] = ref.includes('#') ? ref.split('#', 2) : [undefined, ref];
+        if (otro === undefined || otro === capitulo) {
+          const nombre = etiquetas.get(id!);
+          if (!nombre) return fallar(`:ref[${ref}] no apunta a ningún entorno ni figura de este capítulo.`, nodo);
+          padre.children[indice] = { type: 'link', url: `#${id}`, children: [texto(nombre)] };
+          return SKIP;
+        }
+        const nombre = opciones.etiquetas?.get(otro)?.get(id!);
+        const destino = opciones.capitulos.get(otro);
+        if (!nombre || !destino) return fallar(`:ref[${ref}] no apunta a ningún entorno ni figura de un capítulo escrito.`, nodo);
+        padre.children[indice] = { type: 'link', url: `${destino.url}#${id}`, children: [texto(nombre)] };
         return SKIP;
       }
       if (nodo.type === 'text' && padre && indice !== undefined && REFERENCIA_A_CAPITULO.test(nodo.value)) {

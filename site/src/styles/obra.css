@@ -18,6 +18,117 @@
   margin-inline-end: 0.35rem;
 }
 
+/*
+ * El diccionario academia–práctica (src/pages/diccionario.astro): una entrada por término, con el término de la obra
+ * en la letra de los títulos, el inglés en cursiva, lo que dice la práctica en una línea y la nota más chica.
+ */
+.buscador-diccionario {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  margin-block: 1.5rem 0.75rem;
+  font-family: var(--obra-interfaz);
+  font-size: var(--obra-texto-secundario);
+}
+
+.buscador-diccionario[hidden] {
+  display: none;
+}
+
+.buscador-diccionario input {
+  flex: 1 1 16rem;
+  padding: 0.45rem 0.75rem;
+  font: inherit;
+  color: var(--sl-color-white);
+  background: var(--sl-color-gray-6);
+  border: 1px solid var(--sl-color-gray-4);
+  border-radius: 0.5rem;
+}
+
+.buscador-diccionario input:focus-visible {
+  outline: 2px solid var(--sl-color-accent);
+  outline-offset: 1px;
+}
+
+.buscador-diccionario output {
+  color: var(--sl-color-gray-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.sl-markdown-content .diccionario .entrada {
+  margin: 0;
+  padding-block: 0.85rem;
+  border-top: 1px solid var(--sl-color-hairline);
+}
+
+.sl-markdown-content .diccionario .entrada[hidden] {
+  display: none;
+}
+
+.sl-markdown-content .diccionario dt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.6rem;
+  font-weight: normal;
+}
+
+.sl-markdown-content .diccionario .termino {
+  font-family: var(--obra-titulos);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--sl-color-white);
+  text-decoration: none;
+}
+
+.sl-markdown-content .diccionario .termino:hover {
+  color: var(--sl-color-accent);
+}
+
+.sl-markdown-content .diccionario .ingles {
+  font-style: italic;
+  color: var(--sl-color-gray-2);
+}
+
+.sl-markdown-content .diccionario .origen-del-termino {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-inline-start: auto;
+  font-family: var(--obra-interfaz);
+  font-size: var(--obra-texto-menor);
+}
+
+.sl-markdown-content .diccionario dd {
+  margin: 0.3rem 0 0;
+  padding: 0;
+}
+
+.sl-markdown-content .diccionario .practica {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sl-markdown-content .diccionario .practica li {
+  display: inline;
+  margin: 0;
+}
+
+.sl-markdown-content .diccionario .practica li + li::before {
+  content: '·';
+  margin-inline: 0.5rem;
+  color: var(--sl-color-gray-3);
+}
+
+.sl-markdown-content .diccionario .nota {
+  margin-top: 0.3rem;
+  font-size: var(--obra-texto-secundario);
+  line-height: 1.6;
+  color: var(--sl-color-gray-2);
+}
+
 /* Una fila de etiquetas, separadas. */
 .etiquetas {
   display: flex;
@@ -279,6 +390,55 @@ celda-python:has(.celda-editor) {
 .pieza-botones button {
   height: 2.1rem;
   line-height: 1;
+}
+
+/*
+ * La pieza «cubetas»: una caja por cubeta, con su número y sus claves. Las cubetas con más de una clave, donde la
+ * función no es inyectiva, se marcan en cobre.
+ */
+.pieza-cubetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  gap: 0.4rem;
+  margin: 0.75rem 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--sl-font-mono, monospace);
+  font-size: var(--obra-texto-secundario);
+}
+
+.sl-markdown-content .pieza-cubetas li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  margin: 0;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.375rem;
+  background: var(--obra-teoria-bajo);
+}
+
+.pieza-cubetas .cubeta-numero {
+  color: var(--sl-color-gray-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.pieza-cubetas .cubeta-claves {
+  overflow-wrap: anywhere;
+}
+
+.sl-markdown-content .pieza-cubetas li.choque {
+  border-color: var(--obra-practica);
+  background: var(--obra-practica-bajo);
+}
+
+.pieza-controles select {
+  font: inherit;
+  padding: 0.15rem 0.3rem;
+  border: 1px solid var(--sl-color-gray-4);
+  border-radius: 0.375rem;
+  background: var(--sl-color-black);
+  color: var(--sl-color-white);
 }
 
 /* La pieza «cuadrado-de-impares»: capas en L de colores alternados, la tinta base y el cobre. */

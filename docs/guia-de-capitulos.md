@@ -34,6 +34,23 @@ estado: borrador
   es un capítulo posterior en el orden de lectura, la construcción y las pruebas fallan: una noción que se trata antes
   no es un uso anticipado sino un requisito, y va en `requiere`, en el índice. Además de figurar en la lista, la noción se
   declara en el texto, en el lugar donde se usa (guía de estilo, sección 1).
+- `diccionario` lista los términos que el capítulo define, con lo que la práctica dice en su lugar (decisión 0004). Todo
+  capítulo agrega al menos uno, y la página del diccionario los reúne:
+
+  ```yaml
+  diccionario:
+    - termino: implicación
+      ingles: implication
+      practica: ['`!p || q`, o `not p or q`', 'el contrato de una función: precondición y poscondición']
+      nota: Casi ningún lenguaje tiene un operador para la implicación. Que sea verdadera cuando…
+      ancla: def-implicacion
+  ```
+
+  `practica` es una lista; `nota` dice en qué coinciden los dos lados y dónde dejan de coincidir, que es lo que el
+  diccionario aporta; `ancla` (opcional) es la etiqueta del entorno que define el término, y `campos` (opcional), los
+  campos del índice de los nombres prácticos (`[3d, fisica]`). Los textos son Markdown en línea, sin fórmulas: los
+  símbolos Unicode y el código entre comillas invertidas sirven. Un valor que empieza con comilla invertida o asterisco
+  va entre comillas simples, para que el YAML lo lea como texto. Un término se define en un solo capítulo.
 - Los requisitos, el tipo y las aplicaciones no se repiten: vienen del índice (`indice/tomo-NN.yaml`).
 
 ## Las secciones
@@ -68,7 +85,10 @@ fallar la construcción.
 
 ## Referencias
 
-- `:ref[teo-dim]` escribe «Teorema II.5.3» con un enlace. Solo vale para etiquetas del mismo capítulo.
+- `:ref[teo-dim]` escribe «Teorema II.5.3» con un enlace a un entorno o figura del mismo capítulo.
+- `:ref[I.1#teo-de-morgan]` escribe «Teorema I.1.5» con un enlace a un entorno o figura de otro capítulo escrito. La
+  numeración se calcula leyendo ese capítulo; en desarrollo, una etiqueta nueva en otro capítulo pide reiniciar el
+  servidor.
 - `[[II.3]]` escribe «II.3» con un enlace al capítulo escrito, o a su entrada en el índice si todavía no lo está.
 
 ## Matemática

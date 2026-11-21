@@ -19,11 +19,14 @@ analiticidad
 anisotrópica
 anisotrópico
 anticadenas
+antisimetría
+antisimétrica
 antisimétricos
 Apostol
 arcoconexión
 arcoconexos
 Arfken
+Argand
 Artin
 Arzelà
 Ascoli
@@ -68,6 +71,9 @@ biomecánica
 bitangente
 bivector
 bivectores
+biyección
+biyecciones
+biyectiva
 biyectivas
 Blitzstein
 Bohm
@@ -93,6 +99,7 @@ Cantelli
 Carathéodory
 Cardinalidad
 cardán
+cardinalidad
 Carlsson
 Carmo
 Casella
@@ -117,10 +124,13 @@ ciclotómicos
 Civita
 Clebsch
 clotoides
+Codd
 CodeMirror
 codominio
+codominios
 cofactores
 Colorimetría
+comilla
 compactificación
 compartimentales
 Completación
@@ -130,6 +140,7 @@ computabilidad
 Condon
 conductancia
 congruencial
+conmutatividad
 construibles
 contraejemplo
 contraejemplos
@@ -175,6 +186,7 @@ derivables
 Desargues
 descomponible
 descomponibles
+deserializar
 Devaney
 Devroye
 dextrógiro
@@ -184,7 +196,10 @@ diagonalizar
 Diferenciabilidad
 Diffie
 discriminante
+disjunta
+disjuntas
 distribucional
+distributividad
 Dobell
 Dohlmann
 Doob
@@ -201,10 +216,14 @@ Enderton
 Engel
 entropías
 entrópica
+enumerables
 epidemiológicas
 epidemiológicos
 epipolar
 equioscilación
+equipotencia
+equipotente
+equipotentes
 equirectangular
 equivariantes
 Erleben
@@ -219,6 +238,7 @@ Euclides
 euclídeo
 euclídeos
 Exponenciación
+extensionalidad
 factorizarla
 Faires
 Farin
@@ -252,6 +272,7 @@ Gebra
 Gelfand
 Gelman
 geométricamente
+Georg
 giróscopos
 Givant
 glsl
@@ -321,13 +342,16 @@ implicitación
 incircle
 indecidibilidad
 indecidible
+injective
 insesgadez
 insesgado
 integrabilidad
+intersecar
 intuicionista
 Invariancia
 invariancia
 invertibilidad
+inyectividad
 irradiancia
 irreducibilidad
 irrotacionales
@@ -349,6 +373,7 @@ Kalman
 Kampen
 Kantorovich
 Karush
+Kazimierz
 Keerthi
 Khinchin
 Kleene
@@ -365,6 +390,7 @@ Kreyszig
 Kronig
 Kullback
 Kunze
+Kuratowski
 Kutta
 Körner
 L'Hôpital
@@ -521,10 +547,14 @@ polinomial
 polinomiales
 politopos
 Pontryagin
+poscondición
 poscondiciones
 postcuántica
+postularla
 prefiltradas
+preimage
 preimagen
+preimágenes
 Pressley
 Probá
 procedurales
@@ -549,6 +579,7 @@ recalcularlos
 recubridores
 recursión
 reescalan
+reflexividad
 Rellich
 remapeo
 Remuestreo
@@ -610,6 +641,7 @@ semigrupos
 semilagrangiana
 semiplano
 separabilidad
+serializar
 Serre
 Shakarchi
 Shalev
@@ -635,7 +667,9 @@ Sobol
 Sobolev
 Sobreajuste
 sobreimpulso
+sobreyectiva
 sobreyectivas
+sobreyectividad
 softmax
 Sokhotski
 Sorgenfrey
@@ -695,6 +729,7 @@ tipados
 Tonelli
 transcrítica
 transfinita
+transitividad
 Trefethen
 trivectores
 Trumbore
@@ -704,6 +739,8 @@ Tychonoff
 Typst
 Ulam
 Ullman
+upla
+uplas
 Urysohn
 Vandenberghe
 Vapnik

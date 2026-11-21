@@ -176,7 +176,9 @@ Automáticamente, en cada capítulo (`packages/libro/src/estilo.ts`, desde las p
 - que ningún párrafo empiece con una fórmula;
 - que toda sección abra con un párrafo de texto;
 - que no haya imperativos dirigidos al lector («Calcula», «Demuestre», «Probá»);
-- que cada noción del campo `supone` se trate con rigor en un capítulo posterior (`packages/libro/src/supone.ts`).
+- que cada noción del campo `supone` se trate con rigor en un capítulo posterior (`packages/libro/src/supone.ts`);
+- que el capítulo agregue sus términos al diccionario, completos, sin fórmulas y con anclas que existen
+  (`packages/libro/src/diccionario.ts`).
 
 En la lectura de estilo, a mano, con esta lista:
 
@@ -187,5 +189,7 @@ En la lectura de estilo, a mano, con esta lista:
 - ¿Cada celda y cada figura están comentadas antes y después?
 - ¿La Salida cierra con «Lo esencial»?
 - ¿Se puede leer el capítulo saltando las demostraciones y entender qué se probó y por qué importa?
+- ¿Cada entrada del diccionario dice dónde dejan de coincidir los dos lados, y cada afirmación sobre la práctica es
+  exacta?
 - ¿Cada noción usada antes de construirse está declarada en el lugar y en `supone`? ¿Cada afirmación metamatemática
   o postura está dicha como tal (sección 1)?

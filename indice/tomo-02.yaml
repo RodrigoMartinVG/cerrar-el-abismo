@@ -120,6 +120,7 @@ partes:
         tipo: nucleo
         contenidos:
           - Autovalores, autovectores y polinomio característico.
+          - Existencia de autovalores en espacios complejos de dimensión finita, por el teorema fundamental del álgebra (III.8).
           - Diagonalización y subespacios invariantes.
           - Teorema de Cayley–Hamilton y polinomio minimal.
           - 'Autovalores de matrices 3×3: solución trigonométrica de la cúbica.'

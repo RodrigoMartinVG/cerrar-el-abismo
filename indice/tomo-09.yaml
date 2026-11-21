@@ -211,7 +211,7 @@ partes:
         tipo: nucleo
         contenidos:
           - Teorema y fórmula integral de Cauchy; analiticidad de las funciones holomorfas.
-          - Teorema de Liouville y teorema fundamental del álgebra; principio del módulo máximo.
+          - Teorema de Liouville y una segunda demostración del teorema fundamental del álgebra (la primera está en III.8); principio del módulo máximo.
           - Series de Laurent y clasificación de las singularidades.
           - Teorema de los residuos y cálculo de integrales reales; principio del argumento.
         puente: 'Entrada: un buscador de raíces de polinomios que cuenta cuántas hay dentro de un círculo. El principio del argumento cuenta ceros con una integral de contorno y es la base de los métodos robustos para localizar raíces.'

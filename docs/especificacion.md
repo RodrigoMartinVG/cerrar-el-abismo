@@ -334,7 +334,7 @@ Recuadro recurrente: una línea de código o una fórmula de la práctica que co
 
 ### 8.5 Herramientas transversales de la web
 
-- **Diccionario academia–práctica,** que también funciona de español a inglés: «cambio de base» ↔ «*transform from object space to world space*», «covector» ↔ «normal», «combinación afín» ↔ «*lerp*», «autoadjunto» ↔ «hermítico», «aplicación multilineal» ↔ «tensor con índices», etc.
+- **Diccionario academia–práctica,** que también funciona de español a inglés: «cambio de base» ↔ «*transform from object space to world space*», «covector» ↔ «normal», «combinación afín» ↔ «*lerp*», «autoadjunto» ↔ «hermítico», «aplicación multilineal» ↔ «tensor con índices», etc. Cada entrada dice también dónde dejan de coincidir los dos lados. Cada capítulo declara los términos que define, y la página del diccionario los reúne (decisión 0004 del repositorio).
 - **Conversor de convenciones:** se eligen la mano de los ejes, el tipo de vector (fila o columna) y el orden de almacenamiento, y se ve cómo cambian la matriz y su disposición en memoria. Para la física, también la signatura de la métrica y la convención de las coordenadas esféricas.
 - **Comparador exacto frente a float32:** celdas que muestran el mismo cálculo con SymPy y en coma flotante, para ver un teorema cumplirse y luego derivar.
 
@@ -466,7 +466,7 @@ Con ellos se generan el grafo de dependencias navegable, las páginas de tomo, d
 
 ### 11.5 Comprobaciones automáticas
 
-En cada cambio, la integración continua comprueba lo siguiente. Ya se comprueban: las reglas del índice (los puntos 1 y 2, los hilos de 9.2, los itinerarios de 9.6 y las referencias entre capítulos, en `packages/indice`); en los capítulos escritos, la plantilla, el Puente, las referencias internas, la ejecución de todas las celdas, el texto alternativo de las figuras (decisión 0003) y las reglas mecánicas de la guía de estilo (7.1). Faltan la verificación automática de las respuestas de los ejercicios y la de los enlaces externos.
+En cada cambio, la integración continua comprueba lo siguiente. Ya se comprueban: las reglas del índice (los puntos 1 y 2, los hilos de 9.2, los itinerarios de 9.6 y las referencias entre capítulos, en `packages/indice`); en los capítulos escritos, la plantilla, el Puente, las referencias internas, la ejecución de todas las celdas, el texto alternativo de las figuras (decisión 0003), las reglas mecánicas de la guía de estilo (7.1) y las entradas del diccionario academia–práctica (decisión 0004). Faltan la verificación automática de las respuestas de los ejercicios y la de los enlaces externos.
 
 1. Que cada requisito existe y es anterior dentro del mismo tomo, o pertenece a un tomo requerido o a una interfaz declarada.
 2. Que ningún capítulo de núcleo depende de uno complementario.
@@ -643,8 +643,10 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 *40 págs. · Requiere: I.10 · Núcleo*
 - Cuerpos ordenados; por qué ℚ no basta: √2 y los huecos de ℚ.
 - Construcción de ℝ por cortaduras de Dedekind; axioma del supremo; unicidad del cuerpo ordenado completo.
+- ℝ no es numerable, con la diagonal de Cantor de I.2 aplicada a los desarrollos binarios.
 - ℂ como ℝ[x]/(x² + 1): conjugado, módulo y desigualdad triangular.
 - Forma polar y multiplicación como rotación y escala, con la trigonometría de la secundaria (III.8 la fundamenta).
+- Teorema fundamental del álgebra: enunciado y factorización en ℂ[x] y en ℝ[x]; se demuestra en III.8.
 
 **Puente.** Entrada: `z = z * complex(cos(a), sin(a))` en un juego 2D. Multiplicar por un número complejo de módulo 1 es rotar: es la versión plana de lo que harán los cuaterniones (aviso de II.16).
 **Aplicaciones.** [3D] rotaciones 2D sin matrices · [Señales] fasores para representar oscilaciones · [Ing] impedancias en circuitos de corriente alterna · [Física] amplitudes complejas en óptica ondulatoria.
@@ -747,6 +749,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 #### II.6 Autovalores y autovectores
 *40 págs. · Requiere: II.4, I.10 · Núcleo*
 - Autovalores, autovectores y polinomio característico.
+- Existencia de autovalores en espacios complejos de dimensión finita, por el teorema fundamental del álgebra (III.8).
 - Diagonalización y subespacios invariantes.
 - Teorema de Cayley–Hamilton y polinomio minimal.
 - Autovalores de matrices 3×3: solución trigonométrica de la cúbica.
@@ -970,6 +973,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Exponencial y logaritmo definidos por series o por la integral; potencias reales.
 - Seno y coseno definidos por series; el número π; funciones trigonométricas inversas y `atan2`.
 - La exponencial compleja y la fórmula de Euler e^(iθ) = cos θ + i sen θ.
+- Teorema fundamental del álgebra, con la demostración de Argand: el módulo de un polinomio alcanza su mínimo, y donde no se anula todavía puede bajar.
 - Funciones hiperbólicas.
 
 **Puente.** Entrada: `x = lerp(x, target, 1.0 - exp(-k * dt))`. A diferencia del suavizado de III.1, este no depende de los fotogramas por segundo: 1 − e^(−k·dt) es la fracción exacta que recorre la solución de x′ = k(objetivo − x) en un intervalo dt.
@@ -1882,7 +1886,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 #### IX.10 Teoría de Cauchy y residuos
 *52 págs. · Requiere: IX.9 · Núcleo*
 - Teorema y fórmula integral de Cauchy; analiticidad de las funciones holomorfas.
-- Teorema de Liouville y teorema fundamental del álgebra; principio del módulo máximo.
+- Teorema de Liouville y una segunda demostración del teorema fundamental del álgebra (la primera está en III.8); principio del módulo máximo.
 - Series de Laurent y clasificación de las singularidades.
 - Teorema de los residuos y cálculo de integrales reales; principio del argumento.
 

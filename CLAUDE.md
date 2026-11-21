@@ -16,6 +16,8 @@ repite.
 - **Los capítulos escritos:** `site/src/content/docs/capitulos/` (uno por archivo, `i-1.md`). Cómo se escriben:
   [docs/guia-de-capitulos.md](docs/guia-de-capitulos.md); con qué estilo: [docs/guia-de-estilo.md](docs/guia-de-estilo.md); la capa de libro está en `packages/libro` y las piezas
   interactivas en `packages/piezas` (decisión 0003).
+- **El diccionario academia–práctica:** cada capítulo declara sus términos en el campo `diccionario` de su frontmatter,
+  y la página `/diccionario/` los reúne (decisión 0004).
 - **El diseño anterior** (índice con un motor 3D en paralelo): `docs/historico/`. Ya no es el plan.
 
 ## Comandos

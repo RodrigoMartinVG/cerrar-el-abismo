@@ -95,6 +95,47 @@ test.describe('el primer capítulo (I.1)', () => {
   });
 });
 
+test.describe('el capítulo I.2', () => {
+  test('cita los entornos de I.1 con su número y enlaza a ellos', async ({ page }) => {
+    await page.goto('capitulos/i-2/');
+    const deMorgan = page.locator('a[href$="/capitulos/i-1/#teo-de-morgan"]').first();
+    await expect(deMorgan).toHaveText('Teorema I.1.5');
+    await deMorgan.click();
+    await expect(page.locator('#teo-de-morgan')).toContainText('Teorema I.1.5');
+  });
+
+  test('las cubetas se reparten de nuevo al cambiar la cantidad y la función', async ({ page }) => {
+    await page.goto('capitulos/i-2/');
+    const figura = page.locator('#fig-cubetas');
+    const cubetas = figura.locator('.pieza-cubetas li');
+    await expect(cubetas).toHaveCount(8);
+    // Con la suma de códigos, los cuatro anagramas comparten cubeta.
+    await expect(figura.locator('li.choque', { hasText: 'amor, roma, mora, ramo' })).toHaveCount(1);
+    await figura.locator('input[type=range]').fill('11');
+    await expect(cubetas).toHaveCount(11);
+    await expect(figura.locator('output')).toContainText('No hay más claves que cubetas');
+    await figura.locator('select').selectOption('polinomial');
+    await expect(figura.locator('li.choque', { hasText: 'amor, roma, mora, ramo' })).toHaveCount(0);
+  });
+});
+
+test('el diccionario reúne los términos de los capítulos y busca en los dos idiomas', async ({ page }) => {
+  await page.goto('diccionario/');
+  const implicacion = page.locator('.diccionario .entrada#implicacion');
+  await expect(implicacion.locator('a.termino')).toHaveAttribute('href', /\/capitulos\/i-1\/#def-implicacion$/);
+  await expect(implicacion.locator('.ingles')).toHaveText('implication');
+  const buscar = page.locator('#buscar-termino');
+  await buscar.fill('implication');
+  await expect(page.locator('.diccionario .entrada:visible')).toHaveCount(1);
+  await expect(implicacion).toBeVisible();
+  // Desde el comienzo de una palabra: «all» es `all(...)`, no «falla».
+  await buscar.fill('all');
+  await expect(page.locator('.diccionario .entrada#cuantificador-universal')).toBeVisible();
+  await expect(page.locator('.diccionario .entrada#contraejemplo')).toBeHidden();
+  await buscar.fill('zzz');
+  await expect(page.locator('#cuenta-terminos')).toHaveText('Ningún término coincide');
+});
+
 test('los paneles laterales se ocultan y la preferencia se recuerda', async ({ page }) => {
   await page.goto('capitulos/i-1/');
   const indice = page.locator('.sidebar-pane');
