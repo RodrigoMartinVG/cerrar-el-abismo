@@ -102,6 +102,7 @@ biyectivas
 biyectivo
 Blitzstein
 Bohm
+Bombelli
 Bondy
 Bonet
 Borel
@@ -124,6 +125,7 @@ Cann
 Cantelli
 Carathéodory
 cardán
+Cardano
 Cardinalidad
 cardinalidad
 Carlsson
@@ -230,6 +232,7 @@ Desargues
 descomponible
 descomponibles
 deserializar
+desfasaje
 deslizador
 Devaney
 Devroye
@@ -283,7 +286,9 @@ ergódica
 ergódico
 Erleben
 ésima
+ésimas
 ésimo
+ésimos
 espaciotemporal
 espectroscopía
 espinores
@@ -295,6 +300,7 @@ estereología
 euclídeo
 euclídeos
 Euclides
+Eudoxo
 Exponenciación
 exponenciación
 expresable
@@ -305,6 +311,7 @@ Faires
 Farin
 Farkas
 farmacocinética
+fasor
 fasores
 Fatou
 Fedkiw
@@ -402,6 +409,7 @@ Homomorfismo
 homomorfismo
 Homomorfismos
 homomorfismos
+homotecia
 Homotopía
 homotopía
 homotopías
@@ -422,6 +430,7 @@ implicitación
 incircle
 indecidibilidad
 indecidible
+inferiormente
 injective
 insesgadez
 insesgado
@@ -550,6 +559,7 @@ Mersenne
 Mertens
 metamatemática
 metrización
+mezclarlas
 Méziriac
 microestados
 Microfacetas
@@ -580,6 +590,7 @@ Montmort
 Motwani
 Moura
 mpmath
+muestreada
 muestrean
 Muestrear
 muestrear
@@ -662,6 +673,7 @@ permutación
 permutaciones
 Peyré
 Pharr
+phasor
 Piegl
 Pillichshammer
 Pingala
@@ -868,6 +880,7 @@ sumandos
 Sunzi
 superíndices
 supersampling
+supremum
 Swinnerton
 Sylow
 Szpilrajn
@@ -935,6 +948,7 @@ Walther
 Warshall
 Wasserman
 Wasserstein
+Wessel
 Weyl
 WGSL
 Willsky
