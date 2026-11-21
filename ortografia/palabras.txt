@@ -1,11 +1,13 @@
 # Diccionario del proyecto para el corrector ortográfico (cspell, con el diccionario español de España).
 # Términos técnicos, apellidos de autores y siglas que el diccionario general no trae. Una palabra por línea.
 # Antes de agregar una palabra, comprobar que no es una errata: `npm run ortografia` muestra sugerencias.
+aaab
 abelianos
 ádicos
 advección
 Advección
 adyacencia
+Agda
 Aharonov
 Ahlfors
 Alaoglu
@@ -100,6 +102,7 @@ Brouwer
 browniano
 Buchberger
 Bézout
+Burali
 CAGD
 Cann
 Cantelli
@@ -144,6 +147,7 @@ compartimentales
 Completación
 completación
 comprimirla
+comprobadores
 computabilidad
 Condon
 conductancia
@@ -185,6 +189,7 @@ Cuturi
 cuádrico
 cuártica
 cúbits
+Dafny
 Darboux
 Daubechies
 Davey
@@ -254,6 +259,9 @@ Euclides
 euclídeo
 euclídeos
 Exponenciación
+exponenciación
+expresable
+expresables
 extensionalidad
 factorizarla
 Faires
@@ -272,6 +280,7 @@ finitamente
 Folland
 Fomin
 Foote
+Forti
 fotogrametría
 fotometría
 Fraenkel
@@ -295,6 +304,7 @@ glsl
 Goldbach
 Goldstein
 Golub
+Goodstein
 Gordan
 Gottlob
 Griewank
@@ -311,6 +321,7 @@ hamiltoniano
 Hammack
 Hanrahan
 Harer
+Hartogs
 Hasse
 Hastie
 Heckbert
@@ -319,6 +330,7 @@ Henriksen
 Hensel
 Hermítico
 hermítico
+Hessenberg
 hessiana
 heurística
 heurísticas
@@ -437,6 +449,7 @@ Lengyel
 Leontief
 lerp
 Levenberg
+lexicográficamente
 Liberzon
 linalg
 Lindelöf
@@ -692,6 +705,7 @@ simpléctico
 simplécticos
 Sinkhorn
 Sipser
+Skolem
 SLERP
 Smale
 smoothstep
@@ -725,6 +739,8 @@ Strogatz
 Sturm
 Sturmfels
 Störmer
+subárbol
+subárboles
 subcuerpo
 subcuerpos
 subespacio
@@ -766,6 +782,7 @@ tipados
 Tonelli
 transcrítica
 transfinita
+transfinitas
 transitividad
 Trefethen
 trivectores

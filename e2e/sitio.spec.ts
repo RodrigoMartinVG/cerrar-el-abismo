@@ -151,6 +151,11 @@ test.describe('el capítulo I.3', () => {
 });
 
 test.describe('el mapa de dependencias', () => {
+  test('I.4 cumple lo que le dejaron I.2 e I.3', async ({ page }) => {
+    await page.goto('mapa/i-4/');
+    await expect(page.locator('#hacia-atras ~ ul').first().locator('li', { hasText: 'se cumple en' })).toHaveCount(2);
+  });
+
   test('el mapa hacia atrás dice dónde cumple un capítulo lo que le dejaron los anteriores', async ({ page }) => {
     await page.goto('mapa/i-3/');
     const recibidas = page.locator('#hacia-atras ~ ul').first().locator('li');
