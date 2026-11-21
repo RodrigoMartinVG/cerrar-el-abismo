@@ -192,6 +192,7 @@ coprimas
 coprime
 coprimo
 coprimos
+Corasick
 Cormen
 correlacionados
 corrotacional
@@ -555,6 +556,7 @@ maximización
 Mayers
 Mazur
 McCluskey
+McCulloch
 MCMC
 memoización
 Mersenne
@@ -703,12 +705,14 @@ primalidad
 primality
 Probá
 procedurales
+PROSITE
 proyectarlo
 pseudoaleatorios
 Pseudoinversa
 Pyodide
 Quickhull
 quíntica
+quíntupla
 Rademacher
 Radhia
 radiancia
