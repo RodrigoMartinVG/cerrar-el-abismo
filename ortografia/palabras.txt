@@ -3,6 +3,7 @@
 # Antes de agregar una palabra, comprobar que no es una errata: `npm run ortografia` muestra sugerencias.
 aaab
 AADD
+abeliano
 abelianos
 ADAD
 ADDA
@@ -96,6 +97,7 @@ biyecciones
 biyectiva
 biyectivamente
 biyectivas
+biyectivo
 Blitzstein
 Bohm
 Bondy
@@ -147,6 +149,9 @@ ciclotómicos
 Civita
 Clebsch
 clotoides
+coclase
+Coclases
+coclases
 Codd
 CodeMirror
 codominio
@@ -229,6 +234,7 @@ dextrógiro
 diagonaliza
 Diagonalización
 diagonalizar
+diedral
 Diferenciabilidad
 Diffie
 Digrafo
@@ -297,6 +303,7 @@ farmacocinética
 fasores
 Fatou
 Fedkiw
+Fedorov
 Feigenbaum
 Fejér
 fibrado
@@ -385,7 +392,10 @@ holónomas
 homeomorfismos
 Homografías
 homológica
+Homomorfismo
+homomorfismo
 Homomorfismos
+homomorfismos
 Homotopía
 homotopía
 homotopías
@@ -424,6 +434,10 @@ Ising
 isometría
 Isometrías
 isometrías
+isomorfismo
+isomorfismos
+isomorfo
+isomorfos
 isoperimetría
 isoperimétrica
 jacobiana
@@ -536,6 +550,7 @@ Milgram
 milisegundos
 Milnor
 minimales
+minimalidad
 Minimización
 minimización
 minitérmino
@@ -647,6 +662,7 @@ Pohlig
 polinomial
 polinomiales
 politopos
+Pólya
 Pomerance
 Pontryagin
 poscondición
@@ -662,6 +678,7 @@ primalidad
 primality
 Probá
 procedurales
+proyectarlo
 pseudoaleatorios
 Pseudoinversa
 Pyodide
@@ -700,6 +717,7 @@ renumera
 renumeración
 renumerar
 reordenamiento
+reordenamientos
 reparametrizar
 resolvedor
 resolvedores
@@ -732,6 +750,7 @@ Saxena
 Schafer
 Schauder
 Schlick
+Schoenflies
 Schröder
 Schur
 Schwarz
@@ -789,6 +808,7 @@ sobreimpulso
 sobreyectiva
 sobreyectivas
 sobreyectividad
+sobreyectivo
 softmax
 Sokhotski
 Sorgenfrey
