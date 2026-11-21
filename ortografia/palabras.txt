@@ -40,6 +40,8 @@ arcoconexos
 Arfken
 Argand
 Arithmeticae
+arquimediano
+arquimedianos
 Artin
 Arzelà
 Ascoli
@@ -214,6 +216,7 @@ cuaterniones
 cúbits
 Cuturi
 DAAD
+Daemen
 Dafny
 Darboux
 Daubechies
@@ -279,6 +282,8 @@ Eratóstenes
 ergódica
 ergódico
 Erleben
+ésima
+ésimo
 espaciotemporal
 espectroscopía
 espinores
@@ -310,6 +315,7 @@ fibrado
 Fibrados
 fibrados
 finitamente
+FIPS
 Folland
 Fomin
 Foote
@@ -445,6 +451,7 @@ jacobiano
 Jakob
 Jech
 Jeevanjee
+Jiushao
 Joshi
 Joukowski
 Juntándolo
@@ -472,6 +479,7 @@ Kondrachov
 Königsberg
 Koopman
 Körner
+Körper
 Kramers
 Kress
 Kreveld
@@ -479,6 +487,7 @@ Kreyszig
 Kronig
 Kruskal
 Kullback
+Kummer
 Kunze
 Kuratowski
 Kutta
@@ -563,6 +572,8 @@ modularidad
 Moivre
 Möller
 Monge
+mónico
+mónicos
 Monier
 monomiales
 Montmort
@@ -730,6 +741,7 @@ Riemannian
 riemanniana
 riemannianas
 Riesz
+Rijmen
 Rivest
 Rockafellar
 rotacional
@@ -883,6 +895,7 @@ transfinita
 transfinitas
 transitividad
 Trefethen
+tricotomía
 trillones
 trivectores
 Trumbore
