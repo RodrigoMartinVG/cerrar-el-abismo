@@ -264,3 +264,26 @@ partes:
           - campo: 3d
             texto: distancia de Hausdorff para comparar mallas
         lecturas: Rudin, *Principles of Mathematical Analysis*; Searcóid, *Metric Spaces*.
+      - id: III.13
+        titulo: Aproximación racional y números trascendentes
+        paginas: 44
+        requiere:
+          - III.8
+          - I.10
+        tipo: complementario
+        contenidos:
+          - Fracciones continuas, reducidas y mejores aproximaciones; teorema de Lagrange sobre las fracciones periódicas y ecuación de Pell.
+          - 'Aproximación diofántica: teoremas de Dirichlet y de Hurwitz; la razón áurea como el número peor aproximable.'
+          - 'Números de Liouville. Los números algebraicos son numerables (I.2), así que casi todos los reales son trascendentes; trascendencia de e (Hermite) y de π (Lindemann).'
+          - 'Equidistribución de Weyl: la sucesión nα módulo 1 y su relación con la fracción continua de α.'
+        puente: 'Entrada: `Fraction(math.pi).limit_denominator(1000)`, que da 355/113. El método recorre la fracción continua de π, y la teoría de las mejores aproximaciones dice que ninguna fracción con denominador menor que 16.604 se acerca más.'
+        aplicaciones:
+          - campo: senales
+            texto: por qué la escala musical tiene doce notas, y por qué la siguiente buena tiene 53
+          - campo: ing
+            texto: relaciones de engranajes y calendarios
+          - campo: cripto
+            texto: el ataque de Wiener a RSA con exponente privado chico
+          - campo: 3d
+            texto: muestreo de la esfera con la espiral de Fibonacci y el ángulo áureo
+        lecturas: Khinchin, *Continued Fractions*; Niven, *Irrational Numbers*.

@@ -57,13 +57,13 @@ partes:
         lecturas: 'Strauss, *Partial Differential Equations: An Introduction*; Olver, *Introduction to Partial Differential Equations*.'
       - id: XII.3
         titulo: Funciones especiales y polinomios ortogonales
-        paginas: 48
+        paginas: 44
         requiere:
           - XII.2
-          - IX.10
+          - IX.13
         tipo: nucleo
         contenidos:
-          - Funciones Gamma y Beta; prolongación analítica de la función Gamma.
+          - Función Beta y su relación con la función Gamma de IX.13; fórmula de duplicación de Legendre.
           - 'Ecuaciones con puntos singulares regulares: método de Frobenius.'
           - 'Funciones de Bessel, polinomios y funciones asociadas de Legendre, polinomios de Hermite y de Laguerre: funciones generatrices, fórmulas de Rodrigues y recurrencias.'
           - 'Polinomios ortogonales en general: recurrencia de tres términos y cuadratura gaussiana; la función hipergeométrica como caso unificador.'
@@ -221,7 +221,7 @@ partes:
         tipo: nucleo
         contenidos:
           - Derivada material y leyes de conservación de la masa y del momento.
-          - Ecuaciones de Euler y de Navier–Stokes incompresibles; vorticidad.
+          - Ecuaciones de Euler y de Navier–Stokes incompresibles; vorticidad. Que sus soluciones en tres dimensiones existan y sean suaves es un problema abierto (enunciado).
           - Descomposición de Helmholtz–Hodge y proyección de la presión.
           - Advección semilagrangiana y división de operadores.
         puente: 'Entrada: `velocity -= gradient(pressure)` tras resolver una ecuación de Poisson. Es la proyección de Helmholtz–Hodge (IV.12): quita al campo de velocidades su parte con divergencia, que es lo que hace incompresible al humo de *Stable Fluids*.'

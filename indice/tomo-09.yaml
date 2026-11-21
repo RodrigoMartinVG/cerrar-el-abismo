@@ -77,7 +77,7 @@ partes:
     capitulos:
       - id: IX.4
         titulo: Series de Fourier
-        paginas: 44
+        paginas: 46
         requiere:
           - IX.3
           - III.8
@@ -87,6 +87,7 @@ partes:
           - Convergencia puntual (teorema de Dirichlet), sumabilidad de Cesàro y fenómeno de Gibbs.
           - Convergencia en L² y completitud del sistema trigonométrico.
           - Suavidad de una función y decaimiento de sus coeficientes.
+          - Desigualdad isoperimétrica con la demostración de Hurwitz; ζ(2) = π²/6 con la identidad de Parseval.
         puente: 'Entrada: un ecualizador gráfico de audio. Cada barra multiplica un rango de coeficientes de Fourier, y la suavidad de esa ganancia controla los artefactos (Gibbs) que aparecen en el tiempo.'
         aplicaciones:
           - campo: senales
@@ -140,13 +141,13 @@ partes:
         lecturas: Strichartz, *A Guide to Distribution Theory and Fourier Transforms*; Friedlander y Joshi, *Introduction to the Theory of Distributions*.
       - id: IX.7
         titulo: Muestreo y transformada discreta
-        paginas: 48
+        paginas: 50
         requiere:
           - IX.5
           - II.12
         tipo: nucleo
         contenidos:
-          - Teorema de Nyquist–Shannon y origen del *aliasing*.
+          - Fórmula de sumación de Poisson; teorema de Nyquist–Shannon y origen del *aliasing*.
           - 'Filtros de reconstrucción: caja, tienda, Mitchell–Netravali y Lanczos.'
           - Transformada discreta de Fourier, FFT de Cooley–Tukey y convolución circular; transformada del coseno.
           - Muestreo en 2D, huella anisotrópica de un píxel y muestreo temporal.
@@ -265,7 +266,7 @@ partes:
         lecturas: Needham, *Visual Complex Analysis*; Ahlfors, *Complex Analysis*.
       - id: IX.13
         titulo: Transformadas de Laplace y z
-        paginas: 40
+        paginas: 44
         requiere:
           - IX.10
           - IX.5
@@ -275,6 +276,7 @@ partes:
           - Resolución de ecuaciones diferenciales lineales; función de transferencia y estabilidad.
           - Transformada z y sistemas discretos.
           - Filtros digitales FIR e IIR.
+          - 'La función Gamma: integral de Euler, prolongación analítica, polos y fórmula de reflexión; la transformada de Laplace de tᵃ.'
         puente: 'Entrada: `y = a * y + (1.0 - a) * x` como filtro de suavizado. Es un filtro IIR de un polo: su transformada z dice cómo atenúa cada frecuencia y por qué introduce retardo.'
         aplicaciones:
           - campo: senales
@@ -309,3 +311,30 @@ partes:
           - campo: senales
             texto: audio ambisónico
         lecturas: Atkinson y Han, *Spherical Harmonics and Approximations on the Unit Sphere*; Ramamoorthi y Hanrahan, «An Efficient Representation for Irradiance Environment Maps».
+  - letra: E
+    titulo: Teoría analítica de números
+    capitulos:
+      - id: IX.15
+        titulo: La función zeta y los números primos
+        paginas: 52
+        requiere:
+          - IX.4
+          - IX.7
+          - IX.11
+          - IX.13
+          - I.5
+        tipo: complementario
+        contenidos:
+          - 'Los primos y su distribución: el producto de Euler, los valores ζ(2k), las cotas de Chebyshev y los teoremas de Mertens.'
+          - 'Prolongación analítica y ecuación funcional de ζ, con la función theta y la fórmula de sumación de Poisson; ceros triviales y franja crítica. Qué significa «ζ(−1) = −1/12», y qué no.'
+          - 'Teorema de los números primos, con la demostración de Newman. La fórmula explícita: los ceros de ζ son las frecuencias de la distribución de los primos.'
+          - 'Hipótesis de Riemann: enunciado, formas equivalentes y evidencia numérica. Funciones L de Dirichlet, primos en progresiones aritméticas (enunciado) e hipótesis de Riemann generalizada, con sus consecuencias algorítmicas. Para seguir: formas modulares y la conjetura de Montgomery.'
+        puente: 'Entrada: `while not es_primo_probable(n): n += 2`, la búsqueda de un primo de 1024 bits para una clave RSA. El teorema de los números primos dice cuántas vueltas da en promedio, unas 355; la hipótesis de Riemann generalizada, si es cierta, permite que el test sea determinista, probando solo las bases menores que 2 (ln n)².'
+        aplicaciones:
+          - campo: cripto
+            texto: generación de claves y tests de primalidad; Miller–Rabin, su versión determinista bajo la hipótesis generalizada y el algoritmo AKS
+          - campo: fisica
+            texto: ζ(4) en la ley de Stefan–Boltzmann, ζ(3/2) en la condensación de Bose–Einstein y la regularización por la función zeta en el efecto Casimir
+          - campo: senales
+            texto: la escalera de los primos reconstruida con los ceros de ζ, como una suma de oscilaciones
+        lecturas: "Stein y Shakarchi, *Complex Analysis*; Apostol, *Introduction to Analytic Number Theory*; Edwards, *Riemann's Zeta Function*."

@@ -1,8 +1,8 @@
 # Especificación del proyecto — Matemática y práctica
 
-*Título provisional · Versión 0.7 · 20 de noviembre de 2026*
+*Título provisional · Versión 0.8 · 21 de noviembre de 2026*
 
-Este documento sustituye como plan vigente al «Índice temático revisado» de *Métodos Matemáticos para Ingeniería de Motores 3D* (76 capítulos y un motor didáctico en paralelo). Recoge las decisiones del 20 de noviembre de 2026: una obra de matemática de nivel licenciatura, sin motor, con aplicaciones variadas, pensada para la web y con una misión central: cerrar el abismo entre la matemática que se estudia y la que se usa. La sección 15 indica dónde quedó cada capítulo del índice anterior. La versión 0.2 suma la arista de la física: la matemática que necesitan los físicos, con su propio hilo, su propio puente y un décimo tomo. La versión 0.3 añade el perfil de egreso (2.1): qué puede hacer el lector fuera de la matemática al terminar la obra. La versión 0.4 registra las primeras decisiones de infraestructura (sección 11): el sitio se construye con Astro y Starlight, y el índice temático pasa a ser datos, desde los que se genera la sección 13. El documento vive en el repositorio `cerrar-el-abismo`, en `docs/especificacion.md`; el índice anterior está en `docs/historico/`. La versión 0.5 completa las materias clásicas de una licenciatura en matemática: el álgebra hasta la teoría de Galois, la topología general y algebraica, el análisis funcional y los fundamentos. Suma tres tomos (V, VI y X) y tres capítulos; la colección pasa a trece tomos y se renumera. La versión 0.6 fija el estilo de redacción (7.1) y el orden de escritura: la obra se escribe desde el principio, empezando por I.1 (16). La versión 0.7 cubre huecos de alto impacto con catorce capítulos: órdenes, retículos y álgebras de Boole (en el núcleo), autómatas, teoría espectral de grafos, análisis de algoritmos, programación dinámica, teoría de juegos, geometrías no euclidianas, fractales, control óptimo, martingalas, aprendizaje estadístico, series temporales, transporte óptimo y leyes de conservación.
+Este documento sustituye como plan vigente al «Índice temático revisado» de *Métodos Matemáticos para Ingeniería de Motores 3D* (76 capítulos y un motor didáctico en paralelo). Recoge las decisiones del 20 de noviembre de 2026: una obra de matemática de nivel licenciatura, sin motor, con aplicaciones variadas, pensada para la web y con una misión central: cerrar el abismo entre la matemática que se estudia y la que se usa. La sección 15 indica dónde quedó cada capítulo del índice anterior. La versión 0.2 suma la arista de la física: la matemática que necesitan los físicos, con su propio hilo, su propio puente y un décimo tomo. La versión 0.3 añade el perfil de egreso (2.1): qué puede hacer el lector fuera de la matemática al terminar la obra. La versión 0.4 registra las primeras decisiones de infraestructura (sección 11): el sitio se construye con Astro y Starlight, y el índice temático pasa a ser datos, desde los que se genera la sección 13. El documento vive en el repositorio `cerrar-el-abismo`, en `docs/especificacion.md`; el índice anterior está en `docs/historico/`. La versión 0.5 completa las materias clásicas de una licenciatura en matemática: el álgebra hasta la teoría de Galois, la topología general y algebraica, el análisis funcional y los fundamentos. Suma tres tomos (V, VI y X) y tres capítulos; la colección pasa a trece tomos y se renumera. La versión 0.6 fija el estilo de redacción (7.1) y el orden de escritura: la obra se escribe desde el principio, empezando por I.1 (16). La versión 0.7 cubre huecos de alto impacto con catorce capítulos: órdenes, retículos y álgebras de Boole (en el núcleo), autómatas, teoría espectral de grafos, análisis de algoritmos, programación dinámica, teoría de juegos, geometrías no euclidianas, fractales, control óptimo, martingalas, aprendizaje estadístico, series temporales, transporte óptimo y leyes de conservación. La versión 0.8 incorpora temas clásicos que entran por sus aplicaciones: las demostraciones como programas (I.15), la aproximación racional y los números trascendentes (III.13) y la teoría analítica de números hasta la hipótesis de Riemann (IX.15), además de la aritmética que la criptografía del Tomo I necesitaba y de los grandes problemas abiertos, enunciados donde viven sus objetos.
 
 ## 0. Organización de este documento
 
@@ -72,13 +72,13 @@ Límite: las APIs gráficas, los *shaders*, la arquitectura de un motor y la opt
 
 | Campo | Aplicaciones | Qué puede hacer el lector |
 | --- | --- | --- |
-| Ingeniería [Ing] | 99 | Robótica: cinemática de eslabones y planificación de movimientos (II.14, VII.11). Control: espacio de estados, estabilidad, Bode y Nyquist (VIII.3, VIII.4, IX.9, IX.10). Estructuras con elementos finitos y aerodinámica (XII.8, XII.10). Navegación inercial y filtrado (II.17, XI.15). CAD y fabricación aditiva (VII.6, VII.10, VII.14) |
+| Ingeniería [Ing] | 100 | Robótica: cinemática de eslabones y planificación de movimientos (II.14, VII.11). Control: espacio de estados, estabilidad, Bode y Nyquist (VIII.3, VIII.4, IX.9, IX.10). Estructuras con elementos finitos y aerodinámica (XII.8, XII.10). Navegación inercial y filtrado (II.17, XI.15). CAD y fabricación aditiva (VII.6, VII.10, VII.14) |
 | Datos [Datos] | 61 | Entender por qué funciona lo que se usa como caja negra: regresión, PCA y SVD, optimización convexa y vectores soporte, entrenamiento con diferenciación automática, inferencia bayesiana y MCMC, entropía cruzada (II.8, II.10, IV.5, IV.7, IV.8, XI.8, XI.15, XI.17). Con el itinerario de datos, redes equivariantes (XIII.1) |
 | Biología, medicina, economía y finanzas [Bio/Eco] | 48 | Poblaciones y epidemias, farmacocinética, imagen médica, ensayos clínicos y pruebas diagnósticas (II.6, VIII.1, VIII.4, IX.5, VII.14, XI.1, XI.13). Insumo-producto, utilidad con presupuesto y equilibrio de mercado (II.1, IV.4, VIII.14). Valoración de opciones por Monte Carlo (XI.6) |
-| Señales [Señales] | 32 | Fourier, muestreo, filtros, audio digital y JPEG (IX.4, IX.5, IX.7, IX.13). Con un complementario, ondículas y JPEG 2000 (IX.8) |
-| Criptografía y computación [Cripto] | 27 | RSA y Diffie–Hellman, Reed–Solomon, CRC y AES, colisiones de *hash*, compresión de Huffman y determinismo entre plataformas (I.5, I.6, I.10, I.12, XI.17). Criptografía de retículos con la forma normal de Hermite (V.4) |
+| Señales [Señales] | 34 | Fourier, muestreo, filtros, audio digital y JPEG (IX.4, IX.5, IX.7, IX.13). Con un complementario, ondículas y JPEG 2000 (IX.8) |
+| Criptografía y computación [Cripto] | 29 | RSA y Diffie–Hellman, tests de primalidad, Reed–Solomon, CRC y AES, colisiones de *hash*, compresión de Huffman y determinismo entre plataformas (I.5, I.6, I.10, I.12, XI.17). Criptografía de retículos con la forma normal de Hermite (V.4). Con complementarios, la distribución de los primos y la hipótesis de Riemann (IX.15) |
 
-Los dos hilos fijos tienen 140 aplicaciones ([3D]) y 102 ([Física]). La ingeniería no es hilo fijo ni tiene itinerario, pero tiene casi tantas aplicaciones como la física; si merece un itinerario propio es una decisión abierta (17).
+Los dos hilos fijos tienen 141 aplicaciones ([3D]) y 103 ([Física]). La ingeniería no es hilo fijo ni tiene itinerario, pero tiene casi tantas aplicaciones como la física; si merece un itinerario propio es una decisión abierta (17).
 
 **En suma.** Quien termina la obra puede sentarse con un físico, un programador de gráficos, un ingeniero de control o un científico de datos, entender sus cuentas, aportar rigor y aprender su oficio rápido. Eso abre caminos como la física matemática, la investigación en gráficos, la simulación, la robótica, el aprendizaje automático o las finanzas cuantitativas.
 
@@ -166,7 +166,7 @@ Cada capítulo se marca como **núcleo** o **complementario**. Un capítulo comp
 
 ### 5.4 Fuera de alcance
 
-Quedan fuera las ramas propias de un posgrado o de una orientación específica. Cuando conviene señalarlas, aparecen en el recuadro «Para seguir» del capítulo más cercano. Desde la versión 0.5, la teoría de Galois, la teoría axiomática de conjuntos, la topología general y algebraica y el análisis funcional están dentro de la obra; desde la 0.7, también los autómatas y los lenguajes regulares.
+Quedan fuera las ramas propias de un posgrado o de una orientación específica. Cuando conviene señalarlas, aparecen en el recuadro «Para seguir» del capítulo más cercano. Desde la versión 0.5, la teoría de Galois, la teoría axiomática de conjuntos, la topología general y algebraica y el análisis funcional están dentro de la obra; desde la 0.7, también los autómatas y los lenguajes regulares, y desde la 0.8, la teoría analítica de números hasta la hipótesis de Riemann.
 
 | Tema | Dónde se señala |
 | --- | --- |
@@ -174,12 +174,14 @@ Quedan fuera las ramas propias de un posgrado o de una orientación específica.
 | Geometría algebraica más allá de las bases de Gröbner | V.9 |
 | Gramáticas libres de contexto y análisis sintáctico | I.13 |
 | Teoría de la complejidad computacional | I.14 |
-| Teoría analítica de números | I.5 |
+| Teoría analítica de números avanzada y formas modulares | IX.15 |
 | Álgebra homológica y teoría de categorías | VI.7 |
+| Teoría de nudos | VI.5 |
 | Topología diferencial: transversalidad y teoría de Morse | XIII.4 |
 | Fibrados y teorías gauge | XIII.5 |
 | Álgebra geométrica y álgebra geométrica proyectiva (PGA) | IV.14 |
 | Cálculo estocástico de Itô | XI.10 |
+| Teoría ergódica | XI.8 |
 | Representaciones de grupos no compactos más allá del grupo de Lorentz | XIII.3 |
 | Teoría cuántica de campos | XIII.7 |
 
@@ -217,18 +219,18 @@ La obra tiene trece tomos. Los Tomos I, II y III forman la base; los demás son 
 | --- | --- | --- | --- | --- |
 | I | Fundamentos: lógica, números y estructuras | — | — | 15 |
 | II | Álgebra lineal y el espacio de la práctica | I | — | 17 |
-| III | Análisis en una variable | I | — | 12 |
+| III | Análisis en una variable | I | — | 13 |
 | IV | Análisis en varias variables y optimización | II, III | — | 14 |
 | V | Álgebra: grupos, anillos, módulos y cuerpos | II | — | 9 |
 | VI | Topología | II, III | IV.6, V.2, V.4 | 11 |
 | VII | Geometría | II, III, IV | — | 15 |
 | VIII | Ecuaciones diferenciales, sistemas dinámicos y mecánica | II, III, IV | VII.4 | 14 |
-| IX | Medida, Fourier y variable compleja | III, IV | — | 14 |
+| IX | Medida, Fourier y variable compleja | III, IV | — | 15 |
 | X | Análisis funcional | VI, IX | VII.4 | 8 |
 | XI | Probabilidad, estadística y métodos estocásticos | IV, IX | — | 18 |
 | XII | Ecuaciones en derivadas parciales y medios continuos | VIII, IX, X | XI.9 | 11 |
 | XIII | Simetría, variedades y teoría cuántica | VII, IX, X, XI | XII.3 | 7 |
-| **Total** | | | | **165** |
+| **Total** | | | | **167** |
 
 <!-- /tomos -->
 
@@ -552,7 +554,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Axiomas de Peano, inducción y definición por recursión; principio del buen orden.
 - Los enteros, construidos a partir de ℕ; algoritmo de la división y divisibilidad.
 - Máximo común divisor, algoritmo de Euclides y su versión extendida; identidad de Bézout.
-- Números primos, infinitud de los primos y teorema fundamental de la aritmética.
+- Números primos, infinitud de los primos y teorema fundamental de la aritmética; problemas abiertos que se enuncian con estas palabras: Goldbach, los primos gemelos y la conjetura de Collatz.
 
 **Puente.** Entrada: `while (b != 0) { t = b; b = a % b; a = t; }`. Es el algoritmo de Euclides, y su terminación es el principio del buen orden.
 **Aplicaciones.** [Cripto] aritmética racional exacta · [Señales] períodos de señales combinadas y mínimo común múltiplo · [3D] repetición de texturas con períodos coprimos para evitar patrones visibles.
@@ -570,11 +572,11 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Lecturas.** Halmos, *Naive Set Theory*; Hrbacek y Jech, *Introduction to Set Theory*.
 
 #### I.5 Congruencias y aritmética modular
-*40 págs. · Requiere: I.3 · Núcleo*
-- Congruencias y el anillo ℤ/nℤ; inversos modulares.
-- Teorema chino del resto.
+*44 págs. · Requiere: I.3 · Núcleo*
+- Congruencias y el anillo ℤ/nℤ; inversos modulares; teorema chino del resto.
 - Pequeño teorema de Fermat, función φ de Euler y teorema de Euler.
-- Exponenciación rápida y el problema del logaritmo discreto. Para seguir: teoría analítica de números.
+- Residuos cuadráticos, símbolo de Legendre y ley de reciprocidad cuadrática; raíces cuadradas módulo p.
+- Primos para la criptografía: test de Fermat, números de Carmichael y test de Miller–Rabin. Exponenciación rápida y el problema del logaritmo discreto; la distribución de los primos llega en IX.15.
 
 **Puente.** Entrada: `state = state * 6364136223846793005 + 1442695040888963407`. Un generador congruencial lineal es una iteración en ℤ/2⁶⁴ℤ, y su período lo deciden condiciones de aritmética modular (teorema de Hull–Dobell).
 **Aplicaciones.** [Cripto] RSA, Diffie–Hellman y dígitos de control (ISBN, IBAN) · [3D] semillas reproducibles para mundos procedurales y *hashing* espacial · [Datos] reparto de datos entre servidores por dispersión.
@@ -584,7 +586,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 *44 págs. · Requiere: I.3 · Núcleo*
 - Principios de la suma y del producto; permutaciones y combinaciones.
 - Coeficientes binomiales, teorema del binomio y triángulo de Pascal.
-- Principio de inclusión–exclusión y principio del palomar.
+- Principio de inclusión–exclusión y principio del palomar; el número de Ramsey R(3, 3) = 6.
 - Recurrencias lineales y funciones generatrices.
 
 **Puente.** Entrada: el triángulo de Pascal dentro de un código de curvas de Bézier. Los coeficientes de los polinomios de Bernstein son binomiales, y la recurrencia de Pascal es la que hace funcionar el algoritmo de De Casteljau (aviso de III.9 y VII.6).
@@ -609,15 +611,16 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Grafos, grados, caminos, ciclos y conectividad; árboles y sus caracterizaciones.
 - Recorridos en anchura y en profundidad; árboles generadores mínimos.
 - Caminos mínimos: Dijkstra y A\*, con la demostración de optimalidad para heurísticas admisibles.
-- Grafos planos y fórmula de Euler V − E + F = 2; coloración.
+- Grafos planos y fórmula de Euler V − E + F = 2; coloración y teorema de los cuatro colores (enunciado), demostrado con una computadora.
 
 **Puente.** Entrada: `node.children.forEach(update)` en un grafo de escena. La escena es un árbol y la actualización es un recorrido en profundidad; la fórmula de Euler es la primera comprobación de que una malla cerrada está bien formada.
 **Aplicaciones.** [3D] grafos de escena, validación de mallas y búsqueda de caminos · [Ing] rutas y redes de transporte · [Datos] redes sociales y componentes conexas.
 **Lecturas.** Bondy y Murty, *Graph Theory*; West, *Introduction to Graph Theory*.
 
 #### I.9 Grupos
-*48 págs. · Requiere: I.5 · Núcleo*
+*50 págs. · Requiere: I.5 · Núcleo*
 - Grupos, subgrupos y teorema de Lagrange; grupos cíclicos.
+- La cota del test de Miller–Rabin: los testigos falsos caben en un subgrupo propio, por el teorema de Lagrange.
 - Homomorfismos, subgrupos normales y grupos cociente.
 - Grupos de permutaciones y signo de una permutación.
 - Acciones de grupo, órbitas y estabilizadores; lema de Burnside.
@@ -679,7 +682,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Lenguajes de primer orden, estructuras y satisfacción; consecuencia lógica y deducción formal.
 - Teorema de completitud de Gödel y teorema de compacidad; modelos no estándar.
 - Funciones recursivas, máquinas de Turing y tesis de Church–Turing; indecidibilidad del problema de la parada, teorema de Rice y décimo problema de Hilbert (enunciado).
-- Teoremas de incompletitud de Gödel: idea de la demostración. Para seguir: teoría de la complejidad computacional.
+- Teoremas de incompletitud de Gödel: idea de la demostración.
+- Las clases P y NP y el problema abierto de si son distintas; por qué la criptografía supone que lo son. Para seguir: teoría de la complejidad computacional.
 
 **Puente.** Entrada: `solver.check()` devuelve `unknown` en un resolvedor SMT. Sobre la aritmética entera con multiplicación la satisfacibilidad es indecidible (décimo problema de Hilbert), así que ningún resolvedor puede responder siempre: el `unknown` es un teorema, no un defecto.
 **Aplicaciones.** [Cripto] análisis estático de programas y los límites que impone el teorema de Rice · [Datos] SQL como lógica de primer orden y resolvedores SAT y SMT · [Ing] verificación formal de sistemas críticos con asistentes de demostración.
@@ -690,7 +694,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Deducción natural para la lógica proposicional y de primer orden; la lógica intuicionista: qué se pierde sin el tercero excluido y sin la doble negación, y qué se gana.
 - Cálculo λ simplemente tipado y correspondencia de Curry–Howard: las proposiciones son tipos y las demostraciones son programas; la conjunción es el par, la implicación es la función y la disyunción es la suma, y simplificar una demostración es ejecutar un programa.
 - Tipos dependientes: el cuantificador universal como función y el existencial como par; la igualdad como tipo y la inducción como recursión. La teoría de tipos como fundamento, frente a la teoría de conjuntos de I.4.
-- Asistentes de demostración: el núcleo que verifica, las tácticas que construyen términos y qué garantiza que una computadora acepte una demostración. Para seguir: teoría homotópica de tipos y bibliotecas de matemática formalizada.
+- Asistentes de demostración: el núcleo que verifica, las tácticas que construyen términos y qué garantiza que una computadora acepte una demostración, con el teorema de los cuatro colores como ejemplo. Para seguir: teoría homotópica de tipos y bibliotecas de matemática formalizada.
 
 **Puente.** Entrada: `theorem intercambio (p q : Prop) : p ∧ q → q ∧ p := fun ⟨hp, hq⟩ => ⟨hq, hp⟩` en Lean. La demostración es un programa: la función que recibe un par y lo devuelve invertido, la misma que en Python es `lambda par: (par[1], par[0])`. Que Lean la acepte quiere decir que el tipo de ese programa es el enunciado.
 **Aplicaciones.** [Cripto] código criptográfico verificado, generado junto con su demostración de corrección y usado en navegadores · [Ing] compiladores y núcleos de sistemas operativos verificados para sistemas críticos · [Física] las dimensiones físicas como tipos, que impiden sumar metros con segundos, y la formalización de la física en asistentes de demostración.
@@ -896,7 +900,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 ### Tomo III — Análisis en una variable
 
-*Requiere: Tomo I · 12 capítulos.* El análisis real riguroso, de la completitud de ℝ a las series de funciones, con la aproximación, los métodos numéricos y los espacios métricos que necesitan los tomos siguientes.
+*Requiere: Tomo I · 13 capítulos.* El análisis real riguroso, de la completitud de ℝ a las series de funciones, con la aproximación, los métodos numéricos y los espacios métricos que necesitan los tomos siguientes.
 
 **Parte A — Límites**
 
@@ -1036,6 +1040,17 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Puente.** Entrada: un *solver* iterativo que «a veces no converge». El teorema de Banach da la condición: si la iteración es contractiva, converge desde cualquier punto y con velocidad conocida; si no lo es, no hay garantía.
 **Aplicaciones.** [Ing] convergencia de métodos iterativos · [Datos] distancias y medidas de similitud · [3D] distancia de Hausdorff para comparar mallas.
 **Lecturas.** Rudin, *Principles of Mathematical Analysis*; Searcóid, *Metric Spaces*.
+
+#### III.13 Aproximación racional y números trascendentes
+*44 págs. · Requiere: III.8, I.10 · Complementario*
+- Fracciones continuas, reducidas y mejores aproximaciones; teorema de Lagrange sobre las fracciones periódicas y ecuación de Pell.
+- Aproximación diofántica: teoremas de Dirichlet y de Hurwitz; la razón áurea como el número peor aproximable.
+- Números de Liouville. Los números algebraicos son numerables (I.2), así que casi todos los reales son trascendentes; trascendencia de e (Hermite) y de π (Lindemann).
+- Equidistribución de Weyl: la sucesión nα módulo 1 y su relación con la fracción continua de α.
+
+**Puente.** Entrada: `Fraction(math.pi).limit_denominator(1000)`, que da 355/113. El método recorre la fracción continua de π, y la teoría de las mejores aproximaciones dice que ninguna fracción con denominador menor que 16.604 se acerca más.
+**Aplicaciones.** [Señales] por qué la escala musical tiene doce notas, y por qué la siguiente buena tiene 53 · [Ing] relaciones de engranajes y calendarios · [Cripto] el ataque de Wiener a RSA con exponente privado chico · [3D] muestreo de la esfera con la espiral de Fibonacci y el ángulo áureo.
+**Lecturas.** Khinchin, *Continued Fractions*; Niven, *Irrational Numbers*.
 
 ### Tomo IV — Análisis en varias variables y optimización
 
@@ -1259,7 +1274,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 *44 págs. · Requiere: V.3, II.2 · Núcleo*
 - Extensiones algebraicas y trascendentes; grado y ley de la torre.
 - Cuerpo de descomposición de un polinomio y clausura algebraica, que existe por el lema de Zorn.
-- Números construibles con regla y compás; imposibilidad de duplicar el cubo, trisecar el ángulo y cuadrar el círculo (la trascendencia de π, enunciada).
+- Números construibles con regla y compás; imposibilidad de duplicar el cubo, trisecar el ángulo y cuadrar el círculo (la trascendencia de π, enunciada; III.13 la demuestra).
 - Polígonos regulares construibles y primos de Fermat.
 
 **Puente.** Entrada: `sqrt` es la única raíz que ofrece un núcleo geométrico exacto. Con sumas, productos, cocientes y raíces cuadradas solo se alcanzan números de grado 2ᵏ sobre ℚ: por eso ese núcleo no puede trisecar un ángulo sin salir de esas operaciones.
@@ -1296,6 +1311,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Ley de grupo por cuerdas y tangentes; asociatividad.
 - Curvas sobre cuerpos finitos: teorema de Hasse (enunciado) y conteo de puntos.
 - El logaritmo discreto elíptico: intercambio de claves y firmas (ECDH y ECDSA); por qué ciertas curvas son débiles.
+- Rango de una curva elíptica sobre ℚ y conjetura de Birch y Swinnerton-Dyer (enunciado). Para seguir: modularidad y el último teorema de Fermat.
 
 **Puente.** Entrada: `X25519(private_key, public_key)`, el intercambio de claves de casi toda conexión segura de la web. Es multiplicar un punto de una curva elíptica sobre 𝔽_p por un entero, y su seguridad es la dificultad del logaritmo discreto en ese grupo.
 **Aplicaciones.** [Cripto] TLS, firmas digitales y criptomonedas · [Ing] firmas digitales en sistemas embebidos y actualizaciones seguras de *firmware*.
@@ -1306,7 +1322,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Órdenes monomiales, división multivariable y bases de Gröbner; algoritmo de Buchberger.
 - Eliminación de variables e implicitación de curvas y superficies paramétricas.
 - Variedades afines e ideales; Nullstellensatz de Hilbert (enunciado y uso).
-- Resolución de sistemas polinomiales y su costo. Para seguir: geometría algebraica.
+- Resolución de sistemas polinomiales y su costo. Para seguir: geometría algebraica y el lema de Hensel.
 
 **Puente.** Entrada: `groebner([x**2 + y**2 - 1, x - y], x, y)`. Una base de Gröbner es al sistema polinomial lo que la forma escalonada es al sistema lineal: triangula, y de ella se leen las soluciones.
 **Aplicaciones.** [3D] implicitación de superficies paramétricas para el trazado de rayos · [Ing] cinemática inversa de robots resuelta en forma exacta.
@@ -1353,7 +1369,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 #### VI.4 Espacios métricos completos: Baire, completación y Arzelà–Ascoli
 *36 págs. · Requiere: VI.1 · Núcleo*
-- Completación de un espacio métrico; ℝ como completación de ℚ, revisitada.
+- Completación de un espacio métrico; ℝ como completación de ℚ, revisitada, y los números p-ádicos como otra completación.
 - Teorema de Baire y sus consecuencias: las funciones continuas que no son derivables en ningún punto son genéricas.
 - Teorema de Arzelà–Ascoli, con demostración.
 - Compacidad en espacios de funciones y teorema de Stone–Weierstrass.
@@ -1369,7 +1385,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Homotopía de aplicaciones y de caminos; espacios contráctiles; equivalencia homotópica.
 - Grupo fundamental e invariancia por homotopía.
 - Grupo fundamental del círculo: grado de un lazo y número de vueltas.
-- Retractos y retractos por deformación; teorema de Brouwer en dimensión 2.
+- Retractos y retractos por deformación; teorema de Brouwer en dimensión 2. Para seguir: teoría de nudos.
 
 **Puente.** Entrada: `angle += wrapToPi(newAngle - angle)`, el truco para acumular un ángulo sin saltos de 2π. El ángulo acumulado es el levantamiento del lazo por el recubrimiento ℝ → S¹, y su total dividido por 2π es el número de vueltas: un elemento del grupo fundamental del círculo.
 **Aplicaciones.** [3D] ángulos acumulados y desenrollado de fase en animación · [Física] el efecto Aharonov–Bohm y el grupo fundamental del plano sin un punto · [Ing] número de vueltas y criterio de estabilidad de Nyquist.
@@ -1402,7 +1418,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Superficies como cocientes de polígonos; orientabilidad.
 - Teorema de clasificación de las superficies compactas.
 - Característica de Euler, orientabilidad y género como invariantes completos.
-- Superficies con borde y suma conexa.
+- Superficies con borde y suma conexa. Para seguir: la conjetura de Poincaré, demostrada por Perelman.
 
 **Puente.** Entrada: `genus = (2 - V + E - F) / 2` en un procesador de mallas. La fórmula vale porque toda superficie cerrada orientable es una esfera con g asas, y la característica de Euler V − E + F = 2 − 2g las distingue: el capítulo demuestra ese teorema de clasificación.
 **Aplicaciones.** [3D] género, asas y cortes para parametrizar mallas · [Bio/Eco] topología de las superficies corticales en neuroimagen · [Ing] mallado de superficies para la fabricación.
@@ -1787,7 +1803,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 ### Tomo IX — Medida, Fourier y variable compleja
 
-*Requiere: Tomos III y IV · 14 capítulos.* La integral de Lebesgue y los espacios de funciones, el análisis de Fourier continuo y discreto, las distribuciones, la variable compleja con sus métodos asintóticos, y el análisis en la esfera.
+*Requiere: Tomos III y IV · 15 capítulos.* La integral de Lebesgue y los espacios de funciones, el análisis de Fourier continuo y discreto, las distribuciones, la variable compleja con sus métodos asintóticos, y el análisis en la esfera.
 
 **Parte A — Medida y espacios de funciones**
 
@@ -1827,11 +1843,12 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Parte B — Análisis de Fourier**
 
 #### IX.4 Series de Fourier
-*44 págs. · Requiere: IX.3, III.8 · Núcleo*
+*46 págs. · Requiere: IX.3, III.8 · Núcleo*
 - Coeficientes de Fourier; núcleos de Dirichlet y de Fejér.
 - Convergencia puntual (teorema de Dirichlet), sumabilidad de Cesàro y fenómeno de Gibbs.
 - Convergencia en L² y completitud del sistema trigonométrico.
 - Suavidad de una función y decaimiento de sus coeficientes.
+- Desigualdad isoperimétrica con la demostración de Hurwitz; ζ(2) = π²/6 con la identidad de Parseval.
 
 **Puente.** Entrada: un ecualizador gráfico de audio. Cada barra multiplica un rango de coeficientes de Fourier, y la suavidad de esa ganancia controla los artefactos (Gibbs) que aparecen en el tiempo.
 **Aplicaciones.** [Señales] síntesis y análisis de audio · [Física] cuerdas vibrantes y conducción del calor · [3D] formas de onda para animación procedural.
@@ -1860,8 +1877,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Lecturas.** Strichartz, *A Guide to Distribution Theory and Fourier Transforms*; Friedlander y Joshi, *Introduction to the Theory of Distributions*.
 
 #### IX.7 Muestreo y transformada discreta
-*48 págs. · Requiere: IX.5, II.12 · Núcleo*
-- Teorema de Nyquist–Shannon y origen del *aliasing*.
+*50 págs. · Requiere: IX.5, II.12 · Núcleo*
+- Fórmula de sumación de Poisson; teorema de Nyquist–Shannon y origen del *aliasing*.
 - Filtros de reconstrucción: caja, tienda, Mitchell–Netravali y Lanczos.
 - Transformada discreta de Fourier, FFT de Cooley–Tukey y convolución circular; transformada del coseno.
 - Muestreo en 2D, huella anisotrópica de un píxel y muestreo temporal.
@@ -1928,11 +1945,12 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Lecturas.** Needham, *Visual Complex Analysis*; Ahlfors, *Complex Analysis*.
 
 #### IX.13 Transformadas de Laplace y z
-*40 págs. · Requiere: IX.10, IX.5 · Núcleo*
+*44 págs. · Requiere: IX.10, IX.5 · Núcleo*
 - Transformada de Laplace, propiedades e inversión por residuos.
 - Resolución de ecuaciones diferenciales lineales; función de transferencia y estabilidad.
 - Transformada z y sistemas discretos.
 - Filtros digitales FIR e IIR.
+- La función Gamma: integral de Euler, prolongación analítica, polos y fórmula de reflexión; la transformada de Laplace de tᵃ.
 
 **Puente.** Entrada: `y = a * y + (1.0 - a) * x` como filtro de suavizado. Es un filtro IIR de un polo: su transformada z dice cómo atenúa cada frecuencia y por qué introduce retardo.
 **Aplicaciones.** [Señales] filtros de audio · [Ing] análisis de sistemas de control · [3D] filtrado de las entradas del ratón y del mando.
@@ -1950,6 +1968,19 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Puente.** Entrada: `irradiance = dot(shCoeffs, shBasis(normal))` con nueve coeficientes. Tres bandas de armónicos esféricos bastan para la iluminación difusa porque la convolución con el coseno truncado (Funk–Hecke) atenúa casi a cero las bandas altas.
 **Aplicaciones.** [3D] iluminación difusa basada en imagen y sondas de luz · [Física] gravedad, geodesia y orbitales atómicos · [Señales] audio ambisónico.
 **Lecturas.** Atkinson y Han, *Spherical Harmonics and Approximations on the Unit Sphere*; Ramamoorthi y Hanrahan, «An Efficient Representation for Irradiance Environment Maps».
+
+**Parte E — Teoría analítica de números**
+
+#### IX.15 La función zeta y los números primos
+*52 págs. · Requiere: IX.4, IX.7, IX.11, IX.13, I.5 · Complementario*
+- Los primos y su distribución: el producto de Euler, los valores ζ(2k), las cotas de Chebyshev y los teoremas de Mertens.
+- Prolongación analítica y ecuación funcional de ζ, con la función theta y la fórmula de sumación de Poisson; ceros triviales y franja crítica. Qué significa «ζ(−1) = −1/12», y qué no.
+- Teorema de los números primos, con la demostración de Newman. La fórmula explícita: los ceros de ζ son las frecuencias de la distribución de los primos.
+- Hipótesis de Riemann: enunciado, formas equivalentes y evidencia numérica. Funciones L de Dirichlet, primos en progresiones aritméticas (enunciado) e hipótesis de Riemann generalizada, con sus consecuencias algorítmicas. Para seguir: formas modulares y la conjetura de Montgomery.
+
+**Puente.** Entrada: `while not es_primo_probable(n): n += 2`, la búsqueda de un primo de 1024 bits para una clave RSA. El teorema de los números primos dice cuántas vueltas da en promedio, unas 355; la hipótesis de Riemann generalizada, si es cierta, permite que el test sea determinista, probando solo las bases menores que 2 (ln n)².
+**Aplicaciones.** [Cripto] generación de claves y tests de primalidad; Miller–Rabin, su versión determinista bajo la hipótesis generalizada y el algoritmo AKS · [Física] ζ(4) en la ley de Stefan–Boltzmann, ζ(3/2) en la condensación de Bose–Einstein y la regularización por la función zeta en el efecto Casimir · [Señales] la escalera de los primos reconstruida con los ceros de ζ, como una suma de oscilaciones.
+**Lecturas.** Stein y Shakarchi, *Complex Analysis*; Apostol, *Introduction to Analytic Number Theory*; Edwards, *Riemann's Zeta Function*.
 
 ### Tomo X — Análisis funcional
 
@@ -2126,7 +2157,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 #### XI.7 Cuasi-Monte Carlo
 *36 págs. · Requiere: XI.6 · Complementario*
 - Discrepancia y desigualdad de Koksma–Hlawka.
-- Inverso radical; secuencias de Halton y de Sobol; redes digitales.
+- Inverso radical; secuencias de Halton y de Sobol; redes digitales; sucesiones de Kronecker con la razón áurea (III.13 demuestra su equidistribución).
 - Cuasi-Monte Carlo aleatorizado: desplazamientos y mezclas de Owen.
 - Cuándo y por qué supera a Monte Carlo.
 
@@ -2139,7 +2170,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Cadenas de Markov finitas: matrices estocásticas y clasificación de estados.
 - Distribución estacionaria y teorema de Perron–Frobenius.
 - Convergencia y tiempos de mezcla.
-- Algoritmo de Metropolis–Hastings y muestreo de Gibbs.
+- Algoritmo de Metropolis–Hastings y muestreo de Gibbs. Para seguir: teoría ergódica.
 
 **Puente.** Entrada: el vector de PageRank calculado por iteración de potencias. Es la distribución estacionaria de un paseo aleatorio por la web, y Perron–Frobenius garantiza que existe y es única gracias al factor de amortiguamiento.
 **Aplicaciones.** [Datos] PageRank e inferencia bayesiana por MCMC · [3D] generación procedural con cadenas de Markov · [Física] modelo de Ising.
@@ -2286,8 +2317,8 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Lecturas.** Strauss, *Partial Differential Equations: An Introduction*; Olver, *Introduction to Partial Differential Equations*.
 
 #### XII.3 Funciones especiales y polinomios ortogonales
-*48 págs. · Requiere: XII.2, IX.10 · Núcleo*
-- Funciones Gamma y Beta; prolongación analítica de la función Gamma.
+*44 págs. · Requiere: XII.2, IX.13 · Núcleo*
+- Función Beta y su relación con la función Gamma de IX.13; fórmula de duplicación de Legendre.
 - Ecuaciones con puntos singulares regulares: método de Frobenius.
 - Funciones de Bessel, polinomios y funciones asociadas de Legendre, polinomios de Hermite y de Laguerre: funciones generatrices, fórmulas de Rodrigues y recurrencias.
 - Polinomios ortogonales en general: recurrencia de tres términos y cuadratura gaussiana; la función hipergeométrica como caso unificador.
@@ -2369,7 +2400,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 #### XII.10 Mecánica de fluidos
 *48 págs. · Requiere: XII.6, IV.12 · Núcleo*
 - Derivada material y leyes de conservación de la masa y del momento.
-- Ecuaciones de Euler y de Navier–Stokes incompresibles; vorticidad.
+- Ecuaciones de Euler y de Navier–Stokes incompresibles; vorticidad. Que sus soluciones en tres dimensiones existan y sean suaves es un problema abierto (enunciado).
 - Descomposición de Helmholtz–Hodge y proyección de la presión.
 - Advección semilagrangiana y división de operadores.
 
@@ -2469,7 +2500,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Estados como rayos de un espacio de Hilbert, observables autoadjuntos y regla de Born como medida de probabilidad.
 - Evolución unitaria y ecuación de Schrödinger; imágenes de Schrödinger y de Heisenberg; de los corchetes de Poisson a los conmutadores.
 - Oscilador armónico con operadores escalera (funciones de Hermite) y átomo de hidrógeno (armónicos esféricos y polinomios de Laguerre).
-- Sistemas compuestos: producto tensorial, entrelazamiento y matrices densidad. Para seguir: teoría cuántica de campos.
+- Sistemas compuestos: producto tensorial, entrelazamiento y matrices densidad. Para seguir: teoría cuántica de campos y el problema de Yang–Mills.
 
 **Puente.** Entrada: `state = kron(q0, q1)` en un simulador de computación cuántica, y |ψ⟩ = (|00⟩ + |11⟩)/√2 en un libro. Un sistema de dos cúbits vive en el producto tensorial (II.11); un estado está entrelazado exactamente cuando no es un tensor descomponible, y esa es la propiedad que aprovecha la computación cuántica.
 **Aplicaciones.** [Cripto] computación cuántica y distribución cuántica de claves · [Física] espectroscopía y estructura del átomo · [Bio/Eco] química cuántica de moléculas.
@@ -2485,51 +2516,51 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 
 | Tomo | Caps. | Págs. | Caps. de núcleo | Págs. de núcleo | Aplicaciones [3D] | Aplicaciones [Física] |
 | --- | --- | --- | --- | --- | --- | --- |
-| I | 15 | 632 | 12 | 508 | 13 de 50 (26 %) | 5 de 50 (10 %) |
+| I | 15 | 638 | 12 | 514 | 13 de 50 (26 %) | 5 de 50 (10 %) |
 | II | 17 | 672 | 16 | 632 | 16 de 56 (29 %) | 12 de 56 (21 %) |
-| III | 12 | 520 | 11 | 484 | 11 de 37 (30 %) | 6 de 37 (16 %) |
+| III | 13 | 564 | 11 | 484 | 12 de 41 (29 %) | 6 de 41 (15 %) |
 | IV | 14 | 564 | 12 | 484 | 13 de 43 (30 %) | 7 de 43 (16 %) |
 | V | 9 | 396 | 7 | 308 | 7 de 22 (32 %) | 3 de 22 (14 %) |
 | VI | 11 | 452 | 7 | 300 | 10 de 34 (29 %) | 7 de 34 (21 %) |
 | VII | 15 | 640 | 13 | 560 | 15 de 46 (33 %) | 7 de 46 (15 %) |
 | VIII | 14 | 592 | 10 | 440 | 11 de 44 (25 %) | 12 de 44 (27 %) |
-| IX | 14 | 620 | 11 | 500 | 10 de 43 (23 %) | 11 de 43 (26 %) |
+| IX | 15 | 680 | 11 | 508 | 10 de 46 (22 %) | 12 de 46 (26 %) |
 | X | 8 | 348 | 4 | 176 | 5 de 24 (21 %) | 6 de 24 (25 %) |
 | XI | 18 | 776 | 11 | 488 | 14 de 56 (25 %) | 9 de 56 (16 %) |
-| XII | 11 | 500 | 7 | 324 | 10 de 33 (30 %) | 10 de 33 (30 %) |
+| XII | 11 | 496 | 7 | 320 | 10 de 33 (30 %) | 10 de 33 (30 %) |
 | XIII | 7 | 324 | 0 | 0 | 5 de 21 (24 %) | 7 de 21 (33 %) |
-| **Total** | **165** | **7.036** | **121** | **5.204** | **140 de 509 (28 %)** | **102 de 509 (20 %)** |
+| **Total** | **167** | **7.142** | **121** | **5.214** | **141 de 516 (27 %)** | **103 de 516 (20 %)** |
 
-- Los capítulos tienen entre 28 y 52 páginas, con una media de 42,6.
-- Cada tomo suma además unas 50 páginas de material propio: «Lo que este tomo importa», «Lo que este tomo exporta», notación y convenciones, diccionario academia–práctica del tomo, soluciones de los ejercicios impares e índice analítico. En total, unas 650 páginas, para unas 7.686 en toda la obra.
+- Los capítulos tienen entre 28 y 52 páginas, con una media de 42,8.
+- Cada tomo suma además unas 50 páginas de material propio: «Lo que este tomo importa», «Lo que este tomo exporta», notación y convenciones, diccionario academia–práctica del tomo, soluciones de los ejercicios impares e índice analítico. En total, unas 650 páginas, para unas 7.792 en toda la obra.
 - El hilo 3D ocupa entre el 21 % y el 33 % de las aplicaciones de cada tomo, y el de física entre el 10 % y el 33 %: ninguno supera el límite de un tercio (9.2).
 - El Tomo XIII no tiene capítulos de núcleo: todo él es complementario en el sentido de 5.3.
 
 | Campo (9.1) | Aplicaciones | Proporción |
 | --- | --- | --- |
-| [3D] | 140 | 28 % |
-| [Física] | 102 | 20 % |
-| [Ing] | 99 | 19 % |
+| [3D] | 141 | 27 % |
+| [Física] | 103 | 20 % |
+| [Ing] | 100 | 19 % |
 | [Datos] | 61 | 12 % |
 | [Bio/Eco] | 48 | 9 % |
-| [Señales] | 32 | 6 % |
-| [Cripto] | 27 | 5 % |
-| **Total** | **509** | **100 %** |
+| [Señales] | 34 | 7 % |
+| [Cripto] | 29 | 6 % |
+| **Total** | **516** | **100 %** |
 
 | Itinerario (9.6) | Caps. | Págs. de capítulos |
 | --- | --- | --- |
-| Núcleo | 121 | 5.204 |
-| Física | 141 | 6.092 |
-| Gráficos y 3D | 135 | 5.776 |
-| Datos | 132 | 5.644 |
+| Núcleo | 121 | 5.214 |
+| Física | 141 | 6.102 |
+| Gráficos y 3D | 135 | 5.786 |
+| Datos | 132 | 5.654 |
 
-Los cuatro itinerarios están cerrados bajo dependencias: cada capítulo que incluyen tiene todos sus requisitos dentro del mismo itinerario. El de física deja fuera 24 capítulos: I.13, I.14, I.15, II.13, III.11, IV.9, V.8, V.9, VI.8, VI.9, VI.10, VI.11, VII.15, VIII.6, VIII.7, VIII.10, IX.8, X.4, X.7, XI.7, XI.11, XI.14, XI.16 y XI.18.
+Los cuatro itinerarios están cerrados bajo dependencias: cada capítulo que incluyen tiene todos sus requisitos dentro del mismo itinerario. El de física deja fuera 26 capítulos: I.13, I.14, I.15, II.13, III.11, III.13, IV.9, V.8, V.9, VI.8, VI.9, VI.10, VI.11, VII.15, VIII.6, VIII.7, VIII.10, IX.8, IX.15, X.4, X.7, XI.7, XI.11, XI.14, XI.16 y XI.18.
 
 <!-- /extension -->
 
 La ingeniería tiene casi tantas aplicaciones como la física sin ser un hilo fijo (2.1 y 17).
 
-El índice del motor sumaba 3.384 páginas, y la versión 0.1 de esta especificación, 4.536. La arista de la física añade 680 páginas: 224 entran en el núcleo, que pasa de 4.072 a 4.296, y el resto son complementarias, sobre todo el Tomo XIII. Las materias clásicas de la versión 0.5 (álgebra, topología, análisis funcional y fundamentos) añaden 1.244 páginas: 868 entran en el núcleo, que pasa de 4.296 a 5.164. Los catorce capítulos de alto impacto de la versión 0.7 añaden 536 páginas, de las cuales 40 entran en el núcleo, que llega a 5.204. El capítulo I.15, complementario, añade 40 más.
+El índice del motor sumaba 3.384 páginas, y la versión 0.1 de esta especificación, 4.536. La arista de la física añade 680 páginas: 224 entran en el núcleo, que pasa de 4.072 a 4.296, y el resto son complementarias, sobre todo el Tomo XIII. Las materias clásicas de la versión 0.5 (álgebra, topología, análisis funcional y fundamentos) añaden 1.244 páginas: 868 entran en el núcleo, que pasa de 4.296 a 5.164. Los catorce capítulos de alto impacto de la versión 0.7 añaden 536 páginas, de las cuales 40 entran en el núcleo, que llega a 5.204. La versión 0.8 añade tres capítulos complementarios (I.15, III.13 e IX.15) y algunas líneas de núcleo en I.5, I.9, IX.4 e IX.7: 146 páginas, 10 de ellas en el núcleo, que llega a 5.214. La función Gamma pasa de XII.3 a IX.13 sin cambiar el total.
 
 ## 15. Correspondencia con el índice anterior
 
@@ -2658,8 +2689,8 @@ La obra se escribe desde el principio, en el orden de lectura. Así cada capítu
 | Lenguajes del código | Python (Pyodide) para el cálculo en vivo y TypeScript para el sitio y las figuras |
 | Soluciones de los ejercicios pares | Espacio para docentes |
 | Capítulos complementarios en la primera edición | Publicar primero el recorrido de núcleo y después los complementarios |
-| Itinerario de ingeniería | La ingeniería tiene 99 aplicaciones, casi tantas como la física (102), pero no tiene itinerario (2.1). Propuesta: núcleo, más IV.14, VIII.7, XI.7, XII.9 y XIII.4 (termodinámica, control, diseño de experimentos, estructuras y espacios de configuración); son 126 capítulos y 5.416 páginas, cerrado bajo dependencias |
-| Extensión | Unas 7.036 páginas de capítulos, 5.204 de núcleo. Si se quiere reducir el núcleo, la primera palanca son los capítulos clásicos que ningún otro capítulo de núcleo necesita (V.7, VI.3 y VI.6: unas 120 páginas); la segunda, bajar la media de páginas por capítulo |
+| Itinerario de ingeniería | La ingeniería tiene 100 aplicaciones, casi tantas como la física (103), pero no tiene itinerario (2.1). Propuesta: núcleo, más IV.14, VIII.7, XI.7, XII.9 y XIII.4 (termodinámica, control, diseño de experimentos, estructuras y espacios de configuración); son 126 capítulos y 5.416 páginas, cerrado bajo dependencias |
+| Extensión | Unas 7.142 páginas de capítulos, 5.214 de núcleo. Si se quiere reducir el núcleo, la primera palanca son los capítulos clásicos que ningún otro capítulo de núcleo necesita (V.7, VI.3 y VI.6: unas 120 páginas); la segunda, bajar la media de páginas por capítulo |
 | Signatura de la métrica | (−, +, +, +), con traducción explícita a (+, −, −, −) |
 | Idioma | Español; traducción al inglés por decidir |
 | Revisión externa | Definir quiénes revisan las demostraciones y con qué estudiantes se prueba el primer capítulo |

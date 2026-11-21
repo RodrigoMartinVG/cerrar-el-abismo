@@ -10,7 +10,7 @@ repite.
   convenciones (12) y plan de trabajo (16).
 - **Por qué está hecho así:** [docs/decisiones](docs/decisiones/README.md). Una decisión va antes que el código
   cuando sus consecuencias son largas.
-- **El índice temático:** los datos están en `indice/` (13 tomos, 165 capítulos) y su código en `packages/indice`
+- **El índice temático:** los datos están en `indice/` (13 tomos, 167 capítulos) y su código en `packages/indice`
   (decisión 0002).
 - **El sitio:** `site/`, con Astro y Starlight (decisión 0001).
 - **Los capítulos escritos:** `site/src/content/docs/capitulos/` (uno por archivo, `i-1.md`). Cómo se escriben:

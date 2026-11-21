@@ -58,7 +58,7 @@ partes:
           - Axiomas de Peano, inducción y definición por recursión; principio del buen orden.
           - Los enteros, construidos a partir de ℕ; algoritmo de la división y divisibilidad.
           - Máximo común divisor, algoritmo de Euclides y su versión extendida; identidad de Bézout.
-          - Números primos, infinitud de los primos y teorema fundamental de la aritmética.
+          - 'Números primos, infinitud de los primos y teorema fundamental de la aritmética; problemas abiertos que se enuncian con estas palabras: Goldbach, los primos gemelos y la conjetura de Collatz.'
         puente: 'Entrada: `while (b != 0) { t = b; b = a % b; a = t; }`. Es el algoritmo de Euclides, y su terminación es el principio del buen orden.'
         aplicaciones:
           - campo: cripto
@@ -90,15 +90,15 @@ partes:
         lecturas: Halmos, *Naive Set Theory*; Hrbacek y Jech, *Introduction to Set Theory*.
       - id: I.5
         titulo: Congruencias y aritmética modular
-        paginas: 40
+        paginas: 44
         requiere:
           - I.3
         tipo: nucleo
         contenidos:
-          - Congruencias y el anillo ℤ/nℤ; inversos modulares.
-          - Teorema chino del resto.
+          - Congruencias y el anillo ℤ/nℤ; inversos modulares; teorema chino del resto.
           - Pequeño teorema de Fermat, función φ de Euler y teorema de Euler.
-          - 'Exponenciación rápida y el problema del logaritmo discreto. Para seguir: teoría analítica de números.'
+          - 'Residuos cuadráticos, símbolo de Legendre y ley de reciprocidad cuadrática; raíces cuadradas módulo p.'
+          - 'Primos para la criptografía: test de Fermat, números de Carmichael y test de Miller–Rabin. Exponenciación rápida y el problema del logaritmo discreto; la distribución de los primos llega en IX.15.'
         puente: 'Entrada: `state = state * 6364136223846793005 + 1442695040888963407`. Un generador congruencial lineal es una iteración en ℤ/2⁶⁴ℤ, y su período lo deciden condiciones de aritmética modular (teorema de Hull–Dobell).'
         aplicaciones:
           - campo: cripto
@@ -117,7 +117,7 @@ partes:
         contenidos:
           - Principios de la suma y del producto; permutaciones y combinaciones.
           - Coeficientes binomiales, teorema del binomio y triángulo de Pascal.
-          - Principio de inclusión–exclusión y principio del palomar.
+          - Principio de inclusión–exclusión y principio del palomar; el número de Ramsey R(3, 3) = 6.
           - Recurrencias lineales y funciones generatrices.
         puente: 'Entrada: el triángulo de Pascal dentro de un código de curvas de Bézier. Los coeficientes de los polinomios de Bernstein son binomiales, y la recurrencia de Pascal es la que hace funcionar el algoritmo de De Casteljau (aviso de III.9 y VII.6).'
         aplicaciones:
@@ -165,7 +165,7 @@ partes:
           - Grafos, grados, caminos, ciclos y conectividad; árboles y sus caracterizaciones.
           - Recorridos en anchura y en profundidad; árboles generadores mínimos.
           - "Caminos mínimos: Dijkstra y A\\*, con la demostración de optimalidad para heurísticas admisibles."
-          - Grafos planos y fórmula de Euler V − E + F = 2; coloración.
+          - Grafos planos y fórmula de Euler V − E + F = 2; coloración y teorema de los cuatro colores (enunciado), demostrado con una computadora.
         puente: 'Entrada: `node.children.forEach(update)` en un grafo de escena. La escena es un árbol y la actualización es un recorrido en profundidad; la fórmula de Euler es la primera comprobación de que una malla cerrada está bien formada.'
         aplicaciones:
           - campo: 3d
@@ -177,12 +177,13 @@ partes:
         lecturas: Bondy y Murty, *Graph Theory*; West, *Introduction to Graph Theory*.
       - id: I.9
         titulo: Grupos
-        paginas: 48
+        paginas: 50
         requiere:
           - I.5
         tipo: nucleo
         contenidos:
           - Grupos, subgrupos y teorema de Lagrange; grupos cíclicos.
+          - 'La cota del test de Miller–Rabin: los testigos falsos caben en un subgrupo propio, por el teorema de Lagrange.'
           - Homomorfismos, subgrupos normales y grupos cociente.
           - Grupos de permutaciones y signo de una permutación.
           - Acciones de grupo, órbitas y estabilizadores; lema de Burnside.
@@ -302,7 +303,8 @@ partes:
           - Lenguajes de primer orden, estructuras y satisfacción; consecuencia lógica y deducción formal.
           - Teorema de completitud de Gödel y teorema de compacidad; modelos no estándar.
           - Funciones recursivas, máquinas de Turing y tesis de Church–Turing; indecidibilidad del problema de la parada, teorema de Rice y décimo problema de Hilbert (enunciado).
-          - 'Teoremas de incompletitud de Gödel: idea de la demostración. Para seguir: teoría de la complejidad computacional.'
+          - 'Teoremas de incompletitud de Gödel: idea de la demostración.'
+          - 'Las clases P y NP y el problema abierto de si son distintas; por qué la criptografía supone que lo son. Para seguir: teoría de la complejidad computacional.'
         puente: 'Entrada: `solver.check()` devuelve `unknown` en un resolvedor SMT. Sobre la aritmética entera con multiplicación la satisfacibilidad es indecidible (décimo problema de Hilbert), así que ningún resolvedor puede responder siempre: el `unknown` es un teorema, no un defecto.'
         aplicaciones:
           - campo: cripto
@@ -324,7 +326,7 @@ partes:
           - 'Deducción natural para la lógica proposicional y de primer orden; la lógica intuicionista: qué se pierde sin el tercero excluido y sin la doble negación, y qué se gana.'
           - 'Cálculo λ simplemente tipado y correspondencia de Curry–Howard: las proposiciones son tipos y las demostraciones son programas; la conjunción es el par, la implicación es la función y la disyunción es la suma, y simplificar una demostración es ejecutar un programa.'
           - 'Tipos dependientes: el cuantificador universal como función y el existencial como par; la igualdad como tipo y la inducción como recursión. La teoría de tipos como fundamento, frente a la teoría de conjuntos de I.4.'
-          - 'Asistentes de demostración: el núcleo que verifica, las tácticas que construyen términos y qué garantiza que una computadora acepte una demostración. Para seguir: teoría homotópica de tipos y bibliotecas de matemática formalizada.'
+          - 'Asistentes de demostración: el núcleo que verifica, las tácticas que construyen términos y qué garantiza que una computadora acepte una demostración, con el teorema de los cuatro colores como ejemplo. Para seguir: teoría homotópica de tipos y bibliotecas de matemática formalizada.'
         puente: 'Entrada: `theorem intercambio (p q : Prop) : p ∧ q → q ∧ p := fun ⟨hp, hq⟩ => ⟨hq, hp⟩` en Lean. La demostración es un programa: la función que recibe un par y lo devuelve invertido, la misma que en Python es `lambda par: (par[1], par[0])`. Que Lean la acepte quiere decir que el tipo de ese programa es el enunciado.'
         aplicaciones:
           - campo: cripto

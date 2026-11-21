@@ -106,7 +106,7 @@ partes:
         contenidos:
           - Extensiones algebraicas y trascendentes; grado y ley de la torre.
           - Cuerpo de descomposición de un polinomio y clausura algebraica, que existe por el lema de Zorn.
-          - Números construibles con regla y compás; imposibilidad de duplicar el cubo, trisecar el ángulo y cuadrar el círculo (la trascendencia de π, enunciada).
+          - Números construibles con regla y compás; imposibilidad de duplicar el cubo, trisecar el ángulo y cuadrar el círculo (la trascendencia de π, enunciada; III.13 la demuestra).
           - Polígonos regulares construibles y primos de Fermat.
         puente: 'Entrada: `sqrt` es la única raíz que ofrece un núcleo geométrico exacto. Con sumas, productos, cocientes y raíces cuadradas solo se alcanzan números de grado 2ᵏ sobre ℚ: por eso ese núcleo no puede trisecar un ángulo sin salir de esas operaciones.'
         aplicaciones:
@@ -170,6 +170,7 @@ partes:
           - Ley de grupo por cuerdas y tangentes; asociatividad.
           - 'Curvas sobre cuerpos finitos: teorema de Hasse (enunciado) y conteo de puntos.'
           - 'El logaritmo discreto elíptico: intercambio de claves y firmas (ECDH y ECDSA); por qué ciertas curvas son débiles.'
+          - 'Rango de una curva elíptica sobre ℚ y conjetura de Birch y Swinnerton-Dyer (enunciado). Para seguir: modularidad y el último teorema de Fermat.'
         puente: 'Entrada: `X25519(private_key, public_key)`, el intercambio de claves de casi toda conexión segura de la web. Es multiplicar un punto de una curva elíptica sobre 𝔽_p por un entero, y su seguridad es la dificultad del logaritmo discreto en ese grupo.'
         aplicaciones:
           - campo: cripto
@@ -187,7 +188,7 @@ partes:
           - Órdenes monomiales, división multivariable y bases de Gröbner; algoritmo de Buchberger.
           - Eliminación de variables e implicitación de curvas y superficies paramétricas.
           - Variedades afines e ideales; Nullstellensatz de Hilbert (enunciado y uso).
-          - 'Resolución de sistemas polinomiales y su costo. Para seguir: geometría algebraica.'
+          - 'Resolución de sistemas polinomiales y su costo. Para seguir: geometría algebraica y el lema de Hensel.'
         puente: 'Entrada: `groebner([x**2 + y**2 - 1, x - y], x, y)`. Una base de Gröbner es al sistema polinomial lo que la forma escalonada es al sistema lineal: triangula, y de ella se leen las soluciones.'
         aplicaciones:
           - campo: 3d

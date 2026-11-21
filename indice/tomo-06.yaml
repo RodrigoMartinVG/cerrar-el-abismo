@@ -83,7 +83,7 @@ partes:
           - VI.1
         tipo: nucleo
         contenidos:
-          - Completación de un espacio métrico; ℝ como completación de ℚ, revisitada.
+          - Completación de un espacio métrico; ℝ como completación de ℚ, revisitada, y los números p-ádicos como otra completación.
           - 'Teorema de Baire y sus consecuencias: las funciones continuas que no son derivables en ningún punto son genéricas.'
           - Teorema de Arzelà–Ascoli, con demostración.
           - Compacidad en espacios de funciones y teorema de Stone–Weierstrass.
@@ -110,7 +110,7 @@ partes:
           - Homotopía de aplicaciones y de caminos; espacios contráctiles; equivalencia homotópica.
           - Grupo fundamental e invariancia por homotopía.
           - 'Grupo fundamental del círculo: grado de un lazo y número de vueltas.'
-          - Retractos y retractos por deformación; teorema de Brouwer en dimensión 2.
+          - 'Retractos y retractos por deformación; teorema de Brouwer en dimensión 2. Para seguir: teoría de nudos.'
         puente: 'Entrada: `angle += wrapToPi(newAngle - angle)`, el truco para acumular un ángulo sin saltos de 2π. El ángulo acumulado es el levantamiento del lazo por el recubrimiento ℝ → S¹, y su total dividido por 2π es el número de vueltas: un elemento del grupo fundamental del círculo.'
         aplicaciones:
           - campo: 3d
@@ -173,7 +173,7 @@ partes:
           - Superficies como cocientes de polígonos; orientabilidad.
           - Teorema de clasificación de las superficies compactas.
           - Característica de Euler, orientabilidad y género como invariantes completos.
-          - Superficies con borde y suma conexa.
+          - 'Superficies con borde y suma conexa. Para seguir: la conjetura de Poincaré, demostrada por Perelman.'
         puente: 'Entrada: `genus = (2 - V + E - F) / 2` en un procesador de mallas. La fórmula vale porque toda superficie cerrada orientable es una esfera con g asas, y la característica de Euler V − E + F = 2 − 2g las distingue: el capítulo demuestra ese teorema de clasificación.'
         aplicaciones:
           - campo: 3d

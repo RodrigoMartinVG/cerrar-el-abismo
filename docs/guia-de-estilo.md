@@ -59,7 +59,7 @@ qué nivel está cada afirmación. Hay tres clases de licencias, y cada una se d
   definición de continuidad para practicar la negación de cuantificadores. Se dice que no hace falta entender su
   contenido para seguir el argumento.
 
-Dos reglas acompañan a las tres:
+Tres reglas acompañan a las tres clases:
 
 - **Una postura se declara como postura.** Cuando una elección podría haberse hecho de otra manera (tomar la
   inducción como axioma, que en la teoría de conjuntos es un teorema), el texto lo dice.
@@ -67,6 +67,9 @@ Dos reglas acompañan a las tres:
   motivar o ilustrar, pero lo que la demostración necesita de verdad tiene que estar demostrado, o anunciado con el
   capítulo donde se demuestra. Si un argumento solo convence (el dibujo de los impares, un intercambio de sumas «porque
   se suman los mismos términos»), se dice que convence y no se lo presenta como demostración.
+- **Un resultado condicional se enuncia como tal.** Si un teorema depende de una conjetura, como los que valen «si la
+  hipótesis de Riemann generalizada es cierta», la conjetura va en el enunciado, y todo lo que se deduce de él hereda la
+  condición.
 
 La forma es siempre una frase de prosa, en el lugar, y no un recuadro: llenar el texto de avisos lo vuelve ilegible.
 El único recuadro es el del campo `supone`, uno por capítulo.

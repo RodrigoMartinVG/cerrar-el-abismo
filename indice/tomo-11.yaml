@@ -149,7 +149,7 @@ partes:
         tipo: complementario
         contenidos:
           - Discrepancia y desigualdad de Koksma–Hlawka.
-          - Inverso radical; secuencias de Halton y de Sobol; redes digitales.
+          - Inverso radical; secuencias de Halton y de Sobol; redes digitales; sucesiones de Kronecker con la razón áurea (III.13 demuestra su equidistribución).
           - 'Cuasi-Monte Carlo aleatorizado: desplazamientos y mezclas de Owen.'
           - Cuándo y por qué supera a Monte Carlo.
         puente: 'Entrada: `jitter = vec2(halton(i % 8, 2), halton(i % 8, 3))` en el antialiasing temporal. Las secuencias de baja discrepancia cubren el píxel de forma pareja en pocos fotogramas, y Koksma–Hlawka cuantifica la ventaja.'
@@ -172,7 +172,7 @@ partes:
           - 'Cadenas de Markov finitas: matrices estocásticas y clasificación de estados.'
           - Distribución estacionaria y teorema de Perron–Frobenius.
           - Convergencia y tiempos de mezcla.
-          - Algoritmo de Metropolis–Hastings y muestreo de Gibbs.
+          - 'Algoritmo de Metropolis–Hastings y muestreo de Gibbs. Para seguir: teoría ergódica.'
         puente: 'Entrada: el vector de PageRank calculado por iteración de potencias. Es la distribución estacionaria de un paseo aleatorio por la web, y Perron–Frobenius garantiza que existe y es única gracias al factor de amortiguamiento.'
         aplicaciones:
           - campo: datos

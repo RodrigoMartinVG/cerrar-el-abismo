@@ -2,6 +2,7 @@
 # Términos técnicos, apellidos de autores y siglas que el diccionario general no trae. Una palabra por línea.
 # Antes de agregar una palabra, comprobar que no es una errata: `npm run ortografia` muestra sugerencias.
 abelianos
+ádicos
 advección
 Advección
 adyacencia
@@ -23,6 +24,7 @@ antisimetría
 antisimétrica
 antisimétricos
 Apostol
+aproximable
 arcoconexión
 arcoconexos
 Arfken
@@ -35,6 +37,7 @@ asociatividad
 Atiyah
 atractor
 atractores
+aureum
 autoadjunto
 Autoadjunto
 autoadjuntos
@@ -57,6 +60,7 @@ Baraff
 Barbič
 baricéntricas
 Barto
+Basilea
 bayesiana
 bayesianos
 Bendixson
@@ -130,6 +134,7 @@ CodeMirror
 codominio
 codominios
 cofactores
+Collatz
 Colorimetría
 comilla
 compactificación
@@ -188,6 +193,7 @@ Desargues
 descomponible
 descomponibles
 deserializar
+deslizador
 Devaney
 Devroye
 dextrógiro
@@ -221,12 +227,15 @@ enumerables
 epidemiológicas
 epidemiológicos
 epipolar
+equidistribución
 equioscilación
 equipotencia
 equipotente
 equipotentes
 equirectangular
 equivariantes
+ergódica
+ergódico
 Erleben
 espaciotemporal
 espectroscopía
@@ -277,6 +286,7 @@ Georg
 giróscopos
 Givant
 glsl
+Goldbach
 Goldstein
 Golub
 Gordan
@@ -300,6 +310,7 @@ Hastie
 Heckbert
 Hecke
 Henriksen
+Hensel
 Hermítico
 hermítico
 hessiana
@@ -336,6 +347,7 @@ Hopf
 Hrbacek
 Hugoniot
 Hungerford
+Hurwitz
 Hwang
 Hölder
 Illian
@@ -361,6 +373,8 @@ Ising
 isometría
 isometrías
 Isometrías
+isoperimetría
+isoperimétrica
 jacobiana
 jacobiano
 Jakob
@@ -377,6 +391,7 @@ Karush
 Kazimierz
 Keerthi
 Khinchin
+Kirkwood
 Kleene
 Knaster
 Knopp
@@ -418,6 +433,7 @@ Levenberg
 Liberzon
 linalg
 Lindelöf
+Lindemann
 linealizadas
 Liouville
 Lipschitz
@@ -443,6 +459,7 @@ Mayers
 Mazur
 MCMC
 memoización
+Mertens
 metamatemática
 metrización
 microestados
@@ -456,10 +473,12 @@ Minimización
 minimización
 Minkowski
 Mirtich
+modularidad
 Monge
 monomiales
 Motwani
 Moura
+mpmath
 muestrean
 muestrear
 Muestrear
@@ -488,6 +507,7 @@ newtoniano
 Niederreiter
 Nikodym
 nilpotentes
+Niven
 NLERP
 Nocedal
 Noether
@@ -531,6 +551,7 @@ Patashnik
 Pauly
 Pazy
 Peano
+Pell
 Penrose
 Penttinen
 Perko
@@ -558,6 +579,7 @@ preimage
 preimagen
 preimágenes
 Pressley
+primalidad
 Probá
 procedurales
 pseudoaleatorios
@@ -593,6 +615,7 @@ renormalización
 renormalizar
 renumera
 renumeración
+renumerar
 reordenamiento
 reparametrizar
 resolvedor
@@ -708,8 +731,10 @@ subsucesiones
 subvariedades
 Sugihara
 sumabilidad
+sumación
 supersampling
 superíndices
+Swinnerton
 Sylow
 Särkkä
 símplex
@@ -777,6 +802,7 @@ wronskiano
 XPBD
 Yorke
 Yosida
+Zagier
 Zamir
 Zariski
 Zermelo

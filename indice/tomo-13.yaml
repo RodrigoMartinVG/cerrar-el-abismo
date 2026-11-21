@@ -166,7 +166,7 @@ partes:
           - Estados como rayos de un espacio de Hilbert, observables autoadjuntos y regla de Born como medida de probabilidad.
           - Evolución unitaria y ecuación de Schrödinger; imágenes de Schrödinger y de Heisenberg; de los corchetes de Poisson a los conmutadores.
           - Oscilador armónico con operadores escalera (funciones de Hermite) y átomo de hidrógeno (armónicos esféricos y polinomios de Laguerre).
-          - 'Sistemas compuestos: producto tensorial, entrelazamiento y matrices densidad. Para seguir: teoría cuántica de campos.'
+          - 'Sistemas compuestos: producto tensorial, entrelazamiento y matrices densidad. Para seguir: teoría cuántica de campos y el problema de Yang–Mills.'
         puente: 'Entrada: `state = kron(q0, q1)` en un simulador de computación cuántica, y |ψ⟩ = (|00⟩ + |11⟩)/√2 en un libro. Un sistema de dos cúbits vive en el producto tensorial (II.11); un estado está entrelazado exactamente cuando no es un tensor descomponible, y esa es la propiedad que aprovecha la computación cuántica.'
         aplicaciones:
           - campo: cripto
