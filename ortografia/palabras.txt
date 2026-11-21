@@ -59,6 +59,7 @@ autoadjunto
 autoadjuntos
 autocovarianza
 autofunciones
+Automath
 automorfismo
 autorregresivos
 autosimilar
@@ -69,6 +70,7 @@ autovalores
 autovector
 autovectores
 Avigad
+aviónica
 Axler
 Azuma
 Bachet
@@ -133,6 +135,7 @@ cardinalidad
 carísimas
 Carlsson
 Carmo
+Carneiro
 Casella
 Casteljau
 Catmull
@@ -166,12 +169,14 @@ codominios
 cofactores
 Collatz
 Colorimetría
+combinadores
 comilla
 compactificación
 compartimentales
 Completación
 completación
 comprimirla
+comprobador
 comprobadores
 computabilidad
 Condon
@@ -194,6 +199,7 @@ coprimas
 coprime
 coprimo
 coprimos
+Coquand
 Corasick
 Cormen
 correlacionados
@@ -220,6 +226,7 @@ cuaternión
 Cuaterniones
 cuaterniones
 cúbits
+currificar
 Cuturi
 DAAD
 Daemen
@@ -272,6 +279,7 @@ ecualizador
 Edelsbrunner
 egregium
 eikonal
+empaquetamiento
 Enderton
 Engel
 entropías
@@ -325,6 +333,7 @@ Fatou
 Fedkiw
 Fedorov
 Feigenbaum
+Feit
 Fejér
 fibrado
 Fibrados
@@ -369,6 +378,7 @@ Grimmett
 Grobman
 Gröbner
 Grönwall
+HACL
 Hairer
 Haken
 Halmos
@@ -394,6 +404,7 @@ Hessenberg
 hessiana
 heurística
 heurísticas
+Heyting
 Hidrodinámica
 Higham
 Hille
@@ -424,16 +435,20 @@ Homotopía
 homotopía
 homotopías
 homotópica
+Homotopy
 hookeano
 Hopcroft
 Hopf
 Hrbacek
+Huet
 Hugoniot
 Hungerford
 Hurwitz
 Hwang
 idempotente
+Idris
 Illian
+implicacional
 implicante
 implicantes
 implicitación
@@ -449,6 +464,9 @@ insesgado
 integrabilidad
 intersecar
 intuicionista
+intuicionistamente
+intuicionistas
+intuitionistic
 Invariancia
 invariancia
 invertibilidad
@@ -498,6 +516,7 @@ Knaster
 Knopp
 Kobbelt
 Koksma
+Kolmogorov
 Kondrachov
 Königsberg
 Koopman
@@ -507,6 +526,7 @@ Kramers
 Kress
 Kreveld
 Kreyszig
+Kripke
 Kronig
 Kruskal
 Kullback
@@ -560,6 +580,7 @@ Marquardt
 Marsden
 Maschke
 Maschler
+mathlib
 Matiyasevich
 Matoušek
 maximales
@@ -628,6 +649,7 @@ Naber
 Naimark
 Navier
 Needham
+negarlo
 Nerode
 Netravali
 Neumann
@@ -745,8 +767,10 @@ recalcular
 recalcularlos
 recubridores
 recursión
+recursor
 reescalan
 reflexividad
+reimplementar
 Rellich
 remapeo
 Remuestreo
@@ -776,6 +800,7 @@ Riesz
 Rijmen
 Rivest
 Rockafellar
+Rocq
 rotacional
 Rotman
 Royden
@@ -926,8 +951,10 @@ theorema
 Tibshirani
 Tietze
 Tignol
+tipada
 tipado
 tipados
+tipan
 Tonelli
 totient
 transcrítica
@@ -948,6 +975,7 @@ Ullman
 Ullrich
 ultrafiltro
 ultrafiltros
+univalencia
 UNORM
 unsat
 upla

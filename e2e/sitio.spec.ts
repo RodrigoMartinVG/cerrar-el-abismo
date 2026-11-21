@@ -12,7 +12,7 @@ test('la portada muestra el mapa de tomos y lleva al índice temático', async (
 test('la página de un tomo muestra sus capítulos y enlaza los escritos', async ({ page }) => {
   await page.goto('indice/i/');
   await expect(page.locator('section.capitulo')).toHaveCount(15);
-  await page.getByRole('link', { name: 'Leer el capítulo I.1' }).click();
+  await page.getByRole('link', { name: 'Leer el capítulo I.1 →', exact: true }).click();
   await expect(page).toHaveURL(/\/capitulos\/i-1\/$/);
 });
 
@@ -33,7 +33,8 @@ test.describe('el primer capítulo (I.1)', () => {
   test('dice lo que da por conocido al comienzo del Desarrollo', async ({ page }) => {
     const recuadro = page.locator('aside.supone');
     await expect(recuadro).toContainText('Lo que este capítulo da por conocido');
-    await expect(recuadro.getByRole('link', { name: 'I.11' })).toHaveAttribute('href', /indice\/i\/#i-11$/);
+    // I.11 ya está escrito, así que el recuadro enlaza al capítulo y no a su lugar en el índice.
+    await expect(recuadro.getByRole('link', { name: 'I.11' })).toHaveAttribute('href', /capitulos\/i-11\/$/);
     const orden = await page.evaluate(() => {
       const desarrollo = document.getElementById('desarrollo')!;
       const recuadro = document.querySelector('aside.supone')!;
