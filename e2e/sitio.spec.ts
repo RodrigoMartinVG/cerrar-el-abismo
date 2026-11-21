@@ -162,6 +162,22 @@ test.describe('el capítulo I.5', () => {
   });
 });
 
+test.describe('el capítulo I.7', () => {
+  test('el retículo de los divisores marca el ínfimo y el supremo, y dice cuándo es un álgebra de Boole', async ({ page }) => {
+    await page.goto('capitulos/i-7/');
+    const figura = page.locator('#fig-divisores');
+    await expect(figura.locator('output')).toContainText('mcd(4, 6) = 2');
+    await expect(figura.locator('output')).toContainText('mcm(4, 6) = 12');
+    await expect(figura.locator('output')).toContainText('el complemento de 4 es 15');
+    await expect(figura.locator('.nodo')).toHaveCount(12);
+    const deslizador = figura.locator('input[type=range]');
+    await deslizador.fill('30');
+    await expect(figura.locator('output')).toContainText('Los 8 divisores de 30 forman un álgebra de Boole');
+    await deslizador.fill('60');
+    await expect(figura.locator('output')).toContainText('2 no tiene complemento');
+  });
+});
+
 test.describe('el mapa de dependencias', () => {
   test('I.4 cumple lo que le dejaron I.2 e I.3', async ({ page }) => {
     await page.goto('mapa/i-4/');

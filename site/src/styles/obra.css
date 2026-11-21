@@ -640,6 +640,47 @@ celda-python:has(.celda-editor) {
   fill: var(--obra-teoria);
 }
 
+/* La pieza «reticulo-de-divisores»: el diagrama de Hasse; los elegidos en la tinta base, el ínfimo y el supremo en cobre. */
+.pieza-divisores {
+  display: block;
+  width: min(100%, 420px);
+  max-height: 460px;
+  height: auto;
+}
+
+.pieza-divisores line {
+  stroke: var(--sl-color-gray-4);
+  stroke-width: 1.2;
+}
+
+.pieza-divisores .nodo {
+  cursor: pointer;
+}
+
+.pieza-divisores .nodo circle {
+  fill: var(--sl-color-bg);
+  stroke: var(--sl-color-gray-3);
+  stroke-width: 1.2;
+}
+
+.pieza-divisores .nodo text {
+  fill: var(--sl-color-white);
+  font-family: var(--sl-font-mono);
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.pieza-divisores .nodo.elegido circle {
+  fill: var(--obra-teoria-bajo);
+  stroke: var(--obra-teoria);
+  stroke-width: 2;
+}
+
+.pieza-divisores .nodo.extremo circle {
+  stroke: var(--obra-practica);
+  stroke-width: 3;
+}
+
 /* La pieza «cuadrado-de-impares»: capas en L de colores alternados, la tinta base y el cobre. */
 .pieza-impares {
   display: block;

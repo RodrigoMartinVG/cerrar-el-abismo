@@ -8,6 +8,7 @@ export const PIEZAS = {
   'multiplicacion-modular': () => import('./multiplicacion-modular.ts'),
   'normal-covector': () => import('./normal-covector.ts'),
   'rectangulo-de-euclides': () => import('./rectangulo-de-euclides.ts'),
+  'reticulo-de-divisores': () => import('./reticulo-de-divisores.ts'),
   'tabla-de-verdad': () => import('./tabla-de-verdad.ts'),
 } satisfies Record<string, () => Promise<{ montar: (raiz: HTMLElement) => () => void }>>;
 
@@ -17,6 +18,7 @@ export const NOMBRES_DE_PIEZAS = Object.keys(PIEZAS) as NombreDePieza[];
 
 export * from './algebra.ts';
 export * from './dispersion.ts';
+export * from './divisores.ts';
 export * from './euclides.ts';
 export * from './modular.ts';
 export * from './logica.ts';
