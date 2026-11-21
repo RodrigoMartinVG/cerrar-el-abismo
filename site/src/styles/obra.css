@@ -617,6 +617,29 @@ celda-python:has(.celda-editor) {
   white-space: pre-wrap;
 }
 
+/* La pieza «multiplicacion-modular»: el círculo de ℤ/nℤ con las cuerdas k → a·k, finas para que se vea la forma. */
+.pieza-modular {
+  display: block;
+  width: min(100%, 340px);
+  height: auto;
+}
+
+.pieza-modular .borde {
+  fill: none;
+  stroke: var(--sl-color-gray-4);
+  stroke-width: 0.6;
+}
+
+.pieza-modular line {
+  stroke: var(--obra-practica);
+  stroke-width: 0.45;
+  stroke-opacity: 0.85;
+}
+
+.pieza-modular .punto {
+  fill: var(--obra-teoria);
+}
+
 /* La pieza «cuadrado-de-impares»: capas en L de colores alternados, la tinta base y el cobre. */
 .pieza-impares {
   display: block;

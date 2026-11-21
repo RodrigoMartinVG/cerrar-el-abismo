@@ -150,6 +150,18 @@ test.describe('el capítulo I.3', () => {
   });
 });
 
+test.describe('el capítulo I.5', () => {
+  test('la multiplicación modular dice cuándo hay inverso', async ({ page }) => {
+    await page.goto('capitulos/i-5/');
+    const figura = page.locator('#fig-modular');
+    await expect(figura.locator('output')).toContainText('el inverso de 7 es 43');
+    const [, multiplicador] = await figura.locator('input[type=range]').all();
+    await multiplicador!.fill('6');
+    await expect(figura.locator('output')).toContainText('6 no tiene inverso módulo 60');
+    await expect(figura.locator('output')).toContainText('la imagen tiene 10 de los 60 elementos');
+  });
+});
+
 test.describe('el mapa de dependencias', () => {
   test('I.4 cumple lo que le dejaron I.2 e I.3', async ({ page }) => {
     await page.goto('mapa/i-4/');

@@ -4,10 +4,12 @@
 aaab
 abelianos
 ádicos
+Adleman
 advección
 Advección
 adyacencia
 Agda
+Agrawal
 Aharonov
 Ahlfors
 Alaoglu
@@ -152,6 +154,8 @@ computabilidad
 Condon
 conductancia
 congruencial
+congruenciales
+congruential
 conmutatividad
 construibles
 contraejemplo
@@ -162,7 +166,10 @@ Conversor
 conversor
 convolucionar
 Convolucionar
+coprima
+coprimas
 coprime
+coprimo
 coprimos
 Cormen
 correlacionados
@@ -406,6 +413,7 @@ Kalman
 Kampen
 Kantorovich
 Karush
+Kayal
 Kazimierz
 Keerthi
 Khinchin
@@ -443,6 +451,7 @@ lateralidad
 Lawler
 Lebedev
 Lefschetz
+Lehmer
 Leibler
 Leiserson
 Lengyel
@@ -479,6 +488,7 @@ Mayers
 Mazur
 MCMC
 memoización
+Mersenne
 Mertens
 metamatemática
 metrización
@@ -494,8 +504,10 @@ Minimización
 minimización
 Minkowski
 Mirtich
+MMIX
 modularidad
 Monge
+Monier
 monomiales
 Motwani
 Moura
@@ -506,6 +518,7 @@ Muestrear
 multigrid
 multilineales
 multipaso
+multiplicatividad
 multirresolución
 multivariable
 multivariante
@@ -590,6 +603,7 @@ Pohlig
 polinomial
 polinomiales
 politopos
+Pomerance
 Pontryagin
 poscondición
 poscondiciones
@@ -601,6 +615,7 @@ preimagen
 preimágenes
 Pressley
 primalidad
+primality
 Probá
 procedurales
 pseudoaleatorios
@@ -617,6 +632,7 @@ radiosidad
 ragdoll
 ragdolls
 Ramamoorthi
+RANDU
 Rasterización
 rasterización
 recalcula
@@ -665,6 +681,7 @@ Saletan
 Santaló
 satisfacibilidad
 Sauer
+Saxena
 Schafer
 Schauder
 Schlick
@@ -691,8 +708,10 @@ serializar
 Serre
 Shakarchi
 Shalev
+Shamir
 Shewchuk
 Shoemake
+Shor
 Shortley
 Shumway
 Shwartz
@@ -739,6 +758,7 @@ Strogatz
 Sturm
 Sturmfels
 Störmer
+Suanjing
 subárbol
 subárboles
 subcuerpo
@@ -756,6 +776,7 @@ subvariedades
 Sugihara
 sumabilidad
 sumación
+Sunzi
 supersampling
 superíndices
 Swinnerton
@@ -780,11 +801,13 @@ Tignol
 tipado
 tipados
 Tonelli
+totient
 transcrítica
 transfinita
 transfinitas
 transitividad
 Trefethen
+trillones
 trivectores
 Trumbore
 Tsitsiklis
