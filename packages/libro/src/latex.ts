@@ -37,6 +37,12 @@ export function escapar(texto: string): string {
     .replace(/~/g, '\\textasciitilde{}');
 }
 
+/**
+ * Una fórmula de KaTeX, lista para LaTeX. El español de babel le agrega un espacio al porcentaje, y dentro de una
+ * fórmula eso choca con el espacio fino que suele precederlo; como texto, no.
+ */
+const formula = (tex: string) => tex.replaceAll(String.raw`\%`, String.raw`\text{\%}`);
+
 /** El nombre de un destino interno del PDF: sin «#» ni «.», que LaTeX trataría como especiales. */
 const ancla = (capitulo: string, id: string) => `${capitulo}-${id}`.replace(/[^A-Za-z0-9-]/g, '-');
 
@@ -67,7 +73,7 @@ export function capituloALatex(markdown: string, opciones: OpcionesLatex): strin
       case 'inlineCode':
         return `\\texttt{${escapar(nodo.value)}}`;
       case 'inlineMath':
-        return `$${nodo.value}$`;
+        return `$${formula(nodo.value)}$`;
       case 'break':
         return '\\\\\n';
       case 'link':
@@ -99,7 +105,7 @@ export function capituloALatex(markdown: string, opciones: OpcionesLatex): strin
       case 'paragraph':
         return `${enLinea(nodo.children)}\n`;
       case 'math':
-        return `\\[\n${nodo.value}\n\\]\n`;
+        return `\\[\n${formula(nodo.value)}\n\\]\n`;
       case 'list': {
         const tipo = nodo.ordered ? 'enumerate' : 'itemize';
         const items = nodo.children.map((item) => `\\item ${item.children.map(bloque).join('\n').trim()}`).join('\n');

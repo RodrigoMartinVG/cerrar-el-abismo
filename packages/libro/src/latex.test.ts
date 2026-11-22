@@ -15,6 +15,10 @@ describe('el PDF: un capítulo convertido a LaTeX (decisión 0007)', () => {
     );
   });
 
+  it('el porcentaje de una fórmula pasa a texto, para que el español de babel no le agregue un espacio', () => {
+    expect(capituloALatex(capitulo(String.raw`Un error de $26\,\%$.`), opciones)).toContain(String.raw`$26\,\text{\%}$`);
+  });
+
   it('numera los entornos como el sitio y resuelve las referencias con un enlace interno', () => {
     const tex = capituloALatex(
       capitulo(
