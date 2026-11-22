@@ -1149,3 +1149,125 @@ table.pieza-deduccion tr.pendiente {
   margin-block: 0.5rem 0.25rem;
   font-size: var(--obra-texto-secundario);
 }
+
+/*
+ * La pieza «automata-finito» (I.13): los estados posibles, con el fondo y el borde de la teoría; la última transición
+ * (el arco, su punta y su rótulo) y el símbolo recién leído, en cobre. Al terminar la palabra, los estados de aceptación
+ * alcanzados se rellenan con la tinta base si el autómata acepta, y los estados actuales llevan un borde de cobre
+ * punteado si rechaza. En la tabla, la fila del estado o del conjunto actual y la casilla que se acaba de usar.
+ */
+.pieza-automata {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-block: 0.5rem;
+  font-family: var(--sl-font-mono);
+}
+
+.pieza-automata .arco {
+  fill: none;
+  stroke: var(--sl-color-gray-3);
+  stroke-width: 1.4;
+}
+
+.pieza-automata .punta {
+  fill: var(--sl-color-gray-3);
+}
+
+.pieza-automata .rotulo {
+  fill: var(--sl-color-white);
+  font-size: 13px;
+  paint-order: stroke;
+  stroke: var(--sl-color-bg);
+  stroke-width: 4px;
+}
+
+.pieza-automata .recorrido .arco {
+  stroke: var(--obra-practica);
+  stroke-width: 2.6;
+}
+
+.pieza-automata .recorrido .punta {
+  fill: var(--obra-practica);
+}
+
+.pieza-automata .recorrido .rotulo {
+  fill: var(--obra-practica);
+  font-weight: 700;
+}
+
+.pieza-automata .estado circle {
+  fill: var(--sl-color-bg);
+  stroke: var(--sl-color-gray-3);
+  stroke-width: 1.5;
+}
+
+.pieza-automata .estado text {
+  fill: var(--sl-color-white);
+  font-size: 14px;
+}
+
+.pieza-automata .estado.actual circle {
+  fill: var(--obra-teoria-bajo);
+  stroke: var(--obra-teoria);
+  stroke-width: 2.5;
+}
+
+.pieza-automata.aceptada .estado.actual.final .interior {
+  fill: var(--obra-teoria);
+}
+
+.pieza-automata.aceptada .estado.actual.final text {
+  fill: var(--sl-color-bg);
+}
+
+.pieza-automata.rechazada .estado.actual circle {
+  stroke: var(--obra-practica);
+  stroke-dasharray: 4 3;
+}
+
+.pieza-palabra {
+  margin-block: 0.25rem;
+  font-family: var(--sl-font-mono);
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+}
+
+.pieza-palabra span {
+  padding-inline: 0.1em;
+  border-bottom: 3px solid transparent;
+}
+
+.pieza-palabra .leido {
+  color: var(--sl-color-gray-3);
+}
+
+.pieza-palabra .actual {
+  color: var(--obra-practica);
+  border-bottom-color: var(--obra-practica);
+  font-weight: 700;
+}
+
+.pieza-palabra .fuera {
+  text-decoration: line-through;
+}
+
+.pieza-tabla-automata th {
+  padding: 0.15rem 0.6rem;
+  white-space: nowrap;
+}
+
+table.pieza-matriz.pieza-tabla-automata td {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.pieza-tabla-automata tr.actual {
+  background: var(--sl-color-gray-5);
+}
+
+.pieza-tabla-automata td.usada {
+  outline: 2px solid var(--obra-practica);
+  outline-offset: -2px;
+  color: var(--obra-practica);
+}

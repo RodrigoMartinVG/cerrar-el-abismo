@@ -3,6 +3,7 @@
  * con NOMBRES_DE_PIEZAS que toda `::figura{pieza="…"}` exista.
  */
 export const PIEZAS = {
+  'automata-finito': () => import('./automata-finito.ts'),
   'busqueda-en-grafos': () => import('./busqueda-en-grafos.ts'),
   coclases: () => import('./coclases.ts'),
   'comparador-flotante': () => import('./comparador-flotante.ts'),
