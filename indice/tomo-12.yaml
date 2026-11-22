@@ -203,7 +203,7 @@ partes:
           - 'Descomposición polar: rotación y estiramiento.'
           - Tensiones de Cauchy y de Piola; ecuación de equilibrio.
           - 'Elasticidad lineal e hiperelasticidad: modelos de St. Venant–Kirchhoff, neo-hookeano y corrotacional.'
-        puente: 'Entrada: `F = Ds * inverse(Dm)` en un simulador de tetraedros. Es el gradiente de deformación de un elemento, la aplicación lineal que lleva la forma en reposo a la deformada; su descomposición polar separa la rotación, que no debe generar fuerza, del estiramiento.'
+        puente: 'Entrada: `F = Ds * inverse(Dm)` en un simulador de tetraedros. Es el gradiente de deformación de un elemento, la transformación lineal que lleva la forma en reposo a la deformada; su descomposición polar separa la rotación, que no debe generar fuerza, del estiramiento.'
         aplicaciones:
           - campo: 3d
             texto: cuerpos blandos y músculos

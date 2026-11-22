@@ -232,11 +232,11 @@ partes:
           - II.8
         tipo: nucleo
         contenidos:
-          - Aplicaciones multilineales; producto tensorial de espacios por su propiedad universal y en coordenadas (producto de Kronecker).
+          - Funciones multilineales; producto tensorial de espacios por su propiedad universal y en coordenadas (producto de Kronecker).
           - 'Tensores de tipo (p, q): componentes, cambio de base y la ley de transformación que los físicos usan como definición.'
           - Notación de índices y convención de Einstein; contracción; subir y bajar índices con un producto interno o una métrica.
           - Tensores simétricos y antisimétricos; potencias exteriores y el determinante revisitado.
-        puente: "Entrada: `C = np.einsum('ij,jk->ik', A, B)` y, en un libro de física, `T'^μ_ν = Λ^μ_α T^α_β (Λ⁻¹)^β_ν`. Las dos son contracciones de índices: la primera es un producto de matrices escrito con la convención de Einstein, y la segunda es la ley de cambio de base de un tensor de tipo (1, 1). «Se transforma como un tensor» no es una definición misteriosa: es lo que le pasa en coordenadas a una aplicación multilineal."
+        puente: "Entrada: `C = np.einsum('ij,jk->ik', A, B)` y, en un libro de física, `T'^μ_ν = Λ^μ_α T^α_β (Λ⁻¹)^β_ν`. Las dos son contracciones de índices: la primera es un producto de matrices escrito con la convención de Einstein, y la segunda es la ley de cambio de base de un tensor de tipo (1, 1). «Se transforma como un tensor» no es una definición misteriosa: es lo que le pasa en coordenadas a una función multilineal."
         aplicaciones:
           - campo: fisica
             texto: tensor de inercia, tensor de tensiones y estados entrelazados como tensores no descomponibles

@@ -22,7 +22,7 @@ partes:
           - ℝⁿ como espacio normado; equivalencia de las normas en dimensión finita.
           - Teorema de Heine–Borel y compacidad.
           - Funciones continuas de varias variables; límites por caminos y sus trampas.
-          - Aplicaciones lineales continuas y norma de operador.
+          - Transformaciones lineales continuas y norma de operador.
         puente: 'Entrada: `length(v)`, `abs(v.x) + abs(v.y)` y `max(abs(v.x), abs(v.y))`. Son las normas L², L¹ y L∞; en dimensión finita son equivalentes, y por eso las pruebas de distancia baratas sirven de filtro antes de la exacta.'
         aplicaciones:
           - campo: 3d
@@ -41,7 +41,7 @@ partes:
           - III.7
         tipo: nucleo
         contenidos:
-          - Derivada como aplicación lineal; derivadas parciales y direccionales.
+          - Derivada como transformación lineal; derivadas parciales y direccionales.
           - El gradiente como covector y como vector (vía el producto interno); matriz jacobiana; regla de la cadena.
           - Funciones de clase C¹ y teorema de Schwarz.
           - Derivadas de orden superior, matriz hessiana y fórmula de Taylor en varias variables.

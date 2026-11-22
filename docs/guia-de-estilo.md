@@ -142,7 +142,9 @@ El único recuadro es el del campo `supone`, uno por capítulo.
   | en orden a | para |
   | eventualmente (por «finalmente») | finalmente, tarde o temprano |
 
-- **La terminología** es la de la sección 12 de la especificación y la del diccionario academia–práctica.
+- **La terminología** es la de la sección 12 de la especificación y la del diccionario academia–práctica. Cuando un
+  concepto tiene varios nombres en español («cuerpo» y «campo», «coclase» y «clase lateral»), la obra usa uno solo, el
+  de `ortografia/terminologia.yaml`; las otras formas solo aparecen entre comillas, cuando se las nombra.
 
 ## 8. Símbolos y fórmulas
 
@@ -181,7 +183,9 @@ Automáticamente, en cada capítulo (`packages/libro/src/estilo.ts`, desde las p
 - que no haya imperativos dirigidos al lector («Calcula», «Demuestre», «Probá»);
 - que cada noción del campo `supone` se trate con rigor en un capítulo posterior (`packages/libro/src/supone.ts`);
 - que el capítulo agregue sus términos al diccionario, completos, sin fórmulas y con anclas que existen
-  (`packages/libro/src/diccionario.ts`).
+  (`packages/libro/src/diccionario.ts`);
+- que no use las formas que el registro de terminología rechaza (`packages/libro/src/terminologia.ts`), en el
+  capítulo, en el índice y en la especificación.
 
 En la lectura de estilo, a mano, con esta lista:
 

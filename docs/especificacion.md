@@ -101,7 +101,7 @@ El abismo con la física tiene las mismas siete capas:
 | Capa | En la física |
 | --- | --- |
 | 1. Matemática que la carrera omite | Tensores con índices, funciones especiales, métodos asintóticos, representaciones de grupos, espacio de Minkowski |
-| 2. Lo que se sabe pero no se reconoce | ⟨φ\|ψ⟩ es el teorema de Riesz; «se transforma como un tensor» es una aplicación multilineal más un cambio de base; el corchete de Poisson anticipa el conmutador |
+| 2. Lo que se sabe pero no se reconoce | ⟨φ\|ψ⟩ es el teorema de Riesz; «se transforma como un tensor» es una función multilineal más un cambio de base; el corchete de Poisson anticipa el conmutador |
 | 3. Convenciones | Signatura de la métrica, ħ = c = 1, papeles de θ y φ en las coordenadas esféricas, posición de los índices |
 | 4. Representación como decisión | Imágenes de Schrödinger y de Heisenberg; representaciones de posición y de momento; formulaciones lagrangiana y hamiltoniana |
 | 5. Lo que se da por supuesto | Manipulaciones formales: la delta como función, intercambiar límites, series divergentes |
@@ -514,6 +514,8 @@ La obra declara sus convenciones y, en cada sección Puente, las traduce a las d
 | Unidades | Sistema Internacional; cuando se usa ħ = c = 1, se dice explícitamente | Unidades naturales sin aviso |
 | Operadores | «Autoadjunto», distinguido de «simétrico» para operadores no acotados | «Hermítico» para ambos |
 | Armónicos esféricos | Complejos, con la fase de Condon–Shortley | Sin esa fase, o reales, como en gráficos y geodesia |
+| Decimales | Coma decimal en el texto (0,1), como pide la norma del español; punto en el código (`0.1`) | Punto decimal también en el texto, como en inglés |
+| Terminología en español | Un nombre por concepto, el de `ortografia/terminologia.yaml`: cuerpo, coclase, subgrupo normal, grupo diédrico, autovalor, transformación lineal | «Campo», «clase lateral», «subgrupo invariante», «grupo diedral», «valor propio», «aplicación lineal», según el país y la tradición |
 
 ## 13. Índice temático completo
 
@@ -821,12 +823,12 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 #### II.11 Producto tensorial y álgebra multilineal
 *44 págs. · Requiere: II.5, II.8 · Núcleo*
-- Aplicaciones multilineales; producto tensorial de espacios por su propiedad universal y en coordenadas (producto de Kronecker).
+- Funciones multilineales; producto tensorial de espacios por su propiedad universal y en coordenadas (producto de Kronecker).
 - Tensores de tipo (p, q): componentes, cambio de base y la ley de transformación que los físicos usan como definición.
 - Notación de índices y convención de Einstein; contracción; subir y bajar índices con un producto interno o una métrica.
 - Tensores simétricos y antisimétricos; potencias exteriores y el determinante revisitado.
 
-**Puente.** Entrada: `C = np.einsum('ij,jk->ik', A, B)` y, en un libro de física, `T'^μ_ν = Λ^μ_α T^α_β (Λ⁻¹)^β_ν`. Las dos son contracciones de índices: la primera es un producto de matrices escrito con la convención de Einstein, y la segunda es la ley de cambio de base de un tensor de tipo (1, 1). «Se transforma como un tensor» no es una definición misteriosa: es lo que le pasa en coordenadas a una aplicación multilineal.
+**Puente.** Entrada: `C = np.einsum('ij,jk->ik', A, B)` y, en un libro de física, `T'^μ_ν = Λ^μ_α T^α_β (Λ⁻¹)^β_ν`. Las dos son contracciones de índices: la primera es un producto de matrices escrito con la convención de Einstein, y la segunda es la ley de cambio de base de un tensor de tipo (1, 1). «Se transforma como un tensor» no es una definición misteriosa: es lo que le pasa en coordenadas a una función multilineal.
 **Aplicaciones.** [Física] tensor de inercia, tensor de tensiones y estados entrelazados como tensores no descomponibles · [Datos] operaciones con tensores en aprendizaje automático y descomposiciones de tensores · [3D] tensores de estructura y de curvatura en el procesamiento de mallas.
 **Lecturas.** Roman, *Advanced Linear Algebra*; Jeevanjee, *An Introduction to Tensors and Group Theory for Physicists*.
 
@@ -1063,7 +1065,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - ℝⁿ como espacio normado; equivalencia de las normas en dimensión finita.
 - Teorema de Heine–Borel y compacidad.
 - Funciones continuas de varias variables; límites por caminos y sus trampas.
-- Aplicaciones lineales continuas y norma de operador.
+- Transformaciones lineales continuas y norma de operador.
 
 **Puente.** Entrada: `length(v)`, `abs(v.x) + abs(v.y)` y `max(abs(v.x), abs(v.y))`. Son las normas L², L¹ y L∞; en dimensión finita son equivalentes, y por eso las pruebas de distancia baratas sirven de filtro antes de la exacta.
 **Aplicaciones.** [3D] pruebas de distancia rápidas y cajas alineadas con los ejes · [Ing] distancia de Manhattan en logística · [Datos] normas en la regularización de modelos.
@@ -1071,7 +1073,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 #### IV.2 Diferenciabilidad
 *44 págs. · Requiere: IV.1, II.5, III.7 · Núcleo*
-- Derivada como aplicación lineal; derivadas parciales y direccionales.
+- Derivada como transformación lineal; derivadas parciales y direccionales.
 - El gradiente como covector y como vector (vía el producto interno); matriz jacobiana; regla de la cadena.
 - Funciones de clase C¹ y teorema de Schwarz.
 - Derivadas de orden superior, matriz hessiana y fórmula de Taylor en varias variables.
@@ -2394,7 +2396,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Tensiones de Cauchy y de Piola; ecuación de equilibrio.
 - Elasticidad lineal e hiperelasticidad: modelos de St. Venant–Kirchhoff, neo-hookeano y corrotacional.
 
-**Puente.** Entrada: `F = Ds * inverse(Dm)` en un simulador de tetraedros. Es el gradiente de deformación de un elemento, la aplicación lineal que lleva la forma en reposo a la deformada; su descomposición polar separa la rotación, que no debe generar fuerza, del estiramiento.
+**Puente.** Entrada: `F = Ds * inverse(Dm)` en un simulador de tetraedros. Es el gradiente de deformación de un elemento, la transformación lineal que lleva la forma en reposo a la deformada; su descomposición polar separa la rotación, que no debe generar fuerza, del estiramiento.
 **Aplicaciones.** [3D] cuerpos blandos y músculos · [Ing] resistencia de materiales · [Bio/Eco] biomecánica de tejidos.
 **Lecturas.** Gonzalez y Stuart, *A First Course in Continuum Mechanics*; Bonet y Wood, *Nonlinear Continuum Mechanics for Finite Element Analysis*; Sifakis y Barbič, «FEM Simulation of 3D Deformable Solids».
 

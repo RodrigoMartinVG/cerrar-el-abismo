@@ -9,10 +9,16 @@ entre la matemática que se estudia y la que se usa.
 
 ## Estado
 
-Fase 1 (especificación, sección 16): terminada la infraestructura, empieza la escritura. El sitio publica el índice temático completo: 13 tomos,
-167 capítulos, sus requisitos, sus aplicaciones y los itinerarios por perfil, y un mapa de dependencias con el
-recorrido completo hasta cada capítulo. La obra se escribe desde el principio: los quince capítulos del Tomo I, de I.1 *Lógica y
-demostración* a I.15 *Demostraciones como programas*, ya están en borrador, con sus figuras interactivas y sus celdas de Python. La redacción sigue la [guía de estilo](docs/guia-de-estilo.md).
+El Tomo I está escrito en borrador: sus quince capítulos, de I.1 *Lógica y demostración* a I.15 *Demostraciones como
+programas*, con sus celdas de Python; cinco de ellos tienen además figuras interactivas, y los demás las esperan. Ahora
+empieza su revisión con los libros de las lecturas, registrada resultado por resultado
+([decisión 0005](docs/decisiones/0005-la-revision-como-datos.md)); la página «Estado de la revisión» del sitio muestra el
+avance. De la especificación (sección 16) quedan pendientes la prueba de I.1 con estudiantes, que pide la fase 1, y la
+segunda pasada de otro matemático.
+
+El sitio publica también el índice temático completo: 13 tomos, 167 capítulos, sus requisitos, sus aplicaciones y los
+itinerarios por perfil, y un mapa de dependencias con el recorrido completo hasta cada capítulo. La redacción sigue la
+[guía de estilo](docs/guia-de-estilo.md).
 
 ## Dónde está cada cosa
 

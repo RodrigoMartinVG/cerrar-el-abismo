@@ -22,3 +22,4 @@ export {
   type Registro,
   type ResultadoRevisable,
 } from './revision.ts';
+export { revisarRegistroDeTerminologia, usosRechazados, type Termino, type UsoRechazado, type Variante } from './terminologia.ts';

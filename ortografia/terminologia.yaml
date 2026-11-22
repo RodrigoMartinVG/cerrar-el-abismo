@@ -1,0 +1,75 @@
+# La terminología de la obra (guía de estilo, sección 7). Para cada concepto con varios nombres en español: el que usa
+# la obra, los que usan otros libros y dónde, y las formas que la obra no usa. Una prueba rechaza esas formas en los
+# capítulos, el índice y la especificación, salvo entre comillas latinas, donde se nombran sin usarse («campo finito»),
+# y en el código. La página del diccionario academia–práctica muestra las variantes al lector, que las va a encontrar
+# en otros libros.
+
+- termino: cuerpo
+  ingles: field
+  variantes:
+    - forma: campo
+      uso: en buena parte de América Latina y en las normas técnicas, como FIPS 197, que dice «campo finito»
+  rechazar: [campo finito, campos finitos, campo de Galois, campos de Galois]
+  nota: La obra reserva «campo» para los campos de la física y del análisis, como un campo vectorial.
+
+- termino: coclase
+  ingles: coset
+  variantes:
+    - forma: clase lateral
+      uso: en España y en muchas traducciones
+  rechazar: [clase lateral, clases laterales]
+
+- termino: subgrupo normal
+  ingles: normal subgroup
+  variantes:
+    - forma: subgrupo invariante
+      uso: en textos de física y en libros antiguos
+  rechazar: [subgrupo invariante, subgrupos invariantes]
+
+- termino: grupo diédrico
+  ingles: dihedral group
+  variantes:
+    - forma: grupo diedral
+      uso: en muchos textos de América Latina
+  rechazar: [diedral, diedrales]
+  nota: «Diédrico» es la forma que registra el diccionario de la lengua.
+
+- termino: autovalor
+  ingles: eigenvalue
+  variantes:
+    - forma: valor propio
+      uso: en España y en muchos textos de álgebra
+    - forma: eigenvalor
+      uso: un calco del inglés, frecuente en textos de física
+  rechazar: [valor propio, valores propios, eigenvalor, eigenvalores]
+
+- termino: autovector
+  ingles: eigenvector
+  variantes:
+    - forma: vector propio
+      uso: en España y en muchos textos de álgebra
+  rechazar: [vector propio, vectores propios]
+
+- termino: transformación lineal
+  ingles: linear map
+  variantes:
+    - forma: aplicación lineal
+      uso: en España
+  rechazar: [aplicación lineal, aplicaciones lineales]
+  nota: En esta obra, «aplicación» nombra las aplicaciones de la matemática, y por eso no se usa para las funciones.
+
+- termino: función multilineal
+  ingles: multilinear map
+  variantes:
+    - forma: aplicación multilineal
+      uso: en España
+  rechazar: [aplicación multilineal, aplicaciones multilineales]
+
+- termino: núcleo
+  ingles: kernel
+  variantes:
+    - forma: kernel
+      uso: en la práctica, donde además nombra otras cosas, como el de un sistema operativo, el de una convolución o el
+        programa que se ejecuta en una GPU
+  nota: No se rechaza, porque en la práctica es un nombre legítimo; en la obra, el núcleo de un homomorfismo es siempre
+    «núcleo».

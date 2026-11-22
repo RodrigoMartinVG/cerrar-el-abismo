@@ -2,8 +2,11 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { Badge } from '@astrojs/starlight/components';
 import { getCollection } from 'astro:content';
-import { CAMPOS } from '@cerrar-el-abismo/indice';
-import { claveDeTermino } from '@cerrar-el-abismo/libro';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { parse } from 'yaml';
+import { CAMPOS, carpetaDelIndice } from '@cerrar-el-abismo/indice';
+import { claveDeTermino, type Termino } from '@cerrar-el-abismo/libro';
 import { claseDeCampo, enLinea, urlCapitulo } from '../lib/obra';
 
 /**
@@ -26,6 +29,11 @@ const entradas = await Promise.all(
     })),
 );
 const total = `${entradas.length} ${entradas.length === 1 ? 'término' : 'términos'}`;
+
+/** Los términos con varios nombres en español: el de la obra y los de otros libros (ortografia/terminologia.yaml). */
+const terminologia = (
+  parse(readFileSync(join(carpetaDelIndice(), '..', 'ortografia', 'terminologia.yaml'), 'utf8')) as Termino[]
+).sort((a, b) => a.termino.localeCompare(b.termino, 'es'));
 ---
 
 <StarlightPage
@@ -76,6 +84,37 @@ const total = `${entradas.length} ${entradas.length === 1 ? 'término' : 'térmi
               ))}
             </ul>
             <p class="nota" set:html={e.notaHtml} />
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+
+  <h2 id="variantes">Variantes en español</h2>
+  <p>
+    El mismo abismo de vocabulario existe dentro del español: un concepto tiene a veces un nombre en un país y otro en otro, o uno en
+    los libros de matemática y otro en los de física. La obra usa siempre el mismo, y estos son los que el lector va a encontrar en otros
+    libros.
+  </p>
+  <dl class="variantes">
+    {
+      terminologia.map((t) => (
+        <div class="variante">
+          <dt>
+            <strong>{t.termino}</strong>{' '}
+            <span class="ingles" lang="en">
+              {t.ingles}
+            </span>
+          </dt>
+          <dd>
+            <ul>
+              {t.variantes.map((v) => (
+                <li>
+                  «{v.forma}», {v.uso}.
+                </li>
+              ))}
+            </ul>
+            {t.nota && <p class="nota">{t.nota}</p>}
           </dd>
         </div>
       ))

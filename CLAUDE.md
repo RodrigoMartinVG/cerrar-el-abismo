@@ -17,7 +17,8 @@ repite.
   [docs/guia-de-capitulos.md](docs/guia-de-capitulos.md); con qué estilo: [docs/guia-de-estilo.md](docs/guia-de-estilo.md); la capa de libro está en `packages/libro` y las piezas
   interactivas en `packages/piezas` (decisión 0003).
 - **El diccionario academia–práctica:** cada capítulo declara sus términos en el campo `diccionario` de su frontmatter,
-  y la página `/diccionario/` los reúne (decisión 0004).
+  y la página `/diccionario/` los reúne (decisión 0004). Los conceptos con varios nombres en español tienen uno solo en la
+  obra, el de `ortografia/terminologia.yaml`; una prueba rechaza las otras formas.
 - **La revisión:** cada capítulo tiene su registro en `revision/` (`i-9.yaml`), con quién revisó cada resultado y
   aspecto, contra qué y la huella del texto revisado; las pruebas lo exigen según el `estado` (decisión 0005).
 - **El diseño anterior** (índice con un motor 3D en paralelo): `docs/historico/`. Ya no es el plan.

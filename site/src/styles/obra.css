@@ -699,3 +699,27 @@ celda-python:has(.celda-editor) {
   stroke: var(--obra-practica);
   stroke-width: 1.2;
 }
+
+/* Las variantes en español del diccionario (src/pages/diccionario.astro). */
+.sl-markdown-content .variantes .variante {
+  margin-block: 1rem;
+}
+
+.sl-markdown-content .variantes dt .ingles {
+  margin-inline-start: 0.4rem;
+  color: var(--sl-color-gray-3);
+  font-style: italic;
+}
+
+.sl-markdown-content .variantes dd {
+  margin-inline-start: 1rem;
+}
+
+.sl-markdown-content .variantes dd ul {
+  margin-block: 0.25rem;
+}
+
+.sl-markdown-content .variantes .nota {
+  margin-block: 0.25rem;
+  color: var(--sl-color-gray-2);
+}
