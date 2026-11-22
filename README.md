@@ -65,5 +65,5 @@ npm run dev
 
 ## Licencia
 
-Por decidir (especificación, sección 17). Mientras tanto, el contenido es visible pero con todos los derechos
-reservados.
+El texto, bajo [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es); el código, incluido el
+de las celdas de Python, bajo MIT. El detalle está en [LICENSE.md](LICENSE.md).

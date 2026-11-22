@@ -2687,7 +2687,7 @@ Cada tomo sigue el mismo ciclo: se escriben todos sus capítulos, después se co
 | Decisión | Propuesta actual |
 | --- | --- |
 | Título definitivo | «Matemática y práctica» es provisional |
-| Licencias del texto y del código; modelo de publicación | Por decidir: por ejemplo, web gratuita y PDF o impresión de pago. El repositorio es público y, mientras no tenga licencia, su contenido queda con todos los derechos reservados |
+| Licencias del texto y del código; modelo de publicación | Decidido (2026-11-22): el texto, bajo CC BY-NC-SA 4.0, y el código, incluido el de las celdas, bajo MIT (`LICENSE.md` del repositorio). El uso comercial del texto queda reservado al autor, para un PDF o una impresión de pago; la web es gratuita |
 | Herramienta de edición | Decidido: Astro con Starlight (decisión 0001 del repositorio) |
 | Lenguajes del código | Python (Pyodide) para el cálculo en vivo y TypeScript para el sitio y las figuras |
 | Soluciones de los ejercicios pares | Espacio para docentes |
