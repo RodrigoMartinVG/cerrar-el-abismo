@@ -1,7 +1,7 @@
 import { ENTORNOS } from './entornos.ts';
 
 /**
- * LAS ETIQUETAS DE UN CAPÍTULO, para citarlas desde otro: `:ref[I.1#teo-de-morgan]` escribe «Teorema I.1.5» con un
+ * LAS ETIQUETAS DE UN CAPÍTULO, para citarlas desde otro: `:ref[I.1#teo-de-morgan]` escribe «Teorema I.1.9» con un
  * enlace. Cada capítulo se procesa por separado, así que el nombre numerado de una etiqueta ajena se calcula leyendo
  * el Markdown del otro capítulo, línea por línea, con las mismas reglas de numeración que el plugin (remark-libro.ts):
  * un contador común para los resultados, uno para los ejercicios y otro para las figuras. Las pruebas comprueban que

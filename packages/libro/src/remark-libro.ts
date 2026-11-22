@@ -37,7 +37,7 @@ export interface OpcionesLibro {
   piezas: readonly string[];
   /**
    * Para resolver `:ref[I.1#teo-de-morgan]`: las etiquetas de cada capítulo escrito con su nombre numerado
-   * («Teorema I.1.5»), calculadas con `etiquetasDelCapitulo`.
+   * («Teorema I.1.9»), calculadas con `etiquetasDelCapitulo`.
    */
   etiquetas?: ReadonlyMap<string, ReadonlyMap<string, string>>;
 }

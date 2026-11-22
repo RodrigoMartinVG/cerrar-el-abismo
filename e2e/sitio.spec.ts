@@ -63,9 +63,9 @@ test.describe('el primer capítulo (I.1)', () => {
 
   test('muestra su tomo, numera los entornos y resuelve las referencias', async ({ page }) => {
     await expect(page.getByRole('link', { name: /Tomo I · Fundamentos/ })).toBeVisible();
-    await expect(page.locator('#teo-de-morgan .entorno-titulo strong')).toHaveText('Teorema I.1.5');
-    await expect(page.locator('#ax-induccion .entorno-titulo strong')).toHaveText('Axioma I.1.17');
-    await expect(page.getByRole('link', { name: 'Teorema I.1.8' }).first()).toHaveAttribute('href', '#teo-contrapositiva');
+    await expect(page.locator('#teo-de-morgan .entorno-titulo strong')).toHaveText('Teorema I.1.9');
+    await expect(page.locator('#ax-induccion .entorno-titulo strong')).toHaveText('Axioma I.1.26');
+    await expect(page.getByRole('link', { name: 'Teorema I.1.13' }).first()).toHaveAttribute('href', '#teo-contrapositiva');
     await expect(page.locator('details.entorno-demostracion').first()).toHaveAttribute('open', '');
     await expect(page.locator('.katex').first()).toBeVisible();
   });
@@ -181,9 +181,9 @@ test.describe('el capítulo I.2', () => {
   test('cita los entornos de I.1 con su número y enlaza a ellos', async ({ page }) => {
     await page.goto('capitulos/i-2/');
     const deMorgan = page.locator('a[href$="/capitulos/i-1/#teo-de-morgan"]').first();
-    await expect(deMorgan).toHaveText('Teorema I.1.5');
+    await expect(deMorgan).toHaveText('Teorema I.1.9');
     await deMorgan.click();
-    await expect(page.locator('#teo-de-morgan')).toContainText('Teorema I.1.5');
+    await expect(page.locator('#teo-de-morgan')).toContainText('Teorema I.1.9');
   });
 
   test('las cubetas se reparten de nuevo al cambiar la cantidad y la función', async ({ page }) => {
