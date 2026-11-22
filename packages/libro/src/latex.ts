@@ -157,7 +157,9 @@ export function capituloALatex(markdown: string, opciones: OpcionesLatex): strin
     const definicion = ENTORNOS[nodo.name];
     if (!definicion) return contenido;
     const numero = definicion.contador ? ++contadores[definicion.contador] : undefined;
-    const nombre = numero === undefined ? definicion.nombre : `${definicion.nombre} ${capitulo}.${numero}`;
+    const contraejemplo = nodo.name === 'ejemplo' && /\bcontraejemplo\b/.test(String(nodo.attributes?.class ?? ''));
+    const base = contraejemplo ? 'Contraejemplo' : definicion.nombre;
+    const nombre = numero === undefined ? base : `${base} ${capitulo}.${numero}`;
     let encabezado = `\\textbf{${escapar(nombre)}}${titulo ? ` (${titulo})` : ''}.`;
     if (nodo.name === 'ejercicio') {
       const { nivel, tipo, seccion, respuesta } = nodo.attributes ?? {};

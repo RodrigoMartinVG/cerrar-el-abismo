@@ -76,6 +76,15 @@ describe('remarkLibro', () => {
     expect(() => html(':::ejercicio{nivel=1 tipo=calculo respuesta=dos}\nB.\n:::')).toThrow(/no es un número/);
   });
 
+  it('nombra «Contraejemplo» al ejemplo marcado, con el contador común, y su referencia lo dice', () => {
+    const salida = html(
+      ':::ejemplo[Uno]\nA.\n:::\n\n:::ejemplo[La recíproca es falsa]{#ej-r .contraejemplo}\nB.\n:::\n\nVer el :ref[ej-r].',
+    );
+    expect(salida).toContain('<strong>Contraejemplo II.5.2</strong>');
+    expect(salida).toContain('class="entorno entorno-ejemplo contraejemplo"');
+    expect(salida).toContain('<a href="#ej-r">Contraejemplo II.5.2</a>');
+  });
+
   it('resuelve :ref[id] con el nombre numerado del entorno', () => {
     const salida = html(':::lema{#clave}\nX.\n:::\n\nPor el :ref[clave], listo.');
     expect(salida).toContain('Por el <a href="#clave">Lema II.5.1</a>, listo.');

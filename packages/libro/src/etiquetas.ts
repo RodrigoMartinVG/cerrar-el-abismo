@@ -29,7 +29,9 @@ export function etiquetasDelCapitulo(markdown: string, capitulo: string): Map<st
     if (bloque) {
       const entorno = ENTORNOS[bloque[1]!];
       if (!entorno?.contador) continue;
-      const nombre = `${entorno.nombre} ${capitulo}.${++contadores[entorno.contador]}`;
+      // Un ejemplo marcado {.contraejemplo} se nombra «Contraejemplo», con el mismo contador (guía de estilo, 6).
+      const base = bloque[1] === 'ejemplo' && /\{[^}]*\.contraejemplo\b/.test(linea) ? 'Contraejemplo' : entorno.nombre;
+      const nombre = `${base} ${capitulo}.${++contadores[entorno.contador]}`;
       if (id) etiquetas.set(id, nombre);
     } else if (/^::figura\b/.test(linea)) {
       const nombre = `Figura ${capitulo}.${++contadores.figuras}`;

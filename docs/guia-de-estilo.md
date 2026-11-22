@@ -137,10 +137,31 @@ Lagrange» en I.7, que es el modelo:
 Un concepto menor puede saltar pasos, pero no el tercero. Las tablas chicas, como la de multiplicar de un grupo o la
 de los órdenes de sus elementos, ayudan a ver lo que el texto afirma.
 
-**Las metas de un capítulo**, que mide `npm run densidad`: al menos un ejemplo por cada definición del Desarrollo, al
-menos dos contraejemplos, al menos una figura interactiva, de 15 a 20 ejercicios y al menos el 85 % de las páginas
-previstas en el índice. Lo que no se puede contar, como el caso hecho a mano o el propósito declarado, lo mira la
-lectura de estilo.
+**Las metas de un capítulo**, que mide `npm run densidad`, son rangos y proporciones, no solo pisos. La primera
+versión eran pisos (un ejemplo por definición, dos contraejemplos, una figura, quince ejercicios, el 85 % de las
+páginas), y la pasada de densidad del Tomo I mostró lo que eso produce: nueve capítulos crecieron hasta el tope,
+algunos contraejemplos lo eran solo por las palabras de su título, y casi todos los ejercicios eran de demostrar.
+Las metas de ahora, con su porqué:
+
+- **Extensión: entre el 90 % y el 115 % de las páginas previstas, y nunca más de 52.** El índice reparte el espacio
+  entre los temas; un capítulo que se pasa le quita al lector la proporción entre lo central y lo accesorio. Si un
+  capítulo no cabe sin perder algo necesario, se recorta lo más débil, no lo más difícil de escribir.
+- **Ejemplos: al menos uno por definición, de a lo sumo 400 palabras, y nunca más de tres bloques seguidos sin una
+  frase.** Un ejemplo más largo es una sección y se parte; una racha de bloques sin prosa se lee como una lista. El
+  propósito de cada ejemplo se dice antes, en una frase, o en su título, si el título lo dice entero.
+- **Contraejemplos: al menos dos, marcados `{.contraejemplo}`.** Un contraejemplo muestra dónde termina un resultado:
+  que una recíproca es falsa, que una hipótesis hace falta o que una generalización plausible no vale. Un objeto que
+  no cumple una definición es un no-ejemplo, y va en el ejemplo de la definición; no se marca. El sitio y el PDF
+  nombran «Contraejemplo» a los marcados.
+- **Ejercicios: de 15 a 20, con los de demostrar en no más del 60 %, al menos tres de cálculo, uno de exploración y
+  uno de traducción, al menos tres de nivel 1 y dos de nivel 3.** Un capítulo solo de demostraciones no deja
+  practicar el cálculo que la práctica pide, y uno sin desafíos no distingue al lector que entendió del que repitió.
+- **Figuras: al menos una interactiva**, y un ejercicio de exploración que la use.
+- **Proyectos: al menos tres por tomo**, en los capítulos que cierran un bloque, que combinen varios capítulos.
+
+Lo que no se puede contar, como el caso hecho a mano antes de cada definición o que un ejemplo no repita a otro, lo
+mira la lectura de estilo. Las metas se recalibran cuando la lectura crítica de un tomo muestra que alguna empuja en
+la dirección equivocada; cada cambio se anota aquí con su razón.
 
 ## 7. La prosa
 

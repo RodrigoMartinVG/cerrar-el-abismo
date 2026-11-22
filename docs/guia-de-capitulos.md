@@ -103,6 +103,7 @@ La familia dual de una base de $V$ es una base de $V^*$.
 | Directiva | Se muestra como | Numeración |
 | --- | --- | --- |
 | `axioma`, `definicion`, `teorema`, `lema`, `proposicion`, `corolario`, `ejemplo`, `observacion` | «Teorema II.5.3 (Título).» | Un contador común por capítulo |
+| `ejemplo{.contraejemplo}` | «Contraejemplo II.5.4 (Título).» | El mismo contador común |
 | `ejercicio` | «Ejercicio II.5.1.» | Un contador propio |
 | `demostracion` | Plegable, abierta, cerrada con ∎ | Sin número |
 | `solucion` | Plegable, cerrada | Sin número |

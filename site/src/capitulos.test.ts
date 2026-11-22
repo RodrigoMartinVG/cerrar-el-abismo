@@ -42,10 +42,12 @@ const GRAFO = new Grafo(cargarIndice());
  */
 const LICENCIAS_COMPATIBLES = ['dominio público', 'CC0', 'MIT', 'BSD', 'Apache-2.0', 'CC BY 4.0', 'CC BY-SA 4.0'];
 /**
- * Los capítulos que todavía no pasaron por E3 y E4 de la hoja de ruta: sin la fuente de su fragmento, y con
- * ejercicios sin graduar. Cada pasada de la fase D saca su capítulo de la lista, y la lista desaparece al terminarla.
+ * Los capítulos que todavía no cumplen las metas de equilibrio de la guía de estilo (sección 6), recalibradas después
+ * de la fase D. Cada uno sale de la lista cuando las cumple, y la lista desaparece al terminar la ronda.
  */
-const PENDIENTES_DE_LA_FASE_D = new Set<string>();
+const PENDIENTES_DEL_EQUILIBRIO = new Set(
+  ['i-1', 'i-2', 'i-3', 'i-4', 'i-7', 'i-8', 'i-9', 'i-10', 'i-11', 'i-12', 'i-13', 'i-14', 'i-15'].map((c) => `${c}.md`),
+);
 const PLANTILLA = [
   'Entrada',
   'Motivación',
@@ -154,31 +156,25 @@ describe.each(archivos)('el capítulo %s', (archivo) => {
     expect(fuera, 'la Entrada y la Salida solo usan el recorrido (especificación, 8.1)').toEqual([]);
   });
 
-  it.skipIf(PENDIENTES_DE_LA_FASE_D.has(archivo))(
-    'sus ejercicios dicen dificultad, tipo y sección; los de cálculo, su respuesta; los impares tienen solución (decisión 0006)',
-    () => {
-      expect(revisarEjercicios(texto)).toEqual([]);
-    },
-  );
+  it('sus ejercicios dicen dificultad, tipo y sección; los de cálculo, su respuesta; los impares tienen solución (decisión 0006)', () => {
+    expect(revisarEjercicios(texto)).toEqual([]);
+  });
 
-  it.skipIf(PENDIENTES_DE_LA_FASE_D.has(archivo))(
-    'dice de dónde sale el fragmento de la Entrada, con una licencia compatible con la de la obra (especificación, 8.1)',
-    () => {
-      const { fuente } = datos;
-      expect(fuente, 'falta el campo «fuente»: «propia» o la fuente con su licencia').toBeDefined();
-      if (fuente === 'propia') {
-        const entrada = /^## Entrada\n([\s\S]*?)(?=^## )/m.exec(cuerpo)?.[1] ?? '';
-        expect(entrada, 'si el fragmento es propio, la Entrada lo dice').toMatch(
-          /\bpropi[oa]\b|escrit[oa] para (esta obra|este capítulo)/,
-        );
-      } else {
-        expect(LICENCIAS_COMPATIBLES).toContain(fuente!.licencia);
-      }
-    },
-  );
+  it('dice de dónde sale el fragmento de la Entrada, con una licencia compatible con la de la obra (especificación, 8.1)', () => {
+    const { fuente } = datos;
+    expect(fuente, 'falta el campo «fuente»: «propia» o la fuente con su licencia').toBeDefined();
+    if (fuente === 'propia') {
+      const entrada = /^## Entrada\n([\s\S]*?)(?=^## )/m.exec(cuerpo)?.[1] ?? '';
+      expect(entrada, 'si el fragmento es propio, la Entrada lo dice').toMatch(
+        /\bpropi[oa]\b|escrit[oa] para (esta obra|este capítulo)/,
+      );
+    } else {
+      expect(LICENCIAS_COMPATIBLES).toContain(fuente!.licencia);
+    }
+  });
 
-  it.skipIf(PENDIENTES_DE_LA_FASE_D.has(archivo))(
-    'cumple las metas de densidad: ejemplos, contraejemplos, figuras, ejercicios y extensión (guía de estilo, 6)',
+  it.skipIf(PENDIENTES_DEL_EQUILIBRIO.has(archivo))(
+    'cumple las metas de equilibrio: extensión, ejemplos, contraejemplos, ejercicios y figuras (guía de estilo, 6)',
     () => {
       const c = indice.get(datos.capitulo)!;
       const fallan = evaluarDensidad(medirDensidad(texto), c.paginas)

@@ -188,7 +188,10 @@ export function remarkLibro(opciones: OpcionesLibro) {
         }
         const etiqueta = sacarEtiqueta(nodo);
         const numero = entorno.contador ? ++contadores[entorno.contador] : undefined;
-        const nombre = numero === undefined ? entorno.nombre : `${entorno.nombre} ${prefijo}${numero}`;
+        // Un ejemplo marcado {.contraejemplo} se nombra «Contraejemplo», con el mismo contador (guía de estilo, 6).
+        const contraejemplo = nodo.name === 'ejemplo' && /\bcontraejemplo\b/.test(String(nodo.attributes?.class ?? ''));
+        const base = contraejemplo ? 'Contraejemplo' : entorno.nombre;
+        const nombre = numero === undefined ? base : `${base} ${prefijo}${numero}`;
         registrar(nodo.attributes?.id, nombre, nodo);
         const encabezado: Paragraph = {
           type: 'paragraph',
@@ -244,7 +247,7 @@ export function remarkLibro(opciones: OpcionesLibro) {
         nodo.data = {
           hName: entorno.html ?? 'section',
           hProperties: {
-            className: ['entorno', `entorno-${nodo.name}`],
+            className: ['entorno', `entorno-${nodo.name}`, ...(contraejemplo ? ['contraejemplo'] : [])],
             id: nodo.attributes?.id ?? undefined,
             open: entorno.abierto || undefined,
           },
