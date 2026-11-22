@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadPyodide } from 'pyodide';
 import { describe, expect, it } from 'vitest';
@@ -10,18 +10,23 @@ import {
   revisarCumple,
   revisarDiccionario,
   revisarEstilo,
+  revisarRegistro,
   revisarSupone,
+  type Estado,
   type Promesa,
 } from '@cerrar-el-abismo/libro';
 
 /**
  * LOS CAPÍTULOS ESCRITOS (sección 11.5): cada uno está en el índice con su título, sigue la plantilla de la
  * sección 7 y las reglas mecánicas de la guía de estilo, declara bien lo que da por conocido, agrega sus términos al
- * diccionario (decisión 0004), y todas sus celdas de Python se ejecutan, con el mismo Pyodide que usa el navegador.
+ * diccionario (decisión 0004), tiene el registro de revisión que su estado exige (decisión 0005), y todas sus celdas
+ * de Python se ejecutan, con el mismo Pyodide que usa el navegador.
  */
 
 const carpeta = join(carpetaDelIndice(), '..', 'site', 'src', 'content', 'docs', 'capitulos');
 const archivos = readdirSync(carpeta).filter((f) => f.endsWith('.md'));
+/** Los registros de revisión, uno por capítulo, con el mismo nombre de archivo: «revision/i-9.yaml». */
+const carpetaDeRevision = join(carpetaDelIndice(), '..', 'revision');
 const indice = new Map(todosLosCapitulos(cargarIndice()).map((c) => [c.id, c]));
 const ORDEN_DE_LECTURA = [...indice.keys()];
 const GRAFO = new Grafo(cargarIndice());
@@ -42,7 +47,14 @@ function leer(archivo: string) {
   const m = /^---\n([\s\S]*?)\n---\n/.exec(texto);
   if (!m) throw new Error(`${archivo} no tiene frontmatter.`);
   return {
-    datos: parse(m[1]!) as { title: string; capitulo: string; supone?: unknown; diccionario?: unknown; cumple?: unknown },
+    datos: parse(m[1]!) as {
+      title: string;
+      capitulo: string;
+      estado?: Estado;
+      supone?: unknown;
+      diccionario?: unknown;
+      cumple?: unknown;
+    },
     texto,
     cuerpo: texto.slice(m[0].length),
   };
@@ -108,6 +120,12 @@ describe.each(archivos)('el capítulo %s', (archivo) => {
     expect(revisarCumple(datos.cumple, texto, PROMESAS.get(datos.capitulo) ?? [])).toEqual([]);
   });
 
+  it('tiene el registro de revisión que su estado exige, al día con su texto (decisión 0005)', () => {
+    const registro = join(carpetaDeRevision, archivo.replace(/\.md$/, '.yaml'));
+    const datosDelRegistro: unknown = existsSync(registro) ? parse(readFileSync(registro, 'utf8')) : undefined;
+    expect(revisarRegistro(datosDelRegistro, texto, datos.estado ?? 'borrador')).toEqual([]);
+  });
+
   it('tiene el recuadro del Puente', () => {
     expect(cuerpo).toMatch(/^:::puente$/m);
   });
@@ -132,4 +150,9 @@ it('ningún término del diccionario se define en dos capítulos', () => {
     }
   }
   expect([...donde].filter(([, capitulos]) => capitulos.length > 1)).toEqual([]);
+});
+
+it('cada registro de revisión corresponde a un capítulo escrito', () => {
+  const registros = existsSync(carpetaDeRevision) ? readdirSync(carpetaDeRevision).filter((f) => f !== 'README.md') : [];
+  expect(registros.filter((f) => !archivos.includes(f.replace(/\.yaml$/, '.md')))).toEqual([]);
 });

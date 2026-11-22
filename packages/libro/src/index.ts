@@ -5,3 +5,20 @@ export { revisarSupone, type Supuesto } from './supone.ts';
 export { claveDeTermino, revisarDiccionario, type EntradaDelDiccionario } from './diccionario.ts';
 export { etiquetasDelCapitulo } from './etiquetas.ts';
 export { revisarCumple, type Cumplimiento, type Promesa } from './cumple.ts';
+export {
+  ASPECTOS,
+  ENTORNOS_REVISABLES,
+  ESTADOS,
+  PASADAS,
+  avanceDeRevision,
+  huella,
+  resultadosDelCapitulo,
+  revisarRegistro,
+  type AvanceDeRevision,
+  type EntradaDeRevision,
+  type Estado,
+  type EstadoDePasada,
+  type Pasada,
+  type Registro,
+  type ResultadoRevisable,
+} from './revision.ts';

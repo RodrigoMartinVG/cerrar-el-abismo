@@ -137,6 +137,16 @@ test('el diccionario reúne los términos de los capítulos y busca en los dos i
   await expect(page.locator('#cuenta-terminos')).toHaveText('Ningún término coincide');
 });
 
+test('cada capítulo dice cuánto está revisado y lleva al estado de la revisión', async ({ page }) => {
+  await page.goto('capitulos/i-1/');
+  const enlace = page.getByRole('link', { name: /^Revisión: \d+ de 11 resultados/ });
+  await expect(enlace).toHaveAttribute('href', /\/revision\/#i-1$/);
+  await enlace.click();
+  await expect(page.getByRole('heading', { level: 1, name: 'Estado de la revisión' })).toBeVisible();
+  await expect(page.locator('.tabla-revision tbody tr')).toHaveCount(15);
+  await expect(page.locator('tr#i-1 th a')).toHaveText('I.1 Lógica y demostración');
+});
+
 test.describe('el capítulo I.3', () => {
   test('el rectángulo de Euclides se corta en cuadrados y da el máximo común divisor', async ({ page }) => {
     await page.goto('capitulos/i-3/');

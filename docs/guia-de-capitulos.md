@@ -19,7 +19,8 @@ estado: borrador
 ```
 
 - `title` es el identificador seguido del título exacto del índice; una prueba lo comprueba.
-- `estado` es `borrador`, `revision` o `terminado` (sección 16.2 de la especificación).
+- `estado` es `borrador`, `revision` o `terminado` (sección 16.2 de la especificación). Pasar de un estado a otro
+  exige la revisión registrada en `revision/` (decisión 0005; ver «La revisión», más abajo).
 - `supone` (opcional) lista lo que el capítulo usa antes de que la obra lo construya, con el capítulo que lo trata con
   rigor. Se escribe en el orden en que el capítulo lo usa:
 
@@ -146,6 +147,22 @@ Antes de dar por escrito un capítulo, se revisa su página de recorrido (`/mapa
 - **Lo que le dejaron** los capítulos anteriores en su `supone` se cumple y se declara en `cumple`.
 - **Las menciones de capítulos anteriores que no son requisitos** se revisan una por una: pueden ser un aviso legítimo
   o delatar un requisito que falta.
+
+## La revisión
+
+Las pruebas verifican la forma; la revisión, que lo escrito sea verdadero (decisión 0005). Se registra en
+`revision/<capítulo>.yaml` con `npm run revision`, que calcula la fecha y la huella del texto revisado:
+
+- **Cada resultado** (teorema, proposición, lema o corolario): el enunciado se contrasta con una referencia concreta,
+  con libro y número de teorema o página, y la demostración se sigue paso a paso.
+- **Cinco aspectos** del capítulo entero: `estilo`, `practica`, `calculos`, `ejercicios` e `historia`.
+- **Dos pasadas:** la primera, del autor con los libros de las lecturas; la segunda, de otro matemático, obligatoria
+  para los resultados.
+
+Un capítulo pasa a `revision` cuando todos sus resultados y aspectos tienen la primera pasada, y a `terminado` cuando
+cada resultado tiene además la segunda, de otra persona. Si se corrige un resultado ya revisado, su huella cambia y
+la revisión queda desactualizada: hay que registrarla de nuevo. Una revisión la firma una persona; una sesión de IA
+solo escribe en el registro a pedido del revisor y con sus datos.
 
 ## Antes de subir
 

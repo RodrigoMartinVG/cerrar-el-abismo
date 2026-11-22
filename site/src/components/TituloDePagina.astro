@@ -2,13 +2,18 @@
 import Default from '@astrojs/starlight/components/PageTitle.astro';
 import { Badge } from '@astrojs/starlight/components';
 import { todosLosCapitulos, tomoDe } from '@cerrar-el-abismo/indice';
-import { obra, urlCapitulo, urlEnIndice, urlMapa, urlTomo } from '../lib/obra';
+import { obra, urlCapitulo, urlEnIndice, urlMapa, urlRevision, urlTomo } from '../lib/obra';
+import { avanceDe, NOMBRES_DE_ESTADOS } from '../lib/revision';
 
-/** Bajo el título de un capítulo escrito, sus metadatos del índice: tipo, extensión, requisitos y estado. */
-const datos = Astro.locals.starlightRoute.entry.data as { capitulo?: string; estado?: string };
+/**
+ * Bajo el título de un capítulo escrito, sus metadatos del índice (tipo, extensión, requisitos), su estado y cuántos de
+ * sus resultados están revisados (decisión 0005).
+ */
+const { data, body } = Astro.locals.starlightRoute.entry;
+const datos = data as { capitulo?: string; estado?: string };
 const c = datos.capitulo ? todosLosCapitulos(obra()).find((x) => x.id === datos.capitulo) : undefined;
 const tomo = c ? obra().tomos.find((t) => t.id === tomoDe(c.id)) : undefined;
-const ESTADOS: Record<string, string> = { borrador: 'Borrador', revision: 'En revisión', terminado: 'Terminado' };
+const revision = c ? avanceDe(c.id, body ?? '') : undefined;
 ---
 
 {
@@ -25,7 +30,7 @@ const ESTADOS: Record<string, string> = { borrador: 'Borrador', revision: 'En re
   c && (
     <p class="capitulo-meta">
       <Badge text={c.tipo === 'nucleo' ? 'Núcleo' : 'Complementario'} variant={c.tipo === 'nucleo' ? 'success' : 'default'} />
-      {datos.estado && <Badge text={ESTADOS[datos.estado] ?? datos.estado} variant="caution" />}
+      {datos.estado && <Badge text={NOMBRES_DE_ESTADOS[datos.estado] ?? datos.estado} variant="caution" />}
       <span>
         {c.paginas} págs. estimadas · Requiere:{' '}
         {c.requiere.length === 0
@@ -37,6 +42,16 @@ const ESTADOS: Record<string, string> = { borrador: 'Borrador', revision: 'En re
               </>
             ))}{' '}
         · <a href={urlEnIndice(c.id)}>Su entrada en el índice</a> · <a href={urlMapa(c.id)}>Su recorrido</a>
+        {revision && (
+          <>
+            {' '}
+            ·{' '}
+            <a href={urlRevision(c.id)} class="capitulo-revision">
+              Revisión: {revision.primera} de {revision.resultados} resultados
+              {revision.segunda > 0 && `, ${revision.segunda} con la segunda pasada`}
+            </a>
+          </>
+        )}
       </span>
     </p>
   )

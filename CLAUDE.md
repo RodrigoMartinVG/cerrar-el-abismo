@@ -18,6 +18,8 @@ repite.
   interactivas en `packages/piezas` (decisión 0003).
 - **El diccionario academia–práctica:** cada capítulo declara sus términos en el campo `diccionario` de su frontmatter,
   y la página `/diccionario/` los reúne (decisión 0004).
+- **La revisión:** cada capítulo tiene su registro en `revision/` (`i-9.yaml`), con quién revisó cada resultado y
+  aspecto, contra qué y la huella del texto revisado; las pruebas lo exigen según el `estado` (decisión 0005).
 - **El diseño anterior** (índice con un motor 3D en paralelo): `docs/historico/`. Ya no es el plan.
 
 ## Comandos
@@ -29,6 +31,7 @@ repite.
 | `npm run check` | Tipos: `tsc` de cada paquete y `astro check` del sitio |
 | `npm run lint` · `npm run format:check` | ESLint · Prettier |
 | `npm run indice:spec` | Reescribe los bloques generados de la especificación (secciones 6, 9.6, 13 y 14) desde `indice/`; valida antes |
+| `npm run revision` | Cómo va la revisión de cada capítulo; `-- I.9` la detalla; `-- I.9 <ancla o aspecto> --por … --contra …` registra una (decisión 0005) |
 | `npm run ortografia` | cspell con el diccionario español y el del proyecto (`ortografia/palabras.txt`) |
 | `npm run e2e` | Playwright sobre el sitio construido (hacer `npm run build` antes); `E2E_SIN_RED=1` salta la celda de Python |
 | `npm run verify` | check, lint, formato, ortografía y pruebas: lo mismo que el primer trabajo de la integración continua |
@@ -55,6 +58,9 @@ borrar (`erasableSyntaxOnly`) y los imports relativos con su extensión `.ts`.
   GitHub Pages.
 - **El contenido de los capítulos será Markdown con un conjunto cerrado de directivas**, no MDX libre (decisión
   0001), para que la misma fuente sirva a la web y al PDF.
+- **Una revisión la firma una persona** (decisión 0005). Una sesión de IA puede hacer una lectura previa y corregir lo
+  que encuentre, pero nunca registra una revisión por su cuenta ni a nombre de nadie: solo ejecuta `npm run revision`
+  cuando el revisor se lo pide, con sus datos.
 - Las pruebas y borradores desechables van en `scratch/`, que nunca se sube.
 - Para ver el sitio, servir `site/dist` con `vite preview` (como `.claude/launch.json` y Playwright): en este entorno
   `astro preview` pasa a segundo plano y el comando termina enseguida.

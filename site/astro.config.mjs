@@ -104,6 +104,7 @@ export default defineConfig({
             { label: 'Itinerarios', link: '/itinerarios/' },
             { label: 'Mapa de dependencias', link: '/mapa/' },
             { label: 'Diccionario academia–práctica', link: '/diccionario/' },
+            { label: 'Estado de la revisión', link: '/revision/' },
           ],
         },
         { label: 'Capítulos escritos', items: [{ autogenerate: { directory: 'capitulos' } }] },

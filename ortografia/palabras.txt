@@ -763,6 +763,7 @@ RANDU
 Rasterización
 rasterización
 recalcula
+recalculados
 recalcular
 recalcularlos
 recubridores

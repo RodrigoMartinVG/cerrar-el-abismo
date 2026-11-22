@@ -33,6 +33,11 @@ export function urlMapa(id?: string): string {
   return id ? `${raiz}mapa/${slug(id)}/` : `${raiz}mapa/`;
 }
 
+/** La fila de un capítulo en la página del estado de la revisión (decisión 0005). */
+export function urlRevision(id: string): string {
+  return `${raiz}revision/#${slug(id)}`;
+}
+
 /** La entrada de un capítulo en la página de su tomo. */
 export function urlEnIndice(id: string): string {
   return `${urlTomo(tomoDe(id))}#${slug(id)}`;

@@ -2673,7 +2673,7 @@ Cada tomo sigue el mismo ciclo: se escriben todos sus capítulos, después se co
 ### 16.2 Cuándo un capítulo está terminado
 
 - Requisitos, tipo y metadatos verificados automáticamente, y el mapa de dependencias revisado hacia atrás: lo que usa está en su recorrido y lo que otros capítulos dejaron para él está cumplido.
-- Demostraciones revisadas por un segundo matemático y contrastadas con las lecturas en el repaso del tomo.
+- Demostraciones revisadas por un segundo matemático y contrastadas con las lecturas en el repaso del tomo, con cada revisión registrada en `revision/` (decisión 0005 del repositorio).
 - Fragmento de entrada explicado en la salida; las cinco preguntas del Puente respondidas o declaradas no aplicables.
 - De 2 a 4 aplicaciones de al menos dos campos, con al menos una interactiva y todas con texto alternativo.
 - Celdas de código ejecutadas, ejercicios verificados y soluciones de los impares escritas.
@@ -2694,4 +2694,4 @@ Cada tomo sigue el mismo ciclo: se escriben todos sus capítulos, después se co
 | Extensión | Unas 7.142 páginas de capítulos, 5.214 de núcleo. Si se quiere reducir el núcleo, la primera palanca son los capítulos clásicos que ningún otro capítulo de núcleo necesita (V.7, VI.3 y VI.6: unas 120 páginas); la segunda, bajar la media de páginas por capítulo |
 | Signatura de la métrica | (−, +, +, +), con traducción explícita a (+, −, −, −) |
 | Idioma | Español; traducción al inglés por decidir |
-| Revisión externa | Definir quiénes revisan las demostraciones y con qué estudiantes se prueba el primer capítulo |
+| Revisión externa | El protocolo y su registro están decididos (decisión 0005 del repositorio). Falta definir quiénes hacen la segunda pasada y con qué estudiantes se prueba el primer capítulo |

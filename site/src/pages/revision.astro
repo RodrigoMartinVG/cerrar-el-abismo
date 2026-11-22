@@ -1,0 +1,122 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getCollection } from 'astro:content';
+import { slug, todosLosCapitulos } from '@cerrar-el-abismo/indice';
+import { ASPECTOS, etiquetasDelCapitulo } from '@cerrar-el-abismo/libro';
+import { obra, urlCapitulo } from '../lib/obra';
+import { avanceDe, NOMBRES_DE_ESTADOS, revisionesVigentes } from '../lib/revision';
+
+/**
+ * EL ESTADO DE LA REVISIÓN (decisión 0005): qué significa cada estado de un capítulo, qué se revisa y cuánto de cada
+ * capítulo escrito está revisado, con las revisiones que siguen vigentes, contra qué y por quién.
+ */
+const orden = todosLosCapitulos(obra()).map((c) => c.id);
+const capitulos = (await getCollection('docs', (e) => Boolean(e.data.capitulo)))
+  .map((e) => {
+    const id = e.data.capitulo as string;
+    const cuerpo = e.body ?? '';
+    const etiquetas = etiquetasDelCapitulo(cuerpo, id);
+    return {
+      id,
+      titulo: e.data.title,
+      estado: NOMBRES_DE_ESTADOS[e.data.estado ?? 'borrador'],
+      avance: avanceDe(id, cuerpo),
+      revisiones: revisionesVigentes(id, cuerpo).map((r) => ({
+        ...r,
+        nombre: r.aspecto ? `${ASPECTOS[r.clave]?.nombre ?? r.clave} (aspecto)` : (etiquetas.get(r.clave) ?? r.clave),
+        href: r.aspecto ? undefined : `${urlCapitulo(id)}#${r.clave}`,
+      })),
+    };
+  })
+  .sort((a, b) => orden.indexOf(a.id) - orden.indexOf(b.id));
+const conRevisiones = capitulos.filter((c) => c.revisiones.length > 0);
+const total = capitulos.reduce((s, c) => s + c.avance.resultados, 0);
+const revisados = capitulos.reduce((s, c) => s + c.avance.primera, 0);
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Estado de la revisión',
+    description: 'Qué está revisado en cada capítulo escrito, contra qué y por quién.',
+  }}
+>
+  <p>
+    Las comprobaciones automáticas verifican la forma de cada capítulo: que siga la plantilla, que cite solo lo que está en su
+    recorrido y que sus celdas de Python se ejecuten. No pueden verificar que un enunciado sea verdadero ni que una demostración sea
+    correcta. Eso lo hace la revisión, en dos pasadas: la primera, del autor, contrastando con los libros de las lecturas, y la
+    segunda, de otro matemático. Cada revisión queda registrada con quién la hizo, cuándo y contra qué referencia.
+  </p>
+  <p>
+    Se revisa cada resultado (teorema, proposición, lema o corolario): el enunciado se contrasta con una referencia concreta y la
+    demostración se sigue paso a paso. Se revisan además cinco aspectos del capítulo entero:
+  </p>
+  <ul>
+    {
+      Object.values(ASPECTOS).map(({ nombre, que }, i, todos) => (
+        <li>
+          <strong>{nombre}</strong>: {que}
+          {i === todos.length - 1 ? '.' : ';'}
+        </li>
+      ))
+    }
+  </ul>
+  <p>
+    Si el texto de un resultado cambia después de revisarlo, su revisión deja de contar hasta que se haga de nuevo. Un capítulo
+    pasa a estar <strong>en revisión</strong> cuando tiene completa la primera pasada, y <strong>terminado</strong> cuando además cada
+    resultado tiene la segunda. Mientras tanto es un <strong>borrador</strong>: está escrito y pasa las comprobaciones automáticas.
+  </p>
+
+  <h2 id="avance">El avance</h2>
+  <p>{revisados} de {total} resultados de los capítulos escritos tienen la primera pasada.</p>
+  <table class="tabla-revision">
+    <thead>
+      <tr>
+        <th scope="col">Capítulo</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Primera pasada</th>
+        <th scope="col">Segunda pasada</th>
+        <th scope="col">Aspectos</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        capitulos.map((c) => (
+          <tr id={slug(c.id)}>
+            <th scope="row">
+              <a href={urlCapitulo(c.id)}>{c.titulo}</a>
+            </th>
+            <td>{c.estado}</td>
+            <td>
+              {c.avance.primera} de {c.avance.resultados}
+            </td>
+            <td>
+              {c.avance.segunda} de {c.avance.resultados}
+            </td>
+            <td>{c.avance.aspectos} de 5</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <h2 id="revisiones">Las revisiones registradas</h2>
+  {
+    conRevisiones.length === 0 ? (
+      <p>Todavía no hay revisiones registradas: los capítulos escritos son borradores.</p>
+    ) : (
+      conRevisiones.map((c) => (
+        <>
+          <h3 id={`revisiones-${slug(c.id)}`}>{c.titulo}</h3>
+          <ul class="revisiones">
+            {c.revisiones.map((r) => (
+              <li>
+                {r.href ? <a href={r.href}>{r.nombre}</a> : r.nombre}: {r.pasada} pasada, por {r.por}, el {r.fecha}, contra{' '}
+                {r.contra}.{r.notas && ` ${r.notas}`}
+              </li>
+            ))}
+          </ul>
+        </>
+      ))
+    )
+  }
+</StarlightPage>

@@ -26,6 +26,7 @@ demostración* a I.15 *Demostraciones como programas*, ya están en borrador, co
 | [`packages/libro/`](packages/libro/) | La capa de libro: directivas, numeración y referencias (decisión 0003) |
 | [`packages/piezas/`](packages/piezas/) | Las piezas interactivas de las figuras |
 | [`site/src/content/docs/capitulos/`](site/src/content/docs/capitulos/) | Los capítulos escritos ([cómo se escriben](docs/guia-de-capitulos.md)) |
+| [`revision/`](revision/README.md) | El registro de revisión de cada capítulo: quién revisó cada resultado, contra qué y cuándo (decisión 0005) |
 | [`site/`](site/) | El sitio: Astro con Starlight (decisión 0001) |
 | [`docs/historico/`](docs/historico/) | El diseño anterior: el índice con un motor 3D en paralelo |
 
