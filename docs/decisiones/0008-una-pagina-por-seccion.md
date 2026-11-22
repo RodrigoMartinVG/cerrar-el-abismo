@@ -19,7 +19,8 @@ merece.
   - la portada del capítulo, en `/capitulos/i-7/`, con la Entrada, la Motivación y la lista de sus páginas;
   - una página por cada sección `###` del Desarrollo, en `/capitulos/i-7/<sección>/`, la primera con la introducción
     del Desarrollo y el recuadro de lo que el capítulo da por conocido;
-  - el Cálculo; el Puente y las Aplicaciones, juntos; la Salida; los Ejercicios; y las Notas.
+  - el Cálculo; el Puente; las Aplicaciones; la Salida; los Ejercicios; y las Notas. Las Aplicaciones empezaron
+    juntas con el Puente, cuando eran tres párrafos; tienen su página desde la pasada que las desarrolló.
 - **Las referencias siguen funcionando:** un enlace a un ancla, del mismo capítulo o de otro, apunta a la página que la
   contiene. El sitio lo calcula al construirse, a partir de los títulos de cada capítulo.
 - **La navegación:** en la barra lateral, cada capítulo es un grupo plegable con sus páginas, y cada página tiene su

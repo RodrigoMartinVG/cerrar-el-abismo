@@ -3,7 +3,7 @@ import GithubSlugger from 'github-slugger';
 /**
  * LAS PÁGINAS DE UN CAPÍTULO EN EL SITIO (decisión 0008). La fuente es un archivo por capítulo; el sitio lo divide en
  * una portada (Entrada y Motivación), una página por cada sección `###` del Desarrollo, y las páginas del Cálculo, del
- * Puente con las Aplicaciones, de la Salida, de los Ejercicios y de las Notas. Este módulo calcula esa división a partir
+ * Puente, de las Aplicaciones, de la Salida, de los Ejercicios y de las Notas. Este módulo calcula esa división a partir
  * del Markdown, con los mismos identificadores de títulos que el sitio, y dice en qué página queda cada ancla.
  */
 
@@ -28,7 +28,8 @@ export const tramo = (id: string) =>
 
 const ESPECIALES: Record<string, { slug: string; titulo: string }> = {
   Cálculo: { slug: 'calculo', titulo: 'Cálculo' },
-  Puente: { slug: 'puente', titulo: 'Puente y aplicaciones' },
+  Puente: { slug: 'puente', titulo: 'Puente' },
+  Aplicaciones: { slug: 'aplicaciones', titulo: 'Aplicaciones' },
   Salida: { slug: 'salida', titulo: 'Salida' },
   Ejercicios: { slug: 'ejercicios', titulo: 'Ejercicios' },
   'Notas y «Para seguir»': { slug: 'notas', titulo: 'Notas y «Para seguir»' },
@@ -67,7 +68,7 @@ export function paginasDelCapitulo(markdown: string): PaginaDelCapitulo[] {
           paginas.push(actual);
         } else if (ESPECIALES[texto]) {
           const { slug, titulo: nombre } = ESPECIALES[texto]!;
-          actual = { slug, titulo: nombre, desde: id, sinTitulo: texto === 'Puente' ? [] : [id], anclas: [] };
+          actual = { slug, titulo: nombre, desde: id, sinTitulo: [id], anclas: [] };
           paginas.push(actual);
         }
       } else if (nivel === 3 && enDesarrollo) {

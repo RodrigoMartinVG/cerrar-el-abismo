@@ -40,7 +40,8 @@ describe('las páginas de un capítulo (decisión 0008)', () => {
       ['grupos', 'Grupos', 'desarrollo'],
       ['subgrupos-y-orbitas', 'Subgrupos y órbitas', 'subgrupos-y-órbitas'],
       ['calculo', 'Cálculo', 'cálculo'],
-      ['puente', 'Puente y aplicaciones', 'puente'],
+      ['puente', 'Puente', 'puente'],
+      ['aplicaciones', 'Aplicaciones', 'aplicaciones'],
       ['salida', 'Salida', 'salida'],
       ['ejercicios', 'Ejercicios', 'ejercicios'],
       ['notas', 'Notas y «Para seguir»', 'notas-y-para-seguir'],
@@ -54,9 +55,9 @@ describe('las páginas de un capítulo (decisión 0008)', () => {
     expect(donde('desarrollo')).toBe('grupos');
     expect(donde('fig-tabla')).toBe('subgrupos-y-orbitas');
     expect(donde('ej-uno')).toBe('ejercicios');
-    expect(donde('aplicaciones')).toBe('puente');
+    expect(donde('aplicaciones')).toBe('aplicaciones');
     expect(paginas[1]!.sinTitulo).toEqual(['desarrollo', 'grupos']);
-    expect(paginas.find((p) => p.slug === 'puente')!.sinTitulo).toEqual([]);
+    expect(paginas.find((p) => p.slug === 'puente')!.sinTitulo).toEqual(['puente']);
   });
 
   it('el tramo de la dirección no lleva tildes', () => {
