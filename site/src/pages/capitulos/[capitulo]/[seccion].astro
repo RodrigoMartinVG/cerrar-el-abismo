@@ -1,0 +1,39 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getCollection } from 'astro:content';
+import { slug, todosLosCapitulos } from '@cerrar-el-abismo/indice';
+import { obra } from '../../../lib/obra';
+import { corregirEnlaces, dividir, PAGINAS, titulosDe, urlPagina } from '../../../lib/secciones';
+
+/**
+ * UNA SECCIÓN DE UN CAPÍTULO (decisión 0008): cada sección del Desarrollo, el Cálculo, el Puente con las
+ * Aplicaciones, la Salida, los Ejercicios y las Notas tienen su página. El contenido sale del HTML del capítulo entero,
+ * el mismo que construye la capa de libro, así que la numeración y las referencias son las de siempre.
+ */
+export async function getStaticPaths() {
+  const entradas = await getCollection('docs', (e) => /\/capitulos\/[^/]+\.md$/.test(e.filePath ?? ''));
+  return entradas.flatMap((entrada) => {
+    const capitulo = /\/capitulos\/([^/]+)\.md$/.exec(entrada.filePath!)![1]!;
+    const paginas = PAGINAS.get(capitulo) ?? [];
+    const partes = dividir(entrada.rendered?.html ?? '', paginas);
+    return paginas.slice(1).map((pagina, i) => ({
+      params: { capitulo, seccion: pagina.slug },
+      props: { capitulo, pagina, html: partes[i + 1]! },
+    }));
+  });
+}
+
+const { capitulo, pagina, html } = Astro.props;
+const c = todosLosCapitulos(obra()).find((x) => slug(x.id) === capitulo)!;
+const contenido = corregirEnlaces(html, { capitulo, pagina: pagina.slug });
+---
+
+<StarlightPage
+  frontmatter={{ title: pagina.titulo, description: `${c.id} ${c.titulo}: ${pagina.titulo}.` }}
+  headings={titulosDe(contenido)}
+>
+  <Fragment set:html={contenido} />
+  <p class="capitulo-volver">
+    <a href={urlPagina(capitulo, '')}>{c.id} {c.titulo}</a>: la portada del capítulo y la lista de sus páginas.
+  </p>
+</StarlightPage>

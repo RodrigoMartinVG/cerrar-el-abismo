@@ -6,7 +6,7 @@ import { unified } from '@astrojs/markdown-remark';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { cargarIndice, slug, todosLosCapitulos, tomoDe } from '@cerrar-el-abismo/indice';
-import { etiquetasDelCapitulo, remarkLibro } from '@cerrar-el-abismo/libro';
+import { etiquetasDelCapitulo, paginasDelCapitulo, remarkLibro } from '@cerrar-el-abismo/libro';
 import { NOMBRES_DE_PIEZAS } from '@cerrar-el-abismo/piezas';
 
 /**
@@ -87,6 +87,7 @@ export default defineConfig({
         // Junto al selector de tema, los botones que ocultan los paneles laterales.
         ThemeSelect: './src/components/SelectorDeTema.astro',
       },
+      routeMiddleware: './src/route-middleware.ts',
       // Los paneles que el lector ocultó en otra página, aplicados antes de dibujar para que no parpadeen.
       head: [
         {
@@ -115,9 +116,17 @@ export default defineConfig({
         // En orden de lectura, desde el índice: generarlos desde la carpeta los ordenaría como texto (I.10 antes que I.2).
         {
           label: 'Capítulos escritos',
+          // Cada capítulo, un grupo plegable con sus páginas: la portada y una por sección (decisión 0008).
           items: todosLosCapitulos(indice)
             .filter((c) => escrito(c.id))
-            .map((c) => ({ label: `${c.id} ${c.titulo}`, link: `/capitulos/${slug(c.id)}/` })),
+            .map((c) => ({
+              label: `${c.id} ${c.titulo}`,
+              collapsed: true,
+              items: paginasDelCapitulo(readFileSync(archivo(c.id), 'utf8')).map((p) => ({
+                label: p.titulo,
+                link: `/capitulos/${slug(c.id)}/${p.slug ? `${p.slug}/` : ''}`,
+              })),
+            })),
         },
         {
           label: 'Tomos',

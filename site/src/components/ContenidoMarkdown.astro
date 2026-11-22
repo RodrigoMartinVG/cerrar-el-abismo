@@ -1,8 +1,49 @@
 ---
 import Default from '@astrojs/starlight/components/MarkdownContent.astro';
+import { corregirEnlaces, dividir, PAGINAS, urlPagina } from '../lib/secciones';
+
+/**
+ * El contenido de una página de Markdown. Si es un capítulo, se muestra solo su portada (la Entrada y la Motivación) y
+ * la lista de sus páginas, una por sección (decisión 0008). En toda página de Markdown, los enlaces a anclas de un
+ * capítulo apuntan a la página que las contiene. Las páginas que no son de Markdown (como las secciones, que ya llegan
+ * corregidas, o la portada del sitio) pasan sin cambios.
+ */
+const archivo = Astro.locals.starlightRoute.entry.filePath ?? '';
+const capitulo = /\/capitulos\/([^/]+)\.md$/.exec(archivo)?.[1];
+const paginas = capitulo ? PAGINAS.get(capitulo) : undefined;
+let html: string | undefined;
+if (archivo.endsWith('.md')) {
+  const completo = await Astro.slots.render('default');
+  html =
+    capitulo && paginas
+      ? corregirEnlaces(dividir(completo, paginas)[0]!, { capitulo, pagina: '' })
+      : corregirEnlaces(completo);
+}
 ---
 
-<Default><slot /></Default>
+{
+  html === undefined ? (
+    <Default>
+      <slot />
+    </Default>
+  ) : (
+    <Default>
+      <Fragment set:html={html} />
+      {capitulo && paginas && (
+        <nav class="capitulo-paginas" aria-labelledby="paginas-del-capitulo">
+          <h2 id="paginas-del-capitulo">El capítulo, página por página</h2>
+          <ol>
+            {paginas.slice(1).map((p) => (
+              <li>
+                <a href={urlPagina(capitulo, p.slug)}>{p.titulo}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+    </Default>
+  )
+}
 
 <script>
   // Las celdas de Python y las figuras interactivas de la capa de libro (packages/libro).

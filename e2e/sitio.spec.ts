@@ -1,4 +1,24 @@
-import { expect, test } from '@playwright/test';
+import { readFileSync } from 'node:fs';
+import { expect, test, type Page } from '@playwright/test';
+import { paginasDelCapitulo } from '../packages/libro/src/paginas.ts';
+
+/** Las páginas de un capítulo en el sitio (decisión 0008), calculadas como las calcula el sitio. */
+const paginasDe = (capitulo: string) =>
+  paginasDelCapitulo(readFileSync(new URL(`../site/src/content/docs/capitulos/${capitulo}.md`, import.meta.url), 'utf8'));
+/** La dirección de la página de un capítulo que contiene un ancla. */
+function paginaDe(capitulo: string, ancla: string): string {
+  const pagina = paginasDe(capitulo).find((p) => p.anclas.includes(ancla));
+  if (!pagina) throw new Error(`El ancla ${ancla} no está en ${capitulo}.`);
+  return `capitulos/${capitulo}/${pagina.slug ? `${pagina.slug}/` : ''}`;
+}
+/** Recorre las páginas de un capítulo hasta encontrar un elemento; devuelve su localizador. */
+async function buscarEnElCapitulo(page: Page, capitulo: string, selector: string) {
+  for (const p of paginasDe(capitulo)) {
+    await page.goto(`capitulos/${capitulo}/${p.slug ? `${p.slug}/` : ''}`);
+    if ((await page.locator(selector).count()) > 0) return page.locator(selector).first();
+  }
+  throw new Error(`Ninguna página de ${capitulo} tiene ${selector}.`);
+}
 
 test('la portada muestra el mapa de tomos y lleva al índice temático', async ({ page }) => {
   await page.goto('./');
@@ -57,33 +77,47 @@ test('la página de un tomo muestra sus capítulos y enlaza los escritos', async
 });
 
 test.describe('el primer capítulo (I.1)', () => {
+  // Casi todas las pruebas son de las celdas, que están en la página del Cálculo; las demás van a su página.
   test.beforeEach(async ({ page }) => {
-    await page.goto('capitulos/i-1/');
+    await page.goto(paginaDe('i-1', 'cálculo'));
   });
 
   test('muestra su tomo, numera los entornos y resuelve las referencias', async ({ page }) => {
+    await page.goto('capitulos/i-1/');
     await expect(page.getByRole('link', { name: /Tomo I · Fundamentos/ })).toBeVisible();
+    await page.goto(paginaDe('i-1', 'teo-de-morgan'));
     await expect(page.locator('#teo-de-morgan .entorno-titulo strong')).toHaveText('Teorema I.1.9');
-    await expect(page.locator('#ax-induccion .entorno-titulo strong')).toHaveText('Axioma I.1.26');
-    await expect(page.getByRole('link', { name: 'Teorema I.1.13' }).first()).toHaveAttribute('href', '#teo-contrapositiva');
     await expect(page.locator('details.entorno-demostracion').first()).toHaveAttribute('open', '');
     await expect(page.locator('.katex').first()).toBeVisible();
+    await page.goto(paginaDe('i-1', 'ax-induccion'));
+    await expect(page.locator('#ax-induccion .entorno-titulo strong')).toHaveText('Axioma I.1.26');
+  });
+
+  test('una referencia a un resultado de otra página del capítulo lleva a esa página', async ({ page }) => {
+    await page.goto(paginaDe('i-1', 'salida'));
+    const enlace = page.locator('main a[href*="/capitulos/i-1/"][href*="/#"]').first();
+    const destino = (await enlace.getAttribute('href'))!.split('#')[1]!;
+    await enlace.click();
+    await expect(page.locator(`[id="${decodeURIComponent(destino)}"]`)).toBeVisible();
   });
 
   test('dice lo que da por conocido al comienzo del Desarrollo', async ({ page }) => {
+    await page.goto(paginaDe('i-1', 'desarrollo'));
     const recuadro = page.locator('aside.supone');
     await expect(recuadro).toContainText('Lo que este capítulo da por conocido');
     // I.9 ya está escrito, así que el recuadro enlaza al capítulo y no a su lugar en el índice.
     await expect(recuadro.getByRole('link', { name: 'I.9' })).toHaveAttribute('href', /capitulos\/i-9\/$/);
+    // El recuadro va antes del primer entorno del Desarrollo.
     const orden = await page.evaluate(() => {
-      const desarrollo = document.getElementById('desarrollo')!;
       const recuadro = document.querySelector('aside.supone')!;
-      return desarrollo.compareDocumentPosition(recuadro) & Node.DOCUMENT_POSITION_FOLLOWING;
+      const entorno = document.querySelector('.sl-markdown-content .entorno')!;
+      return recuadro.compareDocumentPosition(entorno) & Node.DOCUMENT_POSITION_FOLLOWING;
     });
     expect(orden).toBeTruthy();
   });
 
   test('la tabla de verdad es interactiva y clasifica la fórmula', async ({ page }) => {
+    await page.goto(paginaDe('i-1', 'fig-tabla'));
     const figura = page.locator('figura-interactiva[data-pieza="tabla-de-verdad"]');
     const veredicto = figura.locator('output');
     await expect(veredicto).toContainText('Tautología');
@@ -95,6 +129,7 @@ test.describe('el primer capítulo (I.1)', () => {
   });
 
   test('abre con la matemática: el cuadrado de impares responde al deslizador', async ({ page }) => {
+    await page.goto('capitulos/i-1/');
     const figura = page.locator('figura-interactiva[data-pieza="cuadrado-de-impares"]');
     await expect(figura.locator('output')).toHaveText('1 + 3 + 5 + 7 + 9 = 25 = 5²');
     await expect(figura.locator('rect')).toHaveCount(25);
@@ -179,15 +214,14 @@ test.describe('el primer capítulo (I.1)', () => {
 
 test.describe('el capítulo I.2', () => {
   test('cita los entornos de I.1 con su número y enlaza a ellos', async ({ page }) => {
-    await page.goto('capitulos/i-2/');
-    const deMorgan = page.locator('a[href$="/capitulos/i-1/#teo-de-morgan"]').first();
+    const deMorgan = await buscarEnElCapitulo(page, 'i-2', 'a[href*="/capitulos/i-1/"][href$="#teo-de-morgan"]');
     await expect(deMorgan).toHaveText('Teorema I.1.9');
     await deMorgan.click();
     await expect(page.locator('#teo-de-morgan')).toContainText('Teorema I.1.9');
   });
 
   test('las cubetas se reparten de nuevo al cambiar la cantidad y la función', async ({ page }) => {
-    await page.goto('capitulos/i-2/');
+    await page.goto(paginaDe('i-2', 'fig-cubetas'));
     const figura = page.locator('#fig-cubetas');
     const cubetas = figura.locator('.pieza-cubetas li');
     await expect(cubetas).toHaveCount(8);
@@ -204,7 +238,10 @@ test.describe('el capítulo I.2', () => {
 test('el diccionario reúne los términos de los capítulos y busca en los dos idiomas', async ({ page }) => {
   await page.goto('diccionario/');
   const implicacion = page.locator('.diccionario .entrada#implicacion');
-  await expect(implicacion.locator('a.termino')).toHaveAttribute('href', /\/capitulos\/i-1\/#def-implicacion$/);
+  await expect(implicacion.locator('a.termino')).toHaveAttribute(
+    'href',
+    new RegExp(`/${paginaDe('i-1', 'def-implicacion')}#def-implicacion$`),
+  );
   await expect(implicacion.locator('.ingles')).toHaveText('implication');
   const buscar = page.locator('#buscar-termino');
   await buscar.fill('implication');
@@ -254,7 +291,7 @@ test.describe('el capítulo I.3', () => {
 
 test.describe('el capítulo I.4', () => {
   test('la multiplicación modular dice cuándo hay inverso', async ({ page }) => {
-    await page.goto('capitulos/i-4/');
+    await page.goto(paginaDe('i-4', 'fig-modular'));
     const figura = page.locator('#fig-modular');
     await expect(figura.locator('output')).toContainText('el inverso de 7 es 43');
     const [, multiplicador] = await figura.locator('input[type=range]').all();
@@ -266,7 +303,7 @@ test.describe('el capítulo I.4', () => {
 
 test.describe('el capítulo I.12', () => {
   test('el retículo de los divisores marca el ínfimo y el supremo, y dice cuándo es un álgebra de Boole', async ({ page }) => {
-    await page.goto('capitulos/i-12/');
+    await page.goto(paginaDe('i-12', 'fig-divisores'));
     const figura = page.locator('#fig-divisores');
     await expect(figura.locator('output')).toContainText('mcd(4, 6) = 2');
     await expect(figura.locator('output')).toContainText('mcm(4, 6) = 12');
@@ -341,10 +378,11 @@ test('los paneles laterales se ocultan y la preferencia se recuerda', async ({ p
 });
 
 test('los botones de las piezas y de las celdas quedan alineados', async ({ page }) => {
-  await page.goto('capitulos/i-1/');
+  await page.goto(paginaDe('i-1', 'fig-tabla'));
   const botones = page.locator('figura-interactiva .pieza-botones button');
   const alturas = await botones.evaluateAll((bs) => bs.map((b) => Math.round(b.getBoundingClientRect().top)));
   expect(new Set(alturas).size).toBe(1);
+  await page.goto(paginaDe('i-1', 'cálculo'));
   const celda = page.locator('celda-python .celda-barra button');
   const filas = await celda.evaluateAll((bs) => bs.slice(0, 2).map((b) => Math.round(b.getBoundingClientRect().top)));
   expect(filas[0]).toBe(filas[1]);

@@ -1,4 +1,5 @@
 ---
+import { urlAncla } from '../../lib/secciones';
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { Badge } from '@astrojs/starlight/components';
 import { paginas, slug, tomoDe, type Capitulo } from '@cerrar-el-abismo/indice';
@@ -146,7 +147,7 @@ const enlace = (x: Capitulo) => (estaEscrito(x.id) ? urlCapitulo(x.id) : urlEnIn
                     {p.cumplida.map((x, i) => (
                       <>
                         {i > 0 && ', '}
-                        <a href={`${urlCapitulo(c.id)}#${x.ancla}`}>{x.nombre}</a>
+                        <a href={urlAncla(slug(c.id), x.ancla)}>{x.nombre}</a>
                       </>
                     ))}
                   </>

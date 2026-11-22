@@ -1,11 +1,12 @@
 ---
+import { urlAncla } from '../lib/secciones';
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { Badge } from '@astrojs/starlight/components';
 import { getCollection } from 'astro:content';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';
-import { CAMPOS, carpetaDelIndice } from '@cerrar-el-abismo/indice';
+import { CAMPOS, carpetaDelIndice, slug } from '@cerrar-el-abismo/indice';
 import { claveDeTermino, type Termino } from '@cerrar-el-abismo/libro';
 import { claseDeCampo, enLinea, urlCapitulo } from '../lib/obra';
 
@@ -22,7 +23,7 @@ const entradas = await Promise.all(
     .map(async (d) => ({
       ...d,
       id: claveDeTermino(d.termino).replace(/[^a-z0-9]+/g, '-'),
-      href: `${urlCapitulo(d.capitulo)}${d.ancla ? `#${d.ancla}` : ''}`,
+      href: d.ancla ? urlAncla(slug(d.capitulo), d.ancla) : urlCapitulo(d.capitulo),
       practicaHtml: await Promise.all(d.practica.map(enLinea)),
       notaHtml: await enLinea(d.nota),
       busqueda: claveDeTermino([d.termino, d.ingles, ...d.practica, d.nota].join(' | ').replace(/[`*]/g, '')),

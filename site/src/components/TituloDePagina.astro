@@ -1,7 +1,7 @@
 ---
 import Default from '@astrojs/starlight/components/PageTitle.astro';
 import { Badge } from '@astrojs/starlight/components';
-import { todosLosCapitulos, tomoDe } from '@cerrar-el-abismo/indice';
+import { slug, todosLosCapitulos, tomoDe } from '@cerrar-el-abismo/indice';
 import { obra, urlCapitulo, urlEnIndice, urlMapa, urlReportarError, urlRevision, urlTomo } from '../lib/obra';
 import { avanceDe, NOMBRES_DE_ESTADOS } from '../lib/revision';
 
@@ -15,7 +15,20 @@ const c = datos.capitulo ? todosLosCapitulos(obra()).find((x) => x.id === datos.
 const tomo = c ? obra().tomos.find((t) => t.id === tomoDe(c.id)) : undefined;
 const revision = c ? avanceDe(c.id, body ?? '') : undefined;
 const reportar = c ? urlReportarError(c.id, `${c.id} ${c.titulo}`, new URL(Astro.url.pathname, Astro.site).href) : undefined;
+/** En una página de sección (decisión 0008), el antetítulo es el capítulo, con un enlace a su portada. */
+const deSeccion = /\/capitulos\/([^/]+)\/[^/]+\/$/.exec(Astro.url.pathname)?.[1];
+const capituloDeSeccion = deSeccion ? todosLosCapitulos(obra()).find((x) => slug(x.id) === deSeccion) : undefined;
 ---
+
+{
+  capituloDeSeccion && (
+    <p class="capitulo-antetitulo">
+      <a href={urlCapitulo(capituloDeSeccion.id)}>
+        {capituloDeSeccion.id} {capituloDeSeccion.titulo}
+      </a>
+    </p>
+  )
+}
 
 {
   tomo && (
