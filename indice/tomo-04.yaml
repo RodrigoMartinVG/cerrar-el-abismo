@@ -184,7 +184,7 @@ partes:
         titulo: Programación dinámica
         paginas: 36
         requiere:
-          - I.8
+          - I.6
           - III.12
         tipo: complementario
         contenidos:

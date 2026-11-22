@@ -1,7 +1,7 @@
 import { cuerdas, inversoModular, mcdNatural, tamanoDeLaImagen } from './modular.ts';
 
 /**
- * PIEZA «multiplicacion-modular» (I.5). Un círculo con n puntos, los elementos de ℤ/nℤ, y una cuerda de cada k a a·k
+ * PIEZA «multiplicacion-modular» (I.4). Un círculo con n puntos, los elementos de ℤ/nℤ, y una cuerda de cada k a a·k
  * mod n. Dos deslizadores cambian n y a. Debajo se lee si multiplicar por a es una biyección, y entonces cuál es el
  * inverso de a, o, si no, cuántos elementos tiene la imagen.
  */

@@ -3,9 +3,9 @@
  *
  *     npm run revision
  *         Cómo va la revisión de cada capítulo escrito.
- *     npm run revision -- I.9
- *         La revisión de I.9, resultado por resultado y aspecto por aspecto, con sus dos pasadas.
- *     npm run revision -- I.9 teo-lagrange --por "Nombre Apellido" --contra "Dummit y Foote, sección 3.2, teorema 8"
+ *     npm run revision -- I.7
+ *         La revisión de I.7, resultado por resultado y aspecto por aspecto, con sus dos pasadas.
+ *     npm run revision -- I.7 teo-lagrange --por "Nombre Apellido" --contra "Dummit y Foote, sección 3.2, teorema 8"
  *         Registra una revisión de un resultado, con la huella de su texto actual, o de un aspecto (estilo, practica,
  *         calculos, ejercicios, historia). Opciones: --pasada segunda (por defecto, primera), --notas "…" y
  *         --fecha AAAA-MM-DD (por defecto, hoy).

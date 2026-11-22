@@ -38,7 +38,7 @@ partes:
           - Conjuntos, operaciones, producto cartesiano y conjunto de partes.
           - Relaciones de equivalencia, clases y particiones; relaciones de orden.
           - Funciones inyectivas, sobreyectivas y biyectivas; composición, inversa, imagen y preimagen.
-          - 'Cardinalidad: conjuntos finitos, numerables y no numerables; argumento diagonal de Cantor. Los cardinales infinitos en general llegan en I.4.'
+          - 'Cardinalidad: conjuntos finitos, numerables y no numerables; argumento diagonal de Cantor. Los cardinales infinitos en general llegan en I.11.'
         puente: 'Entrada: `Map<Key, Value>` y una función `hash(key)`. Un diccionario es una función parcial, y una función de dispersión no puede ser inyectiva cuando el dominio es más grande que el codominio.'
         aplicaciones:
           - campo: cripto
@@ -69,26 +69,6 @@ partes:
             texto: repetición de texturas con períodos coprimos para evitar patrones visibles
         lecturas: Rosen, *Elementary Number Theory and Its Applications*; Stillwell, *Elements of Number Theory*.
       - id: I.4
-        titulo: 'Teoría axiomática de conjuntos: ZFC, elección y ordinales'
-        paginas: 40
-        requiere:
-          - I.3
-        tipo: nucleo
-        contenidos:
-          - La paradoja de Russell y los axiomas de Zermelo–Fraenkel; los naturales como ordinales de von Neumann.
-          - 'Axioma de elección y sus equivalentes: lema de Zorn y principio del buen orden; existencia de bases en todo espacio vectorial.'
-          - Ordinales, inducción transfinita y recursión transfinita.
-          - 'Cardinales: teorema de Cantor–Schröder–Bernstein, aritmética cardinal e hipótesis del continuo (su independencia, enunciada).'
-        puente: 'Entrada: `def ack : Nat → Nat → Nat` en Lean, que el asistente solo acepta si se demuestra que termina. La función de Ackermann termina porque el par (m, n) decrece en el orden lexicográfico, un buen orden de tipo ω²: toda demostración de terminación es una inducción sobre un buen orden.'
-        aplicaciones:
-          - campo: cripto
-            texto: demostraciones de terminación de programas con órdenes bien fundados
-          - campo: fisica
-            texto: la paradoja de Banach–Tarski y por qué la masa solo se define sobre conjuntos medibles
-          - campo: 3d
-            texto: 'jerarquías de escena sin ciclos: relaciones bien fundadas y recorridos que terminan'
-        lecturas: Halmos, *Naive Set Theory*; Hrbacek y Jech, *Introduction to Set Theory*.
-      - id: I.5
         titulo: Congruencias y aritmética modular
         paginas: 44
         requiere:
@@ -108,7 +88,7 @@ partes:
           - campo: datos
             texto: reparto de datos entre servidores por dispersión
         lecturas: Hoffstein, Pipher y Silverman, *An Introduction to Mathematical Cryptography*; Knuth, *The Art of Computer Programming*, vol. 2.
-      - id: I.6
+      - id: I.5
         titulo: Combinatoria
         paginas: 44
         requiere:
@@ -133,33 +113,12 @@ partes:
   - letra: B
     titulo: Estructuras discretas y algebraicas
     capitulos:
-      - id: I.7
-        titulo: Órdenes, retículos y álgebras de Boole
-        paginas: 40
-        requiere:
-          - I.2
-          - I.4
-        tipo: nucleo
-        contenidos:
-          - Conjuntos parcialmente ordenados, cadenas y anticadenas; elementos maximales, supremos e ínfimos; diagramas de Hasse.
-          - Retículos, retículos completos y distributivos; teorema del punto fijo de Knaster–Tarski.
-          - 'Álgebras de Boole: el álgebra de partes y el álgebra de las proposiciones; formas normales disyuntiva y conjuntiva; minimización de circuitos.'
-          - Filtros e ideales; teorema de representación de Stone, para las álgebras finitas y, con el lema de Zorn, en general.
-        puente: 'Entrada: el bucle de un analizador de flujo de datos, que repite «la entrada de cada nodo es la unión de las salidas de sus predecesores» hasta que nada cambia. Los conjuntos de hechos forman un retículo y cada vuelta aplica una función monótona: el teorema de Knaster–Tarski garantiza que existe el menor punto fijo, y la altura finita del retículo, que el bucle llega a él.'
-        aplicaciones:
-          - campo: cripto
-            texto: análisis estático de programas y diseño de circuitos lógicos
-          - campo: 3d
-            texto: 'geometría constructiva de sólidos: unión, intersección y diferencia como operaciones de un álgebra de Boole'
-          - campo: datos
-            texto: análisis formal de conceptos y estructuras de datos replicadas sin conflictos (CRDT)
-        lecturas: Davey y Priestley, *Introduction to Lattices and Order*; Givant y Halmos, *Introduction to Boolean Algebras*.
-      - id: I.8
+      - id: I.6
         titulo: Grafos
         paginas: 44
         requiere:
           - I.2
-          - I.6
+          - I.5
         tipo: nucleo
         contenidos:
           - Grafos, grados, caminos, ciclos y conectividad; árboles y sus caracterizaciones.
@@ -175,11 +134,11 @@ partes:
           - campo: datos
             texto: redes sociales y componentes conexas
         lecturas: Bondy y Murty, *Graph Theory*; West, *Introduction to Graph Theory*.
-      - id: I.9
+      - id: I.7
         titulo: Grupos
         paginas: 50
         requiere:
-          - I.5
+          - I.4
         tipo: nucleo
         contenidos:
           - Grupos, subgrupos y teorema de Lagrange; grupos cíclicos.
@@ -198,11 +157,11 @@ partes:
           - campo: datos
             texto: contar coloraciones distintas con el lema de Burnside
         lecturas: Dummit y Foote, *Abstract Algebra*; Artin, *Algebra*.
-      - id: I.10
+      - id: I.8
         titulo: Anillos, cuerpos y polinomios
         paginas: 48
         requiere:
-          - I.9
+          - I.7
         tipo: nucleo
         contenidos:
           - Anillos, ideales y anillos cociente; dominios de integridad y dominios euclídeos.
@@ -221,11 +180,11 @@ partes:
   - letra: C
     titulo: Los números reales y la máquina
     capitulos:
-      - id: I.11
+      - id: I.9
         titulo: Números reales y complejos
         paginas: 40
         requiere:
-          - I.10
+          - I.8
         tipo: nucleo
         contenidos:
           - 'Cuerpos ordenados; por qué ℚ no basta: √2 y los huecos de ℚ.'
@@ -245,12 +204,12 @@ partes:
           - campo: fisica
             texto: amplitudes complejas en óptica ondulatoria
         lecturas: Spivak, *Calculus* (construcción de ℝ); Needham, *Visual Complex Analysis*.
-      - id: I.12
+      - id: I.10
         titulo: Números en la máquina
         paginas: 40
         requiere:
-          - I.5
-          - I.11
+          - I.4
+          - I.9
         tipo: nucleo
         contenidos:
           - Representación posicional y cambio de base; enteros de máquina y complemento a dos como aritmética módulo 2ⁿ.
@@ -268,12 +227,58 @@ partes:
           - campo: cripto
             texto: determinismo entre plataformas
         lecturas: Goldberg, «What Every Computer Scientist Should Know About Floating-Point Arithmetic»; Overton, *Numerical Computing with IEEE Floating Point Arithmetic*; Higham, *Accuracy and Stability of Numerical Algorithms*.
+  - letra: D
+    titulo: Conjuntos, orden y computación
+    capitulos:
+      - id: I.11
+        titulo: 'Teoría axiomática de conjuntos: ZFC, elección y ordinales'
+        paginas: 40
+        requiere:
+          - I.3
+          - I.9
+        tipo: nucleo
+        contenidos:
+          - La paradoja de Russell y los axiomas de Zermelo–Fraenkel; los naturales como ordinales de von Neumann.
+          - 'Axioma de elección y sus equivalentes: lema de Zorn y principio del buen orden; existencia de bases en todo espacio vectorial.'
+          - Ordinales, inducción transfinita y recursión transfinita.
+          - 'Cardinales: teorema de Cantor–Schröder–Bernstein, aritmética cardinal e hipótesis del continuo (su independencia, enunciada).'
+        puente: 'Entrada: `def ack : Nat → Nat → Nat` en Lean, que el asistente solo acepta si se demuestra que termina. La función de Ackermann termina porque el par (m, n) decrece en el orden lexicográfico, un buen orden de tipo ω²: toda demostración de terminación es una inducción sobre un buen orden.'
+        aplicaciones:
+          - campo: cripto
+            texto: demostraciones de terminación de programas con órdenes bien fundados
+          - campo: fisica
+            texto: la paradoja de Banach–Tarski y por qué la masa solo se define sobre conjuntos medibles
+          - campo: 3d
+            texto: 'jerarquías de escena sin ciclos: relaciones bien fundadas y recorridos que terminan'
+        lecturas: Halmos, *Naive Set Theory*; Hrbacek y Jech, *Introduction to Set Theory*.
+      - id: I.12
+        titulo: Órdenes, retículos y álgebras de Boole
+        paginas: 40
+        requiere:
+          - I.2
+          - I.6
+          - I.11
+        tipo: nucleo
+        contenidos:
+          - Conjuntos parcialmente ordenados, cadenas y anticadenas; elementos maximales, supremos e ínfimos; diagramas de Hasse.
+          - Retículos, retículos completos y distributivos; teorema del punto fijo de Knaster–Tarski.
+          - 'Álgebras de Boole: el álgebra de partes y el álgebra de las proposiciones; formas normales disyuntiva y conjuntiva; minimización de circuitos.'
+          - Filtros e ideales; teorema de representación de Stone, para las álgebras finitas y, con el lema de Zorn, en general.
+        puente: 'Entrada: el bucle de un analizador de flujo de datos, que repite «la entrada de cada nodo es la unión de las salidas de sus predecesores» hasta que nada cambia. Los conjuntos de hechos forman un retículo y cada vuelta aplica una función monótona: el teorema de Knaster–Tarski garantiza que existe el menor punto fijo, y la altura finita del retículo, que el bucle llega a él.'
+        aplicaciones:
+          - campo: cripto
+            texto: análisis estático de programas y diseño de circuitos lógicos
+          - campo: 3d
+            texto: 'geometría constructiva de sólidos: unión, intersección y diferencia como operaciones de un álgebra de Boole'
+          - campo: datos
+            texto: análisis formal de conceptos y estructuras de datos replicadas sin conflictos (CRDT)
+        lecturas: Davey y Priestley, *Introduction to Lattices and Order*; Givant y Halmos, *Introduction to Boolean Algebras*.
       - id: I.13
         titulo: Autómatas finitos y lenguajes regulares
         paginas: 36
         requiere:
           - I.2
-          - I.8
+          - I.6
         tipo: complementario
         contenidos:
           - Alfabetos, palabras y lenguajes; autómatas finitos deterministas y no deterministas; construcción de subconjuntos.
@@ -319,13 +324,13 @@ partes:
         paginas: 40
         requiere:
           - I.1
-          - I.4
+          - I.11
           - I.14
         tipo: complementario
         contenidos:
           - 'Deducción natural para la lógica proposicional y de primer orden; la lógica intuicionista: qué se pierde sin el tercero excluido y sin la doble negación, y qué se gana.'
           - 'Cálculo λ simplemente tipado y correspondencia de Curry–Howard: las proposiciones son tipos y las demostraciones son programas; la conjunción es el par, la implicación es la función y la disyunción es la suma, y simplificar una demostración es ejecutar un programa.'
-          - 'Tipos dependientes: el cuantificador universal como función y el existencial como par; la igualdad como tipo y la inducción como recursión. La teoría de tipos como fundamento, frente a la teoría de conjuntos de I.4.'
+          - 'Tipos dependientes: el cuantificador universal como función y el existencial como par; la igualdad como tipo y la inducción como recursión. La teoría de tipos como fundamento, frente a la teoría de conjuntos de I.11.'
           - 'Asistentes de demostración: el núcleo que verifica, las tácticas que construyen términos y qué garantiza que una computadora acepte una demostración, con el teorema de los cuatro colores como ejemplo. Para seguir: teoría homotópica de tipos y bibliotecas de matemática formalizada.'
         puente: 'Entrada: `theorem intercambio (p q : Prop) : p ∧ q → q ∧ p := fun ⟨hp, hq⟩ => ⟨hq, hp⟩` en Lean. La demostración es un programa: la función que recibe un par y lo devuelve invertido, la misma que en Python es `lambda par: (par[1], par[0])`. Que Lean la acepte quiere decir que el tipo de ese programa es el enunciado.'
         aplicaciones:

@@ -15,7 +15,7 @@ partes:
         titulo: Probabilidad discreta
         paginas: 44
         requiere:
-          - I.6
+          - I.5
           - III.2
         tipo: nucleo
         contenidos:
@@ -104,7 +104,7 @@ partes:
         paginas: 36
         requiere:
           - XI.3
-          - I.5
+          - I.4
         tipo: nucleo
         contenidos:
           - 'Generadores pseudoaleatorios: período, calidad y pruebas estadísticas.'

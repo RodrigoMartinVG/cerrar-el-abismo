@@ -27,7 +27,7 @@ estado: borrador
   ```yaml
   supone:
     - nocion: los números reales, la raíz cuadrada y el valor absoluto
-      en: I.11
+      en: I.9
   ```
 
   La capa de libro lo muestra en el recuadro «Lo que este capítulo da por conocido», después del primer párrafo del

@@ -32,7 +32,7 @@ repite.
 | `npm run check` | Tipos: `tsc` de cada paquete y `astro check` del sitio |
 | `npm run lint` · `npm run format:check` | ESLint · Prettier |
 | `npm run indice:spec` | Reescribe los bloques generados de la especificación (secciones 6, 9.6, 13 y 14) desde `indice/`; valida antes |
-| `npm run revision` | Cómo va la revisión de cada capítulo; `-- I.9` la detalla; `-- I.9 <ancla o aspecto> --por … --contra …` registra una (decisión 0005) |
+| `npm run revision` | Cómo va la revisión de cada capítulo; `-- I.7` la detalla; `-- I.7 <ancla o aspecto> --por … --contra …` registra una (decisión 0005) |
 | `npm run ortografia` | cspell con el diccionario español y el del proyecto (`ortografia/palabras.txt`) |
 | `npm run e2e` | Playwright sobre el sitio construido (hacer `npm run build` antes); `E2E_SIN_RED=1` salta la celda de Python |
 | `npm run verify` | check, lint, formato, ortografía y pruebas: lo mismo que el primer trabajo de la integración continua |

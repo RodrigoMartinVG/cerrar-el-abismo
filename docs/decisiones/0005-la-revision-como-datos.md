@@ -34,7 +34,7 @@ registrar y exigir.
 - **Dos pasadas**, como pide 16.2:
   - la `primera`, del autor, con los libros de las lecturas;
   - la `segunda`, de otro matemático. Es obligatoria para los resultados y opcional para los aspectos.
-- **Dónde se registra.** Un archivo por capítulo en `revision/` (por ejemplo, `revision/i-9.yaml`), con una entrada
+- **Dónde se registra.** Un archivo por capítulo en `revision/` (por ejemplo, `revision/i-7.yaml`), con una entrada
   por cada revisión hecha:
 
   ```yaml

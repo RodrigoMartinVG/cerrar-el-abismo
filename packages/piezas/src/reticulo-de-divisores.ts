@@ -2,7 +2,7 @@ import { aristasDeHasse, complemento, divisores, esBooleano, mcmNatural, posicio
 import { mcdNatural } from './modular.ts';
 
 /**
- * PIEZA «reticulo-de-divisores» (I.7). El diagrama de Hasse de los divisores de n, ordenados por la divisibilidad.
+ * PIEZA «reticulo-de-divisores» (I.12). El diagrama de Hasse de los divisores de n, ordenados por la divisibilidad.
  * Un deslizador cambia n; dos listas, o un clic en el diagrama, eligen dos divisores a y b, y la pieza marca su ínfimo,
  * el mcd, y su supremo, el mcm. Debajo se lee si el retículo es un álgebra de Boole y si a tiene complemento.
  */

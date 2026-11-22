@@ -1,5 +1,5 @@
 /**
- * La matemática de la pieza «multiplicacion-modular» (I.5): multiplicar por a en ℤ/nℤ, dibujado como cuerdas que
+ * La matemática de la pieza «multiplicacion-modular» (I.4): multiplicar por a en ℤ/nℤ, dibujado como cuerdas que
  * unen cada k con a·k mod n en un círculo de n puntos. Multiplicar por a es una biyección exactamente cuando a y n son
  * coprimos, y entonces a tiene un inverso módulo n; si no, la imagen tiene n / mcd(a, n) elementos.
  */

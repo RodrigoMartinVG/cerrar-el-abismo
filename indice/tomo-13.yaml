@@ -18,7 +18,7 @@ partes:
         titulo: Representaciones de grupos finitos
         paginas: 44
         requiere:
-          - I.9
+          - I.7
           - II.11
           - IX.7
         tipo: complementario

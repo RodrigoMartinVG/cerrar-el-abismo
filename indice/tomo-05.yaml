@@ -14,10 +14,10 @@ partes:
         titulo: 'Grupos: teoremas de isomorfismo, acciones y teoremas de Sylow'
         paginas: 48
         requiere:
-          - I.9
+          - I.7
         tipo: nucleo
         contenidos:
-          - 'Lo que trae I.9: cocientes y primer teorema de isomorfismo, acciones, conjugación y producto directo. Segundo y tercer teoremas de isomorfismo, teorema de correspondencia y productos semidirectos.'
+          - 'Lo que trae I.7: cocientes y primer teorema de isomorfismo, acciones, conjugación y producto directo. Segundo y tercer teoremas de isomorfismo, teorema de correspondencia y productos semidirectos.'
           - Ecuación de clases, centro de un p-grupo y teorema de Cauchy.
           - Teoremas de Sylow y clasificación de los grupos de orden pequeño.
           - Grupos simples; simplicidad de Aₙ para n ≥ 5.
@@ -57,8 +57,8 @@ partes:
         titulo: 'Anillos: ideales, factorización única y dominios de ideales principales'
         paginas: 44
         requiere:
-          - I.10
-          - I.4
+          - I.8
+          - I.11
         tipo: nucleo
         contenidos:
           - Ideales primos y maximales; existencia de ideales maximales por el lema de Zorn.
@@ -163,7 +163,7 @@ partes:
         paginas: 44
         requiere:
           - V.5
-          - I.10
+          - I.8
         tipo: complementario
         contenidos:
           - Curvas cúbicas en el plano proyectivo; forma de Weierstrass y discriminante.

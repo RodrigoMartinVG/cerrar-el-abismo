@@ -14,7 +14,7 @@ partes:
         titulo: Sucesiones reales y completitud
         paginas: 44
         requiere:
-          - I.11
+          - I.9
         tipo: nucleo
         contenidos:
           - Límite de una sucesión; álgebra de límites; sucesiones monótonas.
@@ -183,7 +183,7 @@ partes:
         paginas: 48
         requiere:
           - III.8
-          - I.6
+          - I.5
         tipo: nucleo
         contenidos:
           - Teorema de aproximación de Weierstrass, demostrado con polinomios de Bernstein.
@@ -204,7 +204,7 @@ partes:
         paginas: 44
         requiere:
           - III.9
-          - I.12
+          - I.10
         tipo: nucleo
         contenidos:
           - Bisección, Newton, secante y punto fijo; orden de convergencia y criterios de parada.
@@ -226,7 +226,7 @@ partes:
         requiere:
           - III.7
           - III.5
-          - I.6
+          - I.5
         tipo: complementario
         contenidos:
           - Modelos de costo; notaciones O, Ω y Θ; caso peor, caso promedio y costo amortizado.
@@ -269,7 +269,7 @@ partes:
         paginas: 44
         requiere:
           - III.8
-          - I.10
+          - I.8
         tipo: complementario
         contenidos:
           - Fracciones continuas, reducidas y mejores aproximaciones; teorema de Lagrange sobre las fracciones periódicas y ecuación de Pell.

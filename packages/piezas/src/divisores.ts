@@ -1,5 +1,5 @@
 /**
- * La matemática de la pieza «reticulo-de-divisores» (I.7): los divisores de n ordenados por la divisibilidad forman
+ * La matemática de la pieza «reticulo-de-divisores» (I.12): los divisores de n ordenados por la divisibilidad forman
  * un retículo, con el máximo común divisor como ínfimo y el mínimo común múltiplo como supremo. Su diagrama de Hasse
  * une cada divisor con los que lo cubren, que son sus múltiplos por un primo. Es un álgebra de Boole exactamente
  * cuando n no tiene factores primos repetidos.

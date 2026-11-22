@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 /**
  * EL REGISTRO DE REVISIÓN (decisión 0005). Las pruebas verifican la forma de un capítulo, no que sus enunciados sean
  * verdaderos: eso lo hace la revisión, que no se puede automatizar pero sí registrar y exigir. Cada capítulo tiene su
- * registro en `revision/` («revision/i-9.yaml»), con una entrada por cada revisión hecha:
+ * registro en `revision/` («revision/i-7.yaml»), con una entrada por cada revisión hecha:
  *
  *     resultados:
  *       teo-lagrange:

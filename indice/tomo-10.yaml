@@ -17,7 +17,7 @@ partes:
         paginas: 44
         requiere:
           - IX.3
-          - I.4
+          - I.11
         tipo: nucleo
         contenidos:
           - Espacios normados y de Banach; operadores acotados y espacio de operadores; cocientes.

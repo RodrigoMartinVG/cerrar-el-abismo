@@ -48,7 +48,7 @@ qué nivel está cada afirmación. Hay tres clases de licencias, y cada una se d
 - **Uso anticipado.** Una noción que la obra construye más adelante (los enteros, los conjuntos, los reales, una
   definición por recursión) se usa como se conoce de la escuela secundaria. Se dice en el lugar, en una frase de
   prosa, y se nombra el capítulo que la trata con rigor: «Usamos aquí los números reales como se conocen de la
-  escuela; se construyen en [[I.11]]». Además, el capítulo lo lista en su campo `supone` (guía de capítulos), y la
+  escuela; se construyen en [[I.9]]». Además, el capítulo lo lista en su campo `supone` (guía de capítulos), y la
   capa de libro lo muestra en un recuadro al comienzo del Desarrollo.
 - **Metamatemática.** Una afirmación *sobre* la matemática y no *dentro* de ella: qué es una proposición, qué es una
   demostración, que una comprobación exhaustiva hecha por una computadora demuestra algo. Se dice que se habla en el

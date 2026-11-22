@@ -40,7 +40,7 @@ partes:
         paginas: 44
         requiere:
           - VI.1
-          - I.4
+          - I.11
         tipo: nucleo
         contenidos:
           - Espacios conexos y arcoconexos; componentes.
@@ -104,7 +104,7 @@ partes:
         paginas: 44
         requiere:
           - VI.2
-          - I.9
+          - I.7
         tipo: nucleo
         contenidos:
           - Homotopía de aplicaciones y de caminos; espacios contráctiles; equivalencia homotópica.

@@ -4,7 +4,7 @@
  *
  *     supone:
  *       - nocion: los números reales, la raíz cuadrada y el valor absoluto
- *         en: I.11
+ *         en: I.9
  *
  * y la capa de libro lo muestra en un recuadro al comienzo del Desarrollo. La regla que se comprueba aquí es la que
  * distingue un uso anticipado de un requisito: el capítulo que trata la noción con rigor viene *después* en el orden
@@ -14,7 +14,7 @@
 export interface Supuesto {
   /** La noción, como la nombraría el texto: «los números reales, la raíz cuadrada y el valor absoluto». */
   nocion: string;
-  /** El capítulo que la trata con todo rigor («I.11»). */
+  /** El capítulo que la trata con todo rigor («I.9»). */
   en: string;
 }
 
@@ -35,7 +35,7 @@ export function revisarSupone(supone: unknown, capitulo: string, orden: readonly
       return;
     }
     if (typeof s.en !== 'string') {
-      problemas.push(`«${s.nocion}» no dice en qué capítulo se trata con rigor («en: I.11»).`);
+      problemas.push(`«${s.nocion}» no dice en qué capítulo se trata con rigor («en: I.9»).`);
       return;
     }
     const destino = orden.indexOf(s.en);

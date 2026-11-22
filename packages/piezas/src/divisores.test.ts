@@ -12,7 +12,7 @@ import {
 } from './divisores.ts';
 import { mcdNatural } from './modular.ts';
 
-describe('el retículo de los divisores (I.7)', () => {
+describe('el retículo de los divisores (I.12)', () => {
   it('encuentra los divisores y la factorización', () => {
     expect(divisores(60)).toEqual([1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60]);
     expect(divisores(1)).toEqual([1]);

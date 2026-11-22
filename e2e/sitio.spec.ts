@@ -50,8 +50,8 @@ test.describe('el primer capítulo (I.1)', () => {
   test('dice lo que da por conocido al comienzo del Desarrollo', async ({ page }) => {
     const recuadro = page.locator('aside.supone');
     await expect(recuadro).toContainText('Lo que este capítulo da por conocido');
-    // I.11 ya está escrito, así que el recuadro enlaza al capítulo y no a su lugar en el índice.
-    await expect(recuadro.getByRole('link', { name: 'I.11' })).toHaveAttribute('href', /capitulos\/i-11\/$/);
+    // I.9 ya está escrito, así que el recuadro enlaza al capítulo y no a su lugar en el índice.
+    await expect(recuadro.getByRole('link', { name: 'I.9' })).toHaveAttribute('href', /capitulos\/i-9\/$/);
     const orden = await page.evaluate(() => {
       const desarrollo = document.getElementById('desarrollo')!;
       const recuadro = document.querySelector('aside.supone')!;
@@ -197,13 +197,13 @@ test('cada capítulo dice cuánto está revisado y lleva al estado de la revisi�
 });
 
 test('cada capítulo tiene un enlace para reportar un error, con el capítulo ya escrito', async ({ page }) => {
-  await page.goto('capitulos/i-9/');
+  await page.goto('capitulos/i-7/');
   const href = await page.getByRole('link', { name: 'Reportar un error' }).getAttribute('href');
   const url = new URL(href!);
   expect(url.origin + url.pathname).toBe('https://github.com/RodrigoMartinVG/cerrar-el-abismo/issues/new');
-  expect(url.searchParams.get('title')).toBe('Error en I.9: ');
-  expect(url.searchParams.get('body')).toContain('**Capítulo:** I.9 Grupos');
-  expect(url.searchParams.get('body')).toContain('/cerrar-el-abismo/capitulos/i-9/');
+  expect(url.searchParams.get('title')).toBe('Error en I.7: ');
+  expect(url.searchParams.get('body')).toContain('**Capítulo:** I.7 Grupos');
+  expect(url.searchParams.get('body')).toContain('/cerrar-el-abismo/capitulos/i-7/');
 });
 
 test.describe('el capítulo I.3', () => {
@@ -220,9 +220,9 @@ test.describe('el capítulo I.3', () => {
   });
 });
 
-test.describe('el capítulo I.5', () => {
+test.describe('el capítulo I.4', () => {
   test('la multiplicación modular dice cuándo hay inverso', async ({ page }) => {
-    await page.goto('capitulos/i-5/');
+    await page.goto('capitulos/i-4/');
     const figura = page.locator('#fig-modular');
     await expect(figura.locator('output')).toContainText('el inverso de 7 es 43');
     const [, multiplicador] = await figura.locator('input[type=range]').all();
@@ -232,9 +232,9 @@ test.describe('el capítulo I.5', () => {
   });
 });
 
-test.describe('el capítulo I.7', () => {
+test.describe('el capítulo I.12', () => {
   test('el retículo de los divisores marca el ínfimo y el supremo, y dice cuándo es un álgebra de Boole', async ({ page }) => {
-    await page.goto('capitulos/i-7/');
+    await page.goto('capitulos/i-12/');
     const figura = page.locator('#fig-divisores');
     await expect(figura.locator('output')).toContainText('mcd(4, 6) = 2');
     await expect(figura.locator('output')).toContainText('mcm(4, 6) = 12');
@@ -249,8 +249,8 @@ test.describe('el capítulo I.7', () => {
 });
 
 test.describe('el mapa de dependencias', () => {
-  test('I.4 cumple lo que le dejaron I.2 e I.3', async ({ page }) => {
-    await page.goto('mapa/i-4/');
+  test('I.11 cumple lo que le dejaron I.2 e I.3', async ({ page }) => {
+    await page.goto('mapa/i-11/');
     await expect(page.locator('#hacia-atras ~ ul').first().locator('li', { hasText: 'se cumple en' })).toHaveCount(2);
   });
 
@@ -263,8 +263,8 @@ test.describe('el mapa de dependencias', () => {
   });
 
   test('el recorrido hasta un capítulo lo dibuja, lo lista por tomo y dice lo que abre', async ({ page }) => {
-    await page.goto('mapa/i-5/');
-    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Recorrido hasta I.5');
+    await page.goto('mapa/i-4/');
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Recorrido hasta I.4');
     await expect(page.locator('main')).toContainText('hace falta pasar antes por 3 capítulos');
     await expect(page.locator('.mapa-dibujo .mapa-nodo')).toHaveCount(4);
     await expect(page.locator('.mapa-dibujo .mapa-nodo.destino')).toHaveCount(1);
@@ -284,11 +284,11 @@ test.describe('el mapa de dependencias', () => {
   test('cada entrada del índice enlaza su recorrido', async ({ page }) => {
     await page.goto('indice/i/');
     await page
-      .locator('#i-5')
+      .locator('#i-4')
       .locator('..')
       .getByRole('link', { name: /^Recorrido:/ })
       .click();
-    await expect(page).toHaveURL(/\/mapa\/i-5\/$/);
+    await expect(page).toHaveURL(/\/mapa\/i-4\/$/);
   });
 });
 

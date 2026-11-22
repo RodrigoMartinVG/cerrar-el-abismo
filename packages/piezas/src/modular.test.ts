@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { cuerdas, inversoModular, mcdNatural, tamanoDeLaImagen } from './modular.ts';
 
-describe('la multiplicación modular (I.5)', () => {
+describe('la multiplicación modular (I.4)', () => {
   it('el inverso existe exactamente cuando a y n son coprimos, y lo es', () => {
     for (let n = 2; n <= 60; n++)
       for (let a = 0; a < n; a++) {

@@ -62,7 +62,7 @@ describe('validarIndice', () => {
 
   it('rechaza un requisito que no existe', () => {
     const i = indiceMinimo();
-    i.tomos[0]!.partes[0]!.capitulos[1]!.requiere = ['I.9'];
+    i.tomos[0]!.partes[0]!.capitulos[1]!.requiere = ['I.7'];
     expect(reglas(i)).toContain('requisito-inexistente');
   });
 

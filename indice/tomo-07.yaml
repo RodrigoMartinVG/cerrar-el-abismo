@@ -17,12 +17,12 @@ partes:
         paginas: 40
         requiere:
           - II.16
-          - I.9
+          - I.7
         tipo: nucleo
         contenidos:
           - Las isometrías de ℝⁿ son afines; clasificación en el plano y en el espacio.
           - Todo movimiento es producto de reflexiones.
-          - 'Los grupos finitos de rotaciones del plano y del espacio son cíclicos, diédricos o los de los poliedros regulares: la clasificación de lo que I.9 cuenta caso por caso.'
+          - 'Los grupos finitos de rotaciones del plano y del espacio son cíclicos, diédricos o los de los poliedros regulares: la clasificación de lo que I.7 cuenta caso por caso.'
           - Grupos de friso y grupos cristalográficos del plano.
         puente: 'Entrada: `scale(-1, 1, 1)` en un editor que «da vuelta» las normales de un modelo. Una reflexión invierte la orientación (determinante −1); la clasificación de las isometrías explica qué se puede componer y qué no.'
         aplicaciones:
@@ -195,7 +195,7 @@ partes:
         requiere:
           - VII.8
           - IV.12
-          - I.8
+          - I.6
         tipo: nucleo
         contenidos:
           - '*Theorema egregium*: la curvatura gaussiana es intrínseca.'
@@ -263,7 +263,7 @@ partes:
         requiere:
           - VII.10
           - IV.10
-          - I.8
+          - I.6
         tipo: nucleo
         contenidos:
           - Teorema de la curva de Jordan para poligonales, con la prueba de paridad que decide si un punto está dentro de un polígono.
@@ -271,7 +271,7 @@ partes:
           - 'Triangulación de Delaunay: círculo vacío, maximización del ángulo mínimo y volteo de aristas.'
           - Diagrama de Voronoi como dual de Delaunay.
           - Teselaciones de Voronoi centroidales y algoritmo de Lloyd.
-        puente: "Entrada: una malla de navegación generada a partir del plano de un nivel. Es una triangulación del espacio libre: Delaunay evita triángulos degenerados, y su grafo dual se recorre con A\\* (I.8)."
+        puente: "Entrada: una malla de navegación generada a partir del plano de un nivel. Es una triangulación del espacio libre: Delaunay evita triángulos degenerados, y su grafo dual se recorre con A\\* (I.6)."
         aplicaciones:
           - campo: 3d
             texto: mallas de navegación y terrenos
@@ -286,7 +286,7 @@ partes:
         requiere:
           - VII.9
           - II.12
-          - I.8
+          - I.6
         tipo: nucleo
         contenidos:
           - Complejos simpliciales, variedades con borde, orientabilidad, característica de Euler y género; la estructura *half-edge*.

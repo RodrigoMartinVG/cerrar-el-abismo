@@ -8,9 +8,9 @@ const ids = (cs: readonly { id: string }[]) => cs.map((c) => c.id);
 describe('el grafo de dependencias', () => {
   it('da el recorrido hasta un capítulo, en orden de lectura y sin él', () => {
     expect(ids(grafo.recorrido('I.1'))).toEqual([]);
-    expect(ids(grafo.recorrido('I.5'))).toEqual(['I.1', 'I.2', 'I.3']);
-    expect(grafo.depende('IX.15', 'I.5')).toBe(true);
-    expect(grafo.depende('I.5', 'IX.15')).toBe(false);
+    expect(ids(grafo.recorrido('I.4'))).toEqual(['I.1', 'I.2', 'I.3']);
+    expect(grafo.depende('IX.15', 'I.4')).toBe(true);
+    expect(grafo.depende('I.4', 'IX.15')).toBe(false);
   });
 
   it('todo recorrido está cerrado: los requisitos de cada capítulo del recorrido también están', () => {
@@ -28,8 +28,8 @@ describe('el grafo de dependencias', () => {
   });
 
   it('separa los requisitos implícitos de los esenciales', () => {
-    expect(grafo.requisitosImplicitos()).toContainEqual({ capitulo: 'I.7', requisito: 'I.2', via: 'I.4' });
-    expect(grafo.requisitosEsenciales('I.7')).toEqual(['I.4']);
+    expect(grafo.requisitosImplicitos()).toContainEqual({ capitulo: 'I.12', requisito: 'I.2', via: 'I.6' });
+    expect(grafo.requisitosEsenciales('I.12')).toEqual(['I.6', 'I.11']);
     expect(grafo.requisitosEsenciales('I.2')).toEqual(['I.1']);
   });
 

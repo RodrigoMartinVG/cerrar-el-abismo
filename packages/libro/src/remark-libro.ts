@@ -58,7 +58,7 @@ function capituloDe(file: VFile): string | undefined {
   return typeof valor === 'string' ? valor : undefined;
 }
 
-/** El recuadro «Lo que este capítulo da por conocido». Los `[[I.11]]` se resuelven después, con las demás referencias. */
+/** El recuadro «Lo que este capítulo da por conocido». Los `[[I.9]]` se resuelven después, con las demás referencias. */
 function recuadroSupone(supone: readonly Supuesto[]): Blockquote {
   const parrafo = (children: PhrasingContent[], className?: string): Paragraph => ({
     type: 'paragraph',

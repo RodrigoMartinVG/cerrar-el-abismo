@@ -14,7 +14,7 @@ partes:
         titulo: Sistemas lineales y matrices
         paginas: 40
         requiere:
-          - I.10
+          - I.8
         tipo: nucleo
         contenidos:
           - Sistemas de ecuaciones lineales sobre un cuerpo; eliminación de Gauss y forma escalonada reducida.
@@ -75,7 +75,7 @@ partes:
         paginas: 36
         requiere:
           - II.3
-          - I.9
+          - I.7
         tipo: nucleo
         contenidos:
           - Formas multilineales alternadas; existencia y unicidad del determinante.
@@ -116,7 +116,7 @@ partes:
         paginas: 40
         requiere:
           - II.4
-          - I.10
+          - I.8
         tipo: nucleo
         contenidos:
           - Autovalores, autovectores y polinomio característico.
@@ -161,7 +161,7 @@ partes:
         paginas: 44
         requiere:
           - II.5
-          - I.11
+          - I.9
         tipo: nucleo
         contenidos:
           - Producto interno, norma y desigualdad de Cauchy–Schwarz; ángulos.
@@ -250,7 +250,7 @@ partes:
         paginas: 44
         requiere:
           - II.10
-          - I.12
+          - I.10
         tipo: nucleo
         contenidos:
           - Normas matriciales y número de condición; error hacia adelante y hacia atrás.
@@ -273,7 +273,7 @@ partes:
         paginas: 40
         requiere:
           - II.9
-          - I.8
+          - I.6
         tipo: complementario
         contenidos:
           - Matrices de adyacencia y laplaciana de un grafo; el número de componentes como dimensión del núcleo del laplaciano.
@@ -341,7 +341,7 @@ partes:
         requiere:
           - II.9
           - II.15
-          - I.9
+          - I.7
         tipo: nucleo
         contenidos:
           - El grupo SO(3) y el teorema de rotación de Euler; eje y ángulo; fórmula de Rodrigues.
