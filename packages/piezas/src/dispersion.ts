@@ -1,7 +1,7 @@
 /**
  * La matemática de la pieza «dispersion» (I.2): una función de dispersión reparte un conjunto de claves en m cubetas.
- * Las claves que caen en la misma cubeta son las fibras de la función, y forman una partición del conjunto; si hay más
- * claves que cubetas, alguna cubeta recibe al menos ⌈n/m⌉ (el principio del palomar).
+ * Las claves que caen en la misma cubeta son las fibras de la función, y las cubetas no vacías forman una partición del
+ * conjunto; si hay más claves que cubetas, alguna cubeta recibe al menos ⌈n/m⌉ (el principio del palomar).
  */
 
 export type FuncionDeDispersion = 'suma' | 'polinomial';

@@ -297,6 +297,7 @@ eikonal
 empaquetamiento
 Enderton
 Engel
+ENIAC
 entropías
 entrópica
 enumerables
@@ -342,6 +343,7 @@ Faires
 Farin
 Farkas
 farmacocinética
+Farouki
 fasor
 fasores
 Fatou
@@ -389,11 +391,13 @@ Givant
 glsl
 Goldbach
 Goldstein
+Goldstine
 Golub
 Gonthier
 Goodstein
 Gordan
 Gottlob
+Greenberger
 Griewank
 Grimmett
 Grobman
@@ -402,6 +406,7 @@ Grönwall
 HACL
 Hairer
 Haken
+Halāyudha
 Halmos
 Halton
 hamiltoniana
@@ -428,6 +433,7 @@ heurística
 heurísticas
 Heyting
 Hidrodinámica
+Hierholzer
 Higham
 Hille
 hiperelasticidad
@@ -436,6 +442,7 @@ Hiperplanos
 hiperplanos
 Hirsch
 Hlawka
+HLSL
 Hoare
 Hoeffding
 Hoffstein
@@ -510,6 +517,7 @@ isoperimétrica
 jacobiana
 jacobiano
 Jakob
+Jarník
 Jech
 Jeevanjee
 Jiushao
@@ -928,6 +936,7 @@ softmax
 Sokhotski
 Solow
 Sonneveld
+Sorenson
 Sorgenfrey
 Sperner
 Spielman
@@ -954,6 +963,7 @@ subárbol
 subárboles
 subcuerpo
 subcuerpos
+subdesbordamiento
 subespacio
 Subespacios
 subespacios
