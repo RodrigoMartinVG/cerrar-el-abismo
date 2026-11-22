@@ -45,7 +45,7 @@ const LICENCIAS_COMPATIBLES = ['dominio público', 'CC0', 'MIT', 'BSD', 'Apache-
  * Los capítulos que todavía no pasaron por E3 y E4 de la hoja de ruta: sin la fuente de su fragmento, y con
  * ejercicios sin graduar. Cada pasada de la fase D saca su capítulo de la lista, y la lista desaparece al terminarla.
  */
-const PENDIENTES_DE_LA_FASE_D = new Set(['i-11', 'i-13', 'i-14', 'i-15'].map((c) => `${c}.md`));
+const PENDIENTES_DE_LA_FASE_D = new Set(['i-11', 'i-13', 'i-15'].map((c) => `${c}.md`));
 const PLANTILLA = [
   'Entrada',
   'Motivación',

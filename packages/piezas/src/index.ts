@@ -11,6 +11,7 @@ export const PIEZAS = {
   'cuadrado-de-impares': () => import('./cuadrado-de-impares.ts'),
   cubetas: () => import('./cubetas.ts'),
   'de-casteljau': () => import('./de-casteljau.ts'),
+  'maquina-de-turing': () => import('./maquina-de-turing.ts'),
   'multiplicacion-compleja': () => import('./multiplicacion-compleja.ts'),
   'multiplicacion-de-bytes': () => import('./multiplicacion-de-bytes.ts'),
   'multiplicacion-modular': () => import('./multiplicacion-modular.ts'),

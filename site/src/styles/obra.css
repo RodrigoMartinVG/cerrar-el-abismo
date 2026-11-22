@@ -1031,3 +1031,51 @@ table.pieza-matriz td {
   text-align: end;
   white-space: nowrap;
 }
+
+/*
+ * La pieza «maquina-de-turing» (I.14): la cinta, como una fila de celdas con el fondo de la teoría y, encima, el estado y
+ * la flecha del cabezal en cobre; la celda que lee el cabezal, con borde y fondo de cobre. En la tabla del programa, la
+ * fila del estado actual usa el fondo de `.pieza-tabla-grafo tr.actual`, y la regla que se va a aplicar, el cobre.
+ */
+table.pieza-cinta {
+  border-collapse: separate;
+  border-spacing: 3px 2px;
+  font-size: 1rem;
+}
+
+table.pieza-cinta td {
+  min-width: 1.9em;
+  padding: 0.25rem 0.35rem;
+  text-align: center;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.25rem;
+  background: var(--obra-teoria-bajo);
+}
+
+table.pieza-cinta tr.fila-del-cabezal td {
+  padding-block: 0;
+  border-color: transparent;
+  background: none;
+  color: var(--obra-practica);
+  font-size: var(--obra-texto-secundario);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+table.pieza-cinta td.cabezal {
+  border: 2px solid var(--obra-practica);
+  background: var(--obra-practica-bajo);
+}
+
+table.pieza-programa td,
+table.pieza-programa th {
+  padding: 0.15rem 0.45rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+table.pieza-programa td.regla {
+  outline: 2px solid var(--obra-practica);
+  outline-offset: -2px;
+  background: var(--obra-practica-bajo);
+}
