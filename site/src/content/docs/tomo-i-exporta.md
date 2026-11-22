@@ -44,6 +44,43 @@ Los capítulos [[I.12]] a [[I.15]] no tienen dependientes fuera del tomo. Los ó
 materia de núcleo por sí mismos; los autómatas, la lógica de primer orden y las demostraciones como programas son
 complementarios, y sus resultados se citan desde las aplicaciones de otros tomos sin ser requisitos.
 
+## Las fronteras con el Tomo II
+
+Siete capítulos del Tomo II requieren directamente uno del Tomo I. Para cada uno, lo que toma, lo que agrega y lo que
+no tiene que repetir; cuando se escriban, cada uno lo declara en su campo `cumple` o lo cita con `:ref`.
+
+- **[[II.1]] Sistemas lineales y matrices**, de [[I.8]]. Toma la definición de cuerpo (:ref[I.8#def-cuerpo]) y los
+  cuerpos finitos (:ref[I.8#teo-existencia-finitos]), así que la eliminación de Gauss se hace sobre un cuerpo
+  cualquiera desde el principio, y un sistema sobre $\mathbb F_2$, como los de los códigos de I.8, es un ejemplo y
+  no una generalización. No repite qué es un cuerpo ni por qué $\mathbb Z/p\mathbb Z$ lo es.
+- **[[II.4]] Determinantes**, de [[I.7]]. Toma el grupo simétrico, la descomposición en ciclos
+  (:ref[I.7#prop-ciclos]) y, sobre todo, el signo como homomorfismo (:ref[I.7#teo-signo]): la fórmula de Leibniz y la
+  unicidad de la forma multilineal alternada descansan en él. Agrega el determinante como volumen orientado; no
+  repite que el signo esté bien definido.
+- **[[II.6]] Autovalores y autovectores**, de [[I.8]] y [[I.9]]. Toma la cantidad de raíces de un polinomio
+  (:ref[I.8#teo-raices]), la relación entre raíces y factores (:ref[I.8#prop-raiz-factor]), la factorización única
+  (:ref[I.8#teo-factorizacion]), los complejos (:ref[I.9#def-complejos]) y el teorema fundamental del álgebra con su
+  consecuencia para los polinomios reales (:ref[I.9#teo-fundamental-algebra], :ref[I.9#cor-factorizacion]), que el
+  Tomo I enuncia y [[III.8]] demuestra. La existencia de autovalores complejos es esa cita, no una demostración nueva.
+- **[[II.8]] Espacios con producto interno**, de [[I.9]]. Toma el conjugado, el módulo y la desigualdad triangular
+  de los complejos (:ref[I.9#prop-modulo]) y la raíz cuadrada real (:ref[I.9#prop-raiz-cuadrada]). Agrega la
+  desigualdad de Cauchy–Schwarz, que da la desigualdad triangular en cualquier dimensión; la del módulo es el caso
+  de $\mathbb C$ como espacio de dimensión uno.
+- **[[II.12]] Álgebra lineal numérica**, de [[I.10]]. Toma el modelo del redondeo (:ref[I.10#teo-redondeo]), la
+  acumulación de errores (:ref[I.10#lem-gamma]), la suma como primer algoritmo estable hacia atrás
+  (:ref[I.10#prop-suma]), la cancelación (:ref[I.10#prop-cancelacion]) y las definiciones de condicionamiento y
+  estabilidad (:ref[I.10#def-condicionamiento]). Agrega las normas matriciales y el número de condición de una
+  matriz, que generalizan el de la resta.
+- **[[II.13]] Teoría espectral de grafos**, de [[I.6]]. Toma los grafos y los digrafos (:ref[I.6#def-grafo],
+  :ref[I.6#def-digrafo]), las componentes conexas (:ref[I.6#lem-componentes]) y los árboles generadores
+  (:ref[I.6#teo-arboles]). Agrega el laplaciano: el número de componentes es la dimensión de su núcleo, y el teorema
+  de Kirchhoff cuenta los árboles generadores que I.6 solo construye.
+- **[[II.16]] Rotaciones: SO(3) y cuaterniones**, de [[I.7]]. Toma los grupos, los homomorfismos y el primer teorema
+  de isomorfismo (:ref[I.7#teo-isomorfismo]), y las acciones con el teorema de la órbita y el estabilizador
+  (:ref[I.7#teo-orbita-estabilizador]), que ya contó las rotaciones del cubo (:ref[I.7#ej-cubo]). El recubrimiento
+  doble $S^3 \to SO(3)$ es un homomorfismo de núcleo $\{\pm 1\}$, y su lectura es el primer teorema de isomorfismo;
+  no hay que volver a demostrarlo.
+
 ## Lo que el Tomo I deja prometido
 
 Algunos capítulos del Tomo I usan, antes de tiempo y declarándolo, nociones que otros tomos construyen con rigor: el

@@ -224,8 +224,11 @@ El Tomo I está terminado cuando sus quince capítulos están en `terminado` y e
 - [x] **G2. Una prueba con NumPy en Pyodide**, en el navegador y en Node [Claude], porque el Tomo II lo va a usar.
 
   *Hecho: NumPy carga en Pyodide bajo Node (`site/src/pyodide.test.ts`) y en el navegador (prueba e2e).*
-- [ ] **G3. Las fronteras entre el Tomo I y el Tomo II** [Claude]: II.1, II.4, II.6, II.8, II.12, II.13 e II.16
+- [x] **G3. Las fronteras entre el Tomo I y el Tomo II** [Claude]: II.1, II.4, II.6, II.8, II.12, II.13 e II.16
       dependen del Tomo I; lo general de B4, en detalle para ellos.
+
+  *Hecho: la página «Lo que el Tomo I exporta» tiene una sección con lo que toma, lo que agrega y lo que no repite
+  cada uno de los siete capítulos del Tomo II que requieren uno del Tomo I, con las anclas exactas.*
 - [x] **G4. Mantenimiento** [Claude]: avisos de actualización de las dependencias (Renovate o Dependabot), una nota
       «cifras a la fecha de la decisión» en la decisión 0001, y servir Pyodide desde el propio sitio o tener un
       respaldo, si las redes que bloquean la CDN resultan un problema.
