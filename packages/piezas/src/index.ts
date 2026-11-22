@@ -3,6 +3,7 @@
  * con NOMBRES_DE_PIEZAS que toda `::figura{pieza="…"}` exista.
  */
 export const PIEZAS = {
+  'conversor-de-convenciones': () => import('./conversor-de-convenciones.ts'),
   'cuadrado-de-impares': () => import('./cuadrado-de-impares.ts'),
   cubetas: () => import('./cubetas.ts'),
   'multiplicacion-modular': () => import('./multiplicacion-modular.ts'),
@@ -17,6 +18,7 @@ export type NombreDePieza = keyof typeof PIEZAS;
 export const NOMBRES_DE_PIEZAS = Object.keys(PIEZAS) as NombreDePieza[];
 
 export * from './algebra.ts';
+export * from './convenciones.ts';
 export * from './dispersion.ts';
 export * from './divisores.ts';
 export * from './euclides.ts';

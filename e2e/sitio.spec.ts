@@ -26,6 +26,20 @@ test('la página del hilo 3D encadena sus aplicaciones por tomo y enlaza los cap
   await expect(page.getByRole('heading', { level: 1, name: 'El hilo de física' })).toBeVisible();
 });
 
+test('el conversor de convenciones transpone la matriz al pasar a vectores fila', async ({ page }) => {
+  await page.goto('conversor/');
+  const celda = (i: number, j: number) => page.locator(`table.pieza-matriz tr:nth-child(${i}) td:nth-child(${j})`);
+  // Con vectores columna, la traslación (1, 2, 3) está en la última columna.
+  await expect(celda(1, 4)).toHaveText('1');
+  await page.getByLabel('fila (y = xM)').check();
+  await expect(celda(4, 1)).toHaveText('1');
+  await expect(celda(1, 4)).toHaveText('0');
+  // Vectores fila guardados por columnas: en memoria, la transpuesta de la convención de la obra.
+  await expect(page.locator('.pieza-memoria')).toContainText('transpuesta');
+  await page.getByLabel('por filas').check();
+  await expect(page.locator('.pieza-memoria')).toContainText('mismos 16 números');
+});
+
 test('la barra lateral lista los capítulos escritos en orden de lectura', async ({ page }) => {
   await page.goto('capitulos/i-1/');
   const grupo = page.locator('nav.sidebar details').filter({ hasText: 'Capítulos escritos' });

@@ -338,7 +338,7 @@ Recuadro recurrente: una línea de código o una fórmula de la práctica que co
 
 ### 8.5 Herramientas transversales de la web
 
-- **Diccionario academia–práctica,** que también funciona de español a inglés: «cambio de base» ↔ «*transform from object space to world space*», «covector» ↔ «normal», «combinación afín» ↔ «*lerp*», «autoadjunto» ↔ «hermítico», «aplicación multilineal» ↔ «tensor con índices», etc. Cada entrada dice también dónde dejan de coincidir los dos lados. Cada capítulo declara los términos que define, y la página del diccionario los reúne (decisión 0004 del repositorio).
+- **Diccionario academia–práctica,** que también funciona de español a inglés: «cambio de base» ↔ «*transform from object space to world space*», «covector» ↔ «normal», «combinación afín» ↔ «*lerp*», «autoadjunto» ↔ «hermítico», «función multilineal» ↔ «tensor con índices», etc. Cada entrada dice también dónde dejan de coincidir los dos lados. Cada capítulo declara los términos que define, y la página del diccionario los reúne (decisión 0004 del repositorio).
 - **Conversor de convenciones:** se eligen la mano de los ejes, el tipo de vector (fila o columna) y el orden de almacenamiento, y se ve cómo cambian la matriz y su disposición en memoria. Para la física, también la signatura de la métrica y la convención de las coordenadas esféricas.
 - **Comparador exacto frente a float32:** celdas que muestran el mismo cálculo con SymPy y en coma flotante, para ver un teorema cumplirse y luego derivar.
 
