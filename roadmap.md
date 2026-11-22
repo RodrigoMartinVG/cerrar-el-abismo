@@ -3,7 +3,7 @@
 *Versión del 22 de noviembre de 2026. Se actualiza a medida que se avanza: cada commit que cierra un punto marca su
 casilla y mueve la línea «En curso».*
 
-**En curso:** D1, la pasada de densidad y pedagogía de I.1.
+**En curso:** D11 a D15, la pasada de densidad de I.11 a I.15, con sus figuras, aplicaciones, fuentes y ejercicios.
 
 Este documento reúne todo lo que falta para dar por terminado el Tomo I (especificación, 16.1 y 16.2) y lo que
 conviene revisar en el resto de la obra mientras tanto. Ordena el trabajo en fases, dice qué depende de qué y quién
@@ -155,16 +155,16 @@ Va antes de reescribir el Tomo I, porque lo que piden los otros tomos define lo 
 Se aplica capítulo por capítulo, en orden de lectura, con el patrón y las metas de A2 y la extensión de A3. Los
 ejemplos nuevos no cambian la huella de ningún resultado, así que esta fase avanza en paralelo con F1.
 
-- [ ] **D1.** I.1
-- [ ] **D2.** I.2
-- [ ] **D3.** I.3
-- [ ] **D4.** I.4
-- [ ] **D5.** I.5
-- [ ] **D6.** I.6
-- [ ] **D7.** I.7, con $S_3$ y $D_4$ trabajados enteros: tabla, subgrupos y cuáles son normales
-- [ ] **D8.** I.8
-- [ ] **D9.** I.9, con los ángulos en radianes y los grados entre paréntesis
-- [ ] **D10.** I.10
+- [x] **D1.** I.1
+- [x] **D2.** I.2
+- [x] **D3.** I.3
+- [x] **D4.** I.4
+- [x] **D5.** I.5
+- [x] **D6.** I.6
+- [x] **D7.** I.7, con $S_3$ y $D_4$ trabajados enteros: tabla, subgrupos y cuáles son normales
+- [x] **D8.** I.8
+- [x] **D9.** I.9, con los ángulos en radianes y los grados entre paréntesis
+- [x] **D10.** I.10
 - [ ] **D11.** I.11
 - [ ] **D12.** I.12
 - [ ] **D13.** I.13, con los autómatas dibujados
@@ -172,6 +172,11 @@ ejemplos nuevos no cambian la huella de ningún resultado, así que esta fase av
 - [ ] **D15.** I.15
 
 Cada capítulo cierra con su reporte de densidad dentro de las metas, la Motivación revisada y «Lo esencial» al día.
+
+*Hecho para I.1 a I.10: cada capítulo cumple las cinco metas, que ahora vigila su prueba, con sus ejercicios
+graduados (decisión 0006) y la fuente de su fragmento. Las sesiones que hicieron cada pasada dejaron anotado lo que
+conviene mirar en la lectura de estilo: los capítulos que quedaron cerca del tope de 52 páginas (I.2, I.7, I.8), los
+datos afirmados de memoria y los ejemplos más fáciles de recortar.*
 
 ## Fase E. Completar la plantilla
 
