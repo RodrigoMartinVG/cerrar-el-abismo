@@ -2,7 +2,10 @@ import type { Blockquote, Paragraph, PhrasingContent, Root, RootContent, Text } 
 import type { ContainerDirective, LeafDirective, TextDirective } from 'mdast-util-directive';
 import { SKIP, visit } from 'unist-util-visit';
 import type { VFile } from 'vfile';
+import GithubSlugger from 'github-slugger';
+import { NIVELES, TIPOS, type Nivel, type Tipo } from './ejercicios.ts';
 import { DIRECTIVAS_DE_STARLIGHT, ENTORNOS } from './entornos.ts';
+import { leerNumero } from './respuestas.ts';
 import { revisarSupone, type Supuesto } from './supone.ts';
 
 /**
@@ -10,6 +13,8 @@ import { revisarSupone, type Supuesto } from './supone.ts';
  *
  * - convierte los entornos (`:::teorema[Título]{#id}`) en bloques numerados «Teorema II.5.3»;
  * - convierte `::figura{pieza="…" alt="…"}` en una figura interactiva numerada, con su texto alternativo;
+ * - agrega a cada ejercicio su dificultad, su tipo y un enlace a su sección, y a los de cálculo, un campo para
+ *   comprobar la respuesta (decisión 0006);
  * - convierte los bloques ` ```python celda ` en celdas de Python que se ejecutan en el navegador, y el bloque
  *   ` ```text salida ` que puede seguir a una celda en su salida esperada, que el lector ve sin ejecutarla;
  * - resuelve `:ref[id]` (un entorno o figura del capítulo), `:ref[I.1#id]` (uno de otro capítulo escrito) y `[[II.3]]`
@@ -90,6 +95,61 @@ function recuadroSupone(supone: readonly Supuesto[]): Blockquote {
   };
 }
 
+/** El texto plano de un nodo, para calcular el identificador de un título como lo hace el sitio. */
+function textoPlano(nodo: unknown): string {
+  const n = nodo as { value?: string; children?: unknown[] };
+  if (typeof n.value === 'string') return n.value;
+  return (n.children ?? []).map(textoPlano).join('');
+}
+
+/**
+ * Las secciones a las que puede corresponder un ejercicio, con el identificador que Astro da a cada título: los `###`
+ * y las secciones Cálculo, Puente y Aplicaciones (el mismo cálculo que `seccionesDelCapitulo`, sobre el árbol).
+ */
+function seccionesDelArbol(arbol: Root): Map<string, string> {
+  const slugger = new GithubSlugger();
+  const secciones = new Map<string, string>();
+  for (const nodo of arbol.children) {
+    if (nodo.type !== 'heading' || nodo.depth < 2) continue;
+    const titulo = textoPlano(nodo).trim();
+    const id = slugger.slug(titulo);
+    if (nodo.depth === 3 || ['Cálculo', 'Puente', 'Aplicaciones'].includes(titulo)) secciones.set(id, titulo);
+  }
+  return secciones;
+}
+
+/** El campo para comprobar la respuesta de un ejercicio de cálculo; src/scripts/elementos.ts lo hace funcionar. */
+function campoDeRespuesta(respuesta: string, tolerancia: string | undefined): Paragraph {
+  const elemento = (tagName: string, properties: Record<string, unknown>, children: unknown[] = []) => ({
+    type: 'element',
+    tagName,
+    properties,
+    children,
+  });
+  return {
+    type: 'paragraph',
+    data: {
+      hName: 'form',
+      hProperties: {
+        className: ['verificar', 'not-content'],
+        dataRespuesta: respuesta,
+        ...(tolerancia ? { dataTolerancia: tolerancia } : {}),
+      },
+      hChildren: [
+        elemento('label', {}, [
+          { type: 'text', value: 'Respuesta ' },
+          elemento('input', { type: 'text', name: 'respuesta', inputMode: 'decimal', autoComplete: 'off', size: 12 }),
+        ]),
+        { type: 'text', value: ' ' },
+        elemento('button', { type: 'submit' }, [{ type: 'text', value: 'Comprobar' }]),
+        { type: 'text', value: ' ' },
+        elemento('output', { ariaLive: 'polite' }),
+      ],
+    } as Paragraph['data'],
+    children: [],
+  };
+}
+
 /** Saca el párrafo de etiqueta (`[Título]`) de una directiva de bloque, si lo tiene. */
 function sacarEtiqueta(nodo: ContainerDirective): PhrasingContent[] | undefined {
   const primero = nodo.children[0];
@@ -107,6 +167,7 @@ export function remarkLibro(opciones: OpcionesLibro) {
     const contadores = { resultados: 0, ejercicios: 0, figuras: 0 };
     const etiquetas = new Map<string, string>();
     const fallar = (mensaje: string, nodo: RootContent): never => file.fail(mensaje, nodo);
+    const secciones = seccionesDelArbol(arbol);
 
     const registrar = (id: string | null | undefined, nombre: string, nodo: RootContent) => {
       if (!id) return;
@@ -138,6 +199,40 @@ export function remarkLibro(opciones: OpcionesLibro) {
             ...(entorno.htmlTitulo ? [] : [texto('.')]),
           ],
         };
+        if (nodo.name === 'ejercicio') {
+          const { nivel, tipo, seccion, respuesta, tolerancia } = nodo.attributes ?? {};
+          const partes: PhrasingContent[] = [];
+          if (nivel && nivel in NIVELES)
+            partes.push({
+              type: 'emphasis',
+              data: {
+                hName: 'span',
+                hProperties: {
+                  className: ['ejercicio-nivel'],
+                  title: `Dificultad: ${NIVELES[nivel as Nivel]}`,
+                  ariaLabel: `Dificultad ${nivel} de 3: ${NIVELES[nivel as Nivel]}`,
+                },
+              },
+              children: [texto('★'.repeat(Number(nivel)))],
+            });
+          if (seccion) {
+            const titulo = secciones.get(seccion);
+            if (!titulo) return fallar(`La sección «${seccion}» del ejercicio no existe en el capítulo.`, nodo);
+            partes.push({ type: 'link', url: `#${seccion}`, children: [texto(titulo)] });
+          }
+          if (tipo && tipo in TIPOS) partes.push(texto(TIPOS[tipo as Tipo]));
+          if (partes.length)
+            encabezado.children.push(texto(' '), {
+              type: 'emphasis',
+              data: { hName: 'span', hProperties: { className: ['ejercicio-meta'] } },
+              children: partes.flatMap((p, i) => (i ? [texto(' · '), p] : [p])),
+            });
+          if (respuesta !== undefined && respuesta !== null) {
+            if (!leerNumero(respuesta))
+              return fallar(`La respuesta «${respuesta}» no es un número, una fracción ni un decimal.`, nodo);
+            nodo.children.push(campoDeRespuesta(respuesta, tolerancia ?? undefined));
+          }
+        }
         nodo.children.unshift(encabezado);
         if (entorno.cierre) {
           nodo.children.push({

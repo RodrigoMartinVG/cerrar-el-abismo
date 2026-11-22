@@ -63,6 +63,19 @@ describe('remarkLibro', () => {
     );
   });
 
+  it('agrega a un ejercicio su dificultad, su sección y su tipo, y a uno de cálculo, el campo de la respuesta', () => {
+    const salida = html(
+      '### Subgrupos\n\nTexto.\n\n:::ejercicio{nivel=2 tipo=calculo seccion="subgrupos" respuesta=7/12}\nB.\n:::',
+    );
+    expect(salida).toContain(
+      '<span class="ejercicio-nivel" title="Dificultad: pide una idea" aria-label="Dificultad 2 de 3: pide una idea">★★</span>',
+    );
+    expect(salida).toContain('<a href="#subgrupos">Subgrupos</a> · Cálculo</span>');
+    expect(salida).toContain('<form class="verificar not-content" data-respuesta="7/12">');
+    expect(() => html(':::ejercicio{nivel=1 tipo=calculo seccion="nada"}\nB.\n:::')).toThrow(/La sección «nada»/);
+    expect(() => html(':::ejercicio{nivel=1 tipo=calculo respuesta=dos}\nB.\n:::')).toThrow(/no es un número/);
+  });
+
   it('resuelve :ref[id] con el nombre numerado del entorno', () => {
     const salida = html(':::lema{#clave}\nX.\n:::\n\nPor el :ref[clave], listo.');
     expect(salida).toContain('Por el <a href="#clave">Lema II.5.1</a>, listo.');

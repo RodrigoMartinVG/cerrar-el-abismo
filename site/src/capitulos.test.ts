@@ -6,7 +6,11 @@ import { parse } from 'yaml';
 import { CAMPOS, carpetaDelIndice, cargarIndice, Grafo, slug, todosLosCapitulos } from '@cerrar-el-abismo/indice';
 import {
   claveDeTermino,
+  coincide,
+  ejerciciosDelCapitulo,
   etiquetasDelCapitulo,
+  leerNumero,
+  revisarEjercicios,
   revisarCumple,
   revisarDiccionario,
   revisarEstilo,
@@ -30,6 +34,20 @@ const carpetaDeRevision = join(carpetaDelIndice(), '..', 'revision');
 const indice = new Map(todosLosCapitulos(cargarIndice()).map((c) => [c.id, c]));
 const ORDEN_DE_LECTURA = [...indice.keys()];
 const GRAFO = new Grafo(cargarIndice());
+/**
+ * Las licencias con las que un fragmento ajeno puede entrar en la Entrada de un capítulo: las compatibles con la de la
+ * obra (CC BY-NC-SA para el texto, MIT para el código).
+ */
+const LICENCIAS_COMPATIBLES = ['dominio público', 'CC0', 'MIT', 'BSD', 'Apache-2.0', 'CC BY 4.0', 'CC BY-SA 4.0'];
+/**
+ * Los capítulos que todavía no pasaron por E3 y E4 de la hoja de ruta: sin la fuente de su fragmento, y con
+ * ejercicios sin graduar. Cada pasada de la fase D saca su capítulo de la lista, y la lista desaparece al terminarla.
+ */
+const PENDIENTES_DE_LA_FASE_D = new Set(
+  ['i-1', 'i-2', 'i-3', 'i-4', 'i-5', 'i-6', 'i-7', 'i-8', 'i-9', 'i-10', 'i-11', 'i-12', 'i-13', 'i-14', 'i-15'].map(
+    (c) => `${c}.md`,
+  ),
+);
 const PLANTILLA = [
   'Entrada',
   'Motivación',
@@ -54,6 +72,7 @@ function leer(archivo: string) {
       supone?: unknown;
       diccionario?: unknown;
       cumple?: unknown;
+      fuente?: 'propia' | { de: string; url?: string; licencia: string };
     },
     texto,
     cuerpo: texto.slice(m[0].length),
@@ -137,6 +156,29 @@ describe.each(archivos)('el capítulo %s', (archivo) => {
     expect(fuera, 'la Entrada y la Salida solo usan el recorrido (especificación, 8.1)').toEqual([]);
   });
 
+  it.skipIf(PENDIENTES_DE_LA_FASE_D.has(archivo))(
+    'sus ejercicios dicen dificultad, tipo y sección; los de cálculo, su respuesta; los impares tienen solución (decisión 0006)',
+    () => {
+      expect(revisarEjercicios(texto)).toEqual([]);
+    },
+  );
+
+  it.skipIf(PENDIENTES_DE_LA_FASE_D.has(archivo))(
+    'dice de dónde sale el fragmento de la Entrada, con una licencia compatible con la de la obra (especificación, 8.1)',
+    () => {
+      const { fuente } = datos;
+      expect(fuente, 'falta el campo «fuente»: «propia» o la fuente con su licencia').toBeDefined();
+      if (fuente === 'propia') {
+        const entrada = /^## Entrada\n([\s\S]*?)(?=^## )/m.exec(cuerpo)?.[1] ?? '';
+        expect(entrada, 'si el fragmento es propio, la Entrada lo dice').toMatch(
+          /\bpropi[oa]\b|escrit[oa] para (esta obra|este capítulo)/,
+        );
+      } else {
+        expect(LICENCIAS_COMPATIBLES).toContain(fuente!.licencia);
+      }
+    },
+  );
+
   it('tiene el recuadro del Puente', () => {
     expect(cuerpo).toMatch(/^:::puente$/m);
   });
@@ -168,6 +210,22 @@ describe.each(archivos)('el capítulo %s', (archivo) => {
         if (esperada !== undefined) {
           const limpiar = (t: string) => t.replace(/[ \t]+$/gm, '').trimEnd();
           expect(limpiar(impreso), `la celda ${i + 1} no imprime la salida que el texto escribe`).toBe(limpiar(esperada));
+        }
+      }
+      // La respuesta de cada ejercicio de cálculo que trae su comprobación, evaluada en Python (decisión 0006).
+      for (const { numero, atributos } of ejerciciosDelCapitulo(texto)) {
+        if (!atributos['comprobacion'] || !atributos['respuesta']) continue;
+        const globales = py.globals.get('dict')();
+        try {
+          await py.runPythonAsync('import math\nfrom fractions import Fraction', { globals: globales });
+          const valor = String(await py.runPythonAsync(`str(${atributos['comprobacion']})`, { globals: globales }));
+          const tolerancia = Number(atributos['tolerancia'] ?? '1e-6');
+          expect(
+            coincide(leerNumero(valor)!, leerNumero(atributos['respuesta'])!, tolerancia),
+            `el ejercicio ${numero} dice que la respuesta es ${atributos['respuesta']}, y su comprobación da ${valor}`,
+          ).toBe(true);
+        } finally {
+          globales.destroy();
         }
       }
     },

@@ -27,6 +27,13 @@ export const collections = {
          * Los términos que el capítulo define, con lo que la práctica dice en su lugar (decisión 0004). La página
          * /diccionario/ los reúne; packages/libro/src/diccionario.ts los comprueba.
          */
+        /**
+         * De dónde sale el fragmento de la Entrada (especificación, 8.1): `propia` si se escribió para la obra, o la
+         * fuente con su licencia, que tiene que ser compatible con la de la obra.
+         */
+        fuente: z
+          .union([z.literal('propia'), z.strictObject({ de: z.string(), url: z.string().optional(), licencia: z.string() })])
+          .optional(),
         diccionario: z
           .array(
             z.strictObject({

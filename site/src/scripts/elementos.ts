@@ -1,3 +1,4 @@
+import { coincide, leerNumero } from '@cerrar-el-abismo/libro/respuestas';
 import { PIEZAS, type NombreDePieza } from '@cerrar-el-abismo/piezas';
 
 /**
@@ -7,6 +8,8 @@ import { PIEZAS, type NombreDePieza } from '@cerrar-el-abismo/piezas';
  *   «Restaurar» y, mientras corre, «Detener» (sección 11.2). Todas las celdas de una página comparten un mismo
  *   intérprete, como un cuaderno, aunque cada una se puede ejecutar sola (decisión 0003).
  * - `<figura-interactiva data-pieza="…">`: el texto alternativo como contenido; se reemplaza por la pieza.
+ * - `<form class="verificar" data-respuesta="…">`: el campo de un ejercicio de cálculo; compara lo que escribe el
+ *   lector con la respuesta, exactamente si los dos son enteros o fracciones y con tolerancia si no (decisión 0006).
  *
  * Sin JavaScript, los dos quedan legibles: el código y la descripción de la figura.
  */
@@ -145,3 +148,24 @@ function boton(texto: string): HTMLButtonElement {
 
 if (!customElements.get('celda-python')) customElements.define('celda-python', CeldaPython);
 if (!customElements.get('figura-interactiva')) customElements.define('figura-interactiva', FiguraInteractiva);
+
+/** Los ejercicios de cálculo: el lector escribe su respuesta y la página le dice si coincide. */
+document.addEventListener('submit', (evento) => {
+  const formulario = evento.target;
+  if (!(formulario instanceof HTMLFormElement) || !formulario.classList.contains('verificar')) return;
+  evento.preventDefault();
+  const campo = formulario.elements.namedItem('respuesta') as HTMLInputElement | null;
+  const salida = formulario.querySelector('output');
+  const esperada = leerNumero(formulario.dataset['respuesta'] ?? '');
+  if (!campo || !salida || !esperada) return;
+  const dada = leerNumero(campo.value);
+  const tolerancia = Number(formulario.dataset['tolerancia'] ?? '1e-6');
+  formulario.classList.remove('correcta', 'incorrecta');
+  if (!dada) {
+    salida.textContent = 'Escribir un número, una fracción como 7/12 o un decimal.';
+    return;
+  }
+  const bien = coincide(dada, esperada, tolerancia);
+  formulario.classList.add(bien ? 'correcta' : 'incorrecta');
+  salida.textContent = bien ? 'Correcto.' : 'No coincide.';
+});

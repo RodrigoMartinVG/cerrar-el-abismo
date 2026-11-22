@@ -5,10 +5,12 @@
   "type": "module",
   "description": "La capa de libro (decisión 0001): las directivas cerradas de los capítulos, su numeración «II.5.3» y las referencias, como plugin de remark.",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./respuestas": "./src/respuestas.ts"
   },
   "dependencies": {
     "@cerrar-el-abismo/indice": "^0.0.0",
+    "github-slugger": "^2.0.0",
     "mdast-util-directive": "^3.2.1",
     "unist-util-visit": "^5.2.0",
     "yaml": "^2.9.1"

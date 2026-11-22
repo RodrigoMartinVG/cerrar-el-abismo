@@ -453,6 +453,61 @@ celda-python:has(.celda-editor) {
   cursor: pointer;
 }
 
+/* La dificultad, la sección y el tipo de un ejercicio, junto a su título (decisión 0006). */
+.ejercicio-meta {
+  font-style: normal;
+  font-size: var(--obra-texto-secundario);
+  color: var(--sl-color-gray-2);
+}
+
+.ejercicio-meta a {
+  color: var(--sl-color-text-accent);
+}
+
+.ejercicio-nivel {
+  font-style: normal;
+  letter-spacing: 0.05em;
+  color: var(--sl-color-text-accent);
+}
+
+/* El campo para comprobar la respuesta de un ejercicio de cálculo. */
+.verificar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-family: var(--sl-font);
+  font-size: var(--obra-texto-secundario);
+}
+
+.verificar input {
+  font: inherit;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--sl-color-gray-4);
+  background: var(--sl-color-bg);
+  color: var(--sl-color-white);
+}
+
+.verificar button {
+  font: inherit;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--sl-color-accent);
+  background: transparent;
+  color: var(--sl-color-white);
+  cursor: pointer;
+}
+
+.verificar.correcta output {
+  color: var(--sl-color-green);
+}
+
+.verificar.incorrecta output {
+  color: var(--sl-color-red);
+}
+
 /* La salida esperada de una celda, que el capítulo escribe y el lector ve sin ejecutarla (sin JavaScript, tal cual). */
 .salida-esperada {
   white-space: pre-wrap;

@@ -19,6 +19,16 @@ estado: borrador
 ```
 
 - `title` es el identificador seguido del título exacto del índice; una prueba lo comprueba.
+- `fuente` dice de dónde sale el fragmento de la Entrada (especificación, 8.1): `propia` si se escribió para la obra,
+  y entonces la Entrada lo dice, o la fuente con su licencia, que tiene que ser compatible con la de la obra
+  (dominio público, CC0, MIT, BSD, Apache-2.0, CC BY 4.0 o CC BY-SA 4.0):
+
+  ```yaml
+  fuente:
+    de: NIST SP 800-56A, revisión 3, sección 5.6.2.3.1
+    url: https://doi.org/10.6028/NIST.SP.800-56Ar3
+    licencia: dominio público
+  ```
 - `estado` es `borrador`, `revision` o `terminado` (sección 16.2 de la especificación). Pasar de un estado a otro
   exige la revisión registrada en `revision/` (decisión 0005; ver «La revisión», más abajo).
 - `supone` (opcional) lista lo que el capítulo usa antes de que la obra lo construya, con el capítulo que lo trata con
@@ -102,6 +112,23 @@ La familia dual de una base de $V$ es una base de $V^*$.
 El título entre corchetes y la etiqueta entre llaves son opcionales; el título va antes que la etiqueta. Los recuadros
 de Starlight (`:::note`, `:::tip`, `:::caution`, `:::danger`) también se pueden usar. Cualquier otra directiva hace
 fallar la construcción.
+
+Los ejercicios llevan además su dificultad, su tipo y su sección, y los de cálculo, su respuesta (decisión 0006):
+
+```markdown
+:::ejercicio{#ej-manos nivel=1 tipo=calculo seccion="combinaciones-y-coeficientes-binomiales" respuesta=2598960 comprobacion="math.comb(52, 5)"}
+Contar las manos de cinco cartas de una baraja de 52.
+:::
+```
+
+- `nivel` es `1` (rutina), `2` (pide una idea) o `3` (desafío); `tipo`, uno de `demostracion`, `calculo`,
+  `exploracion`, `traduccion` o `proyecto`.
+- `seccion` es el identificador que el sitio da al título de la sección: el texto en minúsculas, con guiones en lugar
+  de espacios y sin signos, con las tildes (`cálculo`, `subgrupos-y-el-teorema-de-lagrange`). Puede ser un `###` del
+  Desarrollo, o Cálculo, Puente o Aplicaciones.
+- `respuesta` es un entero, una fracción `a/b` o un decimal; el lector la comprueba en la página. `comprobacion`,
+  opcional, es una expresión de Python, con `math` y `Fraction` a mano, que las pruebas evalúan para confirmarla.
+- Los impares llevan su `solucion` a continuación, y los pares no; la prueba lo exige.
 
 ## Referencias
 
