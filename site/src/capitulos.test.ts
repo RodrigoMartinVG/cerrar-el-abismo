@@ -130,12 +130,22 @@ describe.each(archivos)('el capítulo %s', (archivo) => {
     expect(cuerpo).toMatch(/^:::puente$/m);
   });
 
-  it('ejecuta todas sus celdas de Python sin errores', { timeout: 300_000 }, async () => {
+  it('ejecuta cada una de sus celdas de Python sola y sin errores', { timeout: 300_000 }, async () => {
     const celdas = [...cuerpo.matchAll(/^```python celda\n([\s\S]*?)^```$/gm)].map((m) => m[1]!);
     const py = await loadPyodide();
-    for (const celda of celdas) {
+    for (const [i, celda] of celdas.entries()) {
       await py.loadPackagesFromImports(celda, { messageCallback: () => {} });
-      await py.runPythonAsync(celda);
+      // Un espacio de nombres nuevo para cada celda: ninguna puede usar lo que define otra (guía de capítulos).
+      const globales = py.globals.get('dict')();
+      try {
+        await py.runPythonAsync(celda, { globals: globales });
+      } catch (error) {
+        throw new Error(`La celda ${i + 1} falla ejecutada sola: ${String(error).split('\n').slice(-2).join(' ')}`, {
+          cause: error,
+        });
+      } finally {
+        globales.destroy();
+      }
     }
   });
 });

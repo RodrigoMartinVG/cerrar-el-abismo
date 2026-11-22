@@ -31,6 +31,11 @@ comprobaciones en verde.
 - **Python en el navegador con Pyodide**, en un Web Worker que se carga la primera vez que el lector ejecuta una celda.
   La versión es la del paquete `pyodide` del repositorio, y el navegador la descarga de su CDN. Todas las celdas de una
   página comparten intérprete, como un cuaderno.
+
+  *Enmienda (2026-11-22), tras la revisión del Tomo I:* compartir el intérprete no autoriza que una celda dependa de
+  otra. Cada celda tiene que poder ejecutarse sola, porque el lector puede empezar por cualquiera, y las pruebas
+  ejecutan cada una en un espacio de nombres propio. Las que usan el azar fijan la semilla, para que su salida sea la
+  que describe el texto.
 - **Las celdas se editan con CodeMirror 6**, con el resaltado de Python, números de línea, deshacer y Ctrl+Enter para
   ejecutar. Se carga aparte, solo en las páginas con celdas, y mientras llega el código se ve como texto. Sus colores
   son variables de `tema.css` que repiten los de los bloques de solo lectura (Expressive Code con Vitesse), para que

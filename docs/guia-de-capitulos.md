@@ -121,9 +121,11 @@ print(np.linalg.det(np.eye(3)))
 ```
 ````
 
-El lector puede editarla, ejecutarla y restaurarla. Las celdas de una página comparten intérprete, en orden. Los
-paquetes que importa (NumPy, SciPy, SymPy) se cargan solos. Las pruebas ejecutan todas las celdas: una celda que falla
-hace fallar la integración continua. Un bloque ` ```python ` sin `celda` es código que solo se muestra.
+El lector puede editarla, ejecutarla y restaurarla. Las celdas de una página comparten intérprete, como un cuaderno,
+pero cada una tiene que poder ejecutarse sola: no usa nada que defina otra, porque el lector puede empezar por
+cualquiera. Si usa el azar, fija la semilla (`random.seed(1)`), para que su salida sea la que describe el texto. Los
+paquetes que importa (NumPy, SciPy, SymPy) se cargan solos. Las pruebas ejecutan cada celda sola, en un espacio de
+nombres propio: una celda que falla hace fallar la integración continua. Un bloque ` ```python ` sin `celda` es código que solo se muestra.
 
 ## Figuras interactivas
 
