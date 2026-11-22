@@ -33,6 +33,29 @@ export function urlMapa(id?: string): string {
   return id ? `${raiz}mapa/${slug(id)}/` : `${raiz}mapa/`;
 }
 
+/** El repositorio de la obra, donde se reportan los errores. */
+export const REPOSITORIO = 'https://github.com/RodrigoMartinVG/cerrar-el-abismo';
+
+/**
+ * Un *issue* nuevo para reportar un error en un capítulo, con el capítulo y su dirección ya escritos. El script de la
+ * página agrega, al hacer clic, el ancla en la que está el lector.
+ */
+export function urlReportarError(id: string, titulo: string, url: string): string {
+  const cuerpo = [
+    `**Capítulo:** ${titulo}`,
+    `**Dirección:** ${url}`,
+    '**Dónde:** (el número del teorema o del ejercicio, o la sección y el párrafo)',
+    '',
+    '**Qué está mal:**',
+    '',
+    '',
+    '**Qué debería decir, si se sabe:**',
+    '',
+  ].join('\n');
+  const consulta = new URLSearchParams({ title: `Error en ${id}: `, body: cuerpo });
+  return `${REPOSITORIO}/issues/new?${consulta.toString()}`;
+}
+
 /** La fila de un capítulo en la página del estado de la revisión (decisión 0005). */
 export function urlRevision(id: string): string {
   return `${raiz}revision/#${slug(id)}`;

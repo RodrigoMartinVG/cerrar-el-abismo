@@ -17,9 +17,19 @@ const BASE = `https://cdn.jsdelivr.net/pyodide/v${__PYODIDE_VERSION__}/full/`;
 let pyodide: Promise<Pyodide> | undefined;
 
 function cargar(): Promise<Pyodide> {
-  pyodide ??= import(/* @vite-ignore */ `${BASE}pyodide.mjs`).then(
-    (m: { loadPyodide: (o: { indexURL: string }) => Promise<Pyodide> }) => m.loadPyodide({ indexURL: BASE }),
-  );
+  pyodide ??= import(/* @vite-ignore */ `${BASE}pyodide.mjs`)
+    .then((m: { loadPyodide: (o: { indexURL: string }) => Promise<Pyodide> }) => m.loadPyodide({ indexURL: BASE }))
+    .catch((error: unknown) => {
+      // Lo más común es una red que bloquea la CDN, como en muchas escuelas y empresas. El próximo intento vuelve a
+      // probar, en vez de repetir el fracaso.
+      pyodide = undefined;
+      throw new Error(
+        'No se pudo cargar Python desde cdn.jsdelivr.net. Puede que la red bloquee ese sitio o que no haya conexión; ' +
+          'las celdas lo necesitan, pero el resto del capítulo funciona sin él. ' +
+          `(${error instanceof Error ? error.message : String(error)})`,
+        { cause: error },
+      );
+    });
   return pyodide;
 }
 

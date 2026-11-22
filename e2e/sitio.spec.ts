@@ -94,6 +94,38 @@ test.describe('el primer capítulo (I.1)', () => {
     await contenido.press('ControlOrMeta+Enter');
     await expect(salida).toHaveText('30', { timeout: 30_000 });
   });
+
+  test('si la red bloquea la CDN de Python, la celda lo dice', async ({ page, context }) => {
+    await context.route('https://cdn.jsdelivr.net/**', (ruta) => ruta.abort());
+    const celda = page.locator('celda-python').first();
+    await celda.getByRole('button', { name: 'Ejecutar' }).click();
+    const salida = celda.locator('.celda-salida');
+    await expect(salida).toContainText('No se pudo cargar Python desde cdn.jsdelivr.net', { timeout: 30_000 });
+    await expect(salida).toHaveClass(/celda-error/);
+    await expect(celda.getByRole('button', { name: 'Ejecutar' })).toBeEnabled();
+  });
+
+  test('«Detener» corta un bucle que no termina, y Python vuelve a funcionar', async ({ page }) => {
+    test.skip(process.env['E2E_SIN_RED'] === '1', 'Pyodide se descarga de su CDN');
+    test.setTimeout(240_000);
+    const celda = page.locator('celda-python').first();
+    const salida = celda.locator('.celda-salida');
+    const detener = celda.getByRole('button', { name: 'Detener' });
+    await expect(detener).toBeHidden();
+    // Primero se carga Python, para que el bucle empiece enseguida.
+    await celda.getByRole('button', { name: 'Ejecutar' }).click();
+    await expect(salida).toHaveText('True\nTrue\nTrue\nFalse', { timeout: 150_000 });
+    await celda.locator('.cm-content').fill('while True:\n    pass');
+    await celda.getByRole('button', { name: 'Ejecutar' }).click();
+    await expect(salida).toHaveText('Ejecutando…');
+    await detener.click();
+    await expect(salida).toContainText('Ejecución detenida');
+    await expect(salida).toHaveClass(/celda-error/);
+    await expect(detener).toBeHidden();
+    await celda.getByRole('button', { name: 'Restaurar' }).click();
+    await celda.getByRole('button', { name: 'Ejecutar' }).click();
+    await expect(salida).toHaveText('True\nTrue\nTrue\nFalse', { timeout: 150_000 });
+  });
 });
 
 test.describe('el capítulo I.2', () => {
@@ -145,6 +177,16 @@ test('cada capítulo dice cuánto está revisado y lleva al estado de la revisi�
   await expect(page.getByRole('heading', { level: 1, name: 'Estado de la revisión' })).toBeVisible();
   await expect(page.locator('.tabla-revision tbody tr')).toHaveCount(15);
   await expect(page.locator('tr#i-1 th a')).toHaveText('I.1 Lógica y demostración');
+});
+
+test('cada capítulo tiene un enlace para reportar un error, con el capítulo ya escrito', async ({ page }) => {
+  await page.goto('capitulos/i-9/');
+  const href = await page.getByRole('link', { name: 'Reportar un error' }).getAttribute('href');
+  const url = new URL(href!);
+  expect(url.origin + url.pathname).toBe('https://github.com/RodrigoMartinVG/cerrar-el-abismo/issues/new');
+  expect(url.searchParams.get('title')).toBe('Error en I.9: ');
+  expect(url.searchParams.get('body')).toContain('**Capítulo:** I.9 Grupos');
+  expect(url.searchParams.get('body')).toContain('/cerrar-el-abismo/capitulos/i-9/');
 });
 
 test.describe('el capítulo I.3', () => {

@@ -2,7 +2,7 @@
 import Default from '@astrojs/starlight/components/PageTitle.astro';
 import { Badge } from '@astrojs/starlight/components';
 import { todosLosCapitulos, tomoDe } from '@cerrar-el-abismo/indice';
-import { obra, urlCapitulo, urlEnIndice, urlMapa, urlRevision, urlTomo } from '../lib/obra';
+import { obra, urlCapitulo, urlEnIndice, urlMapa, urlReportarError, urlRevision, urlTomo } from '../lib/obra';
 import { avanceDe, NOMBRES_DE_ESTADOS } from '../lib/revision';
 
 /**
@@ -14,6 +14,7 @@ const datos = data as { capitulo?: string; estado?: string };
 const c = datos.capitulo ? todosLosCapitulos(obra()).find((x) => x.id === datos.capitulo) : undefined;
 const tomo = c ? obra().tomos.find((t) => t.id === tomoDe(c.id)) : undefined;
 const revision = c ? avanceDe(c.id, body ?? '') : undefined;
+const reportar = c ? urlReportarError(c.id, `${c.id} ${c.titulo}`, new URL(Astro.url.pathname, Astro.site).href) : undefined;
 ---
 
 {
@@ -52,7 +53,29 @@ const revision = c ? avanceDe(c.id, body ?? '') : undefined;
             </a>
           </>
         )}
+        {reportar && (
+          <>
+            {' '}
+            ·{' '}
+            <a href={reportar} class="reportar-error" rel="noopener" target="_blank">
+              Reportar un error
+            </a>
+          </>
+        )}
       </span>
     </p>
   )
 }
+
+<script>
+  // Al reportar un error, la dirección lleva el ancla en la que está el lector, si llegó a una (#teo-lagrange).
+  for (const enlace of document.querySelectorAll<HTMLAnchorElement>('a.reportar-error')) {
+    enlace.addEventListener('click', () => {
+      if (!location.hash) return;
+      const url = new URL(enlace.href);
+      const cuerpo = url.searchParams.get('body') ?? '';
+      url.searchParams.set('body', cuerpo.replace(/^(\*\*Dirección:\*\* )\S+$/m, `$1${location.href}`));
+      enlace.href = url.toString();
+    });
+  }
+</script>
