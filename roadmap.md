@@ -215,11 +215,22 @@ El Tomo I está terminado cuando sus quince capítulos están en `terminado` y e
 
 ## Fase G. Antes del Tomo II
 
-- [ ] **G1. Lo que quedó de la fase 0** [Claude]: el conversor de convenciones (8.5), el comparador exacto frente a
+- [x] **G1. Lo que quedó de la fase 0** [Claude]: el conversor de convenciones (8.5), el comparador exacto frente a
       float32, la biblioteca común de las demos 3D y las páginas de hilo (9.3).
-- [ ] **G2. Una prueba con NumPy en Pyodide**, en el navegador y en Node [Claude], porque el Tomo II lo va a usar.
+
+  *Hecho: el conversor de convenciones (página propia), las páginas de los hilos 3D y de física, el comparador
+  exacto frente a float32 y la recta de un sistema de coma flotante de juguete (piezas para I.10), y la biblioteca
+  común de las demos 3D (`packages/piezas/src/demos3d.ts`), en las convenciones de la sección 12 y con sus pruebas.*
+- [x] **G2. Una prueba con NumPy en Pyodide**, en el navegador y en Node [Claude], porque el Tomo II lo va a usar.
+
+  *Hecho: NumPy carga en Pyodide bajo Node (`site/src/pyodide.test.ts`) y en el navegador (prueba e2e).*
 - [ ] **G3. Las fronteras entre el Tomo I y el Tomo II** [Claude]: II.1, II.4, II.6, II.8, II.12, II.13 e II.16
       dependen del Tomo I; lo general de B4, en detalle para ellos.
-- [ ] **G4. Mantenimiento** [Claude]: avisos de actualización de las dependencias (Renovate o Dependabot), una nota
+- [x] **G4. Mantenimiento** [Claude]: avisos de actualización de las dependencias (Renovate o Dependabot), una nota
       «cifras a la fecha de la decisión» en la decisión 0001, y servir Pyodide desde el propio sitio o tener un
       respaldo, si las redes que bloquean la CDN resultan un problema.
+
+  *Hecho: un trabajo semanal informa las dependencias desactualizadas sin abrir pull requests
+  (`.github/workflows/dependencias.yml`), y la decisión 0001 aclara que sus cifras son las de ese día. El respaldo de
+  Pyodide queda condicionado, como dice el punto, a que la CDN resulte un problema: hoy la página explica el error y
+  el resto del capítulo funciona sin Python.*

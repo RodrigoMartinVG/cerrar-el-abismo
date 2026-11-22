@@ -3,11 +3,13 @@
  * con NOMBRES_DE_PIEZAS que toda `::figura{pieza="…"}` exista.
  */
 export const PIEZAS = {
+  'comparador-flotante': () => import('./comparador-flotante.ts'),
   'conversor-de-convenciones': () => import('./conversor-de-convenciones.ts'),
   'cuadrado-de-impares': () => import('./cuadrado-de-impares.ts'),
   cubetas: () => import('./cubetas.ts'),
   'multiplicacion-modular': () => import('./multiplicacion-modular.ts'),
   'normal-covector': () => import('./normal-covector.ts'),
+  'recta-flotante': () => import('./recta-flotante.ts'),
   'rectangulo-de-euclides': () => import('./rectangulo-de-euclides.ts'),
   'reticulo-de-divisores': () => import('./reticulo-de-divisores.ts'),
   'tabla-de-verdad': () => import('./tabla-de-verdad.ts'),
@@ -19,9 +21,11 @@ export const NOMBRES_DE_PIEZAS = Object.keys(PIEZAS) as NombreDePieza[];
 
 export * from './algebra.ts';
 export * from './convenciones.ts';
+export * as demos3d from './demos3d.ts';
 export * from './dispersion.ts';
 export * from './divisores.ts';
 export * from './euclides.ts';
+export * from './flotante.ts';
 export * from './modular.ts';
 export * from './logica.ts';
 export * from './impares.ts';

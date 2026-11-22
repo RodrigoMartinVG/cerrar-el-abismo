@@ -824,3 +824,54 @@ table.pieza-matriz td {
   font-family: var(--sl-font-mono);
   overflow-wrap: anywhere;
 }
+
+/* Las piezas de coma flotante (I.10): la recta de un sistema de juguete y el comparador exacto frente a float32. */
+.pieza-recta {
+  width: 100%;
+  max-width: 44rem;
+}
+
+.pieza-recta .eje,
+.pieza-recta .potencia {
+  stroke: var(--sl-color-gray-3);
+  stroke-width: 1;
+}
+
+.pieza-recta .normal {
+  stroke: var(--sl-color-text-accent);
+  stroke-width: 1.5;
+}
+
+.pieza-recta .subnormal {
+  stroke: var(--sl-color-orange);
+  stroke-width: 1.5;
+}
+
+.pieza-recta .real {
+  stroke: var(--sl-color-white);
+  stroke-width: 1;
+  stroke-dasharray: 2 2;
+}
+
+.pieza-recta .redondeado {
+  stroke: var(--sl-color-red);
+  stroke-width: 3;
+}
+
+.pieza-recta .rotulo {
+  fill: var(--sl-color-gray-2);
+  font-size: 11px;
+  text-anchor: middle;
+}
+
+.pieza-comparador td {
+  font-family: var(--sl-font-mono);
+  font-size: var(--obra-texto-secundario);
+  word-break: break-all;
+}
+
+.pieza-bits {
+  font-family: var(--sl-font-mono);
+  font-size: var(--obra-texto-secundario);
+  word-break: break-all;
+}
