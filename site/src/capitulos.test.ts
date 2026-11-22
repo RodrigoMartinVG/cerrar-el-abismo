@@ -46,9 +46,7 @@ const LICENCIAS_COMPATIBLES = ['dominio público', 'CC0', 'MIT', 'BSD', 'Apache-
  * ejercicios sin graduar. Cada pasada de la fase D saca su capítulo de la lista, y la lista desaparece al terminarla.
  */
 const PENDIENTES_DE_LA_FASE_D = new Set(
-  ['i-1', 'i-2', 'i-3', 'i-4', 'i-5', 'i-6', 'i-7', 'i-8', 'i-9', 'i-10', 'i-11', 'i-12', 'i-13', 'i-14', 'i-15'].map(
-    (c) => `${c}.md`,
-  ),
+  ['i-1', 'i-3', 'i-4', 'i-5', 'i-6', 'i-7', 'i-8', 'i-9', 'i-10', 'i-11', 'i-12', 'i-13', 'i-14', 'i-15'].map((c) => `${c}.md`),
 );
 const PLANTILLA = [
   'Entrada',
