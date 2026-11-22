@@ -21,6 +21,7 @@ export const PIEZAS = {
   'recta-flotante': () => import('./recta-flotante.ts'),
   'rectangulo-de-euclides': () => import('./rectangulo-de-euclides.ts'),
   'rompecabezas-de-quince': () => import('./rompecabezas-de-quince.ts'),
+  'sucesion-de-goodstein': () => import('./sucesion-de-goodstein.ts'),
   'reticulo-de-divisores': () => import('./reticulo-de-divisores.ts'),
   'tabla-de-verdad': () => import('./tabla-de-verdad.ts'),
 } satisfies Record<string, () => Promise<{ montar: (raiz: HTMLElement) => () => void }>>;

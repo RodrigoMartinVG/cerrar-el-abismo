@@ -1271,3 +1271,62 @@ table.pieza-matriz.pieza-tabla-automata td {
   outline-offset: -2px;
   color: var(--obra-practica);
 }
+
+/* La pieza «sucesion-de-goodstein» (I.11): las filas de ω² y los pasos de una sucesión de Goodstein. */
+.pieza-goodstein {
+  display: block;
+  width: min(100%, 560px);
+  height: auto;
+  font-family: var(--sl-font-mono);
+}
+
+.pieza-goodstein .eje,
+.pieza-goodstein .enlace {
+  stroke: var(--sl-color-gray-4);
+  stroke-width: 1;
+}
+
+.pieza-goodstein .enlace {
+  stroke-dasharray: 2 4;
+}
+
+.pieza-goodstein .marca {
+  stroke: var(--sl-color-gray-3);
+  stroke-width: 1;
+}
+
+.pieza-goodstein .rotulo {
+  fill: var(--sl-color-gray-2);
+  font-size: 12px;
+}
+
+.pieza-goodstein .camino {
+  stroke: var(--obra-teoria);
+  stroke-width: 1;
+}
+
+.pieza-goodstein .rastro {
+  fill: var(--obra-teoria);
+}
+
+.pieza-goodstein .punto {
+  fill: var(--obra-practica);
+  stroke: var(--sl-color-bg);
+  stroke-width: 2;
+}
+
+.pieza-goodstein-tabla {
+  font-family: var(--sl-font-mono);
+  font-size: var(--obra-texto-secundario);
+  font-variant-numeric: tabular-nums;
+}
+
+.pieza-goodstein-tabla td,
+.pieza-goodstein-tabla th {
+  padding: 0.15rem 0.6rem;
+  white-space: nowrap;
+}
+
+.pieza-goodstein-tabla tr.actual {
+  background: var(--obra-practica-bajo);
+}
