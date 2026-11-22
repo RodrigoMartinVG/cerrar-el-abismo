@@ -215,7 +215,7 @@ export function preambulo(tituloDelTomo: string): string {
 \newenvironment{enunciado}[1]{\par\medskip\noindent #1\ \itshape\ignorespaces}{\par\medskip}
 \newenvironment{bloque}[1]{\par\medskip\noindent #1\ \ignorespaces}{\par\medskip}
 \newenvironment{solucion}{\par\small\noindent\textit{Solución.}\ \ignorespaces}{\par\medskip}
-\newtcolorbox{recuadro}[1]{colback=gray!5,colframe=gray!50,title=#1,fonttitle=\bfseries,breakable}
+\newtcolorbox{recuadro}[1]{colback=gray!5,colframe=gray!50,title={#1},fonttitle=\bfseries,breakable}
 \DefineVerbatimEnvironment{celda}{Verbatim}{frame=leftline,framerule=1.5pt,rulecolor=\color{gray},fontsize=\small,label=Python}
 \DefineVerbatimEnvironment{salida}{Verbatim}{frame=single,rulecolor=\color{gris},fontsize=\small,label=Salida}
 \DefineVerbatimEnvironment{codigo}{Verbatim}{fontsize=\small}

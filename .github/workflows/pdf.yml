@@ -38,20 +38,24 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends texlive-luatex texlive-latex-recommended \
             texlive-latex-extra texlive-lang-spanish texlive-fonts-recommended fonts-dejavu
+      # La primera pasada sigue después de un error, para que el registro los muestre todos de una vez; el trabajo falla
+      # si hubo alguno.
       - name: Compilar, dos veces para el índice
         working-directory: pdf
         run: |
-          lualatex -interaction=nonstopmode -halt-on-error tomo-i.tex
-          lualatex -interaction=nonstopmode -halt-on-error tomo-i.tex
+          lualatex -interaction=nonstopmode tomo-i.tex > /dev/null || true
+          if grep -q '^!' tomo-i.log; then grep -A3 '^!' tomo-i.log | head -80; exit 1; fi
+          lualatex -interaction=nonstopmode -halt-on-error tomo-i.tex > /dev/null
       - name: El PDF
         if: success()
         uses: actions/upload-artifact@v7
         with:
           name: tomo-i
           path: pdf/tomo-i.pdf
-      - name: El registro de LaTeX, si falló
-        if: failure()
+      - name: El registro de LaTeX
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: tomo-i-log
+          if-no-files-found: ignore
           path: pdf/tomo-i.log
