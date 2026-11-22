@@ -298,6 +298,8 @@ Cada capítulo abre con un fragmento real que el lector todavía no puede explic
 
 La Entrada no supone que el lector programe. Si el fragmento es código, se elige la forma más legible que conserve lo esencial (Python, cuando el lenguaje no importa) y una frase dice qué hace cada instrucción. En los primeros capítulos de la obra, sobre todo en el Tomo I, el fragmento llega después de una pregunta matemática concreta, y el código aparece como la misma pregunta escrita en otro idioma.
 
+La Salida explica el fragmento solo con lo que está en el recorrido del capítulo: sus requisitos y lo que el capítulo mismo construye. Ningún paso de la explicación depende de un hecho que solo establece un capítulo posterior; lo que el lector trae de la secundaria y la obra formaliza después, como el seno y el coseno, cuenta como conocido. Las demás licencias declaradas en `supone` pueden aparecer en la Motivación, los ejemplos, el Puente y las Aplicaciones, pero no en la Entrada ni en la Salida, que son el objetivo comprobable del capítulo. Si un fragmento solo se explica con un capítulo posterior, pertenece a ese capítulo (versión 0.9).
+
 ### 8.2 Las cinco preguntas del Puente
 
 1. ¿Cómo se llama esto en la práctica?
@@ -362,7 +364,7 @@ Además de la sección Puente de cada capítulo, hay partes enteras donde la car
 
 - Cada capítulo tiene de 2 a 4 aplicaciones, de al menos dos campos, y al menos una es interactiva.
 - Los hilos [3D] y [Física] aparecen en todos los tomos, y ninguno supera un tercio de las aplicaciones de un tomo.
-- Las aplicaciones solo usan matemática de los requisitos del capítulo; pueden señalar otros capítulos como aviso.
+- Las aplicaciones solo usan matemática de los requisitos del capítulo; pueden señalar otros capítulos como aviso. La Entrada y la Salida, en cambio, no se apoyan en licencias (8.1).
 
 ### 9.3 Páginas de hilo
 
@@ -603,9 +605,10 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - La cota del test de Miller–Rabin: los testigos falsos caben en un subgrupo propio, por el teorema de Lagrange.
 - Homomorfismos, subgrupos normales y grupos cociente.
 - Grupos de permutaciones y signo de una permutación.
-- Acciones de grupo, órbitas y estabilizadores; lema de Burnside.
+- Productos directos; el teorema chino del resto como isomorfismo.
+- Acciones de grupo, órbitas y estabilizadores; conjugación y clases de conjugación; lema de Burnside.
 
-**Puente.** Entrada: `cameraView = inverse(cameraTransform)`. Las transformaciones de un motor forman grupos: componer transformaciones es la operación del grupo, y la matriz de vista de una cámara es el inverso de su transformación en ese grupo.
+**Puente.** Entrada: `2 <= y <= p - 2 and pow(y, q, p) == 1`, la validación de una clave pública de Diffie–Hellman. Por el orden de un elemento y el teorema de Lagrange, una clave que pasa tiene orden q, y no deja al atacante el subgrupo pequeño que le permitiría averiguar el secreto por partes.
 **Aplicaciones.** [Física] simetrías de moléculas y cristales · [Cripto] grupos en la criptografía de clave pública · [3D] simetrías de patrones y teselaciones · [Datos] contar coloraciones distintas con el lema de Burnside.
 **Lecturas.** Dummit y Foote, *Abstract Algebra*; Artin, *Algebra*.
 

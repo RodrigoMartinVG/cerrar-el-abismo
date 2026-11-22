@@ -145,8 +145,9 @@ partes:
           - 'La cota del test de Miller–Rabin: los testigos falsos caben en un subgrupo propio, por el teorema de Lagrange.'
           - Homomorfismos, subgrupos normales y grupos cociente.
           - Grupos de permutaciones y signo de una permutación.
-          - Acciones de grupo, órbitas y estabilizadores; lema de Burnside.
-        puente: 'Entrada: `cameraView = inverse(cameraTransform)`. Las transformaciones de un motor forman grupos: componer transformaciones es la operación del grupo, y la matriz de vista de una cámara es el inverso de su transformación en ese grupo.'
+          - Productos directos; el teorema chino del resto como isomorfismo.
+          - Acciones de grupo, órbitas y estabilizadores; conjugación y clases de conjugación; lema de Burnside.
+        puente: 'Entrada: `2 <= y <= p - 2 and pow(y, q, p) == 1`, la validación de una clave pública de Diffie–Hellman. Por el orden de un elemento y el teorema de Lagrange, una clave que pasa tiene orden q, y no deja al atacante el subgrupo pequeño que le permitiría averiguar el secreto por partes.'
         aplicaciones:
           - campo: fisica
             texto: simetrías de moléculas y cristales

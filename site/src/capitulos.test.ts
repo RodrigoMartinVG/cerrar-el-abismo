@@ -126,6 +126,17 @@ describe.each(archivos)('el capítulo %s', (archivo) => {
     expect(revisarRegistro(datosDelRegistro, texto, datos.estado ?? 'borrador')).toEqual([]);
   });
 
+  it('explica la Entrada en la Salida sin licencias: ninguna de las dos menciona capítulos fuera de su recorrido', () => {
+    const fuera = ['Entrada', 'Salida'].flatMap((seccion) => {
+      const texto = new RegExp(`^## ${seccion}\\n([\\s\\S]*?)(?=^## )`, 'm').exec(cuerpo)?.[1] ?? '';
+      return [...texto.matchAll(/\[\[([^\][]+)\]\]|:ref\[([^\]#]+)#/g)]
+        .map((m) => (m[1] ?? m[2])!)
+        .filter((otro) => otro !== datos.capitulo && !GRAFO.depende(datos.capitulo, otro))
+        .map((otro) => `${seccion}: ${otro}`);
+    });
+    expect(fuera, 'la Entrada y la Salida solo usan el recorrido (especificación, 8.1)').toEqual([]);
+  });
+
   it('tiene el recuadro del Puente', () => {
     expect(cuerpo).toMatch(/^:::puente$/m);
   });

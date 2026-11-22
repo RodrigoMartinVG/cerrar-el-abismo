@@ -194,7 +194,8 @@ En la lectura de estilo, a mano, con esta lista:
 - ¿Cada teorema largo tiene su idea antes de la demostración?
 - ¿Cada hipótesis se usa, y el texto dice dónde?
 - ¿Cada celda y cada figura están comentadas antes y después?
-- ¿La Salida cierra con «Lo esencial»?
+- ¿La Salida explica el fragmento de la Entrada solo con lo que está en el recorrido, sin que ningún paso dependa de un
+  hecho que solo establece un capítulo posterior (especificación, 8.1)? ¿Cierra con «Lo esencial»?
 - ¿Se puede leer el capítulo saltando las demostraciones y entender qué se probó y por qué importa?
 - ¿Cada entrada del diccionario dice dónde dejan de coincidir los dos lados, y cada afirmación sobre la práctica es
   exacta?

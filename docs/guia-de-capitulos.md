@@ -73,6 +73,11 @@ estado: borrador
 Las de la plantilla (sección 7), como títulos `##` y en este orden: Entrada, Motivación, Desarrollo, Cálculo, Puente,
 Aplicaciones, Salida, Ejercicios y «Notas y «Para seguir»». La sección Puente lleva un recuadro `:::puente`.
 
+La Entrada y la Salida no se apoyan en licencias (especificación, 8.1): la Salida explica el fragmento solo con el
+recorrido del capítulo. Una prueba comprueba que ninguna de las dos mencione un capítulo fuera del recorrido; que
+tampoco dependan sin nombrarlo de un hecho que solo establece un capítulo posterior lo comprueba la lectura de estilo. Lo
+que el lector trae de la secundaria, como el seno y el coseno, cuenta como conocido aunque la obra lo formalice después.
+
 ## Los entornos
 
 ```markdown
