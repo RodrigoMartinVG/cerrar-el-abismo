@@ -109,7 +109,7 @@ describe('revisarRegistro', () => {
     expect(avanceDeRevision(r, TEXTO).porResultado.get('teo-lagrange')).toEqual({ primera: 'vigente', segunda: 'falta' });
   });
 
-  it('en «revision» exige la primera pasada vigente de cada resultado y de cada aspecto', () => {
+  it('«terminado» exige la revisión vigente de cada resultado y de cada aspecto', () => {
     const completo = {
       resultados: {
         'teo-lagrange': [entrada('primera', 'Ana Pérez', LAGRANGE)],
@@ -117,10 +117,10 @@ describe('revisarRegistro', () => {
       },
       aspectos: ASPECTOS_REVISADOS,
     };
-    expect(revisarRegistro(completo, TEXTO, 'revision')).toEqual([]);
-    expect(revisarRegistro({ ...completo, aspectos: {} }, TEXTO, 'revision')).toHaveLength(Object.keys(ASPECTOS).length);
-    expect(revisarRegistro(undefined, TEXTO, 'revision')).toContainEqual(
-      expect.stringContaining('«teo-lagrange»: un capítulo en «revision» necesita la primera pasada vigente (hoy: falta)'),
+    expect(revisarRegistro(completo, TEXTO, 'terminado')).toEqual([]);
+    expect(revisarRegistro({ ...completo, aspectos: {} }, TEXTO, 'terminado')).toHaveLength(Object.keys(ASPECTOS).length);
+    expect(revisarRegistro(undefined, TEXTO, 'terminado')).toContainEqual(
+      expect.stringContaining('«teo-lagrange»: un capítulo terminado necesita su revisión vigente (hoy: falta)'),
     );
   });
 
@@ -133,27 +133,25 @@ describe('revisarRegistro', () => {
       aspectos: ASPECTOS_REVISADOS,
     };
     const cambiado = TEXTO.replace('lo parten', 'lo dividen');
-    expect(revisarRegistro(r, cambiado, 'revision')).toEqual([expect.stringContaining('(hoy: desactualizada)')]);
+    expect(revisarRegistro(r, cambiado, 'terminado')).toEqual([expect.stringContaining('(hoy: desactualizada)')]);
     expect(avanceDeRevision(r, cambiado)).toMatchObject({ resultados: 2, primera: 1, segunda: 0, aspectos: 5 });
     // Basta con registrar la revisión del texto nuevo: la entrada vieja queda como historia.
     const nueva = resultadosDelCapitulo(cambiado)[0]!.huella;
     r.resultados['teo-lagrange'].push(entrada('primera', 'Ana Pérez', nueva));
-    expect(revisarRegistro(r, cambiado, 'revision')).toEqual([]);
+    expect(revisarRegistro(r, cambiado, 'terminado')).toEqual([]);
   });
 
-  it('terminado exige además la segunda pasada vigente de cada resultado', () => {
+  it('en revisión la pasada está en curso; terminado la exige completa, sin pedir la segunda', () => {
     const r = {
       resultados: {
-        'teo-lagrange': [entrada('primera', 'Ana Pérez', LAGRANGE), entrada('segunda', 'Luis Gómez', LAGRANGE)],
-        'cor-orden': [entrada('primera', 'Ana Pérez', COROLARIO)],
+        'teo-lagrange': [entrada('primera', 'Ana Pérez', LAGRANGE)],
       },
       aspectos: ASPECTOS_REVISADOS,
     };
-    expect(revisarRegistro(r, TEXTO, 'terminado')).toEqual([
-      expect.stringContaining('«cor-orden»: un capítulo terminado necesita la segunda pasada'),
-    ]);
-    r.resultados['cor-orden'].push(entrada('segunda', 'Luis Gómez', COROLARIO));
+    expect(revisarRegistro(r, TEXTO, 'revision')).toEqual([]);
+    expect(revisarRegistro(r, TEXTO, 'terminado')).toEqual([expect.stringContaining('«cor-orden»: un capítulo terminado')]);
+    (r.resultados as Record<string, unknown[]>)['cor-orden'] = [entrada('primera', 'Ana Pérez', COROLARIO)];
     expect(revisarRegistro(r, TEXTO, 'terminado')).toEqual([]);
-    expect(avanceDeRevision(r, TEXTO)).toMatchObject({ resultados: 2, primera: 2, segunda: 2, aspectos: 5 });
+    expect(avanceDeRevision(r, TEXTO)).toMatchObject({ resultados: 2, primera: 2, segunda: 0, aspectos: 5 });
   });
 });

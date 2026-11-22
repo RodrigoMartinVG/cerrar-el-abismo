@@ -43,8 +43,8 @@ const revisados = capitulos.reduce((s, c) => s + c.avance.primera, 0);
   <p>
     Las comprobaciones automáticas verifican la forma de cada capítulo: que siga la plantilla, que cite solo lo que está en su
     recorrido y que sus celdas de Python se ejecuten. No pueden verificar que un enunciado sea verdadero ni que una demostración sea
-    correcta. Eso lo hace la revisión, en dos pasadas: la primera, del autor, contrastando con los libros de las lecturas, y la
-    segunda, de otro matemático. Cada revisión queda registrada con quién la hizo, cuándo y contra qué referencia.
+    correcta. Eso lo hace la revisión del autor, contrastando con los libros de las lecturas; si otra persona revisa un capítulo,
+    su revisión también se registra, como segunda pasada. Cada revisión queda registrada con quién la hizo, cuándo y contra qué referencia.
   </p>
   <p>
     Se revisa cada resultado (teorema, proposición, lema o corolario): el enunciado se contrasta con una referencia concreta y la
@@ -62,8 +62,8 @@ const revisados = capitulos.reduce((s, c) => s + c.avance.primera, 0);
   </ul>
   <p>
     Si el texto de un resultado cambia después de revisarlo, su revisión deja de contar hasta que se haga de nuevo. Un capítulo
-    pasa a estar <strong>en revisión</strong> cuando tiene completa la primera pasada, y <strong>terminado</strong> cuando además cada
-    resultado tiene la segunda. Mientras tanto es un <strong>borrador</strong>: está escrito y pasa las comprobaciones automáticas.
+    está <strong>en revisión</strong> mientras se revisa, y <strong>terminado</strong> cuando cada resultado y cada aspecto tienen
+    su revisión vigente. Mientras tanto es un <strong>borrador</strong>: está escrito y pasa las comprobaciones automáticas.
   </p>
 
   <h2 id="avance">El avance</h2>

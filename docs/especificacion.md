@@ -428,7 +428,7 @@ Además del orden de los tomos, la web ofrece itinerarios: selecciones de capít
 - **Tipos:** demostraciones; cálculos con verificación automática (numérica o simbólica); exploraciones con las figuras interactivas; ejercicios de traducción (8.4); proyectos cortos que combinan varios capítulos.
 - **Cantidad:** de 15 a 20 por capítulo, con los tipos mezclados; los impares con solución (decisión del autor, 2026-11-22).
 - **Graduación:** cada ejercicio indica su dificultad y la sección a la que corresponde.
-- **Soluciones:** completas para los impares en la obra; las de los pares, en un espacio para docentes (decisión abierta, sección 17).
+- **Soluciones:** completas para los impares en la obra; los pares no tienen solución publicada (decisión del autor, 2026-11-22: la obra no tiene una parte para docentes).
 - **Verificación:** los ejercicios de cálculo comprueban la respuesta en el navegador, con SymPy para respuestas simbólicas y tolerancias relativas para las numéricas.
 
 ## 11. Plataforma web
@@ -2685,7 +2685,7 @@ El Tomo I se escribió entero y después se repasa con los libros de sus lectura
 ### 16.2 Cuándo un capítulo está terminado
 
 - Requisitos, tipo y metadatos verificados automáticamente, y el mapa de dependencias revisado hacia atrás: lo que usa está en su recorrido y lo que otros capítulos dejaron para él está cumplido.
-- Demostraciones revisadas por un segundo matemático y contrastadas con las lecturas en el repaso del tomo, con cada revisión registrada en `revision/` (decisión 0005 del repositorio).
+- Demostraciones revisadas por el autor y contrastadas con las lecturas en el repaso del tomo, con cada revisión registrada en `revision/` (decisión 0005 del repositorio). Una segunda pasada de otra persona se registra si se hace, pero no se exige.
 - Fragmento de entrada explicado en la salida; las cinco preguntas del Puente respondidas o declaradas no aplicables.
 - De 2 a 4 aplicaciones de al menos dos campos, con al menos una interactiva y todas con texto alternativo.
 - Celdas de código ejecutadas, ejercicios verificados y soluciones de los impares escritas.
@@ -2700,10 +2700,9 @@ El Tomo I se escribió entero y después se repasa con los libros de sus lectura
 | Licencias del texto y del código; modelo de publicación | Decidido (2026-11-22): el texto, bajo CC BY-NC-SA 4.0, y el código, incluido el de las celdas, bajo MIT (`LICENSE.md` del repositorio). El uso comercial del texto queda reservado al autor, para un PDF o una impresión de pago; la web es gratuita |
 | Herramienta de edición | Decidido: Astro con Starlight (decisión 0001 del repositorio) |
 | Lenguajes del código | Python (Pyodide) para el cálculo en vivo y TypeScript para el sitio y las figuras |
-| Soluciones de los ejercicios pares | Espacio para docentes |
 | Capítulos complementarios en la primera edición | Publicar primero el recorrido de núcleo y después los complementarios |
 | Itinerario de ingeniería | La ingeniería tiene 100 aplicaciones, casi tantas como la física (103), pero no tiene itinerario (2.1). Propuesta: núcleo, más IV.14, VIII.7, XI.7, XII.9 y XIII.4 (termodinámica, control, diseño de experimentos, estructuras y espacios de configuración); son 126 capítulos y 5.416 páginas, cerrado bajo dependencias |
 | Extensión | Unas 7.142 páginas de capítulos, 5.214 de núcleo. Decidido (2026-11-22): la media de páginas por capítulo no se baja. Los capítulos escritos llegan a su extensión prevista sumando ejemplos, contraejemplos y casos hechos a mano, no más teoría (guía de estilo, sección 6); un capítulo que pase de 52 páginas se divide. Si se quiere reducir el núcleo, la palanca son los capítulos clásicos que ningún otro capítulo de núcleo necesita (V.7, VI.3 y VI.6: unas 120 páginas) |
 | Signatura de la métrica | (−, +, +, +), con traducción explícita a (+, −, −, −) |
 | Idioma | Español; traducción al inglés por decidir |
-| Revisión externa | El protocolo y su registro están decididos (decisión 0005 del repositorio), y el de la prueba con estudiantes, escrito (`docs/prueba-con-estudiantes.md`). Falta definir quiénes hacen la segunda pasada y con qué estudiantes se prueba el primer capítulo |
+| Revisión externa | Decidido (2026-11-22): la obra no depende de un revisor externo. El protocolo y su registro están en la decisión 0005 del repositorio, enmendada; la prueba con estudiantes, en `docs/prueba-con-estudiantes.md`. |

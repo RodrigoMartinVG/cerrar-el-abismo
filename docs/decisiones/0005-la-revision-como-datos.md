@@ -74,6 +74,13 @@ registrar y exigir.
 - **En el sitio**, cada capítulo dice, junto a su estado, cuántos de sus resultados tienen la primera pasada. La
   página `/revision/` explica el protocolo y reúne el avance de todos los capítulos.
 
+*Enmienda (2026-11-22): el autor decidió que la obra no depende de un revisor externo. La revisión es la del autor,
+con los libros; la segunda pasada, si alguien la hace, se registra igual, pero no se exige. Los estados quedan así:
+`borrador`, sin exigencias; `revision`, con la pasada en curso; `terminado`, con todos los resultados y los cinco
+aspectos revisados y vigentes. Lo que la segunda pasada protegía, que un error del autor no pase sin que nadie lo
+vea, lo cubren la lectura previa de la IA en una sesión distinta, que busca errores sin registrar nada, y la
+lectura crítica de cada pasada de densidad.*
+
 ## Consecuencias
 
 - Un capítulo cambia de estado en el mismo commit que completa su registro, y las pruebas impiden adelantarlo.

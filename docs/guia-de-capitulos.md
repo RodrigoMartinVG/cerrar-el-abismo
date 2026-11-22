@@ -195,11 +195,11 @@ Las pruebas verifican la forma; la revisión, que lo escrito sea verdadero (deci
 - **Cada resultado** (teorema, proposición, lema o corolario): el enunciado se contrasta con una referencia concreta,
   con libro y número de teorema o página, y la demostración se sigue paso a paso.
 - **Cinco aspectos** del capítulo entero: `estilo`, `practica`, `calculos`, `ejercicios` e `historia`.
-- **Dos pasadas:** la primera, del autor con los libros de las lecturas; la segunda, de otro matemático, obligatoria
-  para los resultados.
+- **La revisión del autor**, con los libros de las lecturas. Si otra persona revisa también, su revisión se registra
+  como `segunda`, pero no se exige (enmienda de la decisión 0005).
 
-Un capítulo pasa a `revision` cuando todos sus resultados y aspectos tienen la primera pasada, y a `terminado` cuando
-cada resultado tiene además la segunda, de otra persona. Si se corrige un resultado ya revisado, su huella cambia y
+Un capítulo está en `revision` mientras se revisa, y pasa a `terminado` cuando todos sus resultados y aspectos tienen
+su revisión vigente. Si se corrige un resultado ya revisado, su huella cambia y
 la revisión queda desactualizada: hay que registrarla de nuevo. Una revisión la firma una persona; una sesión de IA
 solo escribe en el registro a pedido del revisor y con sus datos.
 

@@ -185,8 +185,8 @@ function entradasValidas(lista: unknown, conHuella: boolean): EntradaDeRevision[
 }
 
 /**
- * El estado de las dos pasadas de un resultado (con su huella actual) o de un aspecto (sin huella). Una segunda pasada
- * solo cuenta si no la firma ninguna de las personas que hicieron una primera pasada vigente.
+ * El estado de las dos pasadas de un resultado (con su huella actual) o de un aspecto (sin huella). La segunda es
+ * opcional, y solo cuenta si no la firma ninguna de las personas que hicieron una primera pasada vigente.
  */
 function pasadas(entradas: EntradaDeRevision[], huellaActual?: string): Record<Pasada, EstadoDePasada> {
   const vigente = (e: EntradaDeRevision) => huellaActual === undefined || e.huella === huellaActual;
@@ -269,17 +269,14 @@ export function revisarRegistro(registro: unknown, markdown: string, estado: Est
   revisarParte('resultados', anclas, true);
   revisarParte('aspectos', new Set(Object.keys(ASPECTOS)), false);
 
-  if (estado === 'borrador') return problemas;
+  // En «revision» la pasada está en curso; «terminado» la exige completa. Una segunda pasada, de otra persona, se
+  // registra si se hace, pero no se exige (enmienda de la decisión 0005).
+  if (estado !== 'terminado') return problemas;
   const avance = avanceDeRevision(registro, markdown);
-  for (const [ancla, p] of avance.porResultado) {
+  for (const [ancla, p] of avance.porResultado)
     if (p.primera !== 'vigente')
-      problemas.push(`«${ancla}»: un capítulo en «${estado}» necesita la primera pasada vigente (hoy: ${p.primera}).`);
-    if (estado === 'terminado' && p.segunda !== 'vigente')
-      problemas.push(
-        `«${ancla}»: un capítulo terminado necesita la segunda pasada vigente, de otra persona (hoy: ${p.segunda}).`,
-      );
-  }
+      problemas.push(`«${ancla}»: un capítulo terminado necesita su revisión vigente (hoy: ${p.primera}).`);
   for (const [aspecto, p] of avance.porAspecto)
-    if (p.primera !== 'vigente') problemas.push(`El aspecto «${aspecto}» necesita su primera pasada en «${estado}».`);
+    if (p.primera !== 'vigente') problemas.push(`El aspecto «${aspecto}» necesita su revisión en un capítulo terminado.`);
   return problemas;
 }

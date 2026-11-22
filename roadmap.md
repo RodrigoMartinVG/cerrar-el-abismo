@@ -50,8 +50,8 @@ es la condición para empezar el Tomo II.
       densidad por capítulo, como el de `npm run revision`. Si las metas se exigen en las pruebas o solo se informan,
       se decide con el piloto a la vista. *Hecho: guía de estilo, sección 6, y `npm run densidad`. Las metas se informan;
       se exigirán en las pruebas al cerrar la fase D.*
-- [ ] **A3. Decisiones del autor** [autor]. El 22 de noviembre, el autor pidió seguir las recomendaciones; quedan
-      abiertas solo las dos últimas, que dependen de personas:
+- [x] **A3. Decisiones del autor** [autor]. El 22 de noviembre, el autor pidió seguir las recomendaciones, y después
+      que la obra no dependa de un docente ni de un revisor externo:
   - [x] la extensión: los capítulos llegan a la prevista sumando ejemplos, no teoría, y uno que pase de 52 páginas se
         divide (especificación, 17);
   - [x] las figuras estáticas: un diagrama es una pieza sin interacción, con la misma directiva (enmienda de la
@@ -63,7 +63,8 @@ es la condición para empezar el Tomo II.
         (especificación, 16.1);
   - [x] I.12 sigue en el núcleo aunque ningún capítulo lo requiera: es materia central de una licenciatura con
         orientación a la computación, y lo permite la definición de 5.3;
-  - [x] quién hace la segunda pasada, y con qué estudiantes se prueba I.1.
+  - [x] con qué estudiantes se prueba I.1; la segunda pasada de otro matemático deja de ser un requisito (decisión
+        del autor, 2026-11-22).
 - [x] **A4. El protocolo de la prueba con estudiantes** [Claude]: preguntas sobre I.1 según el modelo de
       Mejía-Ramos y otros (2012), con el criterio de 16.1, que el estudiante explique el fragmento de la Salida.
       *Hecho: [docs/prueba-con-estudiantes.md](docs/prueba-con-estudiantes.md).*
@@ -224,13 +225,12 @@ commit, lo que conviene mirar en la lectura de estilo: los capítulos que quedar
 
 ## Fase F. La revisión registrada y el cierre
 
-- [ ] **F1. La primera pasada** [autor]: capítulo por capítulo, con los libros, cada resultado y los cinco aspectos,
+- [ ] **F1. La revisión** [autor]: capítulo por capítulo, con los libros, cada resultado y los cinco aspectos,
       registrados con `npm run revision`.
 - [ ] **F2. La lectura de estilo** [autor], con la lista de la guía, como el aspecto `estilo` del registro.
 - [ ] **F3. La prueba de I.1 con cinco a diez estudiantes** (16.1, fase 1) [autor], y los ajustes a la plantilla y a la
       guía que salgan de ella [ambos].
-- [ ] **F4. La segunda pasada** [otro matemático], resultado por resultado.
-- [ ] **F5. Los estados**: cada capítulo pasa a `revision` y a `terminado` cuando su registro lo permite; las pruebas
+- [ ] **F4. Los estados**: cada capítulo pasa a `revision` y a `terminado` cuando su registro lo permite; las pruebas
       lo comprueban.
 
 El Tomo I está terminado cuando sus quince capítulos están en `terminado` y existe su página de exportación

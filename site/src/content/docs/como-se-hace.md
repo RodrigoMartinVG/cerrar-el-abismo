@@ -25,8 +25,10 @@ Cada capítulo pasa por comprobaciones automáticas antes de publicarse: que sig
 mecánicas de la guía de estilo, que solo cite resultados de los capítulos que requiere, que use la terminología de la
 obra y que todas sus celdas de Python se ejecuten. Esas comprobaciones verifican la forma, no la verdad.
 
-La verdad la verifica la revisión, en dos pasadas: la primera, del autor, contrastando cada enunciado y cada
-demostración con los libros de las lecturas; la segunda, de otro matemático. Cada revisión queda registrada con quién
+La verdad la verifica la revisión del autor, que contrasta cada enunciado y cada demostración con los libros de las
+lecturas. Antes, una sesión de IA distinta de la que escribió el capítulo hace una lectura crítica y busca errores,
+hipótesis sin usar y afirmaciones sin fuente; lo que encuentra se corrige, pero no cuenta como revisión. Si otra
+persona revisa un capítulo, su revisión también se registra. Cada revisión queda registrada con quién
 la hizo, cuándo y contra qué referencia, y si el texto de un resultado cambia después, su revisión deja de contar
 hasta que se haga de nuevo. La página [Estado de la revisión](../revision/) muestra cuánto de cada capítulo está
 revisado. Mientras falte, el capítulo se publica como **borrador**, y así lo dice debajo de su título.
