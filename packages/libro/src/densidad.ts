@@ -124,7 +124,11 @@ function rachaSinProsa(texto: string): number {
       while (++k < lineas.length && !lineas[k]!.startsWith(valla));
       mejor = Math.max(mejor, ++actual);
     } else if (/^::figura/.test(linea)) mejor = Math.max(mejor, ++actual);
-    else if (linea.trim() !== '') actual = 0;
+    else if (linea.startsWith('|')) {
+      // Una tabla es un bloque, no una frase.
+      while (k + 1 < lineas.length && lineas[k + 1]!.startsWith('|')) k++;
+      mejor = Math.max(mejor, ++actual);
+    } else if (linea.trim() !== '') actual = 0;
   }
   return mejor;
 }
@@ -158,7 +162,7 @@ export function medirDensidad(markdown: string): Densidad {
     ejemplos: ejemplos.length,
     contraejemplos: ejemplos.filter((m) => /\.contraejemplo\b/.test(m[1] ?? '')).length,
     rachaSinProsa: rachaSinProsa(desarrollo),
-    ejemploMasLargo: Math.max(0, ...ejemplos.map((m) => palabras(m[2]!))),
+    ejemploMasLargo: Math.max(0, ...ejemplos.map((m) => palabrasDeProsa(m[2]!))),
     figuras: cuenta(cuerpo, /^::figura\b/gm),
     celdas: cuenta(cuerpo, /^```python celda$/gm),
     ejercicios: ejercicios.length,
@@ -178,7 +182,8 @@ export function evaluarDensidad(d: Densidad, paginasPrevistas: number): Meta[] {
   const tipo = (t: string) => d.porTipo[t] ?? 0;
   const nivel = (n: string) => d.porNivel[n] ?? 0;
   const [pocos, muchos] = METAS.ejercicios;
-  const proporcion = d.paginasEstimadas / paginasPrevistas;
+  // Sin redondear: con páginas enteras, quitar una repetición podía bajar un capítulo del piso.
+  const proporcion = d.palabras / 300 / paginasPrevistas;
   return [
     {
       nombre: 'ejemplos por definición',
