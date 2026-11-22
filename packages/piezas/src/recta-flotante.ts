@@ -62,12 +62,15 @@ export function montar(raiz: HTMLElement): () => void {
     return t;
   };
 
+  /** Los números del texto, con coma decimal, como en la obra; los del dibujo siguen con punto. */
+  const coma = (x: number | string) => String(x).replace('.', ',');
+
   function dibujar() {
     const precision = Number(p.value);
     const conSub = sub.checked;
     const real = Number(x.value);
     valorP.textContent = String(precision);
-    valorX.textContent = real.toFixed(2);
+    valorX.textContent = coma(real.toFixed(2));
     const normales = sistemaDeJuguete(precision, EMIN, EMAX, false);
     const todos = sistemaDeJuguete(precision, EMIN, EMAX, conSub);
     dibujo.replaceChildren(linea(0, 0, 600, 0, 'eje'));
@@ -82,10 +85,10 @@ export function montar(raiz: HTMLElement): () => void {
     if (Number.isFinite(redondeado)) dibujo.append(linea(redondeado * ESCALA, -26, redondeado * ESCALA, -12, 'redondeado'));
     const maximo = normales[normales.length - 1]!;
     lectura.textContent = Number.isFinite(redondeado)
-      ? `Con p = ${precision}, hay ${2 ** (precision - 1)} números entre cada potencia de 2 y la siguiente; el mayor es ${maximo}. ` +
-        `x = ${real.toFixed(2)} se redondea a ${redondeado}, con error relativo ${real === 0 ? 0 : (Math.abs(redondeado - real) / real).toFixed(3)}, ` +
-        `y la cota es u = 2^−${precision} = ${(2 ** -precision).toFixed(3)} ${real !== 0 && real < 2 ** EMIN ? '(no vale en el rango de los subnormales)' : ''}.`
-      : `x = ${real.toFixed(2)} pasa del mayor número, ${maximo}, más media unidad del último lugar: se redondea a infinito.`;
+      ? `Con p = ${precision}, hay ${2 ** (precision - 1)} números entre cada potencia de 2 y la siguiente; el mayor es ${coma(maximo)}. ` +
+        `x = ${coma(real.toFixed(2))} se redondea a ${coma(redondeado)}, con error relativo ${real === 0 ? 0 : coma((Math.abs(redondeado - real) / real).toFixed(3))}, ` +
+        `y la cota es u = 2^−${precision} = ${coma((2 ** -precision).toFixed(3))} ${real !== 0 && real < 2 ** EMIN ? '(no vale en el rango de los subnormales)' : ''}.`
+      : `x = ${coma(real.toFixed(2))} pasa del mayor número, ${coma(maximo)}, más media unidad del último lugar: se redondea a infinito.`;
     dibujo.setAttribute('aria-label', `${alt} ${lectura.textContent}`);
   }
 

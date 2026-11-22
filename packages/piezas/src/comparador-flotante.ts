@@ -78,7 +78,9 @@ export function montar(raiz: HTMLElement): () => void {
     }
     return tr;
   };
-  const errorComoTexto = (e: number) => (e === 0 ? '0' : e.toExponential(2).replace('e', ' · 10^'));
+  const errorComoTexto = (e: number) => (e === 0 ? '0' : e.toExponential(2).replace('.', ',').replace('e', ' · 10^'));
+  /** Los valores de la máquina, con coma decimal como el resto de la tabla y del texto. */
+  const coma = (x: number) => String(x).replace('.', ',');
   const comoDecimal = (r: Racional) => r.decimal(22);
 
   function calcular(): { cuentas: TresCuentas; descripcion: string } | undefined {
@@ -124,8 +126,8 @@ export function montar(raiz: HTMLElement): () => void {
     tabla.replaceChildren(
       encabezado,
       fila('Exacto', comoDecimal(exacto), '0'),
-      fila('Doble (64 bits)', String(doble), errorComoTexto(eDoble)),
-      fila('Simple (32 bits)', String(simple), errorComoTexto(eSimple)),
+      fila('Doble (64 bits)', coma(doble), errorComoTexto(eDoble)),
+      fila('Simple (32 bits)', coma(simple), errorComoTexto(eSimple)),
     );
     const b = bitsSimple(simple);
     bits.textContent = `Simple, en bits: ${b.signo} ${b.exponente} ${b.fraccion} (signo, exponente, fracción).`;
