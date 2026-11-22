@@ -46,7 +46,7 @@ const LICENCIAS_COMPATIBLES = ['dominio público', 'CC0', 'MIT', 'BSD', 'Apache-
  * de la fase D. Cada uno sale de la lista cuando las cumple, y la lista desaparece al terminar la ronda.
  */
 const PENDIENTES_DEL_EQUILIBRIO = new Set(
-  ['i-5', 'i-7', 'i-8', 'i-10', 'i-13', 'i-14', 'i-15'].map((c) => `${c}.md`),
+  ['i-5', 'i-10', 'i-13', 'i-14', 'i-15'].map((c) => `${c}.md`),
 );
 const PLANTILLA = [
   'Entrada',
