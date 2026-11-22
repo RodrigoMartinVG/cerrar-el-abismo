@@ -204,6 +204,37 @@ su revisión vigente. Si se corrige un resultado ya revisado, su huella cambia y
 la revisión queda desactualizada: hay que registrarla de nuevo. Una revisión la firma una persona; una sesión de IA
 solo escribe en el registro a pedido del revisor y con sus datos.
 
+## El proceso de un capítulo
+
+Un capítulo pasa por estas etapas, cada una con un propósito distinto. El Tomo I las recorrió en este orden, y lo que
+salió mal en cada una es la razón de la regla que la acompaña.
+
+1. **Escribirlo**, en orden de lectura, con el mapa hacia atrás (`supone` y `cumple`), el ritmo de seis pasos de la
+   guía de estilo y sus metas de equilibrio (sección 6) desde el principio, no como una pasada posterior.
+2. **La lectura previa contra los libros**, en una sesión distinta de la que escribió: enunciados, demostraciones,
+   hipótesis que no se usan, cifras recalculadas, historia, afirmaciones sobre la práctica y la regla 8.1. Lo que
+   encuentra se corrige; no cuenta como revisión. En el Tomo I encontró unos 300 problemas, varios de ellos errores
+   de fondo.
+3. **La ronda crítica**, por un lector que tampoco escribió el capítulo, después de cualquier pasada que agregue
+   material: primero los errores, después si cada agregado se gana su lugar, después las metas. Termina diciendo qué
+   meta no le sirvió al capítulo y por qué.
+4. **Recalibrar las metas**: si varias rondas críticas coinciden en que una meta empuja mal, se cambia en la guía de
+   estilo con su razón, y se aplica a los capítulos ya escritos.
+5. **La revisión del autor**, registrada en `revision/` (decisión 0005).
+
+Lo que el Tomo I enseñó, y que vale para los siguientes:
+
+- **Una meta que es solo un piso produce capítulos inflados.** Toda meta tiene un techo o una proporción.
+- **Un detector por palabras se deja engañar.** Lo que importa contar se marca de manera explícita, como
+  `{.contraejemplo}`.
+- **Lo que una sesión afirma de memoria se verifica o no entra.** Fechas, cifras, el comportamiento de un programa o
+  de una biblioteca: el informe de cada pasada lista lo que no pudo verificar, y la ronda crítica lo resuelve.
+- **Las sesiones que trabajan en paralelo no se leen entre sí.** Por eso la ronda crítica la hace otra.
+- **Un número de resultado escrito a mano se rompe con el primer ejemplo nuevo.** Las pruebas y la documentación
+  citan por etiqueta, no por número.
+- **El fragmento de la Entrada se declara propio cuando lo es.** Es mejor que atribuirlo a una fuente que no lo
+  tiene tal cual; el Puente cita las líneas reales cuando existen.
+
 ## Antes de subir
 
 `npm run verify` (tipos, lint, formato, ortografía y pruebas) y `npm run e2e` (el sitio en el navegador). Si el
