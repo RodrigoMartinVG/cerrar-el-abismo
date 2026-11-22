@@ -167,6 +167,7 @@ Codd
 CodeMirror
 codominio
 codominios
+cofactor
 cofactores
 Collatz
 Colorimetría
@@ -890,6 +891,7 @@ sobreyectiva
 sobreyectivas
 sobreyectividad
 sobreyectivo
+sobreyectivos
 softmax
 Sokhotski
 Sonneveld

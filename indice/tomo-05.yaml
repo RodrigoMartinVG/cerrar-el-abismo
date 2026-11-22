@@ -17,8 +17,8 @@ partes:
           - I.9
         tipo: nucleo
         contenidos:
-          - Teoremas de isomorfismo y de correspondencia; productos directos y semidirectos.
-          - Acción por conjugación, ecuación de clases y centro de un p-grupo.
+          - 'Lo que trae I.9: cocientes y primer teorema de isomorfismo, acciones, conjugación y producto directo. Segundo y tercer teoremas de isomorfismo, teorema de correspondencia y productos semidirectos.'
+          - Ecuación de clases, centro de un p-grupo y teorema de Cauchy.
           - Teoremas de Sylow y clasificación de los grupos de orden pequeño.
           - Grupos simples; simplicidad de Aₙ para n ≥ 5.
         puente: 'Entrada: `SpaceGroup(225)` en una biblioteca de cristalografía. Un grupo espacial es una extensión de un retículo de traslaciones por un grupo puntual finito, muchas veces un producto semidirecto; el capítulo da las herramientas para clasificarlos.'
@@ -28,7 +28,7 @@ partes:
           - campo: 3d
             texto: simetrías de mosaicos y teselaciones para la generación procedural
           - campo: cripto
-            texto: el ataque de Pohlig–Hellman y por qué se trabaja en subgrupos de orden primo
+            texto: el cofactor de una curva elíptica, y el subgrupo de orden primo de la criptografía como subgrupo de Sylow
         lecturas: Dummit y Foote, *Abstract Algebra*; Artin, *Algebra*.
       - id: V.2
         titulo: Grupos resolubles, series de composición y presentaciones

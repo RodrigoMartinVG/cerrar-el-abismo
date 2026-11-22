@@ -1226,13 +1226,13 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 #### V.1 Grupos: teoremas de isomorfismo, acciones y teoremas de Sylow
 *48 págs. · Requiere: I.9 · Núcleo*
-- Teoremas de isomorfismo y de correspondencia; productos directos y semidirectos.
-- Acción por conjugación, ecuación de clases y centro de un p-grupo.
+- Lo que trae I.9: cocientes y primer teorema de isomorfismo, acciones, conjugación y producto directo. Segundo y tercer teoremas de isomorfismo, teorema de correspondencia y productos semidirectos.
+- Ecuación de clases, centro de un p-grupo y teorema de Cauchy.
 - Teoremas de Sylow y clasificación de los grupos de orden pequeño.
 - Grupos simples; simplicidad de Aₙ para n ≥ 5.
 
 **Puente.** Entrada: `SpaceGroup(225)` en una biblioteca de cristalografía. Un grupo espacial es una extensión de un retículo de traslaciones por un grupo puntual finito, muchas veces un producto semidirecto; el capítulo da las herramientas para clasificarlos.
-**Aplicaciones.** [Física] grupos espaciales y puntuales en cristalografía · [3D] simetrías de mosaicos y teselaciones para la generación procedural · [Cripto] el ataque de Pohlig–Hellman y por qué se trabaja en subgrupos de orden primo.
+**Aplicaciones.** [Física] grupos espaciales y puntuales en cristalografía · [3D] simetrías de mosaicos y teselaciones para la generación procedural · [Cripto] el cofactor de una curva elíptica, y el subgrupo de orden primo de la criptografía como subgrupo de Sylow.
 **Lecturas.** Dummit y Foote, *Abstract Algebra*; Artin, *Algebra*.
 
 #### V.2 Grupos resolubles, series de composición y presentaciones
@@ -1471,7 +1471,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 *40 págs. · Requiere: II.16, I.9 · Núcleo*
 - Las isometrías de ℝⁿ son afines; clasificación en el plano y en el espacio.
 - Todo movimiento es producto de reflexiones.
-- Grupos de simetría finitos: cíclicos, diédricos y de los poliedros regulares.
+- Los grupos finitos de rotaciones del plano y del espacio son cíclicos, diédricos o los de los poliedros regulares: la clasificación de lo que I.9 cuenta caso por caso.
 - Grupos de friso y grupos cristalográficos del plano.
 
 **Puente.** Entrada: `scale(-1, 1, 1)` en un editor que «da vuelta» las normales de un modelo. Una reflexión invierte la orientación (determinante −1); la clasificación de las isometrías explica qué se puede componer y qué no.
