@@ -146,6 +146,7 @@ Carneiro
 Casella
 Casteljau
 Catmull
+Catto
 Cayley
 Čech
 centroidales
@@ -491,6 +492,7 @@ indecidibilidad
 indecidible
 indecidibles
 inferiormente
+infinitésimo
 injective
 insatisfacible
 insesgadez

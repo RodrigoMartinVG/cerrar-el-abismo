@@ -3,12 +3,16 @@
  * con NOMBRES_DE_PIEZAS que toda `::figura{pieza="…"}` exista.
  */
 export const PIEZAS = {
+  'busqueda-en-grafos': () => import('./busqueda-en-grafos.ts'),
   coclases: () => import('./coclases.ts'),
   'comparador-flotante': () => import('./comparador-flotante.ts'),
   'conversor-de-convenciones': () => import('./conversor-de-convenciones.ts'),
+  'cortadura-de-dedekind': () => import('./cortadura-de-dedekind.ts'),
   'cuadrado-de-impares': () => import('./cuadrado-de-impares.ts'),
   cubetas: () => import('./cubetas.ts'),
   'de-casteljau': () => import('./de-casteljau.ts'),
+  'multiplicacion-compleja': () => import('./multiplicacion-compleja.ts'),
+  'multiplicacion-de-bytes': () => import('./multiplicacion-de-bytes.ts'),
   'multiplicacion-modular': () => import('./multiplicacion-modular.ts'),
   'normal-covector': () => import('./normal-covector.ts'),
   'recta-flotante': () => import('./recta-flotante.ts'),
