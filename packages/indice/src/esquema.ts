@@ -48,6 +48,38 @@ export const aplicacion = z.strictObject({
   texto: z.string().min(1),
 });
 
+/** Para qué sirve cada lectura, y cómo se nombra al mostrarla. */
+export const FUNCIONES_DE_LECTURA = {
+  rigor: 'Rigor',
+  practica: 'Práctica',
+  primer_contacto: 'Primer contacto',
+  historia: 'Historia',
+  espanol: 'En español',
+} as const;
+
+export const lecturasPorFuncion = z.strictObject({
+  /** Para contrastar enunciados, demostraciones y notación. */
+  rigor: z.string().min(1),
+  /** La fuente primaria del fragmento de la Entrada y de las aplicaciones: normas, documentación, artículos. */
+  practica: z.string().min(1),
+  /** Un texto más gradual, con más ejemplos, para el lector que llega de la secundaria. */
+  primer_contacto: z.string().min(1).optional(),
+  /** Fuentes históricas, no los libros de texto, que repiten leyendas. */
+  historia: z.string().min(1).optional(),
+  /** Un texto en español, para la terminología y para quien no lee en inglés. */
+  espanol: z.string().min(1).optional(),
+});
+
+/** Las lecturas de un capítulo como un solo texto en Markdown: cada función con su nombre, en el orden de arriba. */
+export function textoDeLecturas(lecturas: string | z.infer<typeof lecturasPorFuncion>): string {
+  if (typeof lecturas === 'string') return lecturas;
+  return (Object.keys(FUNCIONES_DE_LECTURA) as (keyof typeof FUNCIONES_DE_LECTURA)[])
+    .filter((f) => lecturas[f])
+    .map((f) => `*${FUNCIONES_DE_LECTURA[f]}:* ${lecturas[f]}`)
+    .join(' ')
+    .trim();
+}
+
 export const capitulo = z.strictObject({
   id: idCapitulo,
   titulo: z.string().min(1),
@@ -61,8 +93,11 @@ export const capitulo = z.strictObject({
   /** El fragmento de entrada y lo que revela (sección 8), en Markdown en línea. */
   puente: z.string().min(1),
   aplicaciones: z.array(aplicacion).min(1),
-  /** Las lecturas de referencia, en Markdown en línea. */
-  lecturas: z.string().min(1),
+  /**
+   * Las lecturas de referencia, en Markdown en línea: un texto, o las lecturas por su función (hoja de ruta, B6).
+   * Los capítulos del Tomo I usan la segunda forma, con al menos las de rigor y las de práctica.
+   */
+  lecturas: z.union([z.string().min(1), lecturasPorFuncion]),
 });
 
 export const parte = z.strictObject({

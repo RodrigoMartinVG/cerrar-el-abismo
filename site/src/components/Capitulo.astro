@@ -1,6 +1,6 @@
 ---
 import { Badge } from '@astrojs/starlight/components';
-import { CAMPOS, slug, type Capitulo } from '@cerrar-el-abismo/indice';
+import { CAMPOS, slug, textoDeLecturas, type Capitulo } from '@cerrar-el-abismo/indice';
 import { claseDeCampo, enLinea, estaEscrito, grafo, numero, urlCapitulo, urlEnIndice, urlMapa } from '../lib/obra';
 
 interface Props {
@@ -11,7 +11,7 @@ const { capitulo: c } = Astro.props;
 const contenidos = await Promise.all(c.contenidos.map(enLinea));
 const puente = await enLinea(c.puente);
 const aplicaciones = await Promise.all(c.aplicaciones.map(async (a) => ({ campo: CAMPOS[a.campo], html: await enLinea(a.texto) })));
-const lecturas = await enLinea(c.lecturas);
+const lecturas = await enLinea(textoDeLecturas(c.lecturas));
 const nucleo = c.tipo === 'nucleo';
 const recorrido = grafo().recorrido(c.id);
 ---

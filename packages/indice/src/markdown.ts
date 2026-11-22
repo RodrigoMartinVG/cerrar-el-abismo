@@ -1,4 +1,4 @@
-import { CAMPOS, HILOS_FIJOS, type Capitulo, type Indice, type Tomo } from './esquema.ts';
+import { CAMPOS, HILOS_FIJOS, textoDeLecturas, type Capitulo, type Indice, type Tomo } from './esquema.ts';
 import { capitulosDelItinerario, paginas, todosLosCapitulos } from './consultas.ts';
 
 /**
@@ -58,7 +58,7 @@ function capituloEnMarkdown(c: Capitulo): string {
     '',
     `**Puente.** ${c.puente}`,
     `**Aplicaciones.** ${aplicaciones}.`,
-    `**Lecturas.** ${c.lecturas}`,
+    `**Lecturas.** ${textoDeLecturas(c.lecturas)}`,
   ].join('\n');
 }
 

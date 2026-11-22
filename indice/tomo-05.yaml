@@ -61,10 +61,10 @@ partes:
           - I.11
         tipo: nucleo
         contenidos:
-          - Ideales primos y maximales; existencia de ideales maximales por el lema de Zorn.
-          - Dominios de factorización única, de ideales principales y euclídeos; enteros de Gauss.
+          - 'Lo que trae I.8: anillos, ideales y anillos cociente, que un ideal maximal da un cuerpo y que los dominios euclídeos son principales. Ideales primos; existencia de ideales maximales por el lema de Zorn.'
+          - Dominios de factorización única y de ideales principales; todo dominio de ideales principales factoriza de manera única; enteros de Gauss.
           - Lema de Gauss y criterio de Eisenstein; factorización en ℤ[x] y en k[x, y].
-          - Localización y cuerpo de fracciones; teorema chino del resto para anillos.
+          - Localización, que generaliza el cuerpo de fracciones de I.8; teorema chino del resto para ideales coprimos, que generaliza el de I.4 y el de I.7.
         puente: 'Entrada: `factor(x**4 + 1)` en un sistema de álgebra computacional, que responde distinto sobre ℚ, sobre ℤ/2ℤ y sobre ℂ. La factorización depende del anillo, y el capítulo dice cuándo es única y cómo decidir la irreducibilidad.'
         aplicaciones:
           - campo: cripto
@@ -104,7 +104,7 @@ partes:
           - II.2
         tipo: nucleo
         contenidos:
-          - Extensiones algebraicas y trascendentes; grado y ley de la torre.
+          - 'Lo que trae I.8: la construcción de Kronecker y los cuerpos finitos. Extensiones algebraicas y trascendentes; grado y ley de la torre.'
           - Cuerpo de descomposición de un polinomio y clausura algebraica, que existe por el lema de Zorn.
           - Números construibles con regla y compás; imposibilidad de duplicar el cubo, trisecar el ángulo y cuadrar el círculo (la trascendencia de π, enunciada; III.13 la demuestra).
           - Polígonos regulares construibles y primos de Fermat.

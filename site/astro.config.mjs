@@ -106,6 +106,7 @@ export default defineConfig({
             { label: 'Diccionario academia–práctica', link: '/diccionario/' },
             { label: 'Estado de la revisión', link: '/revision/' },
             { label: 'Cómo se hace', link: '/como-se-hace/' },
+            { label: 'Lo que el Tomo I exporta', link: '/tomo-i-exporta/' },
           ],
         },
         // En orden de lectura, desde el índice: generarlos desde la carpeta los ordenaría como texto (I.10 antes que I.2).

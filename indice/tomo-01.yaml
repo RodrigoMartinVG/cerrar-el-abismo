@@ -27,7 +27,11 @@ partes:
             texto: pruebas basadas en propiedades
           - campo: 3d
             texto: precondiciones de las funciones geométricas, como exigir un vector no nulo antes de normalizar
-        lecturas: Velleman, *How to Prove It*; Hammack, *Book of Proof*.
+        lecturas:
+          rigor: 'Velleman, *How to Prove It*; Hammack, *Book of Proof*.'
+          practica: 'Floyd, «Assigning Meanings to Programs» (1967), y Hoare, «An Axiomatic Basis for Computer Programming» (1969), el origen de los invariantes; Claessen y Hughes, «QuickCheck» (2000), sobre las pruebas basadas en propiedades.'
+          primer_contacto: 'Solow, *How to Read and Do Proofs*; Pólya, *Cómo plantear y resolver problemas*.'
+          espanol: 'Gentile, *Notas de álgebra I*; Krick, *Álgebra I*.'
       - id: I.2
         titulo: Conjuntos, relaciones y funciones
         paginas: 44
@@ -47,7 +51,10 @@ partes:
             texto: bases de datos como relaciones
           - campo: 3d
             texto: soldar vértices duplicados como paso al cociente por una relación de equivalencia
-        lecturas: Halmos, *Naive Set Theory*; Velleman, *How to Prove It*.
+        lecturas:
+          rigor: 'Halmos, *Naive Set Theory*; Velleman, *How to Prove It*; Enderton, *Elements of Set Theory*.'
+          practica: 'Codd, «A Relational Model of Data for Large Shared Data Banks» (1970), el origen de las bases de datos relacionales.'
+          espanol: 'Krick, *Álgebra I*.'
       - id: I.3
         titulo: Naturales, enteros y divisibilidad
         paginas: 40
@@ -67,7 +74,10 @@ partes:
             texto: períodos de señales combinadas y mínimo común múltiplo
           - campo: 3d
             texto: repetición de texturas con períodos coprimos para evitar patrones visibles
-        lecturas: Rosen, *Elementary Number Theory and Its Applications*; Stillwell, *Elements of Number Theory*.
+        lecturas:
+          rigor: 'Rosen, *Elementary Number Theory and Its Applications*; Stillwell, *Elements of Number Theory*.'
+          practica: 'Knuth, *The Art of Computer Programming*, vol. 2, sobre el algoritmo de Euclides y su costo.'
+          espanol: 'Gentile, *Notas de álgebra I*; Krick, *Álgebra I*.'
       - id: I.4
         titulo: Congruencias y aritmética modular
         paginas: 44
@@ -87,7 +97,10 @@ partes:
             texto: semillas reproducibles para mundos procedurales y *hashing* espacial
           - campo: datos
             texto: reparto de datos entre servidores por dispersión
-        lecturas: Hoffstein, Pipher y Silverman, *An Introduction to Mathematical Cryptography*; Knuth, *The Art of Computer Programming*, vol. 2.
+        lecturas:
+          rigor: 'Hoffstein, Pipher y Silverman, *An Introduction to Mathematical Cryptography*; Rosen, *Elementary Number Theory and Its Applications*.'
+          practica: "Knuth, *The Art of Computer Programming*, vol. 2; Menezes, van Oorschot y Vanstone, *Handbook of Applied Cryptography* (libre); O'Neill, «PCG» (2014), sobre los generadores congruenciales."
+          espanol: 'Krick, *Álgebra I*.'
       - id: I.5
         titulo: Combinatoria
         paginas: 44
@@ -109,7 +122,10 @@ partes:
             texto: coeficientes de las curvas de Bézier
           - campo: fisica
             texto: conteo de microestados y entropía de Boltzmann
-        lecturas: Graham, Knuth y Patashnik, *Concrete Mathematics*; Stanley, *Enumerative Combinatorics*, vol. 1.
+        lecturas:
+          rigor: 'Graham, Knuth y Patashnik, *Concrete Mathematics*; Stanley, *Enumerative Combinatorics*, vol. 1.'
+          practica: 'Farin, *Curves and Surfaces for CAGD*, sobre el algoritmo de De Casteljau.'
+          primer_contacto: 'Bóna, *A Walk Through Combinatorics*.'
   - letra: B
     titulo: Estructuras discretas y algebraicas
     capitulos:
@@ -133,7 +149,10 @@ partes:
             texto: rutas y redes de transporte
           - campo: datos
             texto: redes sociales y componentes conexas
-        lecturas: Bondy y Murty, *Graph Theory*; West, *Introduction to Graph Theory*.
+        lecturas:
+          rigor: 'Bondy y Murty, *Graph Theory*; West, *Introduction to Graph Theory*; Diestel, *Graph Theory*.'
+          practica: 'Cormen, Leiserson, Rivest y Stein, *Introduction to Algorithms*; Hart, Nilsson y Raphael, «A Formal Basis for the Heuristic Determination of Minimum Cost Paths» (1968), el artículo de A*; Akenine-Möller y otros, *Real-Time Rendering*, para los grafos de escena.'
+          historia: 'Biggs, Lloyd y Wilson, *Graph Theory 1736–1936*.'
       - id: I.7
         titulo: Grupos
         paginas: 50
@@ -157,7 +176,12 @@ partes:
             texto: simetrías de patrones y teselaciones
           - campo: datos
             texto: contar coloraciones distintas con el lema de Burnside
-        lecturas: Dummit y Foote, *Abstract Algebra*; Artin, *Algebra*.
+        lecturas:
+          rigor: 'Dummit y Foote, *Abstract Algebra*; Artin, *Algebra*.'
+          practica: 'RFC 2631, sección 2.1.5, y NIST SP 800-56A, sobre la validación de claves públicas; Conway, Burgiel y Goodman-Strauss, *The Symmetries of Things*.'
+          primer_contacto: 'Pinter, *A Book of Abstract Algebra*; Carter, *Visual Group Theory*.'
+          historia: 'Kleiner, *A History of Abstract Algebra*; Slocum y Sonneveld, *The 15 Puzzle*.'
+          espanol: 'Dorronsoro y Hernández, *Números, grupos y anillos*.'
       - id: I.8
         titulo: Anillos, cuerpos y polinomios
         paginas: 48
@@ -177,7 +201,11 @@ partes:
             texto: corrección de errores en almacenamiento y transmisión
           - campo: 3d
             texto: evaluación de polinomios con el esquema de Horner
-        lecturas: Dummit y Foote, *Abstract Algebra*; Lidl y Niederreiter, *Introduction to Finite Fields and Their Applications*.
+        lecturas:
+          rigor: 'Dummit y Foote, *Abstract Algebra*; Lidl y Niederreiter, *Introduction to Finite Fields and Their Applications*.'
+          practica: 'NIST, FIPS 197, la norma de AES, de donde sale `xtime`; Daemen y Rijmen, *The Design of Rijndael*.'
+          primer_contacto: 'Gallian, *Contemporary Abstract Algebra*.'
+          espanol: 'Gentile, *Anillos de polinomios*; Krick, *Álgebra I*.'
   - letra: C
     titulo: Los números reales y la máquina
     capitulos:
@@ -204,7 +232,10 @@ partes:
             texto: impedancias en circuitos de corriente alterna
           - campo: fisica
             texto: amplitudes complejas en óptica ondulatoria
-        lecturas: Spivak, *Calculus* (construcción de ℝ); Needham, *Visual Complex Analysis*.
+        lecturas:
+          rigor: 'Spivak, *Calculus* (construcción de ℝ); Needham, *Visual Complex Analysis*.'
+          practica: 'Kuipers, *Quaternions and Rotation Sequences*, para las rotaciones como productos.'
+          espanol: 'Gentile, *Notas de álgebra: números complejos*.'
       - id: I.10
         titulo: Números en la máquina
         paginas: 40
@@ -227,7 +258,9 @@ partes:
             texto: desbordamiento de enteros en sistemas embebidos
           - campo: cripto
             texto: determinismo entre plataformas
-        lecturas: Goldberg, «What Every Computer Scientist Should Know About Floating-Point Arithmetic»; Overton, *Numerical Computing with IEEE Floating Point Arithmetic*; Higham, *Accuracy and Stability of Numerical Algorithms*.
+        lecturas:
+          rigor: 'Goldberg, «What Every Computer Scientist Should Know About Floating-Point Arithmetic»; Overton, *Numerical Computing with IEEE Floating Point Arithmetic*; Higham, *Accuracy and Stability of Numerical Algorithms*.'
+          practica: "La norma IEEE 754-2019; Dawson, «Comparing Floating Point Numbers», sobre la comparación por ULP; Warren, *Hacker's Delight*."
   - letra: D
     titulo: Conjuntos, orden y computación
     capitulos:
@@ -251,7 +284,10 @@ partes:
             texto: la paradoja de Banach–Tarski y por qué la masa solo se define sobre conjuntos medibles
           - campo: 3d
             texto: 'jerarquías de escena sin ciclos: relaciones bien fundadas y recorridos que terminan'
-        lecturas: Halmos, *Naive Set Theory*; Hrbacek y Jech, *Introduction to Set Theory*.
+        lecturas:
+          rigor: 'Halmos, *Naive Set Theory*; Hrbacek y Jech, *Introduction to Set Theory*; Jech, *Set Theory*, para la consistencia relativa.'
+          practica: 'Avigad, de Moura, Kong y Ullrich, *Theorem Proving in Lean 4*, sobre la recursión bien fundada y la terminación.'
+          historia: 'Ferreirós, *Labyrinth of Thought*.'
       - id: I.12
         titulo: Órdenes, retículos y álgebras de Boole
         paginas: 40
@@ -273,7 +309,9 @@ partes:
             texto: 'geometría constructiva de sólidos: unión, intersección y diferencia como operaciones de un álgebra de Boole'
           - campo: datos
             texto: análisis formal de conceptos y estructuras de datos replicadas sin conflictos (CRDT)
-        lecturas: Davey y Priestley, *Introduction to Lattices and Order*; Givant y Halmos, *Introduction to Boolean Algebras*.
+        lecturas:
+          rigor: 'Davey y Priestley, *Introduction to Lattices and Order*; Givant y Halmos, *Introduction to Boolean Algebras*.'
+          practica: 'Nielson, Nielson y Hankin, *Principles of Program Analysis*; Aho, Lam, Sethi y Ullman, *Compilers*, sobre el análisis de flujo de datos.'
       - id: I.13
         titulo: Autómatas finitos y lenguajes regulares
         paginas: 36
@@ -296,7 +334,9 @@ partes:
             texto: búsqueda de motivos en secuencias de ADN
           - campo: ing
             texto: verificación de protocolos de comunicación
-        lecturas: Sipser, *Introduction to the Theory of Computation*; Hopcroft, Motwani y Ullman, *Introduction to Automata Theory, Languages, and Computation*.
+        lecturas:
+          rigor: 'Sipser, *Introduction to the Theory of Computation*; Hopcroft, Motwani y Ullman, *Introduction to Automata Theory, Languages, and Computation*.'
+          practica: 'Thompson, «Regular Expression Search Algorithm» (1968); Cox, «Regular Expression Matching Can Be Simple And Fast» (2007); la documentación del módulo `re` de Python.'
       - id: I.14
         titulo: Lógica de primer orden y computabilidad
         paginas: 48
@@ -319,7 +359,10 @@ partes:
             texto: SQL como lógica de primer orden y resolvedores SAT y SMT
           - campo: ing
             texto: verificación formal de sistemas críticos con asistentes de demostración
-        lecturas: Enderton, *A Mathematical Introduction to Logic*; Sipser, *Introduction to the Theory of Computation*.
+        lecturas:
+          rigor: "Enderton, *A Mathematical Introduction to Logic*; Sipser, *Introduction to the Theory of Computation*; Franzén, *Gödel's Theorem: An Incomplete Guide to Its Use and Abuse*."
+          practica: 'De Moura y Bjørner, «Z3: An Efficient SMT Solver» (2008).'
+          historia: 'Davis, *The Universal Computer*.'
       - id: I.15
         titulo: Demostraciones como programas
         paginas: 40
@@ -341,4 +384,7 @@ partes:
             texto: compiladores y núcleos de sistemas operativos verificados para sistemas críticos
           - campo: fisica
             texto: las dimensiones físicas como tipos, que impiden sumar metros con segundos, y la formalización de la física en asistentes de demostración
-        lecturas: Sørensen y Urzyczyn, *Lectures on the Curry–Howard Isomorphism*; Avigad, de Moura, Kong y Ullrich, *Theorem Proving in Lean 4*.
+        lecturas:
+          rigor: 'Sørensen y Urzyczyn, *Lectures on the Curry–Howard Isomorphism*; Girard, Lafont y Taylor, *Proofs and Types*.'
+          practica: 'Avigad, de Moura, Kong y Ullrich, *Theorem Proving in Lean 4*; Avigad y Massot, *Mathematics in Lean*.'
+          primer_contacto: 'Wadler, «Propositions as Types» (2015).'

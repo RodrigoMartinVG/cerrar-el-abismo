@@ -17,6 +17,7 @@ Agda
 Agrawal
 Aharonov
 Ahlfors
+Akenine
 Alaoglu
 alcanzabilidad
 aleatorizado
@@ -42,6 +43,7 @@ Arfken
 Argand
 Ariane
 Arithmeticae
+arquimediana
 arquimediano
 arquimedianos
 Artin
@@ -89,6 +91,7 @@ Bézout
 BFGS
 bfloat
 bicondicional
+Biggs
 bilineal
 bilineales
 Binet
@@ -104,9 +107,11 @@ biyectiva
 biyectivamente
 biyectivas
 biyectivo
+Bjørner
 Blitzstein
 Bohm
 Bombelli
+Bóna
 Bondy
 Bonet
 Borel
@@ -124,6 +129,7 @@ Brouwer
 browniano
 Buchberger
 Burali
+Burgiel
 CAGD
 Canastota
 Cann
@@ -159,6 +165,7 @@ ciclicidad
 ciclotómicas
 ciclotómicos
 Civita
+Claessen
 Clebsch
 clotoides
 coclase
@@ -184,6 +191,7 @@ comprobadores
 computabilidad
 Condon
 conductancia
+congelarlo
 congruencial
 congruenciales
 congruential
@@ -260,6 +268,7 @@ diagonaliza
 Diagonalización
 diagonalizar
 diedral
+Diestel
 Diferenciabilidad
 Diffie
 Digrafo
@@ -274,6 +283,7 @@ distributividad
 Dobell
 Dohlmann
 Doob
+Dorronsoro
 Dualgruppen
 Dummit
 Durrett
@@ -340,6 +350,7 @@ Fedorov
 Feigenbaum
 Feit
 Fejér
+Ferreirós
 fibrado
 Fibrados
 fibrados
@@ -352,6 +363,7 @@ Forti
 fotogrametría
 fotometría
 Fraenkel
+Franzén
 Fréchet
 Fredholm
 Frege
@@ -361,6 +373,7 @@ frontmatter
 Fubini
 Galan
 Galerkin
+Gallian
 Gallier
 Gandy
 Gärtner
@@ -394,6 +407,7 @@ Halton
 hamiltoniana
 hamiltoniano
 Hammack
+Hankin
 Hanrahan
 Harer
 Hartogs
@@ -520,6 +534,7 @@ Khinchin
 Kildall
 Kirkwood
 Kleene
+Kleiner
 Knaster
 Knopp
 Kobbelt
@@ -534,9 +549,11 @@ Kramers
 Kress
 Kreveld
 Kreyszig
+Krick
 Kripke
 Kronig
 Kruskal
+Kuipers
 Kullback
 Kummer
 Kunze
@@ -589,6 +606,7 @@ Marquardt
 Marsden
 Maschke
 Maschler
+Massot
 mathlib
 Matiyasevich
 Matoušek
@@ -601,6 +619,7 @@ McCluskey
 McCulloch
 MCMC
 memoización
+Menezes
 Mersenne
 Mertens
 metamatemática
@@ -659,12 +678,14 @@ Naimark
 Navier
 Needham
 negarlo
+Neill
 Nerode
 Netravali
 Neumann
 neuroimagen
 newtoniano
 Niederreiter
+Nielson
 Nikodym
 nilpotentes
 Niven
@@ -690,6 +711,7 @@ Olver
 ondícula
 Ondículas
 ondículas
+Oorschot
 operandos
 Oppenheim
 optimalidad
@@ -812,6 +834,7 @@ riemanniana
 riemannianas
 Riesz
 Rijmen
+Rijndael
 Rivest
 Rockafellar
 Rocq
@@ -864,6 +887,7 @@ semirretículos
 separabilidad
 serializar
 Serre
+Sethi
 Shakarchi
 Shalev
 Shamir
@@ -902,6 +926,7 @@ sobreyectivo
 sobreyectivos
 softmax
 Sokhotski
+Solow
 Sonneveld
 Sorgenfrey
 Sperner
@@ -1001,6 +1026,7 @@ Urysohn
 Urzyczyn
 Vandenberghe
 Vandermonde
+Vanstone
 Vapnik
 variacional
 variacionales
@@ -1018,6 +1044,7 @@ Voronoi
 vorticidad
 vóxeles
 Vreugdenhil
+Wadler
 Walther
 Warshall
 Wasserman

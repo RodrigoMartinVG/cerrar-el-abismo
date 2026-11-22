@@ -117,6 +117,7 @@ partes:
         requiere:
           - II.4
           - I.8
+          - I.9
         tipo: nucleo
         contenidos:
           - Autovalores, autovectores y polinomio característico.

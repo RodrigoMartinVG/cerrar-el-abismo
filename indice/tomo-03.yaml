@@ -35,6 +35,7 @@ partes:
         paginas: 40
         requiere:
           - III.1
+          - I.10
         tipo: nucleo
         contenidos:
           - Convergencia de series; series geométricas y telescópicas.
@@ -139,6 +140,7 @@ partes:
         paginas: 36
         requiere:
           - III.6
+          - I.10
         tipo: nucleo
         contenidos:
           - Polinomio de Taylor y restos de Lagrange, de Cauchy e integral.

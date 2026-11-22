@@ -3,7 +3,7 @@
 *Versión del 22 de noviembre de 2026. Se actualiza a medida que se avanza: cada commit que cierra un punto marca su
 casilla y mueve la línea «En curso».*
 
-**En curso:** B1, los requisitos que faltan en el índice.
+**En curso:** C1, la lectura previa contra los libros, capítulo por capítulo.
 
 Este documento reúne todo lo que falta para dar por terminado el Tomo I (especificación, 16.1 y 16.2) y lo que
 conviene revisar en el resto de la obra mientras tanto. Ordena el trabajo en fases, dice qué depende de qué y quién
@@ -63,7 +63,7 @@ es la condición para empezar el Tomo II.
         (especificación, 16.1);
   - [x] I.12 sigue en el núcleo aunque ningún capítulo lo requiera: es materia central de una licenciatura con
         orientación a la computación, y lo permite la definición de 5.3;
-  - [ ] quién hace la segunda pasada, y con qué estudiantes se prueba I.1.
+  - [x] quién hace la segunda pasada, y con qué estudiantes se prueba I.1.
 - [x] **A4. El protocolo de la prueba con estudiantes** [Claude]: preguntas sobre I.1 según el modelo de
       Mejía-Ramos y otros (2012), con el criterio de 16.1, que el estudiante explique el fragmento de la Salida.
       *Hecho: [docs/prueba-con-estudiantes.md](docs/prueba-con-estudiantes.md).*
@@ -72,43 +72,50 @@ es la condición para empezar el Tomo II.
 
 Va antes de reescribir el Tomo I, porque lo que piden los otros tomos define lo que el Tomo I tiene que entregar.
 
-- [ ] **B1. Requisitos que faltan en el índice** [Claude; el autor aprueba]. Encontrados el 22 de noviembre, buscando
+- [x] **B1. Requisitos que faltan en el índice** [Claude; el autor aprueba]. Encontrados el 22 de noviembre, buscando
       capítulos que usan un tema del Tomo I sin depender de su capítulo:
-  - [ ] II.6 usa los complejos y el teorema fundamental del álgebra, y no requiere I.9;
-  - [ ] III.2 abre con una suma en float32 que deja de crecer, y no requiere I.10, así que su Salida violaría la regla
+      *Hecho: II.6 requiere I.9, III.2 e III.7 requieren I.10, y IV.8 y VI.6 requieren I.6; las menciones de II.14, VI.2 y VIII.5 son avisos legítimos.*
+  - [x] II.6 usa los complejos y el teorema fundamental del álgebra, y no requiere I.9;
+  - [x] III.2 abre con una suma en float32 que deja de crecer, y no requiere I.10, así que su Salida violaría la regla
         de 8.1;
-  - [ ] III.7 compara el error de truncamiento con el de redondeo, y no requiere I.10;
-  - [ ] VI.6 calcula grupos fundamentales de grafos, y no requiere I.6;
-  - [ ] IV.8 usa el grafo de cómputo de la diferenciación automática: decidir si requiere I.6 o se basta solo;
-  - [ ] II.14, VI.2 y VIII.5 mencionan grafos de escena, componentes conexas y redondeo en sus aplicaciones o en el
+  - [x] III.7 compara el error de truncamiento con el de redondeo, y no requiere I.10;
+  - [x] VI.6 calcula grupos fundamentales de grafos, y no requiere I.6;
+  - [x] IV.8 usa el grafo de cómputo de la diferenciación automática: decidir si requiere I.6 o se basta solo;
+  - [x] II.14, VI.2 y VIII.5 mencionan grafos de escena, componentes conexas y redondeo en sus aplicaciones o en el
         Puente: confirmar que son avisos legítimos.
-- [ ] **B2. La interfaz del Tomo I** [Claude]. Veintiocho capítulos de otros tomos requieren directamente uno del
+- [x] **B2. La interfaz del Tomo I** [Claude]. Veintiocho capítulos de otros tomos requieren directamente uno del
       Tomo I: I.7 tiene seis dependientes, I.6 e I.8 cinco cada uno, e I.12 a I.15 ninguno. Hacer una tabla con lo que
       usa cada uno, comprobar que el capítulo del Tomo I lo entrega y completar lo que falte. De la tabla sale la
       página «Lo que este tomo exporta» (E5).
+      *Hecho: los 28 dependientes encuentran en el Tomo I lo que usan; la tabla es la página de E5.*
 - [x] **B3. Las promesas a otros tomos.** Las licencias que el Tomo I deja para otros tomos (II.2, II.14, II.16,
       III.8, III.11, VI.8, VII.12, VIII.2, IX.1 y XI.1) están todas en los contenidos del índice del capítulo prometido.
       Se verifica de nuevo cuando cambie el índice.
-- [ ] **B4. Las fronteras entre capítulos** [Claude; el autor aprueba]. Para cada par, qué hace el capítulo del
+- [x] **B4. Las fronteras entre capítulos** [Claude; el autor aprueba]. Para cada par, qué hace el capítulo del
       Tomo I, qué agrega el posterior y qué hay que ajustar en el índice:
-  - [ ] I.4 y V.3, el teorema chino del resto;
-  - [ ] I.8 con V.3 y V.5, los anillos y los cuerpos;
-  - [ ] I.6 con VI.2, VI.6 y II.13, las componentes conexas, los grafos como espacios y el espectro;
-  - [ ] I.10 con II.12, II.17, III.10, VII.3 y VII.10, la coma flotante;
-  - [ ] I.11 con V.3, VI.2 y X.1, el lema de Zorn;
-  - [ ] I.14 y III.11, la complejidad;
-  - [ ] I.7 y V.8, el cofactor de una curva elíptica, que ahora aparece en los dos.
-- [ ] **B5. Los temas recurrentes** [Claude]. Un registro (`indice/temas.yaml`) que diga en qué capítulos vuelve cada
+      *Hecho: V.3 y V.5 dicen lo que traen de I.4, I.7 e I.8; los demás pares agregan sin repetir.*
+  - [x] I.4 y V.3, el teorema chino del resto;
+  - [x] I.8 con V.3 y V.5, los anillos y los cuerpos;
+  - [x] I.6 con VI.2, VI.6 y II.13, las componentes conexas, los grafos como espacios y el espectro;
+  - [x] I.10 con II.12, II.17, III.10, VII.3 y VII.10, la coma flotante;
+  - [x] I.11 con V.3, VI.2 y X.1, el lema de Zorn;
+  - [x] I.14 y III.11, la complejidad;
+  - [x] I.7 y V.8, el cofactor de una curva elíptica, que ahora aparece en los dos.
+- [x] **B5. Los temas recurrentes** [Claude]. Un registro (`indice/temas.yaml`) que diga en qué capítulos vuelve cada
       tema y qué agrega cada vuelta, con una prueba: cristalografía, teselaciones, simetrías de moléculas,
       característica de Euler, coma flotante, grafos de escena, curvas de Bézier, armónicos esféricos, los relojes del
       GPS y Pohlig–Hellman.
-- [ ] **B6. Las lecturas con función declarada** [Claude]: rigor, práctica (la fuente del fragmento y de las
+      *Hecho: once temas en `indice/temas.yaml`, con una prueba que exige que el registro esté completo.*
+- [x] **B6. Las lecturas con función declarada** [Claude]: rigor, práctica (la fuente del fragmento y de las
       aplicaciones), primer contacto, historia y texto en español. Primero en el Tomo I, después en los demás.
-- [ ] **B7. La especificación al día** [Claude]: la sección 6 (lo que cada tomo importa y exporta), 9.4 (el hilo 3D
+      *Hecho en el Tomo I, con una prueba; los demás tomos, al escribirse.*
+- [x] **B7. La especificación al día** [Claude]: la sección 6 (lo que cada tomo importa y exporta), 9.4 (el hilo 3D
       del Tomo I con la regla nueva), 14 (la extensión, tras A3), 16 (qué quedó hecho de las fases 0 y 1) y 17 (las
       decisiones abiertas).
-- [ ] **B8. Terminología y notación** [Claude]: ampliar el registro de terminología con lo que aparezca y comprobar
+      *Hecho: secciones 6, 9.4, 16.1 y 17, y la versión 1.0, que congela el índice.*
+- [x] **B8. Terminología y notación** [Claude]: ampliar el registro de terminología con lo que aparezca y comprobar
       el Tomo I contra las convenciones de la sección 12.
+      *Hecho: la terminología la vigila su prueba, y el Tomo I sigue las convenciones de la sección 12; los grados de I.9 pasan a radianes en D9.*
 
 ## Fase C. Corregir el texto antes de la pasada del autor
 
@@ -140,7 +147,7 @@ ejemplos nuevos no cambian la huella de ningún resultado, así que esta fase av
 - [ ] **D6.** I.6
 - [ ] **D7.** I.7, con $S_3$ y $D_4$ trabajados enteros: tabla, subgrupos y cuáles son normales
 - [ ] **D8.** I.8
-- [ ] **D9.** I.9
+- [ ] **D9.** I.9, con los ángulos en radianes y los grados entre paréntesis
 - [ ] **D10.** I.10
 - [ ] **D11.** I.11
 - [ ] **D12.** I.12
@@ -171,7 +178,8 @@ Cada capítulo cierra con su reporte de densidad dentro de las metas, la Motivac
       la obra.
 - [ ] **E4. Ejercicios** [Claude], según A3: dificultad y sección en cada uno, más ejercicios de cálculo, de
       exploración y de traducción, verificación automática de las respuestas y las soluciones de los impares.
-- [ ] **E5. La página «Lo que este tomo exporta»** [Claude], desde la tabla de B2.
+- [x] **E5. La página «Lo que este tomo exporta»** [Claude], desde la tabla de B2.
+      *Hecho: la página «Lo que el Tomo I exporta», con los resultados de cada capítulo y quién los requiere.*
 - [ ] **E6. Un prototipo del PDF del Tomo I** [Claude]: elegir entre LaTeX y Typst (decisión 0001) y ver qué
       directivas y qué figuras necesitan una versión impresa, como un fotograma de cada figura (11.7).
 

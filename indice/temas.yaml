@@ -1,0 +1,134 @@
+# Los temas que vuelven en varios capítulos (hoja de ruta, B5). Volver sobre un tema con más herramientas es bueno,
+# pero cada vuelta tiene que agregar algo. Para cada tema: las palabras que lo delatan en el índice (`claves`, como
+# expresión regular) y, para cada capítulo donde aparece, qué aporta esa vuelta. Una prueba comprueba que todo capítulo
+# cuyo índice usa una clave figure en el tema, y que todo capítulo del tema la use.
+
+- tema: Cristalografía
+  claves: cristal
+  vueltas:
+    - capitulo: I.7
+      aporta: las simetrías de un cristal como ejemplo de grupo, sin clasificarlas
+    - capitulo: V.1
+      aporta: los grupos espaciales como extensiones de un retículo de traslaciones por un grupo puntual
+    - capitulo: V.4
+      aporta: los retículos cristalinos y la red recíproca como módulos sobre los enteros
+    - capitulo: VII.1
+      aporta: la clasificación de los grupos de friso y de los grupos cristalográficos del plano
+
+- tema: Teselaciones
+  claves: teselaci|embaldosad|mosaico
+  vueltas:
+    - capitulo: I.7
+      aporta: las simetrías de un patrón que se repite, como ejemplo de grupo
+    - capitulo: V.1
+      aporta: los grupos de simetría de los mosaicos para la generación procedural
+    - capitulo: VII.1
+      aporta: los diecisiete grupos del plano y los siete de los frisos, clasificados
+    - capitulo: VII.5
+      aporta: las teselaciones del plano hiperbólico
+    - capitulo: VII.6
+      aporta: 'otro sentido de la palabra: subdividir un parche de superficie en triángulos'
+    - capitulo: VII.12
+      aporta: 'otro sentido: las teselaciones de Voronoi, que parten el plano por cercanía y no por simetría'
+
+- tema: Simetrías de las moléculas
+  claves: molécula
+  vueltas:
+    - capitulo: I.7
+      aporta: el grupo puntual de una molécula como ejemplo de grupo
+    - capitulo: VII.1
+      aporta: los grupos finitos de rotaciones y de isometrías del espacio, clasificados
+    - capitulo: XIII.1
+      aporta: las representaciones y los caracteres que clasifican las vibraciones de una molécula
+    - capitulo: XIII.7
+      aporta: la química cuántica de las moléculas
+
+- tema: Característica de Euler
+  claves: característica de Euler|V − E \+ F
+  vueltas:
+    - capitulo: I.6
+      aporta: la fórmula de Euler de los grafos planos, con su demostración por árboles
+    - capitulo: VI.7
+      aporta: la característica de Euler–Poincaré, calculada con la homología
+    - capitulo: VI.8
+      aporta: la característica como invariante completo de las superficies, junto con la orientabilidad
+    - capitulo: VII.9
+      aporta: el teorema de Gauss–Bonnet, que la relaciona con la curvatura
+    - capitulo: VII.13
+      aporta: la característica y el género de una malla, con la estructura half-edge
+
+- tema: Coma flotante
+  claves: coma flotante|float32|float64|IEEE 754
+  vueltas:
+    - capitulo: I.10
+      aporta: el formato, el redondeo, el error de una suma, la cancelación y el condicionamiento
+    - capitulo: II.17
+      aporta: la pérdida de ortogonalidad al componer matrices, y cómo corregirla
+    - capitulo: III.2
+      aporta: la serie armónica, que diverge, y su suma en float32, que se estanca
+    - capitulo: III.10
+      aporta: la elección del paso en la derivación numérica, entre el truncamiento y el redondeo
+    - capitulo: VII.3
+      aporta: la precisión de la profundidad y la técnica Reverse-Z
+    - capitulo: VII.10
+      aporta: los predicados geométricos que fallan, y la aritmética exacta y adaptativa
+
+- tema: Grafos de escena
+  claves: grafos? de escena
+  vueltas:
+    - capitulo: I.6
+      aporta: la escena como árbol y su actualización como un recorrido en profundidad
+    - capitulo: II.14
+      aporta: las matrices de modelo que se componen a lo largo del árbol
+
+- tema: Curvas de Bézier
+  claves: Bézier|De Casteljau
+  vueltas:
+    - capitulo: I.5
+      aporta: los coeficientes binomiales de los polinomios de Bernstein y la recurrencia de Pascal
+    - capitulo: III.9
+      aporta: los polinomios de Bernstein en la demostración del teorema de aproximación de Weierstrass
+    - capitulo: VII.6
+      aporta: el algoritmo de De Casteljau, la subdivisión y la propiedad de la envolvente convexa
+
+- tema: Armónicos esféricos
+  claves: armónicos esféricos
+  vueltas:
+    - capitulo: IX.14
+      aporta: los armónicos esféricos como base ortonormal de las funciones en la esfera
+    - capitulo: XIII.2
+      aporta: los armónicos esféricos como representaciones irreducibles de SO(3)
+    - capitulo: XIII.7
+      aporta: el átomo de hidrógeno
+
+- tema: Los relojes del GPS
+  claves: GPS
+  vueltas:
+    - capitulo: XIII.3
+      aporta: la corrección por la velocidad de los satélites, de la relatividad especial
+    - capitulo: XIII.6
+      aporta: la corrección por la gravedad, de la relatividad general
+
+- tema: Diffie–Hellman
+  claves: Diffie|ECDH|X25519
+  vueltas:
+    - capitulo: I.4
+      aporta: el intercambio de claves con la aritmética modular
+    - capitulo: I.7
+      aporta: la validación de una clave pública por el orden de un elemento
+    - capitulo: V.8
+      aporta: el intercambio en el grupo de una curva elíptica
+
+- tema: Cuaterniones
+  claves: cuaterni
+  vueltas:
+    - capitulo: I.9
+      aporta: la rotación del plano por un complejo de módulo uno, como anticipo
+    - capitulo: II.16
+      aporta: los cuaterniones de Hamilton y las rotaciones del espacio
+    - capitulo: II.17
+      aporta: la renormalización de los cuaterniones en precisión finita
+    - capitulo: VII.4
+      aporta: los cuaterniones duales para los movimientos rígidos
+    - capitulo: VIII.11
+      aporta: la orientación de un cuerpo rígido como curva en SO(3)

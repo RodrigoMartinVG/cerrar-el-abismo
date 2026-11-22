@@ -165,6 +165,7 @@ partes:
         requiere:
           - IV.7
           - II.12
+          - I.6
         tipo: nucleo
         contenidos:
           - Descenso de gradiente, búsqueda lineal y condiciones de Wolfe; convergencia en el caso convexo.

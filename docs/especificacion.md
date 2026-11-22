@@ -1,8 +1,8 @@
 # Especificación del proyecto — Matemática y práctica
 
-*Título provisional · Versión 0.9 · 22 de noviembre de 2026*
+*Título provisional · Versión 1.0 · 22 de noviembre de 2026*
 
-Este documento sustituye como plan vigente al «Índice temático revisado» de *Métodos Matemáticos para Ingeniería de Motores 3D* (76 capítulos y un motor didáctico en paralelo). Recoge las decisiones del 20 de noviembre de 2026: una obra de matemática de nivel licenciatura, sin motor, con aplicaciones variadas, pensada para la web y con una misión central: cerrar el abismo entre la matemática que se estudia y la que se usa. La sección 15 indica dónde quedó cada capítulo del índice anterior. La versión 0.2 suma la arista de la física: la matemática que necesitan los físicos, con su propio hilo, su propio puente y un décimo tomo. La versión 0.3 añade el perfil de egreso (2.1): qué puede hacer el lector fuera de la matemática al terminar la obra. La versión 0.4 registra las primeras decisiones de infraestructura (sección 11): el sitio se construye con Astro y Starlight, y el índice temático pasa a ser datos, desde los que se genera la sección 13. El documento vive en el repositorio `cerrar-el-abismo`, en `docs/especificacion.md`; el índice anterior está en `docs/historico/`. La versión 0.5 completa las materias clásicas de una licenciatura en matemática: el álgebra hasta la teoría de Galois, la topología general y algebraica, el análisis funcional y los fundamentos. Suma tres tomos (V, VI y X) y tres capítulos; la colección pasa a trece tomos y se renumera. La versión 0.6 fija el estilo de redacción (7.1) y el orden de escritura: la obra se escribe desde el principio, empezando por I.1 (16). La versión 0.7 cubre huecos de alto impacto con catorce capítulos: órdenes, retículos y álgebras de Boole (en el núcleo), autómatas, teoría espectral de grafos, análisis de algoritmos, programación dinámica, teoría de juegos, geometrías no euclidianas, fractales, control óptimo, martingalas, aprendizaje estadístico, series temporales, transporte óptimo y leyes de conservación. La versión 0.8 incorpora temas clásicos que entran por sus aplicaciones: las demostraciones como programas (I.15), la aproximación racional y los números trascendentes (III.13) y la teoría analítica de números hasta la hipótesis de Riemann (IX.15), además de la aritmética que la criptografía del Tomo I necesitaba y de los grandes problemas abiertos, enunciados donde viven sus objetos. La versión 0.9 recoge la primera revisión del Tomo I, ya escrito en borrador: la teoría axiomática de conjuntos y los órdenes pasan detrás de los números en la máquina, como I.11 e I.12, en una parte D nueva, porque eran demasiado abstractos para el cuarto capítulo y nada antes de I.13 los necesitaba; los grupos de I.7 suman la conjugación y el producto directo, y V.1 y VII.1 parten de ellos; la terminología queda fijada en un registro (12), y la revisión de cada resultado se registra como datos (16.2).
+Este documento sustituye como plan vigente al «Índice temático revisado» de *Métodos Matemáticos para Ingeniería de Motores 3D* (76 capítulos y un motor didáctico en paralelo). Recoge las decisiones del 20 de noviembre de 2026: una obra de matemática de nivel licenciatura, sin motor, con aplicaciones variadas, pensada para la web y con una misión central: cerrar el abismo entre la matemática que se estudia y la que se usa. La sección 15 indica dónde quedó cada capítulo del índice anterior. La versión 0.2 suma la arista de la física: la matemática que necesitan los físicos, con su propio hilo, su propio puente y un décimo tomo. La versión 0.3 añade el perfil de egreso (2.1): qué puede hacer el lector fuera de la matemática al terminar la obra. La versión 0.4 registra las primeras decisiones de infraestructura (sección 11): el sitio se construye con Astro y Starlight, y el índice temático pasa a ser datos, desde los que se genera la sección 13. El documento vive en el repositorio `cerrar-el-abismo`, en `docs/especificacion.md`; el índice anterior está en `docs/historico/`. La versión 0.5 completa las materias clásicas de una licenciatura en matemática: el álgebra hasta la teoría de Galois, la topología general y algebraica, el análisis funcional y los fundamentos. Suma tres tomos (V, VI y X) y tres capítulos; la colección pasa a trece tomos y se renumera. La versión 0.6 fija el estilo de redacción (7.1) y el orden de escritura: la obra se escribe desde el principio, empezando por I.1 (16). La versión 0.7 cubre huecos de alto impacto con catorce capítulos: órdenes, retículos y álgebras de Boole (en el núcleo), autómatas, teoría espectral de grafos, análisis de algoritmos, programación dinámica, teoría de juegos, geometrías no euclidianas, fractales, control óptimo, martingalas, aprendizaje estadístico, series temporales, transporte óptimo y leyes de conservación. La versión 0.8 incorpora temas clásicos que entran por sus aplicaciones: las demostraciones como programas (I.15), la aproximación racional y los números trascendentes (III.13) y la teoría analítica de números hasta la hipótesis de Riemann (IX.15), además de la aritmética que la criptografía del Tomo I necesitaba y de los grandes problemas abiertos, enunciados donde viven sus objetos. La versión 0.9 recoge la primera revisión del Tomo I, ya escrito en borrador: la teoría axiomática de conjuntos y los órdenes pasan detrás de los números en la máquina, como I.11 e I.12, en una parte D nueva, porque eran demasiado abstractos para el cuarto capítulo y nada antes de I.13 los necesitaba; los grupos de I.7 suman la conjugación y el producto directo, y V.1 y VII.1 parten de ellos; la terminología queda fijada en un registro (12), y la revisión de cada resultado se registra como datos (16.2). La versión 1.0 congela el índice (decisión del autor, 2026-11-22): no se agregan temas ni capítulos hasta terminar el Tomo I, y las ideas nuevas se guardan en `docs/propuestas/` para decidirlas después. Antes de congelarlo, la revisión de coherencia agregó los requisitos que faltaban (II.6, III.2, III.7, IV.8 y VI.6 sobre el Tomo I), declaró lo que V.3 y V.5 traen del Tomo I y registró los temas que vuelven en varios capítulos (`indice/temas.yaml`).
 
 ## 0. Organización de este documento
 
@@ -254,7 +254,7 @@ VII + IX + X + XI ──► XIII Simetría, variedades y teoría cuántica (+ in
 
 - Un tomo depende de otros completos (columna «Requiere») o importa capítulos concretos (columna «Interfaces»).
 - Cada tomo abre con **«Lo que este tomo importa»**: para cada tomo o capítulo del que depende, de 4 a 8 páginas con los enunciados, las garantías y la notación que usa, y los capítulos que hay que leer para entenderlos a fondo. Quien no leyó un tomo previo puede avanzar usando ese resumen como contrato.
-- Cada tomo cierra con **«Lo que este tomo exporta»**: los resultados que otros tomos importan.
+- Cada tomo cierra con **«Lo que este tomo exporta»**: los resultados que otros tomos importan, con el capítulo que los demuestra y los capítulos que los requieren. La del Tomo I está en el sitio, en la página «Lo que el Tomo I exporta».
 - Atajos que respetan el grafo: VII.1, VII.2, VII.3 y VII.6 solo usan los Tomos II y III, así que la geometría afín, proyectiva y de cámaras se puede leer justo después del álgebra lineal. VIII.1 a VIII.3 también usan solo los Tomos II y III. El álgebra del Tomo V solo necesita el álgebra lineal, y la topología general (VI.1 a VI.4), los Tomos I a III.
 - Las dependencias se verifican automáticamente (11.5).
 
@@ -387,6 +387,8 @@ En la web, cada hilo tiene una página que encadena sus aplicaciones en orden de
 | XI | Microfacetas (XI.2), *Gaussian Splatting* (XI.3), sombras por varianza (XI.4), muestreo de BRDF (XI.5), Monte Carlo y ReSTIR (XI.6), terreno procedural (XI.9), trazado de caminos (XI.12), transferencia de color (XI.18) |
 | XII | Humo con *Stable Fluids* (XII.10), océanos y agua (XII.11), cuerpos blandos (XII.9), fluidos con volúmenes finitos (XII.7) |
 | XIII | Rotación de armónicos esféricos (XIII.2), visualización relativista (XIII.3), optimización sobre SO(3) (XIII.4), geodésicas sobre mallas (XIII.5), agujeros negros (XIII.6) |
+
+En el Tomo I, el hilo 3D se apoya en lo que el tomo construye: la coma flotante, los grafos, los órdenes y los autómatas. Los usos de las transformaciones del espacio, que construye el Tomo II, quedan en la Motivación, el Puente y las Aplicaciones, como avisos, y nunca en la Entrada ni en la Salida (8.1).
 
 ### 9.5 Recorrido del hilo de física
 
@@ -541,7 +543,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Puente.** Entrada: la regularidad 1 + 3 + ⋯ + (2n − 1) = n², y la misma afirmación dentro de un bucle, como `assert i <= n and s == i * i`. Un invariante de bucle es un enunciado que se demuestra por inducción; una aserción es una implicación que el programa comprueba al ejecutarse.
 **Aplicaciones.** [Cripto] invariantes y corrección de algoritmos · [Datos] pruebas basadas en propiedades · [3D] precondiciones de las funciones geométricas, como exigir un vector no nulo antes de normalizar.
-**Lecturas.** Velleman, *How to Prove It*; Hammack, *Book of Proof*.
+**Lecturas.** *Rigor:* Velleman, *How to Prove It*; Hammack, *Book of Proof*. *Práctica:* Floyd, «Assigning Meanings to Programs» (1967), y Hoare, «An Axiomatic Basis for Computer Programming» (1969), el origen de los invariantes; Claessen y Hughes, «QuickCheck» (2000), sobre las pruebas basadas en propiedades. *Primer contacto:* Solow, *How to Read and Do Proofs*; Pólya, *Cómo plantear y resolver problemas*. *En español:* Gentile, *Notas de álgebra I*; Krick, *Álgebra I*.
 
 #### I.2 Conjuntos, relaciones y funciones
 *44 págs. · Requiere: I.1 · Núcleo*
@@ -552,7 +554,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Puente.** Entrada: `Map<Key, Value>` y una función `hash(key)`. Un diccionario es una función parcial, y una función de dispersión no puede ser inyectiva cuando el dominio es más grande que el codominio.
 **Aplicaciones.** [Cripto] tablas de dispersión y clases de equivalencia · [Datos] bases de datos como relaciones · [3D] soldar vértices duplicados como paso al cociente por una relación de equivalencia.
-**Lecturas.** Halmos, *Naive Set Theory*; Velleman, *How to Prove It*.
+**Lecturas.** *Rigor:* Halmos, *Naive Set Theory*; Velleman, *How to Prove It*; Enderton, *Elements of Set Theory*. *Práctica:* Codd, «A Relational Model of Data for Large Shared Data Banks» (1970), el origen de las bases de datos relacionales. *En español:* Krick, *Álgebra I*.
 
 #### I.3 Naturales, enteros y divisibilidad
 *40 págs. · Requiere: I.2 · Núcleo*
@@ -563,7 +565,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Puente.** Entrada: `while (b != 0) { t = b; b = a % b; a = t; }`. Es el algoritmo de Euclides, y su terminación es el principio del buen orden.
 **Aplicaciones.** [Cripto] aritmética racional exacta · [Señales] períodos de señales combinadas y mínimo común múltiplo · [3D] repetición de texturas con períodos coprimos para evitar patrones visibles.
-**Lecturas.** Rosen, *Elementary Number Theory and Its Applications*; Stillwell, *Elements of Number Theory*.
+**Lecturas.** *Rigor:* Rosen, *Elementary Number Theory and Its Applications*; Stillwell, *Elements of Number Theory*. *Práctica:* Knuth, *The Art of Computer Programming*, vol. 2, sobre el algoritmo de Euclides y su costo. *En español:* Gentile, *Notas de álgebra I*; Krick, *Álgebra I*.
 
 #### I.4 Congruencias y aritmética modular
 *44 págs. · Requiere: I.3 · Núcleo*
@@ -574,7 +576,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Puente.** Entrada: `state = state * 6364136223846793005 + 1442695040888963407`. Un generador congruencial lineal es una iteración en ℤ/2⁶⁴ℤ, y su período lo deciden condiciones de aritmética modular (teorema de Hull–Dobell).
 **Aplicaciones.** [Cripto] RSA, Diffie–Hellman y dígitos de control (ISBN, IBAN) · [3D] semillas reproducibles para mundos procedurales y *hashing* espacial · [Datos] reparto de datos entre servidores por dispersión.
-**Lecturas.** Hoffstein, Pipher y Silverman, *An Introduction to Mathematical Cryptography*; Knuth, *The Art of Computer Programming*, vol. 2.
+**Lecturas.** *Rigor:* Hoffstein, Pipher y Silverman, *An Introduction to Mathematical Cryptography*; Rosen, *Elementary Number Theory and Its Applications*. *Práctica:* Knuth, *The Art of Computer Programming*, vol. 2; Menezes, van Oorschot y Vanstone, *Handbook of Applied Cryptography* (libre); O'Neill, «PCG» (2014), sobre los generadores congruenciales. *En español:* Krick, *Álgebra I*.
 
 #### I.5 Combinatoria
 *44 págs. · Requiere: I.3 · Núcleo*
@@ -585,7 +587,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Puente.** Entrada: el triángulo de Pascal dentro de un código de curvas de Bézier. Los coeficientes de los polinomios de Bernstein son binomiales, y la recurrencia de Pascal es la que hace funcionar el algoritmo de De Casteljau (aviso de III.9 y VII.6).
 **Aplicaciones.** [Datos] conteo de configuraciones y probabilidad elemental · [Cripto] colisiones de *hash* y paradoja del cumpleaños · [3D] coeficientes de las curvas de Bézier · [Física] conteo de microestados y entropía de Boltzmann.
-**Lecturas.** Graham, Knuth y Patashnik, *Concrete Mathematics*; Stanley, *Enumerative Combinatorics*, vol. 1.
+**Lecturas.** *Rigor:* Graham, Knuth y Patashnik, *Concrete Mathematics*; Stanley, *Enumerative Combinatorics*, vol. 1. *Práctica:* Farin, *Curves and Surfaces for CAGD*, sobre el algoritmo de De Casteljau. *Primer contacto:* Bóna, *A Walk Through Combinatorics*.
 
 **Parte B — Estructuras discretas y algebraicas**
 
@@ -598,7 +600,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Puente.** Entrada: `node.children.forEach(update)` en un grafo de escena. La escena es un árbol y la actualización es un recorrido en profundidad; la fórmula de Euler es la primera comprobación de que una malla cerrada está bien formada.
 **Aplicaciones.** [3D] grafos de escena, validación de mallas y búsqueda de caminos · [Ing] rutas y redes de transporte · [Datos] redes sociales y componentes conexas.
-**Lecturas.** Bondy y Murty, *Graph Theory*; West, *Introduction to Graph Theory*.
+**Lecturas.** *Rigor:* Bondy y Murty, *Graph Theory*; West, *Introduction to Graph Theory*; Diestel, *Graph Theory*. *Práctica:* Cormen, Leiserson, Rivest y Stein, *Introduction to Algorithms*; Hart, Nilsson y Raphael, «A Formal Basis for the Heuristic Determination of Minimum Cost Paths» (1968), el artículo de A*; Akenine-Möller y otros, *Real-Time Rendering*, para los grafos de escena. *Historia:* Biggs, Lloyd y Wilson, *Graph Theory 1736–1936*.
 
 #### I.7 Grupos
 *50 págs. · Requiere: I.4 · Núcleo*
@@ -611,7 +613,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Puente.** Entrada: `2 <= y <= p - 2 and pow(y, q, p) == 1`, la validación de una clave pública de Diffie–Hellman. Por el orden de un elemento y el teorema de Lagrange, una clave que pasa tiene orden q, y no deja al atacante el subgrupo pequeño que le permitiría averiguar el secreto por partes.
 **Aplicaciones.** [Física] simetrías de moléculas y cristales · [Cripto] grupos en la criptografía de clave pública · [3D] simetrías de patrones y teselaciones · [Datos] contar coloraciones distintas con el lema de Burnside.
-**Lecturas.** Dummit y Foote, *Abstract Algebra*; Artin, *Algebra*.
+**Lecturas.** *Rigor:* Dummit y Foote, *Abstract Algebra*; Artin, *Algebra*. *Práctica:* RFC 2631, sección 2.1.5, y NIST SP 800-56A, sobre la validación de claves públicas; Conway, Burgiel y Goodman-Strauss, *The Symmetries of Things*. *Primer contacto:* Pinter, *A Book of Abstract Algebra*; Carter, *Visual Group Theory*. *Historia:* Kleiner, *A History of Abstract Algebra*; Slocum y Sonneveld, *The 15 Puzzle*. *En español:* Dorronsoro y Hernández, *Números, grupos y anillos*.
 
 #### I.8 Anillos, cuerpos y polinomios
 *48 págs. · Requiere: I.7 · Núcleo*
@@ -622,7 +624,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Puente.** Entrada: `x = (x << 1) ^ ((x & 0x80) ? 0x1B : 0)`. Es multiplicar por x en GF(2⁸) módulo un polinomio irreducible: la operación con la que se construyen AES y los códigos de los QR.
 **Aplicaciones.** [Cripto] códigos Reed–Solomon, CRC y AES · [Señales] corrección de errores en almacenamiento y transmisión · [3D] evaluación de polinomios con el esquema de Horner.
-**Lecturas.** Dummit y Foote, *Abstract Algebra*; Lidl y Niederreiter, *Introduction to Finite Fields and Their Applications*.
+**Lecturas.** *Rigor:* Dummit y Foote, *Abstract Algebra*; Lidl y Niederreiter, *Introduction to Finite Fields and Their Applications*. *Práctica:* NIST, FIPS 197, la norma de AES, de donde sale `xtime`; Daemen y Rijmen, *The Design of Rijndael*. *Primer contacto:* Gallian, *Contemporary Abstract Algebra*. *En español:* Gentile, *Anillos de polinomios*; Krick, *Álgebra I*.
 
 **Parte C — Los números reales y la máquina**
 
@@ -637,7 +639,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Puente.** Entrada: `z = z * complex(cos(a), sin(a))` en un juego 2D. Multiplicar por un número complejo de módulo 1 es rotar: es la versión plana de lo que harán los cuaterniones (aviso de II.16).
 **Aplicaciones.** [3D] rotaciones 2D sin matrices · [Señales] fasores para representar oscilaciones · [Ing] impedancias en circuitos de corriente alterna · [Física] amplitudes complejas en óptica ondulatoria.
-**Lecturas.** Spivak, *Calculus* (construcción de ℝ); Needham, *Visual Complex Analysis*.
+**Lecturas.** *Rigor:* Spivak, *Calculus* (construcción de ℝ); Needham, *Visual Complex Analysis*. *Práctica:* Kuipers, *Quaternions and Rotation Sequences*, para las rotaciones como productos. *En español:* Gentile, *Notas de álgebra: números complejos*.
 
 #### I.10 Números en la máquina
 *40 págs. · Requiere: I.4, I.9 · Núcleo*
@@ -648,7 +650,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Puente.** Entrada: `0.1 + 0.2 == 0.3` da falso, y `if (abs(a - b) < 1e-6)`. Ninguno de esos números es representable exactamente, y la comparación correcta depende de la magnitud (tolerancia relativa), no de un épsilon fijo.
 **Aplicaciones.** [3D] pérdida de precisión lejos del origen y *origin rebasing*; compresión de vértices y normales · [Datos] entrenamiento en bfloat16 y la resta del máximo antes de un *softmax* · [Ing] desbordamiento de enteros en sistemas embebidos · [Cripto] determinismo entre plataformas.
-**Lecturas.** Goldberg, «What Every Computer Scientist Should Know About Floating-Point Arithmetic»; Overton, *Numerical Computing with IEEE Floating Point Arithmetic*; Higham, *Accuracy and Stability of Numerical Algorithms*.
+**Lecturas.** *Rigor:* Goldberg, «What Every Computer Scientist Should Know About Floating-Point Arithmetic»; Overton, *Numerical Computing with IEEE Floating Point Arithmetic*; Higham, *Accuracy and Stability of Numerical Algorithms*. *Práctica:* La norma IEEE 754-2019; Dawson, «Comparing Floating Point Numbers», sobre la comparación por ULP; Warren, *Hacker's Delight*.
 
 **Parte D — Conjuntos, orden y computación**
 
@@ -661,7 +663,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Puente.** Entrada: `def ack : Nat → Nat → Nat` en Lean, que el asistente solo acepta si se demuestra que termina. La función de Ackermann termina porque el par (m, n) decrece en el orden lexicográfico, un buen orden de tipo ω²: toda demostración de terminación es una inducción sobre un buen orden.
 **Aplicaciones.** [Cripto] demostraciones de terminación de programas con órdenes bien fundados · [Física] la paradoja de Banach–Tarski y por qué la masa solo se define sobre conjuntos medibles · [3D] jerarquías de escena sin ciclos: relaciones bien fundadas y recorridos que terminan.
-**Lecturas.** Halmos, *Naive Set Theory*; Hrbacek y Jech, *Introduction to Set Theory*.
+**Lecturas.** *Rigor:* Halmos, *Naive Set Theory*; Hrbacek y Jech, *Introduction to Set Theory*; Jech, *Set Theory*, para la consistencia relativa. *Práctica:* Avigad, de Moura, Kong y Ullrich, *Theorem Proving in Lean 4*, sobre la recursión bien fundada y la terminación. *Historia:* Ferreirós, *Labyrinth of Thought*.
 
 #### I.12 Órdenes, retículos y álgebras de Boole
 *40 págs. · Requiere: I.2, I.6, I.11 · Núcleo*
@@ -672,7 +674,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Puente.** Entrada: el bucle de un analizador de flujo de datos, que repite «la entrada de cada nodo es la unión de las salidas de sus predecesores» hasta que nada cambia. Los conjuntos de hechos forman un retículo y cada vuelta aplica una función monótona: el teorema de Knaster–Tarski garantiza que existe el menor punto fijo, y la altura finita del retículo, que el bucle llega a él.
 **Aplicaciones.** [Cripto] análisis estático de programas y diseño de circuitos lógicos · [3D] geometría constructiva de sólidos: unión, intersección y diferencia como operaciones de un álgebra de Boole · [Datos] análisis formal de conceptos y estructuras de datos replicadas sin conflictos (CRDT).
-**Lecturas.** Davey y Priestley, *Introduction to Lattices and Order*; Givant y Halmos, *Introduction to Boolean Algebras*.
+**Lecturas.** *Rigor:* Davey y Priestley, *Introduction to Lattices and Order*; Givant y Halmos, *Introduction to Boolean Algebras*. *Práctica:* Nielson, Nielson y Hankin, *Principles of Program Analysis*; Aho, Lam, Sethi y Ullman, *Compilers*, sobre el análisis de flujo de datos.
 
 #### I.13 Autómatas finitos y lenguajes regulares
 *36 págs. · Requiere: I.2, I.6 · Complementario*
@@ -683,7 +685,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Puente.** Entrada: `re.compile(r"[0-9]+(\.[0-9]*)?")` en el analizador léxico de un lenguaje de programación. Una expresión regular se compila en un autómata finito, y el teorema de Kleene dice que eso siempre es posible; el lema del bombeo explica por qué ninguna expresión regular reconoce los paréntesis balanceados.
 **Aplicaciones.** [Cripto] analizadores léxicos de compiladores y validación de entradas · [3D] máquinas de estados de animación y de comportamiento en videojuegos · [Bio/Eco] búsqueda de motivos en secuencias de ADN · [Ing] verificación de protocolos de comunicación.
-**Lecturas.** Sipser, *Introduction to the Theory of Computation*; Hopcroft, Motwani y Ullman, *Introduction to Automata Theory, Languages, and Computation*.
+**Lecturas.** *Rigor:* Sipser, *Introduction to the Theory of Computation*; Hopcroft, Motwani y Ullman, *Introduction to Automata Theory, Languages, and Computation*. *Práctica:* Thompson, «Regular Expression Search Algorithm» (1968); Cox, «Regular Expression Matching Can Be Simple And Fast» (2007); la documentación del módulo `re` de Python.
 
 #### I.14 Lógica de primer orden y computabilidad
 *48 págs. · Requiere: I.1, I.3, I.13 · Complementario*
@@ -695,7 +697,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Puente.** Entrada: `solver.check()` devuelve `unknown` en un resolvedor SMT. Sobre la aritmética entera con multiplicación la satisfacibilidad es indecidible (décimo problema de Hilbert), así que ningún resolvedor puede responder siempre: el `unknown` es un teorema, no un defecto.
 **Aplicaciones.** [Cripto] análisis estático de programas y los límites que impone el teorema de Rice · [Datos] SQL como lógica de primer orden y resolvedores SAT y SMT · [Ing] verificación formal de sistemas críticos con asistentes de demostración.
-**Lecturas.** Enderton, *A Mathematical Introduction to Logic*; Sipser, *Introduction to the Theory of Computation*.
+**Lecturas.** *Rigor:* Enderton, *A Mathematical Introduction to Logic*; Sipser, *Introduction to the Theory of Computation*; Franzén, *Gödel's Theorem: An Incomplete Guide to Its Use and Abuse*. *Práctica:* De Moura y Bjørner, «Z3: An Efficient SMT Solver» (2008). *Historia:* Davis, *The Universal Computer*.
 
 #### I.15 Demostraciones como programas
 *40 págs. · Requiere: I.1, I.11, I.14 · Complementario*
@@ -706,7 +708,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 **Puente.** Entrada: `theorem intercambio (p q : Prop) : p ∧ q → q ∧ p := fun ⟨hp, hq⟩ => ⟨hq, hp⟩` en Lean. La demostración es un programa: la función que recibe un par y lo devuelve invertido, la misma que en Python es `lambda par: (par[1], par[0])`. Que Lean la acepte quiere decir que el tipo de ese programa es el enunciado.
 **Aplicaciones.** [Cripto] código criptográfico verificado, generado junto con su demostración de corrección y usado en navegadores · [Ing] compiladores y núcleos de sistemas operativos verificados para sistemas críticos · [Física] las dimensiones físicas como tipos, que impiden sumar metros con segundos, y la formalización de la física en asistentes de demostración.
-**Lecturas.** Sørensen y Urzyczyn, *Lectures on the Curry–Howard Isomorphism*; Avigad, de Moura, Kong y Ullrich, *Theorem Proving in Lean 4*.
+**Lecturas.** *Rigor:* Sørensen y Urzyczyn, *Lectures on the Curry–Howard Isomorphism*; Girard, Lafont y Taylor, *Proofs and Types*. *Práctica:* Avigad, de Moura, Kong y Ullrich, *Theorem Proving in Lean 4*; Avigad y Massot, *Mathematics in Lean*. *Primer contacto:* Wadler, «Propositions as Types» (2015).
 
 ### Tomo II — Álgebra lineal y el espacio de la práctica
 
@@ -770,7 +772,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Lecturas.** Axler, *Linear Algebra Done Right*; Halmos, *Finite-Dimensional Vector Spaces*.
 
 #### II.6 Autovalores y autovectores
-*40 págs. · Requiere: II.4, I.8 · Núcleo*
+*40 págs. · Requiere: II.4, I.8, I.9 · Núcleo*
 - Autovalores, autovectores y polinomio característico.
 - Existencia de autovalores en espacios complejos de dimensión finita, por el teorema fundamental del álgebra (III.8).
 - Diagonalización y subespacios invariantes.
@@ -924,7 +926,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Lecturas.** Abbott, *Understanding Analysis*; Spivak, *Calculus*.
 
 #### III.2 Series numéricas
-*40 págs. · Requiere: III.1 · Núcleo*
+*40 págs. · Requiere: III.1, I.10 · Núcleo*
 - Convergencia de series; series geométricas y telescópicas.
 - Criterios de comparación, del cociente, de la raíz y de Leibniz.
 - Convergencia absoluta y condicional; teorema de reordenamiento de Riemann; producto de Cauchy.
@@ -981,7 +983,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Lecturas.** Abbott, *Understanding Analysis*; Rudin, *Principles of Mathematical Analysis*.
 
 #### III.7 Fórmula de Taylor
-*36 págs. · Requiere: III.6 · Núcleo*
+*36 págs. · Requiere: III.6, I.10 · Núcleo*
 - Polinomio de Taylor y restos de Lagrange, de Cauchy e integral.
 - Series de Taylor y funciones que no coinciden con su serie, como e^(−1/x²).
 - Órdenes de aproximación y notación O.
@@ -1146,7 +1148,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Lecturas.** Boyd y Vandenberghe, *Convex Optimization*; Nocedal y Wright, *Numerical Optimization*.
 
 #### IV.8 Métodos de optimización y diferenciación automática
-*52 págs. · Requiere: IV.7, II.12 · Núcleo*
+*52 págs. · Requiere: IV.7, II.12, I.6 · Núcleo*
 - Descenso de gradiente, búsqueda lineal y condiciones de Wolfe; convergencia en el caso convexo.
 - Método de Newton y métodos cuasi-Newton (BFGS).
 - Mínimos cuadrados no lineales: Gauss–Newton y Levenberg–Marquardt; gradiente conjugado como minimización de una forma cuadrática.
@@ -1256,10 +1258,10 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 #### V.3 Anillos: ideales, factorización única y dominios de ideales principales
 *44 págs. · Requiere: I.8, I.11 · Núcleo*
-- Ideales primos y maximales; existencia de ideales maximales por el lema de Zorn.
-- Dominios de factorización única, de ideales principales y euclídeos; enteros de Gauss.
+- Lo que trae I.8: anillos, ideales y anillos cociente, que un ideal maximal da un cuerpo y que los dominios euclídeos son principales. Ideales primos; existencia de ideales maximales por el lema de Zorn.
+- Dominios de factorización única y de ideales principales; todo dominio de ideales principales factoriza de manera única; enteros de Gauss.
 - Lema de Gauss y criterio de Eisenstein; factorización en ℤ[x] y en k[x, y].
-- Localización y cuerpo de fracciones; teorema chino del resto para anillos.
+- Localización, que generaliza el cuerpo de fracciones de I.8; teorema chino del resto para ideales coprimos, que generaliza el de I.4 y el de I.7.
 
 **Puente.** Entrada: `factor(x**4 + 1)` en un sistema de álgebra computacional, que responde distinto sobre ℚ, sobre ℤ/2ℤ y sobre ℂ. La factorización depende del anillo, y el capítulo dice cuándo es única y cómo decidir la irreducibilidad.
 **Aplicaciones.** [Cripto] códigos cíclicos y BCH como ideales de 𝔽_q[x]/(xⁿ − 1) · [3D] cálculo exacto de intersecciones de curvas implícitas mediante factorización.
@@ -1280,7 +1282,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 
 #### V.5 Extensiones de cuerpos y construcciones con regla y compás
 *44 págs. · Requiere: V.3, II.2 · Núcleo*
-- Extensiones algebraicas y trascendentes; grado y ley de la torre.
+- Lo que trae I.8: la construcción de Kronecker y los cuerpos finitos. Extensiones algebraicas y trascendentes; grado y ley de la torre.
 - Cuerpo de descomposición de un polinomio y clausura algebraica, que existe por el lema de Zorn.
 - Números construibles con regla y compás; imposibilidad de duplicar el cubo, trisecar el ángulo y cuadrar el círculo (la trascendencia de π, enunciada; III.13 la demuestra).
 - Polígonos regulares construibles y primos de Fermat.
@@ -1400,7 +1402,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 **Lecturas.** Hatcher, *Algebraic Topology*; Massey, *A Basic Course in Algebraic Topology*.
 
 #### VI.6 Recubrimientos y teorema de Seifert–van Kampen
-*44 págs. · Requiere: VI.5, V.2 · Núcleo*
+*44 págs. · Requiere: VI.5, V.2, I.6 · Núcleo*
 - Espacios recubridores; levantamiento de caminos y de homotopías.
 - Recubrimiento universal y clasificación de los recubrimientos por subgrupos del grupo fundamental.
 - Teorema de Seifert–van Kampen; grupos fundamentales de grafos, del toro y de las superficies.
@@ -2676,7 +2678,9 @@ Además:
 | 4. Tomo IV | En orden | Puerta de los tomos de área abierta |
 | 5. Tomos de área | Orden propuesto: VII, V, VI, IX, X, VIII, XI, XII y XIII | Cada tomo, completo y verificado |
 
-El Tomo I se escribió entero y después se repasó con los libros de sus lecturas. Desde el Tomo II, el ciclo es por capítulo (decisión del autor, 2026-11-22): cada capítulo se contrasta con sus libros, en enunciados, demostraciones y notación, antes de escribir los que dependen de él, porque un error en un enunciado se propaga a todo lo que lo cita. La obra se escribe desde el principio, en el orden de lectura. Así cada capítulo se apoya en capítulos ya escritos, las referencias apuntan a texto real y la voz de la obra se forma desde el primer capítulo. El Tomo II sigue siendo el lugar donde el abismo es paradigmático; llega tercero en el plan, pero el diseño de sus capítulos ya está en el índice.
+**Estado, al 22 de noviembre de 2026.** La fase 0 cumplió su criterio, salvo la biblioteca común de las demos y el conversor de convenciones, que pasan a antes del Tomo II. La prueba de la fase 1 se hace sobre el tomo ya escrito, con el protocolo de `docs/prueba-con-estudiantes.md`. El Tomo I está escrito en borrador y en revisión; lo que falta para terminarlo, y en qué orden, está en la hoja de ruta (`roadmap.md`).
+
+El Tomo I se escribió entero y después se repasa con los libros de sus lecturas. Desde el Tomo II, el ciclo es por capítulo (decisión del autor, 2026-11-22): cada capítulo se contrasta con sus libros, en enunciados, demostraciones y notación, antes de escribir los que dependen de él, porque un error en un enunciado se propaga a todo lo que lo cita. La obra se escribe desde el principio, en el orden de lectura. Así cada capítulo se apoya en capítulos ya escritos, las referencias apuntan a texto real y la voz de la obra se forma desde el primer capítulo. El Tomo II sigue siendo el lugar donde el abismo es paradigmático; llega tercero en el plan, pero el diseño de sus capítulos ya está en el índice.
 
 ### 16.2 Cuándo un capítulo está terminado
 
@@ -2702,4 +2706,4 @@ El Tomo I se escribió entero y después se repasó con los libros de sus lectur
 | Extensión | Unas 7.142 páginas de capítulos, 5.214 de núcleo. Decidido (2026-11-22): la media de páginas por capítulo no se baja. Los capítulos escritos llegan a su extensión prevista sumando ejemplos, contraejemplos y casos hechos a mano, no más teoría (guía de estilo, sección 6); un capítulo que pase de 52 páginas se divide. Si se quiere reducir el núcleo, la palanca son los capítulos clásicos que ningún otro capítulo de núcleo necesita (V.7, VI.3 y VI.6: unas 120 páginas) |
 | Signatura de la métrica | (−, +, +, +), con traducción explícita a (+, −, −, −) |
 | Idioma | Español; traducción al inglés por decidir |
-| Revisión externa | El protocolo y su registro están decididos (decisión 0005 del repositorio). Falta definir quiénes hacen la segunda pasada y con qué estudiantes se prueba el primer capítulo |
+| Revisión externa | El protocolo y su registro están decididos (decisión 0005 del repositorio), y el de la prueba con estudiantes, escrito (`docs/prueba-con-estudiantes.md`). Falta definir quiénes hacen la segunda pasada y con qué estudiantes se prueba el primer capítulo |

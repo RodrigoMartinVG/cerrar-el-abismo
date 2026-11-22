@@ -126,6 +126,7 @@ partes:
         requiere:
           - VI.5
           - V.2
+          - I.6
         tipo: nucleo
         contenidos:
           - Espacios recubridores; levantamiento de caminos y de homotopías.
