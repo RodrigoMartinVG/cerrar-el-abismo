@@ -3,7 +3,7 @@
 *Versión del 22 de noviembre de 2026. Se actualiza a medida que se avanza: cada commit que cierra un punto marca su
 casilla y mueve la línea «En curso».*
 
-**En curso:** D11 a D15, la pasada de densidad de I.11 a I.15, con sus figuras, aplicaciones, fuentes y ejercicios.
+**En curso:** la fase F, que es del autor: la primera pasada de revisión, la lectura de estilo y la prueba con estudiantes. Todo lo demás de la hoja de ruta está hecho.
 
 Este documento reúne todo lo que falta para dar por terminado el Tomo I (especificación, 16.1 y 16.2) y lo que
 conviene revisar en el resto de la obra mientras tanto. Ordena el trabajo en fases, dice qué depende de qué y quién
@@ -165,22 +165,22 @@ ejemplos nuevos no cambian la huella de ningún resultado, así que esta fase av
 - [x] **D8.** I.8
 - [x] **D9.** I.9, con los ángulos en radianes y los grados entre paréntesis
 - [x] **D10.** I.10
-- [ ] **D11.** I.11
-- [ ] **D12.** I.12
-- [ ] **D13.** I.13, con los autómatas dibujados
-- [ ] **D14.** I.14
-- [ ] **D15.** I.15
+- [x] **D11.** I.11
+- [x] **D12.** I.12
+- [x] **D13.** I.13, con los autómatas dibujados
+- [x] **D14.** I.14
+- [x] **D15.** I.15
 
 Cada capítulo cierra con su reporte de densidad dentro de las metas, la Motivación revisada y «Lo esencial» al día.
 
-*Hecho para I.1 a I.10: cada capítulo cumple las cinco metas, que ahora vigila su prueba, con sus ejercicios
-graduados (decisión 0006) y la fuente de su fragmento. Las sesiones que hicieron cada pasada dejaron anotado lo que
-conviene mirar en la lectura de estilo: los capítulos que quedaron cerca del tope de 52 páginas (I.2, I.7, I.8), los
-datos afirmados de memoria y los ejemplos más fáciles de recortar.*
+*Hecho: los quince capítulos cumplen las cinco metas, que vigila su prueba sin excepciones, con sus ejercicios
+graduados (decisión 0006) y la fuente de su fragmento. Las sesiones que hicieron cada pasada dejaron anotado, en su
+commit, lo que conviene mirar en la lectura de estilo: los capítulos que quedaron en el tope de 52 páginas o cerca
+(I.2, I.7, I.8, I.11, I.12, I.14), los datos afirmados de memoria y los ejemplos más fáciles de recortar.*
 
 ## Fase E. Completar la plantilla
 
-- [ ] **E1. Figuras interactivas en los diez capítulos que no tienen** [Claude]:
+- [x] **E1. Figuras interactivas en los diez capítulos que no tienen** [Claude]:
   - I.5: el algoritmo de De Casteljau con puntos que se arrastran, y el triángulo de Pascal;
   - I.6: un grafo editable con BFS, Dijkstra y A*;
   - I.7: la tabla de Cayley de $S_3$ o de $D_4$, y el rompecabezas de quince piezas con su signo;
@@ -191,14 +191,28 @@ datos afirmados de memoria y los ejemplos más fáciles de recortar.*
   - I.13: un autómata que procesa una palabra, y la construcción de subconjuntos;
   - I.14: una máquina de Turing paso a paso;
   - I.15: una deducción natural y su término, lado a lado.
-- [ ] **E2. Una aplicación interactiva en cada capítulo** (9.2) [Claude]; hoy faltan en I.7, I.13, I.14 e I.15.
-- [ ] **E3. Fragmentos reales con su fuente** (8.1) [Claude]: hoy solo I.7 cita la suya. Candidatos: FIPS 197 en
+
+  *Hecho: trece piezas nuevas, todas con su lógica probada; los diagramas de los autómatas, de los grafos y de los
+  ordinales son SVG con estilos para los dos temas.*
+- [x] **E2. Una aplicación interactiva en cada capítulo** (9.2) [Claude]; hoy faltan en I.7, I.13, I.14 e I.15.
+
+  *Hecho: una celda en las Aplicaciones de cada uno de los cuatro (el ataque de los subgrupos chicos, un buscador que
+  retrocede frente al autómata, SQL frente a la lógica de primer orden, las unidades como tipos).*
+- [x] **E3. Fragmentos reales con su fuente** (8.1) [Claude]: hoy solo I.7 cita la suya. Candidatos: FIPS 197 en
       I.8, `Object3D.updateMatrixWorld` de three.js en I.6, el módulo `re` en I.13, el tutorial de Z3 en I.14 y la
       biblioteca de Lean en I.15. Cuando no haya uno adecuado, la Entrada dice que el fragmento es propio. Un campo
       `fuente` en el frontmatter y una prueba lo exigen, y la licencia del fragmento tiene que ser compatible con la de
       la obra.
-- [ ] **E4. Ejercicios** [Claude], según A3: dificultad y sección en cada uno, más ejercicios de cálculo, de
+
+  *Hecho: el campo `fuente` y su prueba. I.7 cita NIST SP 800-56A (dominio público) e I.15, `And.symm` de Lean 4
+  (Apache-2.0); en los demás el fragmento es propio, la Entrada lo dice, y el Puente cita las líneas reales cuando las
+  hay (PCG y musl en I.4, Box2D en I.9, Theorem Proving in Lean 4 en I.11).*
+- [x] **E4. Ejercicios** [Claude], según A3: dificultad y sección en cada uno, más ejercicios de cálculo, de
       exploración y de traducción, verificación automática de las respuestas y las soluciones de los impares.
+
+  *Hecho: 276 ejercicios, de 16 a 20 por capítulo, con nivel, tipo y sección; los de cálculo se comprueban en la
+  página, y su `comprobacion` en Python, en las pruebas. Las respuestas simbólicas con SymPy quedan para cuando un
+  capítulo las pida (decisión 0006).*
 - [x] **E5. La página «Lo que este tomo exporta»** [Claude], desde la tabla de B2.
       *Hecho: la página «Lo que el Tomo I exporta», con los resultados de cada capítulo y quién los requiere.*
 - [x] **E6. Un prototipo del PDF del Tomo I** [Claude]: elegir entre LaTeX y Typst (decisión 0001) y ver qué
