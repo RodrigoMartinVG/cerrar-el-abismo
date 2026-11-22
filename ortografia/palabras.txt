@@ -244,6 +244,7 @@ decidible
 decidibles
 definirla
 definirlas
+definirlos
 derivabilidad
 derivables
 Desargues

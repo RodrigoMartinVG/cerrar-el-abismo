@@ -3,7 +3,9 @@
 *Versión del 22 de noviembre de 2026. Se actualiza a medida que se avanza: cada commit que cierra un punto marca su
 casilla y mueve la línea «En curso».*
 
-**En curso:** A1, el piloto de densidad en «Subgrupos y el teorema de Lagrange» de I.7.
+**En curso:** A1, el piloto de densidad. La sección «Subgrupos y el teorema de Lagrange» de I.7 ya está reescrita
+(de 823 a 1.569 palabras, con dos ejemplos trabajados, dos tablas y el contraejemplo de $A_4$); falta el juicio del
+autor.
 
 Este documento reúne todo lo que falta para dar por terminado el Tomo I (especificación, 16.1 y 16.2) y lo que
 conviene revisar en el resto de la obra mientras tanto. Ordena el trabajo en fases, dice qué depende de qué y quién
