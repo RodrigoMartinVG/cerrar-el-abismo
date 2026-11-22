@@ -243,6 +243,7 @@ Cuturi
 DAAD
 Daemen
 Dafny
+Dalen
 Darboux
 Daubechies
 Davey
@@ -264,6 +265,7 @@ deslizador
 Devaney
 Devroye
 dextrógiro
+Diaconescu
 diagonaliza
 Diagonalización
 diagonalizar
@@ -293,6 +295,7 @@ econometría
 ecualizador
 Edelsbrunner
 egregium
+Ehrenfeucht
 eikonal
 empaquetamiento
 Enderton
@@ -365,6 +368,7 @@ Forti
 fotogrametría
 fotometría
 Fraenkel
+Fraïssé
 Franzén
 Fréchet
 Fredholm
@@ -766,6 +770,7 @@ polinomiales
 politopos
 Pólya
 Pomerance
+ponens
 Pontryagin
 poscondición
 poscondiciones
@@ -829,6 +834,7 @@ renumerar
 reordenamiento
 reordenamientos
 reparametrizar
+Requicha
 resolvedor
 resolvedores
 retropropagación
@@ -846,6 +852,7 @@ Rijndael
 Rivest
 Rockafellar
 Rocq
+Rosser
 rotacional
 Rotman
 Royden
@@ -973,8 +980,10 @@ submartingalas
 submódulos
 subproblemas
 subrepresentaciones
+subretículo
 Subsucesiones
 subsucesiones
+subtérmino
 subvariedades
 Sugihara
 Süli
@@ -1003,6 +1012,7 @@ theorema
 Tibshirani
 Tietze
 Tignol
+Tilove
 tipada
 tipado
 tipados

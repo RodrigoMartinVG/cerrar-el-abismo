@@ -3,7 +3,7 @@
 *Versión del 22 de noviembre de 2026. Se actualiza a medida que se avanza: cada commit que cierra un punto marca su
 casilla y mueve la línea «En curso».*
 
-**En curso:** C1, la lectura previa contra los libros, capítulo por capítulo.
+**En curso:** D1, la pasada de densidad y pedagogía de I.1.
 
 Este documento reúne todo lo que falta para dar por terminado el Tomo I (especificación, 16.1 y 16.2) y lo que
 conviene revisar en el resto de la obra mientras tanto. Ordena el trabajo en fases, dice qué depende de qué y quién
@@ -119,20 +119,36 @@ Va antes de reescribir el Tomo I, porque lo que piden los otros tomos define lo 
 
 ## Fase C. Corregir el texto antes de la pasada del autor
 
-- [ ] **C1. Lectura previa contra los libros** [Claude], capítulo por capítulo, de I.1 a I.15: enunciados,
+- [x] **C1. Lectura previa contra los libros** [Claude], capítulo por capítulo, de I.1 a I.15: enunciados,
       demostraciones, hipótesis usadas, cifras, historia, afirmaciones sobre la práctica y la regla de 8.1 en lo que
       ninguna prueba ve. Se corrige lo que se encuentra, pero no se registra: no es una de las dos pasadas. Incluye lo
       que la revisión dejó pendiente:
-  - [ ] mover la cota de Miller–Rabin al final del Desarrollo de I.7;
-  - [ ] citar FIPS 197 en la Entrada de I.8, de donde sale `xtime`.
-- [ ] **C2. Las demostraciones omitidas, con referencia exacta y lo que se pierde al omitirlas** [Claude]: I.14
+  - [x] mover la cota de Miller–Rabin al final del Desarrollo de I.7;
+  - [x] citar FIPS 197 en la Entrada de I.8, de donde sale `xtime`.
+
+  *Hecho: unos 300 hallazgos en los quince capítulos, de errores (Lamé «a lo sumo», 19349663 no es primo, A\* con
+  h ≥ 0, la S-caja de AES, la deriva del módulo en I.9, la regla ∀I sin la condición sobre la variable, el
+  argumento de Gödel con la consistencia, los pasos de Goodstein) a precisiones de la práctica y fechas. Las
+  demostraciones comprimidas que señaló se completaron en el mismo paso, y las omitidas ganaron su referencia
+  exacta.*
+- [x] **C2. Las demostraciones omitidas, con referencia exacta y lo que se pierde al omitirlas** [Claude]: I.14
       (Matiyasevich, Cook–Levin), I.7 (el teorema de Gauss sobre los $n$ con $(\mathbb Z/n\mathbb Z)^\times$
       cíclico), I.9 (el teorema fundamental del álgebra) y las que aparezcan en C1. Opcional: un atributo en el
       entorno que lo exija.
-- [ ] **C3. Las demostraciones demasiado comprimidas** [Claude], señaladas en C1: se reescriben ahora, antes de que
+
+  *Hecho: cada «no lo demostramos» del Tomo I cita dónde está la demostración y, donde importa, qué se pierde (los
+  cuatro colores, Matiyasevich, la normalización). El atributo opcional no se agregó: con quince capítulos, una
+  búsqueda de esas frases alcanza.*
+- [x] **C3. Las demostraciones demasiado comprimidas** [Claude], señaladas en C1: se reescriben ahora, antes de que
       se registren.
-- [ ] **C4. Las salidas de las celdas, comparadas con el texto** [Claude]: que una prueba falle si una celda cambia y
+
+  *Hecho junto con C1: unas cincuenta, como Binet, la unicidad de la descomposición en ciclos, Sterbenz con
+  subnormales, la existencia de los ordinales, Myhill–Nerode y la minimización.*
+- [x] **C4. Las salidas de las celdas, comparadas con el texto** [Claude]: que una prueba falle si una celda cambia y
       el texto sigue citando la salida vieja.
+
+  *Hecho: las 55 celdas tienen su bloque `text salida`, que el sitio muestra hasta que el lector ejecuta la celda y
+  que la prueba compara con lo que imprime.*
 
 ## Fase D. Densidad y pedagogía
 
