@@ -140,22 +140,32 @@ de los órdenes de sus elementos, ayudan a ver lo que el texto afirma.
 **Las metas de un capítulo**, que mide `npm run densidad`, son rangos y proporciones, no solo pisos. La primera
 versión eran pisos (un ejemplo por definición, dos contraejemplos, una figura, quince ejercicios, el 85 % de las
 páginas), y la pasada de densidad del Tomo I mostró lo que eso produce: nueve capítulos crecieron hasta el tope,
-algunos contraejemplos lo eran solo por las palabras de su título, y casi todos los ejercicios eran de demostrar.
-Las metas de ahora, con su porqué:
+algunos contraejemplos lo eran solo por las palabras de su título, y casi todos los ejercicios eran de demostrar. La
+ronda crítica que vino después recalibró las metas con casos concretos. Las de ahora, con su porqué:
 
-- **Extensión: entre el 90 % y el 115 % de las páginas previstas, y nunca más de 52.** El índice reparte el espacio
-  entre los temas; un capítulo que se pasa le quita al lector la proporción entre lo central y lo accesorio. Si un
-  capítulo no cabe sin perder algo necesario, se recorta lo más débil, no lo más difícil de escribir.
+- **Extensión: al menos el 90 % de las páginas previstas, sin techo** (decisión 0008). Cada sección tiene su página en
+  el sitio, así que el largo ya no es un costo para el lector, y lo que manda es que cada tema se desarrolle con la
+  amplitud y la paciencia que merece. Por encima del 115 % el reporte lo señala, y la ronda crítica dice por qué cada
+  sección lo necesita. Las páginas se cuentan por lo que ocupa lugar: el texto, los pies de figura y el código, con
+  cada fórmula del texto como una palabra y cada fórmula aparte como doce, porque contar los comandos de LaTeX inflaba
+  la cuenta un 15 %.
+- **Proporciones de la plantilla:** el reporte muestra cuánto ocupa el Desarrollo (la plantilla le da el 45 %) y
+  cuánto las Aplicaciones (el 20 %), y señala las Aplicaciones de menos del 12 %. En el Tomo I, después de la fase D,
+  el Desarrollo ocupaba del 50 % al 64 % y las Aplicaciones, del 4 % al 7 %: la teoría creció y la práctica no, justo
+  lo contrario de la misión de la obra.
 - **Ejemplos: al menos uno por definición, de a lo sumo 400 palabras, y nunca más de tres bloques seguidos sin una
   frase.** Un ejemplo más largo es una sección y se parte; una racha de bloques sin prosa se lee como una lista. El
   propósito de cada ejemplo se dice antes, en una frase, o en su título, si el título lo dice entero.
-- **Contraejemplos: al menos dos, marcados `{.contraejemplo}`.** Un contraejemplo muestra dónde termina un resultado:
-  que una recíproca es falsa, que una hipótesis hace falta o que una generalización plausible no vale. Un objeto que
-  no cumple una definición es un no-ejemplo, y va en el ejemplo de la definición; no se marca. El sitio y el PDF
+- **Contraejemplos: al menos dos, marcados `{.contraejemplo}`, y solo si el texto enuncia el resultado o la
+  generalización que el ejemplo refuta.** Van después de ese resultado. Un objeto que no cumple una definición es un
+  no-ejemplo y no se marca, aunque su título diga «no es»: la ronda crítica desmarcó varios así. El sitio y el PDF
   nombran «Contraejemplo» a los marcados.
-- **Ejercicios: de 15 a 20, con los de demostrar en no más del 60 %, al menos tres de cálculo, uno de exploración y
-  uno de traducción, al menos tres de nivel 1 y dos de nivel 3.** Un capítulo solo de demostraciones no deja
-  practicar el cálculo que la práctica pide, y uno sin desafíos no distingue al lector que entendió del que repitió.
+- **Ejercicios: de 15 a 20.** Entre los que el texto no cita, los de demostrar son a lo sumo el 60 %: los que el texto
+  cita completan una demostración suya y no pueden cambiar de tipo. Construir un ejemplo o un contraejemplo, o
+  encontrar el error de un argumento, es su propio tipo, `construccion`, y no cuenta como demostración. Hay al menos
+  tres de cálculo, uno de exploración que use la figura del capítulo, y uno de traducción; al menos tres de nivel 1 y
+  dos de nivel 3. Cada nivel 3 se justifica con la idea que el capítulo no da hecha: un ejercicio largo pero sin ideas
+  nuevas es de nivel 2.
 - **Figuras: al menos una interactiva**, y un ejercicio de exploración que la use.
 - **Proyectos: al menos tres por tomo**, en los capítulos que cierran un bloque, que combinen varios capítulos.
 

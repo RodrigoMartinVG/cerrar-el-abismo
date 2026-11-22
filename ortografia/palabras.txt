@@ -820,9 +820,11 @@ recalculado
 recalculados
 recalcular
 recalcularlos
+recalibración
 recalibradas
 recalibran
 recalibrar
+recalibró
 recubridores
 recursión
 recursor

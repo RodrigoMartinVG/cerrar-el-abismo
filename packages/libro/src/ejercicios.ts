@@ -7,6 +7,9 @@ import { leerNumero } from './respuestas.ts';
  *
  *     :::ejercicio{#ej-cumpleanos nivel=2 tipo=calculo seccion="combinaciones-y-coeficientes-binomiales" respuesta=23}
  *
+ * Los tipos: demostrar, construir (un ejemplo o un contraejemplo, o encontrar el error de un argumento), calcular,
+ * explorar con una figura o una celda, traducir entre la obra y la práctica, y los proyectos que combinan capítulos.
+ *
  * Los de cálculo llevan además su `respuesta`, que el lector comprueba en el navegador, y pueden llevar una
  * `comprobacion`, una expresión de Python que las pruebas evalúan para confirmar que la respuesta es la correcta. Los
  * impares tienen solución, y los pares no (decisión del autor, 2026-11-22).
@@ -15,6 +18,7 @@ import { leerNumero } from './respuestas.ts';
 export const NIVELES = { '1': 'rutina', '2': 'pide una idea', '3': 'desafío' } as const;
 export const TIPOS = {
   demostracion: 'Demostración',
+  construccion: 'Construcción',
   calculo: 'Cálculo',
   exploracion: 'Exploración',
   traduccion: 'Traducción',
@@ -61,11 +65,17 @@ export interface EjercicioEscrito {
   linea: number;
   atributos: Record<string, string>;
   conSolucion: boolean;
+  /** El enunciado, tal como está en el Markdown. */
+  enunciado: string;
+  /** Si el texto del capítulo, fuera de los ejercicios, lo cita: entonces completa algo que el texto deja. */
+  citadoPorElTexto: boolean;
 }
 
 export function ejerciciosDelCapitulo(markdown: string): EjercicioEscrito[] {
   const lineas = markdown.split('\n');
   const ejercicios: EjercicioEscrito[] = [];
+  const inicioDeLosEjercicios = markdown.search(/^## Ejercicios$/m);
+  const texto = inicioDeLosEjercicios >= 0 ? markdown.slice(0, inicioDeLosEjercicios) : markdown;
   for (let i = 0; i < lineas.length; i++) {
     const m = /^:::ejercicio(\{.*\})?\s*$/.exec(lineas[i]!);
     if (!m) continue;
@@ -73,11 +83,14 @@ export function ejerciciosDelCapitulo(markdown: string): EjercicioEscrito[] {
     while (j < lineas.length && lineas[j] !== ':::') j++;
     let k = j + 1;
     while (k < lineas.length && lineas[k]!.trim() === '') k++;
+    const atributos = leerAtributos(m[1] ?? '');
     ejercicios.push({
       numero: ejercicios.length + 1,
       linea: i + 1,
-      atributos: leerAtributos(m[1] ?? ''),
+      atributos,
       conSolucion: /^:::solucion\b/.test(lineas[k] ?? ''),
+      enunciado: lineas.slice(i + 1, j).join('\n'),
+      citadoPorElTexto: atributos['id'] !== undefined && texto.includes(`:ref[${atributos['id']}]`),
     });
   }
   return ejercicios;
@@ -87,7 +100,7 @@ export function ejerciciosDelCapitulo(markdown: string): EjercicioEscrito[] {
 export function revisarEjercicios(markdown: string): string[] {
   const secciones = seccionesDelCapitulo(markdown);
   const problemas: string[] = [];
-  for (const { numero, linea, atributos, conSolucion } of ejerciciosDelCapitulo(markdown)) {
+  for (const { numero, linea, atributos, conSolucion, enunciado } of ejerciciosDelCapitulo(markdown)) {
     const donde = `Ejercicio ${numero} (línea ${linea})`;
     const { nivel, tipo, seccion, respuesta } = atributos;
     if (!nivel || !(nivel in NIVELES)) problemas.push(`${donde}: falta «nivel», que es 1, 2 o 3.`);
@@ -96,6 +109,8 @@ export function revisarEjercicios(markdown: string): string[] {
     else if (!secciones.has(seccion))
       problemas.push(`${donde}: la sección «${seccion}» no existe; las posibles son ${[...secciones.keys()].join(', ')}.`);
     if (tipo === 'calculo' && respuesta === undefined) problemas.push(`${donde}: un ejercicio de cálculo lleva su «respuesta».`);
+    if (tipo === 'exploracion' && !/:ref\[fig-|celda|figura/i.test(enunciado))
+      problemas.push(`${donde}: un ejercicio de exploración usa una figura (con :ref[fig-…]) o una celda, y lo dice.`);
     if (respuesta !== undefined && !leerNumero(respuesta))
       problemas.push(`${donde}: la respuesta «${respuesta}» no es un número, una fracción ni un decimal.`);
     if (numero % 2 === 1 && !conSolucion) problemas.push(`${donde}: es impar y no tiene solución.`);

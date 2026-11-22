@@ -91,11 +91,17 @@ describe('evaluarDensidad', () => {
     });
   });
 
-  it('la extensión tiene un piso y un techo', () => {
+  it('la extensión tiene piso y no techo: por encima del 115 % solo se señala', () => {
     const d = { ...medirDensidad(CAPITULO), paginasEstimadas: 46 };
-    const extension = (paginas: number) => evaluarDensidad(d, paginas).find((m) => m.nombre === 'extensión')!.cumple;
-    expect(extension(40)).toBe(true); // 46 de 40 es el 115 %
-    expect(extension(39)).toBe(false); // ya pasa del 115 %
-    expect(extension(52)).toBe(false); // 46 de 52 no llega al 90 %
+    const extension = (paginas: number) => evaluarDensidad(d, paginas).find((m) => m.nombre === 'extensión')!;
+    expect(extension(40).cumple).toBe(true);
+    expect(extension(30)).toMatchObject({ cumple: true, valor: expect.stringContaining('la ronda crítica dice por qué') });
+    expect(extension(52).cumple).toBe(false); // 46 de 52 no llega al 90 %
+  });
+
+  it('cuenta una fórmula del texto como una palabra, sin los comandos de LaTeX', () => {
+    const corto = medirDensidad(CAPITULO).palabras;
+    const conRuido = CAPITULO.replace('Un fragmento.', 'Un fragmento con $\\operatorname{mcd}(a, b) = \\mathbb Z$.');
+    expect(medirDensidad(conRuido).palabras - corto).toBe(2);
   });
 });
