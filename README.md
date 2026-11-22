@@ -25,7 +25,7 @@ itinerarios por perfil, y un mapa de dependencias con el recorrido completo hast
 | Carpeta | Qué hay |
 | --- | --- |
 | [`docs/especificacion.md`](docs/especificacion.md) | El plan de la obra: visión, perfil de egreso, diseño de los capítulos, índice y plan de trabajo |
-| [`docs/hoja-de-ruta.md`](docs/hoja-de-ruta.md) | Lo que falta para terminar el Tomo I y revisar la coherencia de la obra, en orden |
+| [`roadmap.md`](roadmap.md) | La hoja de ruta: lo que falta para terminar el Tomo I y revisar la coherencia de la obra, en orden |
 | [`docs/decisiones/`](docs/decisiones/README.md) | Las decisiones de arquitectura |
 | [`indice/`](indice/) | El índice temático como datos: un YAML por tomo y los itinerarios (decisión 0002) |
 | `libros/` | Los libros de referencia, para consulta interna; no se suben nunca |

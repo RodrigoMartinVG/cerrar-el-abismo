@@ -8,8 +8,8 @@ repite.
 - **El plan de la obra:** [docs/especificacion.md](docs/especificacion.md). Es la fuente de verdad del diseño: visión,
   perfil de egreso (2.1), plantilla de capítulo (7), el Puente (8), aplicaciones e hilos (9), plataforma web (11),
   convenciones (12) y plan de trabajo (16).
-- **Qué falta y en qué orden:** [docs/hoja-de-ruta.md](docs/hoja-de-ruta.md), con casillas que se marcan en el mismo
-  commit que cierra cada punto.
+- **Qué falta y en qué orden:** [roadmap.md](roadmap.md), la hoja de ruta. Se actualiza a medida que se avanza: el commit
+  que cierra un punto marca su casilla y mueve la línea «En curso».
 - **Por qué está hecho así:** [docs/decisiones](docs/decisiones/README.md). Una decisión va antes que el código
   cuando sus consecuencias son largas.
 - **El índice temático:** los datos están en `indice/` (13 tomos, 167 capítulos) y su código en `packages/indice`
