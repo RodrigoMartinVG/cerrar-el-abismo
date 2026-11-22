@@ -1,0 +1,57 @@
+# El PDF del Tomo I (especificación, 11.7; decisión 0007): convierte los capítulos escritos a LaTeX con `npm run pdf`
+# y los compila con LuaLaTeX. No bloquea la publicación del sitio: corre aparte, cuando cambian los capítulos o la capa
+# de libro, y deja el PDF como artefacto de la ejecución.
+name: PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/src/content/docs/capitulos/**'
+      - 'packages/libro/**'
+      - '.github/workflows/pdf.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pdf-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pdf:
+    name: Tomo I en PDF
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: De Markdown a LaTeX
+        run: npm run pdf
+      - name: LuaLaTeX y las fuentes
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends texlive-luatex texlive-latex-recommended \
+            texlive-latex-extra texlive-lang-spanish texlive-fonts-recommended fonts-dejavu
+      - name: Compilar, dos veces para el índice
+        working-directory: pdf
+        run: |
+          lualatex -interaction=nonstopmode -halt-on-error tomo-i.tex
+          lualatex -interaction=nonstopmode -halt-on-error tomo-i.tex
+      - name: El PDF
+        if: success()
+        uses: actions/upload-artifact@v7
+        with:
+          name: tomo-i
+          path: pdf/tomo-i.pdf
+      - name: El registro de LaTeX, si falló
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: tomo-i-log
+          path: pdf/tomo-i.log

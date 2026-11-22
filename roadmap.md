@@ -196,8 +196,12 @@ Cada capítulo cierra con su reporte de densidad dentro de las metas, la Motivac
       exploración y de traducción, verificación automática de las respuestas y las soluciones de los impares.
 - [x] **E5. La página «Lo que este tomo exporta»** [Claude], desde la tabla de B2.
       *Hecho: la página «Lo que el Tomo I exporta», con los resultados de cada capítulo y quién los requiere.*
-- [ ] **E6. Un prototipo del PDF del Tomo I** [Claude]: elegir entre LaTeX y Typst (decisión 0001) y ver qué
+- [x] **E6. Un prototipo del PDF del Tomo I** [Claude]: elegir entre LaTeX y Typst (decisión 0001) y ver qué
       directivas y qué figuras necesitan una versión impresa, como un fotograma de cada figura (11.7).
+
+  *Hecho: LaTeX con LuaLaTeX (decisión 0007), porque las fórmulas ya están en LaTeX. `npm run pdf` convierte el
+  tomo con el mismo árbol que la web, y el trabajo «PDF» de la integración continua lo compila. Quedan para el PDF
+  definitivo los fotogramas de las figuras, el recuadro de `supone` y las soluciones al final.*
 
 ## Fase F. La revisión registrada y el cierre
 

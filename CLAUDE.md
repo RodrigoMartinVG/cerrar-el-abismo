@@ -36,6 +36,7 @@ repite.
 | `npm run indice:spec` | Reescribe los bloques generados de la especificación (secciones 6, 9.6, 13 y 14) desde `indice/`; valida antes |
 | `npm run revision` | Cómo va la revisión de cada capítulo; `-- I.7` la detalla; `-- I.7 <ancla o aspecto> --por … --contra …` registra una (decisión 0005) |
 | `npm run densidad` | Ejemplos, contraejemplos, figuras, ejercicios y extensión de cada capítulo, frente a sus metas (guía de estilo, sección 6) |
+| `npm run pdf` | Convierte el Tomo I a LaTeX en `pdf/tomo-i.tex` (decisión 0007); lo compila LuaLaTeX, o el trabajo «PDF» de la integración continua |
 | `npm run ortografia` | cspell con el diccionario español y el del proyecto (`ortografia/palabras.txt`) |
 | `npm run e2e` | Playwright sobre el sitio construido (hacer `npm run build` antes); `E2E_SIN_RED=1` salta la celda de Python |
 | `npm run verify` | check, lint, formato, ortografía y pruebas: lo mismo que el primer trabajo de la integración continua |

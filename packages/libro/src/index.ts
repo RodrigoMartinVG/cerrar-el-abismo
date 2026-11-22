@@ -36,3 +36,4 @@ export {
   type Tipo,
 } from './ejercicios.ts';
 export { coincide, leerNumero, type Numero } from './respuestas.ts';
+export { capituloALatex, escapar, preambulo, type OpcionesLatex } from './latex.ts';
