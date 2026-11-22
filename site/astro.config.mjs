@@ -105,6 +105,7 @@ export default defineConfig({
             { label: 'Mapa de dependencias', link: '/mapa/' },
             { label: 'Diccionario academia–práctica', link: '/diccionario/' },
             { label: 'Estado de la revisión', link: '/revision/' },
+            { label: 'Cómo se hace', link: '/como-se-hace/' },
           ],
         },
         // En orden de lectura, desde el índice: generarlos desde la carpeta los ordenaría como texto (I.10 antes que I.2).

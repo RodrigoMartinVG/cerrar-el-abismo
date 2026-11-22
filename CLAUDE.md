@@ -47,7 +47,8 @@ borrar (`erasableSyntaxOnly`) y los imports relativos con su extensión `.ts`.
   pruebas fallan.
 - **Los libros de referencia viven en `libros/`, que git ignora.** Se consultan para verificar demostraciones,
   enunciados y notación, y se citan en «Lecturas»; nunca se copian pasajes ni se suben al repositorio, que es público.
-  La redacción de la obra es siempre propia.
+  La redacción es siempre original. La obra declara que se redacta con asistencia de IA y cómo se revisa (página
+  «Cómo se hace», `site/src/content/docs/como-se-hace.md`).
 - **La redacción sigue la guía de estilo** ([docs/guia-de-estilo.md](docs/guia-de-estilo.md)): el equilibrio de los
   mejores libros de matemática entre explicar y ser preciso. Es una prioridad del autor, no un detalle.
 - **La obra se escribe desde el principio**, en orden de lectura, empezando por I.1 (especificación, 16.1).

@@ -9,6 +9,14 @@ test('la portada muestra el mapa de tomos y lleva al índice temático', async (
   await expect(page.locator('table tbody tr')).toHaveCount(13);
 });
 
+test('la portada dice cómo se hace la obra, y la página lo explica', async ({ page }) => {
+  await page.goto('./');
+  await page.getByRole('link', { name: 'cómo se hace' }).click();
+  await expect(page.getByRole('heading', { level: 1, name: 'Cómo se hace esta obra' })).toBeVisible();
+  await expect(page.locator('main')).toContainText('inteligencia artificial');
+  await expect(page.getByRole('link', { name: 'Estado de la revisión' }).last()).toHaveAttribute('href', /\/revision\/$/);
+});
+
 test('la barra lateral lista los capítulos escritos en orden de lectura', async ({ page }) => {
   await page.goto('capitulos/i-1/');
   const grupo = page.locator('nav.sidebar details').filter({ hasText: 'Capítulos escritos' });

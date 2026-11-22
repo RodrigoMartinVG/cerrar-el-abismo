@@ -357,6 +357,7 @@ Friedlander
 Frobenius
 frontmatter
 Fubini
+Galan
 Galerkin
 Gallier
 Gandy
