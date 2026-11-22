@@ -815,6 +815,8 @@ RANDU
 Rasterización
 rasterización
 recalcula
+recalculadas
+recalculado
 recalculados
 recalcular
 recalcularlos
