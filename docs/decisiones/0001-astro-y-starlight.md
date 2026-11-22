@@ -4,7 +4,7 @@
 
 ## Contexto
 
-La obra se publica primero en la web (especificación, sección 11): diez tomos, 121 capítulos, matemática compuesta,
+La obra se publica primero en la web (especificación, sección 11): diez tomos, 121 capítulos (las cifras de ese día; hoy son trece tomos y 167 capítulos), matemática compuesta,
 Python en vivo, figuras interactivas, herramientas transversales (diccionario, conversor de convenciones, grafo de
 dependencias, itinerarios) y, más adelante, un PDF por tomo. La versión 0.3 de la especificación proponía Quarto,
 con MyST como alternativa.

@@ -453,6 +453,11 @@ celda-python:has(.celda-editor) {
   cursor: pointer;
 }
 
+/* La salida esperada de una celda, que el capítulo escribe y el lector ve sin ejecutarla (sin JavaScript, tal cual). */
+.salida-esperada {
+  white-space: pre-wrap;
+}
+
 .celda-salida.celda-error {
   border-color: var(--sl-color-red);
 }
@@ -722,4 +727,18 @@ celda-python:has(.celda-editor) {
 .sl-markdown-content .variantes .nota {
   margin-block: 0.25rem;
   color: var(--sl-color-gray-2);
+}
+
+/* Las páginas de hilo (src/pages/hilos/[hilo].astro). */
+.sl-markdown-content .hilo li {
+  margin-block: 0.35rem;
+}
+
+.sl-markdown-content .hilo .hilo-capitulo {
+  color: var(--sl-color-gray-2);
+}
+
+.sl-markdown-content .hilo .hilo-escrito {
+  color: var(--sl-color-text-accent);
+  font-size: var(--obra-texto-secundario);
 }

@@ -141,24 +141,37 @@ describe.each(archivos)('el capítulo %s', (archivo) => {
     expect(cuerpo).toMatch(/^:::puente$/m);
   });
 
-  it('ejecuta cada una de sus celdas de Python sola y sin errores', { timeout: 300_000 }, async () => {
-    const celdas = [...cuerpo.matchAll(/^```python celda\n([\s\S]*?)^```$/gm)].map((m) => m[1]!);
-    const py = await loadPyodide();
-    for (const [i, celda] of celdas.entries()) {
-      await py.loadPackagesFromImports(celda, { messageCallback: () => {} });
-      // Un espacio de nombres nuevo para cada celda: ninguna puede usar lo que define otra (guía de capítulos).
-      const globales = py.globals.get('dict')();
-      try {
-        await py.runPythonAsync(celda, { globals: globales });
-      } catch (error) {
-        throw new Error(`La celda ${i + 1} falla ejecutada sola: ${String(error).split('\n').slice(-2).join(' ')}`, {
-          cause: error,
-        });
-      } finally {
-        globales.destroy();
+  it(
+    'ejecuta cada una de sus celdas de Python sola y sin errores, con la salida que el texto escribe',
+    { timeout: 300_000 },
+    async () => {
+      // Cada celda, con la salida esperada que puede seguirla en un bloque «```text salida».
+      const celdas = [...cuerpo.matchAll(/^```python celda\n([\s\S]*?)^```\n(?:\n```text salida\n([\s\S]*?)^```\n)?/gm)].map(
+        (m) => ({ codigo: m[1]!, esperada: m[2] }),
+      );
+      const py = await loadPyodide();
+      for (const [i, { codigo: celda, esperada }] of celdas.entries()) {
+        await py.loadPackagesFromImports(celda, { messageCallback: () => {} });
+        // Un espacio de nombres nuevo para cada celda: ninguna puede usar lo que define otra (guía de capítulos).
+        const globales = py.globals.get('dict')();
+        let impreso = '';
+        py.setStdout({ batched: (s: string) => (impreso += `${s}\n`) });
+        try {
+          await py.runPythonAsync(celda, { globals: globales });
+        } catch (error) {
+          throw new Error(`La celda ${i + 1} falla ejecutada sola: ${String(error).split('\n').slice(-2).join(' ')}`, {
+            cause: error,
+          });
+        } finally {
+          globales.destroy();
+        }
+        if (esperada !== undefined) {
+          const limpiar = (t: string) => t.replace(/[ \t]+$/gm, '').trimEnd();
+          expect(limpiar(impreso), `la celda ${i + 1} no imprime la salida que el texto escribe`).toBe(limpiar(esperada));
+        }
       }
-    }
-  });
+    },
+  );
 });
 
 it('ningún término del diccionario se define en dos capítulos', () => {

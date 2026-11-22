@@ -88,6 +88,12 @@ describe('remarkLibro', () => {
     expect(salida).toContain('data-formula="p → q"');
   });
 
+  it('muestra la salida esperada de una celda, y la rechaza si no sigue a una celda', () => {
+    const salida = html('```python celda\nprint(1 + 1)\n```\n\n```text salida\n2\n```');
+    expect(salida).toContain('<pre class="salida-esperada" aria-label="Salida de la celda">2</pre>');
+    expect(() => html('Un párrafo.\n\n```text salida\n2\n```')).toThrow(/inmediatamente después de una celda/);
+  });
+
   it('convierte los bloques python celda en celdas ejecutables y deja el resto como código', () => {
     const salida = html('```python celda\nprint(1 + 1)\n```\n\n```python\nx = 1\n```');
     expect(salida).toContain('<celda-python class="celda">print(1 + 1)</celda-python>');

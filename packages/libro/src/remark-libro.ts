@@ -10,7 +10,8 @@ import { revisarSupone, type Supuesto } from './supone.ts';
  *
  * - convierte los entornos (`:::teorema[Título]{#id}`) en bloques numerados «Teorema II.5.3»;
  * - convierte `::figura{pieza="…" alt="…"}` en una figura interactiva numerada, con su texto alternativo;
- * - convierte los bloques ` ```python celda ` en celdas de Python que se ejecutan en el navegador;
+ * - convierte los bloques ` ```python celda ` en celdas de Python que se ejecutan en el navegador, y el bloque
+ *   ` ```text salida ` que puede seguir a una celda en su salida esperada, que el lector ve sin ejecutarla;
  * - resuelve `:ref[id]` (un entorno o figura del capítulo), `:ref[I.1#id]` (uno de otro capítulo escrito) y `[[II.3]]`
  *   (un capítulo de la obra);
  * - si el frontmatter declara `supone` (supone.ts), pone después del primer párrafo del Desarrollo el recuadro «Lo que
@@ -170,6 +171,25 @@ export function remarkLibro(opciones: OpcionesLibro) {
           data: { hName: 'celda-python', hProperties: { className: ['celda'] }, hChildren: [texto(nodo.value)] },
         };
         padre.children[indice] = celda as unknown as RootContent;
+        return SKIP;
+      }
+
+      // La salida esperada de una celda: solo vale inmediatamente después de una, y las pruebas la comparan con lo que
+      // la celda imprime (guía de capítulos, «Celdas de Python»).
+      if (nodo.type === 'code' && nodo.lang === 'text' && /\bsalida\b/.test(nodo.meta ?? '') && padre && indice !== undefined) {
+        const anterior = padre.children[indice - 1] as { type: string } | undefined;
+        if (anterior?.type !== 'celdaPython')
+          return fallar('Un bloque «```text salida» va inmediatamente después de una celda de Python.', nodo);
+        const salida: CeldaPython = {
+          type: 'celdaPython',
+          value: nodo.value,
+          data: {
+            hName: 'pre',
+            hProperties: { className: ['salida-esperada'], ariaLabel: 'Salida de la celda' },
+            hChildren: [texto(nodo.value)],
+          },
+        };
+        padre.children[indice] = salida as unknown as RootContent;
         return SKIP;
       }
       return undefined;

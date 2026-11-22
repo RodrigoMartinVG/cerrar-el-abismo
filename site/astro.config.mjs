@@ -104,6 +104,8 @@ export default defineConfig({
             { label: 'Itinerarios', link: '/itinerarios/' },
             { label: 'Mapa de dependencias', link: '/mapa/' },
             { label: 'Diccionario academia–práctica', link: '/diccionario/' },
+            { label: 'El hilo 3D', link: '/hilos/3d/' },
+            { label: 'El hilo de física', link: '/hilos/fisica/' },
             { label: 'Estado de la revisión', link: '/revision/' },
             { label: 'Cómo se hace', link: '/como-se-hace/' },
             { label: 'Lo que el Tomo I exporta', link: '/tomo-i-exporta/' },

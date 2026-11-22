@@ -1,0 +1,78 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { HILOS_FIJOS, slug, todosLosCapitulos, type Campo } from '@cerrar-el-abismo/indice';
+import { enLinea, estaEscrito, obra, urlCapitulo } from '../../lib/obra';
+
+/**
+ * LAS PÁGINAS DE HILO (especificación, 9.3): cada hilo fijo encadena sus aplicaciones en orden de lectura, tomo por
+ * tomo, con el capítulo de cada una. Es lo que queda del antiguo motor: un recorrido guiado por la obra.
+ */
+export function getStaticPaths() {
+  return HILOS_FIJOS.map((hilo) => ({ params: { hilo: hilo === '3d' ? '3d' : 'fisica' }, props: { campo: hilo } }));
+}
+
+const { campo } = Astro.props as { campo: Campo };
+const PRESENTACION: Record<string, { titulo: string; descripcion: string; texto: string }> = {
+  '3d': {
+    titulo: 'El hilo 3D',
+    descripcion: 'Las aplicaciones a los gráficos y a los motores 3D, en orden de lectura.',
+    texto:
+      'Los gráficos por computadora son el caso paradigmático del abismo entre la matemática que se estudia y la que se usa. Este hilo reúne, en orden de lectura, las aplicaciones de la obra a los motores 3D: de la coma flotante y los grafos de escena del Tomo I a las cámaras, las colisiones y la iluminación de los tomos de área.',
+  },
+  fisica: {
+    titulo: 'El hilo de física',
+    descripcion: 'Las aplicaciones a la física, en orden de lectura.',
+    texto:
+      'La física es la otra práctica que la obra acompaña de principio a fin. Este hilo reúne, en orden de lectura, las aplicaciones de la obra a la física: de la entropía y los cristales del Tomo I a la mecánica cuántica y la relatividad del Tomo XIII.',
+  },
+};
+const p = PRESENTACION[campo]!;
+
+const tomos = await Promise.all(
+  obra().tomos.map(async (t) => ({
+    id: t.id,
+    titulo: t.titulo,
+    aplicaciones: await Promise.all(
+      todosLosCapitulos({ ...obra(), tomos: [t] }).flatMap((c) =>
+        c.aplicaciones
+          .filter((a) => a.campo === campo)
+          .map(async (a) => ({
+            id: c.id,
+            titulo: c.titulo,
+            href: urlCapitulo(c.id),
+            escrito: estaEscrito(c.id),
+            html: await enLinea(a.texto),
+          })),
+      ),
+    ),
+  })),
+);
+const total = tomos.reduce((s, t) => s + t.aplicaciones.length, 0);
+---
+
+<StarlightPage frontmatter={{ title: p.titulo, description: p.descripcion }}>
+  <p>{p.texto}</p>
+  <p>
+    Son {total} aplicaciones. Las de los capítulos ya escritos enlazan al capítulo; las demás, a su entrada en el índice
+    temático.
+  </p>
+  {
+    tomos
+      .filter((t) => t.aplicaciones.length > 0)
+      .map((t) => (
+        <>
+          <h2 id={`tomo-${slug(t.id)}`}>
+            Tomo {t.id}. {t.titulo}
+          </h2>
+          <ul class="hilo">
+            {t.aplicaciones.map((a) => (
+              <li>
+                <a href={a.href}>{a.id}</a> <span class="hilo-capitulo">{a.titulo}</span>: <span set:html={a.html} />
+                {a.escrito && <span class="hilo-escrito"> · escrito</span>}
+              </li>
+            ))}
+          </ul>
+        </>
+      ))
+  }
+</StarlightPage>

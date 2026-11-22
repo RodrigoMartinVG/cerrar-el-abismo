@@ -130,7 +130,11 @@ El lector puede editarla, ejecutarla y restaurarla. Las celdas de una página co
 pero cada una tiene que poder ejecutarse sola: no usa nada que defina otra, porque el lector puede empezar por
 cualquiera. Si usa el azar, fija la semilla (`random.seed(1)`), para que su salida sea la que describe el texto. Los
 paquetes que importa (NumPy, SciPy, SymPy) se cargan solos. Las pruebas ejecutan cada celda sola, en un espacio de
-nombres propio: una celda que falla hace fallar la integración continua. Un bloque ` ```python ` sin `celda` es código que solo se muestra.
+nombres propio: una celda que falla hace fallar la integración continua.
+
+Después de una celda puede ir su salida esperada, en un bloque ` ```text salida `. El lector la ve sin ejecutar la celda
+(y es lo que muestra el PDF), y las pruebas comprueban que la celda la imprime tal cual. Va siempre que el texto cite
+números de la salida: así el texto no puede quedar desactualizado si la celda cambia. Un bloque ` ```python ` sin `celda` es código que solo se muestra.
 
 ## Figuras interactivas
 

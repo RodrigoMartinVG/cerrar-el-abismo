@@ -93,12 +93,28 @@ class CeldaPython extends HTMLElement {
       detener.hidden = true;
     };
 
+    // La salida esperada, si el capítulo la escribe después de la celda: se muestra hasta que el lector ejecuta.
+    const siguiente = this.nextElementSibling;
+    const esperada =
+      siguiente instanceof HTMLPreElement && siguiente.classList.contains('salida-esperada') ? siguiente.textContent : null;
+    const mostrarEsperada = () => {
+      if (esperada === null) return;
+      salida.textContent = esperada;
+      salida.hidden = false;
+      salida.classList.remove('celda-error');
+    };
+    if (esperada !== null) {
+      siguiente?.remove();
+      mostrarEsperada();
+    }
+
     this.append(marco, barra, salida);
     const editor = crearEditor(marco, referencia, 'Código Python de la celda, editable', () => void correr());
     ejecutar.addEventListener('click', () => void correr());
     restaurar.addEventListener('click', () => {
       editor.reemplazar(referencia);
       salida.hidden = true;
+      mostrarEsperada();
     });
   }
 }

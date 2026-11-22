@@ -17,6 +17,15 @@ test('la portada dice cómo se hace la obra, y la página lo explica', async ({ 
   await expect(page.getByRole('link', { name: 'Estado de la revisión' }).last()).toHaveAttribute('href', /\/revision\/$/);
 });
 
+test('la página del hilo 3D encadena sus aplicaciones por tomo y enlaza los capítulos escritos', async ({ page }) => {
+  await page.goto('hilos/3d/');
+  await expect(page.getByRole('heading', { level: 1, name: 'El hilo 3D' })).toBeVisible();
+  await expect(page.locator('h2#tomo-i')).toContainText('Tomo I');
+  await expect(page.locator('.hilo a[href$="/capitulos/i-6/"]').first()).toHaveText('I.6');
+  await page.goto('hilos/fisica/');
+  await expect(page.getByRole('heading', { level: 1, name: 'El hilo de física' })).toBeVisible();
+});
+
 test('la barra lateral lista los capítulos escritos en orden de lectura', async ({ page }) => {
   await page.goto('capitulos/i-1/');
   const grupo = page.locator('nav.sidebar details').filter({ hasText: 'Capítulos escritos' });
@@ -110,6 +119,15 @@ test.describe('el primer capítulo (I.1)', () => {
     await contenido.fill('print(sum(k * k for k in range(5)))');
     await contenido.press('ControlOrMeta+Enter');
     await expect(salida).toHaveText('30', { timeout: 30_000 });
+  });
+
+  test('una celda puede usar NumPy, que se descarga la primera vez', async ({ page }) => {
+    test.skip(process.env['E2E_SIN_RED'] === '1', 'Pyodide y NumPy se descargan de su CDN');
+    test.setTimeout(240_000);
+    const celda = page.locator('celda-python').first();
+    await celda.locator('.cm-content').fill('import numpy as np\nprint(round(float(np.linalg.det(np.eye(3) * 2)), 6))');
+    await celda.getByRole('button', { name: 'Ejecutar' }).click();
+    await expect(celda.locator('.celda-salida')).toHaveText('8.0', { timeout: 200_000 });
   });
 
   test('si la red bloquea la CDN de Python, la celda lo dice', async ({ page, context }) => {

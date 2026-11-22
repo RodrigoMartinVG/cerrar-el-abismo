@@ -1,0 +1,35 @@
+# Las dependencias desactualizadas, una vez por semana (hoja de ruta, G4). Las herramientas del proyecto están en
+# versiones muy nuevas, y con ellas los cambios incompatibles son frecuentes. El trabajo solo informa, en el resumen de
+# la ejecución: el proyecto trabaja directo sobre `main`, sin pull requests, así que las actualizaciones las hace una
+# persona, con `npm run verify`.
+name: Dependencias
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  desactualizadas:
+    name: Dependencias desactualizadas
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Informe
+        run: |
+          {
+            echo '## Dependencias desactualizadas'
+            echo
+            echo '```'
+            npm outdated --workspaces --include-workspace-root || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
