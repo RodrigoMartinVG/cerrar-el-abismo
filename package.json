@@ -22,6 +22,7 @@
     "test:watch": "vitest",
     "indice:spec": "node packages/indice/scripts/escribir-especificacion.ts",
     "revision": "node packages/libro/scripts/revision.ts",
+    "densidad": "node packages/libro/scripts/densidad.ts",
     "verify": "npm run check && npm run lint && npm run format:check && npm run ortografia && npm test",
     "e2e": "playwright test",
     "ortografia": "cspell --no-progress --show-suggestions"

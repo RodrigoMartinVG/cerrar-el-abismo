@@ -755,6 +755,8 @@ PROSITE
 proyectarlo
 pseudoaleatorios
 Pseudoinversa
+puntaje
+puntajes
 Pyodide
 Quickhull
 quíntica
@@ -802,6 +804,7 @@ resolvedores
 retropropagación
 revisitada
 revisitado
+Rhoads
 Riccati
 Ricci
 Riemannian
@@ -822,6 +825,7 @@ Saad
 Safko
 Sakurai
 Saletan
+Samkoff
 Santaló
 Särkkä
 satisfacibilidad

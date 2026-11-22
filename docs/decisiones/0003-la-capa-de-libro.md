@@ -36,6 +36,10 @@ comprobaciones en verde.
   otra. Cada celda tiene que poder ejecutarse sola, porque el lector puede empezar por cualquiera, y las pruebas
   ejecutan cada una en un espacio de nombres propio. Las que usan el azar fijan la semilla, para que su salida sea la
   que describe el texto.
+
+  *Enmienda (2026-11-22), sobre las figuras:* un diagrama estático, como el de un autómata o el de las coclases de un
+  grupo, es una pieza sin interacción, con la misma directiva `::figura`. Así no se agrega una directiva, y cada
+  diagrama sigue teniendo su texto alternativo y su versión impresa.
 - **Las celdas se editan con CodeMirror 6**, con el resaltado de Python, números de línea, deshacer y Ctrl+Enter para
   ejecutar. Se carga aparte, solo en las páginas con celdas, y mientras llega el código se ve como texto. Sus colores
   son variables de `tema.css` que repiten los de los bloques de solo lectura (Expressive Code con Vitesse), para que

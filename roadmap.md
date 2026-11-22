@@ -3,9 +3,7 @@
 *Versión del 22 de noviembre de 2026. Se actualiza a medida que se avanza: cada commit que cierra un punto marca su
 casilla y mueve la línea «En curso».*
 
-**En curso:** A1, el piloto de densidad. La sección «Subgrupos y el teorema de Lagrange» de I.7 ya está reescrita
-(de 823 a 1.569 palabras, con dos ejemplos trabajados, dos tablas y el contraejemplo de $A_4$); falta el juicio del
-autor.
+**En curso:** B1, los requisitos que faltan en el índice.
 
 Este documento reúne todo lo que falta para dar por terminado el Tomo I (especificación, 16.1 y 16.2) y lo que
 conviene revisar en el resto de la obra mientras tanto. Ordena el trabajo en fases, dice qué depende de qué y quién
@@ -42,28 +40,33 @@ es la condición para empezar el Tomo II.
 
 ## Fase A. Calibrar y decidir
 
-- [ ] **A1. Piloto de densidad** [Claude; el autor juzga]. Reescribir «Subgrupos y el teorema de Lagrange» de I.7 con
+- [x] **A1. Piloto de densidad** [Claude; el autor juzga]. Reescribir «Subgrupos y el teorema de Lagrange» de I.7 con
       el patrón de A2: el caso chico hecho a mano, la definición, dos ejemplos y un no-ejemplo, el resultado con su
       idea, la demostración, un ejemplo que lo use y un contraejemplo (la recíproca de Lagrange falla en $A_4$).
-      Medir el antes y el después.
-- [ ] **A2. El ritmo en la guía de estilo** [Claude], una vez aprobado el piloto: el patrón de cada concepto central,
+      Medir el antes y el después. *Hecho: de 823 a 1.569 palabras, más el contraejemplo de $A_4$; aprobado como
+      modelo.*
+- [x] **A2. El ritmo en la guía de estilo** [Claude], una vez aprobado el piloto: el patrón de cada concepto central,
       metas medibles (ejemplos por definición, contraejemplos por capítulo, casos hechos a mano) y un reporte de
       densidad por capítulo, como el de `npm run revision`. Si las metas se exigen en las pruebas o solo se informan,
-      se decide con el piloto a la vista.
-- [ ] **A3. Decisiones del autor** [autor]:
-  - [ ] la extensión: llevar los capítulos a la prevista (28 a 52 páginas) con ejemplos, o recortar el alcance de los
-        más cargados (I.7, I.13, I.6, I.8) y llevar temas a «Para seguir» o a otro capítulo;
-  - [ ] las figuras estáticas: hoy `::figura` solo admite piezas interactivas, y temas como los autómatas necesitan
-        diagramas; si se agregan, es una enmienda de la decisión 0003;
-  - [ ] los ejercicios: cuántos por capítulo, la mezcla de los cinco tipos (sección 10) y el mecanismo de
-        verificación automática;
-  - [ ] congelar el índice en la versión 1.0, con las ideas nuevas en `docs/propuestas/`;
-  - [ ] la regla del repaso para los tomos siguientes: con los libros al final de cada tomo, como ahora, o capítulo
-        por capítulo;
-  - [ ] I.12 es de núcleo y ningún capítulo lo requiere: confirmarlo así o pasarlo a complementario;
+      se decide con el piloto a la vista. *Hecho: guía de estilo, sección 6, y `npm run densidad`. Las metas se informan;
+      se exigirán en las pruebas al cerrar la fase D.*
+- [ ] **A3. Decisiones del autor** [autor]. El 22 de noviembre, el autor pidió seguir las recomendaciones; quedan
+      abiertas solo las dos últimas, que dependen de personas:
+  - [x] la extensión: los capítulos llegan a la prevista sumando ejemplos, no teoría, y uno que pase de 52 páginas se
+        divide (especificación, 17);
+  - [x] las figuras estáticas: un diagrama es una pieza sin interacción, con la misma directiva (enmienda de la
+        decisión 0003);
+  - [x] los ejercicios: de 15 a 20 por capítulo, con los tipos mezclados (especificación, 10); la verificación
+        automática se diseña en E4;
+  - [x] congelar el índice en la versión 1.0 al cerrar la fase B, con las ideas nuevas en `docs/propuestas/`;
+  - [x] la regla del repaso para los tomos siguientes: capítulo por capítulo, antes de escribir los que dependen de él
+        (especificación, 16.1);
+  - [x] I.12 sigue en el núcleo aunque ningún capítulo lo requiera: es materia central de una licenciatura con
+        orientación a la computación, y lo permite la definición de 5.3;
   - [ ] quién hace la segunda pasada, y con qué estudiantes se prueba I.1.
-- [ ] **A4. El protocolo de la prueba con estudiantes** [Claude]: preguntas sobre I.1 según el modelo de
+- [x] **A4. El protocolo de la prueba con estudiantes** [Claude]: preguntas sobre I.1 según el modelo de
       Mejía-Ramos y otros (2012), con el criterio de 16.1, que el estudiante explique el fragmento de la Salida.
+      *Hecho: [docs/prueba-con-estudiantes.md](docs/prueba-con-estudiantes.md).*
 
 ## Fase B. La coherencia de la obra
 

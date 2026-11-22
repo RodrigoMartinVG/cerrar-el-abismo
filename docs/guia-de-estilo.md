@@ -114,12 +114,33 @@ El único recuadro es el del campo `supone`, uno por capítulo.
   error del enunciado.
 - **Después**, si la demostración revela algo más que el enunciado, una frase lo dice.
 
-## 6. Ejemplos
+## 6. Ejemplos y ritmo
 
 - **Con números pequeños**, hechos a mano, antes de la celda de código que hace el caso general o realista.
 - **Con propósito declarado**: el texto dice antes qué muestra el ejemplo («este ejemplo muestra que la hipótesis de
   dimensión finita es necesaria»).
-- **Los contraejemplos son de primera clase**: enseñan dónde termina un teorema.
+- **Los contraejemplos son de primera clase**: enseñan dónde termina un teorema. El título de un ejemplo que es un
+  contraejemplo lo dice («La recíproca del teorema de Lagrange es falsa»).
+
+**El ritmo de un concepto central.** La revisión del Tomo I encontró que los capítulos decían en una página lo que los
+libros de referencia dicen en cuatro, y que lo que faltaba era siempre lo mismo: ejemplos, contraejemplos y casos
+hechos a mano. Cada concepto central de una sección sigue este recorrido, como lo hace «Subgrupos y el teorema de
+Lagrange» en I.7, que es el modelo:
+
+1. un caso chico hecho a mano, con números, que plantea la pregunta;
+2. la definición, que nombra lo que el caso mostró;
+3. dos ejemplos y un no-ejemplo, en un entorno `:::ejemplo`, cada uno con lo que muestra;
+4. el resultado, con su idea antes de la demostración;
+5. un ejemplo que use el resultado, de vuelta en el caso del comienzo;
+6. un contraejemplo para la recíproca o para una hipótesis, cuando lo hay.
+
+Un concepto menor puede saltar pasos, pero no el tercero. Las tablas chicas, como la de multiplicar de un grupo o la
+de los órdenes de sus elementos, ayudan a ver lo que el texto afirma.
+
+**Las metas de un capítulo**, que mide `npm run densidad`: al menos un ejemplo por cada definición del Desarrollo, al
+menos dos contraejemplos, al menos una figura interactiva, de 15 a 20 ejercicios y al menos el 85 % de las páginas
+previstas en el índice. Lo que no se puede contar, como el caso hecho a mano o el propósito declarado, lo mira la
+lectura de estilo.
 
 ## 7. La prosa
 
@@ -190,7 +211,8 @@ Automáticamente, en cada capítulo (`packages/libro/src/estilo.ts`, desde las p
 En la lectura de estilo, a mano, con esta lista:
 
 - ¿La Motivación trabaja un caso concreto y termina anunciando el camino?
-- ¿Cada definición importante tiene un ejemplo, y un contraejemplo cuando ayuda?
+- ¿Cada definición importante tiene un ejemplo, y un contraejemplo cuando ayuda? ¿Cada concepto central sigue el
+  ritmo de la sección 6, empezando por un caso hecho a mano? ¿Cumple el capítulo las metas de `npm run densidad`?
 - ¿Cada teorema largo tiene su idea antes de la demostración?
 - ¿Cada hipótesis se usa, y el texto dice dónde?
 - ¿Cada celda y cada figura están comentadas antes y después?

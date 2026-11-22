@@ -143,6 +143,7 @@ nombres propio: una celda que falla hace fallar la integración continua. Un blo
 - `pieza` es una de `packages/piezas/src/index.ts`; una pieza nueva va allí, con su matemática en un módulo con pruebas.
 - `alt` es obligatorio y describe lo que la figura muestra; sin JavaScript, es lo que se lee.
 - La figura se numera («Figura II.5.1») y se cita con `:ref[fig-normal]`.
+- Un diagrama estático, como un autómata, también es una pieza: una que no responde al lector (decisión 0003).
 
 ## El mapa hacia atrás
 

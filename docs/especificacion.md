@@ -424,6 +424,7 @@ Además del orden de los tomos, la web ofrece itinerarios: selecciones de capít
 ## 10. Ejercicios
 
 - **Tipos:** demostraciones; cálculos con verificación automática (numérica o simbólica); exploraciones con las figuras interactivas; ejercicios de traducción (8.4); proyectos cortos que combinan varios capítulos.
+- **Cantidad:** de 15 a 20 por capítulo, con los tipos mezclados; los impares con solución (decisión del autor, 2026-11-22).
 - **Graduación:** cada ejercicio indica su dificultad y la sección a la que corresponde.
 - **Soluciones:** completas para los impares en la obra; las de los pares, en un espacio para docentes (decisión abierta, sección 17).
 - **Verificación:** los ejercicios de cálculo comprueban la respuesta en el navegador, con SymPy para respuestas simbólicas y tolerancias relativas para las numéricas.
@@ -2675,7 +2676,7 @@ Además:
 | 4. Tomo IV | En orden | Puerta de los tomos de área abierta |
 | 5. Tomos de área | Orden propuesto: VII, V, VI, IX, X, VIII, XI, XII y XIII | Cada tomo, completo y verificado |
 
-Cada tomo sigue el mismo ciclo: se escriben todos sus capítulos, después se consiguen los libros de sus lecturas y se repasa el tomo entero con ellos, contrastando enunciados, demostraciones y notación. La obra se escribe desde el principio, en el orden de lectura. Así cada capítulo se apoya en capítulos ya escritos, las referencias apuntan a texto real y la voz de la obra se forma desde el primer capítulo. El Tomo II sigue siendo el lugar donde el abismo es paradigmático; llega tercero en el plan, pero el diseño de sus capítulos ya está en el índice.
+El Tomo I se escribió entero y después se repasó con los libros de sus lecturas. Desde el Tomo II, el ciclo es por capítulo (decisión del autor, 2026-11-22): cada capítulo se contrasta con sus libros, en enunciados, demostraciones y notación, antes de escribir los que dependen de él, porque un error en un enunciado se propaga a todo lo que lo cita. La obra se escribe desde el principio, en el orden de lectura. Así cada capítulo se apoya en capítulos ya escritos, las referencias apuntan a texto real y la voz de la obra se forma desde el primer capítulo. El Tomo II sigue siendo el lugar donde el abismo es paradigmático; llega tercero en el plan, pero el diseño de sus capítulos ya está en el índice.
 
 ### 16.2 Cuándo un capítulo está terminado
 
@@ -2698,7 +2699,7 @@ Cada tomo sigue el mismo ciclo: se escriben todos sus capítulos, después se co
 | Soluciones de los ejercicios pares | Espacio para docentes |
 | Capítulos complementarios en la primera edición | Publicar primero el recorrido de núcleo y después los complementarios |
 | Itinerario de ingeniería | La ingeniería tiene 100 aplicaciones, casi tantas como la física (103), pero no tiene itinerario (2.1). Propuesta: núcleo, más IV.14, VIII.7, XI.7, XII.9 y XIII.4 (termodinámica, control, diseño de experimentos, estructuras y espacios de configuración); son 126 capítulos y 5.416 páginas, cerrado bajo dependencias |
-| Extensión | Unas 7.142 páginas de capítulos, 5.214 de núcleo. Si se quiere reducir el núcleo, la primera palanca son los capítulos clásicos que ningún otro capítulo de núcleo necesita (V.7, VI.3 y VI.6: unas 120 páginas); la segunda, bajar la media de páginas por capítulo |
+| Extensión | Unas 7.142 páginas de capítulos, 5.214 de núcleo. Decidido (2026-11-22): la media de páginas por capítulo no se baja. Los capítulos escritos llegan a su extensión prevista sumando ejemplos, contraejemplos y casos hechos a mano, no más teoría (guía de estilo, sección 6); un capítulo que pase de 52 páginas se divide. Si se quiere reducir el núcleo, la palanca son los capítulos clásicos que ningún otro capítulo de núcleo necesita (V.7, VI.3 y VI.6: unas 120 páginas) |
 | Signatura de la métrica | (−, +, +, +), con traducción explícita a (+, −, −, −) |
 | Idioma | Español; traducción al inglés por decidir |
 | Revisión externa | El protocolo y su registro están decididos (decisión 0005 del repositorio). Falta definir quiénes hacen la segunda pasada y con qué estudiantes se prueba el primer capítulo |

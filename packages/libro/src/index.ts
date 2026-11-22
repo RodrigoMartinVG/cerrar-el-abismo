@@ -23,3 +23,4 @@ export {
   type ResultadoRevisable,
 } from './revision.ts';
 export { revisarRegistroDeTerminologia, usosRechazados, type Termino, type UsoRechazado, type Variante } from './terminologia.ts';
+export { METAS, evaluarDensidad, medirDensidad, type Densidad, type Meta } from './densidad.ts';
