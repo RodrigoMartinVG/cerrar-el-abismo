@@ -46,7 +46,7 @@ const LICENCIAS_COMPATIBLES = ['dominio público', 'CC0', 'MIT', 'BSD', 'Apache-
  * de la fase D. Cada uno sale de la lista cuando las cumple, y la lista desaparece al terminar la ronda.
  */
 const PENDIENTES_DEL_EQUILIBRIO = new Set(
-  ['i-1', 'i-4', 'i-5', 'i-7', 'i-8', 'i-10', 'i-13', 'i-14', 'i-15'].map((c) => `${c}.md`),
+  ['i-4', 'i-5', 'i-7', 'i-8', 'i-10', 'i-13', 'i-14', 'i-15'].map((c) => `${c}.md`),
 );
 const PLANTILLA = [
   'Entrada',
@@ -248,6 +248,28 @@ it('ningún término del diccionario se define en dos capítulos', () => {
   }
   expect([...donde].filter(([, capitulos]) => capitulos.length > 1)).toEqual([]);
 });
+
+it.skipIf(PENDIENTES_DEL_EQUILIBRIO.size > 0)(
+  'cada tomo escrito entero tiene al menos tres proyectos, y cada uno combina capítulos (guía de estilo, sección 6)',
+  () => {
+    const escritos = new Map(archivos.map((archivo) => [leer(archivo).datos.capitulo, archivo]));
+    const tomoDe = (id: string) => id.split('.')[0]!;
+    for (const tomo of new Set([...indice.keys()].map(tomoDe))) {
+      const capitulos = [...indice.keys()].filter((id) => tomoDe(id) === tomo);
+      if (!capitulos.every((id) => escritos.has(id))) continue;
+      const proyectos = capitulos.flatMap((id) =>
+        ejerciciosDelCapitulo(leer(escritos.get(id)!).texto)
+          .filter((e) => e.atributos['tipo'] === 'proyecto')
+          .map((e) => ({ id, otros: new Set(e.enunciado.match(/\b[IVX]+\.\d+\b/g)?.filter((c) => c !== id)) })),
+      );
+      expect(
+        proyectos.filter((p) => p.otros.size === 0).map((p) => p.id),
+        `proyectos del Tomo ${tomo} sin otros capítulos`,
+      ).toEqual([]);
+      expect(proyectos.length, `proyectos del Tomo ${tomo}`).toBeGreaterThanOrEqual(3);
+    }
+  },
+);
 
 it('cada registro de revisión corresponde a un capítulo escrito', () => {
   const registros = existsSync(carpetaDeRevision) ? readdirSync(carpetaDeRevision).filter((f) => f !== 'README.md') : [];

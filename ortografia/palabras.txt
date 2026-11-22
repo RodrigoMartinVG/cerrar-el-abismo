@@ -202,6 +202,7 @@ construibles
 contraejemplo
 contraejemplos
 contrapositiva
+contrarrecíproca
 controlabilidad
 Conversor
 conversor
@@ -433,6 +434,7 @@ Hensel
 Herbrand
 Hermítico
 hermítico
+Herzog
 Hessenberg
 hessiana
 heurística
@@ -722,6 +724,7 @@ observabilidad
 octaédrica
 octrees
 Okabe
+Oliveira
 Olver
 ondícula
 Ondículas
@@ -744,6 +747,7 @@ Overmars
 Overton
 Pandoc
 Parberry
+Pardi
 Parseval
 partiéndola
 pasabajos
