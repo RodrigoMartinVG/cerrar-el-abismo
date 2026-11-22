@@ -796,6 +796,7 @@ Probá
 procedurales
 PROSITE
 proyectarlo
+Prüfer
 pseudoaleatorios
 Pseudoinversa
 pseudoprimo
