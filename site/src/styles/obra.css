@@ -875,3 +875,13 @@ table.pieza-matriz td {
   font-size: var(--obra-texto-secundario);
   word-break: break-all;
 }
+
+/* La tabla de los pesos de la pieza de De Casteljau (I.5): en una pantalla angosta se desplaza sola. */
+.pieza-pesos {
+  overflow-x: auto;
+}
+
+.pieza-pesos td,
+.pieza-pesos th {
+  white-space: nowrap;
+}

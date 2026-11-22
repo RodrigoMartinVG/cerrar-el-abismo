@@ -7,6 +7,7 @@ export const PIEZAS = {
   'conversor-de-convenciones': () => import('./conversor-de-convenciones.ts'),
   'cuadrado-de-impares': () => import('./cuadrado-de-impares.ts'),
   cubetas: () => import('./cubetas.ts'),
+  'de-casteljau': () => import('./de-casteljau.ts'),
   'multiplicacion-modular': () => import('./multiplicacion-modular.ts'),
   'normal-covector': () => import('./normal-covector.ts'),
   'recta-flotante': () => import('./recta-flotante.ts'),
