@@ -1079,3 +1079,73 @@ table.pieza-programa td.regla {
   outline-offset: -2px;
   background: var(--obra-practica-bajo);
 }
+
+/*
+ * La pieza «deduccion-y-termino» (I.15): el término entero, con lo que ya se construyó en el color del texto, lo que
+ * falta en gris y la parte de la línea actual marcada; la deducción, con la fila actual destacada y las que siguen en
+ * gris; y la reducción, con el rodeo que se redujo y lo que quedó en su lugar.
+ */
+.pieza-termino {
+  margin-block: 0.75rem 0.25rem;
+  font-family: var(--sl-font-mono, monospace);
+  font-size: 1.05rem;
+  overflow-wrap: anywhere;
+}
+
+.pieza-termino .pendiente {
+  color: var(--sl-color-gray-4);
+}
+
+.pieza-termino .construido {
+  color: var(--sl-color-white);
+}
+
+.pieza-termino mark,
+.pieza-reduccion mark {
+  padding: 0 0.1em;
+  border-radius: 0.2rem;
+  background: var(--obra-practica-bajo);
+  color: var(--sl-color-white);
+  outline: 1px solid var(--obra-practica);
+}
+
+.pieza-reduccion mark.resultado {
+  background: transparent;
+  outline-style: dashed;
+}
+
+table.pieza-deduccion {
+  width: auto;
+  margin-block: 0.5rem;
+  font-size: var(--obra-texto-secundario);
+}
+
+table.pieza-deduccion th,
+table.pieza-deduccion td {
+  padding: 0.15rem 0.6rem;
+  text-align: start;
+  white-space: nowrap;
+}
+
+table.pieza-deduccion td:nth-child(2),
+table.pieza-deduccion td:nth-child(4) {
+  font-family: var(--sl-font-mono, monospace);
+}
+
+table.pieza-deduccion tr.actual {
+  background: var(--obra-practica-bajo);
+}
+
+table.pieza-deduccion tr.pendiente {
+  color: var(--sl-color-gray-4);
+}
+
+.pieza-reduccion ol {
+  font-family: var(--sl-font-mono, monospace);
+  font-size: var(--obra-texto-secundario);
+}
+
+.pieza-reduccion p {
+  margin-block: 0.5rem 0.25rem;
+  font-size: var(--obra-texto-secundario);
+}
