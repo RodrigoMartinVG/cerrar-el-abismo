@@ -792,6 +792,7 @@ PROSITE
 proyectarlo
 pseudoaleatorios
 Pseudoinversa
+pseudoprimo
 puntaje
 puntajes
 Pyodide
