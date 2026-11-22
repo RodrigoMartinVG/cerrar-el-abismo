@@ -9,6 +9,8 @@ import {
   coincide,
   ejerciciosDelCapitulo,
   etiquetasDelCapitulo,
+  evaluarDensidad,
+  medirDensidad,
   leerNumero,
   revisarEjercicios,
   revisarCumple,
@@ -176,6 +178,17 @@ describe.each(archivos)('el capítulo %s', (archivo) => {
       } else {
         expect(LICENCIAS_COMPATIBLES).toContain(fuente!.licencia);
       }
+    },
+  );
+
+  it.skipIf(PENDIENTES_DE_LA_FASE_D.has(archivo))(
+    'cumple las metas de densidad: ejemplos, contraejemplos, figuras, ejercicios y extensión (guía de estilo, 6)',
+    () => {
+      const c = indice.get(datos.capitulo)!;
+      const fallan = evaluarDensidad(medirDensidad(texto), c.paginas)
+        .filter((m) => !m.cumple)
+        .map((m) => `${m.nombre}: ${m.valor}`);
+      expect(fallan).toEqual([]);
     },
   );
 
