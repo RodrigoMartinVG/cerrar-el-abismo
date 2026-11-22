@@ -46,6 +46,7 @@ jobs:
           lualatex -interaction=nonstopmode tomo-i.tex > /dev/null || true
           if grep -q '^!' tomo-i.log; then grep -A3 '^!' tomo-i.log | head -80; exit 1; fi
           lualatex -interaction=nonstopmode -halt-on-error tomo-i.tex > /dev/null
+          grep -h 'Output written' tomo-i.log >> "$GITHUB_STEP_SUMMARY"
       - name: El PDF
         if: success()
         uses: actions/upload-artifact@v7
