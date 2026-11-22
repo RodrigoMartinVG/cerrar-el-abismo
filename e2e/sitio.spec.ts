@@ -9,6 +9,15 @@ test('la portada muestra el mapa de tomos y lleva al índice temático', async (
   await expect(page.locator('table tbody tr')).toHaveCount(13);
 });
 
+test('la barra lateral lista los capítulos escritos en orden de lectura', async ({ page }) => {
+  await page.goto('capitulos/i-1/');
+  const grupo = page.locator('nav.sidebar details').filter({ hasText: 'Capítulos escritos' });
+  const nombres = await grupo.locator('a').allTextContents();
+  const numeros = nombres.map((n) => Number(/^\s*I\.(\d+)/.exec(n)?.[1]));
+  expect(numeros.length).toBeGreaterThan(10);
+  expect(numeros).toEqual([...numeros].sort((a, b) => a - b));
+});
+
 test('la página de un tomo muestra sus capítulos y enlaza los escritos', async ({ page }) => {
   await page.goto('indice/i/');
   await expect(page.locator('section.capitulo')).toHaveCount(15);

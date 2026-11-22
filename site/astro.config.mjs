@@ -107,7 +107,13 @@ export default defineConfig({
             { label: 'Estado de la revisión', link: '/revision/' },
           ],
         },
-        { label: 'Capítulos escritos', items: [{ autogenerate: { directory: 'capitulos' } }] },
+        // En orden de lectura, desde el índice: generarlos desde la carpeta los ordenaría como texto (I.10 antes que I.2).
+        {
+          label: 'Capítulos escritos',
+          items: todosLosCapitulos(indice)
+            .filter((c) => escrito(c.id))
+            .map((c) => ({ label: `${c.id} ${c.titulo}`, link: `/capitulos/${slug(c.id)}/` })),
+        },
         {
           label: 'Tomos',
           collapsed: true,
