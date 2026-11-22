@@ -3,6 +3,7 @@
  * con NOMBRES_DE_PIEZAS que toda `::figura{pieza="…"}` exista.
  */
 export const PIEZAS = {
+  coclases: () => import('./coclases.ts'),
   'comparador-flotante': () => import('./comparador-flotante.ts'),
   'conversor-de-convenciones': () => import('./conversor-de-convenciones.ts'),
   'cuadrado-de-impares': () => import('./cuadrado-de-impares.ts'),
@@ -12,6 +13,7 @@ export const PIEZAS = {
   'normal-covector': () => import('./normal-covector.ts'),
   'recta-flotante': () => import('./recta-flotante.ts'),
   'rectangulo-de-euclides': () => import('./rectangulo-de-euclides.ts'),
+  'rompecabezas-de-quince': () => import('./rompecabezas-de-quince.ts'),
   'reticulo-de-divisores': () => import('./reticulo-de-divisores.ts'),
   'tabla-de-verdad': () => import('./tabla-de-verdad.ts'),
 } satisfies Record<string, () => Promise<{ montar: (raiz: HTMLElement) => () => void }>>;
