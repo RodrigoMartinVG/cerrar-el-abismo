@@ -125,6 +125,7 @@ browniano
 Buchberger
 Burali
 CAGD
+Canastota
 Cann
 Cantelli
 Carathéodory
@@ -185,6 +186,7 @@ congruencial
 congruenciales
 congruential
 conmutatividad
+construible
 construibles
 contraejemplo
 contraejemplos
@@ -356,6 +358,7 @@ frontmatter
 Fubini
 Galerkin
 Gallier
+Gandy
 Gärtner
 Gebert
 Gebra
@@ -363,6 +366,7 @@ Gelfand
 Gelman
 geométricamente
 Georg
+Girard
 giróscopos
 Givant
 glsl
@@ -535,6 +539,7 @@ Kunze
 Kuratowski
 Kutta
 L'Hôpital
+Lafont
 Lagae
 lagrangiana
 lagrangiano
@@ -887,6 +892,7 @@ sobreyectividad
 sobreyectivo
 softmax
 Sokhotski
+Sonneveld
 Sorgenfrey
 Sperner
 Spielman
