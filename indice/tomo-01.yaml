@@ -117,13 +117,13 @@ partes:
         puente: 'Entrada: el triángulo de Pascal dentro de un código de curvas de Bézier. Los coeficientes de los polinomios de Bernstein son binomiales, y la recurrencia de Pascal es la que hace funcionar el algoritmo de De Casteljau (aviso de III.9 y VII.6).'
         aplicaciones:
           - campo: datos
-            texto: conteo de configuraciones y probabilidad elemental
+            texto: 'la prueba exacta de Fisher: el valor p como cociente de coeficientes binomiales'
           - campo: cripto
-            texto: colisiones de *hash* y paradoja del cumpleaños
+            texto: 'colisiones de *hash* y paradoja del cumpleaños: umbrales de 32 a 256 bits, los UUID y las abreviaturas de Git'
           - campo: 3d
-            texto: coeficientes de las curvas de Bézier
+            texto: subdivisión de las curvas de Bézier con De Casteljau y descarte de intersecciones con la caja de los puntos de control
           - campo: fisica
-            texto: conteo de microestados y entropía de Boltzmann
+            texto: 'conteo de microestados y entropía de Boltzmann: la concentración alrededor de N/2 y las temperaturas negativas'
         lecturas:
           rigor: 'Graham, Knuth y Patashnik, *Concrete Mathematics*; Stanley, *Enumerative Combinatorics*, vol. 1.'
           practica: 'Farin, *Curves and Surfaces for CAGD*, sobre el algoritmo de De Casteljau.'

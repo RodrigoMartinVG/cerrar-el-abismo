@@ -491,6 +491,7 @@ Hwang
 idempotente
 Idris
 Illian
+imantación
 implicacional
 implicante
 implicantes
@@ -631,6 +632,8 @@ Lubich
 Lumer
 Lyapunov
 Macklin
+macroestado
+macroestados
 Mallat
 Manim
 Marquardt
@@ -658,6 +661,7 @@ metamatemática
 metrización
 mezclarlas
 Méziriac
+microestado
 microestados
 Microfacetas
 microfacetas
@@ -724,6 +728,7 @@ Niederreiter
 Nielson
 Nikodym
 nilpotentes
+Nishita
 Niven
 NLERP
 Nocedal
@@ -921,6 +926,7 @@ Schwarz
 Schwarzschild
 Searcóid
 seccional
+Sederberg
 Seidel
 Seifert
 semiclásica

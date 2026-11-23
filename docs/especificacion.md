@@ -587,7 +587,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Recurrencias lineales y funciones generatrices.
 
 **Puente.** Entrada: el triángulo de Pascal dentro de un código de curvas de Bézier. Los coeficientes de los polinomios de Bernstein son binomiales, y la recurrencia de Pascal es la que hace funcionar el algoritmo de De Casteljau (aviso de III.9 y VII.6).
-**Aplicaciones.** [Datos] conteo de configuraciones y probabilidad elemental · [Cripto] colisiones de *hash* y paradoja del cumpleaños · [3D] coeficientes de las curvas de Bézier · [Física] conteo de microestados y entropía de Boltzmann.
+**Aplicaciones.** [Datos] la prueba exacta de Fisher: el valor p como cociente de coeficientes binomiales · [Cripto] colisiones de *hash* y paradoja del cumpleaños: umbrales de 32 a 256 bits, los UUID y las abreviaturas de Git · [3D] subdivisión de las curvas de Bézier con De Casteljau y descarte de intersecciones con la caja de los puntos de control · [Física] conteo de microestados y entropía de Boltzmann: la concentración alrededor de N/2 y las temperaturas negativas.
 **Lecturas.** *Rigor:* Graham, Knuth y Patashnik, *Concrete Mathematics*; Stanley, *Enumerative Combinatorics*, vol. 1. *Práctica:* Farin, *Curves and Surfaces for CAGD*, sobre el algoritmo de De Casteljau. *Primer contacto:* Bóna, *A Walk Through Combinatorics*.
 
 **Parte B — Estructuras discretas y algebraicas**
