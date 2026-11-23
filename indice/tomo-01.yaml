@@ -259,13 +259,13 @@ partes:
         puente: 'Entrada: `0.1 + 0.2 == 0.3` da falso, y `if (abs(a - b) < 1e-6)`. Ninguno de esos números es representable exactamente, y la comparación correcta depende de la magnitud (tolerancia relativa), no de un épsilon fijo.'
         aplicaciones:
           - campo: 3d
-            texto: pérdida de precisión lejos del origen y *origin rebasing*; compresión de vértices y normales
+            texto: el temblor lejos del origen, el cambio de origen y el dibujo relativo a la cámara; posiciones y normales comprimidas con *KHR_mesh_quantization*
           - campo: datos
-            texto: entrenamiento en bfloat16 y la resta del máximo antes de un *softmax*
+            texto: el *softmax* estable y su análisis de errores; productos escalares en bfloat16 acumulados en precisión simple
           - campo: ing
-            texto: desbordamiento de enteros en sistemas embebidos
+            texto: 'contadores que dan la vuelta: el Boeing 787, *time_after* de Linux, el Ariane 5 y el Patriot'
           - campo: cripto
-            texto: determinismo entre plataformas
+            texto: 'determinismo entre plataformas: la FMA, el *lockstep* de los juegos y la aritmética entera de Ethereum'
         lecturas:
           rigor: 'Goldberg, «What Every Computer Scientist Should Know About Floating-Point Arithmetic»; Overton, *Numerical Computing with IEEE Floating Point Arithmetic*; Higham, *Accuracy and Stability of Numerical Algorithms*.'
           practica: "La norma IEEE 754-2019; Dawson, «Comparing Floating Point Numbers», sobre la comparación por ULP; Warren, *Hacker's Delight*."

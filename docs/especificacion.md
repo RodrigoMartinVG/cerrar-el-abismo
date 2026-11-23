@@ -650,7 +650,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Formatos reducidos (float16, bfloat16, punto fijo y enteros normalizados) y error de cuantización.
 
 **Puente.** Entrada: `0.1 + 0.2 == 0.3` da falso, y `if (abs(a - b) < 1e-6)`. Ninguno de esos números es representable exactamente, y la comparación correcta depende de la magnitud (tolerancia relativa), no de un épsilon fijo.
-**Aplicaciones.** [3D] pérdida de precisión lejos del origen y *origin rebasing*; compresión de vértices y normales · [Datos] entrenamiento en bfloat16 y la resta del máximo antes de un *softmax* · [Ing] desbordamiento de enteros en sistemas embebidos · [Cripto] determinismo entre plataformas.
+**Aplicaciones.** [3D] el temblor lejos del origen, el cambio de origen y el dibujo relativo a la cámara; posiciones y normales comprimidas con *KHR_mesh_quantization* · [Datos] el *softmax* estable y su análisis de errores; productos escalares en bfloat16 acumulados en precisión simple · [Ing] contadores que dan la vuelta: el Boeing 787, *time_after* de Linux, el Ariane 5 y el Patriot · [Cripto] determinismo entre plataformas: la FMA, el *lockstep* de los juegos y la aritmética entera de Ethereum.
 **Lecturas.** *Rigor:* Goldberg, «What Every Computer Scientist Should Know About Floating-Point Arithmetic»; Overton, *Numerical Computing with IEEE Floating Point Arithmetic*; Higham, *Accuracy and Stability of Numerical Algorithms*. *Práctica:* La norma IEEE 754-2019; Dawson, «Comparing Floating Point Numbers», sobre la comparación por ULP; Warren, *Hacker's Delight*.
 
 **Parte D — Conjuntos, orden y computación**

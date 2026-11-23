@@ -408,6 +408,7 @@ Girard
 giróscopos
 Givant
 glsl
+gltfpack
 Goldbach
 Goldstein
 Goldstine
@@ -639,6 +640,7 @@ linealizadas
 Liouville
 Lipschitz
 llamémosla
+logits
 lorentziana
 lorentzianas
 Lotka
@@ -676,6 +678,7 @@ metrización
 mezclarlas
 Méziriac
 Michie
+Micikevicius
 microestado
 microestados
 Microfacetas
@@ -729,6 +732,7 @@ Murty
 Myhill
 Naber
 Naimark
+nanosegundos
 nauty
 Navier
 navmesh
