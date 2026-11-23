@@ -460,6 +460,7 @@ Hidrodinámica
 Hierholzer
 Higham
 Hille
+Hinc
 hiperelasticidad
 hiperplano
 Hiperplanos
@@ -740,6 +741,7 @@ Nešetřilová
 Netravali
 Neumann
 neuroimagen
+Newcombe
 newtoniano
 Niederreiter
 Nielson
@@ -760,6 +762,7 @@ numpy
 NURBS
 Nyquist
 Nyström
+Nystrom
 Nørsett
 observabilidad
 octaédrica
@@ -787,6 +790,7 @@ Osher
 Otakar
 Overmars
 Overton
+palíndromos
 Pandoc
 Parberry
 Pardi
@@ -814,6 +818,7 @@ Piperno
 Pipher
 pivoteo
 Plancherel
+plásmido
 Plemelj
 Pohlig
 polinomial
@@ -936,6 +941,7 @@ satisfiability
 Sauer
 Saxel
 Saxena
+Scantlebury
 Schafer
 Schauder
 Schlick

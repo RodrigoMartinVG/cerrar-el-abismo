@@ -339,7 +339,7 @@ partes:
           - campo: 3d
             texto: máquinas de estados de animación y de comportamiento en videojuegos
           - campo: bio-eco
-            texto: búsqueda de motivos en secuencias de ADN
+            texto: búsqueda de sitios de restricción y de motivos en secuencias de ADN
           - campo: ing
             texto: verificación de protocolos de comunicación
         lecturas:

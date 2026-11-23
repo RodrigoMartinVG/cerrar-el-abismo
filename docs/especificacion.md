@@ -685,7 +685,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Lema del bombeo: lenguajes que no son regulares, como el de los paréntesis balanceados. Para seguir: gramáticas libres de contexto y análisis sintáctico.
 
 **Puente.** Entrada: `re.compile(r"[0-9]+(\.[0-9]*)?")` en el analizador léxico de un lenguaje de programación. Una expresión regular se compila en un autómata finito, y el teorema de Kleene dice que eso siempre es posible; el lema del bombeo explica por qué ninguna expresión regular reconoce los paréntesis balanceados.
-**Aplicaciones.** [Cripto] analizadores léxicos de compiladores y validación de entradas · [3D] máquinas de estados de animación y de comportamiento en videojuegos · [Bio/Eco] búsqueda de motivos en secuencias de ADN · [Ing] verificación de protocolos de comunicación.
+**Aplicaciones.** [Cripto] analizadores léxicos de compiladores y validación de entradas · [3D] máquinas de estados de animación y de comportamiento en videojuegos · [Bio/Eco] búsqueda de sitios de restricción y de motivos en secuencias de ADN · [Ing] verificación de protocolos de comunicación.
 **Lecturas.** *Rigor:* Sipser, *Introduction to the Theory of Computation*; Hopcroft, Motwani y Ullman, *Introduction to Automata Theory, Languages, and Computation*. *Práctica:* Thompson, «Regular Expression Search Algorithm» (1968); Cox, «Regular Expression Matching Can Be Simple And Fast» (2007); la documentación del módulo `re` de Python.
 
 #### I.14 Lógica de primer orden y computabilidad
