@@ -201,12 +201,14 @@ partes:
           - 'Cuerpos finitos GF(pⁿ): existencia, construcción y aritmética. La teoría de Galois llega en V.6, y las bases de Gröbner, en V.9.'
         puente: 'Entrada: `x = (x << 1) ^ ((x & 0x80) ? 0x1B : 0)`. Es multiplicar por x en GF(2⁸) módulo un polinomio irreducible: la operación con la que se construyen AES y los códigos de los QR.'
         aplicaciones:
-          - campo: cripto
-            texto: códigos Reed–Solomon, CRC y AES
           - campo: senales
-            texto: corrección de errores en almacenamiento y transmisión
+            texto: detección de errores con el CRC-32 de PNG, gzip y Ethernet
+          - campo: cripto
+            texto: recuperación de datos con códigos de Reed–Solomon (HDFS, RAID 6) y reparto de secretos de Shamir, por interpolación
           - campo: 3d
-            texto: evaluación de polinomios con el esquema de Horner
+            texto: 'evaluación de polinomios en un *shader*: Horner, Estrin y la FMA con números de máquina'
+          - campo: cripto
+            texto: 'la mezcla de columnas de AES: polinomios sobre GF(2⁸) módulo x⁴ + 1, un anillo que no es cuerpo'
         lecturas:
           rigor: 'Dummit y Foote, *Abstract Algebra*; Lidl y Niederreiter, *Introduction to Finite Fields and Their Applications*.'
           practica: 'NIST, FIPS 197, la norma de AES, de donde sale `xtime`; Daemen y Rijmen, *The Design of Rijndael*.'

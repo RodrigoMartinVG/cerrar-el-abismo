@@ -624,7 +624,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Cuerpos finitos GF(pⁿ): existencia, construcción y aritmética. La teoría de Galois llega en V.6, y las bases de Gröbner, en V.9.
 
 **Puente.** Entrada: `x = (x << 1) ^ ((x & 0x80) ? 0x1B : 0)`. Es multiplicar por x en GF(2⁸) módulo un polinomio irreducible: la operación con la que se construyen AES y los códigos de los QR.
-**Aplicaciones.** [Cripto] códigos Reed–Solomon, CRC y AES · [Señales] corrección de errores en almacenamiento y transmisión · [3D] evaluación de polinomios con el esquema de Horner.
+**Aplicaciones.** [Señales] detección de errores con el CRC-32 de PNG, gzip y Ethernet · [Cripto] recuperación de datos con códigos de Reed–Solomon (HDFS, RAID 6) y reparto de secretos de Shamir, por interpolación · [3D] evaluación de polinomios en un *shader*: Horner, Estrin y la FMA con números de máquina · [Cripto] la mezcla de columnas de AES: polinomios sobre GF(2⁸) módulo x⁴ + 1, un anillo que no es cuerpo.
 **Lecturas.** *Rigor:* Dummit y Foote, *Abstract Algebra*; Lidl y Niederreiter, *Introduction to Finite Fields and Their Applications*. *Práctica:* NIST, FIPS 197, la norma de AES, de donde sale `xtime`; Daemen y Rijmen, *The Design of Rijndael*. *Primer contacto:* Gallian, *Contemporary Abstract Algebra*. *En español:* Gentile, *Anillos de polinomios*; Krick, *Álgebra I*.
 
 **Parte C — Los números reales y la máquina**
@@ -2528,7 +2528,7 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 
 | Tomo | Caps. | Págs. | Caps. de núcleo | Págs. de núcleo | Aplicaciones [3D] | Aplicaciones [Física] |
 | --- | --- | --- | --- | --- | --- | --- |
-| I | 15 | 638 | 12 | 514 | 14 de 53 (26 %) | 5 de 53 (9 %) |
+| I | 15 | 638 | 12 | 514 | 14 de 54 (26 %) | 5 de 54 (9 %) |
 | II | 17 | 672 | 16 | 632 | 16 de 56 (29 %) | 12 de 56 (21 %) |
 | III | 13 | 564 | 11 | 484 | 12 de 41 (29 %) | 6 de 41 (15 %) |
 | IV | 14 | 564 | 12 | 484 | 13 de 43 (30 %) | 7 de 43 (16 %) |
@@ -2541,7 +2541,7 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 | XI | 18 | 776 | 11 | 488 | 14 de 56 (25 %) | 9 de 56 (16 %) |
 | XII | 11 | 496 | 7 | 320 | 10 de 33 (30 %) | 10 de 33 (30 %) |
 | XIII | 7 | 324 | 0 | 0 | 5 de 21 (24 %) | 7 de 21 (33 %) |
-| **Total** | **167** | **7.142** | **121** | **5.214** | **142 de 519 (27 %)** | **103 de 519 (20 %)** |
+| **Total** | **167** | **7.142** | **121** | **5.214** | **142 de 520 (27 %)** | **103 de 520 (20 %)** |
 
 - Los capítulos tienen entre 28 y 52 páginas, con una media de 42,8.
 - Cada tomo suma además unas 50 páginas de material propio: «Lo que este tomo importa», «Lo que este tomo exporta», notación y convenciones, diccionario academia–práctica del tomo, soluciones de los ejercicios impares e índice analítico. En total, unas 650 páginas, para unas 7.792 en toda la obra.
@@ -2556,8 +2556,8 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 | [Datos] | 61 | 12 % |
 | [Bio/Eco] | 48 | 9 % |
 | [Señales] | 34 | 7 % |
-| [Cripto] | 31 | 6 % |
-| **Total** | **519** | **100 %** |
+| [Cripto] | 32 | 6 % |
+| **Total** | **520** | **100 %** |
 
 | Itinerario (9.6) | Caps. | Págs. de capítulos |
 | --- | --- | --- |

@@ -36,6 +36,7 @@ anticadenas
 antisimetría
 antisimétrica
 antisimétricos
+Anvin
 Apostol
 aproximable
 arcoconexión
@@ -116,6 +117,7 @@ Bóna
 Bondy
 Bonet
 Borel
+Borisov
 Borsuk
 Borůvka
 Botsch
@@ -307,6 +309,7 @@ Ehrenfeucht
 eikonal
 elektrárny
 Elie
+Eliece
 empaquetamiento
 Enderton
 Engel
@@ -433,6 +436,7 @@ Harer
 Hartogs
 Hasse
 Hastie
+HDFS
 Heawood
 Heckbert
 Hecke
@@ -494,6 +498,7 @@ Hurwitz
 Hwang
 idempotente
 Idris
+IEND
 Illian
 imantación
 implicacional
@@ -914,6 +919,7 @@ Saletan
 Samkoff
 Santaló
 Särkkä
+Sarwate
 satisfacibilidad
 Satisfacible
 satisfacible
