@@ -8,6 +8,7 @@ abelianos
 ADAD
 ADDA
 ádicos
+aditividad
 Adleman
 Advección
 advección
@@ -138,6 +139,7 @@ Burali
 Burgiel
 Bursztein
 CAGD
+Caml
 Canastota
 Cann
 Cantelli
@@ -469,6 +471,7 @@ Hierholzer
 Higham
 Hille
 Hinc
+Hindley
 hiperelasticidad
 hiperplano
 Hiperplanos
@@ -580,6 +583,7 @@ Kazimierz
 Keerthi
 Kempe
 Khinchin
+Khronos
 Kildall
 Kirkwood
 Kleene
@@ -662,6 +666,7 @@ Mallat
 Manim
 Marquardt
 Marsden
+Martelli
 Maschke
 Maschler
 Massot
@@ -683,6 +688,7 @@ Mertens
 meshoptimizer
 metamatemática
 metrización
+metrología
 mezclarlas
 Méziriac
 Michie
@@ -695,6 +701,7 @@ Mikk
 Milgram
 milisegundos
 Milková
+Milner
 Milnor
 minimales
 minimalidad
@@ -714,6 +721,7 @@ mónico
 mónicos
 Monier
 monomiales
+Montanari
 Montmort
 Motwani
 Moura
@@ -824,6 +832,7 @@ Pevey
 Peyré
 Pharr
 phasor
+picómetros
 Piegl
 Pillichshammer
 Pingala
@@ -834,6 +843,7 @@ Plancherel
 plásmido
 Plemelj
 Pohlig
+polimórfico
 polinomial
 polinomiales
 politopos
@@ -1029,6 +1039,7 @@ sobreyectivo
 sobreyectivos
 softmax
 Sokhotski
+Solovay
 Solow
 Sonneveld
 Sorenson
@@ -1108,6 +1119,7 @@ tipada
 tipado
 tipados
 tipan
+Tomkowicz
 Tonelli
 totient
 transcrítica
@@ -1149,6 +1161,7 @@ Veque
 Verlet
 Vietoris
 Villani
+Vitali
 Viterbi
 Vitesse
 Volterra

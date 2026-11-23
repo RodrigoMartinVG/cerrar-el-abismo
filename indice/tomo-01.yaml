@@ -287,11 +287,11 @@ partes:
         puente: 'Entrada: `def ack : Nat → Nat → Nat` en Lean, que el asistente solo acepta si se demuestra que termina. La función de Ackermann termina porque el par (m, n) decrece en el orden lexicográfico, un buen orden de tipo ω²: toda demostración de terminación es una inducción sobre un buen orden.'
         aplicaciones:
           - campo: cripto
-            texto: demostraciones de terminación de programas con órdenes bien fundados
+            texto: 'terminación de programas con órdenes bien fundados: la unificación de la inferencia de tipos, con una terna que baja en el orden lexicográfico, y la comprobación de aparición'
           - campo: fisica
-            texto: la paradoja de Banach–Tarski y por qué la masa solo se define sobre conjuntos medibles
+            texto: 'la paradoja de Banach–Tarski: por qué la masa no puede definirse en todos los subconjuntos, qué pone el axioma de elección y por qué una bola de átomos no se duplica'
           - campo: 3d
-            texto: 'jerarquías de escena sin ciclos: relaciones bien fundadas y recorridos que terminan'
+            texto: 'jerarquías de escena sin ciclos: la regla recursiva de glTF, que termina por la buena fundación, y los archivos y bibliotecas que no la garantizan'
         lecturas:
           rigor: 'Halmos, *Naive Set Theory*; Hrbacek y Jech, *Introduction to Set Theory*; Jech, *Set Theory*, para la consistencia relativa.'
           practica: 'Avigad, de Moura, Kong y Ullrich, *Theorem Proving in Lean 4*, sobre la recursión bien fundada y la terminación.'

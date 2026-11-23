@@ -663,7 +663,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Cardinales: teorema de Cantor–Schröder–Bernstein, aritmética cardinal e hipótesis del continuo (su independencia, enunciada).
 
 **Puente.** Entrada: `def ack : Nat → Nat → Nat` en Lean, que el asistente solo acepta si se demuestra que termina. La función de Ackermann termina porque el par (m, n) decrece en el orden lexicográfico, un buen orden de tipo ω²: toda demostración de terminación es una inducción sobre un buen orden.
-**Aplicaciones.** [Cripto] demostraciones de terminación de programas con órdenes bien fundados · [Física] la paradoja de Banach–Tarski y por qué la masa solo se define sobre conjuntos medibles · [3D] jerarquías de escena sin ciclos: relaciones bien fundadas y recorridos que terminan.
+**Aplicaciones.** [Cripto] terminación de programas con órdenes bien fundados: la unificación de la inferencia de tipos, con una terna que baja en el orden lexicográfico, y la comprobación de aparición · [Física] la paradoja de Banach–Tarski: por qué la masa no puede definirse en todos los subconjuntos, qué pone el axioma de elección y por qué una bola de átomos no se duplica · [3D] jerarquías de escena sin ciclos: la regla recursiva de glTF, que termina por la buena fundación, y los archivos y bibliotecas que no la garantizan.
 **Lecturas.** *Rigor:* Halmos, *Naive Set Theory*; Hrbacek y Jech, *Introduction to Set Theory*; Jech, *Set Theory*, para la consistencia relativa. *Práctica:* Avigad, de Moura, Kong y Ullrich, *Theorem Proving in Lean 4*, sobre la recursión bien fundada y la terminación. *Historia:* Ferreirós, *Labyrinth of Thought*.
 
 #### I.12 Órdenes, retículos y álgebras de Boole
