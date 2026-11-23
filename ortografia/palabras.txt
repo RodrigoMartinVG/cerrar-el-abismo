@@ -152,6 +152,7 @@ Casteljau
 Catmull
 Catto
 Cayley
+CCCBDB
 Čech
 centroidales
 centroide
@@ -356,6 +357,7 @@ expresables
 extensionalidad
 factorizarla
 Faires
+Faria
 Farin
 Farkas
 farmacocinética
@@ -593,6 +595,7 @@ Kreveld
 Kreyszig
 Krick
 Kripke
+Krita
 Kronig
 Kruskal
 Kuipers
@@ -671,6 +674,7 @@ metamatemática
 metrización
 mezclarlas
 Méziriac
+Michie
 microestado
 microestados
 Microfacetas
@@ -707,6 +711,8 @@ muestrean
 Muestrear
 muestrear
 Müller
+Mulliken
+Multibrush
 multigrafo
 multigrafos
 multigrid
@@ -722,6 +728,7 @@ Murty
 Myhill
 Naber
 Naimark
+nauty
 Navier
 navmesh
 Needham
@@ -803,6 +810,7 @@ phasor
 Piegl
 Pillichshammer
 Pingala
+Piperno
 Pipher
 pivoteo
 Plancherel
@@ -963,9 +971,11 @@ Shakarchi
 Shalev
 Shamir
 Shewchuk
+Shimanouchi
 Shoemake
 Shor
 Shortley
+Shoup
 Shumway
 Shwartz
 Sifakis

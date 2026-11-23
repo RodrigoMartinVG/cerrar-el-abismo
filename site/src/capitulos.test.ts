@@ -46,7 +46,7 @@ const LICENCIAS_COMPATIBLES = ['dominio público', 'CC0', 'MIT', 'BSD', 'Apache-
  * recalibración (decisión 0006): un ejercicio que el texto cita completa algo que el texto deja, y el lector tiene
  * que poder comprobarlo. Cada capítulo sale de la lista en su pasada de Aplicaciones, y la lista desaparece con ella.
  */
-const CITADOS_SIN_SOLUCION = new Set(['i-7', 'i-9', 'i-10', 'i-11', 'i-12', 'i-14', 'i-15'].map((c) => `${c}.md`));
+const CITADOS_SIN_SOLUCION = new Set(['i-9', 'i-10', 'i-11', 'i-12', 'i-14', 'i-15'].map((c) => `${c}.md`));
 const PLANTILLA = [
   'Entrada',
   'Motivación',

@@ -613,7 +613,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Acciones de grupo, órbitas y estabilizadores; conjugación y clases de conjugación; lema de Burnside.
 
 **Puente.** Entrada: `2 <= y <= p - 2 and pow(y, q, p) == 1`, la validación de una clave pública de Diffie–Hellman. Por el orden de un elemento y el teorema de Lagrange, una clave que pasa tiene orden q, y no deja al atacante el subgrupo pequeño que le permitiría averiguar el secreto por partes.
-**Aplicaciones.** [Física] simetrías de moléculas y cristales · [Cripto] grupos en la criptografía de clave pública · [3D] simetrías de patrones y teselaciones · [Datos] contar coloraciones distintas con el lema de Burnside.
+**Aplicaciones.** [Física] las vibraciones de la molécula de agua: el grupo C₂ᵥ, su tabla de caracteres y qué vibraciones absorben infrarrojo; los cristales, como aviso · [Cripto] calcular un logaritmo discreto por partes: el algoritmo de Pohlig y Hellman y por qué el grupo tiene orden primo · [3D] un caleidoscopio con el grupo diédrico: órbitas, dominio fundamental y costuras; los embaldosados, como aviso · [Datos] guardar cada posición del ta-te-ti una sola vez: forma canónica frente al lema de Burnside.
 **Lecturas.** *Rigor:* Dummit y Foote, *Abstract Algebra*; Artin, *Algebra*. *Práctica:* RFC 2631, sección 2.1.5, y NIST SP 800-56A, sobre la validación de claves públicas; Conway, Burgiel y Goodman-Strauss, *The Symmetries of Things*. *Primer contacto:* Pinter, *A Book of Abstract Algebra*; Carter, *Visual Group Theory*. *Historia:* Kleiner, *A History of Abstract Algebra*; Slocum y Sonneveld, *The 15 Puzzle*. *En español:* Dorronsoro y Hernández, *Números, grupos y anillos*.
 
 #### I.8 Anillos, cuerpos y polinomios
