@@ -391,11 +391,11 @@ partes:
         puente: 'Entrada: `theorem intercambio (p q : Prop) : p ∧ q → q ∧ p := fun ⟨hp, hq⟩ => ⟨hq, hp⟩` en Lean. La demostración es un programa: la función que recibe un par y lo devuelve invertido, la misma que en Python es `lambda par: (par[1], par[0])`. Que Lean la acepte quiere decir que el tipo de ese programa es el enunciado.'
         aplicaciones:
           - campo: cripto
-            texto: código criptográfico verificado, generado junto con su demostración de corrección y usado en navegadores
+            texto: 'la aritmética de las curvas elípticas de los navegadores, generada junto con su demostración a partir de un algoritmo general que se especializa por reducción, y lo que hay que creer para confiar en ella: el núcleo, un resolvedor SMT o el compilador'
           - campo: ing
-            texto: compiladores y núcleos de sistemas operativos verificados para sistemas críticos
+            texto: 'un compilador verificado en miniatura, de expresiones aritméticas a una máquina de pila, cuya demostración por inducción es un programa recursivo; CompCert y seL4 en sistemas críticos'
           - campo: fisica
-            texto: las dimensiones físicas como tipos, que impiden sumar metros con segundos, y la formalización de la física en asistentes de demostración
+            texto: 'las unidades de medida como tipos dependientes, la diferencia entre comprobar dimensiones y comprobar unidades en la pérdida de la Mars Climate Orbiter, y la formalización de la física en asistentes de demostración'
         lecturas:
           rigor: 'Sørensen y Urzyczyn, *Lectures on the Curry–Howard Isomorphism*; Girard, Lafont y Taylor, *Proofs and Types*.'
           practica: 'Avigad, de Moura, Kong y Ullrich, *Theorem Proving in Lean 4*; Avigad y Massot, *Mathematics in Lean*.'

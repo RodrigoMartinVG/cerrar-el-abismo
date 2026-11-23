@@ -30,6 +30,7 @@ Alliez
 Alligood
 Altmann
 ambisónico
+Ampère
 analiticidad
 anisotrópica
 anisotrópico
@@ -245,6 +246,7 @@ Cramér
 CRDT
 Cripto
 Crofton
+Csmith
 cuádrico
 cuadrivectores
 cuantiles
@@ -774,6 +776,7 @@ Niederreiter
 Nielson
 Nikodym
 nilpotentes
+Nipkow
 Nishita
 Niven
 NLERP
@@ -839,6 +842,7 @@ Pevey
 Peyré
 Pharr
 phasor
+Physlib
 picómetros
 Piegl
 Pillichshammer
@@ -916,6 +920,7 @@ recursión
 recursor
 reescalan
 reflexividad
+Regehr
 reimplementar
 Rellich
 remapeo
