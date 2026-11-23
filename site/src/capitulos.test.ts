@@ -41,13 +41,6 @@ const GRAFO = new Grafo(cargarIndice());
  * obra (CC BY-NC-SA para el texto, MIT para el código).
  */
 const LICENCIAS_COMPATIBLES = ['dominio público', 'CC0', 'MIT', 'BSD', 'Apache-2.0', 'CC BY 4.0', 'CC BY-SA 4.0'];
-/**
- * Los capítulos que todavía no cumplen las metas de equilibrio de la guía de estilo (sección 6), recalibradas después
- * de la fase D. Cada uno sale de la lista cuando las cumple, y la lista desaparece al terminar la ronda.
- */
-const PENDIENTES_DEL_EQUILIBRIO = new Set(
-  ['i-15'].map((c) => `${c}.md`),
-);
 const PLANTILLA = [
   'Entrada',
   'Motivación',
@@ -173,16 +166,13 @@ describe.each(archivos)('el capítulo %s', (archivo) => {
     }
   });
 
-  it.skipIf(PENDIENTES_DEL_EQUILIBRIO.has(archivo))(
-    'cumple las metas de equilibrio: extensión, ejemplos, contraejemplos, ejercicios y figuras (guía de estilo, 6)',
-    () => {
-      const c = indice.get(datos.capitulo)!;
-      const fallan = evaluarDensidad(medirDensidad(texto), c.paginas)
-        .filter((m) => !m.cumple)
-        .map((m) => `${m.nombre}: ${m.valor}`);
-      expect(fallan).toEqual([]);
-    },
-  );
+  it('cumple las metas de equilibrio: extensión, ejemplos, contraejemplos, ejercicios y figuras (guía de estilo, 6)', () => {
+    const c = indice.get(datos.capitulo)!;
+    const fallan = evaluarDensidad(medirDensidad(texto), c.paginas)
+      .filter((m) => !m.cumple)
+      .map((m) => `${m.nombre}: ${m.valor}`);
+    expect(fallan).toEqual([]);
+  });
 
   it('tiene el recuadro del Puente', () => {
     expect(cuerpo).toMatch(/^:::puente$/m);
@@ -249,27 +239,24 @@ it('ningún término del diccionario se define en dos capítulos', () => {
   expect([...donde].filter(([, capitulos]) => capitulos.length > 1)).toEqual([]);
 });
 
-it.skipIf(PENDIENTES_DEL_EQUILIBRIO.size > 0)(
-  'cada tomo escrito entero tiene al menos tres proyectos, y cada uno combina capítulos (guía de estilo, sección 6)',
-  () => {
-    const escritos = new Map(archivos.map((archivo) => [leer(archivo).datos.capitulo, archivo]));
-    const tomoDe = (id: string) => id.split('.')[0]!;
-    for (const tomo of new Set([...indice.keys()].map(tomoDe))) {
-      const capitulos = [...indice.keys()].filter((id) => tomoDe(id) === tomo);
-      if (!capitulos.every((id) => escritos.has(id))) continue;
-      const proyectos = capitulos.flatMap((id) =>
-        ejerciciosDelCapitulo(leer(escritos.get(id)!).texto)
-          .filter((e) => e.atributos['tipo'] === 'proyecto')
-          .map((e) => ({ id, otros: new Set(e.enunciado.match(/\b[IVX]+\.\d+\b/g)?.filter((c) => c !== id)) })),
-      );
-      expect(
-        proyectos.filter((p) => p.otros.size === 0).map((p) => p.id),
-        `proyectos del Tomo ${tomo} sin otros capítulos`,
-      ).toEqual([]);
-      expect(proyectos.length, `proyectos del Tomo ${tomo}`).toBeGreaterThanOrEqual(3);
-    }
-  },
-);
+it('cada tomo escrito entero tiene al menos tres proyectos, y cada uno combina capítulos (guía de estilo, sección 6)', () => {
+  const escritos = new Map(archivos.map((archivo) => [leer(archivo).datos.capitulo, archivo]));
+  const tomoDe = (id: string) => id.split('.')[0]!;
+  for (const tomo of new Set([...indice.keys()].map(tomoDe))) {
+    const capitulos = [...indice.keys()].filter((id) => tomoDe(id) === tomo);
+    if (!capitulos.every((id) => escritos.has(id))) continue;
+    const proyectos = capitulos.flatMap((id) =>
+      ejerciciosDelCapitulo(leer(escritos.get(id)!).texto)
+        .filter((e) => e.atributos['tipo'] === 'proyecto')
+        .map((e) => ({ id, otros: new Set(e.enunciado.match(/\b[IVX]+\.\d+\b/g)?.filter((c) => c !== id)) })),
+    );
+    expect(
+      proyectos.filter((p) => p.otros.size === 0).map((p) => p.id),
+      `proyectos del Tomo ${tomo} sin otros capítulos`,
+    ).toEqual([]);
+    expect(proyectos.length, `proyectos del Tomo ${tomo}`).toBeGreaterThanOrEqual(3);
+  }
+});
 
 it('cada registro de revisión corresponde a un capítulo escrito', () => {
   const registros = existsSync(carpetaDeRevision) ? readdirSync(carpetaDeRevision).filter((f) => f !== 'README.md') : [];
