@@ -697,7 +697,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Las clases P y NP y el problema abierto de si son distintas; por qué la criptografía supone que lo son. Para seguir: teoría de la complejidad computacional.
 
 **Puente.** Entrada: `solver.check()` devuelve `unknown` en un resolvedor SMT. Sobre la aritmética entera con multiplicación la satisfacibilidad es indecidible (décimo problema de Hilbert), así que ningún resolvedor puede responder siempre: el `unknown` es un teorema, no un defecto.
-**Aplicaciones.** [Cripto] análisis estático de programas y los límites que impone el teorema de Rice · [Datos] SQL como lógica de primer orden y resolvedores SAT y SMT · [Ing] verificación formal de sistemas críticos con asistentes de demostración.
+**Aplicaciones.** [Cripto] análisis estático de programas: una variable sin valor, las falsas alarmas y los límites que impone el teorema de Rice · [Datos] SQL como lógica de primer orden: el NOT EXISTS doble, las consultas independientes del dominio y la alcanzabilidad que pide WITH RECURSIVE · [Cripto] resolución de dependencias de un gestor de paquetes como satisfacibilidad, un problema NP-completo, y la selección de versión mínima de Go, que lo evita · [Ing] verificación de políticas de acceso en la nube con resolvedores SMT (Zelkova, en AWS): unsat como garantía, y los autómatas que deciden los patrones.
 **Lecturas.** *Rigor:* Enderton, *A Mathematical Introduction to Logic*; Sipser, *Introduction to the Theory of Computation*; Franzén, *Gödel's Theorem: An Incomplete Guide to Its Use and Abuse*. *Práctica:* De Moura y Bjørner, «Z3: An Efficient SMT Solver» (2008). *Historia:* Davis, *The Universal Computer*.
 
 #### I.15 Demostraciones como programas
@@ -2528,7 +2528,7 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 
 | Tomo | Caps. | Págs. | Caps. de núcleo | Págs. de núcleo | Aplicaciones [3D] | Aplicaciones [Física] |
 | --- | --- | --- | --- | --- | --- | --- |
-| I | 15 | 638 | 12 | 514 | 14 de 55 (25 %) | 5 de 55 (9 %) |
+| I | 15 | 638 | 12 | 514 | 14 de 56 (25 %) | 5 de 56 (9 %) |
 | II | 17 | 672 | 16 | 632 | 16 de 56 (29 %) | 12 de 56 (21 %) |
 | III | 13 | 564 | 11 | 484 | 12 de 41 (29 %) | 6 de 41 (15 %) |
 | IV | 14 | 564 | 12 | 484 | 13 de 43 (30 %) | 7 de 43 (16 %) |
@@ -2541,7 +2541,7 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 | XI | 18 | 776 | 11 | 488 | 14 de 56 (25 %) | 9 de 56 (16 %) |
 | XII | 11 | 496 | 7 | 320 | 10 de 33 (30 %) | 10 de 33 (30 %) |
 | XIII | 7 | 324 | 0 | 0 | 5 de 21 (24 %) | 7 de 21 (33 %) |
-| **Total** | **167** | **7.142** | **121** | **5.214** | **142 de 521 (27 %)** | **103 de 521 (20 %)** |
+| **Total** | **167** | **7.142** | **121** | **5.214** | **142 de 522 (27 %)** | **103 de 522 (20 %)** |
 
 - Los capítulos tienen entre 28 y 52 páginas, con una media de 42,8.
 - Cada tomo suma además unas 50 páginas de material propio: «Lo que este tomo importa», «Lo que este tomo exporta», notación y convenciones, diccionario academia–práctica del tomo, soluciones de los ejercicios impares e índice analítico. En total, unas 650 páginas, para unas 7.792 en toda la obra.
@@ -2556,8 +2556,8 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 | [Datos] | 61 | 12 % |
 | [Bio/Eco] | 48 | 9 % |
 | [Señales] | 34 | 7 % |
-| [Cripto] | 33 | 6 % |
-| **Total** | **521** | **100 %** |
+| [Cripto] | 34 | 7 % |
+| **Total** | **522** | **100 %** |
 
 | Itinerario (9.6) | Caps. | Págs. de capítulos |
 | --- | --- | --- |

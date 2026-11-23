@@ -5,6 +5,7 @@ aaab
 AADD
 abeliano
 abelianos
+Abiteboul
 ADAD
 ADDA
 ádicos
@@ -79,6 +80,7 @@ aviónica
 Axler
 Azuma
 Bachet
+Backes
 Baire
 Baraff
 Barbič
@@ -383,6 +385,7 @@ Fibrados
 fibrados
 finitamente
 FIPS
+FMCAD
 Folland
 Fomin
 Foote
@@ -644,6 +647,8 @@ Levenberg
 Lévy
 lexicográficamente
 Liberzon
+Libkin
+libsolv
 linalg
 Lindelöf
 Lindemann
@@ -663,6 +668,7 @@ Macklin
 macroestado
 macroestados
 Mallat
+Mancinelli
 Manim
 Marquardt
 Marsden
@@ -813,6 +819,7 @@ Overmars
 Overton
 palíndromos
 Pandoc
+Paola
 Parberry
 Pardi
 Parseval
@@ -873,6 +880,7 @@ Prüfer
 pseudoaleatorios
 Pseudoinversa
 pseudoprimo
+PSPACE
 puntaje
 puntajes
 Pyodide
@@ -950,6 +958,7 @@ Royden
 Rudin
 Ruffini
 Runge
+Rungta
 Saad
 Safko
 Sakurai
@@ -1159,6 +1168,7 @@ Velleman
 Venant
 Veque
 Verlet
+Vianu
 Vietoris
 Villani
 Vitali
@@ -1195,6 +1205,7 @@ Zamir
 Západomoravské
 Zariski
 Zawirski
+Zelkova
 Zermelo
 Zhang
 Zisserman

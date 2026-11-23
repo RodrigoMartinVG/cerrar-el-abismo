@@ -364,11 +364,13 @@ partes:
         puente: 'Entrada: `solver.check()` devuelve `unknown` en un resolvedor SMT. Sobre la aritmética entera con multiplicación la satisfacibilidad es indecidible (décimo problema de Hilbert), así que ningún resolvedor puede responder siempre: el `unknown` es un teorema, no un defecto.'
         aplicaciones:
           - campo: cripto
-            texto: análisis estático de programas y los límites que impone el teorema de Rice
+            texto: 'análisis estático de programas: una variable sin valor, las falsas alarmas y los límites que impone el teorema de Rice'
           - campo: datos
-            texto: SQL como lógica de primer orden y resolvedores SAT y SMT
+            texto: 'SQL como lógica de primer orden: el NOT EXISTS doble, las consultas independientes del dominio y la alcanzabilidad que pide WITH RECURSIVE'
+          - campo: cripto
+            texto: 'resolución de dependencias de un gestor de paquetes como satisfacibilidad, un problema NP-completo, y la selección de versión mínima de Go, que lo evita'
           - campo: ing
-            texto: verificación formal de sistemas críticos con asistentes de demostración
+            texto: 'verificación de políticas de acceso en la nube con resolvedores SMT (Zelkova, en AWS): unsat como garantía, y los autómatas que deciden los patrones'
         lecturas:
           rigor: "Enderton, *A Mathematical Introduction to Logic*; Sipser, *Introduction to the Theory of Computation*; Franzén, *Gödel's Theorem: An Incomplete Guide to Its Use and Abuse*."
           practica: 'De Moura y Bjørner, «Z3: An Efficient SMT Solver» (2008).'
