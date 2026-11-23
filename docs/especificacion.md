@@ -298,7 +298,7 @@ Cada capítulo abre con un fragmento real que el lector todavía no puede explic
 
 La Entrada no supone que el lector programe. Si el fragmento es código, se elige la forma más legible que conserve lo esencial (Python, cuando el lenguaje no importa) y una frase dice qué hace cada instrucción. En los primeros capítulos de la obra, sobre todo en el Tomo I, el fragmento llega después de una pregunta matemática concreta, y el código aparece como la misma pregunta escrita en otro idioma.
 
-La Salida explica el fragmento solo con lo que está en el recorrido del capítulo: sus requisitos y lo que el capítulo mismo construye. Ningún paso de la explicación depende de un hecho que solo establece un capítulo posterior; lo que el lector trae de la secundaria y la obra formaliza después, como el seno y el coseno, cuenta como conocido. Las demás licencias declaradas en `supone` pueden aparecer en la Motivación, los ejemplos, el Puente y las Aplicaciones, pero no en la Entrada ni en la Salida, que son el objetivo comprobable del capítulo. Si un fragmento solo se explica con un capítulo posterior, pertenece a ese capítulo (versión 0.9).
+La Salida explica el fragmento solo con lo que está en el recorrido del capítulo: sus requisitos y lo que el capítulo mismo construye. Ningún paso de la explicación depende de un hecho que solo establece un capítulo posterior; lo que el lector trae de la secundaria y la obra formaliza después, como el seno y el coseno, cuenta como conocido. Las demás licencias declaradas en `supone` pueden aparecer en la Motivación, los ejemplos, el Puente y las Aplicaciones, pero no en la Entrada ni en la Salida, que son el objetivo comprobable del capítulo. Un resultado que el capítulo demuestra cuenta como construido por él aunque su demostración use una licencia declarada, como la fórmula de Euler de I.6, que se apoya en la curva de Jordan para poligonales: la Salida puede usarlo sin nombrar la licencia. Si un fragmento solo se explica con un capítulo posterior, pertenece a ese capítulo (versión 0.9).
 
 ### 8.2 Las cinco preguntas del Puente
 
@@ -428,7 +428,8 @@ Además del orden de los tomos, la web ofrece itinerarios: selecciones de capít
 - **Tipos:** demostraciones; cálculos con verificación automática (numérica o simbólica); exploraciones con las figuras interactivas; ejercicios de traducción (8.4); proyectos cortos que combinan varios capítulos.
 - **Cantidad:** de 15 a 20 por capítulo, con los tipos mezclados; los impares con solución (decisión del autor, 2026-11-22).
 - **Graduación:** cada ejercicio indica su dificultad y la sección a la que corresponde.
-- **Soluciones:** completas para los impares en la obra; los pares no tienen solución publicada (decisión del autor, 2026-11-22: la obra no tiene una parte para docentes).
+- **Soluciones:** completas para los impares en la obra, y para los que el texto cita, que completan algo que el texto deja; los demás pares no tienen solución publicada (decisión del autor, 2026-11-22: la obra no tiene una parte para docentes; los citados, desde la ronda crítica del Tomo I, decisión 0006).
+- **Proyectos:** al final de los Ejercicios, numerados aparte («Proyecto I.8.1»), fuera de la cuenta de 15 a 20 y de la paridad de las soluciones; al menos tres por tomo, en los capítulos que cierran un bloque.
 - **Verificación:** los ejercicios de cálculo comprueban la respuesta en el navegador, con SymPy para respuestas simbólicas y tolerancias relativas para las numéricas.
 
 ## 11. Plataforma web

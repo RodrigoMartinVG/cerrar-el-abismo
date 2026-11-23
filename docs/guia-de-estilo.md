@@ -149,29 +149,47 @@ ronda crítica que vino después recalibró las metas con casos concretos. Las d
   sección lo necesita. Las páginas se cuentan por lo que ocupa lugar: el texto, los pies de figura y el código, con
   cada fórmula del texto como una palabra y cada fórmula aparte como doce, porque contar los comandos de LaTeX inflaba
   la cuenta un 15 %.
-- **Proporciones de la plantilla:** el reporte muestra cuánto ocupa el Desarrollo (la plantilla le da el 45 %) y
-  cuánto las Aplicaciones (el 20 %), y señala las Aplicaciones de menos del 12 %. En el Tomo I, después de la fase D,
-  el Desarrollo ocupaba del 50 % al 64 % y las Aplicaciones, del 4 % al 7 %: la teoría creció y la práctica no, justo
-  lo contrario de la misión de la obra.
+- **Proporciones de la plantilla:** el reporte muestra cuánto ocupa cada parte con peso propio frente a ese peso (el
+  Desarrollo, el 45 %; el Cálculo y el Puente, el 10 % cada uno; las Aplicaciones, el 20 %; los Ejercicios, el 15 %),
+  y señala las Aplicaciones de menos del 12 %. En el Tomo I, después de la fase D, el Desarrollo ocupaba del 50 % al
+  64 % y las Aplicaciones, del 4 % al 7 %: la teoría creció y la práctica no, justo lo contrario de la misión de la
+  obra. Cuando un capítulo no llega a su extensión, las proporciones dicen dónde falta: casi siempre en las
+  Aplicaciones y el Cálculo, no en el Desarrollo.
 - **Ejemplos: al menos uno por definición, de a lo sumo 400 palabras, y nunca más de tres bloques seguidos sin una
-  frase.** Un ejemplo más largo es una sección y se parte; una racha de bloques sin prosa se lee como una lista. El
-  propósito de cada ejemplo se dice antes, en una frase, o en su título, si el título lo dice entero.
+  frase.** Un ejemplo más largo es una sección y se parte; una racha de bloques sin prosa se lee como una lista (una
+  tabla cuenta como bloque). El propósito de cada ejemplo se dice antes, en una frase, o en su título, si el título lo
+  dice entero. La prueba cuenta los entornos de definición, pero los términos que se definen en la prosa y los
+  algoritmos también llevan su ejemplo: eso lo mira la lectura.
 - **Contraejemplos: al menos dos, marcados `{.contraejemplo}`, y solo si el texto enuncia el resultado o la
   generalización que el ejemplo refuta.** Van después de ese resultado. Un objeto que no cumple una definición es un
-  no-ejemplo y no se marca, aunque su título diga «no es»: la ronda crítica desmarcó varios así. El sitio y el PDF
-  nombran «Contraejemplo» a los marcados.
-- **Ejercicios: de 15 a 20.** Entre los que el texto no cita, los de demostrar son a lo sumo el 60 %: los que el texto
-  cita completan una demostración suya y no pueden cambiar de tipo. Construir un ejemplo o un contraejemplo, o
-  encontrar el error de un argumento, es su propio tipo, `construccion`, y no cuenta como demostración. Hay al menos
-  tres de cálculo, uno de exploración que use la figura del capítulo, y uno de traducción; al menos tres de nivel 1 y
-  dos de nivel 3. Cada nivel 3 se justifica con la idea que el capítulo no da hecha: un ejercicio largo pero sin ideas
-  nuevas es de nivel 2.
+  no-ejemplo y no se marca, aunque su título diga «no es»: la ronda crítica desmarcó varios así. Tampoco son
+  contraejemplos el lado negativo de un «si y solo si», que lo ilustra; un «esto no es regular» demostrado con el
+  teorema de la sección, que es el quinto paso del ritmo; ni un caso sin la hipótesis en el que la conclusión ni
+  siquiera se puede escribir. Un contraejemplo exhibe un caso en que una conclusión enunciada es falsa, y la frase
+  anterior nombra la hipótesis o la generalización que cae. El sitio y el PDF nombran «Contraejemplo» a los marcados.
+- **Ejercicios: de 15 a 20, sin contar los proyectos.** Entre los que el texto no cita, los de demostrar son a lo sumo
+  el 60 %: los que el texto cita completan una demostración suya y no pueden cambiar de tipo. Construir un ejemplo o
+  un contraejemplo, o encontrar el error de un argumento, es su propio tipo, `construccion`, y no cuenta como
+  demostración; el error de un fragmento de código, en cambio, es una traducción. La traducción se reconoce por su
+  enunciado: parte de la notación o el código de la práctica, o llega a ellos, y escribir en fórmulas lo que dice una
+  frase también lo es (guía de capítulos). Hay al menos tres de cálculo, uno de exploración que use la figura del
+  capítulo, y uno de traducción; al menos tres de nivel 1 y dos de nivel 3, entre ejercicios y proyectos. Cada nivel 3
+  se justifica con la idea que el capítulo no da hecha: un ejercicio largo pero sin ideas nuevas es de nivel 2, y uno
+  cuya sugerencia entrega el paso clave también. Los impares tienen solución, y también los que el texto cita: sin
+  profesor, el lector tiene que poder comprobar lo que el texto le deja.
 - **Figuras: al menos una interactiva**, y un ejercicio de exploración que la use.
-- **Proyectos: al menos tres por tomo**, en los capítulos que cierran un bloque, que combinen varios capítulos.
+- **Proyectos: al menos tres por tomo**, en los capítulos que cierran un bloque, que combinen varios capítulos. Van al
+  final de los Ejercicios, numerados aparte y fuera de la paridad de las soluciones, con un enunciado por pasos y
+  respuestas intermedias que el lector puede comprobar (decisión 0006).
 
 Lo que no se puede contar, como el caso hecho a mano antes de cada definición o que un ejemplo no repita a otro, lo
 mira la lectura de estilo. Las metas se recalibran cuando la lectura crítica de un tomo muestra que alguna empuja en
-la dirección equivocada; cada cambio se anota aquí con su razón.
+la dirección equivocada; cada cambio se anota aquí con su razón. La segunda recalibración, con las quince lecturas del
+Tomo I, sumó lo que varias señalaron por separado: la extensión sin redondear (quitar una repetición bajaba a un
+capítulo del piso), el largo de los ejemplos sin los comandos de LaTeX, las tablas como bloques, los casos que no son
+contraejemplos, la traducción por su enunciado, el nivel juzgado con la sugerencia, las soluciones de los citados y
+los proyectos aparte. Lo que más empujó en la dirección correcta fue el nivel 3: casi ningún capítulo tenía un
+desafío de verdad.
 
 ## 7. La prosa
 

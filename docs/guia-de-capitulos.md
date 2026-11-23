@@ -105,6 +105,7 @@ La familia dual de una base de $V$ es una base de $V^*$.
 | `axioma`, `definicion`, `teorema`, `lema`, `proposicion`, `corolario`, `ejemplo`, `observacion` | «Teorema II.5.3 (Título).» | Un contador común por capítulo |
 | `ejemplo{.contraejemplo}` | «Contraejemplo II.5.4 (Título).» | El mismo contador común |
 | `ejercicio` | «Ejercicio II.5.1.» | Un contador propio |
+| `ejercicio{tipo=proyecto}` | «Proyecto II.5.1.» | Otro contador propio; van al final |
 | `demostracion` | Plegable, abierta, cerrada con ∎ | Sin número |
 | `solucion` | Plegable, cerrada | Sin número |
 | `puente` | Recuadro «Puente» | Sin número |
@@ -122,14 +123,26 @@ Contar las manos de cinco cartas de una baraja de 52.
 :::
 ```
 
-- `nivel` es `1` (rutina), `2` (pide una idea) o `3` (desafío); `tipo`, uno de `demostracion`, `calculo`,
-  `exploracion`, `traduccion` o `proyecto`.
+- `nivel` es `1` (rutina), `2` (pide una idea) o `3` (desafío, con una idea que el capítulo no da hecha). El nivel
+  lo fija la parte más difícil del ejercicio, y se juzga con la sugerencia incluida: la de un nivel 3 puede decir qué
+  no funciona, pero no entrega el paso clave. Un nivel 3 que el texto cita merece sospecha, porque el texto suele dar
+  la idea antes de citarlo.
+- `tipo` es uno de estos, y se elige por lo que pide el enunciado:
+  - `demostracion`: demostrar un enunciado;
+  - `construccion`: construir un ejemplo o un contraejemplo, o encontrar el error de un argumento;
+  - `calculo`: llegar a un número, que va en `respuesta`;
+  - `exploracion`: usar la figura del capítulo (con `:ref[fig-…]`) o una celda, y decir qué se ve;
+  - `traduccion`: pasar de la notación o el código de la práctica a la matemática del capítulo, o al revés, como
+    encontrar el error de un fragmento de código o escribir en fórmulas lo que dice una frase;
+  - `proyecto`: combinar varios capítulos en un trabajo por pasos.
 - `seccion` es el identificador que el sitio da al título de la sección: el texto en minúsculas, con guiones en lugar
   de espacios y sin signos, con las tildes (`cálculo`, `subgrupos-y-el-teorema-de-lagrange`). Puede ser un `###` del
   Desarrollo, o Cálculo, Puente o Aplicaciones.
 - `respuesta` es un entero, una fracción `a/b` o un decimal; el lector la comprueba en la página. `comprobacion`,
   opcional, es una expresión de Python, con `math` y `Fraction` a mano, que las pruebas evalúan para confirmarla.
-- Los impares llevan su `solucion` a continuación, y los pares no; la prueba lo exige.
+- Los impares llevan su `solucion` a continuación, y también los que el texto cita, porque completan algo que el
+  texto deja; los demás pares no la llevan. Los proyectos van al final, numerados aparte, fuera de esa regla y de la
+  cuenta de 15 a 20: su enunciado guía por pasos y su solución es optativa. La prueba lo exige (decisión 0006).
 
 ## Referencias
 

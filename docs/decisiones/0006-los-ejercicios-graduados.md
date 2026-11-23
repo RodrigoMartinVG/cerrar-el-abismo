@@ -33,12 +33,23 @@ ejercicio duplicado corrió la paridad de los siguientes.
     confirmar que la respuesta escrita es la correcta.
 - **Las soluciones.** Los impares la tienen, en el entorno `solucion` que sigue al ejercicio, y los pares no. Una
   prueba lo exige, junto con los atributos.
+
+  *Enmienda (2026-11-22), tras la ronda crítica del Tomo I:* también tienen solución los ejercicios que el texto
+  cita. Un ejercicio citado completa algo que el texto deja, una demostración o una afirmación, y sin profesor el
+  lector tiene que poder comprobarlo; la ronda encontró 35 citados que caían en un número par, y tres lecturas
+  señalaron el problema por separado. Los pares que el texto no cita siguen sin solución.
+- **Los proyectos** (`tipo=proyecto`) se numeran aparte, «Proyecto I.8.1», y van al final de los Ejercicios: no
+  cuentan para los 15 a 20 ni para la paridad de las soluciones. Su enunciado guía por pasos, con respuestas
+  intermedias que el lector puede comprobar, y la solución es optativa. *Enmienda (2026-11-22):* al principio se
+  numeraban con los demás ejercicios, y agregar uno en el medio corría la paridad de los siguientes y obligaba a
+  sacrificar soluciones (I.8, I.10, I.15).
 - **La transición.** Los quince capítulos del Tomo I se gradúan en su pasada de la fase D; hasta entonces una lista
   de pendientes en la prueba los exime, y la lista desaparece al terminar la fase.
 
 ## Consecuencias
 
-- Agregar un ejercicio en el medio obliga a mover las soluciones que cambian de paridad, y la prueba lo señala.
+- Agregar un ejercicio en el medio obliga a mover las soluciones que cambian de paridad, y la prueba lo señala. Por
+  eso los proyectos, que se agregan al cerrar un bloque, van aparte y al final.
 - Las respuestas simbólicas, que la especificación quiere comprobar con SymPy, quedan para cuando un capítulo las
   necesite: el Tomo I pide sobre todo números, y cargar SymPy en el navegador cuesta varios megabytes.
 - El reporte de densidad puede contar los ejercicios por tipo y por nivel, para ver si un capítulo los mezcla.

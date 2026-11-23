@@ -59,9 +59,13 @@ export function seccionesDelCapitulo(markdown: string): Map<string, string> {
   return secciones;
 }
 
-/** Un ejercicio tal como aparece en el Markdown: sus atributos, su número y si lo sigue una solución. */
+/**
+ * Un ejercicio tal como aparece en el Markdown: sus atributos, su número y si lo sigue una solución. Los proyectos
+ * (`tipo=proyecto`) se numeran aparte, «Proyecto I.8.1», y van al final de los Ejercicios (decisión 0006).
+ */
 export interface EjercicioEscrito {
   numero: number;
+  proyecto: boolean;
   linea: number;
   atributos: Record<string, string>;
   conSolucion: boolean;
@@ -84,8 +88,10 @@ export function ejerciciosDelCapitulo(markdown: string): EjercicioEscrito[] {
     let k = j + 1;
     while (k < lineas.length && lineas[k]!.trim() === '') k++;
     const atributos = leerAtributos(m[1] ?? '');
+    const proyecto = atributos['tipo'] === 'proyecto';
     ejercicios.push({
-      numero: ejercicios.length + 1,
+      numero: ejercicios.filter((e) => e.proyecto === proyecto).length + 1,
+      proyecto,
       linea: i + 1,
       atributos,
       conSolucion: /^:::solucion\b/.test(lineas[k] ?? ''),
@@ -100,8 +106,11 @@ export function ejerciciosDelCapitulo(markdown: string): EjercicioEscrito[] {
 export function revisarEjercicios(markdown: string): string[] {
   const secciones = seccionesDelCapitulo(markdown);
   const problemas: string[] = [];
-  for (const { numero, linea, atributos, conSolucion, enunciado } of ejerciciosDelCapitulo(markdown)) {
-    const donde = `Ejercicio ${numero} (línea ${linea})`;
+  let despuesDeUnProyecto = false;
+  for (const { numero, proyecto, linea, atributos, conSolucion, enunciado, citadoPorElTexto } of ejerciciosDelCapitulo(
+    markdown,
+  )) {
+    const donde = `${proyecto ? 'Proyecto' : 'Ejercicio'} ${numero} (línea ${linea})`;
     const { nivel, tipo, seccion, respuesta } = atributos;
     if (!nivel || !(nivel in NIVELES)) problemas.push(`${donde}: falta «nivel», que es 1, 2 o 3.`);
     if (!tipo || !(tipo in TIPOS)) problemas.push(`${donde}: falta «tipo», que es uno de ${Object.keys(TIPOS).join(', ')}.`);
@@ -113,8 +122,17 @@ export function revisarEjercicios(markdown: string): string[] {
       problemas.push(`${donde}: un ejercicio de exploración usa una figura (con :ref[fig-…]) o una celda, y lo dice.`);
     if (respuesta !== undefined && !leerNumero(respuesta))
       problemas.push(`${donde}: la respuesta «${respuesta}» no es un número, una fracción ni un decimal.`);
-    if (numero % 2 === 1 && !conSolucion) problemas.push(`${donde}: es impar y no tiene solución.`);
-    if (numero % 2 === 0 && conSolucion) problemas.push(`${donde}: es par y tiene solución.`);
+    // Las soluciones: las de los impares, y las de los que el texto cita, que completan algo que el texto deja y el
+    // lector tiene que poder comprobar sin un profesor. Los pares que el texto no cita no la tienen. Los proyectos
+    // quedan fuera de la paridad: su enunciado los guía por pasos, y la solución es optativa.
+    if (proyecto) despuesDeUnProyecto = true;
+    else {
+      if (despuesDeUnProyecto) problemas.push(`${donde}: va después de un proyecto, y los proyectos van al final.`);
+      if (citadoPorElTexto && !conSolucion) problemas.push(`${donde}: el texto lo cita, así que lleva su solución.`);
+      else if (numero % 2 === 1 && !conSolucion) problemas.push(`${donde}: es impar y no tiene solución.`);
+      if (numero % 2 === 0 && conSolucion && !citadoPorElTexto)
+        problemas.push(`${donde}: es par, el texto no lo cita, y tiene solución.`);
+    }
   }
   return problemas;
 }

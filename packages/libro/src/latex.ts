@@ -7,7 +7,7 @@ import remarkParse from 'remark-parse';
 import { unified } from 'unified';
 import { parse as leerYaml } from 'yaml';
 import { NIVELES, TIPOS, seccionesDelCapitulo, type Tipo } from './ejercicios.ts';
-import { ENTORNOS } from './entornos.ts';
+import { ENTORNOS, nombreDelEntorno } from './entornos.ts';
 import { etiquetasDelCapitulo } from './etiquetas.ts';
 
 /**
@@ -52,7 +52,7 @@ export function capituloALatex(markdown: string, opciones: OpcionesLatex): strin
   const arbol = unified().use(remarkParse).use(remarkMath).use(remarkDirective).use(remarkGfm).parse(cuerpo) as Root;
   const secciones = seccionesDelCapitulo(markdown);
   const propias = etiquetasDelCapitulo(markdown, capitulo);
-  const contadores = { resultados: 0, ejercicios: 0, figuras: 0 };
+  const contadores = { resultados: 0, ejercicios: 0, proyectos: 0, figuras: 0 };
   const urlCapitulo = `${opciones.sitio}capitulos/${capitulo.toLowerCase().replace('.', '-')}/`;
 
   const enLinea = (nodos: readonly PhrasingContent[]): string => nodos.map(frase).join('');
@@ -154,9 +154,11 @@ export function capituloALatex(markdown: string, opciones: OpcionesLatex): strin
     if (nodo.name === 'linea') return `\\begin{recuadro}{Una línea, un teorema}\n${contenido}\\end{recuadro}\n`;
     const definicion = ENTORNOS[nodo.name];
     if (!definicion) return contenido;
-    const numero = definicion.contador ? ++contadores[definicion.contador] : undefined;
-    const contraejemplo = nodo.name === 'ejemplo' && /\bcontraejemplo\b/.test(String(nodo.attributes?.class ?? ''));
-    const base = contraejemplo ? 'Contraejemplo' : definicion.nombre;
+    const { base, contador } = nombreDelEntorno(nodo.name, {
+      contraejemplo: /\bcontraejemplo\b/.test(String(nodo.attributes?.class ?? '')),
+      tipo: nodo.attributes?.tipo ?? undefined,
+    });
+    const numero = contador ? ++contadores[contador] : undefined;
     const nombre = numero === undefined ? base : `${base} ${capitulo}.${numero}`;
     let encabezado = `\\textbf{${escapar(nombre)}}${titulo ? ` (${titulo})` : ''}.`;
     if (nodo.name === 'ejercicio') {

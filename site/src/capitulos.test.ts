@@ -41,6 +41,14 @@ const GRAFO = new Grafo(cargarIndice());
  * obra (CC BY-NC-SA para el texto, MIT para el código).
  */
 const LICENCIAS_COMPATIBLES = ['dominio público', 'CC0', 'MIT', 'BSD', 'Apache-2.0', 'CC BY 4.0', 'CC BY-SA 4.0'];
+/**
+ * Los capítulos que todavía tienen ejercicios citados por el texto sin solución. La regla es de la segunda
+ * recalibración (decisión 0006): un ejercicio que el texto cita completa algo que el texto deja, y el lector tiene
+ * que poder comprobarlo. Cada capítulo sale de la lista en su pasada de Aplicaciones, y la lista desaparece con ella.
+ */
+const CITADOS_SIN_SOLUCION = new Set(
+  ['i-1', 'i-2', 'i-3', 'i-4', 'i-5', 'i-6', 'i-7', 'i-8', 'i-9', 'i-10', 'i-11', 'i-12', 'i-14', 'i-15'].map((c) => `${c}.md`),
+);
 const PLANTILLA = [
   'Entrada',
   'Motivación',
@@ -149,8 +157,9 @@ describe.each(archivos)('el capítulo %s', (archivo) => {
     expect(fuera, 'la Entrada y la Salida solo usan el recorrido (especificación, 8.1)').toEqual([]);
   });
 
-  it('sus ejercicios dicen dificultad, tipo y sección; los de cálculo, su respuesta; los impares tienen solución (decisión 0006)', () => {
-    expect(revisarEjercicios(texto)).toEqual([]);
+  it('sus ejercicios dicen dificultad, tipo y sección; los de cálculo, su respuesta; los impares y los citados tienen solución (decisión 0006)', () => {
+    const pendiente = CITADOS_SIN_SOLUCION.has(archivo);
+    expect(revisarEjercicios(texto).filter((p) => !(pendiente && /el texto lo cita/.test(p)))).toEqual([]);
   });
 
   it('dice de dónde sale el fragmento de la Entrada, con una licencia compatible con la de la obra (especificación, 8.1)', () => {

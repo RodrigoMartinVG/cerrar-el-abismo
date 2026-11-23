@@ -38,7 +38,24 @@ describe('los ejercicios (decisión 0006)', () => {
     expect(problemas.join('\n')).toMatch(/la sección «nada» no existe/);
     expect(problemas.join('\n')).toMatch(/lleva su «respuesta»/);
     expect(problemas.join('\n')).toMatch(/es impar y no tiene solución/);
-    expect(problemas.join('\n')).toMatch(/es par y tiene solución/);
+    expect(problemas.join('\n')).toMatch(/es par, el texto no lo cita, y tiene solución/);
+  });
+
+  it('los que el texto cita llevan solución aunque sean pares, y los proyectos van al final, fuera de la paridad', () => {
+    const ejercicio = (id: string, tipo = 'calculo') =>
+      `:::ejercicio{#${id} nivel=1 tipo=${tipo} seccion="cálculo" respuesta=1}\nA.\n:::\n\n`;
+    const solucion = ':::solucion\nS.\n:::\n\n';
+    const conCita = (ejercicios: string) => capitulo(ejercicios).replace('Texto.', 'Texto, que completa el :ref[ej-dos].');
+    const bien = conCita(`${ejercicio('ej-uno')}${solucion}${ejercicio('ej-dos')}${solucion}${ejercicio('ej-p', 'proyecto')}`);
+    expect(revisarEjercicios(bien)).toEqual([]);
+    expect(ejerciciosDelCapitulo(bien).map((e) => [e.proyecto ? 'Proyecto' : 'Ejercicio', e.numero])).toEqual([
+      ['Ejercicio', 1],
+      ['Ejercicio', 2],
+      ['Proyecto', 1],
+    ]);
+    const mal = conCita(`${ejercicio('ej-p', 'proyecto')}${ejercicio('ej-uno')}${solucion}${ejercicio('ej-dos')}`);
+    expect(revisarEjercicios(mal).join('\n')).toMatch(/va después de un proyecto/);
+    expect(revisarEjercicios(mal).join('\n')).toMatch(/el texto lo cita, así que lleva su solución/);
   });
 });
 

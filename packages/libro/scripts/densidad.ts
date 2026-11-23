@@ -3,7 +3,8 @@
  *
  *     npm run densidad
  *
- * Una línea por capítulo, con ✓ para cada meta que cumple y · para la que no; debajo, las que no cumple, con su valor.
+ * Una línea por capítulo, con ✓ para cada meta que cumple y · para la que no; debajo, las que no cumple, con su valor,
+ * y lo que ocupa cada parte de la plantilla frente al peso que le da la especificación (sección 7).
  */
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -20,8 +21,18 @@ const porciento = (x: number | undefined) => `${Math.round(100 * (x ?? 0))}%`.pa
 const flacas: string[] = [];
 let cumplen = 0;
 const pendientes: string[] = [];
+/** Las partes de la plantilla con peso propio, y ese peso (especificación, sección 7). */
+const PESOS: [string, string, number][] = [
+  ['Desarrollo', 'des.', 0.45],
+  ['Cálculo', 'cál.', 0.1],
+  ['Puente', 'pue.', 0.1],
+  ['Aplicaciones', 'apl.', 0.2],
+  ['Ejercicios', 'ejer.', 0.15],
+];
+const proporciones: string[] = [];
 for (const c of capitulos) {
   const d = medirDensidad(readFileSync(join(carpeta, `${slug(c.id)}.md`), 'utf8'));
+  proporciones.push(`${c.id.padEnd(11)}${PESOS.map(([seccion]) => porciento(d.proporciones[seccion])).join('')}`);
   const metas = evaluarDensidad(d, c.paginas);
   if (metas.every((m) => m.cumple)) cumplen++;
   console.log(
@@ -31,6 +42,9 @@ for (const c of capitulos) {
   if ((d.proporciones['Aplicaciones'] ?? 0) < METAS.aplicacionesSenaladas) flacas.push(c.id);
 }
 console.log(`\n${cumplen} de ${capitulos.length} capítulos cumplen todas las metas.`);
+console.log(`\nLo que ocupa cada parte de la plantilla:\n${''.padEnd(11)}${PESOS.map(([, corto]) => corto.padEnd(6)).join('')}`);
+console.log(`${'plantilla'.padEnd(11)}${PESOS.map(([, , peso]) => porciento(peso)).join('')}`);
+console.log(proporciones.join('\n'));
 if (pendientes.length) console.log(`\nLo que falta:\n${pendientes.join('\n')}`);
 if (flacas.length)
   console.log(`\nAplicaciones de menos del 12 % del capítulo (la plantilla les da el 20 %): ${flacas.join(', ')}.`);

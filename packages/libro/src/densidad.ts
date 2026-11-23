@@ -26,6 +26,7 @@ export interface Densidad {
   figuras: number;
   celdas: number;
   ejercicios: number;
+  proyectos: number;
   /** Los ejercicios por tipo y por nivel (decisión 0006). */
   porTipo: Record<string, number>;
   /** Entre los que el texto no cita, los de demostrar y el total. */
@@ -142,14 +143,17 @@ export function medirDensidad(markdown: string): Densidad {
   const cuenta = (texto: string, patron: RegExp) => texto.match(patron)?.length ?? 0;
   const ejemplos = [...desarrollo.matchAll(/^:::ejemplo(?:\[[^\]]*\])?(\{[^\n]*\})?\n([\s\S]*?)^:::$/gm)];
   const ejercicios = ejerciciosDelCapitulo(markdown);
+  const total = palabrasDeProsa(cuerpo);
+  // Los proyectos van aparte: no cuentan para los 15 a 20 ejercicios ni para la mezcla (decisión 0006).
+  const comunes = ejercicios.filter((e) => !e.proyecto);
+  const libres = comunes.filter((e) => !e.citadoPorElTexto);
+  // Los niveles cuentan también los proyectos: uno de nivel 3 es un desafío como cualquier otro.
   const sumar = (clave: 'tipo' | 'nivel') =>
-    ejercicios.reduce<Record<string, number>>((r, e) => {
+    (clave === 'nivel' ? ejercicios : comunes).reduce<Record<string, number>>((r, e) => {
       const k = e.atributos[clave] ?? '?';
       r[k] = (r[k] ?? 0) + 1;
       return r;
     }, {});
-  const total = palabrasDeProsa(cuerpo);
-  const libres = ejercicios.filter((e) => !e.citadoPorElTexto);
   const proporciones: Record<string, number> = {};
   for (const [, titulo, texto] of cuerpo.matchAll(/^## (.+)\n([\s\S]*?)(?=^## |(?![\s\S]))/gm))
     proporciones[titulo!] = palabrasDeProsa(texto!) / Math.max(1, total);
@@ -165,7 +169,8 @@ export function medirDensidad(markdown: string): Densidad {
     ejemploMasLargo: Math.max(0, ...ejemplos.map((m) => palabrasDeProsa(m[2]!))),
     figuras: cuenta(cuerpo, /^::figura\b/gm),
     celdas: cuenta(cuerpo, /^```python celda$/gm),
-    ejercicios: ejercicios.length,
+    ejercicios: comunes.length,
+    proyectos: ejercicios.length - comunes.length,
     porTipo: sumar('tipo'),
     demostracionesLibres: libres.filter((e) => e.atributos['tipo'] === 'demostracion').length,
     ejerciciosLibres: libres.length,

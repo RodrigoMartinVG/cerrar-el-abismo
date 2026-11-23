@@ -4,7 +4,7 @@ import { SKIP, visit } from 'unist-util-visit';
 import type { VFile } from 'vfile';
 import GithubSlugger from 'github-slugger';
 import { NIVELES, TIPOS, type Nivel, type Tipo } from './ejercicios.ts';
-import { DIRECTIVAS_DE_STARLIGHT, ENTORNOS } from './entornos.ts';
+import { DIRECTIVAS_DE_STARLIGHT, ENTORNOS, nombreDelEntorno } from './entornos.ts';
 import { leerNumero } from './respuestas.ts';
 import { revisarSupone, type Supuesto } from './supone.ts';
 
@@ -164,7 +164,7 @@ export function remarkLibro(opciones: OpcionesLibro) {
   return function transformar(arbol: Root, file: VFile) {
     const capitulo = capituloDe(file);
     const prefijo = capitulo ? `${capitulo}.` : '';
-    const contadores = { resultados: 0, ejercicios: 0, figuras: 0 };
+    const contadores = { resultados: 0, ejercicios: 0, proyectos: 0, figuras: 0 };
     const etiquetas = new Map<string, string>();
     const fallar = (mensaje: string, nodo: RootContent): never => file.fail(mensaje, nodo);
     const secciones = seccionesDelArbol(arbol);
@@ -187,10 +187,11 @@ export function remarkLibro(opciones: OpcionesLibro) {
           );
         }
         const etiqueta = sacarEtiqueta(nodo);
-        const numero = entorno.contador ? ++contadores[entorno.contador] : undefined;
-        // Un ejemplo marcado {.contraejemplo} se nombra «Contraejemplo», con el mismo contador (guía de estilo, 6).
-        const contraejemplo = nodo.name === 'ejemplo' && /\bcontraejemplo\b/.test(String(nodo.attributes?.class ?? ''));
-        const base = contraejemplo ? 'Contraejemplo' : entorno.nombre;
+        const { base, contador } = nombreDelEntorno(nodo.name, {
+          contraejemplo: /\bcontraejemplo\b/.test(String(nodo.attributes?.class ?? '')),
+          tipo: nodo.attributes?.tipo ?? undefined,
+        });
+        const numero = contador ? ++contadores[contador] : undefined;
         const nombre = numero === undefined ? base : `${base} ${prefijo}${numero}`;
         registrar(nodo.attributes?.id, nombre, nodo);
         const encabezado: Paragraph = {
@@ -247,7 +248,11 @@ export function remarkLibro(opciones: OpcionesLibro) {
         nodo.data = {
           hName: entorno.html ?? 'section',
           hProperties: {
-            className: ['entorno', `entorno-${nodo.name}`, ...(contraejemplo ? ['contraejemplo'] : [])],
+            className: [
+              'entorno',
+              `entorno-${nodo.name}`,
+              ...(base === 'Contraejemplo' ? ['contraejemplo'] : base === 'Proyecto' ? ['proyecto'] : []),
+            ],
             id: nodo.attributes?.id ?? undefined,
             open: entorno.abierto || undefined,
           },
