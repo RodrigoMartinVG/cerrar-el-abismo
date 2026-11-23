@@ -84,6 +84,7 @@ Barbič
 baricéntricas
 Barto
 Basilea
+Batelaan
 bayesiana
 bayesianos
 Bendixson
@@ -101,6 +102,7 @@ binomiales
 biomecánica
 Birkhoff
 bitangente
+bitslicing
 bivector
 bivectores
 biyección
@@ -111,6 +113,7 @@ biyectivas
 biyectivo
 Bjørner
 Blitzstein
+Bogdanov
 Bohm
 Bombelli
 Bóna
@@ -296,6 +299,7 @@ Dobell
 Dohlmann
 Doob
 Dorronsoro
+DTMF
 Dualgruppen
 Dummit
 Durrett
@@ -345,6 +349,7 @@ estacionariedad
 estenopeica
 estereología
 Étienne
+ETSI
 euclídeo
 euclídeos
 Euclides
@@ -409,7 +414,9 @@ giróscopos
 Givant
 glsl
 gltfpack
+Goertzel
 Goldbach
+Goldfeather
 Goldstein
 Goldstine
 Golub
@@ -637,6 +644,7 @@ linalg
 Lindelöf
 Lindemann
 linealizadas
+Liou
 Liouville
 Lipschitz
 llamémosla
@@ -747,6 +755,7 @@ Neumann
 neuroimagen
 Newcombe
 newtoniano
+ngspice
 Niederreiter
 Nielson
 Nikodym
@@ -838,6 +847,7 @@ poscondiciones
 postcuántica
 postularla
 prefiltradas
+Preguiça
 preimage
 preimagen
 preimágenes
@@ -911,6 +921,7 @@ retropropagación
 revisitada
 revisitado
 Rhoads
+Riak
 Riccati
 Ricci
 Riemannian
@@ -1069,6 +1080,7 @@ sumabilidad
 sumación
 sumandos
 Sunzi
+superheterodinas
 superíndices
 supersampling
 supremum
@@ -1151,6 +1163,7 @@ Walther
 Warshall
 Wasserman
 Wasserstein
+Wegman
 Wessel
 Weyl
 WGSL
@@ -1163,10 +1176,12 @@ Yarik
 Yitang
 Yorke
 Yosida
+Zadeck
 Zagier
 Zamir
 Západomoravské
 Zariski
+Zawirski
 Zermelo
 Zhang
 Zisserman

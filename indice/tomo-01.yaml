@@ -233,13 +233,13 @@ partes:
         puente: 'Entrada: `z = z * complex(cos(a), sin(a))` en un juego 2D. Multiplicar por un número complejo de módulo 1 es rotar: es la versión plana de lo que harán los cuaterniones (aviso de II.16).'
         aplicaciones:
           - campo: 3d
-            texto: rotaciones 2D sin matrices
-          - campo: senales
-            texto: fasores para representar oscilaciones
+            texto: 'interpolar orientaciones en el plano: SLERP y NLERP'
           - campo: ing
-            texto: impedancias en circuitos de corriente alterna
+            texto: 'fasores, impedancias y resonancia en el sintonizador de una radio de AM'
+          - campo: senales
+            texto: 'reconocer los tonos de un teclado telefónico (DTMF) con las raíces de la unidad'
           - campo: fisica
-            texto: amplitudes complejas en óptica ondulatoria
+            texto: 'amplitudes complejas en el experimento de las dos rendijas'
         lecturas:
           rigor: 'Spivak, *Calculus* (construcción de ℝ); Needham, *Visual Complex Analysis*.'
           practica: 'Kuipers, *Quaternions and Rotation Sequences*, para las rotaciones como productos.'
@@ -312,11 +312,13 @@ partes:
         puente: 'Entrada: el bucle de un analizador de flujo de datos, que repite «la entrada de cada nodo es la unión de las salidas de sus predecesores» hasta que nada cambia. Los conjuntos de hechos forman un retículo y cada vuelta aplica una función monótona: el teorema de Knaster–Tarski garantiza que existe el menor punto fijo, y la altura finita del retículo, que el bucle llega a él.'
         aplicaciones:
           - campo: cripto
-            texto: análisis estático de programas y diseño de circuitos lógicos
-          - campo: 3d
-            texto: 'geometría constructiva de sólidos: unión, intersección y diferencia como operaciones de un álgebra de Boole'
+            texto: 'análisis estático: la propagación de constantes como menor punto fijo en un retículo de altura finita'
+          - campo: cripto
+            texto: 'cajas de sustitución sin tablas: formas normales y operaciones bit a bit contra los ataques por tiempo'
           - campo: datos
-            texto: análisis formal de conceptos y estructuras de datos replicadas sin conflictos (CRDT)
+            texto: 'tipos de datos replicados sin conflictos (CRDT): la mezcla de réplicas como supremo de un semirretículo'
+          - campo: 3d
+            texto: 'geometría constructiva de sólidos: el árbol de OpenSCAD reescrito como unión de intersecciones'
         lecturas:
           rigor: 'Davey y Priestley, *Introduction to Lattices and Order*; Givant y Halmos, *Introduction to Boolean Algebras*.'
           practica: 'Nielson, Nielson y Hankin, *Principles of Program Analysis*; Aho, Lam, Sethi y Ullman, *Compilers*, sobre el análisis de flujo de datos.'

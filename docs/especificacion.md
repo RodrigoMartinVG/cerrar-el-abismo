@@ -639,7 +639,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Teorema fundamental del álgebra: enunciado y factorización en ℂ[x] y en ℝ[x]; se demuestra en III.8.
 
 **Puente.** Entrada: `z = z * complex(cos(a), sin(a))` en un juego 2D. Multiplicar por un número complejo de módulo 1 es rotar: es la versión plana de lo que harán los cuaterniones (aviso de II.16).
-**Aplicaciones.** [3D] rotaciones 2D sin matrices · [Señales] fasores para representar oscilaciones · [Ing] impedancias en circuitos de corriente alterna · [Física] amplitudes complejas en óptica ondulatoria.
+**Aplicaciones.** [3D] interpolar orientaciones en el plano: SLERP y NLERP · [Ing] fasores, impedancias y resonancia en el sintonizador de una radio de AM · [Señales] reconocer los tonos de un teclado telefónico (DTMF) con las raíces de la unidad · [Física] amplitudes complejas en el experimento de las dos rendijas.
 **Lecturas.** *Rigor:* Spivak, *Calculus* (construcción de ℝ); Needham, *Visual Complex Analysis*. *Práctica:* Kuipers, *Quaternions and Rotation Sequences*, para las rotaciones como productos. *En español:* Gentile, *Notas de álgebra: números complejos*.
 
 #### I.10 Números en la máquina
@@ -674,7 +674,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Filtros e ideales; teorema de representación de Stone, para las álgebras finitas y, con el lema de Zorn, en general.
 
 **Puente.** Entrada: el bucle de un analizador de flujo de datos, que repite «la entrada de cada nodo es la unión de las salidas de sus predecesores» hasta que nada cambia. Los conjuntos de hechos forman un retículo y cada vuelta aplica una función monótona: el teorema de Knaster–Tarski garantiza que existe el menor punto fijo, y la altura finita del retículo, que el bucle llega a él.
-**Aplicaciones.** [Cripto] análisis estático de programas y diseño de circuitos lógicos · [3D] geometría constructiva de sólidos: unión, intersección y diferencia como operaciones de un álgebra de Boole · [Datos] análisis formal de conceptos y estructuras de datos replicadas sin conflictos (CRDT).
+**Aplicaciones.** [Cripto] análisis estático: la propagación de constantes como menor punto fijo en un retículo de altura finita · [Cripto] cajas de sustitución sin tablas: formas normales y operaciones bit a bit contra los ataques por tiempo · [Datos] tipos de datos replicados sin conflictos (CRDT): la mezcla de réplicas como supremo de un semirretículo · [3D] geometría constructiva de sólidos: el árbol de OpenSCAD reescrito como unión de intersecciones.
 **Lecturas.** *Rigor:* Davey y Priestley, *Introduction to Lattices and Order*; Givant y Halmos, *Introduction to Boolean Algebras*. *Práctica:* Nielson, Nielson y Hankin, *Principles of Program Analysis*; Aho, Lam, Sethi y Ullman, *Compilers*, sobre el análisis de flujo de datos.
 
 #### I.13 Autómatas finitos y lenguajes regulares
@@ -2528,7 +2528,7 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 
 | Tomo | Caps. | Págs. | Caps. de núcleo | Págs. de núcleo | Aplicaciones [3D] | Aplicaciones [Física] |
 | --- | --- | --- | --- | --- | --- | --- |
-| I | 15 | 638 | 12 | 514 | 14 de 54 (26 %) | 5 de 54 (9 %) |
+| I | 15 | 638 | 12 | 514 | 14 de 55 (25 %) | 5 de 55 (9 %) |
 | II | 17 | 672 | 16 | 632 | 16 de 56 (29 %) | 12 de 56 (21 %) |
 | III | 13 | 564 | 11 | 484 | 12 de 41 (29 %) | 6 de 41 (15 %) |
 | IV | 14 | 564 | 12 | 484 | 13 de 43 (30 %) | 7 de 43 (16 %) |
@@ -2541,7 +2541,7 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 | XI | 18 | 776 | 11 | 488 | 14 de 56 (25 %) | 9 de 56 (16 %) |
 | XII | 11 | 496 | 7 | 320 | 10 de 33 (30 %) | 10 de 33 (30 %) |
 | XIII | 7 | 324 | 0 | 0 | 5 de 21 (24 %) | 7 de 21 (33 %) |
-| **Total** | **167** | **7.142** | **121** | **5.214** | **142 de 520 (27 %)** | **103 de 520 (20 %)** |
+| **Total** | **167** | **7.142** | **121** | **5.214** | **142 de 521 (27 %)** | **103 de 521 (20 %)** |
 
 - Los capítulos tienen entre 28 y 52 páginas, con una media de 42,8.
 - Cada tomo suma además unas 50 páginas de material propio: «Lo que este tomo importa», «Lo que este tomo exporta», notación y convenciones, diccionario academia–práctica del tomo, soluciones de los ejercicios impares e índice analítico. En total, unas 650 páginas, para unas 7.792 en toda la obra.
@@ -2556,8 +2556,8 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 | [Datos] | 61 | 12 % |
 | [Bio/Eco] | 48 | 9 % |
 | [Señales] | 34 | 7 % |
-| [Cripto] | 32 | 6 % |
-| **Total** | **520** | **100 %** |
+| [Cripto] | 33 | 6 % |
+| **Total** | **521** | **100 %** |
 
 | Itinerario (9.6) | Caps. | Págs. de capítulos |
 | --- | --- | --- |
