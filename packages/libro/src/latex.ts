@@ -30,11 +30,9 @@ const EN_CURSIVA = new Set(['axioma', 'teorema', 'lema', 'proposicion', 'corolar
 
 /** Escapa un texto para LaTeX. */
 export function escapar(texto: string): string {
-  return texto
-    .replace(/\\/g, '\\textbackslash{}')
-    .replace(/([{}$&#%_])/g, '\\$1')
-    .replace(/\^/g, '\\textasciicircum{}')
-    .replace(/~/g, '\\textasciitilde{}');
+  // En una sola pasada: si la barra invertida se reemplazara primero, sus llaves se escaparían después.
+  const especiales: Record<string, string> = { '\\': '\\textbackslash{}', '^': '\\textasciicircum{}', '~': '\\textasciitilde{}' };
+  return texto.replace(/[\\{}$&#%_^~]/g, (c) => especiales[c] ?? `\\${c}`);
 }
 
 /**

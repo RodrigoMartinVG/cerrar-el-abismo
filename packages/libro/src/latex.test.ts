@@ -10,6 +10,7 @@ const capitulo = (cuerpo: string) => `---\ntitle: I.7 Grupos\ncapitulo: I.7\n---
 describe('el PDF: un capítulo convertido a LaTeX (decisión 0007)', () => {
   it('escapa los caracteres especiales del texto, y deja las fórmulas como están', () => {
     expect(escapar('50 % de $x_1$ & {y}')).toBe('50 \\% de \\$x\\_1\\$ \\& \\{y\\}');
+    expect(escapar('\\d+ y a^2~b')).toBe('\\textbackslash{}d+ y a\\textasciicircum{}2\\textasciitilde{}b');
     expect(capituloALatex(capitulo('Si $a_1 \\le b$, entonces\n\n$$\n\\sum_k a_k\n$$'), opciones)).toContain(
       'Si $a_1 \\le b$, entonces\n',
     );
