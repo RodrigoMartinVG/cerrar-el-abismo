@@ -576,7 +576,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Primos para la criptografía: test de Fermat, números de Carmichael y test de Miller–Rabin. Exponenciación rápida y el problema del logaritmo discreto; la distribución de los primos llega en IX.15.
 
 **Puente.** Entrada: `state = state * 6364136223846793005 + 1442695040888963407`. Un generador congruencial lineal es una iteración en ℤ/2⁶⁴ℤ, y su período lo deciden condiciones de aritmética modular (teorema de Hull–Dobell).
-**Aplicaciones.** [Cripto] RSA, Diffie–Hellman y dígitos de control (ISBN, IBAN) · [3D] semillas reproducibles para mundos procedurales y *hashing* espacial · [Datos] reparto de datos entre servidores por dispersión.
+**Aplicaciones.** [Cripto] las claves de RSA (PKCS #1): el descifrado con el teorema chino del resto y el ataque por máximo común divisor · [Cripto] Diffie–Hellman en los grupos de TLS, y el bit del secreto que delata el criterio de Euler · [3D] *hashing* espacial: constantes impares en tablas de 2ᵏ cubetas, y semillas enteras para mundos procedurales · [Datos] reparto de claves entre servidores: con el resto módulo N se muda la fracción N/(N + 1), y la dispersión consistente.
 **Lecturas.** *Rigor:* Hoffstein, Pipher y Silverman, *An Introduction to Mathematical Cryptography*; Rosen, *Elementary Number Theory and Its Applications*. *Práctica:* Knuth, *The Art of Computer Programming*, vol. 2; Menezes, van Oorschot y Vanstone, *Handbook of Applied Cryptography* (libre); O'Neill, «PCG» (2014), sobre los generadores congruenciales. *En español:* Krick, *Álgebra I*.
 
 #### I.5 Combinatoria
@@ -2528,7 +2528,7 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 
 | Tomo | Caps. | Págs. | Caps. de núcleo | Págs. de núcleo | Aplicaciones [3D] | Aplicaciones [Física] |
 | --- | --- | --- | --- | --- | --- | --- |
-| I | 15 | 638 | 12 | 514 | 14 de 52 (27 %) | 5 de 52 (10 %) |
+| I | 15 | 638 | 12 | 514 | 14 de 53 (26 %) | 5 de 53 (9 %) |
 | II | 17 | 672 | 16 | 632 | 16 de 56 (29 %) | 12 de 56 (21 %) |
 | III | 13 | 564 | 11 | 484 | 12 de 41 (29 %) | 6 de 41 (15 %) |
 | IV | 14 | 564 | 12 | 484 | 13 de 43 (30 %) | 7 de 43 (16 %) |
@@ -2541,11 +2541,11 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 | XI | 18 | 776 | 11 | 488 | 14 de 56 (25 %) | 9 de 56 (16 %) |
 | XII | 11 | 496 | 7 | 320 | 10 de 33 (30 %) | 10 de 33 (30 %) |
 | XIII | 7 | 324 | 0 | 0 | 5 de 21 (24 %) | 7 de 21 (33 %) |
-| **Total** | **167** | **7.142** | **121** | **5.214** | **142 de 518 (27 %)** | **103 de 518 (20 %)** |
+| **Total** | **167** | **7.142** | **121** | **5.214** | **142 de 519 (27 %)** | **103 de 519 (20 %)** |
 
 - Los capítulos tienen entre 28 y 52 páginas, con una media de 42,8.
 - Cada tomo suma además unas 50 páginas de material propio: «Lo que este tomo importa», «Lo que este tomo exporta», notación y convenciones, diccionario academia–práctica del tomo, soluciones de los ejercicios impares e índice analítico. En total, unas 650 páginas, para unas 7.792 en toda la obra.
-- El hilo 3D ocupa entre el 21 % y el 33 % de las aplicaciones de cada tomo, y el de física entre el 10 % y el 33 %: ninguno supera el límite de un tercio (9.2).
+- El hilo 3D ocupa entre el 21 % y el 33 % de las aplicaciones de cada tomo, y el de física entre el 9 % y el 33 %: ninguno supera el límite de un tercio (9.2).
 - El Tomo XIII no tiene capítulos de núcleo: todo él es complementario en el sentido de 5.3.
 
 | Campo (9.1) | Aplicaciones | Proporción |
@@ -2556,8 +2556,8 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 | [Datos] | 61 | 12 % |
 | [Bio/Eco] | 48 | 9 % |
 | [Señales] | 34 | 7 % |
-| [Cripto] | 30 | 6 % |
-| **Total** | **518** | **100 %** |
+| [Cripto] | 31 | 6 % |
+| **Total** | **519** | **100 %** |
 
 | Itinerario (9.6) | Caps. | Págs. de capítulos |
 | --- | --- | --- |

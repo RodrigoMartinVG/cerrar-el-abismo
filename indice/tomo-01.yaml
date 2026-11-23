@@ -94,11 +94,13 @@ partes:
         puente: 'Entrada: `state = state * 6364136223846793005 + 1442695040888963407`. Un generador congruencial lineal es una iteración en ℤ/2⁶⁴ℤ, y su período lo deciden condiciones de aritmética modular (teorema de Hull–Dobell).'
         aplicaciones:
           - campo: cripto
-            texto: RSA, Diffie–Hellman y dígitos de control (ISBN, IBAN)
+            texto: 'las claves de RSA (PKCS #1): el descifrado con el teorema chino del resto y el ataque por máximo común divisor'
+          - campo: cripto
+            texto: 'Diffie–Hellman en los grupos de TLS, y el bit del secreto que delata el criterio de Euler'
           - campo: 3d
-            texto: semillas reproducibles para mundos procedurales y *hashing* espacial
+            texto: '*hashing* espacial: constantes impares en tablas de 2ᵏ cubetas, y semillas enteras para mundos procedurales'
           - campo: datos
-            texto: reparto de datos entre servidores por dispersión
+            texto: 'reparto de claves entre servidores: con el resto módulo N se muda la fracción N/(N + 1), y la dispersión consistente'
         lecturas:
           rigor: 'Hoffstein, Pipher y Silverman, *An Introduction to Mathematical Cryptography*; Rosen, *Elementary Number Theory and Its Applications*.'
           practica: "Knuth, *The Art of Computer Programming*, vol. 2; Menezes, van Oorschot y Vanstone, *Handbook of Applied Cryptography* (libre); O'Neill, «PCG» (2014), sobre los generadores congruenciales."

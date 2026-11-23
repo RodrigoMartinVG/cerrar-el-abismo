@@ -296,6 +296,7 @@ Dorronsoro
 Dualgruppen
 Dummit
 Durrett
+Durumeric
 ECDH
 Eckart
 econometría
@@ -420,6 +421,7 @@ HACL
 Hairer
 Haken
 Halāyudha
+Halderman
 Halmos
 Halton
 hamiltoniana
@@ -434,6 +436,8 @@ Hastie
 Heawood
 Heckbert
 Hecke
+Heidelberger
+Heninger
 Henkin
 Henriksen
 Hensel
@@ -549,6 +553,7 @@ Kakutani
 Kalman
 Kampen
 Kantorovich
+Karger
 Karnaugh
 Karp
 Karpman
@@ -803,6 +808,7 @@ polinomiales
 politopos
 Pólya
 Pomerance
+Pomeranets
 ponens
 Pontryagin
 poscondición
@@ -1049,6 +1055,7 @@ Tarski
 Tautología
 tautología
 tautologías
+Teschner
 teselación
 Teselaciones
 teselaciones
@@ -1124,6 +1131,7 @@ WGSL
 Willsky
 worklist
 wronskiano
+Wustrow
 XPBD
 Yarik
 Yitang
