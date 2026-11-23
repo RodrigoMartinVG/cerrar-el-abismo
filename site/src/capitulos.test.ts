@@ -47,7 +47,7 @@ const LICENCIAS_COMPATIBLES = ['dominio público', 'CC0', 'MIT', 'BSD', 'Apache-
  * que poder comprobarlo. Cada capítulo sale de la lista en su pasada de Aplicaciones, y la lista desaparece con ella.
  */
 const CITADOS_SIN_SOLUCION = new Set(
-  ['i-1', 'i-3', 'i-4', 'i-5', 'i-6', 'i-7', 'i-8', 'i-9', 'i-10', 'i-11', 'i-12', 'i-14', 'i-15'].map((c) => `${c}.md`),
+  ['i-1', 'i-4', 'i-5', 'i-6', 'i-7', 'i-8', 'i-9', 'i-10', 'i-11', 'i-12', 'i-14', 'i-15'].map((c) => `${c}.md`),
 );
 const PLANTILLA = [
   'Entrada',

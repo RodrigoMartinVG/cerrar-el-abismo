@@ -71,11 +71,11 @@ partes:
         puente: 'Entrada: `while (b != 0) { t = b; b = a % b; a = t; }`. Es el algoritmo de Euclides, y su terminación es el principio del buen orden.'
         aplicaciones:
           - campo: cripto
-            texto: aritmética racional exacta
+            texto: 'aritmética racional exacta: la forma canónica de Fraction y de GMP, y el tamaño de los denominadores'
           - campo: senales
-            texto: períodos de señales combinadas y mínimo común múltiplo
+            texto: 'el período de una suma de tonos: la quinta justa y la temperada'
           - campo: 3d
-            texto: repetición de texturas con períodos coprimos para evitar patrones visibles
+            texto: texturas superpuestas con tamaños coprimos («principio de la cigarra») y su período fundamental
         lecturas:
           rigor: 'Rosen, *Elementary Number Theory and Its Applications*; Stillwell, *Elements of Number Theory*.'
           practica: 'Knuth, *The Art of Computer Programming*, vol. 2, sobre el algoritmo de Euclides y su costo.'

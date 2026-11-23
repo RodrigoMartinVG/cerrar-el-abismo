@@ -938,6 +938,7 @@ Shortley
 Shumway
 Shwartz
 Sifakis
+SIGGRAPH
 Silverman
 simpléctica
 simpléctico

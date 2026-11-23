@@ -565,7 +565,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Números primos, infinitud de los primos y teorema fundamental de la aritmética; problemas abiertos que se enuncian con estas palabras: Goldbach, los primos gemelos y la conjetura de Collatz.
 
 **Puente.** Entrada: `while (b != 0) { t = b; b = a % b; a = t; }`. Es el algoritmo de Euclides, y su terminación es el principio del buen orden.
-**Aplicaciones.** [Cripto] aritmética racional exacta · [Señales] períodos de señales combinadas y mínimo común múltiplo · [3D] repetición de texturas con períodos coprimos para evitar patrones visibles.
+**Aplicaciones.** [Cripto] aritmética racional exacta: la forma canónica de Fraction y de GMP, y el tamaño de los denominadores · [Señales] el período de una suma de tonos: la quinta justa y la temperada · [3D] texturas superpuestas con tamaños coprimos («principio de la cigarra») y su período fundamental.
 **Lecturas.** *Rigor:* Rosen, *Elementary Number Theory and Its Applications*; Stillwell, *Elements of Number Theory*. *Práctica:* Knuth, *The Art of Computer Programming*, vol. 2, sobre el algoritmo de Euclides y su costo. *En español:* Gentile, *Notas de álgebra I*; Krick, *Álgebra I*.
 
 #### I.4 Congruencias y aritmética modular
