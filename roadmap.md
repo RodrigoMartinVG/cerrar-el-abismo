@@ -3,7 +3,7 @@
 *Versión del 22 de noviembre de 2026. Se actualiza a medida que se avanza: cada commit que cierra un punto marca su
 casilla y mueve la línea «En curso».*
 
-**En curso:** la fase F, que es del autor: la primera pasada de revisión, la lectura de estilo y la prueba con estudiantes. Todo lo demás de la hoja de ruta está hecho.
+**En curso:** la segunda recalibración de las metas (E7) y la pasada de Aplicaciones (E8), que empieza por un piloto en I.2. Después queda la fase F, que es del autor.
 
 Este documento reúne todo lo que falta para dar por terminado el Tomo I (especificación, 16.1 y 16.2) y lo que
 conviene revisar en el resto de la obra mientras tanto. Ordena el trabajo en fases, dice qué depende de qué y quién
@@ -222,6 +222,28 @@ commit, lo que conviene mirar en la lectura de estilo: los capítulos que quedar
   *Hecho: LaTeX con LuaLaTeX (decisión 0007), porque las fórmulas ya están en LaTeX. `npm run pdf` convierte el
   tomo con el mismo árbol que la web, y el trabajo «PDF» de la integración continua lo compila. Quedan para el PDF
   definitivo los fotogramas de las figuras, el recuadro de `supone` y las soluciones al final.*
+
+- [ ] **E7. La ronda crítica** [Claude]: una lectura crítica de cada capítulo, que busca errores, juzga si cada
+      agregado de la fase D se gana su lugar y lo lleva a las metas de equilibrio, recalibradas con lo que estas
+      lecturas mostraron (guía de estilo, sección 6; decisión 0008).
+  - [x] I.2, I.3, I.9 e I.12 (primera tanda), e I.11
+  - [x] I.1, I.4, I.7, I.8 e I.13
+  - [x] I.5, I.6, I.10, I.14 e I.15
+
+  *Hecho hasta aquí: los quince capítulos cumplen las metas, que su prueba vigila sin excepciones. Las lecturas
+  corrigieron errores de verdad en casi todos (afirmaciones falsas, demostraciones con huecos, datos históricos sin
+  fuente, citas que no decían lo que se les atribuía) y desmarcaron los no-ejemplos que pasaban por contraejemplos.*
+  - [ ] La segunda recalibración de las metas, con lo que dijeron las quince lecturas
+- [ ] **E8. La pasada de Aplicaciones** [Claude]: las Aplicaciones ocupan del 4 % al 7 % de cada capítulo, contra el
+      20 % de la plantilla. Cada una se desarrolla como subsección, con el problema real, la traducción, el resultado
+      que lo resuelve, un caso entero y dónde termina el modelo; tienen su propia página en el sitio. Primero un
+      piloto en I.2, que calibra el encargo, y después los demás.
+- [x] **E9. Tres proyectos en el tomo** (guía de estilo, sección 6), en los capítulos que cierran un bloque: I.8
+      (álgebra), I.10 (números) e I.15 (lógica). Una prueba lo exige cuando el tomo está entero.
+
+  *Hecho: cuatro proyectos, cada uno con su enunciado por pasos: la S-caja de AES (I.8, con I.4 e I.7), el código de
+  Prüfer (I.6, con I.2 e I.5), redondear una fracción a doble precisión con enteros (I.10, con I.3 e I.9) y un
+  comprobador de demostraciones (I.15, con I.1, I.13 e I.14).*
 
 ## Fase F. La revisión registrada y el cierre
 
