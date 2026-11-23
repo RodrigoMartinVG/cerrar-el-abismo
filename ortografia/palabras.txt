@@ -552,6 +552,7 @@ Karnaugh
 Karp
 Karpman
 Karush
+Kāshī
 Kayal
 Kazimierz
 Keerthi
@@ -566,6 +567,8 @@ Klink
 Knaster
 Knopp
 Kobbelt
+Kocher
+Koen
 Koksma
 Kolmogorov
 Kondrachov

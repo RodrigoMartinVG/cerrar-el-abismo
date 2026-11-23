@@ -543,7 +543,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Notación de sumatorias y productorias; manipulación de índices.
 
 **Puente.** Entrada: la regularidad 1 + 3 + ⋯ + (2n − 1) = n², y la misma afirmación dentro de un bucle, como `assert i <= n and s == i * i`. Un invariante de bucle es un enunciado que se demuestra por inducción; una aserción es una implicación que el programa comprueba al ejecutarse.
-**Aplicaciones.** [Cripto] invariantes y corrección de algoritmos · [Datos] pruebas basadas en propiedades · [3D] precondiciones de las funciones geométricas, como exigir un vector no nulo antes de normalizar.
+**Aplicaciones.** [Cripto] la exponenciación rápida de RSA: su invariante, demostrado por inducción, y el ataque por tiempos que la demostración no cubre · [Datos] pruebas basadas en propiedades: un contraejemplo refuta y cien casos no demuestran; el *shrinking* reduce el contraejemplo · [3D] la precondición de `normalize` como hipótesis de una implicación, y por qué con números de máquina pasa a ser ε < |v|.
 **Lecturas.** *Rigor:* Velleman, *How to Prove It*; Hammack, *Book of Proof*. *Práctica:* Floyd, «Assigning Meanings to Programs» (1967), y Hoare, «An Axiomatic Basis for Computer Programming» (1969), el origen de los invariantes; Claessen y Hughes, «QuickCheck» (2000), sobre las pruebas basadas en propiedades. *Primer contacto:* Solow, *How to Read and Do Proofs*; Pólya, *Cómo plantear y resolver problemas*. *En español:* Gentile, *Notas de álgebra I*; Krick, *Álgebra I*.
 
 #### I.2 Conjuntos, relaciones y funciones
