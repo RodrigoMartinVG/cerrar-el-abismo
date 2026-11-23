@@ -137,6 +137,27 @@ Lagrange» en I.7, que es el modelo:
 Un concepto menor puede saltar pasos, pero no el tercero. Las tablas chicas, como la de multiplicar de un grupo o la
 de los órdenes de sus elementos, ayudan a ver lo que el texto afirma.
 
+**El recorrido de una aplicación.** Las Aplicaciones son el lado de la práctica, y se desarrollan con la misma
+paciencia que el Desarrollo. Cada una es una subsección `###` con un título que dice el problema («Soldar los
+vértices de una malla»), y recorre seis pasos, como lo hacen las de I.2, que son el modelo:
+
+1. el problema como aparece en la práctica: un sistema, un formato, un protocolo o un experimento real, con sus
+   números y su fuente primaria;
+2. la traducción: qué objeto del capítulo es cada cosa del problema, dicho explícitamente (en física, con los
+   postulados que la traducción toma);
+3. el resultado del capítulo que lo resuelve, citado y con el razonamiento hecho;
+4. un caso entero, con los números, a mano o en una celda (para un objeto que no se puede calcular, la celda muestra
+   el mecanismo);
+5. dónde termina el modelo: lo que la práctica agrega y el teorema no cubre, y qué falla cuando se olvida una
+   hipótesis;
+6. para seguir: el capítulo que lo lleva más lejos, o una lectura de fuera de la obra si ninguno lo hace.
+
+Los pasos 4 y 5 se funden cuando la celda muestra justamente dónde termina el modelo; un caso chico puede ir antes de
+la traducción, como en el ritmo de un concepto; y el paso 6 va dentro del último párrafo. Un razonamiento breve en
+prosa que explica la práctica está permitido; un resultado nuevo que el capítulo use, no. La notación de cada
+aplicación vale dentro de su subsección. Son tres aplicaciones de unas 1000 palabras o cuatro de unas 800, con las
+celdas, de al menos dos campos, y al menos una interactiva.
+
 **Las metas de un capítulo**, que mide `npm run densidad`, son rangos y proporciones, no solo pisos. La primera
 versión eran pisos (un ejemplo por definición, dos contraejemplos, una figura, quince ejercicios, el 85 % de las
 páginas), y la pasada de densidad del Tomo I mostró lo que eso produce: nueve capítulos crecieron hasta el tope,
@@ -149,12 +170,14 @@ ronda crítica que vino después recalibró las metas con casos concretos. Las d
   sección lo necesita. Las páginas se cuentan por lo que ocupa lugar: el texto, los pies de figura y el código, con
   cada fórmula del texto como una palabra y cada fórmula aparte como doce, porque contar los comandos de LaTeX inflaba
   la cuenta un 15 %.
-- **Proporciones de la plantilla:** el reporte muestra cuánto ocupa cada parte con peso propio frente a ese peso (el
-  Desarrollo, el 45 %; el Cálculo y el Puente, el 10 % cada uno; las Aplicaciones, el 20 %; los Ejercicios, el 15 %),
-  y señala las Aplicaciones de menos del 12 %. En el Tomo I, después de la fase D, el Desarrollo ocupaba del 50 % al
-  64 % y las Aplicaciones, del 4 % al 7 %: la teoría creció y la práctica no, justo lo contrario de la misión de la
-  obra. Cuando un capítulo no llega a su extensión, las proporciones dicen dónde falta: casi siempre en las
-  Aplicaciones y el Cálculo, no en el Desarrollo.
+- **Aplicaciones: al menos el 15 % del capítulo**, con el recorrido de arriba; la plantilla les da el 20 %. El reporte
+  muestra además cuánto ocupa cada parte con peso propio frente a ese peso (el Desarrollo, el 45 %; el Cálculo y el
+  Puente, el 10 % cada uno; los Ejercicios, el 15 %). En el Tomo I, después de la fase D, el Desarrollo ocupaba del
+  50 % al 64 % y las Aplicaciones, del 4 % al 8 %: la teoría creció y la práctica no, justo lo contrario de la misión
+  de la obra. La pasada de Aplicaciones las llevó al 21–25 % sin recortar el Desarrollo, que bajó, por proporción, a
+  cerca del 45 %, y los capítulos quedaron entre el 120 % y el 150 % de su extensión prevista. Cuando un capítulo no
+  llega a su extensión, las proporciones dicen dónde falta: casi siempre en las Aplicaciones y el Cálculo, no en el
+  Desarrollo.
 - **Ejemplos: al menos uno por definición, de a lo sumo 400 palabras, y nunca más de tres bloques seguidos sin una
   frase.** Un ejemplo más largo es una sección y se parte; una racha de bloques sin prosa se lee como una lista (una
   tabla cuenta como bloque). El propósito de cada ejemplo se dice antes, en una frase, o en su título, si el título lo

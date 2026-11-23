@@ -223,7 +223,9 @@ Un capítulo pasa por estas etapas, cada una con un propósito distinto. El Tomo
 salió mal en cada una es la razón de la regla que la acompaña.
 
 1. **Escribirlo**, en orden de lectura, con el mapa hacia atrás (`supone` y `cumple`), el ritmo de seis pasos de la
-   guía de estilo y sus metas de equilibrio (sección 6) desde el principio, no como una pasada posterior.
+   guía de estilo, el recorrido de cada aplicación y sus metas de equilibrio (sección 6) desde el principio, no como
+   una pasada posterior. Las Aplicaciones se escriben con la misma paciencia que el Desarrollo: en el Tomo I quedaron
+   para el final y ocupaban el 5 % del capítulo.
 2. **La lectura previa contra los libros**, en una sesión distinta de la que escribió: enunciados, demostraciones,
    hipótesis que no se usan, cifras recalculadas, historia, afirmaciones sobre la práctica y la regla 8.1. Lo que
    encuentra se corrige; no cuenta como revisión. En el Tomo I encontró unos 300 problemas, varios de ellos errores
@@ -237,7 +239,12 @@ salió mal en cada una es la razón de la regla que la acompaña.
 
 Lo que el Tomo I enseñó, y que vale para los siguientes:
 
-- **Una meta que es solo un piso produce capítulos inflados.** Toda meta tiene un techo o una proporción.
+- **Una meta que es solo un piso produce capítulos inflados, y un techo produce capítulos comprimidos.** La extensión
+  tiene piso y no techo (decisión 0008); lo que la equilibra son las proporciones entre las partes de la plantilla.
+- **Un piloto antes de una pasada grande.** La pasada de Aplicaciones empezó por I.2, se leyó con ojo crítico y su
+  encargo se ajustó antes de extenderla a los demás capítulos.
+- **Lo que el texto deja al lector, el lector lo puede comprobar.** Un ejercicio que el texto cita lleva su solución
+  (decisión 0006).
 - **Un detector por palabras se deja engañar.** Lo que importa contar se marca de manera explícita, como
   `{.contraejemplo}`.
 - **Lo que una sesión afirma de memoria se verifica o no entra.** Fechas, cifras, el comportamiento de un programa o

@@ -69,10 +69,11 @@ export const METAS = {
   exploraciones: 1,
   traducciones: 1,
   /**
-   * Las proporciones de la plantilla (especificación, 7), que el reporte muestra: el Desarrollo, el 45 %, y las
-   * Aplicaciones, el 20 %. Las Aplicaciones de menos del 12 % se señalan, porque son el lado de la práctica.
+   * Las Aplicaciones ocupan al menos el 15 % del capítulo; la plantilla les da el 20 % (especificación, 7). Antes de
+   * su pasada ocupaban del 4 % al 8 % en el Tomo I, y después, del 21 % al 25 %: es el lado de la práctica, el de la
+   * misión de la obra, y la meta impide que vuelva a quedar atrás.
    */
-  aplicacionesSenaladas: 0.12,
+  aplicaciones: 0.15,
   /** Al menos tres de nivel 1 y dos de nivel 3. */
   nivel1: 3,
   nivel3: 2,
@@ -222,6 +223,11 @@ export function evaluarDensidad(d: Densidad, paginasPrevistas: number): Meta[] {
       nombre: 'niveles',
       valor: `${nivel('1')} / ${nivel('2')} / ${nivel('3')}`,
       cumple: nivel('1') >= METAS.nivel1 && nivel('3') >= METAS.nivel3,
+    },
+    {
+      nombre: 'aplicaciones',
+      valor: `${Math.round(100 * (d.proporciones['Aplicaciones'] ?? 0))} % del capítulo`,
+      cumple: (d.proporciones['Aplicaciones'] ?? 0) >= METAS.aplicaciones,
     },
     {
       nombre: 'extensión',

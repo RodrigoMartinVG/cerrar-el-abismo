@@ -87,6 +87,7 @@ describe('evaluarDensidad', () => {
       ejercicios: false,
       'mezcla de ejercicios': false,
       niveles: false,
+      aplicaciones: false,
       extensión: false,
     });
   });

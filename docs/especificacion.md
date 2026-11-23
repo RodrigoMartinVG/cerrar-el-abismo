@@ -394,7 +394,7 @@ En el Tomo I, el hilo 3D se apoya en lo que el tomo construye: la coma flotante,
 
 | Tomo | Aplicaciones del hilo de física |
 | --- | --- |
-| I | Simetrías de moléculas y cristales (I.7), la paradoja de Banach–Tarski (I.11) |
+| I | La entropía de Boltzmann (I.5), las vibraciones de la molécula de agua (I.7), las dos rendijas (I.9), la paradoja de Banach–Tarski (I.11), las unidades como tipos (I.15) |
 | II | Análisis dimensional (II.3), torque (II.4), modos normales (II.6), notación de Dirac (II.8), principio de Rayleigh–Ritz (II.9), tensores (II.11), matrices de Pauli y espín (II.16), redes de resortes (II.13) |
 | III | Doppler (III.4), trabajo y energía (III.5), péndulo y ángulo pequeño (III.7), la aproximación de Stirling (III.11) |
 | IV | Fuerzas de restricción (IV.4), ecuaciones de Maxwell (IV.12), coordenadas curvilíneas (IV.13), electromagnetismo con formas (IV.14) |

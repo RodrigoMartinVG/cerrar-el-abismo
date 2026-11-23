@@ -3,7 +3,7 @@
 *Versión del 22 de noviembre de 2026. Se actualiza a medida que se avanza: cada commit que cierra un punto marca su
 casilla y mueve la línea «En curso».*
 
-**En curso:** la pasada de Aplicaciones (E8), que empieza por un piloto en I.2 y completa de paso las soluciones de los ejercicios citados. Después queda la fase F, que es del autor.
+**En curso:** la fase F, que es del autor: la revisión, la lectura de estilo y la prueba con estudiantes. Lo de Claude que queda es optativo: las piezas interactivas de las Aplicaciones (E10).
 
 Este documento reúne todo lo que falta para dar por terminado el Tomo I (especificación, 16.1 y 16.2) y lo que
 conviene revisar en el resto de la obra mientras tanto. Ordena el trabajo en fases, dice qué depende de qué y quién
@@ -238,10 +238,22 @@ commit, lo que conviene mirar en la lectura de estilo: los capítulos que quedar
   *Hecho: los proyectos van aparte y al final, los ejercicios citados llevan solución (los catorce capítulos que no la
   tienen la completan en su pasada de Aplicaciones), y la guía dice qué no es un contraejemplo, qué es una traducción
   y cómo se juzga el nivel 3.*
-- [ ] **E8. La pasada de Aplicaciones** [Claude]: las Aplicaciones ocupan del 4 % al 7 % de cada capítulo, contra el
+- [x] **E8. La pasada de Aplicaciones** [Claude]: las Aplicaciones ocupan del 4 % al 7 % de cada capítulo, contra el
       20 % de la plantilla. Cada una se desarrolla como subsección, con el problema real, la traducción, el resultado
       que lo resuelve, un caso entero y dónde termina el modelo; tienen su propia página en el sitio. Primero un
       piloto en I.2, que calibra el encargo, y después los demás.
+
+  *Hecho: 56 aplicaciones desarrolladas, de tres a cuatro por capítulo, cada una con su caso real verificado en la
+  fuente primaria y casi todas con su celda; las Aplicaciones ocupan del 21 % al 25 % de cada capítulo, y una meta
+  exige al menos el 15 %. El hilo de física pasó de dos menciones a cinco aplicaciones (I.5, I.7, I.9, I.11, I.15).
+  Los ejercicios citados tienen todos su solución. El recorrido de una aplicación quedó en la guía de estilo.*
+- [ ] **E10. Las piezas interactivas de las Aplicaciones** [Claude], optativo: cada sesión de la pasada propuso la
+      figura que mejor mostraría su caso, y hoy lo hace una celda. Las candidatas: `normalize` en float32 (I.1),
+      soldar vértices con un deslizador de ε (I.2), capas de una textura (I.3), los planos de RANDU en 3D (I.4),
+      microestados (I.5), una malla de navegación (I.6), un caleidoscopio (I.7), Reed–Solomon con casillas que se
+      borran (I.8), SLERP y NLERP, y las dos rendijas (I.9), la ULP contra la distancia (I.10), la unificación paso a
+      paso (I.11), un normalizador de sólidos (I.12), el producto de autómatas (I.13), un comparador de políticas
+      (I.14) y una máquina de pila (I.15).
 - [x] **E9. Tres proyectos en el tomo** (guía de estilo, sección 6), en los capítulos que cierran un bloque: I.8
       (álgebra), I.10 (números) e I.15 (lógica). Una prueba lo exige cuando el tomo está entero.
 
