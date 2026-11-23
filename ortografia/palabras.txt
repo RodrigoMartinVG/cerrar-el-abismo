@@ -259,6 +259,7 @@ decidibles
 definirla
 definirlas
 definirlos
+dendrograma
 derivabilidad
 derivables
 desactualizadas
@@ -303,6 +304,7 @@ Edelsbrunner
 egregium
 Ehrenfeucht
 eikonal
+elektrárny
 Elie
 empaquetamiento
 Enderton
@@ -534,6 +536,7 @@ Jakob
 Jarník
 Jech
 Jeevanjee
+Jindřich
 Jiushao
 Joshi
 Joukowski
@@ -557,6 +560,7 @@ Khinchin
 Kildall
 Kirkwood
 Kleene
+Kleinberg
 Kleiner
 Klink
 Knaster
@@ -657,6 +661,7 @@ microfacetas
 Mikk
 Milgram
 milisegundos
+Milková
 Milnor
 minimales
 minimalidad
@@ -701,10 +706,13 @@ Myhill
 Naber
 Naimark
 Navier
+navmesh
 Needham
 negarlo
 Neill
 Nerode
+Nešetřil
+Nešetřilová
 Netravali
 Neumann
 neuroimagen
@@ -751,6 +759,7 @@ ortonormales
 ortonormalización
 ortonormalizar
 Osher
+Otakar
 Overmars
 Overton
 Pandoc
@@ -897,6 +906,7 @@ satisfacible
 satisfacibles
 satisfiability
 Sauer
+Saxel
 Saxena
 Schafer
 Schauder
@@ -1112,6 +1122,7 @@ Yorke
 Yosida
 Zagier
 Zamir
+Západomoravské
 Zariski
 Zermelo
 Zhang

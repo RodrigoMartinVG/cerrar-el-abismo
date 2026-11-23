@@ -600,7 +600,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Grafos planos y fórmula de Euler V − E + F = 2; coloración y teorema de los cuatro colores (enunciado), demostrado con una computadora.
 
 **Puente.** Entrada: `node.children.forEach(update)` en un grafo de escena. La escena es un árbol y la actualización es un recorrido en profundidad; la fórmula de Euler es la primera comprobación de que una malla cerrada está bien formada.
-**Aplicaciones.** [3D] grafos de escena, validación de mallas y búsqueda de caminos · [Ing] rutas y redes de transporte · [Datos] redes sociales y componentes conexas.
+**Aplicaciones.** [Ing] la red eléctrica de Borůvka, el primer árbol generador mínimo · [Datos] agrupamiento por enlace simple con el árbol generador mínimo · [3D] caminos con A* en mallas de navegación · [3D] validación de mallas con la fórmula de Euler.
 **Lecturas.** *Rigor:* Bondy y Murty, *Graph Theory*; West, *Introduction to Graph Theory*; Diestel, *Graph Theory*. *Práctica:* Cormen, Leiserson, Rivest y Stein, *Introduction to Algorithms*; Hart, Nilsson y Raphael, «A Formal Basis for the Heuristic Determination of Minimum Cost Paths» (1968), el artículo de A*; Akenine-Möller y otros, *Real-Time Rendering*, para los grafos de escena. *Historia:* Biggs, Lloyd y Wilson, *Graph Theory 1736–1936*.
 
 #### I.7 Grupos
@@ -2528,7 +2528,7 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 
 | Tomo | Caps. | Págs. | Caps. de núcleo | Págs. de núcleo | Aplicaciones [3D] | Aplicaciones [Física] |
 | --- | --- | --- | --- | --- | --- | --- |
-| I | 15 | 638 | 12 | 514 | 13 de 51 (25 %) | 5 de 51 (10 %) |
+| I | 15 | 638 | 12 | 514 | 14 de 52 (27 %) | 5 de 52 (10 %) |
 | II | 17 | 672 | 16 | 632 | 16 de 56 (29 %) | 12 de 56 (21 %) |
 | III | 13 | 564 | 11 | 484 | 12 de 41 (29 %) | 6 de 41 (15 %) |
 | IV | 14 | 564 | 12 | 484 | 13 de 43 (30 %) | 7 de 43 (16 %) |
@@ -2541,7 +2541,7 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 | XI | 18 | 776 | 11 | 488 | 14 de 56 (25 %) | 9 de 56 (16 %) |
 | XII | 11 | 496 | 7 | 320 | 10 de 33 (30 %) | 10 de 33 (30 %) |
 | XIII | 7 | 324 | 0 | 0 | 5 de 21 (24 %) | 7 de 21 (33 %) |
-| **Total** | **167** | **7.142** | **121** | **5.214** | **141 de 517 (27 %)** | **103 de 517 (20 %)** |
+| **Total** | **167** | **7.142** | **121** | **5.214** | **142 de 518 (27 %)** | **103 de 518 (20 %)** |
 
 - Los capítulos tienen entre 28 y 52 páginas, con una media de 42,8.
 - Cada tomo suma además unas 50 páginas de material propio: «Lo que este tomo importa», «Lo que este tomo exporta», notación y convenciones, diccionario academia–práctica del tomo, soluciones de los ejercicios impares e índice analítico. En total, unas 650 páginas, para unas 7.792 en toda la obra.
@@ -2550,14 +2550,14 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 
 | Campo (9.1) | Aplicaciones | Proporción |
 | --- | --- | --- |
-| [3D] | 141 | 27 % |
+| [3D] | 142 | 27 % |
 | [Física] | 103 | 20 % |
 | [Ing] | 100 | 19 % |
 | [Datos] | 61 | 12 % |
 | [Bio/Eco] | 48 | 9 % |
 | [Señales] | 34 | 7 % |
 | [Cripto] | 30 | 6 % |
-| **Total** | **517** | **100 %** |
+| **Total** | **518** | **100 %** |
 
 | Itinerario (9.6) | Caps. | Págs. de capítulos |
 | --- | --- | --- |

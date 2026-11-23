@@ -145,12 +145,14 @@ partes:
           - Grafos planos y fórmula de Euler V − E + F = 2; coloración y teorema de los cuatro colores (enunciado), demostrado con una computadora.
         puente: 'Entrada: `node.children.forEach(update)` en un grafo de escena. La escena es un árbol y la actualización es un recorrido en profundidad; la fórmula de Euler es la primera comprobación de que una malla cerrada está bien formada.'
         aplicaciones:
-          - campo: 3d
-            texto: grafos de escena, validación de mallas y búsqueda de caminos
           - campo: ing
-            texto: rutas y redes de transporte
+            texto: la red eléctrica de Borůvka, el primer árbol generador mínimo
           - campo: datos
-            texto: redes sociales y componentes conexas
+            texto: agrupamiento por enlace simple con el árbol generador mínimo
+          - campo: 3d
+            texto: caminos con A* en mallas de navegación
+          - campo: 3d
+            texto: validación de mallas con la fórmula de Euler
         lecturas:
           rigor: 'Bondy y Murty, *Graph Theory*; West, *Introduction to Graph Theory*; Diestel, *Graph Theory*.'
           practica: 'Cormen, Leiserson, Rivest y Stein, *Introduction to Algorithms*; Hart, Nilsson y Raphael, «A Formal Basis for the Heuristic Determination of Minimum Cost Paths» (1968), el artículo de A*; Akenine-Möller y otros, *Real-Time Rendering*, para los grafos de escena.'
