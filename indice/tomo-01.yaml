@@ -46,9 +46,11 @@ partes:
         puente: 'Entrada: `Map<Key, Value>` y una función `hash(key)`. Un diccionario es una función parcial, y una función de dispersión no puede ser inyectiva cuando el dominio es más grande que el codominio.'
         aplicaciones:
           - campo: cripto
-            texto: tablas de dispersión y clases de equivalencia
+            texto: 'los choques de SHA-256: el palomar dice que existen, no cómo encontrarlos'
+          - campo: cripto
+            texto: 'tablas de dispersión bajo ataque: choques fabricados por composición, y la defensa con un orden total'
           - campo: datos
-            texto: bases de datos como relaciones
+            texto: 'el modelo relacional: tablas como funciones, JOIN como composición y GROUP BY como cociente bien definido'
           - campo: 3d
             texto: soldar vértices duplicados como paso al cociente por una relación de equivalencia
         lecturas:

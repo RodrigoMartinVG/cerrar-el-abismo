@@ -19,6 +19,7 @@ Aharonov
 Ahlfors
 Akenine
 Alaoglu
+Albertini
 alcanzabilidad
 aleatorizado
 aleatorizados
@@ -130,6 +131,7 @@ browniano
 Buchberger
 Burali
 Burgiel
+Bursztein
 CAGD
 Canastota
 Cann
@@ -190,6 +192,7 @@ comprimirla
 comprobador
 comprobadores
 computabilidad
+computacionalmente
 Condon
 conductancia
 congelarlo
@@ -300,6 +303,7 @@ Edelsbrunner
 egregium
 Ehrenfeucht
 eikonal
+Elie
 empaquetamiento
 Enderton
 Engel
@@ -489,6 +493,7 @@ implicacional
 implicante
 implicantes
 implicitación
+imprimibles
 incircle
 indecidibilidad
 indecidible
@@ -542,6 +547,7 @@ Kampen
 Kantorovich
 Karnaugh
 Karp
+Karpman
 Karush
 Kayal
 Kazimierz
@@ -552,6 +558,7 @@ Kildall
 Kirkwood
 Kleene
 Kleiner
+Klink
 Knaster
 Knopp
 Kobbelt
@@ -639,6 +646,7 @@ memoización
 Menezes
 Mersenne
 Mertens
+meshoptimizer
 metamatemática
 metrización
 mezclarlas
@@ -1044,6 +1052,7 @@ transitividad
 Trefethen
 tricotomía
 trillones
+trimesh
 trivectores
 Trumbore
 Tsitsiklis
@@ -1083,6 +1092,8 @@ vorticidad
 vóxeles
 Vreugdenhil
 Wadler
+Wälde
+Wallach
 Walther
 Warshall
 Wasserman
@@ -1094,6 +1105,7 @@ Willsky
 worklist
 wronskiano
 XPBD
+Yarik
 Yitang
 Yorke
 Yosida

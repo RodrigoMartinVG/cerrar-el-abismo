@@ -554,7 +554,7 @@ Cada entrada da: el título; la extensión, los requisitos y el tipo; el conteni
 - Cardinalidad: conjuntos finitos, numerables y no numerables; argumento diagonal de Cantor. Los cardinales infinitos en general llegan en I.11.
 
 **Puente.** Entrada: `Map<Key, Value>` y una función `hash(key)`. Un diccionario es una función parcial, y una función de dispersión no puede ser inyectiva cuando el dominio es más grande que el codominio.
-**Aplicaciones.** [Cripto] tablas de dispersión y clases de equivalencia · [Datos] bases de datos como relaciones · [3D] soldar vértices duplicados como paso al cociente por una relación de equivalencia.
+**Aplicaciones.** [Cripto] los choques de SHA-256: el palomar dice que existen, no cómo encontrarlos · [Cripto] tablas de dispersión bajo ataque: choques fabricados por composición, y la defensa con un orden total · [Datos] el modelo relacional: tablas como funciones, JOIN como composición y GROUP BY como cociente bien definido · [3D] soldar vértices duplicados como paso al cociente por una relación de equivalencia.
 **Lecturas.** *Rigor:* Halmos, *Naive Set Theory*; Velleman, *How to Prove It*; Enderton, *Elements of Set Theory*. *Práctica:* Codd, «A Relational Model of Data for Large Shared Data Banks» (1970), el origen de las bases de datos relacionales. *En español:* Krick, *Álgebra I*.
 
 #### I.3 Naturales, enteros y divisibilidad
@@ -2528,7 +2528,7 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 
 | Tomo | Caps. | Págs. | Caps. de núcleo | Págs. de núcleo | Aplicaciones [3D] | Aplicaciones [Física] |
 | --- | --- | --- | --- | --- | --- | --- |
-| I | 15 | 638 | 12 | 514 | 13 de 50 (26 %) | 5 de 50 (10 %) |
+| I | 15 | 638 | 12 | 514 | 13 de 51 (25 %) | 5 de 51 (10 %) |
 | II | 17 | 672 | 16 | 632 | 16 de 56 (29 %) | 12 de 56 (21 %) |
 | III | 13 | 564 | 11 | 484 | 12 de 41 (29 %) | 6 de 41 (15 %) |
 | IV | 14 | 564 | 12 | 484 | 13 de 43 (30 %) | 7 de 43 (16 %) |
@@ -2541,7 +2541,7 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 | XI | 18 | 776 | 11 | 488 | 14 de 56 (25 %) | 9 de 56 (16 %) |
 | XII | 11 | 496 | 7 | 320 | 10 de 33 (30 %) | 10 de 33 (30 %) |
 | XIII | 7 | 324 | 0 | 0 | 5 de 21 (24 %) | 7 de 21 (33 %) |
-| **Total** | **167** | **7.142** | **121** | **5.214** | **141 de 516 (27 %)** | **103 de 516 (20 %)** |
+| **Total** | **167** | **7.142** | **121** | **5.214** | **141 de 517 (27 %)** | **103 de 517 (20 %)** |
 
 - Los capítulos tienen entre 28 y 52 páginas, con una media de 42,8.
 - Cada tomo suma además unas 50 páginas de material propio: «Lo que este tomo importa», «Lo que este tomo exporta», notación y convenciones, diccionario academia–práctica del tomo, soluciones de los ejercicios impares e índice analítico. En total, unas 650 páginas, para unas 7.792 en toda la obra.
@@ -2556,8 +2556,8 @@ Generada desde los datos del índice con `npm run indice:spec` (decisión 0002),
 | [Datos] | 61 | 12 % |
 | [Bio/Eco] | 48 | 9 % |
 | [Señales] | 34 | 7 % |
-| [Cripto] | 29 | 6 % |
-| **Total** | **516** | **100 %** |
+| [Cripto] | 30 | 6 % |
+| **Total** | **517** | **100 %** |
 
 | Itinerario (9.6) | Caps. | Págs. de capítulos |
 | --- | --- | --- |
