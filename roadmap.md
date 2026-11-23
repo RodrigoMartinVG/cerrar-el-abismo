@@ -3,7 +3,7 @@
 *Versión del 22 de noviembre de 2026. Se actualiza a medida que se avanza: cada commit que cierra un punto marca su
 casilla y mueve la línea «En curso».*
 
-**En curso:** la segunda recalibración de las metas (E7) y la pasada de Aplicaciones (E8), que empieza por un piloto en I.2. Después queda la fase F, que es del autor.
+**En curso:** la pasada de Aplicaciones (E8), que empieza por un piloto en I.2 y completa de paso las soluciones de los ejercicios citados. Después queda la fase F, que es del autor.
 
 Este documento reúne todo lo que falta para dar por terminado el Tomo I (especificación, 16.1 y 16.2) y lo que
 conviene revisar en el resto de la obra mientras tanto. Ordena el trabajo en fases, dice qué depende de qué y quién
@@ -223,7 +223,7 @@ commit, lo que conviene mirar en la lectura de estilo: los capítulos que quedar
   tomo con el mismo árbol que la web, y el trabajo «PDF» de la integración continua lo compila. Quedan para el PDF
   definitivo los fotogramas de las figuras, el recuadro de `supone` y las soluciones al final.*
 
-- [ ] **E7. La ronda crítica** [Claude]: una lectura crítica de cada capítulo, que busca errores, juzga si cada
+- [x] **E7. La ronda crítica** [Claude]: una lectura crítica de cada capítulo, que busca errores, juzga si cada
       agregado de la fase D se gana su lugar y lo lleva a las metas de equilibrio, recalibradas con lo que estas
       lecturas mostraron (guía de estilo, sección 6; decisión 0008).
   - [x] I.2, I.3, I.9 e I.12 (primera tanda), e I.11
@@ -233,7 +233,11 @@ commit, lo que conviene mirar en la lectura de estilo: los capítulos que quedar
   *Hecho hasta aquí: los quince capítulos cumplen las metas, que su prueba vigila sin excepciones. Las lecturas
   corrigieron errores de verdad en casi todos (afirmaciones falsas, demostraciones con huecos, datos históricos sin
   fuente, citas que no decían lo que se les atribuía) y desmarcaron los no-ejemplos que pasaban por contraejemplos.*
-  - [ ] La segunda recalibración de las metas, con lo que dijeron las quince lecturas
+  - [x] La segunda recalibración de las metas, con lo que dijeron las quince lecturas
+
+  *Hecho: los proyectos van aparte y al final, los ejercicios citados llevan solución (los catorce capítulos que no la
+  tienen la completan en su pasada de Aplicaciones), y la guía dice qué no es un contraejemplo, qué es una traducción
+  y cómo se juzga el nivel 3.*
 - [ ] **E8. La pasada de Aplicaciones** [Claude]: las Aplicaciones ocupan del 4 % al 7 % de cada capítulo, contra el
       20 % de la plantilla. Cada una se desarrolla como subsección, con el problema real, la traducción, el resultado
       que lo resuelve, un caso entero y dónde termina el modelo; tienen su propia página en el sitio. Primero un
